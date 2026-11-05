@@ -25,6 +25,9 @@
   th { color: var(--muted); font-weight: 600; }
   a { color: var(--ochre); }
   .cta { display: inline-block; background: var(--ochre); color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-right: 12px; }
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; }
+  figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
 </style>
@@ -51,6 +54,11 @@
     <strong>Where it is a convenience.</strong> For a single rig with IK and drivers, Blender's own exporters already bake constraints and get it right. There, what you are buying is the rig validator, repeatable per-engine presets saved in your .blend file, and editable baked actions. We say this on the box because you should know it before you pay.
   </div>
 
+  <figure>
+    <img src="workflow.svg" alt="Diagram: your rig with constraints and drivers, baked from the rest pose into one action per clip, exported as one clean clip per action for Godot, Unity, or Unreal" width="880" height="300">
+    <figcaption>How Rigbake works: validate, bake from the rest pose, export one clip per action.</figcaption>
+  </figure>
+
   <h2>What it does</h2>
   <ul>
     <li><strong>Bake Constraints for Export.</strong> Bakes every bone constraint and driver into plain keyframes on a new action per clip, from the rest pose, so the result never depends on where the playhead was. Originals untouched. Hand-edited bakes are kept, not overwritten.</li>
@@ -59,6 +67,11 @@
   </ul>
 
   <h2>Measured, not promised</h2>
+  <figure>
+    <img src="before-after.svg" alt="Figure: control rig case, plain export 0 animations versus Rigbake one per action; NLA clips case, plain FBX 4 takes for 2 clips with two wrong versus Rigbake 2 exact takes" width="880" height="420">
+    <figcaption>The two cases where plain export goes wrong, measured on Blender 4.2, 4.5, and 5.0.</figcaption>
+  </figure>
+
   <table>
     <tr><th>Scenario</th><th>Plain Blender export</th><th>Rigbake</th></tr>
     <tr><td>Deform rig driven by a separate control rig, exported alone</td><td>0 animations (glTF and FBX)</td><td>One clip per action, bone error 0</td></tr>
