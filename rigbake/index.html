@@ -80,9 +80,28 @@
   </table>
   <p>Round-trip tolerance is 1 mm and 0.001 rad; measured error on the cases above is about 3e-7. Every number comes from the test suite in the repository, which runs on Blender 4.2, 4.5, and 5.0.</p>
 
+  <h2>In Blender, for real</h2>
+  <p>Every image below is a capture from Blender 4.2 LTS with Rigbake 1.1.1 installed, not a mockup.</p>
+  <figure>
+    <img src="img/02-sidebar-bake.png" alt="Blender 4.2 with the Rigbake sidebar tab open: Validate Rig for Export, the Bake panel with All Actions and frame range, two baked actions listed, and the Export panel with the Godot preset" width="1600" height="900" loading="lazy">
+    <figcaption>The Rigbake tab in the 3D Viewport sidebar: validate, bake, export. Two clips baked, Godot preset selected, summary in the status bar.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/05-validate-report.png" alt="The Validate Rig for Export popup listing a Copy Rotation constraint, an IK constraint, a driver, non-uniform scale, a vertex group with no bone, and a vertex with five weights, each with a one-line fix; the same list in a text block below" width="1600" height="900" loading="lazy">
+    <figcaption>Validate Rig for Export: every constraint, driver, scale, weight, and vertex-group problem, each with its fix, in a popup and a text block.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/09-godot-plain-vs-rigbake.png" alt="Side by side in Godot 4: the plain glTF export shows the rest pose with no animations; the Rigbake Godot-preset export shows the Run animation at frame 12 with Run and Walk listed" width="1200" height="600" loading="lazy">
+    <figcaption>Checked in Godot 4.7 with Godot's own importer: plain export, no animations; Rigbake, Run and Walk, both exact.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/07-control-rig-bake.png" alt="A deform rig driven by a separate control rig, with Rigbake's Clips From set to the control armature and its actions baked into their own clips" width="1600" height="900" loading="lazy">
+    <figcaption>Control-rig setup: pick the driving armature and every one of its actions becomes its own clip.</figcaption>
+  </figure>
+
   <h2>Details</h2>
   <ul>
-    <li>Blender 4.2 or later, installed as an extension from a zip.</li>
+    <li>Blender 4.2 or later, installed as an extension from a zip. Verified in a real Blender 4.2 LTS window and in Godot 4.7; Unity and Unreal presets checked through Godot's FBX importer, not yet in Unity or Unreal.</li>
     <li>GPL-3.0-or-later. Full source code included with your purchase.</li>
     <li>No telemetry, no analytics, no network calls of any kind.</li>
     <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Bugs and feature requests welcome at the same address.</li>
