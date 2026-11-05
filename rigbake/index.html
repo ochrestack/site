@@ -93,23 +93,24 @@
   <p><strong>How exact in Godot.</strong> The exported files are exact: re-imported into Blender, every bone is within 1e-5 m. Godot's default import re-samples each clip at its Animation &gt; FPS setting and its import Optimizer can thin keys: the customer gate measured up to about 3 cm on fast motion, and our every-frame check of the same rigs up to 13 cm. With Animation &gt; FPS set to the Blender frame rate and the AnimationPlayer's Optimizer turned off, every bone matched Blender within 0.0002 m in our check. The <a href="quick-start.html#godot">quick start</a> shows both settings.</p>
 
   <h2>In Blender, for real</h2>
-  <p>Every Blender image below is a capture from Blender 4.2 LTS with Rigbake 1.2.0 installed, not a mockup; the Godot image is a Godot 4.7 render.</p>
+  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.2.0 installed, or a Godot 4.7 render of its files: not a mockup. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip on the NLA and her legs in IK.</p>
   <figure>
-    <img src="img/02-sidebar-bake.png" alt="Blender 4.2 with the Rigbake sidebar tab open: Validate Rig for Export, the Bake panel with All Actions and frame range, two baked actions listed, and the Export panel with the Godot preset" width="1600" height="900" loading="lazy">
-    <figcaption>The Rigbake tab in the 3D Viewport sidebar: validate, bake, export. Two clips baked, Godot preset selected, summary in the status bar.</figcaption>
+    <img src="img/character-01-blender-rain-clips.png" alt="Blender 4.2 with the character Rain mid-run in the viewport and the Rigbake sidebar tab open: her three baked clips Walk, Run and Idle listed under the Bake button, the Godot preset selected, and the NLA editor below showing her Idle, Run and Walk tracks" width="1600" height="900" loading="lazy">
+    <figcaption>Rain's clip library on the NLA, baked in one click with the default settings: Walk, Run and Idle each become their own baked action, listed in the Rigbake tab. Her original actions, constraints and NLA tracks are left as they were.</figcaption>
   </figure>
   <figure>
-    <img src="img/05-validate-report.png" alt="The Validate Rig for Export popup listing a Copy Rotation constraint, an IK constraint, a driver, non-uniform scale, a vertex group with no bone, and a vertex with five weights, each with a one-line fix; the same list in a text block below" width="1600" height="900" loading="lazy">
-    <figcaption>Validate Rig for Export: every constraint, driver, scale, weight, and vertex-group problem, each with its fix, in a popup and a text block.</figcaption>
+    <img src="img/character-02-validate-popup.png" alt="The Validate Rig for Export popup next to Rain in the viewport, listing constrained bones of her rig with a one-line fix each and how many more findings there are; the full report in a text block below" width="1600" height="900" loading="lazy">
+    <figcaption>Validate Rig for Export on a production rig: every constrained bone, weight, vertex-group and shape-key issue, each with its fix. The popup shows the first findings; the text block has all of them.</figcaption>
   </figure>
   <figure>
-    <img src="img/09-godot-plain-vs-rigbake.png" alt="Side by side in Godot 4: the plain glTF export shows the rest pose with no animations; the Rigbake Godot-preset export shows the Run animation at frame 12 with Run and Walk listed" width="1200" height="600" loading="lazy">
-    <figcaption>Checked in Godot 4.7 with Godot's own importer: plain export, no animations; Rigbake, Run and Walk, named after the actions. The files are exact; in Godot, set Animation &gt; FPS to the Blender frame rate and turn off the import Optimizer for exact playback.</figcaption>
+    <img src="img/character-03-export-summary.png" alt="Rain in the viewport with Blender's Info editor below showing Rigbake's summaries: three actions baked, and RIG-rain exported with three animations, Walk, Run and Idle, as glTF with the Godot preset" width="1600" height="900" loading="lazy">
+    <figcaption>Export Game-Ready reports what it wrote: the file, the preset, and each animation with its frame range. Warnings, such as shape keys a preset drops, are spelled out mesh by mesh.</figcaption>
   </figure>
   <figure>
-    <img src="img/07-control-rig-bake.png" alt="A deform rig driven by a separate control rig: the Rigbake panel shows Actions set to All Actions, Clips from 'CTRL' (detected), and the control rig's actions Walk and Run baked into their own clips" width="1600" height="900" loading="lazy">
-    <figcaption>Control-rig setup: Rigbake detects the driving armature, and with the default settings (All Actions) every one of its actions becomes its own clip.</figcaption>
+    <img src="img/character-04-godot-side-by-side.png" alt="Godot 4.7, side by side at the same frame: Blender's default FBX export of Rain with 23 takes, Idle, Run and Walk each listed twice, playing Idle with her legs caught mid-stride from the Run clip; Rigbake's export with exactly Idle, Run and Walk, playing Idle and standing as in Blender" width="1600" height="900" loading="lazy">
+    <figcaption>The same rig in Godot 4.7, same frame. Left, File &gt; Export &gt; FBX with Blender's defaults: 23 takes for 3 clips, and in Idle her legs keep running from the Run clip (0.33 m off). Right, Rigbake's Godot preset: one take per clip, named after the action, posed as in Blender. Both sides wear the same materials, so only the animation differs.</figcaption>
   </figure>
+  <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We added the animation clips and simplified two eye materials for the game-engine export. Rain is not included with Rigbake. Rain has no separate control rig; the control-rig case is shown in the table above.</p>
 
   <h2>Details</h2>
   <ul>
