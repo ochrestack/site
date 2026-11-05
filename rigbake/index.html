@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rigbake for Blender: one clean animation clip per action</title>
+<meta name="description" content="Rigbake bakes each animation clip to plain keyframes and exports one correctly named clip per action for Godot, Unity, and Unreal. Fixes empty or duplicated exports from control rigs and NLA clips.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ink: #2B2118; --paper: #FAF7F2; --muted: #6B5E52; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre); }
+  .cta { display: inline-block; background: var(--ochre); color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-right: 12px; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Rigbake for Blender</h1>
+  <p class="sub">One clean, correctly named animation clip per action, exported with ready settings for Godot, Unity, and Unreal. Your original actions are never touched.</p>
+
+  <p>
+    <a class="cta" href="https://github.com/ochrestack/blender-export-kit">Source and releases on GitHub</a>
+    <span>Direct purchase and Superhive listing: coming shortly.</span>
+  </p>
+
+  <div class="box warn">
+    <strong>Where it matters.</strong> If your character is driven by a separate control rig, or you keep several clips on the NLA, Blender's default glTF and FBX exports can come out with no animation at all, or with wrong, duplicated FBX takes that are off by more than half a meter. We measured both cases on Blender 4.2, 4.5, and 5.0. Rigbake exports both correctly.
+  </div>
+
+  <div class="box">
+    <strong>Where it is a convenience.</strong> For a single rig with IK and drivers, Blender's own exporters already bake constraints and get it right. There, what you are buying is the rig validator, repeatable per-engine presets saved in your .blend file, and editable baked actions. We say this on the box because you should know it before you pay.
+  </div>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Bake Constraints for Export.</strong> Bakes every bone constraint and driver into plain keyframes on a new action per clip, from the rest pose, so the result never depends on where the playhead was. Originals untouched. Hand-edited bakes are kept, not overwritten.</li>
+    <li><strong>Export Game-Ready.</strong> Runs the baked result through Blender's bundled glTF and FBX exporters with explicit, documented settings. Presets for Godot (glTF), Unity (FBX), and Unreal (FBX), editable in the panel and saved with your file. Control rigs: pick the driving armature and every one of its actions becomes its own clip.</li>
+    <li><strong>Validate Rig for Export.</strong> Lists every constraint and driver per bone, unapplied or non-uniform scale, vertices with more than four weights, vertex-group problems, object-level constraints, and shape keys that a preset would drop, each with a one-line fix.</li>
+  </ul>
+
+  <h2>Measured, not promised</h2>
+  <table>
+    <tr><th>Scenario</th><th>Plain Blender export</th><th>Rigbake</th></tr>
+    <tr><td>Deform rig driven by a separate control rig, exported alone</td><td>0 animations (glTF and FBX)</td><td>One clip per action, bone error 0</td></tr>
+    <tr><td>Two clips stashed on the NLA with IK, plain FBX</td><td>4 takes for 2 clips, two of them wrong by 0.60 m / 0.82 rad</td><td>2 takes, both exact</td></tr>
+    <tr><td>Single rig with IK, Copy Rotation, and a driver</td><td>Correct already</td><td>Correct; validator and presets are the value</td></tr>
+  </table>
+  <p>Round-trip tolerance is 1 mm and 0.001 rad; measured error on the cases above is about 3e-7. Every number comes from the test suite in the repository, which runs on Blender 4.2, 4.5, and 5.0.</p>
+
+  <h2>Details</h2>
+  <ul>
+    <li>Blender 4.2 or later, installed as an extension from a zip.</li>
+    <li>GPL-3.0-or-later. Source included and public.</li>
+    <li>No telemetry, no analytics, no network calls of any kind.</li>
+    <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Bugs and requests also welcome on the repository's issue tracker.</li>
+  </ul>
+
+  <h2>Known limits</h2>
+  <ul>
+    <li>Only bone transforms are baked. Motion keyed on the armature object itself is reported by the validator, not baked.</li>
+    <li>Shape keys, custom properties, and B-Bone properties are not baked; keys are written on whole frames.</li>
+    <li>Blender 4.5's own FBX importer misreads multi-take files; exports from Rigbake are correct, but re-importing them into 4.5 for checking is not reliable. Use 4.2 or 5.0 to verify, or your engine.</li>
+  </ul>
+</main>
+<footer>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
