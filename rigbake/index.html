@@ -41,9 +41,10 @@
   <h1>Rigbake for Blender</h1>
   <p class="sub">One clean, correctly named animation clip per action, exported with ready settings for Godot, Unity, and Unreal. Your original actions are never touched.</p>
 
+  <p class="price"><strong>$19, one-time, source included</strong> (GPL-3.0-or-later).</p>
   <p>
     <span class="cta" style="background:#6B5E52">Direct purchase and Superhive listing: coming shortly</span>
-    <span>Source code ships with every purchase (GPL-3.0-or-later).</span>
+    <a href="#documentation">Documentation</a>
   </p>
 
   <div class="box warn">
@@ -62,8 +63,8 @@
   <h2>What it does</h2>
   <ul>
     <li><strong>Bake Constraints for Export.</strong> Bakes every bone constraint and driver into plain keyframes on a new action per clip, from the rest pose, so the result never depends on where the playhead was. Originals untouched. Hand-edited bakes are kept, not overwritten.</li>
-    <li><strong>Export Game-Ready.</strong> Runs the baked result through Blender's bundled glTF and FBX exporters with explicit, documented settings. Presets for Godot (glTF), Unity (FBX), and Unreal (FBX), editable in the panel and saved with your file. Control rigs: pick the driving armature and every one of its actions becomes its own clip.</li>
-    <li><strong>Validate Rig for Export.</strong> Lists every constraint and driver per bone, unapplied or non-uniform scale, vertices with more than four weights, vertex-group problems, object-level constraints, and shape keys that a preset would drop, each with a one-line fix.</li>
+    <li><strong>Export Game-Ready.</strong> Runs the baked result through Blender's bundled glTF and FBX exporters with explicit, documented settings. Presets for Godot (glTF), Unity (FBX), and Unreal (FBX), editable in the panel and saved with your file. Control rigs: Rigbake detects the driving armature (or you pick it), and with the default settings every one of its actions becomes its own clip.</li>
+    <li><strong>Validate Rig for Export.</strong> Lists every constraint and driver per bone (bones that just follow a control rig are summed up in one line), unapplied or non-uniform scale, vertices with more than four weights, vertex-group problems, object-level constraints, and shape keys that a preset would drop, each with a one-line fix.</li>
   </ul>
 
   <h2>Measured, not promised</h2>
@@ -79,9 +80,10 @@
     <tr><td>Single rig with IK, Copy Rotation, and a driver</td><td>Correct already</td><td>Correct; validator and presets are the value</td></tr>
   </table>
   <p>Round-trip tolerance is 1 mm and 0.001 rad; measured error on the cases above is about 3e-7. Every number comes from the test suite in the repository, which runs on Blender 4.2, 4.5, and 5.0.</p>
+  <p><strong>How exact in Godot.</strong> The exported files are exact: re-imported into Blender, every bone is within 1e-5 m. Godot's default import re-samples each clip at its Animation &gt; FPS setting and its import Optimizer can thin keys: the customer gate measured up to about 3 cm on fast motion, and our every-frame check of the same rigs up to 13 cm. With Animation &gt; FPS set to the Blender frame rate and the AnimationPlayer's Optimizer turned off, every bone matched Blender within 0.0002 m in our check. The <a href="quick-start.html#godot">quick start</a> shows both settings.</p>
 
   <h2>In Blender, for real</h2>
-  <p>Every image below is a capture from Blender 4.2 LTS with Rigbake 1.1.1 installed, not a mockup.</p>
+  <p>Every Blender image below is a capture from Blender 4.2 LTS with Rigbake 1.2.0 installed, not a mockup; the Godot image is a Godot 4.7 render.</p>
   <figure>
     <img src="img/02-sidebar-bake.png" alt="Blender 4.2 with the Rigbake sidebar tab open: Validate Rig for Export, the Bake panel with All Actions and frame range, two baked actions listed, and the Export panel with the Godot preset" width="1600" height="900" loading="lazy">
     <figcaption>The Rigbake tab in the 3D Viewport sidebar: validate, bake, export. Two clips baked, Godot preset selected, summary in the status bar.</figcaption>
@@ -92,19 +94,35 @@
   </figure>
   <figure>
     <img src="img/09-godot-plain-vs-rigbake.png" alt="Side by side in Godot 4: the plain glTF export shows the rest pose with no animations; the Rigbake Godot-preset export shows the Run animation at frame 12 with Run and Walk listed" width="1200" height="600" loading="lazy">
-    <figcaption>Checked in Godot 4.7 with Godot's own importer: plain export, no animations; Rigbake, Run and Walk, both exact.</figcaption>
+    <figcaption>Checked in Godot 4.7 with Godot's own importer: plain export, no animations; Rigbake, Run and Walk, named after the actions. The files are exact; in Godot, set Animation &gt; FPS to the Blender frame rate and turn off the import Optimizer for exact playback.</figcaption>
   </figure>
   <figure>
-    <img src="img/07-control-rig-bake.png" alt="A deform rig driven by a separate control rig, with Rigbake's Clips From set to the control armature and its actions baked into their own clips" width="1600" height="900" loading="lazy">
-    <figcaption>Control-rig setup: pick the driving armature and every one of its actions becomes its own clip.</figcaption>
+    <img src="img/07-control-rig-bake.png" alt="A deform rig driven by a separate control rig: the Rigbake panel shows Actions set to All Actions, Clips from 'CTRL' (detected), and the control rig's actions Walk and Run baked into their own clips" width="1600" height="900" loading="lazy">
+    <figcaption>Control-rig setup: Rigbake detects the driving armature, and with the default settings (All Actions) every one of its actions becomes its own clip.</figcaption>
   </figure>
 
   <h2>Details</h2>
   <ul>
-    <li>Blender 4.2 or later, installed as an extension from a zip. Verified in a real Blender 4.2 LTS window and in Godot 4.7; Unity and Unreal presets checked through Godot's FBX importer, not yet in Unity or Unreal.</li>
+    <li>Price: $19, one-time, source included. Direct purchase and the Superhive listing are coming shortly.</li>
+    <li>Blender 4.2 or later, installed as an extension from a zip. Verified in a real Blender 4.2 LTS window and in Godot 4.7. The Unity preset's FBX was checked through Godot's FBX importer. The Unreal preset has not been checked in Unreal Engine. Neither has been opened in Unity or Unreal.</li>
     <li>GPL-3.0-or-later. Full source code included with your purchase.</li>
     <li>No telemetry, no analytics, no network calls of any kind.</li>
     <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Bugs and feature requests welcome at the same address.</li>
+  </ul>
+
+  <h2 id="documentation">Documentation</h2>
+  <p>The full manual (<code>README.md</code>) and a one-page quick start ship inside the download. The quick start is also online: <a href="quick-start.html">Rigbake quick start</a>.</p>
+  <h3>Install</h3>
+  <ol>
+    <li>Download <code>rigbake-1.2.0.zip</code>. Do not unzip it.</li>
+    <li>In Blender 4.2 or later, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.</li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip.</li>
+    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Rigbake</strong> tab.</li>
+  </ol>
+  <h3>Two tips for the first ten minutes</h3>
+  <ul>
+    <li><strong>Continue Offline is fine.</strong> Get Extensions may ask about internet access and then show a "Repository Alert" about extensions.blender.org. Both come from Blender's online repository. Rigbake needs no internet: choose Continue Offline and install from disk.</li>
+    <li><strong>In Godot, set Animation &gt; FPS to your Blender frame rate</strong> in the Import dock and click Reimport. For exact motion on fast clips, also turn off the AnimationPlayer's Optimizer (Import dock &gt; Advanced...). See <a href="quick-start.html#godot">Importing into Godot</a>.</li>
   </ul>
 
   <h2>Known limits</h2>
