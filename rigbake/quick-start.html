@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rigbake quick start: install and first export</title>
+<meta name="description" content="Install Rigbake for Blender 4.2 and later, export your first clips, and set up Godot's import so the animation plays exactly.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ink: #2B2118; --paper: #FAF7F2; --muted: #6B5E52; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre); }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Rigbake quick start</h1>
+  <p>Installing Rigbake and your first export. The full manual, <code>README.md</code>, is inside the download, and so is this page, as <code>docs/quick-start.md</code>. Back to the <a href="index.html">Rigbake product page</a>.</p>
+
+  <h2 id="install">Install (Blender 4.2 or later)</h2>
+  <ol>
+    <li>Download <code>rigbake-1.2.0.zip</code>. Do not unzip it.</li>
+    <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
+      <ul>
+        <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Rigbake needs no internet, so <strong>Continue Offline is fine</strong>.</li>
+        <li>Blender may then show a "Repository Alert" saying that the remote data of extensions.blender.org is unavailable. That message comes from Blender's online repository, not from Rigbake. You can ignore it.</li>
+      </ul>
+    </li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. The status bar says <em>Installed "rigbake"</em>. Dragging the zip onto the Blender window also works.</li>
+    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Rigbake</strong> tab.</li>
+  </ol>
+  <p>To update, install the newer zip the same way. To remove Rigbake, go to <strong>Preferences &gt; Add-ons</strong>, find <em>Rigbake</em>, and choose <strong>Uninstall</strong> from its drop-down menu.</p>
+
+  <h2 id="first-export">First export</h2>
+  <ol>
+    <li>In Object Mode, select the armature that deforms your mesh. With a control rig, select the deform (game) rig; Rigbake finds the control rig and shows "Clips from 'CTRL' (detected)".</li>
+    <li>Click <strong>Validate Rig for Export</strong> and fix what matters for your engine. The full list is in the Text Editor, text block <em>Rigbake Validation.txt</em>.</li>
+    <li>Leave <strong>Actions</strong> on <strong>All Actions</strong> (the default). Every action becomes its own clip: the active action and every action on the NLA, including stashed ones, or every action of the control rig.</li>
+    <li>Pick the <strong>Preset</strong> (Godot, Unity or Unreal) and the <strong>Folder</strong>, then click <strong>Export Game-Ready</strong>.</li>
+    <li>Read the summary in the status bar. It names the file and every clip, for example "Exported DEF with 3 animations ['Jump' (1-30), 'Walk' (1-24), 'Run' (1-16)]". Long summaries are cut off at the window edge; an Info editor shows them in full.</li>
+  </ol>
+  <p><em>Active Action</em> exports only the active action. If the armature has no active action but has clips on the NLA, Rigbake refuses and asks you to choose All Actions, instead of exporting the NLA mix as one clip.</p>
+  <p>Each clip is baked from the rest pose. If the summary says a clip "does not key" some bones that are posed in the viewport, the file shows those bones at rest, while the viewport still shows them where another clip or your hands left them.</p>
+
+  <h2 id="godot">Importing into Godot</h2>
+  <p>The exported files are exact: re-imported into Blender, every bone is within 1e-5 m of the live rig. Two Godot import settings decide how exactly Godot plays them:</p>
+  <div class="box">
+    <ul>
+      <li><strong>Animation &gt; FPS</strong> (Import dock, default 30): set it to your Blender frame rate (Scene Properties &gt; Format &gt; Frame Rate). Godot re-samples every clip at this rate.</li>
+      <li><strong>Optimizer</strong> of the AnimationPlayer (Import dock &gt; Advanced... &gt; select the AnimationPlayer node): on by default. It drops keys it judges redundant, which on fast motion put bones up to 13 cm off in our check of the customer gate's rigs. Turn it off where you need the exact motion.</li>
+    </ul>
+  </div>
+  <p>Click <strong>Reimport</strong> after changing them. With both set, every bone matched Blender within 0.0002 m in our check.</p>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>Checked in Godot 4.7 and in a real Blender 4.2 LTS window. The Unity preset's FBX was checked through Godot's FBX importer. The Unreal preset has not been checked in Unreal Engine. Neither has been opened in Unity or Unreal.</li>
+    <li>Bone animation only: motion keyed on the armature object, shape keys, custom properties and B-Bone properties are not baked. Keys are baked on whole frames.</li>
+    <li>One control rig per deform rig. One file per export.</li>
+    <li>The FBX presets drop the shape keys of a mesh that has a modifier other than Armature; Rigbake warns you.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Rigbake makes no network connections and sends nothing anywhere.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version, the preset, the summary message and, if you can, a .blend file that shows the problem.</p>
+</main>
+<footer>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
