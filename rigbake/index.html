@@ -79,7 +79,7 @@
     <tr><td>Two clips stashed on the NLA with IK, plain FBX</td><td>4 takes for 2 clips, two of them wrong by 0.60 m / 0.82 rad</td><td>2 takes, both exact</td></tr>
     <tr><td>Single rig with IK, Copy Rotation, and a driver</td><td>Correct already</td><td>Correct; validator and presets are the value</td></tr>
   </table>
-  <p>Round-trip tolerance is 1 mm and 0.001 rad; measured error on the cases above is about 3e-7. Every number comes from the test suite in the repository, which runs on Blender 4.2, 4.5, and 5.0.</p>
+  <p>Round-trip tolerance is 1 mm and 0.001 rad; measured error on the cases above, and on the customer gate's three rigs, is below 1e-5 m in a Blender re-import. Every number comes from the test suite in the repository, which runs on Blender 4.2, 4.5, and 5.0.</p>
   <p><strong>How exact in Godot.</strong> The exported files are exact: re-imported into Blender, every bone is within 1e-5 m. Godot's default import re-samples each clip at its Animation &gt; FPS setting and its import Optimizer can thin keys: the customer gate measured up to about 3 cm on fast motion, and our every-frame check of the same rigs up to 13 cm. With Animation &gt; FPS set to the Blender frame rate and the AnimationPlayer's Optimizer turned off, every bone matched Blender within 0.0002 m in our check. The <a href="quick-start.html#godot">quick start</a> shows both settings.</p>
 
   <h2>In Blender, for real</h2>
