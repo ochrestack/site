@@ -60,6 +60,16 @@
     <figcaption>How Rigbake works: validate, bake from the rest pose, export one clip per action.</figcaption>
   </figure>
 
+  <h2 id="watch">Watch it, 59 seconds</h2>
+  <video controls playsinline preload="metadata" poster="video/still-1-godot-same-frame-plain-vs-rigbake.png" style="width:100%;border-radius:10px;border:1px solid #E6DED3;background:#2B2118">
+    <source src="video/rigbake-demo-1080p.mp4" type="video/mp4">
+  </video>
+  <p style="font-size:14px;color:#6B5E52;margin-top:8px">Blender Studio's Ellie (CC-BY 4.0) with Idle, Walk, and Run on the NLA. Plain FBX export: 24 takes for 3 clips, the broken Idle stepping and crossing its feet in Godot. Rigbake: 3 takes, each correct. Captions, no narration.</p>
+  <figure>
+    <img src="video/rigbake-ellie-plain-vs-rigbake.gif" alt="Animated: in Godot, the plain export's Idle take walks and crosses its feet while Rigbake's Idle stands still, both paused on the same frame" width="960" height="540" loading="lazy">
+    <figcaption>Same frame, same character: plain export on the left, Rigbake on the right.</figcaption>
+  </figure>
+
   <h2>What it does</h2>
   <ul>
     <li><strong>Bake Constraints for Export.</strong> Bakes every bone constraint and driver into plain keyframes on a new action per clip, from the rest pose, so the result never depends on where the playhead was. Originals untouched. Hand-edited bakes are kept, not overwritten.</li>
