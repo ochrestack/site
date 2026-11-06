@@ -20,8 +20,6 @@
   a { color: var(--ochre-text); }
   figure { margin: 20px 0; }
   figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
-  .scroll { overflow-x: auto; }
-  .scroll img { max-width: none; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
   .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
@@ -39,7 +37,7 @@
 
   <h2 id="install">Install (Blender 4.2 LTS to 5.0, tested)</h2>
   <ol>
-    <li>Download <code>rigbake-1.2.3.zip</code>. Do not unzip it.</li>
+    <li>Download <code>rigbake-1.2.4.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Rigbake needs no internet, so <strong>Continue Offline is fine</strong>.</li>
@@ -53,14 +51,33 @@
 
   <h2 id="first-export">First export</h2>
   <ol>
-    <li>In Object Mode or Pose Mode, select the armature that deforms your mesh, or the mesh itself (the tab then says, for example, "Armature: DEF (from Body)"). With a control rig, select the deform (game) rig or its mesh; Rigbake finds the control rig.</li>
-    <li>Pick the <strong>Preset</strong> (Godot, Unity or Unreal) and the <strong>Folder</strong>. Below the File Name, the tab shows the file it will write and the clips it will export, where they come from first ("2 clips from CTRL: Walk, Run"), names any action that will not be exported, and says before you export if the preset would drop a mesh's shape keys. If it says "Save your file, or pick a Folder", save the .blend (File &gt; Save) or pick a folder with the folder button; until then Export is disabled. The preset's own settings are under <strong>Preset Settings</strong>, below the Export button.
-      <figure><img src="img/panel-before-export.png" alt="The Rigbake tab at real size: Armature: RIG-rain, Validate Rig for Export, Not validated yet, Preset Godot, Folder //export/, the file RIG-rain.glb it will write, '3 clips: Walk, Run, Idle', the Export Game-Ready button and Preset Settings closed below it" width="256" height="344" loading="lazy"><figcaption>The Rigbake tab before the first export (Blender 4.2, real size).</figcaption></figure>
+    <li><strong>Select your character's armature</strong>, in Object Mode or Pose Mode.
+      <ul>
+        <li>Selecting the mesh works too: the tab says, for example, "Armature: DEF (from Body)".</li>
+        <li>With a control rig, select the deform rig or its mesh, not the control rig. Rigbake finds the control rig.</li>
+      </ul>
     </li>
-    <li>Click <strong>Validate Rig for Export</strong>. A dialog lists the issues first, each with its fix and a <strong>Select</strong> button; unapplied mesh scale and too many bone weights have one-click <strong>Apply Scale</strong> and <strong>Limit Weights</strong> buttons, after which the dialog checks again. Notes are things Rigbake handles for you ("Handled: baked on export") or that are fine as they are ("Tip: nothing to do for a game mesh"). <strong>Close</strong> closes it; <strong>Open Full Report</strong> opens the whole report in a Text Editor. The tab keeps the counts, with a <strong>Report</strong> button, and says "Changed: validate again" once you change the rig or the preset.
-      <figure><div class="scroll"><img src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Blender Studio's Rain: 7 issues and 2 notes, each issue with its fix and a Select button in one column, the weights issue with Limit Weights, and Close and Open Full Report at the bottom" width="764" height="772" loading="lazy"></div><figcaption>The dialog on a production rig (scroll sideways on a phone).</figcaption></figure>
+    <li><strong>Pick the Preset</strong> (Godot, Unity or Unreal) <strong>and the Folder</strong>.
+      <ul>
+        <li>Below the File Name the tab shows the file and the clips it will write, for example "2 clips from CTRL: Walk, Run".</li>
+        <li>"Save your file, or pick a Folder" means: save the .blend first. Export stays disabled until then.</li>
+      </ul>
+      <figure><img src="img/panel-before-export.png" alt="The Rigbake tab at real size: Armature: RIG-rain, Validate Rig for Export, Not validated yet, Preset Godot, Folder //export/, the file ~/projects/rain/export/RIG-rain.glb it will write, '3 clips: Walk, Run, Idle', the Export Game-Ready button and Preset Settings closed below it" width="256" height="344" loading="lazy"><figcaption>The Rigbake tab before the first export (Blender 4.2, real size).</figcaption></figure>
     </li>
-    <li>Click <strong>Export Game-Ready</strong>. The status bar says, for example, "Exported 3 clips to RIG-rain.glb." When it adds counts ("1 warning, 7 issues"), they are the tab's: warning lines in the Last Export box, issues under Validate, actions named above the button. The export validates too, so the counts appear under Validate. The <strong>Last Export</strong> box lists every clip with its frame range first and one line per warning or note (hover a line for the whole message); its folder button opens the export folder and its header folds it away. It turns grey as "Previous export" when the tab would now write another file or other clips. Exporting again to the same file replaces it without asking; Rigbake asks only about a file it did not just write.
+    <li><strong>Click Validate Rig for Export.</strong>
+      <ul>
+        <li>Issues come first, each with its fix and a <strong>Select</strong> button. <strong>Apply Scale</strong> and <strong>Limit Weights</strong> fix in one click.</li>
+        <li>Notes need nothing from you ("Handled: baked on export").</li>
+        <li><strong>Close</strong> closes the dialog; the tab keeps the counts and a <strong>Report</strong> button.</li>
+      </ul>
+      <figure><img src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Blender Studio's Rain: 7 issues and 2 notes, each issue with its fix and a Select button in one column, the weights issue with Limit Weights, and Close and Open Full Report at the bottom" width="764" height="766" loading="lazy"><figcaption>The dialog on a production rig.</figcaption></figure>
+    </li>
+    <li><strong>Click Export Game-Ready.</strong>
+      <ul>
+        <li>The status bar says what it wrote, for example "Exported 3 clips to RIG-rain.glb."</li>
+        <li>The <strong>Last Export</strong> box lists each clip with its frame range, and one line per warning. Hover a line for the whole message.</li>
+        <li>Exporting again replaces the file without asking.</li>
+      </ul>
       <figure><img src="img/panel-after-export.png" alt="The Rigbake tab after Export Game-Ready: '7 issues, 2 notes' with a Report button, and the Last Export box with RIG-rain.glb, 1-25 Walk, 1-17 Run, 1-49 Idle and the notes 'Modifiers left unapplied' and '3 baked actions kept in this file'" width="256" height="472" loading="lazy"><figcaption>After the export.</figcaption></figure>
     </li>
   </ol>
