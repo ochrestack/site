@@ -70,10 +70,10 @@
 
   <div class="buy">
     <p class="price"><strong>Free.</strong> Every feature, every site size.</p>
-    <!-- Until the listing URL exists the button stays href="#". When the listing is submitted, the note
-         becomes "Listing in review: ..."; when Atlassian approves it, set href to the listing URL and drop "pending". -->
+    <!-- Until the listing URL exists the button stays href="#". When the listing is submitted, change the note's first words
+         to "Listing in review." and drop "has not been submitted"; when Atlassian approves it, set href to the listing URL and drop "pending" and onclick. -->
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on the Atlassian Marketplace</a></p>
-    <p class="note" id="buy-note">Coming to the Atlassian Marketplace: the listing has not been submitted for review yet, so Labelkeep can't be installed today. This button will link to the listing once Atlassian has approved it. For a note when it is live, email <a href="mailto:support@ochrestack.com?subject=Labelkeep%20listing">support@ochrestack.com</a>.</p>
+    <p class="note" id="buy-note"><strong>Next: listing in review.</strong> Labelkeep has not been submitted to the Atlassian Marketplace yet, so it can't be installed today. This button will link to the listing once Atlassian has approved it. For a note when it is live, email <a href="mailto:support@ochrestack.com?subject=Labelkeep%20listing">support@ochrestack.com</a>.</p>
     <p>For Jira Cloud (Atlassian Forge). Not for Jira Data Center or Server. English only. Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. <a href="#documentation">Documentation and install steps</a></p>
   </div>
 
@@ -112,10 +112,11 @@
   <p class="note">The test labels are shortened here: each name also began with the run's number. LME2E is the test project. The labels on every issue were then read back from Jira and checked; after the stop, exactly the 20 reported issues had lost the label.</p>
 
   <!-- Screenshot slots for the session in Jira (control offers/o-0002/status.md, "Product page", shot list).
-       Hidden until each image exists: paste the <img> from the comment in place of the div, remove "hidden" from
-       the figure and from #screens, and add an h2 "In Jira" above the first figure. -->
-  <div id="screens" hidden>
-  <figure hidden id="shot-1">
+       When an image exists, paste the <img> from its comment in place of the slot div. -->
+  <h2 id="screens">In Jira</h2>
+  <p class="note">Screenshots from Jira are being taken and will replace the labelled slots below. Each slot says what its screenshot shows.</p>
+  <div>
+  <figure id="shot-1">
     <!-- Shot 1. Replace the div with:
     <img src="img/shot-1-label-list.png" alt="Labelkeep in Jira settings: every label on the site with its issue count, sorted by Issues, the search 'check' showing checkout, check-out and Checkout, two rows ticked, and the Delete, Rename and Merge buttons above the table" width="1840" height="900" loading="lazy">
     -->
@@ -125,7 +126,7 @@
     </div>
     <figcaption>Every label on the site with its issue count. A search finds the spellings of one label side by side.</figcaption>
   </figure>
-  <figure hidden id="shot-2">
+  <figure id="shot-2">
     <!-- Shot 2. Replace the div with:
     <img src="img/shot-2-merge-preview.png" alt="The Merge labels dialog after Preview: check-out and Checkout into checkout, how many issues carry the labels and how many would change, the note 'This is a dry run. Nothing will be changed.' and the Run dry run button" width="1840" height="900" loading="lazy">
     -->
@@ -135,7 +136,7 @@
     </div>
     <figcaption>The count before anything changes, then a dry run.</figcaption>
   </figure>
-  <figure hidden id="shot-4">
+  <figure id="shot-4">
     <!-- Shot 4. Replace the div with:
     <img src="img/shot-4-finished-failures.png" alt="The Operation finished panel after a live merge: issues changed and failed, the examples of what changed, and the Issues that failed table with the columns Issue, Jira said and How to fix" width="1840" height="900" loading="lazy">
     -->
@@ -145,7 +146,7 @@
     </div>
     <figcaption>Each issue Jira refused, with what Jira said and how to fix it. The rest were changed.</figcaption>
   </figure>
-  <figure hidden id="shot-6">
+  <figure id="shot-6">
     <!-- Shot 6. Replace the div with:
     <img src="img/shot-6-activity.png" alt="The Activity tab: When, Who, Operation, Scope, Mode (Dry run or Live), Issues changed, Failed and Status, with a dry run, a live run and a stopped run" width="1840" height="900" loading="lazy">
     -->

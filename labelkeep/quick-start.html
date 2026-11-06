@@ -43,8 +43,8 @@
 <main>
   <h1>Labelkeep quick start</h1>
   <p>Your first label clean-up in Jira, step by step. Back to the <a href="index.html">Labelkeep product page</a>.</p>
-  <!-- Screenshot slots below are hidden until each image exists (control offers/o-0002/status.md, "Product page").
-       To show one: paste the <img> from its comment in place of the div and remove "hidden" from the figure. -->
+  <p>Screenshots from Jira are being taken; until then, each labelled slot below says what its screenshot shows.</p>
+  <!-- Screenshot slots (control offers/o-0002/status.md, "Product page"). When an image exists, paste the <img> from its comment in place of the slot div. -->
 
   <h2 id="install">Install (Jira Cloud)</h2>
   <ol>
@@ -61,7 +61,7 @@
     <li>Tick the labels to work on. Then choose <strong>Delete…</strong>, <strong>Rename…</strong> (one label) or <strong>Merge…</strong> (two or more).</li>
   </ol>
   <p>A label listed at 0 is one Jira still suggests but no issue you can see carries. It can't be deleted, because Jira Cloud has no API for that; it leaves Jira's suggestions once no issue uses it.</p>
-  <figure hidden id="shot-1">
+  <figure id="shot-1">
     <!-- Shot 1. Replace the div with:
     <img src="img/shot-1-label-list.png" alt="Labelkeep in Jira settings: every label on the site with its issue count, sorted by Issues, the search 'check' showing checkout, check-out and Checkout, two rows ticked, and the Delete, Rename and Merge buttons above the table" width="1840" height="900" loading="lazy">
     -->
@@ -79,7 +79,7 @@
     <li>Choose <strong>Run dry run</strong>. A panel at the top of the page shows the progress; you can leave the page while it runs.</li>
     <li>The finished dry run says how many issues would change and that nothing was changed, with examples of each issue's labels before and after.</li>
   </ol>
-  <figure hidden id="shot-2">
+  <figure id="shot-2">
     <!-- Shot 2. Replace the div with:
     <img src="img/shot-2-merge-preview.png" alt="The Merge labels dialog after Preview: check-out and Checkout into checkout, how many issues carry the labels and how many would change, the note 'This is a dry run. Nothing will be changed.' and the Run dry run button" width="1840" height="900" loading="lazy">
     -->
@@ -89,7 +89,7 @@
     </div>
     <figcaption>The preview: how many issues carry the labels, and how many would change.</figcaption>
   </figure>
-  <figure hidden id="shot-3">
+  <figure id="shot-3">
     <!-- Shot 3. Replace the div with:
     <img src="img/shot-3-dry-run-finished.png" alt="The Dry run finished panel: how many issues would change, 'Nothing was changed', the second-search sentence, the Examples of what would change table with Issue, Labels before and Labels after, and the Run for real and Dismiss buttons" width="1840" height="900" loading="lazy">
     -->
@@ -107,7 +107,7 @@
     <li>The summary at the end gives the issues changed, the issues that needed no change, any that failed, and what a second search after the first pass found.</li>
   </ol>
   <p>Only one operation runs at a time on a site. If another admin's operation is running, yours is refused with a message, and nothing starts.</p>
-  <figure hidden id="shot-5">
+  <figure id="shot-5">
     <!-- Shot 5. Replace the div with:
     <img src="img/shot-5-progress-stop.png" alt="A live rename in progress at the top of the Labels tab: the progress bar part way and the Stop button" width="1840" height="900" loading="lazy">
     -->
@@ -120,7 +120,7 @@
 
   <h2 id="stop">Stopping a run</h2>
   <p>Choose <strong>Stop</strong> on the running operation's panel. The batch in progress (at most 20 issues) finishes, then the run ends with how many issues it checked and changed and how many were not touched. It is recorded as stopped in the Activity tab. Run the operation again to finish it.</p>
-  <figure hidden id="shot-8">
+  <figure id="shot-8">
     <!-- Shot 8. Replace the div with:
     <img src="img/shot-8-stopped.png" alt="The summary of a stopped run: how many issues were checked before it stopped, how many changed, and how many were not touched" width="1840" height="900" loading="lazy">
     -->
@@ -141,7 +141,7 @@
     <tr><td>Jira had a temporary problem</td><td>Run the operation again.</td></tr>
   </table>
   <p>After a fix, run the operation again. Issues already changed need no change.</p>
-  <figure hidden id="shot-4">
+  <figure id="shot-4">
     <!-- Shot 4. Replace the div with:
     <img src="img/shot-4-finished-failures.png" alt="The Operation finished panel after a live merge: issues changed and failed, the examples of what changed, and the Issues that failed table with the columns Issue, Jira said and How to fix" width="1840" height="900" loading="lazy">
     -->
@@ -154,7 +154,7 @@
 
   <h2 id="activity">The Activity tab</h2>
   <p>Every operation, dry runs included, with when it ran, who ran it, the operation and labels, the scope, dry run or live, issues changed and failed, and its status. Project administrators see the operations on their own projects.</p>
-  <figure hidden id="shot-6">
+  <figure id="shot-6">
     <!-- Shot 6. Replace the div with:
     <img src="img/shot-6-activity.png" alt="The Activity tab: When, Who, Operation, Scope, Mode (Dry run or Live), Issues changed, Failed and Status, with a dry run, a live run and a stopped run" width="1840" height="900" loading="lazy">
     -->
@@ -168,7 +168,7 @@
   <h2 id="project-admins">For project administrators</h2>
   <p>Open <strong>Project settings &gt; Apps &gt; Labelkeep</strong> in your project. The page works the same way, but lists only labels on issues you can see in that project, and operations change only those issues. Issues hidden from you, for example by an issue security level, are left out, and the summary says how many.</p>
   <p>Your operations run in the background on your behalf. If Jira refuses that, for example because your account was deactivated mid-run, the run stops, says so and changes nothing more; open the app and run it again.</p>
-  <figure hidden id="shot-7">
+  <figure id="shot-7">
     <!-- Shot 7. Replace the div with:
     <img src="img/shot-7-project-admin.png" alt="Labelkeep in Project settings for a project administrator: the line 'You see and change labels only on issues in: SHOP.' above that project's label list" width="1840" height="900" loading="lazy">
     -->
