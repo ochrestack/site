@@ -99,6 +99,13 @@
     <figcaption>The NLA case: Rain, three clips on unmuted NLA tracks, same frame in Godot 4.7. Left: Blender's default FBX export, 23 takes for 3 clips, Run's legs in Idle (0.33 m off). Right: Rigbake's Godot preset (.glb), 3 takes; <a href="#rain">setup below</a>.</figcaption>
   </figure>
 
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
+      <source src="video/rigbake-demo-720p.mp4" type="video/mp4">
+    </video>
+    <figcaption>The demo, 58 s, captions only, no sound: Rain's NLA clips exported with Blender's default FBX export and with Rigbake 1.2.5 (Blender 4.2 LTS), then played in Godot 4.7.2; Rigbake used its Godot preset with Apply Modifiers set to Always for her Mask modifiers. Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
+  </figure>
+
   <div class="box">
     <strong>Where it is a convenience.</strong> For a single rig with IK and drivers and one clip at a time (nothing on the NLA), Blender's own exporters already bake constraints and get it right. There, what you are buying is the rig validator, repeatable per-engine presets saved in your .blend file, and editable baked actions. We say this on the box because you should know it before you pay.
   </div>
