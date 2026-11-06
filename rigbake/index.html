@@ -88,7 +88,7 @@
     <p class="price"><strong>$19, one-time, source included</strong> (GPL-3.0-or-later). Tested on Blender 4.2 LTS, 4.5 and 5.0.</p>
     <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_ZmTfBbKKwOak1EOpaKTly0p1ApRBX3OVowjuz1kcpEx">Buy Rigbake, $19</a></p>
     <p><strong>Engines:</strong> presets for Godot (checked in Godot 4.7), Unity and Unreal (not yet opened in Unity or Unreal).</p>
-    <p class="fine">Polar checkout · download by email · <a href="../terms.html">14-day refund</a> · no license check · <a href="#details">details</a></p>
+    <p class="fine">Polar checkout · download by email · <a href="../terms.html">14-day refund if it doesn't work on your rig</a> · no license check · <a href="#details">details</a></p>
   </div>
 
   <p class="fine">Above: same .blend, Godot 4.7. Blender's default glTF export has 0 animations; Rigbake's has Idle, Run and Walk, every deform bone within 0.00001 m.</p>
@@ -102,7 +102,7 @@
   </div>
 
   <figure>
-    <a href="#rain"><img src="img/rain-plain-vs-rigbake-2x1.png" alt="Blender Studio's Rain twice in Godot 4.7 at the same frame, both playing Idle. Left, labelled Plain FBX, Idle: Run's legs, Blender's default .fbx: her knee is raised mid-stride. Right, labelled Rigbake, Idle, as in Blender, its .glb, Godot preset: she stands" width="1600" height="800" loading="lazy"></a>
+    <a href="#rain"><img src="img/rain-plain-vs-rigbake-2x1.png" alt="Blender Studio's Rain twice in Godot 4.7 at the same frame, both playing Idle. Left, labelled Plain .fbx, Idle: Run's legs, Blender's defaults: her knee is raised mid-stride. Right, labelled Rigbake .glb, Idle, as in Blender, Godot preset: she stands" width="1600" height="800" loading="lazy"></a>
     <figcaption>The NLA case: Rain, three clips on unmuted NLA tracks, same frame in Godot 4.7. Left: Blender's default FBX export, 23 takes for 3 clips, Run's legs in Idle (0.33 m off). Right: Rigbake's Godot preset (.glb), 3 takes; <a href="#rain">setup below</a>.</figcaption>
   </figure>
 
@@ -110,7 +110,7 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/rigbake-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 56 s, captions only, no sound: Rain's NLA clips exported with Blender's default FBX export and with Rigbake 1.2.5 (Blender 4.2 LTS), then played in Godot 4.7.2; Rigbake used its Godot preset with Apply Modifiers set to Always for her Mask modifiers, so the warnings you see in Blender are expected; they name what that drops. (Rigbake 1.2.6 puts that warning on one line, with a Set to Auto button beside it.) Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
+    <figcaption>The demo, 56 s, captions only, no sound: Rain's NLA clips exported with Blender's default FBX export and with Rigbake 1.2.5 (Blender 4.2 LTS), then played in Godot 4.7.2; Rigbake used its Godot preset with Apply Modifiers set to Always, so her Mask modifiers work in Godot; the warnings you see in Blender name the shape keys that setting drops. (Rigbake 1.2.6 puts that warning on one line, with a Set to Auto button beside it.) Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
   </figure>
 
   <div class="box">
@@ -209,6 +209,10 @@
   </table>
   <p>We build each rig in code, export it with Blender's defaults and with Rigbake, re-import the file into Blender, and compare every deform bone with the live rig. <strong>Exact</strong> in the table means every bone within 1e-5 m of the live rig, on these cases and on three more buyer-style rigs (the tests fail above 1 mm or 0.001 rad). The measurements come from our automated test suite, which runs in full on Blender 4.2 and 5.0; on 4.5 its FBX re-import checks are skipped, because 4.5's own FBX importer misreads multi-take files.</p>
   <p><strong>How exact in Godot.</strong> The exported files are exact. Godot's default import re-samples each clip at its Animation &gt; FPS setting, and its import Optimizer can thin keys: on fast motion our every-frame check measured up to 13 cm. With Animation &gt; FPS set to the Blender frame rate and the AnimationPlayer's Optimizer turned off, every bone matched Blender within 0.0002 m in our check. The <a href="quick-start.html#godot">quick start</a> shows both settings.</p>
+  <div class="buy">
+    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_ZmTfBbKKwOak1EOpaKTly0p1ApRBX3OVowjuz1kcpEx">Buy Rigbake, $19</a></p>
+    <p class="fine">$19 once, source included · Polar checkout · <a href="../terms.html">14-day refund if it doesn't work on your rig</a> · tested on Blender 4.2 LTS, 4.5 and 5.0; Godot checked, Unity and Unreal not yet opened</p>
+  </div>
 </main>
 <script>
 // Hide the right-edge fade of the phone validator box once it is scrolled to the end.
@@ -245,8 +249,10 @@
   if (!src) return;
   var key = alias[src] || src;
   if (!links.hasOwnProperty(key)) return;
-  var buy = document.getElementById("buy");
-  if (buy) buy.href = base + links[key];
+  ["buy", "buy-2"].forEach(function (id) {
+    var b = document.getElementById(id);
+    if (b) b.href = base + links[key];
+  });
 })();
 </script>
 <footer>
