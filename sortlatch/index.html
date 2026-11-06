@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sortlatch for Confluence: keep child pages in A to Z order</title>
+<meta name="description" content="Sortlatch keeps a Confluence Cloud page's child pages in A to Z order: new, renamed and moved pages go to their place within minutes. Numbers in natural order, Z to A, newest or oldest first, pins, a preview and undo. Free for up to 10 users.">
+<link rel="canonical" href="https://ochrestack.com/sortlatch/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Sortlatch for Confluence: keep child pages in A to Z order">
+<meta property="og:description" content="Confluence puts every new page at the bottom of the page tree. Sortlatch puts it back in A to Z order on its own, within minutes, with a preview and undo. Free for up to 10 users.">
+<meta property="og:url" content="https://ochrestack.com/sortlatch/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sortlatch for Confluence: keep child pages in A to Z order">
+<meta name="twitter:description" content="New Confluence pages land at the bottom of the page tree. Sortlatch puts them back in A to Z order on its own, with a preview and undo.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .note { font-size: 15px; color: var(--muted); }
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  .slot { aspect-ratio: 1840 / 900; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 10px; background: #fff; color: var(--muted); font-size: 15px; }
+  .said { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; margin: 6px 0 14px; padding: 6px 0 6px 14px; border-left: 3px solid var(--ochre); }
+  .narrow-only { display: none; }
+  .fine { font-size: 15px; color: var(--muted); }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Sortlatch for Confluence</h1>
+  <p class="sub">When a new page is created, the alphabetical order is no longer respected. Sortlatch keeps a page's child pages A to Z, permanently: new, renamed and moved pages go to their place within minutes.</p>
+
+  <div class="buy">
+    <p class="price"><strong>Free for up to 10 users</strong>, with every feature. From 11 to 100 users, <strong>$0.15 per user per month</strong> (<a href="#pricing">price details</a>), billed by Atlassian.</p>
+    <!-- Until the listing URL exists the button stays href="#". When the listing is submitted, change the note's first words
+         to "Listing in review." and drop "has not been submitted"; when Atlassian approves it, set href to the listing URL and drop "pending" and onclick. -->
+    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on the Atlassian Marketplace</a></p>
+    <p class="note" id="buy-note"><strong>Next: listing in review.</strong> Sortlatch has not been submitted to the Atlassian Marketplace yet, so it can't be installed today. This button will link to the listing once Atlassian has approved it. For a note when it is live, email <a href="mailto:support@ochrestack.com?subject=Sortlatch%20listing">support@ochrestack.com</a>.</p>
+    <p>For Confluence Cloud (Atlassian Forge). Not for Confluence Data Center or Server. English only. Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. <a href="#documentation">Documentation and install steps</a></p>
+  </div>
+
+  <figure class="wide-only">
+    <img src="workflow.svg" alt="Diagram: 1. Sort child pages from a page's ••• menu: Title A to Z, Z to A or by date, pins, one level or all levels below, with every move marked in a preview. 2. Keep sorted: new, renamed, moved-in and copied-in pages, and manual drags, go back in order within minutes. 3. The space overview lists every rule with its last run and why a level was skipped, with Undo last sort and Restore original order. Pages never change parent, content is never edited, a daily check puts back anything missed, and folders and the top level of a space are not sorted." width="720" height="330">
+    <figcaption>How Sortlatch works: preview the new order, keep it sorted, and check or undo any rule from the space overview.</figcaption>
+  </figure>
+  <ol class="narrow-only">
+    <li><strong>Sort child pages</strong> from a page's ••• menu. The preview marks every page that will move.</li>
+    <li><strong>Keep sorted.</strong> New, renamed, moved-in and copied-in pages, and manual drags, go back in order within minutes.</li>
+    <li><strong>Check or undo</strong> from Space settings &gt; Sortlatch: every rule, its last run, Undo last sort and Restore original order.</li>
+  </ol>
+
+  <div class="box warn">
+    <strong>Why it is needed.</strong> Confluence puts every new page at the bottom of the page tree, wherever its title belongs. On our test site, a page created under 40 customer pages in A to Z order landed at position 41 of 41. The request to keep child pages sorted, <a href="https://jira.atlassian.com/browse/CONFCLOUD-65454">CONFCLOUD-65454</a>, has over 600 votes and has been Under Consideration since July 2024.
+  </div>
+
+  <div class="box">
+    <p><strong>Good to know:</strong> Confluence already sorts a parent's children A to Z once, from Space settings &gt; Manage content &gt; Reorder. If a space gets new pages rarely, pressing that button now and then is enough.</p>
+    <p style="margin-bottom:0">Sortlatch is for page trees that keep changing: customers, products, glossary terms, procedures, release notes. It keeps the order without anyone pressing a button, and adds Z to A, newest or oldest first, pins, every level below a page, undo and a space overview. If Confluence ships permanent sorting, Sortlatch is worth only those extras, and this page will say so.</p>
+  </div>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Keeps the order.</strong> Choose <strong>Keep sorted</strong> once on a page. From then on, a child page that is created, renamed, moved in or copied in is sorted into its place within a few minutes, and when someone drags the child pages out of order, the order comes back. On our test site each change was in place 11 to 17 seconds later. A daily check puts back anything that was missed.</li>
+    <li><strong>Numbers in natural order.</strong> Title A→Z puts Release 2 before Release 10, ignores upper and lower case, and puts accented letters next to their base letter, so <em>Émile Laurent Associés</em> sits next to <em>Emerald Freight</em>. Title Z→A, Newest first and Oldest first (by creation date) are there too.</li>
+    <li><strong>Pins.</strong> Pages that always come first or last, such as an Overview at the top and an Archive at the bottom.</li>
+    <li><strong>One level or all levels below.</strong> Sort the child pages of one page, or every level of the page tree under it. Up to 1,000 child pages under one page, sorted in one run with progress on the space overview.</li>
+    <li><strong>A preview before anything moves.</strong> It lists each level in its new order, marks every page that will move, and gives the count. Then <strong>Sort once</strong>, or <strong>Keep sorted</strong> to save the choice as a rule and sort now.</li>
+    <li><strong>Pages it cannot see.</strong> If page restrictions keep Sortlatch out of some child pages, the preview says how many, and the rest are sorted around them only after you confirm. Pages you are not allowed to view are counted, never listed.</li>
+    <li><strong>Undo.</strong> <strong>Undo last sort</strong> puts back what the latest run moved. <strong>Restore original order</strong> puts back the order from before the rule first sorted, then removes the rule. Pausing or removing a rule never moves a page.</li>
+    <li><strong>A space overview.</strong> Space settings &gt; Sortlatch lists every rule in the space with its order, depth, pins, status, last run and pages moved, and why a level was skipped. Sort now, Pause, Resume, Undo, Restore and Remove are on each row. Confluence admins also get one list of every rule on the site.</li>
+    <li><strong>Only the position changes.</strong> Moves create no new page version, page content is never edited, and pages never change parent.</li>
+    <li><strong>Only people who can edit a page can sort it.</strong> Everyone else is told why.</li>
+  </ul>
+
+  <h2 id="run">What the test runs showed</h2>
+  <p>Sortlatch is tested on a real Confluence Cloud site, through the app's own backend, with every resulting order read back from Confluence. From the runs on 6 November 2026:</p>
+  <table>
+    <tr><th>Change under a page with a rule</th><th>In its place after</th></tr>
+    <tr><td>A page created ("Brightwater Ltd")</td><td>11 s</td></tr>
+    <tr><td>A page renamed ("Initech" to "Wayne Enterprises")</td><td>11 s</td></tr>
+    <tr><td>A page moved in from elsewhere in the space</td><td>11–12 s</td></tr>
+    <tr><td>A copy of a page</td><td>11 s</td></tr>
+    <tr><td>Two child pages dragged out of order</td><td>11–17 s</td></tr>
+    <tr><td>A page created between two pinned pages</td><td>11 s</td></tr>
+  </table>
+  <p>The orders that came back from Confluence after each sort:</p>
+  <p class="said">Title A→Z: Release 1, Release 2, Release 3, Release 10, Release 11, Release 12</p>
+  <p class="said">Title Z→A: Release 12, Release 11, Release 10, Release 3, Release 2, Release 1</p>
+  <p class="said">Pins at both ends: Overview, Atlas CRM, Aurora Payments, Beacon Analytics, Ledger Pro, Zephyr Mobile, Archive (discontinued)</p>
+  <p>And the reason Sortlatch gave for a page whose child pages include a folder, word for word:</p>
+  <p class="said">Not sorted: this level has a folder among its child pages ("Onboarding"). Sortlatch moves pages only: Confluence's move for pages cannot move folders, whiteboards, databases or smart links, so sorting around them would leave the level half sorted. Move them to another page, or order this level by hand.</p>
+  <p class="note">These lines come from the test log, laid out here by us; they are not screenshots of Confluence.</p>
+
+  <!-- Screenshot slots for the session in Confluence (control offers/o-0013/status.md, "Product page", shot list).
+       When an image exists, paste the <img> from its comment in place of the slot div. -->
+  <h2 id="screens">In Confluence</h2>
+  <p class="note">Screenshots from Confluence are being taken and will replace the labelled slots below. Each slot says what its screenshot shows.</p>
+  <div>
+  <figure id="shot-1">
+    <!-- Shot 1. Replace the div with:
+    <img src="img/shot-1-new-page-sorted.png" alt="Two crops of Confluence&#x27;s own page tree under Customers, side by side: on the left, just after it was published, Brightwater Ltd sits at the bottom of the list; on the right, after a refresh, Brightwater Ltd sits between Bluefin Analytics and Cobalt Health in A to Z order. The clock time is shown above each crop." width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 1, to be added: Two crops of Confluence&#x27;s own page tree under Customers, side by side: on the left, just after it was published, Brightwater Ltd sits at the bottom of the list; on the right, after a refresh, Brightwater Ltd sits between Bluefin Analytics and Cobalt Health in A to Z order. The clock time is shown above each crop.">
+      <strong>Screenshot 1, to be added from Confluence</strong>
+      <span>Confluence's own page tree, before and after: Brightwater Ltd at the bottom, then in its A to Z place a refresh later.</span>
+    </div>
+    <figcaption>A new page lands at the bottom of Customers. A refresh later it is in its A to Z place. Nobody pressed a button.</figcaption>
+  </figure>
+  <figure id="shot-2">
+    <!-- Shot 2. Replace the div with:
+    <img src="img/shot-2-preview.png" alt="The Sort child pages dialog on Customers: Title A to Z and This level chosen, the preview saying how many of the 41 pages will move, Brightwater Ltd marked &#x27;moves (now #41)&#x27;, Contoso Phase 2 listed before Contoso Phase 10, and the Sort once and Keep sorted buttons" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 2, to be added: The Sort child pages dialog on Customers: Title A to Z and This level chosen, the preview saying how many of the 41 pages will move, Brightwater Ltd marked &#x27;moves (now #41)&#x27;, Contoso Phase 2 listed before Contoso Phase 10, and the Sort once and Keep sorted buttons">
+      <strong>Screenshot 2, to be added from Confluence</strong>
+      <span>The Sort child pages dialog: Title A→Z, the count of pages that will move, Brightwater Ltd marked, Contoso Phase 2 before Contoso Phase 10.</span>
+    </div>
+    <figcaption>The preview marks and counts every page that will move. Contoso Phase 2 comes before Contoso Phase 10.</figcaption>
+  </figure>
+  <figure id="shot-3">
+    <!-- Shot 3. Replace the div with:
+    <img src="img/shot-3-space-overview.png" alt="Space settings, Sortlatch tab: three rules. Customers is In order with its last run and pages moved; Glossary is Sorting with its progress in pages moved; Team handbook needs attention, and the panel below says its level was not sorted because a folder is among its child pages" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 3, to be added: Space settings, Sortlatch tab: three rules. Customers is In order with its last run and pages moved; Glossary is Sorting with its progress in pages moved; Team handbook needs attention, and the panel below says its level was not sorted because a folder is among its child pages">
+      <strong>Screenshot 3, to be added from Confluence</strong>
+      <span>Space settings &gt; Sortlatch: Customers In order, Glossary Sorting with its progress, Team handbook Needs attention with the folder reason.</span>
+    </div>
+    <figcaption>Every rule in the space with its status and last run, and why a level was skipped.</figcaption>
+  </figure>
+  </div>
+
+  <h2 id="pricing">Price</h2>
+  <table>
+    <tr><th>Users on your Confluence site</th><th>Price</th></tr>
+    <tr><td>1 to 10</td><td>Free, every feature</td></tr>
+    <tr><td>11 to 100</td><td>$0.15 per user per month</td></tr>
+    <tr><td>More than 100</td><td>Never more than $0.15 per user per month; the exact tiers will be on the Marketplace listing</td></tr>
+  </table>
+  <p>One edition: every feature is in every tier, with nothing held back for a higher plan. Atlassian bills the subscription, monthly or annually (annual is 10 times the monthly price), and offers its standard free trial. Atlassian bills the renewal and sends the renewal notice; we add no upsell, no feature lock and no price change at renewal.</p>
+
+  <h2 id="permissions">Who can use it</h2>
+  <table>
+    <tr><th>Who</th><th>Can</th></tr>
+    <tr><td>Anyone who can edit a page</td><td>Sort its child pages, save a rule on it, and undo, pause, resume, restore or remove that rule</td></tr>
+    <tr><td>Space admins</td><td>Open Space settings &gt; Sortlatch to see the space's rules. Each action there still needs edit permission on the rule's page.</td></tr>
+    <tr><td>Confluence admins</td><td>See every rule on the site under Confluence admin settings &gt; Sortlatch</td></tr>
+    <tr><td>Everyone else</td><td>Opening Sort child pages tells them why they can't sort</td></tr>
+  </table>
+  <p>Permissions are checked on the server on every request: Confluence is asked whether the person may edit the page. The moves themselves are made by the app.</p>
+
+  <h2 id="documentation">Documentation</h2>
+  <p>The step-by-step guide is the <a href="quick-start.html">Sortlatch quick start</a>.</p>
+  <h3>Install</h3>
+  <ol>
+    <li>In Confluence Cloud, open <strong>Apps &gt; Explore more apps</strong>, search for <em>Sortlatch for Confluence</em> (once the listing is live) and choose <strong>Get app</strong>. A Confluence admin installs it for the whole site and approves the permissions below.</li>
+    <li>There are no settings. Sortlatch appears in every page's <strong>•••</strong> menu as <strong>Sort child pages</strong>, in Space settings as a <strong>Sortlatch</strong> tab, and in Confluence admin settings as <strong>Sortlatch</strong>.</li>
+    <li>The first time each person opens Sort child pages or the Sortlatch tab, Confluence asks them to allow Sortlatch access. Sortlatch uses that access only to check that the person may edit the page, and to count the child pages the person can see.</li>
+  </ol>
+  <table>
+    <tr><th>Permission (scope)</th><th>Used for</th></tr>
+    <tr><td><code>read:hierarchical-content:confluence</code></td><td>Reading a page's child pages in their order, and the levels below it</td></tr>
+    <tr><td><code>read:page:confluence</code></td><td>A page's title, parent and creation date (for Newest and Oldest first)</td></tr>
+    <tr><td><code>write:page:confluence</code></td><td>Moving a page before or after one of its siblings. Nothing else is written.</td></tr>
+    <tr><td><code>read:content.permission:confluence</code></td><td>Checking that the person sorting may edit the page</td></tr>
+    <tr><td><code>read:confluence-content.summary</code></td><td>Being told when a page is created, renamed, moved, copied, restored or reordered</td></tr>
+    <tr><td><code>read:confluence-user</code></td><td>Checking that the site-wide list is opened by a Confluence admin</td></tr>
+    <tr><td><code>storage:app</code></td><td>Rules, the orders kept for undo and restore, and runs, in app storage inside Atlassian</td></tr>
+  </table>
+
+  <h2 id="faq">Questions</h2>
+  <h3>How fast does a new page move?</h3>
+  <p>Within a few minutes. Confluence tells apps about page changes up to 3 minutes after they happen. On our test site it took 11 to 17 seconds (median 11). A daily check puts back anything that was missed.</p>
+  <h3>Does it sort folders?</h3>
+  <p>No. Folders, whiteboards, databases and smart links are not sorted, and neither are pages inside folders. If any of them is among a page's child pages, that level is skipped, and the preview and the space overview say why.</p>
+  <h3>Does it sort the top level of a space?</h3>
+  <p>No. For the pages directly under the space's home page, use Space settings &gt; Manage content &gt; Reorder. A rule with "All levels below" on the home page still sorts every level beneath the top level.</p>
+  <h3>How many pages can it handle?</h3>
+  <p>Up to 1,000 child pages under one page, sorted in one run with progress on the space overview. On our test site, 1,000 shuffled glossary terms took 936 to 938 moves and between 448 and 466 seconds, over five runs. A rule with "All levels below" covers up to 5,000 pages in total. A page with more than 1,000 child pages is skipped, with the reason.</p>
+  <h3>Does sorting create page versions or change content?</h3>
+  <p>No. Only the position among siblings changes. On our test site a moved page stayed at version 1, page content is never edited, and pages never change parent.</p>
+  <h3>What about pages I'm not allowed to see, or that Sortlatch can't see?</h3>
+  <p>The preview never lists pages you can't view; it only counts them. If page restrictions keep Sortlatch out of some child pages, the preview says how many, and the pages it can see are sorted among themselves only after you confirm. The hidden pages stay where they are. When you open the space overview, it counts them directly under each rule's page. Background sorting can't see them, so a page restricted after a rule was saved shows up only when someone opens the overview or the dialog.</p>
+  <h3>Can I undo?</h3>
+  <p>Yes. <strong>Undo last sort</strong> puts back what the latest run moved and pauses the rule; choose <strong>Resume</strong> to keep sorting. <strong>Restore original order</strong> puts back the order from before the rule first sorted, then removes the rule; pages added since stay next to the page they follow now.</p>
+  <h3>What happens when two rules overlap?</h3>
+  <p>One rule per level. A page with its own rule keeps it, and an "All levels below" rule higher up leaves that page's child pages to it.</p>
+  <h3>What happens to a page restored from the trash?</h3>
+  <p>Confluence decides where a restored page goes. On our test site, a page restored through Confluence's REST API came back at the top level of the space, which Sortlatch does not sort. Once a restored page is under a page with a rule, Sortlatch sorts it in.</p>
+  <h3>How are numbers with decimals sorted?</h3>
+  <p>Like version numbers: "Fee 1.5" comes before "Fee 1.25", as v1.5 comes before v1.25. Digits typed in full-width form are not read as numbers.</p>
+  <h3>What if Atlassian ships permanent sorting?</h3>
+  <p>Then Confluence does the main job itself, and Sortlatch is worth only its extras: Z to A, dates, pins, every level below, undo and the overview. This page will say so on the day.</p>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li><strong>A few minutes, not instantly.</strong> Confluence delivers page events to apps up to 3 minutes after a change.</li>
+    <li><strong>Folders, whiteboards, databases and smart links are not sorted</strong>, and a level that has one among its child pages is skipped, with the reason. Pages inside folders are not sorted.</li>
+    <li><strong>The top level of a space is not sorted.</strong></li>
+    <li><strong>Up to 1,000 child pages under one page</strong>, and up to 5,000 pages in one "All levels below" rule.</li>
+    <li><strong>Pages Sortlatch cannot see stay where they are.</strong> A page restricted after a rule was saved is reported only when someone opens the overview or the dialog.</li>
+    <li><strong>Telling Sortlatch's moves from people's.</strong> Sortlatch ignores only changes made by its own account, so a person's drag is always put right. If Confluence ever sends a change without an account, a drag within about 10 seconds of Sortlatch moving that same page can wait for the daily check.</li>
+    <li>Pins are picked from the first level, up to 50.</li>
+    <li>Pages only: blog posts are not sorted. Confluence Cloud only; no Data Center or Server. English only.</li>
+  </ul>
+
+  <h2 id="tested">How we tested</h2>
+  <p>One test suite installs Sortlatch on a real Confluence Cloud site, creates a space with realistic page trees through Confluence's API, and drives the app through its own backend. Its last runs, on 6 November 2026, passed:</p>
+  <ul>
+    <li><strong>Customers</strong>, 40 company pages in random order plus one page restricted from the app: the preview counted the hidden page and refused to keep sorting until confirmed; the run moved exactly the pages the preview marked, with no failures; Confluence then listed the 40 pages in natural A to Z order, and the restricted page had not moved.</li>
+    <li>A new page landed at position 41 of 41 before Sortlatch acted, and was in its place 11 seconds later. Renamed, moved-in and copied-in pages, a hand reorder and a page between pins followed (see the table above).</li>
+    <li>Undo last sort put back the 2 pages of the latest run and paused the rule. Restore original order put the 40 pages back in their order from before the first sort and removed the rule.</li>
+    <li>Title Z→A, Newest first, Oldest first, pins at both ends, and All levels below over 4 levels, each read back from Confluence.</li>
+    <li><strong>Glossary</strong>, 1,000 shuffled terms: Term 1 to Term 1000 in order after one run, with no failures and progress on the space overview throughout. Sortlatch's own moves set off no further sorting.</li>
+    <li>The folder parent was skipped with its reason, the space home page was treated as the top level, and the site-wide list was shown to a Confluence admin and refused to anyone else.</li>
+  </ul>
+  <p>An automated suite of 110 tests covers the ordering, the preview, keeping sorted for each kind of change, undo and restore, the stated limits, Confluence's documented reasons for refusing a move, and the three screens rendered through Atlassian's own UI Kit code.</p>
+  <p>Not yet covered:</p>
+  <ul>
+    <li><strong>Opening the screens in a browser.</strong> Everything behind the dialog and the overview has run on a real site, but the screens have not yet been opened by a person in Confluence, including the first-use "allow access" prompt. They will be before the listing goes to Atlassian.</li>
+    <li>A move Confluence refuses. No move has failed on the real site, so the plain-words reasons have been checked only against Confluence's documented error answers.</li>
+    <li>A restore from Confluence's own trash screen (see Questions).</li>
+    <li>Which Confluence Cloud plans it has been tried on: only our test site's.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Nothing leaves Atlassian. Sortlatch runs on Atlassian Forge, calls only your own site's Confluence API, and has no permission to reach any other server. No analytics, no tracking. Its app storage holds page IDs, page titles, positions (the order before a sort, for undo and restore) and the rules you save. It reads no page content and stores none. Uninstalling the app removes its storage. See also the <a href="../privacy.html">privacy policy</a>.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your site URL, the page with the rule, and what the space overview says about it. We answer every message. Bug reports and feature requests are welcome at the same address.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

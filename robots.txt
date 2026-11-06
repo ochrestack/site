@@ -10,6 +10,8 @@ Allow: /attachkeep/
 Allow: /attachkeep/quick-start.html
 Allow: /labelkeep/
 Allow: /labelkeep/quick-start.html
+Allow: /sortlatch/
+Allow: /sortlatch/quick-start.html
 Allow: /xsdtrail/
 Allow: /xsdtrail/quick-start.html
 Allow: /guides/
