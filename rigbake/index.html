@@ -52,6 +52,8 @@
   .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
   .pair figure { flex: 0 1 256px; margin: 0; }
   .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
   .hero { display: block; width: 100%; max-width: 640px; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
   .fine { font-size: 15px; color: var(--muted); }
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
@@ -60,6 +62,7 @@
     h1 { margin-top: 28px; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
     table { font-size: 14px; }
     th, td { padding: 6px; }
   }
@@ -95,7 +98,7 @@
   </div>
 
   <figure>
-    <a href="#rain"><img src="img/rain-plain-vs-rigbake-2x1.png" alt="Blender Studio's Rain twice in Godot 4.7 at the same frame, both playing Idle. Left, labelled Plain FBX, Idle: Run's legs, she is caught mid-stride. Right, labelled Rigbake, Idle, as in Blender, she stands" width="1600" height="800" loading="lazy"></a>
+    <a href="#rain"><img src="img/rain-plain-vs-rigbake-2x1.png" alt="Blender Studio's Rain twice in Godot 4.7 at the same frame, both playing Idle. Left, labelled Plain FBX, Idle: Run's legs, Blender's default .fbx: her knee is raised mid-stride. Right, labelled Rigbake, Idle, as in Blender, its .glb, Godot preset: she stands" width="1600" height="800" loading="lazy"></a>
     <figcaption>The NLA case: Rain, three clips on unmuted NLA tracks, same frame in Godot 4.7. Left: Blender's default FBX export, 23 takes for 3 clips, Run's legs in Idle (0.33 m off). Right: Rigbake's Godot preset (.glb), 3 takes; <a href="#rain">setup below</a>.</figcaption>
   </figure>
 
@@ -140,8 +143,11 @@
     </figure>
   </div>
   <figure>
-    <a href="img/character-02-validate-popup.png"><img class="ui" src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Rain: '7 issues, 2 notes in RIG-rain'; meshes with more than four bone weights per vertex with Limit Weights and Select buttons, meshes whose modifiers stay unapplied to keep shape keys, two meshes whose Mask modifiers then hide nothing in the engine, vertex groups with no weights or no matching bone, deform bones without weights, each with its fix and a Select button in one column; then a note that her shoes keep their shape keys over an unapplied Subdivision, fine for most games, and one more note in the full report; Close and Open Full Report" width="764" height="766" loading="lazy"></a>
-    <figcaption>Validate Rig for Export on a production rig (tap the image for the full Blender window): seven issues, each summed up across her meshes with its fix, then notes for what is fine as it is or handled by the export (her 1,806 constrained bones are baked on export). The full report names every bone and vertex group.</figcaption>
+    <div class="scroll-x"><a href="img/character-02-validate-popup.png"><picture>
+      <source media="(max-width: 600px)" srcset="img/validate-dialog-phone.png 2x" width="764" height="342">
+      <img class="ui" src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Rain: '7 issues, 2 notes in RIG-rain'; meshes with more than four bone weights per vertex with Limit Weights and Select buttons, meshes whose modifiers stay unapplied to keep shape keys, two meshes whose Mask modifiers then hide nothing in the engine, vertex groups with no weights or no matching bone, deform bones without weights, each with its fix and a Select button in one column; then a note that her shoes keep their shape keys over an unapplied Subdivision, fine for most games, and one more note in the full report; Close and Open Full Report" width="764" height="766" loading="lazy">
+    </picture></a></div>
+    <figcaption>Validate Rig for Export on a production rig (tap the image for the full Blender window): seven issues, each summed up across her meshes with its fix, then notes for what is fine as it is or handled by the export (her 1,806 constrained bones are baked on export). The full report names every bone and vertex group.<span class="narrow-only"> On a phone: the header and the first three issues at Blender's own size; swipe the dialog sideways to read each line.</span></figcaption>
   </figure>
   <figure id="rain">
     <picture>
@@ -169,7 +175,7 @@
   <p>The full manual (<code>README.md</code>) and a one-page quick start are inside the zip: open the zip to read them, but install the zip itself, as it is. The quick start is also online: <a href="quick-start.html">Rigbake quick start</a>.</p>
   <h3>Install</h3>
   <ol>
-    <li>Download <code>rigbake-1.2.5.zip</code>. Install the zip itself; do not unzip it first.</li>
+    <li>After checkout, download <code>rigbake-1.2.5.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
     <li>In Blender (4.2 or newer; tested on 4.2 LTS, 4.5 and 5.0), open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.</li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Rigbake</strong> tab.</li>

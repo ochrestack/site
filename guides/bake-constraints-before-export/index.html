@@ -77,7 +77,7 @@
     <p style="margin:0">If your character is one armature with IK, Copy Rotation and drivers, the file has one action and nothing is on the NLA, Blender's glTF and FBX exporters already bake the constraints: you need neither a manual bake nor Rigbake.</p>
   </div>
 
-  <p>The forum answer you will usually find is "constraints don't get exported", or "disable all bone constraints before you export". For the most common rig, that is not what Blender does today. Below is what we measured, the two setups where the default export really does go wrong, and a checklist that applies to every rig.</p>
+  <p>The forum answer you will usually find is "constraints don't get exported", or "disable all bone constraints before you export". For one armature with IK, constraints and drivers, and one action in the file, that is not what Blender does today. Below is what we measured, the two setups where the default export really does go wrong, and a checklist that applies to every rig.</p>
 
   <h2 id="short-answer">1. The short answer</h2>
   <ul>
@@ -124,7 +124,7 @@
   <p>These problems are not about constraints, and they reach the engine whichever way you export:</p>
   <ul>
     <li><strong>Unapplied or non-uniform scale</strong> on the armature or a mesh. Fix: Object &gt; Apply &gt; Scale.</li>
-    <li><strong>More than four bone weights per vertex.</strong> Engines keep only four. Fix: in Weight Paint mode, Weights &gt; Limit Total (Limit 4), then Weights &gt; Normalize All.</li>
+    <li><strong>More than four bone weights per vertex.</strong> If your engine keeps four per vertex, the others are dropped on import; check your engine's skinning setting. Fix: in Weight Paint mode, Weights &gt; Limit Total (Limit 4), then Weights &gt; Normalize All.</li>
     <li><strong>Shape keys on a mesh with modifiers other than Armature.</strong> Blender's FBX exporter applies those modifiers by default, and Blender's own documentation warns that applying modifiers "prevents exporting shape keys". In our measurement the default glTF export kept them. Fix: disable the extra modifiers for the export, or apply them, if you need the shape keys in the engine.</li>
     <li><strong>Motion keyed on the armature object</strong> instead of on a root bone. Blender's own FBX export keeps it; tools that bake bone motion only, Rigbake included, do not. Fix: move the motion to a root bone.</li>
     <li><strong>Vertex groups that match no bone.</strong> The skin ignores them, so those vertices don't follow anything you expect. Fix: rename each group to the bone it should follow, or delete it.</li>
