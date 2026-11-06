@@ -114,10 +114,6 @@
     </picture>
     <figcaption>Rain in Godot 4.7, same frame. Left: Blender's default FBX export, 23 takes, and in <code>RIG-rain|Idle</code> Run's legs leak in (0.33 m off). Right: Rigbake's export (Godot preset, .glb; Apply Modifiers set to Always for her Mask modifiers), 3 takes, posed as in Blender. Same materials on both sides. Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; we added the animation clips and simplified two eye materials for the engine export.</figcaption>
   </figure>
-  <figure>
-    <img src="../img/ellie-plain-fbx-24-takes.png" alt="Godot 4.7.2 editor: the animation list of Ellie's default FBX export, with Idle, RIG-Ellie_001|Idle, Run, RIG-Ellie_001|Run, Walk, RIG-Ellie_001|Walk and many RIG-Ellie_001| pose actions, 24 in all" width="1920" height="1080" loading="lazy">
-    <figcaption>Ellie's default FBX export in the Godot 4.7.2 editor: 24 takes for 3 clips, two of them called Idle. Character: Ellie from <em>Sprite Fright</em>, Blender Studio (Blender Foundation), CC BY; we keyframed the three clips.</figcaption>
-  </figure>
 
   <h2 id="why">5. Why one of them is wrong</h2>
   <p>A clip that doesn't key a channel does not reset it. When the exporter writes the extra <code>Rig|Clip</code> takes, a channel that the clip leaves alone keeps a value from another clip. In the two-clip test, Idle doesn't key the IK target, so the target stays where Reach put it, and the leg in the extra Idle take follows it: 0.60 m off. On Rain, the IK feet keyed by Run end up in her Idle the same way.</p>
