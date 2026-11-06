@@ -89,12 +89,19 @@
     <p>The character is Rain, Blender Studio's free production rig (CC BY 4.0, credit below), in her own file as downloaded from studio.blender.org, with its 19 face actions and their Action constraints. Her file already holds 5 [Action Stash] tracks. We added a game move set keyed on her controls: 17 final actions (Idle, Walk, Run, Sprint, Jump, three attacks, Block, Dodge and more), each kept with Fake User, and 11 older takes, each stashed with Blender's own Stash operator, as New Action does. The result is 47 actions and 16 [Action Stash] tracks. Every image and GIF on this page is a capture of a real Blender 4.5.15 LTS window on Linux at 1920x960, with Actionyard 1.1.0 installed from its zip through Blender's extension installer. The mouse and keyboard input is scripted. The GIFs are cut from screen recordings of the same session, in real time. A check after every step compared the file's data with what the screen shows: 21 checks, all passed.</p>
   </details>
 
-  <figure id="watch">
+  <section id="watch">
+  <h2>Watch it work</h2>
+  <figure>
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/actionyard-demo-720p.mp4" type="video/mp4">
     </video>
     <figcaption>The demo, 39 s, captions only, no sound. Rain's file in Blender 4.5 LTS with Actionyard 1.1.0: Purge leaves the 16 stash tracks, then the list, Used by, the Clear Stashes preview, the result, and Ctrl+Z. It is a real Blender window: her animation captured frame by frame, the clicks recorded at 60 fps. Rain Rig (CC) Blender Foundation | studio.blender.org. <a href="video/actionyard-clear-stashes.gif">The Clear Stashes moment as a looping GIF</a> (7 MB).</figcaption>
   </figure>
+  <figure>
+    <a href="video/actionyard-clear-stashes.gif"><img src="video/actionyard-clear-stashes.gif" alt="Looping GIF cut from the demo: in Rain's file, Whole File and Clear Stashes are clicked, the preview reads 'Removes 13 Action Stash tracks from 1 data-block', Walk_blockout's keep tick is cleared, Clear Stashes is confirmed and 13 stash tracks leave the NLA editor while the tab reads '47 actions, 0 stashed, 1 with no users'; then Ctrl+Z brings every track back" width="1280" height="720" loading="lazy"></a>
+    <figcaption>The Clear Stashes moment from the demo, as a looping GIF (13 s, 7 MB).</figcaption>
+  </figure>
+  </section>
 
   <div class="box warn">
     <strong>Where it matters.</strong> Press New Action and Blender stashes the previous take on a muted [Action Stash] track. A file built take by take ends up with a column of them. Purge won't clear them out: a stashed action still has a user, so Purge leaves it in the file. Deleting the stashed actions themselves is no better. Blender removes the actions but leaves every [Action Stash] track behind, each holding a strip with no action.
