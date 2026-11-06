@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <title>How Labelkeep works: pick labels from the counted list, preview and dry-run a delete, rename or merge, then run it for real in the background</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B5E52"/>
+    </marker>
+  </defs>
+  <rect width="720" height="330" fill="#FAF7F2"/>
+
+  <!-- Step 1: the label list -->
+  <rect x="8" y="40" width="208" height="200" rx="12" fill="#FFFFFF" stroke="#E6DED3"/>
+  <text x="112" y="74" text-anchor="middle" font-size="17" font-weight="600" fill="#2B2118">Every label, counted</text>
+  <text x="112" y="108" text-anchor="middle" font-size="15" fill="#5A4E43">issues per label</text>
+  <text x="112" y="132" text-anchor="middle" font-size="15" fill="#5A4E43">search, sort by count</text>
+  <text x="112" y="156" text-anchor="middle" font-size="15" fill="#5A4E43">labels at 0, explained</text>
+  <text x="112" y="214" text-anchor="middle" font-size="15" font-weight="600" fill="#7A4E14">1. Pick the labels</text>
+
+  <line x1="220" y1="140" x2="250" y2="140" stroke="#6B5E52" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 2: preview and dry run -->
+  <rect x="254" y="40" width="208" height="200" rx="12" fill="#2B2118"/>
+  <text x="358" y="74" text-anchor="middle" font-size="17" font-weight="600" fill="#FAF7F2">Nothing changes yet</text>
+  <g font-size="15" fill="#FAF7F2">
+    <rect x="263" y="92" width="62" height="28" rx="6" fill="#3A2E24" stroke="#5A4E43"/><text x="294" y="111" text-anchor="middle">Delete</text>
+    <rect x="329" y="92" width="70" height="28" rx="6" fill="#3A2E24" stroke="#5A4E43"/><text x="364" y="111" text-anchor="middle">Rename</text>
+    <rect x="403" y="92" width="50" height="28" rx="6" fill="#3A2E24" stroke="#5A4E43"/><text x="428" y="111" text-anchor="middle">Merge</text>
+  </g>
+  <text x="358" y="148" text-anchor="middle" font-size="15" fill="#E6DED3">preview: issues to change</text>
+  <text x="358" y="172" text-anchor="middle" font-size="15" fill="#E6DED3">dry run: before and after</text>
+  <text x="358" y="214" text-anchor="middle" font-size="15" font-weight="600" fill="#F2C98E">2. Preview, dry run</text>
+
+  <line x1="466" y1="140" x2="496" y2="140" stroke="#6B5E52" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: the real run -->
+  <rect x="500" y="40" width="212" height="200" rx="12" fill="#FFFFFF" stroke="#C8842B" stroke-width="2"/>
+  <text x="606" y="74" text-anchor="middle" font-size="17" font-weight="600" fill="#2B2118">In the background</text>
+  <text x="606" y="108" text-anchor="middle" font-size="15" fill="#5A4E43">progress and Stop</text>
+  <text x="606" y="132" text-anchor="middle" font-size="15" fill="#5A4E43">only your labels change</text>
+  <text x="606" y="156" text-anchor="middle" font-size="15" fill="#5A4E43">each failure: Jira's reason</text>
+  <text x="606" y="180" text-anchor="middle" font-size="15" fill="#5A4E43">and the fix</text>
+  <text x="606" y="214" text-anchor="middle" font-size="15" font-weight="600" fill="#7A4E14">3. Run for real</text>
+
+  <text x="360" y="284" text-anchor="middle" font-size="15" fill="#5A4E43">One page in Jira settings, and in Project settings for project admins.</text>
+  <text x="360" y="306" text-anchor="middle" font-size="15" fill="#5A4E43">Every run, dry runs included, is kept in the Activity tab.</text>
+</svg>

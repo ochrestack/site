@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Labelkeep for Jira: delete, rename and merge labels</title>
+<meta name="description" content="Labelkeep for Jira Cloud lists every label with its issue count, then deletes, renames or merges labels on every issue the app can access: previewed, dry-run first, run in the background, and every failed issue named with Jira's reason and the fix. Free.">
+<link rel="canonical" href="https://ochrestack.com/labelkeep/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Labelkeep for Jira: delete, rename and merge labels">
+<meta property="og:description" content="See every label on your Jira site with its issue count. Delete, rename or merge one on every issue the app can access, previewed and dry-run first, with every failure explained.">
+<meta property="og:url" content="https://ochrestack.com/labelkeep/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Labelkeep for Jira: delete, rename and merge labels">
+<meta name="twitter:description" content="Every Jira label with its issue count. Delete, rename or merge one everywhere, previewed and dry-run first.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .note { font-size: 15px; color: var(--muted); }
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  .slot { aspect-ratio: 1840 / 900; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 10px; background: #fff; color: var(--muted); font-size: 15px; }
+  .said { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; margin: 6px 0 14px; padding: 6px 0 6px 14px; border-left: 3px solid var(--ochre); }
+  .narrow-only { display: none; }
+  .fine { font-size: 15px; color: var(--muted); }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Labelkeep for Jira</h1>
+  <p class="sub">See every label on your Jira site with its issue count. Delete, rename or merge one on every issue the app can access, at once: previewed, dry-run first, and every failure explained.</p>
+
+  <div class="buy">
+    <p class="price"><strong>Free.</strong> Every feature, every site size.</p>
+    <!-- Until the listing URL exists the button stays href="#". When the listing is submitted, the note
+         becomes "Listing in review: ..."; when Atlassian approves it, set href to the listing URL and drop "pending". -->
+    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on the Atlassian Marketplace</a></p>
+    <p class="note" id="buy-note">Coming to the Atlassian Marketplace: the listing has not been submitted for review yet, so Labelkeep can't be installed today. This button will link to the listing once Atlassian has approved it. For a note when it is live, email <a href="mailto:support@ochrestack.com?subject=Labelkeep%20listing">support@ochrestack.com</a>.</p>
+    <p>For Jira Cloud (Atlassian Forge). Not for Jira Data Center or Server. English only. Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. <a href="#documentation">Documentation and install steps</a></p>
+  </div>
+
+  <figure class="wide-only">
+    <img src="workflow.svg" alt="Diagram: 1. Pick the labels from a list of every label with its issue count, searchable and sortable, labels at 0 explained. 2. Delete, rename or merge them with a preview of the issues that will change and a dry run that shows before and after and changes nothing. 3. Run for real in the background, with progress and Stop; only your labels change, and each failed issue shows Jira's reason and the fix. Every run is kept in the Activity tab." width="720" height="330">
+    <figcaption>How Labelkeep works: pick the labels, preview and dry-run, then run it for real in the background.</figcaption>
+  </figure>
+  <ol class="narrow-only">
+    <li><strong>Pick the labels</strong> from the list of every label with its issue count.</li>
+    <li><strong>Delete, rename or merge</strong>: the preview says how many issues will change, and the dry run shows examples of the before and after, changing nothing.</li>
+    <li><strong>Run for real</strong> from the dry-run result. It runs in the background with progress and a Stop button, and the summary names every issue that failed, with Jira's reason and the fix.</li>
+  </ol>
+
+  <div class="box warn">
+    <strong>Why it is needed.</strong> Jira Cloud has no screen for managing labels. Removing or renaming one means bulk-changing issues in repeated passes of up to 1,000, with the global Bulk Change permission, and the Labels "Replace" option in bulk change replaces every label on the selected issues, not just the one you meant. The request for real label management, <a href="https://jira.atlassian.com/browse/JRACLOUD-33672">JRACLOUD-33672</a>, has been open since 2013, with over 1,100 votes.
+  </div>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Every label, with its issue count.</strong> One page in Jira settings lists all the labels on your site and how many issues carry each. Search as you type; sort by name or by count. Labels Jira still suggests but no visible issue carries are listed at 0, with the likely reason.</li>
+    <li><strong>Delete, rename or merge.</strong> Delete removes the selected labels from every issue the app can access. Rename replaces one label with a new one. Merge folds several labels into one, for example <code>check-out</code> and <code>Checkout</code> into <code>checkout</code>. Up to 50 labels per operation.</li>
+    <li><strong>Preview, dry run, then Run for real.</strong> Before anything changes you see how many issues carry the labels and how many would change. Dry run is on by default: it shows examples of the before and after and changes nothing. A finished dry run offers <strong>Run for real</strong>, which reopens the same operation at its confirmation step with a fresh preview.</li>
+    <li><strong>Only the labels you picked change.</strong> Each edit names only the labels removed and the one added, so other labels on the issue are never sent, even one a colleague adds while the run is going. Matching is exact: <code>Checkout</code> and <code>checkout</code> are different labels, and the dry run matches exactly as the real run does.</li>
+    <li><strong>In the background, with a Stop button.</strong> Operations run in small batches on Atlassian's own queue, so you can close the page. A progress bar shows while they run. <strong>Stop</strong> lets the batch in progress (at most 20 issues) finish, then ends the run with how far it got and how many issues were not touched.</li>
+    <li><strong>Every failure explained.</strong> One issue failing never stops the others. The summary lists each failed issue with what Jira said and how to fix it, for example which role needs Edit Issues in that project's permission scheme.</li>
+    <li><strong>A second search.</strong> After the last batch, the run searches once more and handles any issue the first search missed, without counting any issue twice. The summary says what it found.</li>
+    <li><strong>On the record.</strong> The Activity tab lists every operation, dry runs included: who ran it, when, which labels, how many issues changed or failed, and whether it was stopped.</li>
+    <li><strong>For project admins too.</strong> Project administrators get the same page under Project settings, limited to the issues they can see in their project. They don't need the global Bulk Change permission.</li>
+  </ul>
+
+  <h2 id="run">What a run tells you</h2>
+  <p>Summaries from one test run on a real Jira Cloud site (5 November 2026), word for word as the app wrote them:</p>
+  <p class="said">Dry run of renaming "old" to "new" in LME2E: 30 issues would change. Nothing was changed. A second search after the first pass found no further issue with the selected labels.</p>
+  <p class="said">Finished merging "dup1", "dup2" into "merged" in LME2E: 40 issues changed. A second search after the first pass found no further issue with the selected labels.</p>
+  <p class="said">Stopped on request while removing "big-trash" in LME2E. 20 of 300 issues checked before it stopped: 20 issues changed. The other 280 issues were not touched. Run the operation again to finish.</p>
+  <p class="note">The test labels are shortened here: each name also began with the run's number. LME2E is the test project. The labels on every issue were then read back from Jira and checked; after the stop, exactly the 20 reported issues had lost the label.</p>
+
+  <!-- Screenshot slots for the session in Jira (control offers/o-0002/status.md, "Product page", shot list).
+       Hidden until each image exists: paste the <img> from the comment in place of the div, remove "hidden" from
+       the figure and from #screens, and add an h2 "In Jira" above the first figure. -->
+  <div id="screens" hidden>
+  <figure hidden id="shot-1">
+    <!-- Shot 1. Replace the div with:
+    <img src="img/shot-1-label-list.png" alt="Labelkeep in Jira settings: every label on the site with its issue count, sorted by Issues, the search 'check' showing checkout, check-out and Checkout, two rows ticked, and the Delete, Rename and Merge buttons above the table" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 1, to be added: Labelkeep in Jira settings, every label on the site with its issue count, sorted by Issues, the search 'check' showing checkout, check-out and Checkout, two rows ticked, and the Delete, Rename and Merge buttons above the table">
+      <strong>Screenshot 1, to be added from Jira</strong>
+      <span>The label list: every label with its issue count, searched for "check", two spellings ticked, Delete…, Rename… and Merge… above the table.</span>
+    </div>
+    <figcaption>Every label on the site with its issue count. A search finds the spellings of one label side by side.</figcaption>
+  </figure>
+  <figure hidden id="shot-2">
+    <!-- Shot 2. Replace the div with:
+    <img src="img/shot-2-merge-preview.png" alt="The Merge labels dialog after Preview: check-out and Checkout into checkout, how many issues carry the labels and how many would change, the note 'This is a dry run. Nothing will be changed.' and the Run dry run button" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 2, to be added: the Merge labels dialog after Preview, check-out and Checkout into checkout, how many issues carry the labels and how many would change, the dry-run note and the Run dry run button">
+      <strong>Screenshot 2, to be added from Jira</strong>
+      <span>The Merge labels dialog after Preview: the issue count, the dry-run note and Run dry run.</span>
+    </div>
+    <figcaption>The count before anything changes, then a dry run.</figcaption>
+  </figure>
+  <figure hidden id="shot-4">
+    <!-- Shot 4. Replace the div with:
+    <img src="img/shot-4-finished-failures.png" alt="The Operation finished panel after a live merge: issues changed and failed, the examples of what changed, and the Issues that failed table with the columns Issue, Jira said and How to fix" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 4, to be added: the Operation finished panel after a live merge, issues changed and failed, examples of what changed, and the Issues that failed table with the columns Issue, Jira said and How to fix">
+      <strong>Screenshot 4, to be added from Jira</strong>
+      <span>The Operation finished panel: changed and failed counts, and the Issues that failed table with Jira said and How to fix.</span>
+    </div>
+    <figcaption>Each issue Jira refused, with what Jira said and how to fix it. The rest were changed.</figcaption>
+  </figure>
+  <figure hidden id="shot-6">
+    <!-- Shot 6. Replace the div with:
+    <img src="img/shot-6-activity.png" alt="The Activity tab: When, Who, Operation, Scope, Mode (Dry run or Live), Issues changed, Failed and Status, with a dry run, a live run and a stopped run" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 6, to be added: the Activity tab with When, Who, Operation, Scope, Mode, Issues changed, Failed and Status, showing a dry run, a live run and a stopped run">
+      <strong>Screenshot 6, to be added from Jira</strong>
+      <span>The Activity tab: a dry run, a live run and a stopped run, with who ran each.</span>
+    </div>
+    <figcaption>Every run on the record, dry runs included.</figcaption>
+  </figure>
+  </div>
+
+  <h2 id="scope">What Jira already does, and what you get</h2>
+  <div class="box">
+    <p>Good to know: a careful Jira admin can do the same natively with ADD then REMOVE bulk passes of 1,000 issues each and the global Bulk Change permission; Labelkeep is one previewed operation with per-issue failure reasons, zero-issue labels shown, and an activity log, not a magic fix.</p>
+    <p style="margin-bottom:0"><strong>No undo.</strong> Every change is in each issue's history and in the Activity tab, but Labelkeep cannot roll an operation back. That is why dry run is on by default.</p>
+  </div>
+
+  <h2 id="pricing">Price</h2>
+  <p><strong>Free</strong>, with every feature, for any number of users. Installed and managed through the Atlassian Marketplace once the listing is live.</p>
+
+  <h2 id="permissions">Who can use it</h2>
+  <table>
+    <tr><th>Who</th><th>Sees</th><th>Can change</th></tr>
+    <tr><td>Jira administrators</td><td>Every label on the site, including labels with no visible issues</td><td>Every issue the app can access (Jira settings page), or one project (its Project settings page)</td></tr>
+    <tr><td>Project administrators</td><td>Labels on the issues they can see in the projects they administer</td><td>Only issues in those projects that they can see</td></tr>
+    <tr><td>Everyone else</td><td>A message naming the permission they need</td><td>Nothing</td></tr>
+  </table>
+  <p>Permissions are checked on the server on every request. A project admin's counts and previews are read as that person, and their background runs read each batch as them, so issues an issue security level hides from them are never shown or changed; the summary says how many were left out. The edits themselves are made by the app, so an issue's history shows the app as the editor; the Activity tab records who started the run.</p>
+
+  <h2 id="documentation">Documentation</h2>
+  <p>The step-by-step guide is the <a href="quick-start.html">Labelkeep quick start</a>.</p>
+  <h3>Install</h3>
+  <ol>
+    <li>In Jira Cloud, open <strong>Apps &gt; Explore more apps</strong>, search for <em>Labelkeep</em> (once the listing is live) and choose <strong>Get app</strong>.</li>
+    <li>A site administrator approves the permissions below.</li>
+    <li>Open <strong>Jira settings &gt; Apps &gt; Labelkeep</strong>. Project administrators open <strong>Project settings &gt; Apps &gt; Labelkeep</strong> in their project.</li>
+  </ol>
+  <table>
+    <tr><th>Permission (scope)</th><th>Used for</th></tr>
+    <tr><td><code>read:jira-work</code></td><td>Finding issues by label, reading labels and checking permissions. For project admins, also reading issues as them in the background, so nothing hidden from them is shown or changed.</td></tr>
+    <tr><td><code>write:jira-work</code></td><td>Changing labels on issues</td></tr>
+    <tr><td><code>storage:app</code></td><td>The activity log and running operations, kept in Forge storage inside Atlassian</td></tr>
+  </table>
+
+  <h2 id="faq">Questions</h2>
+  <h3>Will watchers get an email for every changed issue?</h3>
+  <p>They might. Labelkeep asks Jira not to notify watchers on every edit, but whether Jira honours that for the app has not been verified. Try a dry run and a small live run first.</p>
+  <h3>Why is a label still listed after I deleted it?</h3>
+  <p>With a count of 0, the label is on issues the app can't see (archived projects, an issue security level, or a permission scheme without the app's role), or only in Jira's suggestion list. Jira Cloud has no API to delete a label itself; it drops out of the suggestions once no issue uses it. With a count above 0: Jira's search index can lag a few seconds, or some issues failed or were left out, and the summary lists them. The page explains which applies.</p>
+  <h3>Some issues failed. What do I do?</h3>
+  <p>Fix what the "How to fix" column says, usually a permission in that project's permission scheme, then run the operation again. Issues already changed need no change and are counted as such.</p>
+  <h3>How fast is it?</h3>
+  <p>On our test site, removing a label from 280 issues took 36 to 37 seconds, and renaming one on 300 issues spread over three background steps took 83 seconds. Nothing larger than 300 issues has been measured; Jira may rate-limit harder at volume. Progress shows throughout, and you can stop at any time.</p>
+  <h3>What if I close the page?</h3>
+  <p>The operation keeps running. Open the page again to see the progress or the summary. Only one operation runs at a time on a site, even if two admins confirm at the same moment.</p>
+  <h3>Does a Jira admin see issues they personally can't browse?</h3>
+  <p>Yes. Jira administrators work with the app's view of the site. Project administrators work with their own view.</p>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li><strong>No undo.</strong> Use the dry run first.</li>
+    <li><strong>Every issue the app can access, not every issue.</strong> Issues in archived projects, behind an issue security level that excludes the app, or in projects whose permission scheme removed the app's role are not counted or changed.</li>
+    <li>Labels at 0 can't be deleted: Jira Cloud has no API for removing a label itself.</li>
+    <li>Only Jira's native Labels field. No custom label fields, no Confluence labels, no Jira Data Center or Server.</li>
+    <li>Up to 50 labels per operation. Labels can't contain spaces (a Jira rule) and are at most 255 characters.</li>
+    <li>Label counts are read fresh each time the page opens, 100 issues per request, not cached: on a large site the list takes a while to fill. Operations don't wait for it.</li>
+    <li>A project admin's background run acts on their behalf. If Jira refuses that, for example because their account was deactivated mid-run, the run stops, says so, and changes nothing more.</li>
+    <li>No scheduled or recurring clean-ups, and no CSV export.</li>
+  </ul>
+
+  <h2 id="tested">How we tested</h2>
+  <p>One test suite installs Labelkeep on a real Jira Cloud site, creates issues with labels through Jira's API, and runs operations through the app itself. Its last run, on 5 November 2026, passed:</p>
+  <ul>
+    <li>On 60 issues: a dry run, then a rename, a merge and a delete. After the dry run, and again at the end, the labels on all 60 issues were exactly as expected; the dry run changed nothing.</li>
+    <li>On 300 more issues: a rename over three background steps, a delete stopped part way (exactly the 20 issues it reported had changed), then the rest of the delete with the settings every operation from the page uses: 280 issues in 36 seconds. All 300 were read back and checked.</li>
+    <li>Two operations started at the same moment: exactly one was accepted.</li>
+    <li>The activity log listed all eight operations, newest first.</li>
+  </ul>
+  <p>An automated suite of 122 tests covers the batching, resuming after an interruption without counting any issue twice, the permission rules (including issues hidden from a project admin by issue security), the dry run, Stop, the second search and the activity log. In tests against a model of Jira with 5,000 issues across 30 projects and labels with quotes, backslashes, emoji and other awkward characters, only the selected labels ever changed.</p>
+  <p>Not yet covered:</p>
+  <ul>
+    <li><strong>Opening the page in a browser.</strong> Every operation behind the page has run on a real site, but the page itself has not yet been opened by a person. It will be before the listing goes to Atlassian.</li>
+    <li>A real issue security level that hides an issue from a project admin. The rule is tested against a model of Jira; on the real site nothing was hidden.</li>
+    <li>Whether watchers are emailed (see Questions).</li>
+    <li>Sites with more than 300 issues per label.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Your data stays in Atlassian. Labelkeep runs on Atlassian Forge, calls only your own site's Jira API, and has no permission to reach any other server. No analytics, no telemetry. Forge storage holds the activity log and running operations: label names, the keys of example and failed issues, counts, the account IDs of who started or stopped a run, and timestamps. See also the <a href="../privacy.html">privacy policy</a>.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your site URL, what you ran (it is in the Activity tab) and the summary text. We answer every message. Bug reports and feature requests are welcome at the same address.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

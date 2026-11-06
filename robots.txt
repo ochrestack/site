@@ -8,6 +8,8 @@ Allow: /exportmint/
 Allow: /exportmint/quick-start.html
 Allow: /attachkeep/
 Allow: /attachkeep/quick-start.html
+Allow: /labelkeep/
+Allow: /labelkeep/quick-start.html
 Allow: /xsdtrail/
 Allow: /xsdtrail/quick-start.html
 Allow: /guides/
