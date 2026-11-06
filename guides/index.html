@@ -73,7 +73,7 @@
   <p class="sub">Exporting Blender animations to Godot, Unity and Unreal, with measurements. Each guide starts with what Blender's own exporters already do right.</p>
 
   <h2><a href="bake-constraints-before-export/">Do you need to bake constraints before exporting Blender animations?</a></h2>
-  <p>For one armature with IK, Copy Rotation and drivers, exported one clip at a time (nothing on the NLA), Blender's glTF and FBX exporters already bake the constraints. Six single-rig setups measured, the two setups where the default export fails, how to bake by hand if you want to, and a pre-export checklist for every rig.</p>
+  <p>For one armature with IK, Copy Rotation and drivers, with one action in the file and nothing on the NLA, Blender's glTF and FBX exporters already bake the constraints. Six single-rig setups measured, the two setups where the default export fails, how to bake by hand if you want to, and a pre-export checklist for every rig.</p>
 
   <h2><a href="control-rig-no-animations/">Blender export has no animations? The control-rig case</a></h2>
   <p>A deform rig that follows a control rig has no actions of its own, so the default glTF and FBX exports write 0 animations. Why, the free workaround that exports the active clip exactly, and Godot import settings for exact playback.</p>

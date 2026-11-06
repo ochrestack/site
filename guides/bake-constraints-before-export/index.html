@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Do you need to bake constraints before exporting Blender animations? (Godot, Unity, Unreal)</title>
-<meta name="description" content="For one armature with IK and drivers and one clip (nothing on the NLA), Blender's glTF and FBX exporters already bake constraints. We measured it. Here are the two setups where they don't, and what to do.">
+<meta name="description" content="For one armature with IK and drivers, one action in the file and nothing on the NLA, Blender's glTF and FBX exporters already bake constraints. We measured it. Here are the two setups where they don't, and what to do.">
 <link rel="canonical" href="https://ochrestack.com/guides/bake-constraints-before-export/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ochrestack">
 <meta property="og:title" content="Do you need to bake constraints before exporting Blender animations?">
-<meta property="og:description" content="For one armature with IK and drivers and one clip (nothing on the NLA), Blender's glTF and FBX exporters already bake constraints. We measured it. Here are the two setups where they don't, and what to do.">
+<meta property="og:description" content="For one armature with IK and drivers, one action in the file and nothing on the NLA, Blender's glTF and FBX exporters already bake constraints. We measured it. Here are the two setups where they don't, and what to do.">
 <meta property="og:url" content="https://ochrestack.com/guides/bake-constraints-before-export/">
 <meta property="og:image" content="https://ochrestack.com/rigbake/img/character-02-validate-popup.png">
 <meta property="og:image:width" content="1600">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Blender 4.2 with the Blender Studio character Rain and a pre-export rig check listing seven issues, such as more than four bone weights per vertex and vertex groups that match no bone">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Do you need to bake constraints before exporting Blender animations?">
-<meta name="twitter:description" content="For one armature with IK and drivers and one clip (nothing on the NLA), Blender's glTF and FBX exporters already bake constraints. We measured it. Here are the two setups where they don't.">
+<meta name="twitter:description" content="For one armature with IK and drivers, one action in the file and nothing on the NLA, Blender's glTF and FBX exporters already bake constraints. We measured it. Here are the two setups where they don't.">
 <meta name="twitter:image" content="https://ochrestack.com/rigbake/img/character-02-validate-popup.png">
 <meta name="twitter:image:alt" content="Blender 4.2 with the Blender Studio character Rain and a pre-export rig check listing seven issues">
 <link rel="icon" href="../../icon.svg" type="image/svg+xml">
@@ -74,7 +74,7 @@
   <p class="sub">For Godot, Unity and Unreal. Measured on Blender 4.2, 4.5 and 5.0. Published 6 November 2026.</p>
 
   <div class="box warn">
-    <p style="margin:0">If your character is one armature with IK, Copy Rotation and drivers, and you export one clip at a time (nothing on the NLA), Blender's glTF and FBX exporters already bake the constraints: you need neither a manual bake nor Rigbake.</p>
+    <p style="margin:0">If your character is one armature with IK, Copy Rotation and drivers, the file has one action and nothing is on the NLA, Blender's glTF and FBX exporters already bake the constraints: you need neither a manual bake nor Rigbake.</p>
   </div>
 
   <p>The forum answer you will usually find is "constraints don't get exported", or "disable all bone constraints before you export". For the most common rig, that is not what Blender does today. Below is what we measured, the two setups where the default export really does go wrong, and a checklist that applies to every rig.</p>
@@ -90,9 +90,9 @@
   <p>Each rig is built in code. We export it with Blender's own exporters, every setting left at its default except "Selected Objects" (what File &gt; Export gives you), then import the file back into an empty Blender scene. For every deform bone we compare the position and rotation of the imported animation with the live rig at five frames per clip (1, 6, 12, 18 and 24). A bone counts as matching within 1 mm and 0.001 rad. The runs used Blender 4.2, 4.5 and 5.0 as Python modules. FBX files are scored with the 4.2 or 5.0 importer, because Blender 4.5's FBX importer misreads files with several takes.</p>
   <p>The numbers below are the worst bone over all frames: position error in metres / rotation error in radians.</p>
 
-  <h2 id="six-setups">3. Six single-rig setups, one clip each</h2>
+  <h2 id="six-setups">3. Six single-rig setups, one action each</h2>
   <table>
-    <tr><th>Setup (one armature, one clip)</th><th>Default glTF</th><th>Default FBX</th></tr>
+    <tr><th>Setup (one armature, one action in the file)</th><th>Default glTF</th><th>Default FBX</th></tr>
     <tr><td>IK + Copy Rotation + a driver, all targets inside the rig</td><td>0 / 0</td><td>0.00001 m / 0</td></tr>
     <tr><td>IK target is a separate, animated Empty</td><td>0 / 0</td><td><strong>0.00095 m / 0.0021 rad</strong>, plus a junk take "TargetMove" (the Empty's action)</td></tr>
     <tr><td>A driver that reads a keyed custom property</td><td>0 / 0</td><td>0 / 0</td></tr>

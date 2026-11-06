@@ -74,7 +74,7 @@
 </header>
 <main>
   <h1>Rigbake for Blender</h1>
-  <a href="img/control-rig-ellie-godot.png"><img class="hero" src="img/control-rig-godot-2x1.png" alt="Godot 4.7, the same scene: on the left Ellie from Blender's default glTF export stands in her T-pose, labelled 'Plain glTF export, AnimationPlayer: none, 0 animations'; on the right Ellie from Rigbake's export stands in her Idle pose, labelled 'Rigbake, 3 animations: Idle, Run, Walk, playing Idle'" width="1600" height="800"></a>
+  <a href="img/control-rig-ellie-godot.png"><img class="hero" src="img/control-rig-godot-2x1.png" alt="Godot 4.7, the same scene: on the left Ellie from Blender's default glTF export stands in her T-pose, labelled 'Plain glTF export, 0 animations' (the file has no AnimationPlayer at all); on the right Ellie from Rigbake's export, labelled 'Rigbake, 3 animations' (Idle, Run and Walk), playing Idle" width="1600" height="800"></a>
   <p class="sub">Control rig or NLA clips? Blender's default export can come out empty or with wrong, duplicated takes. Rigbake exports one clean, correctly named clip per action.</p>
 
   <div class="buy">
@@ -91,7 +91,7 @@
   </details>
 
   <div class="box warn">
-    <strong>Where it matters.</strong> If your character is driven by a separate control rig, or you keep several clips on the NLA, Blender's default glTF and FBX exports can come out with no animation at all, or with wrong, duplicated FBX takes that are off by more than half a meter. We measured both cases on Blender 4.2, 4.5, and 5.0. Rigbake exports both correctly.
+    <strong>Where it matters.</strong> If your character is driven by a separate control rig, or you keep several clips on the NLA, Blender's default glTF and FBX exports can come out with no animation at all, or with wrong, duplicated FBX takes that are off by more than half a meter. We measured the control-rig case on Blender 4.2, 4.5 and 5.0, and the NLA case on 4.2 and 5.0 (Blender 4.5's own FBX importer can't read multi-take files reliably). Rigbake exports both correctly.
   </div>
 
   <figure>
@@ -103,11 +103,11 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/rigbake-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 57 s, captions only, no sound: Rain's NLA clips exported with Blender's default FBX export and with Rigbake 1.2.5 (Blender 4.2 LTS), then played in Godot 4.7.2; Rigbake used its Godot preset with Apply Modifiers set to Always for her Mask modifiers. Rain Rig (CC) Blender Foundation | studio.blender.org. <a href="video/rigbake-plain-vs-rigbake.gif">The side by side as a looping GIF</a> (6 MB).</figcaption>
+    <figcaption>The demo, 56 s, captions only, no sound: Rain's NLA clips exported with Blender's default FBX export and with Rigbake 1.2.5 (Blender 4.2 LTS), then played in Godot 4.7.2; Rigbake used its Godot preset with Apply Modifiers set to Always for her Mask modifiers. Rain Rig (CC) Blender Foundation | studio.blender.org. <a href="video/rigbake-plain-vs-rigbake.gif">The side by side as a looping GIF</a> (6 MB).</figcaption>
   </figure>
 
   <div class="box">
-    <strong>Where it is a convenience.</strong> For a single rig with IK and drivers and one clip at a time (nothing on the NLA), Blender's own exporters already bake constraints and get it right. There, what you are buying is the rig validator, repeatable per-engine presets saved in your .blend file, and editable baked actions. We say this on the box because you should know it before you pay.
+    <strong>Where it is a convenience.</strong> For one armature with IK and drivers, one action in the file and nothing on the NLA, Blender's own exporters already bake constraints and get it right. There, what you are buying is the rig validator, repeatable per-engine presets saved in your .blend file, and editable baked actions. We say this on the box because you should know it before you pay.
   </div>
 
   <figure class="wide-only">
@@ -128,7 +128,7 @@
   </ul>
 
   <h2>In Blender, for real</h2>
-  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.2.4 installed (1.2.5 changes nothing they show), shown at its real size (the dialog a little smaller, to fit this column), or a Godot 4.7 render of its files: not a mockup. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip, each on its own unmuted NLA track (as after Push Down), and her legs in IK. Each image links to the full Blender window.</p>
+  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.2.4 installed, then re-captured on 1.2.5, where the panel and the dialog are pixel-identical, shown at its real size (the dialog a little smaller, to fit this column), or a Godot 4.7 render of its files: not a mockup. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip, each on its own unmuted NLA track (as after Push Down), and her legs in IK. Each image links to the full Blender window.</p>
   <div class="pair">
     <figure>
       <a href="img/character-01-blender-rain-clips.png"><img class="ui" src="img/panel-before-export.png" alt="The Rigbake sidebar tab at real size with Rain's armature selected: Armature: RIG-rain, Validate Rig for Export, the Godot preset, the file it will write, ~/projects/rain/export/RIG-rain.glb, and '3 clips: Walk, Run, Idle' above the Export Game-Ready button, with Preset Settings closed below it" width="256" height="344" loading="lazy"></a>
@@ -197,10 +197,10 @@
     <tr><th>Scenario</th><th>Plain Blender export</th><th>Rigbake</th></tr>
     <tr><td>Deform rig driven by a separate control rig, exported alone</td><td>0 animations (glTF and FBX)</td><td>One clip per action, exact</td></tr>
     <tr><td>Two clips on unmuted NLA tracks (for example after Push Down), IK target keyed in one, plain FBX</td><td>4 takes for 2 clips, two of them wrong by 0.60 m / 0.82 rad</td><td>2 takes, exact</td></tr>
-    <tr><td>Single rig with IK, Copy Rotation, and a driver, one clip</td><td>Correct already</td><td>Correct; validator and presets are the value</td></tr>
+    <tr><td>Single rig with IK, Copy Rotation, and a driver, one action in the file, nothing on the NLA</td><td>Correct already</td><td>Correct; validator and presets are the value</td></tr>
   </table>
   <p id="takes"><strong>Why the take counts differ.</strong> Blender's default FBX export (All Actions and NLA Strips both on) writes each clip on an unmuted NLA track twice, once under the track's name and once as <code>Rig|Clip</code>, and adds every other action in the file that fits the rig. Tracks are unmuted after Push Down, for example. Our minimal test rig has two unmuted tracks and no other actions: 4 takes for 2 clips. Rain's three clips are on unmuted tracks and her file adds 17 face-rig pose actions: 23 takes for 3 clips. Ellie's three are on unmuted tracks and her file adds 16 rig pose actions, a camera pose library and a shader action: 24 takes for 3 clips. Stashed clips are different: Stash puts a clip on a muted track, which the FBX exporter skips, so each stashed clip is written once, as <code>Rig|Clip</code>. It can still be wrong: in our checks with Blender 4.2.23, a stashed Attack clip came out 0.56 m off. Rigbake writes one take per clip, named after the action, in each case.</p>
-  <p>We build each rig in code, export it with Blender's defaults and with Rigbake, re-import the file into Blender, and compare every deform bone with the live rig. <strong>Exact</strong> in the table means every bone within 1e-5 m of the live rig, on these cases and on three more buyer-style rigs (the tests fail above 1 mm or 0.001 rad). The measurements come from our automated test suite, which runs on Blender 4.2, 4.5, and 5.0.</p>
+  <p>We build each rig in code, export it with Blender's defaults and with Rigbake, re-import the file into Blender, and compare every deform bone with the live rig. <strong>Exact</strong> in the table means every bone within 1e-5 m of the live rig, on these cases and on three more buyer-style rigs (the tests fail above 1 mm or 0.001 rad). The measurements come from our automated test suite, which runs in full on Blender 4.2 and 5.0; on 4.5 its FBX re-import checks are skipped, because 4.5's own FBX importer misreads multi-take files.</p>
   <p><strong>How exact in Godot.</strong> The exported files are exact. Godot's default import re-samples each clip at its Animation &gt; FPS setting, and its import Optimizer can thin keys: on fast motion our every-frame check measured up to 13 cm. With Animation &gt; FPS set to the Blender frame rate and the AnimationPlayer's Optimizer turned off, every bone matched Blender within 0.0002 m in our check. The <a href="quick-start.html#godot">quick start</a> shows both settings.</p>
 </main>
 <script>
