@@ -52,6 +52,8 @@
   .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
   .pair figure { flex: 0 1 256px; margin: 0; }
   .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
   .hero { display: block; width: 100%; max-width: 640px; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
   .fine { font-size: 15px; color: var(--muted); }
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
@@ -60,6 +62,7 @@
     h1 { margin-top: 28px; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
     table { font-size: 14px; }
     th, td { padding: 6px; }
   }
