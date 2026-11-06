@@ -71,7 +71,7 @@
   <div class="buy">
     <p class="price"><strong>Free for up to 10 users</strong>, with every feature. From 11 users, <strong>$0.25 per user per month</strong>, less above 100 users (<a href="#pricing">every tier</a>), billed by Atlassian.</p>
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on the Atlassian Marketplace</a></p>
-    <p class="note" id="buy-note">Listing in review: not available to install yet. This button links to the Marketplace listing once Atlassian has approved it. For a note when it is live, email <a href="mailto:support@ochrestack.com?subject=Attachkeep%20listing">support@ochrestack.com</a>.</p>
+    <p class="note" id="buy-note">Coming to the Atlassian Marketplace: not on the Marketplace yet, so it can't be installed today. This button will link to the listing once Atlassian has approved it. For a note when it is live, email <a href="mailto:support@ochrestack.com?subject=Attachkeep%20listing">support@ochrestack.com</a>.</p>
     <p>For Confluence Cloud (Atlassian Forge). Not for Confluence Data Center or Server. English only. Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. <a href="#documentation">Documentation and install steps</a></p>
   </div>
 
@@ -97,7 +97,7 @@
     <li><strong>Uploads from people who have left.</strong> Filter to <em>uploader no longer active</em>, and combine it with space, file type, minimum size, uploaded before a date, and unused only.</li>
     <li><strong>Preview, dry run, then the space trash.</strong> The preview shows the count, megabytes and list. The dry run checks every file again (it still exists, it is on the same page, it is still unused, it isn't protected) and changes nothing. The real run moves each file to its space trash in the background, up to 1,000 files a run. One failure never stops the others, and the summary gives Confluence's reason for each.</li>
     <li><strong>Your rules win.</strong> Files with your protected label (<code>keep</code> by default) and every file in a space on your exclusion list can't be selected, previewed for deletion or deleted, even by a direct request to the app.</li>
-    <li><strong>On the record.</strong> The Activity tab lists every scan, dry run and delete run: who ran it, when, the filters, the file count, megabytes and failures. Each delete run lists the files it moved, with links to their pages.</li>
+    <li><strong>On the record.</strong> The Activity tab lists every scan, dry run and delete run: who ran it, when, the filters, the file count, megabytes and failures. Each delete run lists the files it moved, with links to their pages. <strong>Download CSV</strong> gives you the filtered file list, or every file of a dry run or delete run with its result and reason, to attach to a change ticket or keep for your records.</li>
     <li><strong>Confluence administrators only</strong>, checked on the server against Confluence on every request. Everyone else, space administrators included, sees an explanation.</li>
   </ul>
 
@@ -207,13 +207,13 @@
   <h3>Does scanning change anything?</h3>
   <p>No. The scan only reads. Nothing moves until you confirm a delete run, and you can run a dry run first.</p>
   <h3>Can I undo a delete?</h3>
-  <p>Yes. Files go to their space trash, and a space administrator can restore them there (Space settings &gt; Trash). Attachkeep never purges. The Activity tab lists every moved file with a link to its page.</p>
+  <p>Yes. Files go to their space trash, and a space administrator can restore them there (Space settings &gt; Trash). Attachkeep never purges. The Activity tab lists every moved file with a link to its page. On our test site, a file Attachkeep had moved to the trash was restored through Confluence's API and was current again.</p>
   <h3>What about draw.io and Gliffy diagrams?</h3>
   <p>These macros keep the diagram as an attachment and name it in a parameter. Any macro parameter on the site that equals a file's name, with or without its extension, keeps every file of that name. This errs toward keeping files: a panel titled "Roadmap" also keeps "Roadmap.png".</p>
   <h3>What about restricted pages?</h3>
   <p>Pages whose restrictions exclude the app aren't read. Their own files are listed as "Not checked" and never called unused. A link <em>from</em> such a page to a file on another page can't be seen.</p>
   <h3>How large a site does it handle?</h3>
-  <p>Up to 1,000 files per delete run. On a real Confluence Cloud site, with a 20,000-file list stored in the app, each request on the Attachments tab took about 2.1 to 2.6 seconds inside the app; Forge allows 25. Larger lists, and scan times on very large sites, have not been measured yet. The progress bar shows how far a scan has got.</p>
+  <p>Up to 1,000 files per delete run. On a real Confluence Cloud site, with a 20,000-file list stored in the app, each request on the Attachments tab took between 2.1 and 2.8 seconds inside the app over five runs; Forge allows 25. Larger lists, and scan times on very large sites, have not been measured yet. The progress bar shows how far a scan has got.</p>
   <h3>Are old versions of a file deleted or counted?</h3>
   <p>No. Size and upload date are those of the current version, and old versions are not touched.</p>
 
@@ -224,15 +224,29 @@
     <li>No purge, no deleting old versions, no moving or downloading files, no scheduled clean-ups.</li>
     <li>A file moved to another page after the scan is skipped by the dry run and the delete run, with "run the scan again".</li>
     <li>Spaces are shown by their key, not their name.</li>
-    <li>No CSV export: the Activity tab is the record of each run, with every moved file and a link to its page.</li>
+    <li>If your browser won't save a download from inside Confluence, the CSV opens in a text box for you to copy instead.</li>
   </ul>
 
   <h2 id="tested">How we tested</h2>
-  <p>One test suite installs Attachkeep on a real Confluence Cloud site, builds a space through Confluence's API, and runs a scan, a dry run and a delete run through the app itself: 71 of 71 checks passed. Files referenced from another page, a blog post, a footer comment, an inline comment or a comment reply; files shown by the Attachments and Gallery macros; draw.io and Gliffy macros, including diagrams shown from another page; and pasted download, image and preview links were all "In use" with the expected reason. Only the files nothing used moved, they were in their page's trash afterwards, and the dry run predicted the delete run exactly. An automated suite of 86 tests covers the same rules, the permission checks and the activity log.</p>
-  <p>Four things are still to be checked by hand before the listing goes live: the page in a browser (so far the automated suite renders it and clicks through it), restoring a file from the space trash screen (on the real site the trash was checked through Confluence's API), an uploader whose account has really been deactivated (the filter reads Confluence's own account status, and the automated suite covers deactivated and closed accounts), and diagrams drawn by the draw.io and Gliffy apps themselves (the test writes their macros the way those apps store them).</p>
+  <p>One test suite installs Attachkeep on a real Confluence Cloud site, builds a space through Confluence's API, and runs scans, dry runs and a delete run through the app itself. On 6 November 2026 all 78 of its checks passed.</p>
+  <ul>
+    <li>Files referenced from another page, a blog post, a footer comment, an inline comment or a comment reply were all "In use" with the expected reason. So were files shown by the Attachments and Gallery macros, draw.io and Gliffy macros (including diagrams shown from another page), and pasted download, image and preview links.</li>
+    <li>Only the files nothing used moved. They were in their page's trash afterwards, and the dry run had predicted the delete run exactly.</li>
+    <li>A moved file restored from the trash came back as current.</li>
+    <li>A link added in a comment after the scan stopped its file from moving, and the reason named the page the comment is on.</li>
+    <li>The delete run's CSV listed the four moved files, each with a link to its page.</li>
+  </ul>
+  <p>An automated suite of 94 tests covers the same rules, the permission checks, the activity log and the CSV files.</p>
+  <p>Not yet covered on a real site:</p>
+  <ul>
+    <li>Opening the page in a browser. The automated suite renders the page and clicks through it.</li>
+    <li>Restoring through the trash screen. The test restored the file through Confluence's API.</li>
+    <li>An uploader whose account has really been deactivated. The filter reads Confluence's own account status, and the tests cover deactivated and closed accounts.</li>
+    <li>Diagrams drawn by the draw.io and Gliffy apps themselves. The test writes their macros the way those apps store them.</li>
+  </ul>
 
   <h2 id="privacy">Privacy</h2>
-  <p>Your data stays in Atlassian. Attachkeep runs on Atlassian Forge, calls only your site's Confluence API, and has no permission to reach any other server. No analytics, no telemetry. Forge storage holds only the activity log and settings (the protected label and excluded spaces). A run's record includes what that run needs: for the latest scan, the list of files it found, replaced by the next scan. See also the <a href="../privacy.html">privacy policy</a>.</p>
+  <p>Your data stays in Atlassian. Attachkeep runs on Atlassian Forge, calls only your site's Confluence API, and has no permission to reach any other server. No analytics, no telemetry. A CSV download is built from the app's own data and saved to your computer; nothing is sent anywhere else. Forge storage holds only the activity log and settings (the protected label and excluded spaces). A run's record includes what that run needs: for the latest scan, the list of files it found, replaced by the next scan. See also the <a href="../privacy.html">privacy policy</a>.</p>
 
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your site's approximate number of attachments, what you did, and the text Attachkeep showed. We answer every message, usually within one business day. Bug reports and feature requests are welcome at the same address.</p>

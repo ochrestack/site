@@ -91,7 +91,7 @@
     <li>Tick <strong>Uploader no longer active</strong> for files uploaded by deactivated or closed accounts.</li>
     <li>Narrow by space, file type, minimum size or <em>uploaded before</em> a date, or search by file, page or uploader.</li>
   </ul>
-  <p>The list is sorted by size, largest first. The <em>Why</em> column says what keeps each file in use, or that nothing does:</p>
+  <p>The list is sorted by size, largest first. <strong>Download CSV</strong> saves every file your filters show, with all the columns and the reason, for a spreadsheet. The <em>Why</em> column says what keeps each file in use, or that nothing does:</p>
   <table>
     <tr><th>Status</th><th>Example reason</th></tr>
     <tr><td>In use</td><td>referenced from the page "Design review"</td></tr>
@@ -108,13 +108,13 @@
 
   <h2 id="preview">5. Preview and dry run</h2>
   <p><strong>Preview delete…</strong> shows the number of files, the megabytes and the list. It warns if a selected file is in use, and lists any file it left out and why. Choose <strong>Run dry run</strong>.</p>
-  <p>The dry run checks every file again: it still exists, it is still on the same page, it is still unused if you selected it as unused, and it isn't protected. The result shows how many files would move and how many would be skipped, and why. For example, a file someone linked since the scan shows <em>it is in use now</em> with the page that uses it. Nothing has changed yet.</p>
+  <p>The dry run checks every file again: it still exists, it is still on the same page, it is still unused if you selected it as unused, and it isn't protected. The result shows how many files would move and how many would be skipped, and why. For example, a file someone linked since the scan shows <em>it is in use now</em> with the page that uses it, such as <em>it is in use now: referenced from a comment on "Production architecture"</em>. Nothing has changed yet.</p>
 
   <h2 id="delete">6. Delete for real</h2>
-  <p>Choose <strong>Delete these N files for real…</strong>, tick <em>I understand: N files will be moved to the space trash</em>, and confirm. The run moves each file to its space trash in the background. One failure never stops the others. It ends with a summary: files moved, megabytes, and each failure with Confluence's reason.</p>
+  <p>Choose <strong>Delete these N files for real…</strong>, tick <em>I understand: N files will be moved to the space trash</em>, and confirm. The run moves each file to its space trash in the background. One failure never stops the others. It ends with a summary: files moved, megabytes, and each failure with Confluence's reason. <strong>Download CSV</strong> under the summary saves every file of the run with its result and reason, a record you can attach to a change ticket.</p>
 
   <h2 id="restore">7. Restore a file, if you need to</h2>
-  <p>Open the <strong>Activity</strong> tab. For a delete run, <strong>Files moved</strong> lists each file with a link to its page. To bring one back, open that space's trash (<strong>Space settings &gt; Trash</strong>) and choose <strong>Restore</strong>. Attachkeep never empties the trash; that stays with the space administrators.</p>
+  <p>Open the <strong>Activity</strong> tab. For a delete run, <strong>Files moved</strong> lists each file with a link to its page, and <strong>CSV</strong> saves the run's files with their results. To bring one back, open that space's trash (<strong>Space settings &gt; Trash</strong>) and choose <strong>Restore</strong>. Attachkeep never empties the trash; that stays with the space administrators.</p>
 
   <h2 id="limits">Limits</h2>
   <ul>
