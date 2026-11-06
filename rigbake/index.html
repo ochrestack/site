@@ -92,7 +92,7 @@
   <ul>
     <li><strong>Export Game-Ready.</strong> Bakes every bone constraint and driver into plain keys, one new action per clip, from the rest pose, and exports through Blender's own glTF and FBX exporters with documented presets for Godot, Unity, and Unreal, editable and saved with your file. Before you click, the panel shows the file and the clips; after, each clip with its frame range and every warning.</li>
     <li><strong>One clip per action.</strong> The active action and every action on the NLA each become a clip named after the action, also from a control rig, which Rigbake detects. Select the deform rig or its mesh, not the control rig; if both rigs are selected (Select All), Rigbake leaves the control rig out of the file and says so. An action that is neither active nor on the NLA is named in the panel, with a one-click Add to NLA.</li>
-    <li><strong>Validate Rig for Export.</strong> What will break on the way to the engine, most damaging first, each with a one-line fix and a Select button; Apply Scale and Limit Weights in one click. What the export handles or what is fine as it is are notes, not issues.</li>
+    <li><strong>Validate Rig for Export.</strong> What will break on the way to the engine, most damaging first, each with a one-line fix and a Select button; Apply Scale and Limit Weights in one click (Limit Weights names any bone it leaves without weights; Ctrl+Z undoes it). What the export handles or what is fine as it is are notes, not issues.</li>
     <li><strong>Your actions and edits are kept.</strong> Originals are never modified; a baked action you clean up by hand is kept by the next export.</li>
   </ul>
 
