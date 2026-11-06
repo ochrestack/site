@@ -106,7 +106,7 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/rigbake-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 56 s, captions only, no sound: Rain's NLA clips exported with Blender's default FBX export and with Rigbake 1.2.5 (Blender 4.2 LTS), then played in Godot 4.7.2; Rigbake used its Godot preset with Apply Modifiers set to Always for her Mask modifiers. Rain Rig (CC) Blender Foundation | studio.blender.org. <a href="video/rigbake-plain-vs-rigbake.gif">The side by side as a looping GIF</a> (6 MB).</figcaption>
+    <figcaption>The demo, 56 s, captions only, no sound: Rain's NLA clips exported with Blender's default FBX export and with Rigbake 1.2.5 (Blender 4.2 LTS), then played in Godot 4.7.2; Rigbake used its Godot preset with Apply Modifiers set to Always for her Mask modifiers. Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
   </figure>
 
   <div class="box">
@@ -152,13 +152,9 @@
   <figure id="rain">
     <picture>
       <source media="(max-width: 600px)" srcset="img/godot-lists-phone.png" width="318" height="722">
-      <img src="img/character-04-godot-side-by-side.png" alt="Godot 4.7, side by side at the same frame: Blender's default FBX export of Rain with 23 takes, Idle, Run and Walk each listed twice, playing Idle with her legs caught mid-stride from the Run clip; Rigbake's export with exactly Idle, Run and Walk, playing Idle and standing as in Blender" width="1600" height="900" loading="lazy">
+      <img src="img/godot-lists-desktop.png" alt="The two AnimationPlayer lists from Godot 4.7 at the same frame: Blender's default FBX export of Rain with 23 animations, Idle, Run and Walk each listed twice and 17 face-rig pose actions, playing 'RIG-rain|Idle' with the wrong pose; Rigbake's export with 3 animations, Idle, Run and Walk, playing Idle, matching Blender" width="712" height="530" loading="lazy">
     </picture>
-    <figcaption>Left: Blender's default FBX export (File &gt; Export &gt; FBX), 23 takes for 3 clips, and in Idle Run's legs leak in (0.33 m off). Right: Rigbake, 3 takes, posed as in Blender. Same rig in Godot 4.7, same frame, same materials. For this export Rigbake's Apply Modifiers was set to Always (not the default), as its validator advises for her Mask modifiers. On a phone you see the two animation lists.</figcaption>
-  </figure>
-  <figure class="wide-only">
-    <img src="img/godot-lists-desktop.png" alt="The two animation lists from the same Godot render at full size: the plain FBX export's AnimationPlayer with 23 animations, Idle, Run and Walk each listed twice and 17 face-rig pose actions, playing 'RIG-rain|Idle' with the wrong pose; Rigbake's with 3 animations, Idle, Run and Walk, playing Idle, matching Blender" width="712" height="530" loading="lazy">
-    <figcaption>The two animation lists of the image above, at full size: 23 takes against 3.</figcaption>
+    <figcaption>The setup behind the Rain image above, and the animation lists of both files in Godot 4.7. Left: Blender's default FBX export (File &gt; Export &gt; FBX), 23 takes for 3 clips, and in Idle Run's legs leak in (0.33 m off). Right: Rigbake, 3 takes, posed as in Blender. Both files from the same rig, played at the same frame. For this export Rigbake's Apply Modifiers was set to Always (not the default), as its validator advises for her Mask modifiers.</figcaption>
   </figure>
   <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We added the animation clips and simplified two eye materials for the game-engine export. Rain is not included with Rigbake. Rain has no separate control rig; the control-rig case is the Ellie image at the top of this page and the first row of "How we tested" below.</p>
 
