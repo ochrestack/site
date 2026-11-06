@@ -1,41 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
-  <rect width="880" height="420" fill="#FAF7F2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" width="880" height="440" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <rect width="880" height="440" fill="#FAF7F2"/>
   <text x="440" y="36" text-anchor="middle" font-size="16" font-weight="600" fill="#2B2118">Two measured cases, Blender 4.2 / 4.5 / 5.0</text>
 
   <!-- column headers -->
-  <text x="290" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#6B5E52">Plain Blender export, default settings</text>
-  <text x="660" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#C8842B">Rigbake</text>
+  <text x="320" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#6B5E52">Plain Blender export, default settings</text>
+  <text x="680" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#C8842B">Rigbake</text>
 
   <!-- case 1 -->
-  <text x="24" y="118" font-size="14" font-weight="600" fill="#2B2118">Control rig</text>
-  <text x="24" y="138" font-size="12" fill="#6B5E52">deform rig driven by a</text>
-  <text x="24" y="154" font-size="12" fill="#6B5E52">separate control rig,</text>
-  <text x="24" y="170" font-size="12" fill="#6B5E52">exported alone</text>
+  <text x="24" y="122" font-size="14" font-weight="600" fill="#2B2118">Control rig</text>
+  <text x="24" y="142" font-size="12" fill="#6B5E52">deform rig driven by a</text>
+  <text x="24" y="158" font-size="12" fill="#6B5E52">separate control rig,</text>
+  <text x="24" y="174" font-size="12" fill="#6B5E52">exported alone</text>
 
-  <rect x="180" y="100" width="220" height="90" rx="10" fill="#FFFFFF" stroke="#E6DED3"/>
-  <text x="290" y="138" text-anchor="middle" font-size="26" font-weight="700" fill="#2B2118">0</text>
-  <text x="290" y="164" text-anchor="middle" font-size="13" fill="#6B5E52">animations in the file</text>
+  <rect x="190" y="96" width="260" height="104" rx="10" fill="#FFFFFF" stroke="#E6DED3"/>
+  <text x="320" y="140" text-anchor="middle" font-size="26" font-weight="700" fill="#2B2118">0</text>
+  <text x="320" y="168" text-anchor="middle" font-size="13" fill="#6B5E52">animations in the file</text>
 
-  <rect x="550" y="100" width="220" height="90" rx="10" fill="#FFFFFF" stroke="#C8842B" stroke-width="2"/>
-  <text x="660" y="138" text-anchor="middle" font-size="26" font-weight="700" fill="#2B2118">1 per action</text>
-  <text x="660" y="164" text-anchor="middle" font-size="13" fill="#6B5E52">bone error 0, named after the action</text>
+  <rect x="550" y="96" width="260" height="104" rx="10" fill="#FFFFFF" stroke="#C8842B" stroke-width="2"/>
+  <text x="680" y="134" text-anchor="middle" font-size="26" font-weight="700" fill="#2B2118">1 per action</text>
+  <text x="680" y="160" text-anchor="middle" font-size="13" fill="#6B5E52">named after the action</text>
+  <text x="680" y="180" text-anchor="middle" font-size="13" fill="#2B2118">bone error 0</text>
 
   <!-- case 2 -->
-  <text x="24" y="238" font-size="14" font-weight="600" fill="#2B2118">NLA clips, FBX</text>
-  <text x="24" y="258" font-size="12" fill="#6B5E52">Idle and Reach stashed</text>
-  <text x="24" y="274" font-size="12" fill="#6B5E52">on the NLA, with IK</text>
+  <text x="24" y="250" font-size="14" font-weight="600" fill="#2B2118">NLA clips, FBX</text>
+  <text x="24" y="270" font-size="12" fill="#6B5E52">Idle and Reach stashed</text>
+  <text x="24" y="286" font-size="12" fill="#6B5E52">on the NLA, with IK</text>
 
-  <rect x="180" y="220" width="220" height="120" rx="10" fill="#FFFFFF" stroke="#E6DED3"/>
-  <text x="290" y="252" text-anchor="middle" font-size="26" font-weight="700" fill="#2B2118">4 takes</text>
-  <text x="290" y="276" text-anchor="middle" font-size="13" fill="#6B5E52">for 2 clips</text>
-  <text x="290" y="300" text-anchor="middle" font-size="13" fill="#2B2118">two of them wrong:</text>
-  <text x="290" y="320" text-anchor="middle" font-size="13" fill="#2B2118">0.60 m, 0.82 rad off</text>
+  <rect x="190" y="226" width="260" height="124" rx="10" fill="#FFFFFF" stroke="#E6DED3"/>
+  <text x="320" y="260" text-anchor="middle" font-size="26" font-weight="700" fill="#2B2118">4 takes</text>
+  <text x="320" y="284" text-anchor="middle" font-size="13" fill="#6B5E52">for 2 clips</text>
+  <text x="320" y="308" text-anchor="middle" font-size="13" fill="#2B2118">two of them wrong:</text>
+  <text x="320" y="328" text-anchor="middle" font-size="13" fill="#2B2118">0.60 m, 0.82 rad off</text>
 
-  <rect x="550" y="220" width="220" height="120" rx="10" fill="#FFFFFF" stroke="#C8842B" stroke-width="2"/>
-  <text x="660" y="252" text-anchor="middle" font-size="26" font-weight="700" fill="#2B2118">2 takes</text>
-  <text x="660" y="276" text-anchor="middle" font-size="13" fill="#6B5E52">Idle and Reach</text>
-  <text x="660" y="300" text-anchor="middle" font-size="13" fill="#2B2118">both exact</text>
-  <text x="660" y="320" text-anchor="middle" font-size="13" fill="#2B2118">error about 3e-7</text>
+  <rect x="550" y="226" width="260" height="124" rx="10" fill="#FFFFFF" stroke="#C8842B" stroke-width="2"/>
+  <text x="680" y="260" text-anchor="middle" font-size="26" font-weight="700" fill="#2B2118">2 takes</text>
+  <text x="680" y="284" text-anchor="middle" font-size="13" fill="#6B5E52">Idle and Reach</text>
+  <text x="680" y="308" text-anchor="middle" font-size="13" fill="#2B2118">both exact</text>
+  <text x="680" y="328" text-anchor="middle" font-size="13" fill="#2B2118">error about 3e-7</text>
 
-  <text x="440" y="392" text-anchor="middle" font-size="12" fill="#6B5E52">Round-trip tolerance 1 mm and 0.001 rad. Numbers from the test suite in the repository. For a single rig with IK and drivers, plain export is already correct.</text>
+  <text x="440" y="392" text-anchor="middle" font-size="12" fill="#6B5E52">Round-trip tolerance 1 mm and 0.001 rad; numbers from our automated test suite.</text>
+  <text x="440" y="410" text-anchor="middle" font-size="12" fill="#6B5E52">For a single rig with IK and drivers, plain export is already correct.</text>
 </svg>

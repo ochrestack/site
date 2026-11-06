@@ -24,10 +24,21 @@
   th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
   th { color: var(--muted); font-weight: 600; }
   a { color: var(--ochre); }
-  .cta { display: inline-block; background: var(--ochre); color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-right: 12px; }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
   figure { margin: 28px 0; }
-  figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
   figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
+  .narrow-only { display: none; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
 </style>
@@ -39,13 +50,21 @@
 </header>
 <main>
   <h1>Rigbake for Blender</h1>
-  <p class="sub">One clean, correctly named animation clip per action, exported with ready settings for Godot, Unity, and Unreal. Your original actions are never touched.</p>
+  <p class="sub">Control rig or NLA clips? Blender's default export can come out empty or with wrong, duplicated takes. Rigbake exports one clean, correctly named clip per action, with ready settings for Godot, Unity, and Unreal. Your original actions are never touched.</p>
 
-  <p class="price"><strong>$19, one-time, source included</strong> (GPL-3.0-or-later).</p>
-  <p>
-    <span class="cta" style="background:#6B5E52">Direct purchase and Superhive listing: coming shortly</span>
-    <a href="#documentation">Documentation</a>
-  </p>
+  <div class="buy">
+    <p class="price"><strong>$19, one-time, source included</strong> (GPL-3.0-or-later).</p>
+    <p>Not on sale yet: direct purchase and the Superhive listing open soon. <a href="mailto:support@ochrestack.com?subject=Tell%20me%20when%20Rigbake%20is%20available">Tell me when it's available</a>.</p>
+    <p><a href="#documentation">Documentation and install steps</a></p>
+  </div>
+
+  <figure>
+    <video controls playsinline preload="metadata" poster="video/poster.png">
+      <source src="video/rigbake-demo-1080p.mp4" type="video/mp4">
+    </video>
+    <figcaption>59 seconds, captions, no narration. Blender Studio's Ellie (CC BY 4.0) with Idle, Walk, and Run on the NLA. Plain FBX export: 24 takes for 3 clips, the broken Idle stepping and crossing its feet in Godot. Rigbake: 3 takes, each correct.</figcaption>
+  </figure>
+
 
   <div class="box warn">
     <strong>Where it matters.</strong> If your character is driven by a separate control rig, or you keep several clips on the NLA, Blender's default glTF and FBX exports can come out with no animation at all, or with wrong, duplicated FBX takes that are off by more than half a meter. We measured both cases on Blender 4.2, 4.5, and 5.0. Rigbake exports both correctly.
@@ -55,16 +74,15 @@
     <strong>Where it is a convenience.</strong> For a single rig with IK and drivers, Blender's own exporters already bake constraints and get it right. There, what you are buying is the rig validator, repeatable per-engine presets saved in your .blend file, and editable baked actions. We say this on the box because you should know it before you pay.
   </div>
 
-  <figure>
-    <img src="workflow.svg" alt="Diagram: your rig with constraints and drivers, baked from the rest pose into one action per clip, exported as one clean clip per action for Godot, Unity, or Unreal" width="880" height="300">
-    <figcaption>How Rigbake works: validate, bake from the rest pose, export one clip per action.</figcaption>
+  <figure class="wide-only">
+    <img src="workflow.svg" alt="Diagram: your rig with constraints and drivers is validated, baked for you from the rest pose into one action per clip, and exported as one clean clip per action for Godot, Unity, or Unreal" width="880" height="300">
+    <figcaption>How Rigbake works: validate, then export. The export bakes each clip from the rest pose for you.</figcaption>
   </figure>
+  <ol class="narrow-only">
+    <li><strong>Validate Rig for Export</strong> checks the rig. Your rig and its actions are not changed.</li>
+    <li><strong>Export Game-Ready</strong> bakes each clip from the rest pose into plain keys and writes one clean clip per action, as glTF (Godot) or FBX (Unity, Unreal).</li>
+  </ol>
 
-  <h2 id="watch">Watch it, 59 seconds</h2>
-  <video controls playsinline preload="metadata" poster="video/still-1-godot-same-frame-plain-vs-rigbake.png" style="width:100%;border-radius:10px;border:1px solid #E6DED3;background:#2B2118">
-    <source src="video/rigbake-demo-1080p.mp4" type="video/mp4">
-  </video>
-  <p style="font-size:14px;color:#6B5E52;margin-top:8px">Blender Studio's Ellie (CC-BY 4.0) with Idle, Walk, and Run on the NLA. Plain FBX export: 24 takes for 3 clips, the broken Idle stepping and crossing its feet in Godot. Rigbake: 3 takes, each correct. Captions, no narration.</p>
   <figure>
     <img src="video/rigbake-ellie-plain-vs-rigbake.gif" alt="Animated: in Godot, the plain export's Idle take walks and crosses its feet while Rigbake's Idle stands still, both paused on the same frame" width="960" height="540" loading="lazy">
     <figcaption>Same frame, same character: plain export on the left, Rigbake on the right.</figcaption>
@@ -72,49 +90,35 @@
 
   <h2>What it does</h2>
   <ul>
-    <li><strong>Bake Constraints for Export.</strong> Bakes every bone constraint and driver into plain keyframes on a new action per clip, from the rest pose, so the result never depends on where the playhead was. Originals untouched. Hand-edited bakes are kept, not overwritten.</li>
-    <li><strong>Export Game-Ready.</strong> Runs the baked result through Blender's bundled glTF and FBX exporters with explicit, documented settings. Presets for Godot (glTF), Unity (FBX), and Unreal (FBX), editable in the panel and saved with your file. Control rigs: Rigbake detects the driving armature (or you pick it), and with the default settings every one of its actions becomes its own clip.</li>
-    <li><strong>Validate Rig for Export.</strong> Lists every constraint and driver per bone (bones that just follow a control rig are summed up in one line), unapplied or non-uniform scale, vertices with more than four weights, vertex-group problems, object-level constraints, and shape keys that a preset would drop, each with a one-line fix.</li>
+    <li><strong>Export Game-Ready.</strong> Bakes every bone constraint and driver into plain keyframes, one new action per clip, from the rest pose, so the result never depends on where the playhead was, and exports through Blender's bundled glTF and FBX exporters with explicit, documented settings. Presets for Godot (glTF), Unity (FBX), and Unreal (FBX), editable in the panel and saved with your file. The panel shows the file and the clips before you click, and keeps the result after: each clip with its frame range, and every warning.</li>
+    <li><strong>One clip per action.</strong> With the default settings, the active action and every action on the NLA, stashed ones included, each become their own clip, named after the action. Control rigs: Rigbake detects the driving armature (or you pick it) and exports its actions the same way. An action that is neither active nor on the NLA is not exported; the panel names it, with a one-click Add to NLA.</li>
+    <li><strong>Validate Rig for Export.</strong> Lists what will break on the way to the engine, most damaging first, each with a one-line fix: shape keys a preset would drop, motion keyed on the armature object, unapplied or non-uniform scale, vertices with more than four weights, vertex-group problems. Constraints and drivers that the export bakes are listed as notes, not issues. Repeats are summed up in one line; the full report is one click away.</li>
+    <li><strong>Your actions and your edits are kept.</strong> Originals are never modified. If you clean up a baked action by hand, the next export keeps it and marks it "hand-edited, kept".</li>
   </ul>
 
-  <h2>Measured, not promised</h2>
-  <figure>
-    <img src="before-after.svg" alt="Figure: control rig case, plain export 0 animations versus Rigbake one per action; NLA clips case, plain FBX 4 takes for 2 clips with two wrong versus Rigbake 2 exact takes" width="880" height="420">
-    <figcaption>The two cases where plain export goes wrong, measured on Blender 4.2, 4.5, and 5.0.</figcaption>
-  </figure>
-
-  <table>
-    <tr><th>Scenario</th><th>Plain Blender export</th><th>Rigbake</th></tr>
-    <tr><td>Deform rig driven by a separate control rig, exported alone</td><td>0 animations (glTF and FBX)</td><td>One clip per action, bone error 0</td></tr>
-    <tr><td>Two clips stashed on the NLA with IK, plain FBX</td><td>4 takes for 2 clips, two of them wrong by 0.60 m / 0.82 rad</td><td>2 takes, both exact</td></tr>
-    <tr><td>Single rig with IK, Copy Rotation, and a driver</td><td>Correct already</td><td>Correct; validator and presets are the value</td></tr>
-  </table>
-  <p>Round-trip tolerance is 1 mm and 0.001 rad; measured error on the cases above, and on the customer gate's three rigs, is below 1e-5 m in a Blender re-import. Every number comes from the test suite in the repository, which runs on Blender 4.2, 4.5, and 5.0.</p>
-  <p><strong>How exact in Godot.</strong> The exported files are exact: re-imported into Blender, every bone is within 1e-5 m. Godot's default import re-samples each clip at its Animation &gt; FPS setting and its import Optimizer can thin keys: the customer gate measured up to about 3 cm on fast motion, and our every-frame check of the same rigs up to 13 cm. With Animation &gt; FPS set to the Blender frame rate and the AnimationPlayer's Optimizer turned off, every bone matched Blender within 0.0002 m in our check. The <a href="quick-start.html#godot">quick start</a> shows both settings.</p>
-
   <h2>In Blender, for real</h2>
-  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.2.0 installed, or a Godot 4.7 render of its files: not a mockup. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip on the NLA and her legs in IK.</p>
+  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.3.0 installed, or a Godot 4.7 render of its files: not a mockup. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip on the NLA and her legs in IK.</p>
   <figure>
-    <img src="img/character-01-blender-rain-clips.png" alt="Blender 4.2 with the character Rain mid-run in the viewport and the Rigbake sidebar tab open: her three baked clips Walk, Run and Idle listed under the Bake button, the Godot preset selected, and the NLA editor below showing her Idle, Run and Walk tracks" width="1600" height="900" loading="lazy">
-    <figcaption>Rain's clip library on the NLA, baked in one click with the default settings: Walk, Run and Idle each become their own baked action, listed in the Rigbake tab. Her original actions, constraints and NLA tracks are left as they were.</figcaption>
+    <img src="img/character-01-blender-rain-clips.png" alt="Blender 4.2 with the character Rain mid-run in the viewport and the Rigbake sidebar tab open: Validate Rig for Export, the Godot preset, the file it will write and '3 clips: Walk, Run, Idle' above the Export Game-Ready button; the NLA editor below shows her Idle, Run and Walk tracks" width="1600" height="900" loading="lazy">
+    <figcaption>Rain's clip library on the NLA. With the default settings, the Rigbake tab says what the export will write before you click: the file, and her three clips, Walk, Run and Idle.</figcaption>
   </figure>
   <figure>
-    <img src="img/character-02-validate-popup.png" alt="The Validate Rig for Export popup next to Rain in the viewport, listing constrained bones of her rig with a one-line fix each and how many more findings there are; the full report in a text block below" width="1600" height="900" loading="lazy">
-    <figcaption>Validate Rig for Export on a production rig: every constrained bone, weight, vertex-group and shape-key issue, each with its fix. The popup shows the first findings; the text block has all of them.</figcaption>
+    <img src="img/character-02-validate-popup.png" alt="The Validate Rig for Export dialog next to Rain, titled '6 issues, 1 note in RIG-rain': meshes with more than four bone weights per vertex, meshes whose modifiers stay unapplied to keep shape keys, vertex groups with no weights or no matching bone, deform bones without weights, each with its fix, then one note for her 1,806 constrained bones, baked on export" width="1600" height="900" loading="lazy">
+    <figcaption>Validate Rig for Export on a production rig: six issues, each summed up across her meshes with its fix, then one note for the 1,806 constrained bones the export bakes. The full report names every bone and vertex group.</figcaption>
   </figure>
   <figure>
-    <img src="img/character-03-export-summary.png" alt="Rain in the viewport with Blender's Info editor below showing Rigbake's summaries: three actions baked, and RIG-rain exported with three animations, Walk, Run and Idle, as glTF with the Godot preset" width="1600" height="900" loading="lazy">
-    <figcaption>Export Game-Ready reports what it wrote: the file, the preset, and each animation with its frame range. Warnings, such as shape keys a preset drops, are spelled out mesh by mesh.</figcaption>
+    <img src="img/character-03-export-summary.png" alt="Rain in the viewport and the Rigbake tab after Export Game-Ready with the default settings: the Last Export box names RIG-rain.glb, lists Walk 1-25, Run 1-17 and Idle 1-49, and notes the validator's issues and that her modifiers were left unapplied to keep her shape keys" width="1600" height="900" loading="lazy">
+    <figcaption>After Export Game-Ready with the default settings, the Last Export box keeps the file, each clip with its frame range, and what to check: the validator's issues, and that her modifiers were left unapplied so her shape keys are kept (Apply Modifiers: Auto).</figcaption>
   </figure>
   <figure>
     <img src="img/character-04-godot-side-by-side.png" alt="Godot 4.7, side by side at the same frame: Blender's default FBX export of Rain with 23 takes, Idle, Run and Walk each listed twice, playing Idle with her legs caught mid-stride from the Run clip; Rigbake's export with exactly Idle, Run and Walk, playing Idle and standing as in Blender" width="1600" height="900" loading="lazy">
-    <figcaption>The same rig in Godot 4.7, same frame. Left, File &gt; Export &gt; FBX with Blender's defaults: 23 takes for 3 clips, and in Idle her legs keep running from the Run clip (0.33 m off). Right, Rigbake's Godot preset: one take per clip, named after the action, posed as in Blender. Both sides wear the same materials, so only the animation differs.</figcaption>
+    <figcaption>The same rig in Godot 4.7, same frame. Left, File &gt; Export &gt; FBX with Blender's defaults: 23 takes for 3 clips, and in Idle her legs keep running from the Run clip (0.33 m off). Right, Rigbake's Godot preset with Apply Modifiers set to Always, which her clothing masks need in an engine: one take per clip, named after the action, posed as in Blender. Both sides wear the same materials, so only the animation differs.</figcaption>
   </figure>
-  <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We added the animation clips and simplified two eye materials for the game-engine export. Rain is not included with Rigbake. Rain has no separate control rig; the control-rig case is shown in the table above.</p>
+  <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We added the animation clips and simplified two eye materials for the game-engine export. Rain is not included with Rigbake. Rain has no separate control rig; the control-rig case is in "How we tested" below.</p>
 
   <h2>Details</h2>
   <ul>
-    <li>Price: $19, one-time, source included. Direct purchase and the Superhive listing are coming shortly.</li>
+    <li>Price: $19, one-time, source included. Not on sale yet; <a href="mailto:support@ochrestack.com?subject=Tell%20me%20when%20Rigbake%20is%20available">ask to be told when it is</a>.</li>
     <li>Blender 4.2 or later, installed as an extension from a zip. Verified in a real Blender 4.2 LTS window and in Godot 4.7. The Unity preset's FBX was checked through Godot's FBX importer. The Unreal preset has not been checked in Unreal Engine. Neither has been opened in Unity or Unreal.</li>
     <li>GPL-3.0-or-later. Full source code included with your purchase.</li>
     <li>No telemetry, no analytics, no network calls of any kind.</li>
@@ -125,7 +129,7 @@
   <p>The full manual (<code>README.md</code>) and a one-page quick start ship inside the download. The quick start is also online: <a href="quick-start.html">Rigbake quick start</a>.</p>
   <h3>Install</h3>
   <ol>
-    <li>Download <code>rigbake-1.2.0.zip</code>. Do not unzip it.</li>
+    <li>Download <code>rigbake-1.3.0.zip</code>. Do not unzip it.</li>
     <li>In Blender 4.2 or later, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.</li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Rigbake</strong> tab.</li>
@@ -138,10 +142,26 @@
 
   <h2>Known limits</h2>
   <ul>
-    <li>Only bone transforms are baked. Motion keyed on the armature object itself is reported by the validator, not baked.</li>
-    <li>Shape keys, custom properties, and B-Bone properties are not baked; keys are written on whole frames.</li>
+    <li>Only bone motion is baked. Shape keys and their animation are exported as they are (Godot preset), or dropped with a warning (FBX presets, when the mesh has other modifiers).</li>
+    <li>Motion keyed on the armature object itself is not exported; the validator and the export summary warn about it. Put it on a root bone.</li>
+    <li>The default exports the active action and every action on the NLA. Other actions of the rig are named in the panel, not exported, until you add them to the NLA.</li>
+    <li>Keys are baked on whole frames. One control rig per deform rig. One file per export.</li>
     <li>Blender 4.5's own FBX importer misreads multi-take files; exports from Rigbake are correct, but re-importing them into 4.5 for checking is not reliable. Use 4.2 or 5.0 to verify, or your engine.</li>
   </ul>
+
+  <h2 id="tested">How we tested</h2>
+  <figure class="wide-only">
+    <img src="before-after.svg" alt="Figure: control rig case, plain export 0 animations versus Rigbake one per action; NLA clips case, plain FBX 4 takes for 2 clips with two wrong versus Rigbake 2 exact takes" width="880" height="440">
+    <figcaption>The two cases where plain export goes wrong, measured on Blender 4.2, 4.5, and 5.0.</figcaption>
+  </figure>
+  <table>
+    <tr><th>Scenario</th><th>Plain Blender export</th><th>Rigbake</th></tr>
+    <tr><td>Deform rig driven by a separate control rig, exported alone</td><td>0 animations (glTF and FBX)</td><td>One clip per action, bone error 0</td></tr>
+    <tr><td>Two clips stashed on the NLA with IK, plain FBX</td><td>4 takes for 2 clips, two of them wrong by 0.60 m / 0.82 rad</td><td>2 takes, both exact</td></tr>
+    <tr><td>Single rig with IK, Copy Rotation, and a driver</td><td>Correct already</td><td>Correct; validator and presets are the value</td></tr>
+  </table>
+  <p>We build each rig in code, export it with Blender's defaults and with Rigbake, re-import the file, and compare every deform bone with the live rig. Round-trip tolerance is 1 mm and 0.001 rad; the measured error on the cases above, and on three more buyer-style rigs, is below 1e-5 m in a Blender re-import. Every number comes from our automated test suite, which runs on Blender 4.2, 4.5, and 5.0.</p>
+  <p><strong>How exact in Godot.</strong> The exported files are exact. Godot's default import re-samples each clip at its Animation &gt; FPS setting, and its import Optimizer can thin keys: on fast motion our every-frame check measured up to 13 cm. With Animation &gt; FPS set to the Blender frame rate and the AnimationPlayer's Optimizer turned off, every bone matched Blender within 0.0002 m in our check. The <a href="quick-start.html#godot">quick start</a> shows both settings.</p>
 </main>
 <footer>
   <a href="../privacy.html">Privacy</a>
