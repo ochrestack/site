@@ -48,6 +48,12 @@
   .slot { aspect-ratio: 1840 / 900; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 10px; background: #fff; color: var(--muted); font-size: 15px; }
   .said { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; margin: 6px 0 14px; padding: 6px 0 6px 14px; border-left: 3px solid var(--ochre); }
   .narrow-only { display: none; }
+  .run { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 4px 14px; margin: 16px 0 8px; overflow-x: auto; }
+  .run table { margin: 8px 0; font-size: 14px; min-width: 560px; }
+  .lz { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; padding: 1px 6px; border-radius: 3px; white-space: nowrap; }
+  .lz.used { background: #DCFFF1; color: #216E4E; }
+  .lz.unused { background: #FFF7D6; color: #7F5F01; }
+  .lz.blocked { background: #F1F2F4; color: #44546F; }
   @media (max-width: 600px) {
     h1 { margin-top: 28px; }
     .wide-only { display: none; }
@@ -106,6 +112,25 @@
   <p class="said">Dry run: 4 files (0.3 MB) would be moved to the space trash. Nothing was changed.</p>
   <p class="said">4 files (0.3 MB) moved to the space trash. A space administrator can restore any of them from the space trash.</p>
   <p>Only the four files nothing used had moved; the twenty files that something on the site used, or that carried the protected label, were all still in place.</p>
+
+  <h3 id="list">What the file list said on that site</h3>
+  <p>Rows from the same test run (6 November 2026), with the status and reason the app gave each file, word for word. The site was a test space, so the names are plain; the layout below is ours, not a screenshot of Confluence.</p>
+  <div class="run">
+  <table>
+    <tr><th>File</th><th>Page</th><th>Status</th><th>Why</th></tr>
+    <tr><td>a-big-unused.bin</td><td>Release notes</td><td><span class="lz unused">Unused</span></td><td>no page, blog post or comment on the site references this file</td></tr>
+    <tr><td>a-comment.txt</td><td>Release notes</td><td><span class="lz used">In use</span></td><td>referenced from a comment on "Design review"</td></tr>
+    <tr><td>a-reply.txt</td><td>Release notes</td><td><span class="lz used">In use</span></td><td>referenced from a comment on "Design review" (a reply)</td></tr>
+    <tr><td>budget-2026.txt</td><td>Release notes</td><td><span class="lz used">In use</span></td><td>referenced from the page "Quarterly review" (a pasted download link)</td></tr>
+    <tr><td>contract-acme.txt</td><td>Contracts</td><td><span class="lz used">In use</span></td><td>shown by the Attachments macro on its own page</td></tr>
+    <tr><td>team-photo.txt</td><td>Photo store</td><td><span class="lz used">In use</span></td><td>shown by the Gallery macro on "Team page"</td></tr>
+    <tr><td>System context.png</td><td>Diagram source</td><td><span class="lz used">In use</span></td><td>named by a macro on "System overview" (a draw.io diagram shown from another page)</td></tr>
+    <tr><td>a-keep.txt</td><td>Release notes</td><td><span class="lz blocked">Unused</span></td><td>no page, blog post or comment on the site references this file. Can't be selected: protected by the label "keep"</td></tr>
+  </table>
+  </div>
+  <p class="note">Page titles are shortened: each one also carried the run's number. Words in brackets say how the file was linked; they are not part of the app's text.</p>
+  <p>The delete run's CSV, first row, as the app wrote it (the account id, space key and page address are left out here):</p>
+  <p class="said">Delete run,2026-11-06 22:47 UTC,&lt;account id&gt;,a-big-unused.bin,Release notes,…,250000,0.25,Moved to the space trash,,https://…/wiki/spaces/…/pages/…</p>
 
   <!-- Screenshot slots for the session in Confluence (control status.md, shot list). Hidden until each image exists:
        paste the <img> from the comment in place of the div, remove "hidden" from the figure and from the section,
