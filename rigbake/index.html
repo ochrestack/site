@@ -63,6 +63,10 @@
     .wide-only { display: none; }
     .narrow-only { display: block; }
     .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
     table { font-size: 14px; }
     th, td { padding: 6px; }
   }
@@ -143,11 +147,12 @@
     </figure>
   </div>
   <figure>
-    <div class="scroll-x"><a href="img/character-02-validate-popup.png"><picture>
+    <p class="swipe-hint narrow-only">Rigbake's rig check on Rain, at Blender's own UI size: swipe the dialog sideways to read each line &rarr;</p>
+    <div class="swipe-wrap"><div class="scroll-x"><a href="img/character-02-validate-popup.png"><picture>
       <source media="(max-width: 600px)" srcset="img/validate-dialog-phone.png 2x" width="764" height="342">
       <img class="ui" src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Rain: '7 issues, 2 notes in RIG-rain'; meshes with more than four bone weights per vertex with Limit Weights and Select buttons, meshes whose modifiers stay unapplied to keep shape keys, two meshes whose Mask modifiers then hide nothing in the engine, vertex groups with no weights or no matching bone, deform bones without weights, each with its fix and a Select button in one column; then a note that her shoes keep their shape keys over an unapplied Subdivision, fine for most games, and one more note in the full report; Close and Open Full Report" width="764" height="766" loading="lazy">
-    </picture></a></div>
-    <figcaption>Validate Rig for Export on a production rig (tap the image for the full Blender window): seven issues, each summed up across her meshes with its fix, then notes for what is fine as it is or handled by the export (her 1,806 constrained bones are baked on export). The full report names every bone and vertex group.<span class="narrow-only"> On a phone: the header and the first three issues at Blender's own size; swipe the dialog sideways to read each line.</span></figcaption>
+    </picture></a></div></div>
+    <figcaption>Validate Rig for Export on a production rig (tap the image for the full Blender window): seven issues, each summed up across her meshes with its fix, then notes for what is fine as it is or handled by the export (her 1,806 constrained bones are baked on export). The full report names every bone and vertex group.<span class="narrow-only"> On a phone: the header and the first three issues.</span></figcaption>
   </figure>
   <figure id="rain">
     <picture>
@@ -205,6 +210,16 @@
   <p>We build each rig in code, export it with Blender's defaults and with Rigbake, re-import the file into Blender, and compare every deform bone with the live rig. <strong>Exact</strong> in the table means every bone within 1e-5 m of the live rig, on these cases and on three more buyer-style rigs (the tests fail above 1 mm or 0.001 rad). The measurements come from our automated test suite, which runs in full on Blender 4.2 and 5.0; on 4.5 its FBX re-import checks are skipped, because 4.5's own FBX importer misreads multi-take files.</p>
   <p><strong>How exact in Godot.</strong> The exported files are exact. Godot's default import re-samples each clip at its Animation &gt; FPS setting, and its import Optimizer can thin keys: on fast motion our every-frame check measured up to 13 cm. With Animation &gt; FPS set to the Blender frame rate and the AnimationPlayer's Optimizer turned off, every bone matched Blender within 0.0002 m in our check. The <a href="quick-start.html#godot">quick start</a> shows both settings.</p>
 </main>
+<script>
+// Hide the right-edge fade of the phone validator box once it is scrolled to the end.
+(function () {
+  var box = document.querySelector(".swipe-wrap .scroll-x");
+  if (!box) return;
+  box.addEventListener("scroll", function () {
+    box.parentNode.classList.toggle("at-end", box.scrollLeft + box.clientWidth >= box.scrollWidth - 2);
+  }, { passive: true });
+})();
+</script>
 <script>
 // ?src=<venue> sends the Buy button to that venue's Polar checkout link, so each order is counted for the venue it came from.
 (function () {
