@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="Blender export has no animations? The control-rig case">
 <meta name="twitter:description" content="A deform rig that follows a control rig has no actions of its own, so Blender's default glTF and FBX exports write 0 animations. Why, the free workaround, and its limit.">
 <meta name="twitter:image" content="https://ochrestack.com/rigbake/img/control-rig-godot-2x1.png">
-<meta name="twitter:image:alt" content="Ellie with a control rig in Godot 4.7: plain glTF export, 0 animations, T-pose; Rigbake's export, 3 animations, playing Idle">
+<meta name="twitter:image:alt" content="Ellie with a control rig in Godot 4.7: plain glTF export, 0 animations, T-pose; Rigbake's export, 3 animations, playing Run">
 <link rel="icon" href="../../icon.svg" type="image/svg+xml">
 <style>
   :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
@@ -95,7 +95,7 @@
   </table>
   <p>The result was the same on Blender 4.2, 4.5 and 5.0. In a separate check, a tester built a second character from scratch in this style (a control rig with IK feet and four clips; a deform rig whose 18 bones follow it through Copy Transforms) and got the same: 0 animations in glTF and in FBX, both when re-imported into Blender and when imported into Godot 4.7.</p>
   <figure>
-    <img src="../img/control-rig-ellie-godot.png" alt="Godot 4.7, the same scene: on the left Ellie from Blender's default glTF export stands in her T-pose bind pose, labelled 'Plain glTF export, AnimationPlayer: none, 0 animations'; on the right Ellie from Rigbake's export stands in her Idle pose, labelled 'Rigbake, 3 animations: Idle, Run, Walk, playing Idle'" width="1600" height="900" loading="lazy">
+    <img src="../img/control-rig-ellie-godot.png" alt="Godot 4.7, the same scene: on the left Ellie from Blender's default glTF export stands in her T-pose bind pose, labelled 'Plain glTF export, AnimationPlayer: none, 0 animations'; on the right Ellie from Rigbake's export is mid-stride in Run, labelled 'Rigbake, 3 animations: Idle, Run, Walk, playing Run'" width="1600" height="900" loading="lazy">
     <figcaption>The same pattern on a production character, in Godot 4.7: plain glTF gives 0 animations (left), and Rigbake gives 3 clips (right). The character is Blender Studio's Ellie (CC BY 4.0). Her own rig holds the Idle, Walk and Run keys on its NLA. A separate deform rig of her 312 deform bones follows it through Copy Transforms, and her meshes are bound to that deform rig. Blender 4.2's default glTF and FBX exports of the deform rig and meshes both contain 0 animations. Rigbake's Godot preset wrote Idle, Run and Walk, each matching the live rig within 0.00001 m on every deform bone at the frames we checked. Both sides use the same flat colours, and her teeth and fanny-pack zipper are bone-parented on both sides, because glTF can't carry their shaders or Surface Deform.</figcaption>
   </figure>
 
