@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attachkeep quick start: first scan and first clean-up</title>
+<meta name="description" content="Install Attachkeep for Confluence Cloud, scan your site, find unused attachments and uploads from people who have left, dry-run, move them to the space trash, and restore one if you need it.">
+<link rel="canonical" href="https://ochrestack.com/attachkeep/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .slot { aspect-ratio: 1840 / 900; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 6px; background: #fff; color: var(--muted); font-size: 15px; }
+  .slot strong { color: var(--ink); }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  @media (max-width: 600px) {
+    .slot { aspect-ratio: auto; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Attachkeep quick start</h1>
+  <p>Your first scan and your first clean-up, step by step. Back to the <a href="index.html">Attachkeep product page</a>.</p>
+
+  <h2 id="install">Install (Confluence Cloud)</h2>
+  <ol>
+    <li>In Confluence, open <strong>Apps &gt; Explore more apps</strong>, search for <em>Attachkeep</em> (once the listing is live), and choose <strong>Get app</strong>.</li>
+    <li>A site administrator approves the permissions. Each one is explained on the <a href="index.html#documentation">product page</a>.</li>
+    <li>Open <strong>Confluence settings</strong> (the gear) &gt; <strong>Attachment cleanup</strong>, in the Apps section of the sidebar.</li>
+  </ol>
+  <p>Only Confluence administrators can use the page. Everyone else, space administrators included, sees an explanation that a Confluence administrator is needed.</p>
+
+  <h2 id="settings">Before the first scan: protect what must stay</h2>
+  <p>Open the <strong>Settings</strong> tab. Set the <strong>protected label</strong> (<code>keep</code> unless you change it) and choose any <strong>excluded spaces</strong>. Files carrying the label, and every file in an excluded space, are listed but can't be selected or deleted. Runs always use the current settings; re-run the scan to update the list's markings.</p>
+  <figure id="shot-6">
+    <!-- Shot 6. Replace the div with:
+    <img src="img/shot-6-settings.png" alt="Attachkeep's Settings tab: the protected label set to keep, and the spaces excluded from clean-up" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 6, to be added: Attachkeep's Settings tab, the protected label set to keep, and the spaces excluded from clean-up">
+      <strong>Screenshot 6, to be added from Confluence</strong>
+      <span>The Settings tab: the protected label and the excluded spaces.</span>
+    </div>
+    <figcaption>The protected label (<code>keep</code> by default) and the spaces Attachkeep must never touch.</figcaption>
+  </figure>
+
+  <h2 id="scan">1. Scan the site</h2>
+  <p>On the <strong>Attachments</strong> tab, choose <strong>Scan the site</strong>. The scan runs in the background and changes nothing. A progress bar shows the phase and how many attachments, pages, blog posts and comments it has read. You can leave the page and come back; <strong>Stop</strong> ends the scan, and <strong>Re-run scan</strong> refreshes the list any time.</p>
+  <figure id="shot-7">
+    <!-- Shot 7. Replace the div with:
+    <img src="img/shot-7-scan-progress.png" alt="A scan running in the background: the progress bar with the phase and the number of attachments, pages, blog posts and comments read so far, and the Stop button" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 7, to be added: a scan running in the background, the progress bar with the phase and the number of attachments, pages, blog posts and comments read so far, and the Stop button">
+      <strong>Screenshot 7, to be added from Confluence</strong>
+      <span>The scan running: the progress bar, the counts read so far, and Stop.</span>
+    </div>
+    <figcaption>The scan reads every page, blog post and comment on the site. It changes nothing.</figcaption>
+  </figure>
+
+  <h2 id="storage">2. Read the storage summary</h2>
+  <p>When the scan finishes, the <strong>Storage</strong> table shows each space's files and megabytes and how much of it is unused, with the site total at the bottom. "MB" means a million bytes, and only the current version of each file is counted.</p>
+
+  <h2 id="filter">3. Filter</h2>
+  <ul>
+    <li>Tick <strong>Unused only</strong> for the files nothing on the site refers to.</li>
+    <li>Tick <strong>Uploader no longer active</strong> for files uploaded by deactivated or closed accounts.</li>
+    <li>Narrow by space, file type, minimum size or <em>uploaded before</em> a date, or search by file, page or uploader.</li>
+  </ul>
+  <p>The list is sorted by size, largest first. The <em>Why</em> column says what keeps each file in use, or that nothing does:</p>
+  <table>
+    <tr><th>Status</th><th>Example reason</th></tr>
+    <tr><td>In use</td><td>referenced from the page "Design review"</td></tr>
+    <tr><td>In use</td><td>referenced from a comment on "Release 4.2 notes"</td></tr>
+    <tr><td>In use</td><td>shown by the Attachments macro on its own page</td></tr>
+    <tr><td>In use</td><td>named by a macro on "System overview" (a diagram)</td></tr>
+    <tr><td>Unused</td><td>no page, blog post or comment on the site references this file</td></tr>
+    <tr><td>On an archived page</td><td>listed apart; not counted as unused</td></tr>
+    <tr><td>Not checked</td><td>the app can't read its page (restrictions that exclude apps, or a draft); never unused</td></tr>
+  </table>
+
+  <h2 id="select">4. Select</h2>
+  <p>Tick rows, or choose <strong>Select all matching</strong> to take everything your filters show, up to 1,000 files a run. Protected files and files in excluded spaces have a disabled checkbox and the reason in the <em>Why</em> column.</p>
+
+  <h2 id="preview">5. Preview and dry run</h2>
+  <p><strong>Preview delete…</strong> shows the number of files, the megabytes and the list. It warns if a selected file is in use, and lists any file it left out and why. Choose <strong>Run dry run</strong>.</p>
+  <p>The dry run checks every file again: it still exists, it is still on the same page, it is still unused if you selected it as unused, and it isn't protected. The result shows how many files would move and how many would be skipped, and why. For example, a file someone linked since the scan shows <em>it is in use now</em> with the page that uses it. Nothing has changed yet.</p>
+
+  <h2 id="delete">6. Delete for real</h2>
+  <p>Choose <strong>Delete these N files for real…</strong>, tick <em>I understand: N files will be moved to the space trash</em>, and confirm. The run moves each file to its space trash in the background. One failure never stops the others. It ends with a summary: files moved, megabytes, and each failure with Confluence's reason.</p>
+
+  <h2 id="restore">7. Restore a file, if you need to</h2>
+  <p>Open the <strong>Activity</strong> tab. For a delete run, <strong>Files moved</strong> lists each file with a link to its page. To bring one back, open that space's trash (<strong>Space settings &gt; Trash</strong>) and choose <strong>Restore</strong>. Attachkeep never empties the trash; that stays with the space administrators.</p>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>Confluence Cloud only. English only.</li>
+    <li>Drafts are not cleaned up. Links to a file from outside Confluence (email, Jira issues, other websites, bookmarks) can't be seen, so such a file looks unused.</li>
+    <li>Pages whose restrictions exclude apps aren't read: their files are "Not checked", but a link <em>from</em> such a page to a file on another page can't be seen.</li>
+    <li>Macros are matched by name: any macro parameter that equals a file's name keeps that file, so a panel titled "Roadmap" also keeps "Roadmap.png".</li>
+    <li>Whiteboards, databases and custom content are not scanned. No purge, no old versions, at most 1,000 files per delete run.</li>
+    <li>A file moved to another page after the scan is skipped with "it has moved to another page since the scan; run the scan again".</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Attachkeep runs on Atlassian Forge, calls only your site's Confluence API and sends nothing anywhere else: no analytics, no telemetry. Forge storage holds only the activity log and settings.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with what you did, the text Attachkeep showed (the <em>Why</em> column, or the failure reason in a run summary), and roughly how many attachments your site has.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

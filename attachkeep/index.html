@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attachkeep for Confluence: find and clear unused attachments</title>
+<meta name="description" content="Attachkeep for Confluence Cloud lists every attachment on your site and marks a file unused only when no page, blog post, comment or diagram refers to it. Filter to uploads from people who have left, dry-run, then move files to the space trash. Free for up to 10 users.">
+<link rel="canonical" href="https://ochrestack.com/attachkeep/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Attachkeep for Confluence: find and clear unused attachments">
+<meta property="og:description" content="Find the Confluence attachments no page, blog post, comment or diagram on your site refers to, including uploads from people who have left, and move them to the space trash after a preview and a dry run.">
+<meta property="og:url" content="https://ochrestack.com/attachkeep/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Attachkeep for Confluence: find and clear unused attachments">
+<meta name="twitter:description" content="Find the Confluence attachments nothing on your site uses, including uploads from people who have left, and clear them out safely.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  .box a { overflow-wrap: anywhere; }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  .note { font-size: 15px; color: var(--muted); }
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  .slot { aspect-ratio: 1840 / 900; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 10px; background: #fff; color: var(--muted); font-size: 15px; }
+  .slot strong { color: var(--ink); }
+  .narrow-only { display: none; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .slot { aspect-ratio: auto; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Attachkeep for Confluence</h1>
+  <p class="sub">Old attachments nobody uses are eating your Confluence storage. Find the files no page, blog post, comment or diagram on your site refers to, including uploads from people who have left, and clear them out safely.</p>
+
+  <div class="buy">
+    <p class="price"><strong>Free for up to 10 users</strong>, with every feature. From 11 users, <strong>$0.25 per user per month</strong>, billed by Atlassian.</p>
+    <p><a class="button" id="buy" href="#" aria-describedby="buy-note">Get it on the Atlassian Marketplace</a></p>
+    <p class="note" id="buy-note">Listing in review. This button links to the Marketplace listing once Atlassian has approved it.</p>
+    <p>For Confluence Cloud (Atlassian Forge). Not for Confluence Data Center or Server. English only. Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. <a href="#documentation">Documentation and install steps</a></p>
+  </div>
+
+  <figure class="wide-only">
+    <img src="workflow.svg" alt="Diagram: 1. Scan the site: every attachment, checked against pages, blog posts, comments and replies. 2. Filter and select: each file is In use, with where from, or nothing on the site refers to it. 3. Delete for real after a preview and a dry run: files go to the space trash, restorable and never purged, with each failure and its reason. Every run is kept in the Activity tab." width="720" height="330">
+    <figcaption>How Attachkeep works: scan, review the reason on each file, then preview, dry-run and move the files to the space trash.</figcaption>
+  </figure>
+  <ol class="narrow-only">
+    <li><strong>Scan the site.</strong> Every attachment, checked against every page, blog post, comment and reply. The scan changes nothing.</li>
+    <li><strong>Filter and select.</strong> Each file says whether it is in use and where from, or that nothing on the site refers to it.</li>
+    <li><strong>Preview, dry run, then delete for real.</strong> Files go to the space trash, where they can be restored. Nothing is purged.</li>
+  </ol>
+
+  <div class="box warn">
+    <strong>Why a file that looks orphaned often isn't.</strong> Open a page, see a file nobody links to there, delete it, and another page breaks: the file was shown from a different page, a blog post, or a comment. Attachkeep checks the whole site before it calls a file unused, and every row names what keeps a file in use.
+  </div>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Every attachment on the site in one list.</strong> Each row shows the file, its page, space, type, size, upload date, uploader, and whether the uploader's account is active, deactivated or closed. Total storage and storage per space, largest files first.</li>
+    <li><strong>"Unused" means unused across the whole site.</strong> A file counts as used when any page, blog post, footer comment, inline comment or reply links to it or shows it, from its own page or any other; pastes its download, image or preview link; or names it in a macro parameter, which is how draw.io and Gliffy diagrams keep theirs. A file on a page with an Attachments or Gallery macro, or named by a content property of its page (such as a cover picture), is used too.</li>
+    <li><strong>A reason on every row</strong>, such as <em>referenced from a comment on "Design review"</em>, <em>shown by the Attachments macro on its own page</em>, <em>named by a macro on "System overview"</em> or <em>no page, blog post or comment on the site references this file</em>. Files on archived pages are listed apart, as <em>On an archived page</em>.</li>
+    <li><strong>Uploads from people who have left.</strong> Filter to <em>uploader no longer active</em>, and combine it with space, file type, minimum size, uploaded before a date, and unused only.</li>
+    <li><strong>Preview, dry run, then the space trash.</strong> The preview shows the count, megabytes and list. The dry run checks every file again (it still exists, it is on the same page, it is still unused, it isn't protected) and changes nothing. The real run moves each file to its space trash in the background, up to 1,000 files a run. One failure never stops the others, and the summary gives Confluence's reason for each.</li>
+    <li><strong>Your rules win.</strong> Files with your protected label (<code>keep</code> by default) and every file in a space on your exclusion list can't be selected, previewed for deletion or deleted, even by a direct request to the app.</li>
+    <li><strong>On the record.</strong> The Activity tab lists every scan, dry run and delete run: who ran it, when, the filters, the file count, megabytes and failures. Each delete run lists the files it moved, with links to their pages.</li>
+    <li><strong>Confluence administrators only</strong>, checked on the server against Confluence on every request. Everyone else, space administrators included, sees an explanation.</li>
+  </ul>
+
+  <h2>In Confluence</h2>
+  <p>Each slot below takes a screenshot from a real Confluence Cloud site with realistic content. Attachkeep is a page inside Confluence's own settings, so the screenshots are taken in the Confluence UI.</p>
+
+  <figure id="shot-1">
+    <!-- Shot 1. Replace the div with:
+    <img src="img/shot-1-why-column.png" alt="Attachkeep's file list in Confluence: each attachment marked In use or Unused with the reason, such as a comment on another page, the Attachments macro or a draw.io diagram" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 1, to be added: Attachkeep's file list in Confluence, each attachment marked In use or Unused with the reason, such as a comment on another page, the Attachments macro or a draw.io diagram">
+      <strong>Screenshot 1, to be added from Confluence</strong>
+      <span>The file list: each attachment marked In use or Unused with the reason, such as a comment on another page, the Attachments macro or a draw.io diagram.</span>
+    </div>
+    <figcaption>Used or unused, each file says why. A file referenced only from a comment on another page stays in use, and the row names the page.</figcaption>
+  </figure>
+
+  <figure id="shot-2">
+    <!-- Shot 2. Replace the div with:
+    <img src="img/shot-2-unused-left.png" alt="Unused attachments uploaded by deactivated accounts, largest first, with the storage per space and the site total above the list" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 2, to be added: unused attachments uploaded by deactivated accounts, largest first, with the storage per space and the site total above the list">
+      <strong>Screenshot 2, to be added from Confluence</strong>
+      <span>Filtered to Unused only and Uploader no longer active, 1 MB and up: storage per space, then each file with its uploader marked Deactivated.</span>
+    </div>
+    <figcaption>Unused files from people who have left, with storage per space and the site total.</figcaption>
+  </figure>
+
+  <figure id="shot-3">
+    <!-- Shot 3. Replace the div with:
+    <img src="img/shot-3-preview.png" alt="The Preview: delete attachments dialog, with the number of files and megabytes to be checked again and moved to the space trash, the file list, and the Run dry run button" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 3, to be added: the Preview delete attachments dialog, with the number of files and megabytes, the file list, and the Run dry run button">
+      <strong>Screenshot 3, to be added from Confluence</strong>
+      <span>The preview dialog: the number of files and megabytes, the list, and the Run dry run button.</span>
+    </div>
+    <figcaption>The count and megabytes before anything changes, then a dry run that checks every file again.</figcaption>
+  </figure>
+
+  <figure id="shot-4">
+    <!-- Shot 4. Replace the div with:
+    <img src="img/shot-4-delete-summary.png" alt="Delete run summary: files moved to the space trash with the total megabytes, and a skipped file with its reason" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 4, to be added: the delete run summary, files moved to the space trash with the total megabytes, and a skipped file with its reason">
+      <strong>Screenshot 4, to be added from Confluence</strong>
+      <span>The delete run summary: files moved to the space trash, megabytes, and any skipped file with its reason.</span>
+    </div>
+    <figcaption>Moved to the space trash, never purged. A space administrator can restore any of them.</figcaption>
+  </figure>
+
+  <figure id="shot-5">
+    <!-- Shot 5. Replace the div with:
+    <img src="img/shot-5-activity.png" alt="The Activity tab with a scan, a dry run and a delete run, and the Files moved dialog listing each moved file with a link to its page" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 5, to be added: the Activity tab with a scan, a dry run and a delete run, and the Files moved dialog listing each moved file with a link to its page">
+      <strong>Screenshot 5, to be added from Confluence</strong>
+      <span>The Activity tab: scan, dry run and delete run, with the Files moved dialog open.</span>
+    </div>
+    <figcaption>Every run on the record, with links to the page of every moved file.</figcaption>
+  </figure>
+
+  <h2 id="scope">What Confluence already does, and what you pay for</h2>
+  <div class="box">
+    <p>Confluence already lets a person with delete permission remove a file from a page's attachments, one at a time, and deleted files go to the space trash. Bulk delete of attachments is still an open suggestion (<a href="https://jira.atlassian.com/browse/CLOUD-12500">CLOUD-12500</a>). Here the buyer pays for the site-wide list, the check that nothing on the site uses a file, the deactivated-uploader filter, the dry run, batch deletes that report each failure, and the activity log. It does not clean up drafts: Confluence keeps unpublished drafts private to their author and Forge cannot act as a deactivated user (<a href="https://developer.atlassian.com/platform/forge/security/">https://developer.atlassian.com/platform/forge/security/</a>). It cannot see links to a file from outside Confluence (email, other websites), and the listing says so.</p>
+    <p style="margin-bottom:0"><strong>No drafts, no links from outside Confluence, and the trash only:</strong> Attachkeep can't see unpublished drafts or links to a file from outside Confluence (email, other websites), and it moves files to the space trash, never purging them.</p>
+  </div>
+  <p>Finding the files nothing uses is a long-standing request: <a href="https://jira.atlassian.com/browse/CONFCLOUD-16577">CONFCLOUD-16577</a> has been open since 2009.</p>
+
+  <h2 id="pricing">Price</h2>
+  <table>
+    <tr><th>Users on your Confluence site</th><th>Price</th></tr>
+    <tr><td>1 to 10</td><td>Free, every feature</td></tr>
+    <tr><td>11 and more</td><td>$0.25 per user per month, for every user on the site. At 50 users: $12.50 a month, or $125 a year (annual is 10 &times; monthly).</td></tr>
+  </table>
+  <p>Every feature is in every tier; nothing is held back for a paid add-on. Atlassian bills the subscription, gives the standard 30-day free trial, handles renewal and cancellation, and refunds under its own 30-day policy. Ochrestack adds nothing on top.</p>
+
+  <h2 id="documentation">Documentation</h2>
+  <p>The step-by-step guide, with every screen, is the <a href="quick-start.html">Attachkeep quick start</a>.</p>
+  <h3>Install</h3>
+  <ol>
+    <li>In Confluence Cloud, open <strong>Apps &gt; Explore more apps</strong> and search for <em>Attachkeep</em> (once the listing is live).</li>
+    <li>Choose <strong>Get app</strong>. A site administrator approves the permissions below.</li>
+    <li>Open <strong>Confluence settings</strong> (the gear) &gt; <strong>Attachment cleanup</strong>, in the Apps section of the sidebar, and choose <strong>Scan the site</strong>.</li>
+  </ol>
+  <table>
+    <tr><th>Permission (scope)</th><th>Used for</th></tr>
+    <tr><td><code>read:attachment:confluence</code></td><td>Listing attachments, and reading a file and its labels just before it is deleted</td></tr>
+    <tr><td><code>delete:attachment:confluence</code></td><td>Moving the files you choose to the space trash</td></tr>
+    <tr><td><code>read:page:confluence</code></td><td>Reading pages and blog posts, and their content properties, to see which files they use</td></tr>
+    <tr><td><code>read:comment:confluence</code></td><td>Reading footer and inline comments to see which files they use</td></tr>
+    <tr><td><code>read:label:confluence</code></td><td>Finding the protected label</td></tr>
+    <tr><td><code>read:user:confluence</code></td><td>The uploader's name and account status</td></tr>
+    <tr><td><code>read:confluence-user</code></td><td>Checking that you are a Confluence administrator</td></tr>
+    <tr><td><code>storage:app</code></td><td>Settings, scan results and the activity log, kept in Forge storage inside Atlassian</td></tr>
+  </table>
+
+  <h2 id="faq">Questions</h2>
+  <h3>Does scanning change anything?</h3>
+  <p>No. The scan only reads. Nothing moves until you confirm a delete run, and you can run a dry run first.</p>
+  <h3>Can I undo a delete?</h3>
+  <p>Yes. Files go to their space trash, and a space administrator can restore them there (Space settings &gt; Trash). Attachkeep never purges. The Activity tab lists every moved file with a link to its page.</p>
+  <h3>What about draw.io and Gliffy diagrams?</h3>
+  <p>These macros keep the diagram as an attachment and name it in a parameter. Any macro parameter on the site that equals a file's name, with or without its extension, keeps every file of that name. This errs toward keeping files: a panel titled "Roadmap" also keeps "Roadmap.png".</p>
+  <h3>What about restricted pages?</h3>
+  <p>Pages whose restrictions exclude the app aren't read. Their own files are listed as "Not checked" and never called unused. A link <em>from</em> such a page to a file on another page can't be seen.</p>
+  <h3>How large a site does it handle?</h3>
+  <p>Up to 1,000 files per delete run. On a real Confluence Cloud site, with a 20,000-file list stored in the app, each request on the Attachments tab took about 2.3 to 2.6 seconds inside the app; Forge allows 25. Larger lists, and scan times on very large sites, have not been measured yet. The progress bar shows how far a scan has got.</p>
+  <h3>Are old versions of a file deleted or counted?</h3>
+  <p>No. Size and upload date are those of the current version, and old versions are not touched.</p>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li><strong>Drafts are not cleaned up</strong>, and links from outside Confluence (email, Jira issues, other websites, bookmarks) can't be seen: such a file looks unused. That is why deletes only go to the trash.</li>
+    <li>Whiteboards, databases and custom content are not scanned, and their attachments are not listed.</li>
+    <li>No purge, no deleting old versions, no moving or downloading files, no scheduled clean-ups.</li>
+    <li>A file moved to another page after the scan is skipped by the dry run and the delete run, with "run the scan again".</li>
+    <li>Spaces are shown by their key, not their name.</li>
+  </ul>
+
+  <h2 id="tested">How we tested</h2>
+  <p>An automated suite of 83 tests runs the scan, the unused rule, the preview, the dry run, the delete run, the permission checks and the activity log against stand-ins for the Confluence API. A second suite deploys the app to a real Confluence Cloud site, seeds a space through Confluence's API, and runs a scan, a dry run and a delete run through the app's own backend: 71 of 71 checks passed. On that site it checked files referenced from another page, a blog post, a footer comment, an inline comment and a comment reply; files shown by the Attachments and Gallery macros; draw.io and Gliffy macros, including diagrams shown from another page; and pasted download, image and preview links. Each was "In use" with the expected reason. Only unreferenced, unprotected files moved, they were in their page's trash afterwards, and the dry run predicted the delete run exactly.</p>
+  <p>Not yet checked on a real site; each is part of the screenshot session in Confluence before the listing goes live: an uploader whose account has been deactivated (the filter reads Confluence's own account status, covered by the automated suite), restoring a file through the space trash screen (on the real site, the trash was checked through Confluence's API), the page in a browser (the page itself was rendered and clicked through headless), and diagrams drawn by the draw.io and Gliffy apps themselves (the test writes their macros the way those apps store them).</p>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Your data stays in Atlassian. Attachkeep runs on Atlassian Forge, calls only your site's Confluence API, and has no permission to reach any other server. No analytics, no telemetry. Forge storage holds only the activity log and settings (the protected label and excluded spaces). A run's record includes what that run needs: for the latest scan, the list of files it found, replaced by the next scan. See also the <a href="../privacy.html">privacy policy</a>.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your site's approximate number of attachments, what you did, and the text Attachkeep showed. Bug reports and feature requests are welcome at the same address.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
