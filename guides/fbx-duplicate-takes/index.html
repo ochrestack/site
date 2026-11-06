@@ -11,15 +11,15 @@
 <meta property="og:title" content="Blender FBX export: why you get Rig|Idle, duplicate takes, and an Idle with the wrong pose">
 <meta property="og:description" content="With clips on unmuted NLA tracks, Blender's default FBX export writes each clip twice and adds other actions. In one of our tests two of four takes were wrong by up to 0.6 m. What causes it and how to avoid it.">
 <meta property="og:url" content="https://ochrestack.com/guides/fbx-duplicate-takes/">
-<meta property="og:image" content="https://ochrestack.com/rigbake/img/character-04-godot-side-by-side.png">
+<meta property="og:image" content="https://ochrestack.com/rigbake/img/rain-plain-vs-rigbake-2x1.png">
 <meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="900">
-<meta property="og:image:alt" content="Godot 4.7, the character Rain at the same frame twice: left, Blender's default FBX export with 23 takes and an Idle whose legs are caught mid-stride; right, one take per clip, standing as in Blender">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="Rain in Godot 4.7 at the same frame, both playing Idle: left, Blender's default .fbx, her knee raised mid-stride with Run's legs; right, Rigbake's .glb (Godot preset), standing as in Blender">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Blender FBX export: why you get Rig|Idle, duplicate takes, and a wrong Idle">
 <meta name="twitter:description" content="With clips on unmuted NLA tracks, Blender's default FBX export writes each clip twice. In one of our tests two of four takes were wrong by up to 0.6 m. Why, and how to avoid it.">
-<meta name="twitter:image" content="https://ochrestack.com/rigbake/img/character-04-godot-side-by-side.png">
-<meta name="twitter:image:alt" content="Godot 4.7: Rain from Blender's default FBX export with 23 takes and a wrong Idle, beside an export with one take per clip">
+<meta name="twitter:image" content="https://ochrestack.com/rigbake/img/rain-plain-vs-rigbake-2x1.png">
+<meta name="twitter:image:alt" content="Rain in Godot 4.7: Blender's default FBX export, Idle with Run's legs, beside Rigbake's .glb standing as in Blender">
 <link rel="icon" href="../../icon.svg" type="image/svg+xml">
 <style>
   :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
@@ -108,11 +108,14 @@
     <li>A third character, built from scratch by a tester (IK legs, Idle, Walk and Attack on unmuted tracks): 6 takes for 3 clips in Godot, with the <code>Knight|</code> takes off by up to 0.605 m.</li>
   </ul>
   <figure>
+    <img src="../../rigbake/img/rain-plain-vs-rigbake-2x1.png" alt="Blender Studio's Rain twice in Godot 4.7 at the same frame, both playing Idle. Left, labelled Plain FBX, Idle: Run's legs, Blender's default .fbx: her knee is raised mid-stride. Right, labelled Rigbake, Idle, as in Blender, its .glb, Godot preset: she stands" width="1600" height="800" loading="lazy">
+  </figure>
+  <figure>
     <picture>
       <source media="(max-width: 600px)" srcset="../../rigbake/img/godot-lists-phone.png" width="318" height="722">
-      <img src="../../rigbake/img/character-04-godot-side-by-side.png" alt="Godot 4.7, side by side at the same frame: Blender's default FBX export of Rain with 23 takes, Idle, Run and Walk each listed twice, playing RIG-rain|Idle with her legs caught mid-stride from the Run clip; on the right an export with exactly Idle, Run and Walk, playing Idle and standing as in Blender" width="1600" height="900" loading="lazy">
+      <img src="../../rigbake/img/godot-lists-desktop.png" alt="The two AnimationPlayer lists from Godot 4.7: Blender's default FBX export of Rain with 23 animations, Idle, Run and Walk each listed twice and 17 face-rig pose actions, playing 'RIG-rain|Idle' with the wrong pose; Rigbake's export with 3 animations, Idle, Run and Walk, playing Idle, matching Blender" width="712" height="530" loading="lazy">
     </picture>
-    <figcaption>Rain in Godot 4.7, same frame. Left: Blender's default FBX export, 23 takes, and in <code>RIG-rain|Idle</code> Run's legs leak in (0.33 m off). Right: Rigbake's export (Godot preset, .glb; Apply Modifiers set to Always for her Mask modifiers), 3 takes, posed as in Blender. Same materials on both sides. Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; we added the animation clips and simplified two eye materials for the engine export.</figcaption>
+    <figcaption>Rain in Godot 4.7, same frame, and the animation lists of both files. Left: Blender's default FBX export, 23 takes, and in <code>RIG-rain|Idle</code> Run's legs leak in (0.33 m off). Right: Rigbake's export (Godot preset, .glb; Apply Modifiers set to Always for her Mask modifiers), 3 takes, posed as in Blender. Same materials on both sides. Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; we added the animation clips and simplified two eye materials for the engine export.</figcaption>
   </figure>
 
   <h2 id="why">5. Why one of them is wrong</h2>

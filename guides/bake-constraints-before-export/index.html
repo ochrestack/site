@@ -11,15 +11,15 @@
 <meta property="og:title" content="Do you need to bake constraints before exporting Blender animations?">
 <meta property="og:description" content="For one armature with IK and drivers, one action in the file and nothing on the NLA, Blender's glTF and FBX exporters already bake constraints. We measured it. Here are the two setups where they don't, and what to do.">
 <meta property="og:url" content="https://ochrestack.com/guides/bake-constraints-before-export/">
-<meta property="og:image" content="https://ochrestack.com/rigbake/img/character-02-validate-popup.png">
+<meta property="og:image" content="https://ochrestack.com/rigbake/img/validate-dialog-og-2x1.png">
 <meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="900">
-<meta property="og:image:alt" content="Blender 4.2 with the Blender Studio character Rain and a pre-export rig check listing seven issues, such as more than four bone weights per vertex and vertex groups that match no bone">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="A pre-export rig check in Blender 4.2 on the Blender Studio character Rain: 7 issues, 2 notes; meshes whose modifiers stay unapplied to keep shape keys, and two meshes whose Mask modifiers then hide nothing in the engine, each with its fix">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Do you need to bake constraints before exporting Blender animations?">
 <meta name="twitter:description" content="For one armature with IK and drivers, one action in the file and nothing on the NLA, Blender's glTF and FBX exporters already bake constraints. We measured it. Here are the two setups where they don't.">
-<meta name="twitter:image" content="https://ochrestack.com/rigbake/img/character-02-validate-popup.png">
-<meta name="twitter:image:alt" content="Blender 4.2 with the Blender Studio character Rain and a pre-export rig check listing seven issues">
+<meta name="twitter:image" content="https://ochrestack.com/rigbake/img/validate-dialog-og-2x1.png">
+<meta name="twitter:image:alt" content="A pre-export rig check in Blender 4.2 on the Blender Studio character Rain: 7 issues, including Mask modifiers that hide nothing in the engine">
 <link rel="icon" href="../../icon.svg" type="image/svg+xml">
 <style>
   :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
@@ -130,8 +130,8 @@
     <li><strong>Vertex groups that match no bone.</strong> The skin ignores them, so those vertices don't follow anything you expect. Fix: rename each group to the bone it should follow, or delete it.</li>
   </ul>
   <figure>
-    <a href="../../rigbake/img/character-02-validate-popup.png"><img class="ui" src="../../rigbake/img/validate-dialog.png" alt="A pre-export rig check on the Blender Studio character Rain: '7 issues, 2 notes in RIG-rain', including meshes with more than four bone weights per vertex, meshes whose modifiers stay unapplied to keep shape keys, vertex groups with no weights or no matching bone, and deform bones without weights, each with its fix and a Select button" width="764" height="766" loading="lazy"></a>
-    <figcaption>The same checklist run on a real production character, Rain, in Blender 4.2: seven issues, each with its fix. Her 2,788 bone constraints are not among the issues: the check lists them as a note, because the export bakes them. (This is Rigbake's Validate button; tap the image for the full Blender window.) Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; we added the animation clips.</figcaption>
+    <img class="ui" src="../../rigbake/img/validate-dialog.png" alt="A pre-export rig check on the Blender Studio character Rain: '7 issues, 2 notes in RIG-rain', including meshes whose modifiers stay unapplied to keep shape keys, Mask modifiers that then hide nothing in the engine, vertex groups with no weights or no matching bone, and deform bones without weights, each with its fix and a Select button" width="764" height="692" loading="lazy">
+    <figcaption>The same checklist run on a real production character, Rain, in Blender 4.2: seven issues, each with its fix. Her 2,788 bone constraints are not among the issues: the check lists them as a note, because the export bakes them. (This is Rigbake's Validate button. One of the seven, a count of meshes with more than four bone weights per vertex, is left out of this picture.) Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; we added the animation clips.</figcaption>
   </figure>
 
   <h2 id="rigbake">7. Where Rigbake fits</h2>
