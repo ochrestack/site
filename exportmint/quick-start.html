@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exportmint quick start: install, first Export Changed, command line</title>
+<meta name="description" content="Install Exportmint for Blender 4.2 and later, add Collection Exporters, re-export only what changed, read the manifest, and run the same check from the command line.">
+<link rel="canonical" href="https://ochrestack.com/exportmint/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Exportmint quick start</h1>
+  <p>Installing Exportmint and your first Export Changed. The full manual, <code>README.md</code>, is inside the download. Back to the <a href="index.html">Exportmint product page</a>.</p>
+
+  <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2.23 LTS and 5.2.3 LTS)</h2>
+  <ol>
+    <li>Download <code>exportmint-1.1.0.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
+      <ul>
+        <li>Blender may first ask about internet access. Exportmint needs none, so <strong>Continue Offline is fine</strong>.</li>
+      </ul>
+    </li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Exportmint is installed and enabled.</li>
+    <li>In the 3D Viewport, press <strong>N</strong> to open the sidebar and click the <strong>Exportmint</strong> tab.</li>
+  </ol>
+  <p>To upgrade, install the newer zip the same way; your exporters and the Manifest folder setting are kept. To remove Exportmint, remove it in <strong>Preferences &gt; Get Extensions</strong>. Your Collection Exporters are Blender's own and stay in your files: <strong>File &gt; Export All Collections</strong> keeps working.</p>
+
+  <h2 id="exporters">1. Give your collections an exporter</h2>
+  <p>Exportmint works on Blender's own Collection Exporters. If your collections already have them (Properties &gt; Collection &gt; Exporters), skip to step 2.</p>
+  <ol>
+    <li>Save your .blend file first: new exporters write next to it.</li>
+    <li>Select one or more collections in the Outliner. With none selected, the active collection is used.</li>
+    <li>In the Exportmint tab, click <strong>Add exporter to selected collections</strong> and choose <strong>glTF 2.0</strong>, <strong>FBX</strong> or <strong>USD</strong>. Each collection gets a Collection Exporter writing <code>//export/&lt;collection name&gt;.glb</code> (<code>.fbx</code>, <code>.usd</code>). A collection that already has an exporter of that format is skipped.</li>
+    <li>Change the format's settings in Blender's own panel, <strong>Properties &gt; Collection &gt; Exporters</strong>. Exportmint uses exactly those settings.</li>
+  </ol>
+
+  <h2 id="list">2. Read the list</h2>
+  <p>The tab lists every Collection Exporter in the file, in every scene: collection, format and path, status with its reason, and the time of the last export. The first time, every row reads <em>Never exported</em>.</p>
+  <figure><img src="img/panel-two-changed.png" alt="The Exportmint tab at real size: Export Changed (2), Export All, Check Now, Open Manifest, Add exporter to selected collections, '11 exporters: 9 up to date, 2 changed', rows AntiqueCamera, Avocado and BarramundiFish up to date, BoomBox reading 'Changed: BoomBox: transform changed' and CH-rain reading 'Changed: GEO-rain-scarf: material MAT-rain.scarf changed'" width="383" height="640" loading="lazy"><figcaption>The tab after two edits (Blender 5.2, real size): each stale row says why.</figcaption></figure>
+  <ul>
+    <li><strong>Up to date</strong>: nothing Exportmint checks has changed since the last export, and the file on disk is the one it wrote.</li>
+    <li><strong>Changed</strong>: the row names the first change found, for example "BoomBox: transform changed".</li>
+    <li><strong>Never exported</strong>: Exportmint has no record of exporting it.</li>
+    <li><strong>Failed last run</strong>: the row shows the exporter's own error message.</li>
+    <li><strong>Blocked</strong>: it cannot run, and the row says why: the collection is empty, two exporters would write the same file, the path has no file name, or the .blend is not saved yet and the path is relative.</li>
+  </ul>
+  <p>The list updates by itself a moment after an edit while the tab is on screen. <strong>Check Now</strong> reads every object again. The arrow on a row (<strong>Select in Outliner</strong>) makes that collection active, selects its objects and switches to its scene if needed.</p>
+
+  <h2 id="export">3. Export Changed</h2>
+  <ol>
+    <li>Click <strong>Export Changed (n)</strong>. It runs every exporter that is changed, never exported or failed last time, through Blender's own exporter, and leaves every other file untouched on disk. It always reads every object first, so it never relies on the list's last refresh.</li>
+    <li>The <strong>Last run</strong> box and Blender's status bar give the written, unchanged, failed and blocked counts, and each failure with its message.</li>
+    <li>Save your .blend as usual.</li>
+  </ol>
+  <figure><img src="img/panel-after-export.png" alt="The Exportmint tab after Export Changed: 'Last run: Export Changed at 22:19', '2 written, 9 unchanged, 0 failed, 0 blocked', Open Manifest, '11 exporters: 11 up to date'" width="383" height="690" loading="lazy"><figcaption>After Export Changed.</figcaption></figure>
+  <p><strong>Export All</strong> runs every exporter that is not blocked, changed or not. Missing output folders are created either way, and a failing exporter does not stop the others.</p>
+
+  <h2 id="manifest">4. Read the manifest</h2>
+  <p>Every run writes <code>exportmint-manifest.json</code> (for scripts) and <code>exportmint-manifest.txt</code> (plain words) next to the .blend file, and keeps a copy of each run in <code>exportmint-manifest-history/&lt;blend name&gt;/</code>. <strong>Open Manifest</strong> opens this .blend file's latest one in your text viewer. To write manifests somewhere else, set <strong>Manifest folder</strong> at the bottom of the tab (<code>//</code> paths are relative to the .blend).</p>
+  <p>For each exporter the manifest gives collection, scene, format, output path, result, reason, file size, SHA-256 and export time; for the run, the .blend path, the Blender version, and the start and end time.</p>
+
+  <h2 id="command-line">5. Command line and build scripts</h2>
+  <p>Exportmint must be installed and enabled in the Blender that runs the command (do not add <code>--factory-startup</code>).</p>
+  <div class="box">
+    <p><code>blender --background --command exportmint [--all] [--manifest DIR] FILE.blend [FILE.blend ...]</code></p>
+  </div>
+  <ul>
+    <li>Opens each file in turn and runs Export Changed, or Export All with <code>--all</code>. Prints the summary and writes one manifest per file.</li>
+    <li><code>--manifest DIR</code> writes the manifests into DIR (with several files, into <code>DIR/&lt;file name&gt;/</code>).</li>
+    <li>Exit code 0 when nothing failed (blocked exporters do not count as failures), 1 when an exporter failed, a file could not be opened, a manifest or record could not be written, the run was stopped with Ctrl+C, or the arguments were wrong.</li>
+    <li>It never modifies your .blend files. Its record goes into <code>&lt;blend name&gt;.exportmint-record.json</code> next to each .blend, so the folder must be writable. The panel reads that file too, so an artist who opens the .blend sees what the build machine exported.</li>
+  </ul>
+  <figure><img src="img/command-line.png" alt="A terminal running the exportmint command on rain_market.blend and props/demo_kit.blend: 0 written, 11 unchanged for the first; 1 written, 11 unchanged for the second, with 'written: WaterBottle ... WaterBottle: transform changed'; total 1 written, 22 unchanged, exit code 0" width="1240" height="392" loading="lazy"><figcaption>Two .blend files, one command, exit code 0.</figcaption></figure>
+  <p>Example for a build script: <code>blender --background --command exportmint --manifest build/manifests props.blend characters.blend</code></p>
+  <p style="font-size:14px;color:var(--muted)">Character in the images: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, with a Collection Exporter and a scarf colour change we added. Props from the Khronos glTF Sample Assets, CC0 1.0. Not included with Exportmint.</p>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>Tested on Blender 4.2.23 LTS and 5.2.3 LTS on Linux; not on 4.3 to 5.1, Windows or macOS. Formats tested: glTF 2.0, FBX and USD.</li>
+    <li>Exportmint never alters what an exporter writes. Files come from Blender's own exporters with the settings in the Collection Exporters panel.</li>
+    <li>Not checked: world settings, render visibility, driver expressions (only their current result counts), changes inside linked libraries other than through their result. When in doubt, Export All is one click away.</li>
+    <li>Objects are checked at the scene's current frame: on an animated object, changing the frame shows a change until you go back to the exported frame.</li>
+    <li>If you also export with Blender's own buttons, FBX rows read "output file changed on disk" and are written once more on the next Export Changed.</li>
+    <li>Only each exporter's main file is tracked; glTF Separate's .bin and textures are not listed or hashed.</li>
+    <li>No automatic export on save or on a timer. English only.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Exportmint makes no network connections and sends nothing anywhere. It writes only your exported files, the manifests and their history folder, and its record (a hidden <code>.exportmint-record</code> text block in the .blend and <code>&lt;blend name&gt;.exportmint-record.json</code> next to it).</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version, the Exportmint version (Preferences &gt; Get Extensions) and, if you can, the manifest of the run.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

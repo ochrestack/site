@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exportmint for Blender: re-export only the collections that changed</title>
+<meta name="description" content="Exportmint lists every Collection Exporter in your .blend file with the reason each one is out of date, re-exports only those through Blender's own exporters, and writes a manifest of every run. Blender 4.2 LTS and later, $12.">
+<link rel="canonical" href="https://ochrestack.com/exportmint/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Exportmint for Blender: re-export only the collections that changed">
+<meta property="og:description" content="Export All Collections rewrites every file. Exportmint shows which exports are stale and why, writes only those, and keeps a manifest of every run. $12, every future version included.">
+<meta property="og:url" content="https://ochrestack.com/exportmint/">
+<meta property="og:image" content="https://ochrestack.com/exportmint/img/rain-two-changed-2x1.png">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="Blender 5.2 with Blender Studio's Rain among ten game props, her scarf recoloured red and the BoomBox moved; the Exportmint sidebar tab shows two rows Changed with their reasons and the button Export Changed (2)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Exportmint for Blender: re-export only the collections that changed">
+<meta name="twitter:description" content="Exportmint shows which Collection Exporters are stale and why, writes only those, and keeps a manifest of every run.">
+<meta name="twitter:image" content="https://ochrestack.com/exportmint/img/rain-two-changed-2x1.png">
+<meta name="twitter:image:alt" content="Rain in Blender 5.2 with the Exportmint tab: two rows Changed, Export Changed (2)">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .hero { display: block; width: 100%; max-width: 640px; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Exportmint for Blender</h1>
+  <a href="img/rain-two-changed.png"><img class="hero" src="img/rain-two-changed-2x1.png" alt="Blender 5.2 with Blender Studio's Rain standing among ten game props (a street lantern, a sofa, a corset on a stand, an antique camera, a BoomBox, a fox and more). Her scarf has just been recoloured red and the BoomBox moved. On the right, the Exportmint sidebar tab: '11 exporters: 9 up to date, 2 changed', the BoomBox row reading 'Changed: BoomBox: transform changed', the CH-rain row reading 'Changed: GEO-rain-scarf: material MAT-rain.scarf changed', and the button 'Export Changed (2)'" width="1600" height="800"></a>
+  <p class="sub">Re-exporting the same assets many times is cumbersome. Exportmint re-exports only the collections that changed, in one click, and writes a manifest of every file it wrote or left alone.</p>
+
+  <div class="buy">
+    <p class="price"><strong>$12, one-time, every future version included, source included</strong> (GPL-3.0-or-later). Blender 4.2 LTS and later; tested on 4.2.23 LTS and 5.2.3 LTS.</p>
+    <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_UwYRmrQYnCNWU2jmizGjvJXZdxBcJFw1rF9LD4S5ENV">Buy for $12</a></p>
+    <p class="fine">Polar checkout · <a href="../terms.html">14-day refund</a> · no license check, no account · <a href="#details">details</a></p>
+  </div>
+
+  <p class="fine">Above: one .blend with 11 Collection Exporters, one for Rain and one for each of ten props. Her scarf colour was changed and the BoomBox moved; the tab names both, with the reason, and Export Changed will write those two files and leave the other nine alone.</p>
+  <details>
+    <summary>How these images were made</summary>
+    <p>Every image and GIF on this page is a capture of a real Blender 5.2.3 LTS window on Linux at 1920x960, with Exportmint 1.1.0 installed from its zip through Blender's extension installer. The character is Rain, Blender Studio's free production rig (CC BY 4.0, credit below), in her own file as downloaded from studio.blender.org; her character collection, CH-rain, got a glTF 2.0 Collection Exporter (skinning on, renderable objects only, no animation). Around her are ten CC0 models from the Khronos glTF Sample Assets, one collection and one exporter each: six glTF 2.0, three FBX, one USD. The mouse and keyboard input is scripted: the BoomBox is clicked and moved 0.4 m with G, X, 0.4, Enter; Rain's scarf is clicked, then recoloured from a script (a Hue/Saturation node added in her scarf material, as you would add it in the Shader Editor); Export Changed and Select in Outliner are real clicks. After every step a check compared Exportmint's own state with what the screen shows: 11 checks, all passed. The GIFs are cut from screen recordings of the same session, in real time, except where a caption says otherwise.</p>
+  </details>
+
+  <div class="box warn">
+    <strong>Where it matters.</strong> Since Blender 4.2, File &gt; Export All Collections writes every file, every time. Blender's FBX exporter writes different bytes on every export, so after Export All, every FBX file you did not touch shows up as modified in git and is imported again by the engine. Export All Collections also exports only the scene that is active in the window, so an edit in another scene leaves its export out of date. Exportmint checks every scene, writes only what changed, and leaves every other file with its bytes and its date.
+  </div>
+
+  <figure>
+    <a href="img/export-changed.gif"><img src="img/export-changed.gif" alt="Screen recording: the BoomBox is clicked and moved along X, and its row in the Exportmint tab turns 'Changed: BoomBox: transform changed' while the button reads Export Changed (1); Rain's scarf is clicked and turns red, her CH-rain row turns 'Changed: GEO-rain-scarf: material MAT-rain.scarf changed' and the button reads Export Changed (2); Export Changed is clicked, and the Last run box appears: '2 written, 9 unchanged, 0 failed, 0 blocked', every row back to Up to date" width="1000" height="584" loading="lazy"></a>
+    <figcaption>Two edits, one click: 2 written, 9 unchanged. Real time, except the wait while Blender's glTF exporter writes the two files (about 13 seconds from click to summary on this machine, most of it Rain's 70 MB glTF), which is cut.</figcaption>
+  </figure>
+
+  <div class="box">
+    <strong>Who needs it, and who doesn't.</strong> Since Blender 4.2, Collection Exporters store a format, path and settings on each collection, and File &gt; Export All Collections re-exports every one in one click. Free batch exporters also export many files in one click. A buyer with a handful of collections who is happy to rewrite them all does not need Exportmint. With Exportmint you pay for five things: knowing which exports are stale and why; re-exporting only those, so unchanged files are left alone and the engine and version control see only real changes; one list of every export in the file; a manifest of each run; and the same run from the command line across many .blend files. Files are written by Blender's own exporters with the settings in the Collection Exporters panel, so Exportmint never improves or repairs an exporter's output. Something the change check does not cover can be missed (see <a href="#limits">Known limits</a>), and Export All is always one click away.
+  </div>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>One list of every export in the file.</strong> The Exportmint tab in the 3D Viewport sidebar lists every Collection Exporter in every scene: the collection, the format, the file path, the time of the last export, and the status with its reason: Up to date, Changed (for example "Crate_B: transform changed" or "export settings changed"), Never exported, Failed last run (with the exporter's own error message), or Blocked (an empty collection, two exporters writing the same file, a path with no file name, or a relative path in a .blend that is not saved yet). Each row has a <strong>Select in Outliner</strong> button.</li>
+    <li><strong>Export Changed, or Export All.</strong> Export Changed runs every exporter that is changed, never exported or failed last time, in every scene, and leaves every other file on disk untouched. Export All runs every exporter that is not blocked. A failing exporter does not stop the others; the summary gives the written, unchanged, failed and blocked counts, with each failure's own message. Missing output folders are created.</li>
+    <li><strong>It knows what changed.</strong> Objects added to or removed from the collection, its child collections or the collections it instances; an object's position, rotation or scale; the mesh after modifiers and geometry nodes (vertices, faces, UV maps); vertex groups and weights, shape keys, bones, light and camera settings; object, mesh, material and image names; a material slot or a value in a material's node tree; a keyframe; a texture file's content; custom properties, when the exporter writes them; the exporter's settings or file path; the scene's frame range, frame rate or units. An output file that is missing, or that something else rewrote, counts too. Saving, reopening, a fresh checkout of the project, selecting and hiding things in the viewport do not.</li>
+    <li><strong>A manifest of every run.</strong> <code>exportmint-manifest.json</code> (for scripts) and <code>exportmint-manifest.txt</code> (plain words), next to the .blend or in a folder you choose, plus a history folder per .blend so a later run never overwrites an earlier record. For each exporter: collection, scene, format, output path, result, reason, file size, SHA-256 of the file on disk and export time; for each run, the .blend path, the Blender version, and the start and end time.</li>
+    <li><strong>Command line, for projects split across .blend files.</strong> <code>blender --background --command exportmint [--all] [--manifest DIR] FILE.blend ...</code> opens each file in turn, runs Export Changed (or Export All with <code>--all</code>), writes one manifest per file and exits with 0 when nothing failed, 1 otherwise. It never modifies your .blend files: its record goes into a small <code>&lt;blend name&gt;.exportmint-record.json</code> next to each one, which the panel reads too.</li>
+    <li><strong>Add exporters in one click.</strong> Select collections in the Outliner and choose <strong>Add exporter to selected collections &gt; glTF 2.0, FBX or USD</strong>: each gets a standard Blender Collection Exporter writing <code>//export/&lt;collection name&gt;.glb</code> (or <code>.fbx</code>, <code>.usd</code>).</li>
+    <li><strong>Nothing to lose.</strong> The exporters are Blender's own, and every setting stays in Blender's Collection Exporters panel. In our tests Exportmint wrote nothing of its own into exported glTF, FBX or USD files. Remove Exportmint, and File &gt; Export All Collections still exports everything as before.</li>
+  </ul>
+
+  <h2>In Blender, for real</h2>
+  <p>The tab at its real size on a wide screen, before the edits, after them, and after Export Changed. Tap an image for the full Blender window.</p>
+  <div class="pair">
+    <figure style="flex-basis:340px">
+      <a href="img/rain-kit-up-to-date.png"><img class="ui" src="img/panel-up-to-date.png" alt="The Exportmint tab at real size: Export Changed (0), Export All, Check Now, Open Manifest, Add exporter to selected collections, '11 exporters: 11 up to date', then the rows AntiqueCamera, Avocado, BarramundiFish, BoomBox and CH-rain, each with a check mark, its format and path, and 'Up to date (exported 22:17)'" width="383" height="640" loading="lazy"></a>
+      <figcaption>Before: 11 exporters, all up to date.</figcaption>
+    </figure>
+    <figure style="flex-basis:340px">
+      <a href="img/rain-two-changed.png"><img class="ui" src="img/panel-two-changed.png" alt="The same tab after the two edits: Export Changed (2), '11 exporters: 9 up to date, 2 changed', the BoomBox row reading 'Changed: BoomBox: transform changed (exported 22:17)' and the CH-rain row reading 'Changed: GEO-rain-scarf: material MAT-rain.scarf changed (exported 22:17)'" width="383" height="640" loading="lazy"></a>
+      <figcaption>After two edits: each stale row says why.</figcaption>
+    </figure>
+  </div>
+  <div class="pair">
+    <figure style="flex-basis:383px">
+      <a href="img/rain-after-export.png"><img class="ui" src="img/panel-after-export.png" alt="The tab after Export Changed: the Last run box reads 'Last run: Export Changed at 22:19' and '2 written, 9 unchanged, 0 failed, 0 blocked' above Open Manifest; '11 exporters: 11 up to date'; BoomBox and CH-rain now read 'Up to date (exported 22:18)', the other rows still 'exported 22:17'" width="383" height="690" loading="lazy"></a>
+      <figcaption>After Export Changed: 2 written, 9 unchanged. The untouched files keep their 22:17 export.</figcaption>
+    </figure>
+  </div>
+  <figure>
+    <a href="img/rain-manifest.png"><img src="img/manifest-txt.png" alt="exportmint-manifest.txt in a text viewer: Blend file /home/artist/market-kit/rain_market.blend, Blender version 5.2.3 LTS, Run: Export Changed, start and finish times, Result: 2 written, 9 unchanged, 0 failed, 0 blocked; then Written (2): BoomBox, with its file, reason 'BoomBox: transform changed', size 10557908 bytes, SHA-256 and export time, and CH-rain, reason 'GEO-rain-scarf: material MAT-rain.scarf changed', size 70915256 bytes, SHA-256 and export time; then Unchanged (9), starting with AntiqueCamera, Avocado and BarramundiFish, each with size, SHA-256 and the time of its earlier export" width="950" height="880" loading="lazy"></a>
+    <figcaption>The manifest of that run, as Open Manifest shows it in your text viewer: what was written and why, what was left alone, with sizes and SHA-256. The JSON beside it holds the same for scripts.</figcaption>
+  </figure>
+  <figure>
+    <a href="img/select-in-outliner.gif"><img src="img/select-in-outliner.gif" alt="Screen recording of the whole Blender window: the arrow on the CH-rain row of the Exportmint tab is clicked; Rain is outlined in the viewport, the Outliner jumps to her collection with her meshes selected, and the status bar says 'Selected collection CH-rain in scene Market (19 visible objects)'" width="1000" height="500" loading="lazy"></a>
+    <figcaption>Select in Outliner on Rain's row: her collection becomes active, her 19 visible objects are selected. Real time.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/command-line.png" alt="A terminal in ~/market-kit running 'blender --background --command exportmint rain_market.blend props/demo_kit.blend; echo exit code'. For rain_market.blend: '0 written, 11 unchanged, 0 failed, 0 blocked' and its manifest. For props/demo_kit.blend, where the WaterBottle had been moved: Blender's glTF export log, then '1 written, 11 unchanged, 0 failed, 0 blocked', 'written: WaterBottle (glTF 2.0) ... WaterBottle: transform changed', its manifest, and 'export record: ... demo_kit.exportmint-record.json (the .blend file is not modified)'. Then 'Exportmint total: 1 written, 22 unchanged, 0 failed, 0 blocked; exit code 0' and 'exit code: 0'" width="1240" height="392" loading="lazy">
+    <figcaption>The same check from a terminal, over two .blend files: Rain's file was already up to date; in the props file one moved prop is written. Exit code 0. Both .blend files had the same SHA-256 before and after the run.</figcaption>
+  </figure>
+  <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We added a Collection Exporter to her collection and, for the demo, a Hue/Saturation node in her scarf material. Props: Lantern, WaterBottle, BoomBox, Avocado, AntiqueCamera, Fox, BarramundiFish, SheenChair, ToyCar and Corset from the Khronos glTF Sample Assets, each CC0 1.0. Rain and the props are not included with Exportmint.</p>
+
+  <h2 id="tested">How we tested</h2>
+  <ul>
+    <li><strong>124 automated tests</strong>, all passing on Blender 4.2.23 LTS and 5.2.3 LTS, run headless on every change. They include one test for each kind of edit in the list above, and the scenarios of a separate red-team review that tried to make Exportmint call a stale export up to date.</li>
+    <li><strong>The real interface, clicked through</strong> on Blender 4.2 and 5.2: 10 of 10 interface checks pass, including a real click on Export Changed that wrote 2 files and left 10 unchanged. The Rain session on this page added 11 more checks on 5.2.3, all passed.</li>
+    <li><strong>On a 12-prop demo kit</strong> of real, textured models, two edits (one prop moved, one material value changed): Export Changed wrote exactly those 2 files, each time it was run.</li>
+    <li><strong>On a heavy file</strong> (40 collections, 3.6 million vertices) with the tab open, the list updated 0.05 to 0.08 s after each edit to one object. A full check takes about 3.3 s on 4.2 and 3.7 s on 5.2.</li>
+  </ul>
+  <p><strong>Time, measured both ways.</strong> Exportmint saves rewrites, not time: the change check reads every mesh.</p>
+  <table>
+    <tr><th>Kit</th><th>Blender</th><th>File &gt; Export All Collections</th><th>Export Changed, two edits</th></tr>
+    <tr><td>12 real props (demo kit)</td><td>4.2.23</td><td>0.68 to 0.69 s</td><td>0.42 to 0.43 s</td></tr>
+    <tr><td>12 real props (demo kit)</td><td>5.2.3</td><td>0.86 to 0.87 s</td><td>0.58 to 0.65 s</td></tr>
+    <tr><td>40 collections, 3.6M vertices, glTF</td><td>4.2.23 / 5.2.3</td><td>1.47 s / 1.41 s</td><td>2.72 s / 3.27 s</td></tr>
+    <tr><td>40 collections, 3.6M vertices, FBX</td><td>4.2.23 / 5.2.3</td><td>7.28 s / 6.35 s</td><td>2.99 s / 3.02 s</td></tr>
+  </table>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li>Buying: secure checkout by Polar, which delivers the zip; the zip includes the full source. Exportmint has no license check and no network access. If it doesn't work as described on your file and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>). Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li>$12 once. Every future version of Exportmint is included: no subscription, no renewal, no paid version 2.</li>
+    <li>Requires Blender 4.2 LTS or newer. Tested on 4.2.23 LTS and 5.2.3 LTS, on Linux; versions 4.3 to 5.1 were not tested. Python only, with no compiled parts, but Windows and macOS have not been tested yet.</li>
+    <li>Formats: the Add menu offers glTF 2.0, FBX and USD, and these are the formats tested. Exporters of other formats you add in Blender's own panel (Alembic, OBJ, PLY, STL) are listed and run the same way, but are not part of the tests.</li>
+    <li>GPL-3.0-or-later. Full source code included with your purchase.</li>
+    <li>Privacy: Exportmint makes no network calls and collects nothing: no telemetry, no analytics, no update checks, no account. It writes only your exported files, the manifests and their history folder, and its own record: a hidden text block inside the .blend and <code>&lt;blend name&gt;.exportmint-record.json</code> next to it.</li>
+    <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Your Blender version and the manifest of the run help most.</li>
+  </ul>
+
+  <h2 id="documentation">Documentation</h2>
+  <p>The full manual (<code>README.md</code>) is inside the zip: open the zip to read it, but install the zip itself, as it is. A one-page guide is online: <a href="quick-start.html">Exportmint quick start</a>.</p>
+  <h3>Install</h3>
+  <ol>
+    <li>Download <code>exportmint-1.1.0.zip</code>. Do not unzip it.</li>
+    <li>In Blender 4.2 or newer, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.</li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip.</li>
+    <li>In the 3D Viewport, press <strong>N</strong> and open the <strong>Exportmint</strong> tab.</li>
+  </ol>
+  <p>If Get Extensions asks about internet access, <strong>Continue Offline is fine</strong>: Exportmint needs none. To upgrade, install the new zip the same way; your exporters and settings are kept.</p>
+
+  <h2 id="words">Words used on this page</h2>
+  <ul>
+    <li><strong>Collection Exporter</strong>: since Blender 4.2, a collection can store an export format, a file path and export settings (Properties &gt; Collection &gt; Exporters). File &gt; Export All Collections runs them all.</li>
+    <li><strong>Manifest</strong>: the record of one run, listing every exporter with what happened to its file.</li>
+    <li><strong>SHA-256</strong>: a fingerprint of a file's content. Two files with the same SHA-256 have the same bytes.</li>
+    <li><strong>Exit code</strong>: the number a command returns to the script that ran it; 0 means success.</li>
+  </ul>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li>Exportmint never alters what an exporter writes: no axis or scale fixes, no triangulation, no texture conversion, no LODs.</li>
+    <li>It does not save time on every kit: on a large glTF kit, Export Changed took about twice as long as Export All (table above). With FBX it was faster.</li>
+    <li>Not checked: world settings, render visibility, driver expressions (only their current result counts), and anything else outside the list in "What it does". Changes inside linked .blend libraries are seen only through their result in your file.</li>
+    <li>Computed values (world transforms, the mesh after modifiers) are compared within a small tolerance: 0.00001 units plus 5 parts in 10 million of the coordinate, which is 0.0025 units at 5,000 units from the origin. A sub-millimetre change that exists only in a modifier's result on a very dense mesh may not show.</li>
+    <li>Objects are checked at the scene's current frame. Changing the frame of an animated scene marks its animated objects as moved, and the row says which frame was exported.</li>
+    <li>Only each exporter's main file is tracked: extra files (glTF Separate's .bin and textures) are not listed or hashed, and switching an exporter's format leaves the old file in place.</li>
+    <li>If you also export with Blender's own buttons, FBX rows read "output file changed on disk" and are written once more on the next Export Changed.</li>
+    <li>The list updates by itself only while the Exportmint tab is on screen; Export Changed always checks everything first.</li>
+    <li>The command line needs a writable folder next to each .blend, for its record file. The manifest history folder is never pruned.</li>
+    <li>No automatic export on save or on a timer, no importing, no animation baking. English only.</li>
+  </ul>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
