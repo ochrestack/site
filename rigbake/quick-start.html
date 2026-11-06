@@ -37,7 +37,7 @@
 
   <h2 id="install">Install (Blender 4.2 LTS to 5.0, tested)</h2>
   <ol>
-    <li>Download <code>rigbake-1.2.4.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>Download <code>rigbake-1.2.5.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Rigbake needs no internet, so <strong>Continue Offline is fine</strong>.</li>
@@ -54,7 +54,7 @@
     <li><strong>Select your character's armature</strong>, in Object Mode or Pose Mode.
       <ul>
         <li>Selecting the mesh works too: the tab says, for example, "Armature: DEF (from Body)".</li>
-        <li>With a control rig, select the deform rig or its mesh, not the control rig. Rigbake finds the control rig.</li>
+        <li>With a control rig, select the deform rig or its mesh, not the control rig. Rigbake finds the control rig. With the control rig selected alone, Export Game-Ready is greyed out and the panel names the rig to select, with a <strong>Select</strong> button for it.</li>
       </ul>
     </li>
     <li><strong>Pick the Preset</strong> (Godot, Unity or Unreal) <strong>and the Folder</strong>.
@@ -75,8 +75,8 @@
     <li><strong>Click Export Game-Ready.</strong>
       <ul>
         <li>The status bar says what it wrote, for example "Exported 3 clips to RIG-rain.glb."</li>
-        <li>The <strong>Last Export</strong> box lists each clip with its frame range, and one line per warning. Hover a line for the whole message.</li>
-        <li>Exporting again replaces the file without asking.</li>
+        <li>The <strong>Last Export</strong> box lists each clip with its frame range, and one line per warning. Hover a line for the whole message. A mesh parented to a bone, such as a sword on a hand bone, is exported with the character, and the box names it.</li>
+        <li>Exporting the same file again right away replaces it without asking. Otherwise (another file, or after you restart Blender) Rigbake asks before replacing a file.</li>
       </ul>
       <figure><img src="img/panel-after-export.png" alt="The Rigbake tab after Export Game-Ready: '7 issues, 2 notes' with a Report button, and the Last Export box with RIG-rain.glb, 1-25 Walk, 1-17 Run, 1-49 Idle and the notes 'Modifiers left unapplied' and '3 baked actions kept in this file'" width="256" height="472" loading="lazy"><figcaption>After the export.</figcaption></figure>
     </li>
@@ -90,7 +90,7 @@
 
   <h2 id="words">Words used here</h2>
   <ul>
-    <li><strong>NLA</strong>: Blender's Nonlinear Animation editor, where an armature's clips sit side by side. <em>Stash</em> puts an action there as a muted track.</li>
+    <li><strong>NLA</strong>: Blender's Nonlinear Animation editor, where an armature's clips sit side by side. <em>Stash</em> puts an action there as a muted track; <em>Push Down</em> puts it on an unmuted track. Blender's own FBX export writes each clip on an unmuted track twice, and each stashed clip once, as <code>Rig|Clip</code>, which can still be wrong (0.56 m off on a stashed clip in our checks). Rigbake writes one take per clip, named after the action, either way.</li>
     <li><strong>Take</strong>: one named animation inside an FBX file. An engine lists one animation per take.</li>
     <li><strong>Control rig</strong>: a second armature that the animator keys; the exported deform rig, the one that bends the mesh, follows it through constraints.</li>
   </ul>
@@ -109,7 +109,7 @@
   <ul>
     <li>Blender 4.2 LTS to 5.0 (tested). Checked in Godot 4.7 and in a real Blender 4.2 LTS window (1600x900 and 1280x720). The Unity preset's FBX was checked through Godot's FBX importer. The Unreal preset has not been checked in Unreal Engine. Neither has been opened in Unity or Unreal.</li>
     <li>Only bone motion is baked. Shape keys and their animation are exported as they are (Godot preset), or dropped with a warning (FBX presets, when the mesh has other modifiers). Custom properties and B-Bone properties are not baked. Keys are baked on whole frames.</li>
-    <li>Motion keyed on the armature object itself is not exported; the validator and the export warn about it.</li>
+    <li>Motion keyed on the armature object itself is not exported; the validator and the Last Export box say so on every export. Blender's own FBX export would keep it.</li>
     <li>One control rig per deform rig. One file per export.</li>
   </ul>
 

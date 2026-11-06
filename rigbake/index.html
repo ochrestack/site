@@ -67,7 +67,7 @@
     <video controls playsinline preload="metadata" poster="video/poster.png">
       <source src="video/rigbake-demo-1080p.mp4" type="video/mp4">
     </video>
-    <figcaption>59 seconds, captions, no narration. Blender Studio's Ellie (CC BY 4.0) with Idle, Walk, and Run on the NLA. Plain FBX export: 24 takes for her 3 clips, and its Idle steps and crosses her feet in Godot. Rigbake: 3 takes, each correct. (<a href="#takes">Why the count varies from file to file</a>.)</figcaption>
+    <figcaption>59 seconds, captions, no narration. Blender Studio's Ellie (CC BY 4.0) with Idle, Walk, and Run on unmuted NLA tracks. Plain FBX export: 24 takes for her 3 clips, and its Idle steps and crosses her feet in Godot. Rigbake: 3 takes, each correct. (<a href="#takes">Why the count varies from file to file</a>.)</figcaption>
   </figure>
 
 
@@ -90,14 +90,14 @@
 
   <h2>What it does</h2>
   <ul>
-    <li><strong>Export Game-Ready.</strong> Bakes every bone constraint and driver into plain keys, one new action per clip, from the rest pose, and exports through Blender's own glTF and FBX exporters with documented presets for Godot, Unity, and Unreal, editable and saved with your file. Before you click, the panel shows the file and the clips; after, each clip with its frame range and every warning.</li>
+    <li><strong>Export Game-Ready.</strong> Bakes every bone constraint and driver into plain keys, one new action per clip, from the rest pose, and exports through Blender's own glTF and FBX exporters with documented presets for Godot, Unity, and Unreal, editable and saved with your file. Before you click, the panel shows the file and the clips; after, each clip with its frame range and every warning. Meshes parented to a bone, such as a sword on a hand bone, go with the character.</li>
     <li><strong>One clip per action.</strong> The active action and every action on the NLA each become a clip named after the action, also from a control rig, which Rigbake detects. Select the deform rig or its mesh, not the control rig; if both rigs are selected (Select All), Rigbake leaves the control rig out of the file and says so. An action that is neither active nor on the NLA is named in the panel, with a one-click Add to NLA.</li>
     <li><strong>Validate Rig for Export.</strong> What will break on the way to the engine, most damaging first, each with a one-line fix and a Select button; Apply Scale and Limit Weights in one click (Limit Weights names any bone it leaves without weights; Ctrl+Z undoes it). What the export handles or what is fine as it is are notes, not issues.</li>
     <li><strong>Your actions and edits are kept.</strong> Originals are never modified; a baked action you clean up by hand is kept by the next export.</li>
   </ul>
 
   <h2>In Blender, for real</h2>
-  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.2.4 installed, shown at its real size (the dialog a little smaller, to fit this column), or a Godot 4.7 render of its files: not a mockup. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip on the NLA and her legs in IK. Each image links to the full Blender window.</p>
+  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.2.4 installed (1.2.5 changes nothing they show), shown at its real size (the dialog a little smaller, to fit this column), or a Godot 4.7 render of its files: not a mockup. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip, each on its own unmuted NLA track (as after Push Down), and her legs in IK. Each image links to the full Blender window.</p>
   <div class="pair">
     <figure>
       <a href="img/character-01-blender-rain-clips.png"><img class="ui" src="img/panel-before-export.png" alt="The Rigbake sidebar tab at real size with Rain's armature selected: Armature: RIG-rain, Validate Rig for Export, the Godot preset, the file it will write, ~/projects/rain/export/RIG-rain.glb, and '3 clips: Walk, Run, Idle' above the Export Game-Ready button, with Preset Settings closed below it" width="256" height="344" loading="lazy"></a>
@@ -137,7 +137,7 @@
   <p>The full manual (<code>README.md</code>) and a one-page quick start are inside the zip: open the zip to read them, but install the zip itself, as it is. The quick start is also online: <a href="quick-start.html">Rigbake quick start</a>.</p>
   <h3>Install</h3>
   <ol>
-    <li>Download <code>rigbake-1.2.4.zip</code>. Install the zip itself; do not unzip it first.</li>
+    <li>Download <code>rigbake-1.2.5.zip</code>. Install the zip itself; do not unzip it first.</li>
     <li>In Blender 4.2 LTS to 5.0 (tested), open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.</li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Rigbake</strong> tab.</li>
@@ -146,7 +146,7 @@
 
   <h2 id="words">Words used on this page</h2>
   <ul>
-    <li><strong>NLA</strong>: Blender's Nonlinear Animation editor, where an armature's clips sit side by side. <em>Stashing</em> an action puts it there as a muted track.</li>
+    <li><strong>NLA</strong>: Blender's Nonlinear Animation editor, where an armature's clips sit side by side. <em>Stashing</em> an action puts it there as a muted track; <em>Push Down</em> puts it on an unmuted track.</li>
     <li><strong>Take</strong>: one named animation inside an FBX file. Godot, Unity and Unreal list one animation per take.</li>
     <li><strong>Control rig</strong>: a second armature that the animator keys; the exported <em>deform rig</em>, the one that bends the mesh, follows it through constraints.</li>
   </ul>
@@ -154,7 +154,7 @@
   <h2>Known limits</h2>
   <ul>
     <li>Only bone motion is baked. Shape keys and their animation are exported as they are (Godot preset), or dropped with a warning (FBX presets, when the mesh has other modifiers).</li>
-    <li>Motion keyed on the armature object itself is not exported; the validator and the export summary warn about it. Put it on a root bone.</li>
+    <li>Motion keyed on the armature object itself is not exported; the validator and the export summary say so on every export. Blender's own FBX export keeps it, so for such a rig plain FBX does better. Put it on a root bone.</li>
     <li>The default exports the active action and every action on the NLA. Other actions of the rig are named in the panel, not exported, until you add them to the NLA.</li>
     <li>Keys are baked on whole frames. One control rig per deform rig. One file per export.</li>
     <li>Blender 4.5's own FBX importer misreads multi-take files; exports from Rigbake are correct, but re-importing them into 4.5 for checking is not reliable. Use 4.2 or 5.0 to verify, or your engine.</li>
@@ -164,10 +164,10 @@
   <table>
     <tr><th>Scenario</th><th>Plain Blender export</th><th>Rigbake</th></tr>
     <tr><td>Deform rig driven by a separate control rig, exported alone</td><td>0 animations (glTF and FBX)</td><td>One clip per action, exact</td></tr>
-    <tr><td>Two clips stashed on the NLA with IK, plain FBX</td><td>4 takes for 2 clips, two of them wrong by 0.60 m / 0.82 rad</td><td>2 takes, exact</td></tr>
+    <tr><td>Two clips on unmuted NLA tracks (for example after Push Down), IK target keyed in one, plain FBX</td><td>4 takes for 2 clips, two of them wrong by 0.60 m / 0.82 rad</td><td>2 takes, exact</td></tr>
     <tr><td>Single rig with IK, Copy Rotation, and a driver</td><td>Correct already</td><td>Correct; validator and presets are the value</td></tr>
   </table>
-  <p id="takes"><strong>Why the take counts differ.</strong> Blender's default FBX export (All Actions and NLA Strips both on) writes each NLA clip twice and adds every other action in the file that fits the rig. Our minimal test rig has no other actions: 4 takes for 2 clips. Rain's file adds 17 face-rig pose actions: 23 takes for 3 clips. Ellie's adds 16 rig pose actions, a camera pose library and a shader action: 24 takes for 3 clips. Rigbake writes one take per clip in each case.</p>
+  <p id="takes"><strong>Why the take counts differ.</strong> Blender's default FBX export (All Actions and NLA Strips both on) writes each clip on an unmuted NLA track twice, once under the track's name and once as <code>Rig|Clip</code>, and adds every other action in the file that fits the rig. Tracks are unmuted after Push Down, for example. Our minimal test rig has two unmuted tracks and no other actions: 4 takes for 2 clips. Rain's three clips are on unmuted tracks and her file adds 17 face-rig pose actions: 23 takes for 3 clips. Ellie's three are on unmuted tracks and her file adds 16 rig pose actions, a camera pose library and a shader action: 24 takes for 3 clips. Stashed clips are different: Stash puts a clip on a muted track, which the FBX exporter skips, so each stashed clip is written once, as <code>Rig|Clip</code>. It can still be wrong: in our checks with Blender 4.2.23, a stashed Attack clip came out 0.56 m off. Rigbake writes one take per clip, named after the action, in each case.</p>
   <p>We build each rig in code, export it with Blender's defaults and with Rigbake, re-import the file into Blender, and compare every deform bone with the live rig. <strong>Exact</strong> in the table means every bone within 1e-5 m of the live rig, on these cases and on three more buyer-style rigs (the tests fail above 1 mm or 0.001 rad). The measurements come from our automated test suite, which runs on Blender 4.2, 4.5, and 5.0.</p>
   <p><strong>How exact in Godot.</strong> The exported files are exact. Godot's default import re-samples each clip at its Animation &gt; FPS setting, and its import Optimizer can thin keys: on fast motion our every-frame check measured up to 13 cm. With Animation &gt; FPS set to the Blender frame rate and the AnimationPlayer's Optimizer turned off, every bone matched Blender within 0.0002 m in our check. The <a href="quick-start.html#godot">quick start</a> shows both settings.</p>
 </main>
