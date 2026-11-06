@@ -74,7 +74,7 @@
   <p class="sub">For Godot, Unity and Unreal. Measured on Blender 4.2, 4.5 and 5.0. Published 6 November 2026.</p>
 
   <div class="box warn">
-    <p style="margin:0">If your character is one armature with IK, Copy Rotation and drivers, Blender's glTF and FBX exporters already bake the constraints: you need neither a manual bake nor Rigbake.</p>
+    <p style="margin:0">If your character is one armature with IK, Copy Rotation and drivers, and you export one clip at a time (nothing on the NLA), Blender's glTF and FBX exporters already bake the constraints: you need neither a manual bake nor Rigbake.</p>
   </div>
 
   <p>The forum answer you will usually find is "constraints don't get exported", or "disable all bone constraints before you export". For the most common rig, that is not what Blender does today. Below is what we measured, the two setups where the default export really does go wrong, and a checklist that applies to every rig.</p>

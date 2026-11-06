@@ -52,6 +52,7 @@
   .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
   .pair figure { flex: 0 1 256px; margin: 0; }
   .narrow-only { display: none; }
+  .hero-phone { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
   @media (max-width: 600px) {
     h1 { margin-top: 28px; }
     .wide-only { display: none; }
@@ -70,20 +71,21 @@
 </header>
 <main>
   <h1>Rigbake for Blender</h1>
-  <p class="sub">Control rig or NLA clips? Blender's default export can come out empty or with wrong, duplicated takes. Rigbake exports one clean, correctly named clip per action, with ready settings for Godot, Unity, and Unreal. Your original actions are never touched.</p>
+  <a class="narrow-only" href="video/poster.png"><img class="hero-phone" src="img/hero-ellie-2x1.png" alt="Ellie in Godot, same Idle clip, same frame: plain FBX on the left, her feet step; Rigbake on the right, her feet stay put" width="1600" height="800"></a>
+  <p class="sub">Control rig or NLA clips? Blender's default export can come out empty or with wrong, duplicated takes. Rigbake exports one clean, correctly named clip per action.</p>
 
   <div class="buy">
     <p class="price"><strong>$19, one-time, source included</strong> (GPL-3.0-or-later). For Blender 4.2 LTS to 5.0 (tested).</p>
-    <p><a class="button" href="https://buy.polar.sh/polar_cl_ZmTfBbKKwOak1EOpaKTly0p1ApRBX3OVowjuz1kcpEx">Buy Rigbake, $19</a></p>
-    <p>Secure checkout by Polar (card, Apple Pay, Google Pay). The download and your license key arrive by email right after payment; the zip includes the full source. Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. <a href="#documentation">Documentation and install steps</a></p>
+    <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_ZmTfBbKKwOak1EOpaKTly0p1ApRBX3OVowjuz1kcpEx">Buy Rigbake, $19</a></p>
+    <p><strong>Engines:</strong> presets for Godot (checked in Godot 4.7), Unity and Unreal (not yet opened in Unity or Unreal).</p>
+    <p>Secure checkout by Polar (card, Apple Pay, Google Pay). The download arrives by email right after payment; the zip includes the full source. Polar also emails a license key; Rigbake doesn't check it (no license check, no network access). If it doesn't work as described on your rig and we can't fix it, you get a full refund within 14 days of purchase (<a href="../terms.html">terms</a>). Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. <a href="#documentation">Documentation and install steps</a></p>
   </div>
 
-  <figure>
-    <video controls playsinline preload="metadata" poster="video/poster.png">
-      <source src="video/rigbake-demo-1080p.mp4" type="video/mp4">
-    </video>
-    <figcaption>59 seconds, captions, no narration. Blender Studio's Ellie (CC BY 4.0) with Idle, Walk, and Run on unmuted NLA tracks. Plain FBX export: 24 takes for her 3 clips, and its Idle steps and crosses her feet in Godot. Rigbake: 3 takes, each correct. (<a href="#takes">Why the count varies from file to file</a>.)</figcaption>
+  <figure class="wide-only">
+    <img src="video/poster.png" alt="Ellie in Godot, same Idle clip, same frame: plain FBX on the left with her feet stepping, Rigbake on the right with her feet in place, as in Blender" width="1920" height="1080">
+    <figcaption>Blender Studio's Ellie (CC BY 4.0) with Idle, Walk, and Run on unmuted NLA tracks, in Godot 4.7. Left: Blender's default FBX export, 24 takes for her 3 clips; its Idle steps her feet, though Idle never keys them. Right: Rigbake's FBX (Unity preset), 3 takes, Idle standing as in Blender. (<a href="#takes">Why the count varies from file to file</a>.)</figcaption>
   </figure>
+  <p class="narrow-only" style="font-size:15px;color:var(--muted)">Above: Blender Studio's Ellie (CC BY 4.0) in Godot 4.7, same Idle frame. Left, Blender's default FBX export (24 takes for 3 clips); right, Rigbake's FBX (3 takes). (<a href="#takes">Why the count varies</a>.)</p>
 
 
   <div class="box warn">
@@ -91,7 +93,7 @@
   </div>
 
   <div class="box">
-    <strong>Where it is a convenience.</strong> For a single rig with IK and drivers, Blender's own exporters already bake constraints and get it right. There, what you are buying is the rig validator, repeatable per-engine presets saved in your .blend file, and editable baked actions. We say this on the box because you should know it before you pay.
+    <strong>Where it is a convenience.</strong> For a single rig with IK and drivers and one clip at a time (nothing on the NLA), Blender's own exporters already bake constraints and get it right. There, what you are buying is the rig validator, repeatable per-engine presets saved in your .blend file, and editable baked actions. We say this on the box because you should know it before you pay.
   </div>
 
   <figure class="wide-only">
@@ -180,12 +182,41 @@
     <tr><th>Scenario</th><th>Plain Blender export</th><th>Rigbake</th></tr>
     <tr><td>Deform rig driven by a separate control rig, exported alone</td><td>0 animations (glTF and FBX)</td><td>One clip per action, exact</td></tr>
     <tr><td>Two clips on unmuted NLA tracks (for example after Push Down), IK target keyed in one, plain FBX</td><td>4 takes for 2 clips, two of them wrong by 0.60 m / 0.82 rad</td><td>2 takes, exact</td></tr>
-    <tr><td>Single rig with IK, Copy Rotation, and a driver</td><td>Correct already</td><td>Correct; validator and presets are the value</td></tr>
+    <tr><td>Single rig with IK, Copy Rotation, and a driver, one clip</td><td>Correct already</td><td>Correct; validator and presets are the value</td></tr>
   </table>
   <p id="takes"><strong>Why the take counts differ.</strong> Blender's default FBX export (All Actions and NLA Strips both on) writes each clip on an unmuted NLA track twice, once under the track's name and once as <code>Rig|Clip</code>, and adds every other action in the file that fits the rig. Tracks are unmuted after Push Down, for example. Our minimal test rig has two unmuted tracks and no other actions: 4 takes for 2 clips. Rain's three clips are on unmuted tracks and her file adds 17 face-rig pose actions: 23 takes for 3 clips. Ellie's three are on unmuted tracks and her file adds 16 rig pose actions, a camera pose library and a shader action: 24 takes for 3 clips. Stashed clips are different: Stash puts a clip on a muted track, which the FBX exporter skips, so each stashed clip is written once, as <code>Rig|Clip</code>. It can still be wrong: in our checks with Blender 4.2.23, a stashed Attack clip came out 0.56 m off. Rigbake writes one take per clip, named after the action, in each case.</p>
   <p>We build each rig in code, export it with Blender's defaults and with Rigbake, re-import the file into Blender, and compare every deform bone with the live rig. <strong>Exact</strong> in the table means every bone within 1e-5 m of the live rig, on these cases and on three more buyer-style rigs (the tests fail above 1 mm or 0.001 rad). The measurements come from our automated test suite, which runs on Blender 4.2, 4.5, and 5.0.</p>
   <p><strong>How exact in Godot.</strong> The exported files are exact. Godot's default import re-samples each clip at its Animation &gt; FPS setting, and its import Optimizer can thin keys: on fast motion our every-frame check measured up to 13 cm. With Animation &gt; FPS set to the Blender frame rate and the AnimationPlayer's Optimizer turned off, every bone matched Blender within 0.0002 m in our check. The <a href="quick-start.html#godot">quick start</a> shows both settings.</p>
 </main>
+<script>
+// ?src=<venue> sends the Buy button to that venue's Polar checkout link, so each order is counted for the venue it came from.
+(function () {
+  var base = "https://buy.polar.sh/";
+  var links = {
+    "blenderartists": "polar_cl_qrQSDJC8cAnWwifUeMffktJrwJTZ0ENLQ0D5l2bLlbZ",
+    "reddit": "polar_cl_JM86tAoJxh6kMibz0mWtJ7fHXyAGc66D1qNbx2tRpnC",
+    "godot-community": "polar_cl_AKPUTEv3J5AcG3mOfzDhmQ2lLPpKBBygjVDAB4Yjitp",
+    "unity-community": "polar_cl_zlqrvfAzpmdRC8ijQXmvq29RxAPDNmEK3ZNuA4bvJgB",
+    "x": "polar_cl_GRgi9RFfzEy4ccjttjVCqSc7uqTMEpDuyJjjs4LNxnX",
+    "bluesky": "polar_cl_SpFkvhJ3Dmfhmca52Zd3Vs87RzEfCpRQLSAaT1gba9j",
+    "mastodon": "polar_cl_JwbYjv34PvvfBhDwNL4QxfAEoJZTEwkL0FTWL3aH821",
+    "youtube": "polar_cl_CPrYPfSpC7FWkHqHxBXs6CiSYDLZ8KaLRnAAN1WhN9B",
+    "email": "polar_cl_GFiIGgMFrGsbzNg5PeGSuz9ydMDHzKtr4yKYU1viWtC",
+    "producthunt": "polar_cl_4tKoS8HUw2QRISNK9z3bPxBooVWag5Z8vD8Fp3iDThs"
+  };
+  var alias = { "godot-forum": "godot-community", "reddit-blender": "reddit", "reddit-godot": "reddit", "reddit-gamedev": "reddit" };
+  var src = null;
+  try {
+    src = new URLSearchParams(location.search).get("src");
+    if (src) { sessionStorage.setItem("rigbake-src", src); } else { src = sessionStorage.getItem("rigbake-src"); }
+  } catch (e) { return; }
+  if (!src) return;
+  var key = alias[src] || src;
+  if (!links.hasOwnProperty(key)) return;
+  var buy = document.getElementById("buy");
+  if (buy) buy.href = base + links[key];
+})();
+</script>
 <footer>
   <a href="../guides/">Guides</a>
   <a href="../privacy.html">Privacy</a>
