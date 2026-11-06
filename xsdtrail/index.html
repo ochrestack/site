@@ -31,7 +31,6 @@
   header a { color: var(--ink); text-decoration: none; font-weight: 600; }
   h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
   h2 { font-size: 20px; margin-top: 40px; }
-  h3 { font-size: 17px; margin: 24px 0 4px; }
   p, li { max-width: 64ch; }
   .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
   .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
@@ -45,20 +44,30 @@
   .buy .price { font-size: 19px; }
   .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
-  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
-  .note { font-size: 15px; color: var(--muted); }
   figure { margin: 28px 0; }
   figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
   figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
-  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .hero { display: block; width: 100%; max-width: 640px; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
   .fine { font-size: 15px; color: var(--muted); }
-  code { font-size: 15px; }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
   @media (max-width: 600px) {
     h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
     table { font-size: 14px; }
     th, td { padding: 6px; }
   }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .note { font-size: 15px; color: var(--muted); }
+  .hero.wide { max-width: none; }
+  code { font-size: 15px; }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
 </style>
@@ -71,7 +80,7 @@
 <main>
   <h1>Xsdtrail for XSD and WSDL</h1>
   <p class="sub">Large XSDs split across multiple files in the same folder? Open a Design tab that shows them as one diagram, then double-click any box to land on its source line. Free for one file; pay once for all of them.</p>
-  <a href="img/invoice-project.png"><img class="hero" src="img/invoice-design-tab.png" alt="Xsdtrail's Design tab on UBL-Invoice-2.1.xsd in IntelliJ IDEA: the file box, its three imports with the files they resolved to (UBL-CommonAggregateComponents, UBL-CommonBasicComponents and UBL-CommonExtensionComponents), and Invoice unfolded through a sequence into ext:UBLExtensions, cbc:UBLVersionID, cbc:CustomizationID, cbc:ProfileID and more, each marked [0..1] and labelled 'in UBL-CommonBasicComponents-2.1.xsd' or the extension file. Under it: '14 files, 2843 components, built in 967 ms' and the Text and Design tabs" width="910" height="760"></a>
+  <a href="img/invoice-project.png"><img class="hero wide" src="img/invoice-design-tab.png" alt="Xsdtrail's Design tab on UBL-Invoice-2.1.xsd in IntelliJ IDEA: the file box, its three imports with the files they resolved to (UBL-CommonAggregateComponents, UBL-CommonBasicComponents and UBL-CommonExtensionComponents), and Invoice unfolded through a sequence into ext:UBLExtensions, cbc:UBLVersionID, cbc:CustomizationID, cbc:ProfileID and more, each marked [0..1] and labelled 'in UBL-CommonBasicComponents-2.1.xsd' or the extension file. Under it: '14 files, 2843 components, built in 967 ms' and the Text and Design tabs" width="910" height="760"></a>
   <p class="fine">Above: the OASIS UBL 2.1 Invoice schema, unmodified, in a sample integration project. One Design tab reads it and the 13 files behind it: 14 files, 2,843 components, and every box from another file names that file. Tap any image for the full IDE window, Project view included.</p>
 
   <div class="buy">
