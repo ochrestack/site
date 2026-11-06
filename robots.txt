@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /rigbake/
+Allow: /rigbake/quick-start.html
+Allow: /guides/
+Allow: /guides/bake-constraints-before-export/
+Allow: /guides/control-rig-no-animations/
+Allow: /guides/fbx-duplicate-takes/
+Allow: /support.html
+Allow: /privacy.html
+Allow: /terms.html
+
+Sitemap: https://ochrestack.com/sitemap.xml
