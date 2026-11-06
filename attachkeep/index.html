@@ -45,6 +45,7 @@
   figure { margin: 28px 0; }
   figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  .slot { aspect-ratio: 1840 / 900; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 10px; background: #fff; color: var(--muted); font-size: 15px; }
   .said { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; margin: 6px 0 14px; padding: 6px 0 6px 14px; border-left: 3px solid var(--ochre); }
   .narrow-only { display: none; }
   @media (max-width: 600px) {
@@ -105,6 +106,62 @@
   <p class="said">Dry run: 4 files (0.3 MB) would be moved to the space trash. Nothing was changed.</p>
   <p class="said">4 files (0.3 MB) moved to the space trash. A space administrator can restore any of them from the space trash.</p>
   <p>Only the four files nothing used had moved; the twenty files that something on the site used, or that carried the protected label, were all still in place.</p>
+
+  <!-- Screenshot slots for the session in Confluence (control status.md, shot list). Hidden until each image exists:
+       paste the <img> from the comment in place of the div, remove "hidden" from the figure and from the section,
+       and add an h2 "In Confluence" above the first figure. -->
+  <div id="screens" hidden>
+  <figure hidden id="shot-1">
+    <!-- Shot 1. Replace the div with:
+    <img src="img/shot-1-why-column.png" alt="Attachkeep's file list in Confluence: each attachment marked In use or Unused with the reason, such as a comment on another page, the Attachments macro or a draw.io diagram" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 1, to be added: Attachkeep's file list in Confluence, each attachment marked In use or Unused with the reason, such as a comment on another page, the Attachments macro or a draw.io diagram">
+      <strong>Screenshot 1, to be added from Confluence</strong>
+      <span>The file list: each attachment marked In use or Unused with the reason, such as a comment on another page, the Attachments macro or a draw.io diagram.</span>
+    </div>
+    <figcaption>Used or unused, each file says why. A file referenced only from a comment on another page stays in use, and the row names the page.</figcaption>
+  </figure>
+  <figure hidden id="shot-2">
+    <!-- Shot 2. Replace the div with:
+    <img src="img/shot-2-unused-left.png" alt="Unused attachments uploaded by deactivated accounts, largest first, with the storage per space and the site total above the list" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 2, to be added: unused attachments uploaded by deactivated accounts, largest first, with the storage per space and the site total above the list">
+      <strong>Screenshot 2, to be added from Confluence</strong>
+      <span>Filtered to Unused only and Uploader no longer active, 1 MB and up: storage per space, then each file with its uploader marked Deactivated.</span>
+    </div>
+    <figcaption>Unused files from people who have left, with storage per space and the site total.</figcaption>
+  </figure>
+  <figure hidden id="shot-3">
+    <!-- Shot 3. Replace the div with:
+    <img src="img/shot-3-preview.png" alt="The Preview: delete attachments dialog, with the number of files and megabytes to be checked again and moved to the space trash, the file list, and the Run dry run button" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 3, to be added: the Preview delete attachments dialog, with the number of files and megabytes, the file list, and the Run dry run button">
+      <strong>Screenshot 3, to be added from Confluence</strong>
+      <span>The preview dialog: the number of files and megabytes, the list, and the Run dry run button.</span>
+    </div>
+    <figcaption>The count and megabytes before anything changes, then a dry run that checks every file again.</figcaption>
+  </figure>
+  <figure hidden id="shot-4">
+    <!-- Shot 4. Replace the div with:
+    <img src="img/shot-4-delete-summary.png" alt="Delete run summary: files moved to the space trash with the total megabytes, and a skipped file with its reason" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 4, to be added: the delete run summary, files moved to the space trash with the total megabytes, and a skipped file with its reason">
+      <strong>Screenshot 4, to be added from Confluence</strong>
+      <span>The delete run summary: files moved to the space trash, megabytes, and any skipped file with its reason.</span>
+    </div>
+    <figcaption>Moved to the space trash, never purged. A space administrator can restore any of them.</figcaption>
+  </figure>
+  <figure hidden id="shot-5">
+    <!-- Shot 5. Replace the div with:
+    <img src="img/shot-5-activity.png" alt="The Activity tab with a scan, a dry run and a delete run, and the Files moved dialog listing each moved file with a link to its page" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 5, to be added: the Activity tab with a scan, a dry run and a delete run, and the Files moved dialog listing each moved file with a link to its page">
+      <strong>Screenshot 5, to be added from Confluence</strong>
+      <span>The Activity tab: scan, dry run and delete run, with the Files moved dialog open.</span>
+    </div>
+    <figcaption>Every run on the record, with links to the page of every moved file.</figcaption>
+  </figure>
+  </div>
 
   <h2 id="scope">What Confluence already does, and what you pay for</h2>
   <div class="box">

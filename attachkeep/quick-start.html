@@ -24,6 +24,7 @@
   th { color: var(--muted); font-weight: 600; }
   figure { margin: 20px 0; }
   figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  .slot { aspect-ratio: 1840 / 900; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 6px; background: #fff; color: var(--muted); font-size: 15px; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
   .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
   @media (max-width: 600px) {
@@ -54,8 +55,32 @@
   <h2 id="settings">Before the first scan: protect what must stay</h2>
   <p>Open the <strong>Settings</strong> tab. Set the <strong>protected label</strong> (<code>keep</code> unless you change it) and choose any <strong>excluded spaces</strong>. Files carrying the label, and every file in an excluded space, are listed but can't be selected or deleted. Runs always use the current settings; re-run the scan to update the list's markings.</p>
 
+  <!-- Hidden until the screenshot exists: paste the <img>, then remove "hidden". -->
+  <figure hidden id="shot-6">
+    <!-- Shot 6. Replace the div with:
+    <img src="img/shot-6-settings.png" alt="Attachkeep's Settings tab: the protected label set to keep, and the spaces excluded from clean-up" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 6, to be added: Attachkeep's Settings tab, the protected label set to keep, and the spaces excluded from clean-up">
+      <strong>Screenshot 6, to be added from Confluence</strong>
+      <span>The Settings tab: the protected label and the excluded spaces.</span>
+    </div>
+    <figcaption>The protected label (<code>keep</code> by default) and the spaces Attachkeep must never touch.</figcaption>
+  </figure>
+
   <h2 id="scan">1. Scan the site</h2>
   <p>On the <strong>Attachments</strong> tab, choose <strong>Scan the site</strong>. The scan runs in the background and changes nothing. A progress bar shows the phase and how many attachments, pages, blog posts and comments it has read. You can leave the page and come back; <strong>Stop</strong> ends the scan, and <strong>Re-run scan</strong> refreshes the list any time.</p>
+
+  <!-- Hidden until the screenshot exists: paste the <img>, then remove "hidden". -->
+  <figure hidden id="shot-7">
+    <!-- Shot 7. Replace the div with:
+    <img src="img/shot-7-scan-progress.png" alt="A scan running in the background: the progress bar with the phase and the number of attachments, pages, blog posts and comments read so far, and the Stop button" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 7, to be added: a scan running in the background, the progress bar with the phase and the number of attachments, pages, blog posts and comments read so far, and the Stop button">
+      <strong>Screenshot 7, to be added from Confluence</strong>
+      <span>The scan running: the progress bar, the counts read so far, and Stop.</span>
+    </div>
+    <figcaption>The scan reads every page, blog post and comment on the site. It changes nothing.</figcaption>
+  </figure>
 
   <h2 id="storage">2. Read the storage summary</h2>
   <p>When the scan finishes, the <strong>Storage</strong> table shows each space's files and megabytes and how much of it is unused, with the site total at the bottom. "MB" means a million bytes, and only the current version of each file is counted.</p>
