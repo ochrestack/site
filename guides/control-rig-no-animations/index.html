@@ -94,6 +94,10 @@
     <tr><td>Either, with deform bones only</td><td><strong>0</strong></td></tr>
   </table>
   <p>The result was the same on Blender 4.2, 4.5 and 5.0. In a separate check, a tester built a second character from scratch in this style (a control rig with IK feet and four clips; a deform rig whose 18 bones follow it through Copy Transforms) and got the same: 0 animations in glTF and in FBX, both when re-imported into Blender and when imported into Godot 4.7.</p>
+  <figure>
+    <img src="../img/control-rig-ellie-godot.png" alt="Godot 4.7, the same scene: on the left Ellie from Blender's default glTF export stands in her T-pose bind pose, labelled 'Plain glTF export, AnimationPlayer: none, 0 animations'; on the right Ellie from Rigbake's export stands in her Idle pose, labelled 'Rigbake, 3 animations: Idle, Run, Walk, playing Idle'" width="1600" height="900" loading="lazy">
+    <figcaption>The same pattern on a production character, in Godot 4.7: plain glTF gives 0 animations (left), and Rigbake gives 3 clips (right). The character is Blender Studio's Ellie (CC BY 4.0). Her own rig holds the Idle, Walk and Run keys on its NLA. A separate deform rig of her 312 deform bones follows it through Copy Transforms, and her meshes are bound to that deform rig. Blender 4.2's default glTF and FBX exports of the deform rig and meshes both contain 0 animations. Rigbake's Godot preset wrote Idle, Run and Walk, each matching the live rig within 0.00001 m on every deform bone at the frames we checked. Both sides use the same flat colours, and her teeth and fanny-pack zipper are bone-parented on both sides, because glTF can't carry their shaders or Surface Deform.</figcaption>
+  </figure>
 
   <h2 id="workaround">4. The free workaround, step by step</h2>
   <p>Blender can export the control rig's motion through the deform rig, if you tell the exporter to sample the scene instead of looking for the deform rig's actions:</p>

@@ -92,6 +92,11 @@
     <strong>Where it matters.</strong> If your character is driven by a separate control rig, or you keep several clips on the NLA, Blender's default glTF and FBX exports can come out with no animation at all, or with wrong, duplicated FBX takes that are off by more than half a meter. We measured both cases on Blender 4.2, 4.5, and 5.0. Rigbake exports both correctly.
   </div>
 
+  <figure>
+    <img src="img/control-rig-ellie-godot.png" alt="Godot 4.7, the same scene: on the left Ellie from Blender's default glTF export stands in her T-pose bind pose, labelled 'Plain glTF export, AnimationPlayer: none, 0 animations'; on the right Ellie from Rigbake's export stands in her Idle pose with her arms down, labelled 'Rigbake, 3 animations: Idle, Run, Walk, playing Idle'" width="1600" height="900" loading="lazy">
+    <figcaption>A deform rig following a control rig, exported with Blender's defaults: plain glTF 0 animations (left); Rigbake 3 clips (right). Godot 4.7. The character is Blender Studio's Ellie (CC BY 4.0). Her production rig is the control rig: it holds the Idle, Walk and Run keys on its NLA. A separate deform rig made of her 312 deform bones follows it through Copy Transforms. Both files come from the same .blend in Blender 4.2. Left: File &gt; Export &gt; glTF 2.0 with its defaults (deform rig and meshes selected). The file has no animation, so she stands in her bind pose; the default FBX export also has 0. Right: Rigbake 1.2.5 with its Godot preset. Each of the 312 deform bones is within 0.00001 m of the live rig at the frames we checked. Both sides use the same flat colours, because her procedural shaders don't export to glTF. Her teeth and fanny-pack zipper are parented to bones on both sides, because the Surface Deform they use doesn't export.</figcaption>
+  </figure>
+
   <div class="box">
     <strong>Where it is a convenience.</strong> For a single rig with IK and drivers and one clip at a time (nothing on the NLA), Blender's own exporters already bake constraints and get it right. There, what you are buying is the rig validator, repeatable per-engine presets saved in your .blend file, and editable baked actions. We say this on the box because you should know it before you pay.
   </div>
@@ -140,7 +145,7 @@
     <img src="img/godot-lists-desktop.png" alt="The two animation lists from the same Godot render at full size: the plain FBX export's AnimationPlayer with 23 animations, Idle, Run and Walk each listed twice and 17 face-rig pose actions, playing 'RIG-rain|Idle' with the wrong pose; Rigbake's with 3 animations, Idle, Run and Walk, playing Idle, matching Blender" width="712" height="530" loading="lazy">
     <figcaption>The two animation lists of the image above, at full size: 23 takes against 3.</figcaption>
   </figure>
-  <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We added the animation clips and simplified two eye materials for the game-engine export. Rain is not included with Rigbake. Rain has no separate control rig; the control-rig case is in "How we tested" below.</p>
+  <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We added the animation clips and simplified two eye materials for the game-engine export. Rain is not included with Rigbake. Rain has no separate control rig; the control-rig case is the Ellie image near the top of this page and the first row of "How we tested" below.</p>
 
   <h2>Details</h2>
   <ul>
