@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xsdtrail quick start: the Design tab for XSD and WSDL</title>
+<meta name="description" content="Install Xsdtrail in IntelliJ IDEA or another JetBrains IDE (2025.1 or later), open the Design tab on an XSD or WSDL file, navigate both ways, and unlock multi-file schemas and the WSDL operation view.">
+<link rel="canonical" href="https://ochrestack.com/xsdtrail/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  code { font-size: 15px; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Xsdtrail quick start</h1>
+  <p>Installing Xsdtrail, your first Design tab, and the licence. Back to the <a href="index.html">Xsdtrail product page</a>.</p>
+
+  <h2 id="install">Install (IntelliJ IDEA 2025.1 or later, or another JetBrains IDE on the 2025.1 platform with XML support)</h2>
+  <ol>
+    <li>In the IDE, open <strong>Settings &gt; Plugins &gt; Marketplace</strong>, search for <em>Xsdtrail</em> (once the listing is live; it is in review), and click <strong>Install</strong>.</li>
+    <li>Restart the IDE if asked.</li>
+  </ol>
+  <p>Xsdtrail registers no file type and changes no file type association, so installing it does not change how your files open.</p>
+
+  <h2 id="design">Open the Design tab</h2>
+  <ol>
+    <li>Open any file whose root element is <code>xs:schema</code> or <code>wsdl:definitions</code>. The extension does not matter: <code>.xsd</code>, <code>.XSD</code>, <code>.wsdl</code> and <code>.xml</code> all work, because the tab is offered from the file's content.</li>
+    <li>Two tabs appear under the editor: <strong>Text</strong> and <strong>Design</strong>. Click <strong>Design</strong>.</li>
+    <li>The diagram opens at the first level: global elements and types, and the include, import and redefine lines of the file. It builds in the background, so the Text tab stays typeable. The status line under the diagram shows the number of files, the number of components and the build time.</li>
+  </ol>
+  <figure><a href="img/invoice-project.png"><img src="img/invoice-project.png" alt="IntelliJ IDEA with the project invoice-gateway open and UBL-Invoice-2.1.xsd in the Design tab: the file box, its three imports with the files they resolved to, and Invoice unfolded into elements labelled with the file that declares each; the Text and Design tabs under the diagram; the status line '14 files, 2843 components, built in 967 ms'" width="1280" height="800" loading="lazy"></a><figcaption>The OASIS UBL 2.1 Invoice schema in the Design tab. The tabs are under the editor: Text and Design.</figcaption></figure>
+
+  <h2 id="read">Read the diagram</h2>
+  <ul>
+    <li>Click the ⊕ at the right edge of a box, or select it and press Space or →, to unfold it.</li>
+    <li>Elements show their name and type. Optional ones have a dashed border, repeating ones a stacked shadow, and the cardinality is in the box: <code>[0..1]</code>, <code>[1..*]</code>.</li>
+    <li><code>sequence</code>, <code>choice</code> and <code>all</code> appear as their own boxes between a parent and its children. Attributes appear as <code>@name</code> with required or optional, default and fixed values. <code>extension of …</code> and <code>restriction of …</code> boxes unfold to the base type. Enumeration values appear as <code>= value</code>.</li>
+    <li>↻ marks a type that already appears above it, instead of unfolding forever.</li>
+    <li>A red box is something that cannot be resolved; it names the missing namespace, file or declaration.</li>
+    <li>Hover a box for its tooltip: the <code>xs:documentation</code> text and the details of the declaration.</li>
+  </ul>
+  <p><strong>Toolbar:</strong> Expand All (stops at 4,000 boxes on very large schemas and says so), Collapse All, Zoom In, Zoom Out, Actual Size, Fit to Window, Rebuild Diagram. Ctrl+mouse wheel (Cmd+wheel on macOS) zooms around the pointer. The search box on the right finds a global element or type by name; when several match equally well, the status line says "Match 1 of 2" with the file name, and Enter steps to the next.</p>
+
+  <h2 id="navigate">Navigate both ways</h2>
+  <ul>
+    <li><strong>Diagram to source:</strong> double-click a box, or select it and press Enter. The editor opens at the declaration's line, in whichever file declares it (another file needs the licence).</li>
+    <li><strong>Source to diagram:</strong> right-click in the editor and choose <strong>Show in Design</strong>. The Design tab opens with the box for the declaration under the caret selected.</li>
+    <li><strong>Follow the caret:</strong> use <strong>Window &gt; Editor Tabs &gt; Split Right</strong> and show Text on one side and Design on the other. Moving the caret in the source moves the selection in the diagram.</li>
+  </ul>
+  <figure><a href="img/caret-follows.png"><img src="img/caret-follows.png" alt="The editor split on UBL-CommonAggregateComponents-2.1.xsd: the caret on the cac:PostalAddress reference at line 22479 on the left, and the cac:PostalAddress box selected in the Design tab on the right" width="1280" height="800" loading="lazy"></a><figcaption>Text on the left, Design on the right: the selection follows the caret.</figcaption></figure>
+
+  <h2 id="multi-file">Multi-file schemas (licence)</h2>
+  <p><code>xs:include</code>, <code>xs:import</code> and <code>xs:redefine</code> are followed through relative <code>schemaLocation</code> values. An import with a namespace but no <code>schemaLocation</code>, or with one that does not resolve, is matched by <code>targetNamespace</code>:</p>
+  <ol>
+    <li>against schema files in the same folder (<code>.xsd</code>, <code>.wsdl</code> and <code>.xml</code>, any case);</li>
+    <li>then against <code>.xsd</code> files elsewhere in the project;</li>
+    <li>then against <code>.xsd</code> files in the project's libraries, for example a JAR of generated contracts.</li>
+  </ol>
+  <p>Types and elements from other files appear in place, labelled with their file name. When a schema file is added, renamed or changed on disk, for example after a pull or a branch switch, the diagram rebuilds. While the IDE is still indexing, the project and library search waits: the import says so, and the diagram rebuilds when indexing ends. Nothing is ever downloaded: a <code>schemaLocation</code> that is a URL is reported as not downloaded.</p>
+
+  <h2 id="wsdl">WSDL operation view (licence)</h2>
+  <p>For a WSDL 1.1 file the Design tab has two sections. <strong>Types</strong> holds the schemas inline in <code>wsdl:types</code> and is free. <strong>Services and operations</strong> lists each service, its ports with their addresses, each port's binding with SOAP 1.1 or 1.2 and the document or rpc style, and the operations. An operation unfolds to its input, output and fault messages, their parts, and the XSD elements or types those parts reference. A missing message, part element or binding, and a binding that no port uses, appear as red boxes that say what is missing. An abstract WSDL, with operations in a <code>wsdl:portType</code> and no binding, lists those operations, each naming its portType.</p>
+  <figure><a href="img/wsdl-operation.png"><img src="img/wsdl-operation-diagram.png" alt="checkVatService.wsdl in the Design tab: binding checkVatBinding (SOAP 1.1 · document), operation checkVat with its input and output messages, their parameters parts, and the fields of checkVat and checkVatResponse" width="1125" height="410" loading="lazy"></a><figcaption>The EU's VIES <code>checkVatService.wsdl</code>, unfolded from the binding to the fields of each message.</figcaption></figure>
+
+  <h2 id="licence">Licence and trial</h2>
+  <p>Without a licence, every box from another file is shown with its name, its file label, a lock and "Locked: needs a licence". The WSDL operation view shows one locked box. Nothing pops up. A line under the status line offers <strong>Get a licence or trial</strong>, which opens the IDE's own licence dialog only when you click it. You can also use <strong>Help &gt; Register…</strong> (paid IDEs) or <strong>Help &gt; Manage Licenses…</strong> (free IDEs).</p>
+  <p>When the trial or licence becomes active, open Design tabs unlock by themselves; nothing needs reopening. The licence is a JetBrains Marketplace perpetual licence: $12 once, personal or commercial, every update included, nothing to renew. A 30-day trial unlocks everything, and the free features never lock.</p>
+  <figure><a href="img/free-tier.png"><img src="img/free-tier-detail.png" alt="UBL Invoice without a licence: boxes from the common-component files grey with a lock, the file name and 'Locked: needs a licence'; under the diagram, 'Free: this file. Other files and WSDL operations are locked. Get a licence or trial'" width="890" height="432" loading="lazy"></a><figcaption>Without a licence: the open file works, boxes from other files are locked, and one line explains why.</figcaption></figure>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li>Xsdtrail reads schemas. It does not edit a schema from the diagram, generate sample XML or SOAP envelopes, export images, SVG or JSON, download remote schemas or read OASIS XML catalogs.</li>
+    <li>Not supported: WSDL 2.0, XSD 1.1 assertions and conditional types, DTD, RELAX NG, validation of XML instance documents. English only.</li>
+    <li>The root element must start within the first 1 MB of the file.</li>
+    <li>When one namespace matches several files that declare the same component, the diagram uses the first (folder before project, then by path) and the import box warns.</li>
+    <li>On files over the IDE's code-insight limit (2.5 MB by default), following the caret can take a tenth of a second per move.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Xsdtrail makes no network calls and collects nothing: no telemetry, no analytics, no personal data. It reads only the files of the open project: the file you open, the files it includes or imports, and, to match imports by namespace, the start of schema files in the same folder and of the <code>.xsd</code> files in the project and its libraries. Licence status comes from your IDE's JetBrains Marketplace licensing. See also the <a href="../privacy.html">privacy policy</a>.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE version (Help &gt; About) and, if you can, the schema or a reduced copy of it. Bug reports and feature requests are welcome at the same address.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
