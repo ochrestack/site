@@ -2,6 +2,8 @@ User-agent: *
 Allow: /
 Allow: /rigbake/
 Allow: /rigbake/quick-start.html
+Allow: /actionyard/
+Allow: /actionyard/quick-start.html
 Allow: /attachkeep/
 Allow: /attachkeep/quick-start.html
 Allow: /guides/
