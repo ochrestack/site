@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunreckon quick start: install and first sky</title>
+<meta name="description" content="Install Sunreckon for Blender 4.2 LTS to 5.2 LTS, set your first sky and Sun light from a place, date and time, animate a day, add clouds and switch to an HDRI.">
+<link rel="canonical" href="https://ochrestack.com/sunreckon/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Sunreckon quick start</h1>
+  <p>Installing Sunreckon, your first sky, a day animation, clouds and HDRIs. Back to the <a href="index.html">Sunreckon product page</a>.</p>
+
+  <h2 id="install">Install (Blender 4.2 LTS to 5.2 LTS)</h2>
+  <ol>
+    <li>After checkout, download <code>sunreckon-1.1.1.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
+    <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
+      <ul>
+        <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Sunreckon needs no internet, so <strong>Continue Offline is fine</strong>.</li>
+      </ul>
+    </li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Dragging the zip onto the Blender window also works. Sunreckon is enabled at once.</li>
+    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Sunreckon</strong> tab.</li>
+  </ol>
+  <p>To update, install the newer zip the same way; your .blend files keep their settings. To remove Sunreckon, first run <strong>Remove Sunreckon Setup</strong> in any file you want back as it was, then go to <strong>Preferences &gt; Add-ons</strong>, find <em>Sunreckon</em>, and choose <strong>Uninstall</strong> from its drop-down menu. Without Remove, the World, the Sun light and the clouds stay in the file as ordinary Blender data and keep rendering.</p>
+
+  <h2 id="first-sky">Your first sky</h2>
+  <ol>
+    <li><strong>Switch the viewport to Rendered shading</strong> (Z, then Rendered). Material Preview shows Blender's studio HDRI unless its Scene World option is on; the panel reminds you.</li>
+    <li><strong>Pick the place.</strong> In <strong>Place &amp; Time</strong>, click <strong>City</strong> and start typing; pick from the list of 1,251 cities. The city sets latitude, longitude, its UTC offset and daylight saving for the date. Or paste coordinates into <strong>Paste</strong>: "48.8566, 2.3522", degrees-minutes-seconds such as 48°51'24"N 2°21'08"E, or a Google Maps or OpenStreetMap link. With pasted or typed coordinates, set <strong>UTC</strong> and <strong>DST</strong> yourself; the panel warns when the sun would be highest more than 2.5 hours from noon.</li>
+    <li><strong>Set the date and the local clock time</strong> (the Time slider shows hh:mm). If +Y is not north in your scene, set <strong>North Offset</strong>.</li>
+    <li><strong>Click Add Sky.</strong> The status bar says what it made, for example: "Created World 'Sunreckon Sky' and Sun light 'Sunreckon Sun': Multiple Scattering sky, sun 58.0° up at 257.0°, exposure -4.5."</li>
+  </ol>
+  <figure><img src="img/panel-place-time-sun.png" alt="The Sunreckon tab after Add Sky with Tokyo: Place &amp; Time with Tokyo, Japan, Lat 35.6870, Lon 139.7495, 2026 6 21, Time 14:00, UTC 9.00, Elevation 58.0°, Azimuth 257.0°, Sunrise 04:25, Sunset 19:00, Set Exposure and Remove Sunreckon Setup; the Sun section with the Sunreckon Sun light at strength 142.4 and 5133 K, and the day animation settings" width="421" height="863" loading="lazy"><figcaption>Place &amp; Time and Sun after Add Sky (Blender 5.2.3, real size).</figcaption></figure>
+  <p>The box under the atmosphere buttons shows the sun's elevation and azimuth and that day's sunrise and sunset. <strong>Set Exposure</strong> puts the exposure back to -4.5 if you changed it. For golden-hour shots, with the sun below about 15°, raise the exposure about a stop.</p>
+
+  <h2 id="day">Animate a day</h2>
+  <ol>
+    <li>In the <strong>Sun</strong> section, set <strong>From</strong> and <strong>To</strong> (local times; 06:00 to 20:00 by default) and <strong>Key Every</strong>. The scene's frame range is used.</li>
+    <li>Click <strong>Animate Day</strong>. The status bar says how many keys it wrote, for example "Animated the day from 07:00 to 21:30 over frames 1-120: 48 keys on the sky and the Sun light."</li>
+    <li>Play or scrub the timeline. Change the place, date, air, clouds or strength later and the keys are rewritten to match. The X button next to Animate Day removes them.</li>
+  </ol>
+
+  <h2 id="clouds">Clouds</h2>
+  <ul>
+    <li>In <strong>Clouds</strong>, pick <strong>Few</strong>, <strong>Scattered</strong>, <strong>Broken</strong> or <strong>Overcast</strong>, then <strong>Fast</strong> or <strong>Volumetric</strong>. Coverage, Cloud Base, Wind From and Wind Speed can be changed after.</li>
+    <li>Fast clouds cast no shadows; Volumetric ones do. Broken and Overcast dim the Sun light.</li>
+    <li>Leave <strong>Performance Mode</strong> on: the viewport shows Fast clouds and F12 renders the quality you chose. Before you send a file to a render farm that does not have Sunreckon, turn Performance Mode off, or the farm renders Fast clouds.</li>
+    <li>The box at the bottom of the section lists the measured render time of each preset on our reference scene.</li>
+  </ul>
+  <figure><img src="img/panel-clouds.png" alt="The Clouds section: Scattered and Volumetric selected, Performance Mode ticked, Coverage 0.42, Cloud Base 1800, Wind From 250, Wind Speed 8.0, Sun dimmed to 85% by the clouds, and the Measured render time box" width="421" height="863" loading="lazy"><figcaption>The Clouds section with Scattered, Volumetric.</figcaption></figure>
+
+  <h2 id="hdri">Use an HDRI</h2>
+  <ol>
+    <li>In <strong>HDRI</strong>, pick a <strong>Folder</strong> with your .hdr or .exr files (optional: Blender's own world HDRIs are always listed). <strong>Rescan</strong> (the arrows) looks again.</li>
+    <li>Click the picture and pick an HDRI. It goes on the World at your scene's own exposure. Adjust <strong>Strength</strong> and <strong>Rotation</strong>.</li>
+    <li><strong>Align Sun to HDRI</strong> points the Sun light at the map's brightest point and matches its strength and colour. Without it, the Sun light is off while an HDRI is on the World.</li>
+    <li><strong>Back to Sky</strong> brings the sky back with every setting it had, its exposure included.</li>
+  </ol>
+  <figure><img src="img/panel-hdri.png" alt="The HDRI section with Blender's city HDRI picked: the city thumbnail, Use This HDRI, Strength 1.00, Rotation 0°, Align Sun to HDRI, Back to Sky, On the World: city.exr, Sun aligned, 48° up" width="421" height="500" loading="lazy"><figcaption>The HDRI section after Align Sun to HDRI.</figcaption></figure>
+  <p style="font-size:14px;color:var(--muted)">The panel images come from a scene with Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Rain is not included with Sunreckon.</p>
+
+  <h2 id="remove">Undo it all</h2>
+  <p><strong>Remove Sunreckon Setup</strong> (in Place &amp; Time) deletes the Sunreckon World, Sun light, clouds and keys, and restores the exposure from before Add Sky. It puts the previous World back only if the scene still shows the Sunreckon sky, and leaves anything another scene uses in place; the status bar says what it kept.</p>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>Blender 4.2 LTS to 5.2 LTS, EEVEE and Cycles. Tested on official Linux builds; Windows and macOS not tested yet.</li>
+    <li>No night sky, stars, moon, planets, aurora, fog, rain or snow, and no clouds the camera can enter.</li>
+    <li>EEVEE's cloud shadows cover 2.4 km around the camera and fade out at the edge.</li>
+    <li>Daylight-saving dates follow each zone's 2026 rules; historical offsets are not modelled.</li>
+    <li>Align Sun to HDRI needs about 0.6 GB extra memory for an 8k map and 2.2 GB for a 16k map. The HDRI list shows files directly in the chosen folder, not in subfolders.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Sunreckon makes no network connections and sends nothing anywhere. It reads only the HDRI folder you pick and the HDRIs that ship with Blender.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version, your operating system and what you did. Updates are free for the life of the product.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
