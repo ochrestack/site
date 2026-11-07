@@ -37,7 +37,7 @@
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2 LTS, 4.5 and 5.0)</h2>
   <ol>
-    <li>After checkout, download <code>rigbake-1.2.6.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>After checkout, download <code>rigbake-1.2.5.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Rigbake needs no internet, so <strong>Continue Offline is fine</strong>.</li>
@@ -54,38 +54,37 @@
     <li><strong>Select your character's armature</strong>, in Object Mode or Pose Mode.
       <ul>
         <li>Selecting the mesh works too: the tab says, for example, "Armature: DEF (from Body)".</li>
-        <li>With a control rig, select the deform rig or its mesh, not the control rig. Rigbake finds the control rig. With the control rig selected alone, Export Game-Ready is greyed out, with the file and clip lines above it, and the panel names the rig to select, with a <strong>Select</strong> button for it.</li>
+        <li>With a control rig, select the deform rig or its mesh, not the control rig. Rigbake finds the control rig. With the control rig selected alone, Export Game-Ready is greyed out and the panel names the rig to select, with a <strong>Select</strong> button for it.</li>
       </ul>
     </li>
-    <li><strong>Pick the Preset</strong> (Godot (glTF), Unity (FBX) or Unreal (FBX)) <strong>and the Folder</strong>.
+    <li><strong>Pick the Preset</strong> (Godot, Unity or Unreal) <strong>and the Folder</strong>.
       <ul>
         <li>Below the File Name the tab shows the file and the clips it will write, for example "2 clips from CTRL: Walk, Run".</li>
         <li>"Save your file, or pick a Folder" means: save the .blend first. Export stays disabled until then.</li>
       </ul>
-      <figure><img src="img/panel-before-export.png" alt="The Rigbake tab at real size: Armature: RIG-rain, Validate Rig for Export, Not validated yet, Preset Godot (glTF), Folder //export/, the file ~/projects/rain/export/RIG-rain.glb it will write, '3 clips: Walk, Run, Idle', the grey line 'Godot keeps the shape keys', the Export Game-Ready button, Preset Settings closed below it and 'Not exported yet'" width="256" height="408" loading="lazy"><figcaption>The Rigbake tab before the first export (Blender 4.2, real size).</figcaption></figure>
+      <figure><img src="img/panel-before-export.png" alt="The Rigbake tab at real size: Armature: RIG-rain, Validate Rig for Export, Not validated yet, Preset Godot, Folder //export/, the file ~/projects/rain/export/RIG-rain.glb it will write, '3 clips: Walk, Run, Idle', the Export Game-Ready button and Preset Settings closed below it" width="256" height="344" loading="lazy"><figcaption>The Rigbake tab before the first export (Blender 4.2, real size).</figcaption></figure>
     </li>
     <li><strong>Click Validate Rig for Export.</strong>
       <ul>
-        <li>Issues come first, each with its fix and a <strong>Select</strong> button. <strong>Apply Scale</strong>, <strong>Limit Weights</strong>, <strong>Add to NLA</strong>, <strong>Disable Subdivision</strong> and <strong>Set Auto</strong> fix in one click; Ctrl+Z undoes them.</li>
+        <li>Issues come first, each with its fix and a <strong>Select</strong> button. <strong>Apply Scale</strong> and <strong>Limit Weights</strong> fix in one click.</li>
         <li>Notes need nothing from you ("Handled: baked on export").</li>
-        <li><strong>Close</strong>, the default button (Enter), closes the dialog; the tab keeps the counts and a <strong>Report</strong> button.</li>
+        <li><strong>Close</strong> closes the dialog; the tab keeps the counts and a <strong>Report</strong> button.</li>
       </ul>
-      <figure><img src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Blender Studio's Rain: 7 issues and 2 notes with a warning sign, each issue with its fix and a Select button in one column, and Close (the default) and Open Full Report at the bottom" width="764" height="712" loading="lazy"><figcaption>The dialog on a production rig. One of the seven, a count of meshes with more than four bone weights per vertex, is left out of this picture.</figcaption></figure>
+      <figure><img src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Blender Studio's Rain: 7 issues and 2 notes, each issue with its fix and a Select button in one column, and Close and Open Full Report at the bottom" width="764" height="692" loading="lazy"><figcaption>The dialog on a production rig. One of the seven, a count of meshes with more than four bone weights per vertex, is left out of this picture.</figcaption></figure>
     </li>
     <li><strong>Click Export Game-Ready.</strong>
       <ul>
         <li>The status bar says what it wrote, for example "Exported 3 clips to RIG-rain.glb."</li>
-        <li>The <strong>Last Export</strong> box lists each clip with its frame range, and one line per warning. Hover a line for the whole message. Each character keeps its own box ("Not exported yet" until its first export). A mesh parented to a bone, such as a sword on a hand bone, is exported with the character, and the box names it.</li>
-        <li>Exporting the same file again right away replaces it without asking, and the button is where it was. Otherwise (another file, or after you restart Blender) Rigbake asks before replacing a file.</li>
-        <li><strong>File &gt; Export &gt; Game-Ready (Rigbake)</strong> does the same as the button.</li>
+        <li>The <strong>Last Export</strong> box lists each clip with its frame range, and one line per warning. Hover a line for the whole message. A mesh parented to a bone, such as a sword on a hand bone, is exported with the character, and the box names it.</li>
+        <li>Exporting the same file again right away replaces it without asking. Otherwise (another file, or after you restart Blender) Rigbake asks before replacing a file.</li>
       </ul>
-      <figure><img src="img/panel-after-export.png" alt="The Rigbake tab after Export Game-Ready: '7 issues, 2 notes' with a Report button, and the Last Export box with RIG-rain.glb, 1-25 Walk, 1-17 Run, 1-49 Idle and the notes 'Modifiers left unapplied' and '3 baked actions kept in this file'" width="256" height="536" loading="lazy"><figcaption>After the export.</figcaption></figure>
+      <figure><img src="img/panel-after-export.png" alt="The Rigbake tab after Export Game-Ready: '7 issues, 2 notes' with a Report button, and the Last Export box with RIG-rain.glb, 1-25 Walk, 1-17 Run, 1-49 Idle and the notes 'Modifiers left unapplied' and '3 baked actions kept in this file'" width="256" height="472" loading="lazy"><figcaption>After the export.</figcaption></figure>
     </li>
   </ol>
   <p style="font-size:14px;color:var(--muted)">Character in the images: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, with animation clips we added. Rain is not included with Rigbake.</p>
   <p>An armature that nothing animates (no actions, no NLA strips, no control rig, no constraints or drivers) shows "No clips: rest pose only"; the validator says so too, and the export writes it without clips.</p>
-  <p>Every action that is the armature's active action or sits on its NLA (stashed ones included) becomes its own clip, or every such action of the control rig. An action that is neither, for example one kept only by its fake user, is not exported: the panel names it above the Export button and the validator lists it, and <strong>Add to NLA</strong> stashes it so the next export includes it.</p>
-  <p>The baked actions (<code>Walk_baked</code>, ...) stay in the .blend file so you can edit them; the Last Export box says how many. The next export replaces them. <strong>Advanced Bake &gt; Remove Baked Actions</strong> deletes them if you do not want them; the next export bakes them again.</p>
+  <p>Every action that is the armature's active action or sits on its NLA (stashed ones included) becomes its own clip, or every such action of the control rig. An action that is neither, for example one kept only by its fake user, is not exported: the panel names it above the Export button, and <strong>Add to NLA</strong> stashes it so the next export includes it.</p>
+  <p>The baked actions (<code>Walk_baked</code>, ...) stay in the .blend file so you can edit them; the Last Export box says how many. The next export replaces them. Delete them in the Outliner's <em>Blender File</em> view if you do not want them; the next export bakes them again.</p>
   <p>Export Game-Ready bakes for you. <strong>Advanced Bake</strong> (closed by default) has the bake settings: <em>Actions</em>, <em>Frame Range</em>, <em>Clips From</em>, <em>Keep Hand-Edited Bakes</em> and <em>Bake Before Export</em>, and a button to bake without exporting.</p>
   <p>Each clip is baked from the rest pose. If a warning says a clip "does not key" some bones that are posed in the viewport, the file shows those bones at rest, while the viewport still shows them where another clip or your hands left them.</p>
 
@@ -110,7 +109,7 @@
   <ul>
     <li>Tested on Blender 4.2 LTS, 4.5 and 5.0; requires 4.2 or newer. Checked in Godot 4.7 and in a real Blender 4.2 LTS window (1600x900 and 1280x720). The Unity preset's FBX was checked through Godot's FBX importer. The Unreal preset has not been checked in Unreal Engine. Neither has been opened in Unity or Unreal.</li>
     <li>Only bone motion is baked. Shape keys and their animation are exported as they are (Godot preset), or dropped with a warning (FBX presets, when the mesh has other modifiers). Custom properties and B-Bone properties are not baked. Keys are baked on whole frames.</li>
-    <li>Object motion keyed on the exported rig itself is lost (the panel says so before the export, the validator and the Last Export box on every export; Blender's own FBX export would keep it); on a control rig it is baked into the bones.</li>
+    <li>Motion keyed on the armature object itself is not exported; the validator and the Last Export box say so on every export. Blender's own FBX export would keep it.</li>
     <li>One control rig per deform rig. One file per export.</li>
   </ul>
 

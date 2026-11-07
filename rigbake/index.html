@@ -110,7 +110,7 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/rigbake-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 56 s, captions only: Rain's NLA clips, Blender's default FBX export against Rigbake 1.2.5's Godot preset (Blender 4.2 LTS), played in Godot 4.7.2. Apply Modifiers is set to Always so her Mask modifiers work in Godot; the Blender warnings name the shape keys that drops (1.2.6 shows it on one line, with a Set to Auto button). Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
+    <figcaption>The demo, 56 s, captions only: Rain's NLA clips, Blender's default FBX export against Rigbake 1.2.5's Godot preset (Blender 4.2 LTS), played in Godot 4.7.2. Apply Modifiers is set to Always so her Mask modifiers work in Godot; the Blender warnings name the shape keys that drops. Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
   </figure>
 
   <div class="box">
@@ -129,28 +129,28 @@
   <h2>What it does</h2>
   <ul>
     <li><strong>Export Game-Ready.</strong> Bakes every bone constraint and driver into plain keys, one new action per clip, from the rest pose, and exports through Blender's own glTF and FBX exporters with documented presets for Godot, Unity, and Unreal, editable and saved with your file. Before you click, the panel shows the file and the clips; after, each clip with its frame range and every warning. Meshes parented to a bone, such as a sword on a hand bone, go with the character.</li>
-    <li><strong>One clip per action.</strong> The active action and every action on the NLA each become a clip named after the action, also from a control rig, which Rigbake detects. Select the deform rig or its mesh, not the control rig; if both rigs are selected (Select All), Rigbake leaves the control rig out of the file and says so. An action that is neither active nor on the NLA is named in the panel and by the validator, with a one-click Add to NLA.</li>
-    <li><strong>Validate Rig for Export.</strong> What will break on the way to the engine, most damaging first, each with a one-line fix and a Select button; Apply Scale, Limit Weights, Add to NLA and Disable Subdivision in one click (Limit Weights names any bone it leaves without weights; Ctrl+Z undoes each). What the export handles or what is fine as it is are notes, not issues.</li>
+    <li><strong>One clip per action.</strong> The active action and every action on the NLA each become a clip named after the action, also from a control rig, which Rigbake detects. Select the deform rig or its mesh, not the control rig; if both rigs are selected (Select All), Rigbake leaves the control rig out of the file and says so. An action that is neither active nor on the NLA is named in the panel, with a one-click Add to NLA.</li>
+    <li><strong>Validate Rig for Export.</strong> What will break on the way to the engine, most damaging first, each with a one-line fix and a Select button; Apply Scale and Limit Weights in one click (Limit Weights names any bone it leaves without weights; Ctrl+Z undoes it). What the export handles or what is fine as it is are notes, not issues.</li>
     <li><strong>Your actions and edits are kept.</strong> Originals are never modified; a baked action you clean up by hand is kept by the next export.</li>
   </ul>
 
   <h2>In Blender, for real</h2>
-  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.2.6 installed, shown at its real size (the dialog a little smaller, to fit this column, and with one row left out, as its caption says), or a Godot 4.7 render of its files: not a mockup. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip, each on its own unmuted NLA track (as after Push Down), and her legs in IK. The two panel images link to the full Blender window.</p>
+  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.2.4 installed, then re-captured on 1.2.5, where the panel and the dialog are pixel-identical, shown at its real size (the dialog a little smaller, to fit this column, and with one row left out, as its caption says), or a Godot 4.7 render of its files: not a mockup. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip, each on its own unmuted NLA track (as after Push Down), and her legs in IK. The two panel images link to the full Blender window.</p>
   <div class="pair">
     <figure>
-      <a href="img/character-01-blender-rain-clips.png"><img class="ui" src="img/panel-before-export.png" alt="The Rigbake sidebar tab at real size with Rain's armature selected: Armature: RIG-rain, Validate Rig for Export, the Godot (glTF) preset, the file it will write, ~/projects/rain/export/RIG-rain.glb, '3 clips: Walk, Run, Idle' and the grey line 'Godot keeps the shape keys' above the Export Game-Ready button, with Preset Settings closed below it and 'Not exported yet'" width="256" height="408" loading="lazy"></a>
-      <figcaption>Before you click: the file, her three clips, and that this preset keeps her shape keys.</figcaption>
+      <a href="img/character-01-blender-rain-clips.png"><img class="ui" src="img/panel-before-export.png" alt="The Rigbake sidebar tab at real size with Rain's armature selected: Armature: RIG-rain, Validate Rig for Export, the Godot preset, the file it will write, ~/projects/rain/export/RIG-rain.glb, and '3 clips: Walk, Run, Idle' above the Export Game-Ready button, with Preset Settings closed below it" width="256" height="344" loading="lazy"></a>
+      <figcaption>Before you click: the file, and her three clips.</figcaption>
     </figure>
     <figure>
-      <a href="img/character-03-export-summary.png"><img class="ui" src="img/panel-after-export.png" alt="The Rigbake tab at real size after Export Game-Ready with the default settings: the row '7 issues, 2 notes' with a Report button, and the Last Export box naming RIG-rain.glb with 1-25 Walk, 1-17 Run, 1-49 Idle and the notes 'Modifiers left unapplied' and '3 baked actions kept in this file'" width="256" height="536" loading="lazy"></a>
+      <a href="img/character-03-export-summary.png"><img class="ui" src="img/panel-after-export.png" alt="The Rigbake tab at real size after Export Game-Ready with the default settings: the row '7 issues, 2 notes' with a Report button, and the Last Export box naming RIG-rain.glb with 1-25 Walk, 1-17 Run, 1-49 Idle and the notes 'Modifiers left unapplied' and '3 baked actions kept in this file'" width="256" height="472" loading="lazy"></a>
       <figcaption>After: the validator's count, each clip with its frame range, one line per note. Her seven issues are in the dialog below. Two of them matter in the engine: her Mask modifiers hide nothing unless Apply Modifiers is set to Always (the Rain images from Godot on this page use Always), and modifiers kept unapplied for her shape keys don't reach the engine. Others are leftovers in a production rig, such as empty or unmatched vertex groups.</figcaption>
     </figure>
   </div>
   <figure>
     <p class="swipe-hint narrow-only">Rigbake's rig check on Rain, at Blender's own UI size: swipe the dialog sideways to read each line &rarr;</p>
     <div class="swipe-wrap"><div class="scroll-x"><picture>
-      <source media="(max-width: 600px)" srcset="img/validate-dialog-phone.png 2x" width="764" height="266">
-      <img class="ui" src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Rain: '7 issues, 2 notes in RIG-rain' with a warning sign; meshes whose modifiers stay unapplied to keep shape keys, two meshes whose Mask modifiers then hide nothing in the engine, vertex groups with no weights, with no matching bone or on bones with Deform unchecked, and deform bones without weights, each naming the first three, with its fix and a Select button in one column; then a note that her shoes keep their shape keys over an unapplied Subdivision, fine for most games, and '... and 1 more (1 note) in the full report'; Close (the default) and Open Full Report" width="764" height="712" loading="lazy">
+      <source media="(max-width: 600px)" srcset="img/validate-dialog-phone.png 2x" width="764" height="264">
+      <img class="ui" src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Rain: '7 issues, 2 notes in RIG-rain'; meshes whose modifiers stay unapplied to keep shape keys, two meshes whose Mask modifiers then hide nothing in the engine, vertex groups with no weights or no matching bone, deform bones without weights, each with its fix and a Select button in one column; then a note that her shoes keep their shape keys over an unapplied Subdivision, fine for most games, and one more note in the full report; Close and Open Full Report" width="764" height="692" loading="lazy">
     </picture></div></div>
     <figcaption>Validate Rig for Export on a production rig: seven issues, each summed up across her meshes with its fix, then notes for what is fine as it is or handled by the export (her 1,806 constrained bones are baked on export). The full report names every bone and vertex group. One of the seven, a count of meshes with more than four bone weights per vertex, is left out of this picture.<span class="narrow-only"> On a phone: the header and the shape-key and Mask issues.</span></figcaption>
   </figure>
@@ -177,10 +177,10 @@
   <p>The full manual (<code>README.md</code>) and a one-page quick start are inside the zip: open the zip to read them, but install the zip itself, as it is. The quick start is also online: <a href="quick-start.html">Rigbake quick start</a>.</p>
   <h3>Install</h3>
   <ol>
-    <li>After checkout, download <code>rigbake-1.2.6.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
+    <li>After checkout, download <code>rigbake-1.2.5.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
     <li>In Blender (4.2 or newer; tested on 4.2 LTS, 4.5 and 5.0), open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.</li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip.</li>
-    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Rigbake</strong> tab. The export is also in <strong>File &gt; Export &gt; Game-Ready (Rigbake)</strong>.</li>
+    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Rigbake</strong> tab.</li>
   </ol>
   <p>If Get Extensions asks about internet access, <strong>Continue Offline is fine</strong>: Rigbake needs none. In Godot, set <strong>Animation &gt; FPS</strong> to your Blender frame rate (<a href="quick-start.html#godot">Importing into Godot</a>).</p>
 
@@ -194,8 +194,8 @@
   <h2>Known limits</h2>
   <ul>
     <li>Only bone motion is baked. Shape keys and their animation are exported as they are (Godot preset), or dropped with a warning (FBX presets, when the mesh has other modifiers).</li>
-    <li>Object motion keyed on the exported rig itself is lost; on a control rig it is baked into the bones (in our check, a control rig moved 2 m forward arrived as 2 m of hips motion). The panel says so before the export, and the validator and the export summary on every export. For a rig whose walk-forward is keyed on its own object, Blender's own FBX export keeps it and does better. Put it on a root bone.</li>
-    <li>The default exports the active action and every action on the NLA. Other actions of the rig are named in the panel and by the validator, not exported, until you add them to the NLA (one click).</li>
+    <li>Motion keyed on the armature object itself is not exported; the validator and the export summary say so on every export. Blender's own FBX export keeps it, so for such a rig plain FBX does better. Put it on a root bone.</li>
+    <li>The default exports the active action and every action on the NLA. Other actions of the rig are named in the panel, not exported, until you add them to the NLA.</li>
     <li>Keys are baked on whole frames. One control rig per deform rig. One file per export.</li>
     <li>Blender 4.5's own FBX importer misreads multi-take files; exports from Rigbake are correct, but re-importing them into 4.5 for checking is not reliable. Use 4.2 or 5.0 to verify, or your engine.</li>
   </ul>
