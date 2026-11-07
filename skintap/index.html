@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skintap for Blender: click the posed mesh to select the bone</title>
+<meta name="description" content="Skintap for Blender: click your posed character, body or clothing, and it selects the bone that moves that spot, with no setup. Copy and mirror bone chains with names that count up instead of .001. $14, source included.">
+<link rel="canonical" href="https://ochrestack.com/skintap/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Skintap for Blender: click the posed mesh to select the bone">
+<meta property="og:description" content="Bones that disappear inside the mesh? Click the posed mesh and Skintap selects the bone that moves it, with no setup. Copy or mirror a bone chain without renaming every .001 copy by hand.">
+<meta property="og:url" content="https://ochrestack.com/skintap/">
+<meta property="og:image" content="https://ochrestack.com/skintap/img/rain-pick-jeans-2x1.png">
+<meta property="og:image:width" content="1100">
+<meta property="og:image:height" content="550">
+<meta property="og:image:alt" content="Blender Studio's Rain in Pose Mode with the cursor on her jeans; Skintap's label next to the cursor reads FK-Thigh_Parent.L, moves DEF-Thigh1.L on GEO-rain-jeans, and the Skintap tab is open in the sidebar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Skintap for Blender: click the posed mesh to select the bone">
+<meta name="twitter:description" content="Click the posed mesh, body or clothing, and Skintap selects the bone that moves it, with no setup. Copy and mirror bone chains without .001 names.">
+<meta name="twitter:image" content="https://ochrestack.com/skintap/img/rain-pick-jeans-2x1.png">
+<meta name="twitter:image:alt" content="Rain in Pose Mode; Skintap's label on her jeans reads FK-Thigh_Parent.L, moves DEF-Thigh1.L on GEO-rain-jeans">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; max-width: 640px; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Skintap for Blender</h1>
+  <a href="img/rain-pick-jeans.png"><img class="hero" src="img/rain-pick-jeans-2x1.png" alt="Blender 5.2 in Pose Mode with Blender Studio's Rain in a walking pose. The cursor is on her jeans at the left thigh, and Skintap's label next to it reads 'FK-Thigh_Parent.L' and, below, 'moves DEF-Thigh1.L on GEO-rain-jeans'. The thigh control just selected is highlighted. On the right, the Skintap tab: Pick Bones on Mesh, Pick Deform Bones, 'Shortcut: Shift+Alt+Q, Esc to finish', then Duplicate Chain, Mirror Chain, Sides and the Rename tools" width="1100" height="550"></a>
+  <p class="sub">Bones that disappear inside the mesh? Click the posed mesh and Skintap selects the bone that moves it, with no setup. Copy or mirror a bone chain without renaming every .001 copy by hand.</p>
+
+  <div class="buy">
+    <p class="price"><strong>$14, one-time, 12 months of updates and support included, source included</strong> (GPL-3.0-or-later). Blender 4.2 LTS and later; tested on 4.2 LTS and 5.2 LTS, on Linux.</p>
+    <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_0ErzmMI66XIOzneZ6ESnGRImsVJbeKGEGab5801xS0x">Buy for $14</a></p>
+    <p class="fine">Polar checkout · download by email · <a href="../terms.html">14-day refund if it doesn't work as described</a> · no license check, no account · <a href="#details">details</a></p>
+  </div>
+
+  <p class="fine">Above: Rain, Blender Studio's free production character, posed in Pose Mode. Skintap's picker is running: the label names the control under the cursor and the deform bone it moves on her jeans, and the click has just selected that control.</p>
+  <details>
+    <summary>How these images were made</summary>
+    <p>Every image and GIF on this page is a capture of a real Blender 5.2.3 LTS window on Linux at 1920x960 and UI scale 1.4, with Skintap 1.0.2 installed from its zip through Blender's extension installer (the Install from Disk path). The character is Rain v3.3 as downloaded from studio.blender.org (CC BY 4.0, credit below), in her own file and rig. By script, between shots, we switched her arms and legs to FK, set her rig's Quality to 2 (Subdivision Surface level 2 on every piece of clothing and the body), posed her on her FK controls and set the view; for the chain images we added a three-bone hair strand and a three-bone ribbon to her rig, showed only their bone collection, and hid the viewport's navigation buttons. Every hover, click, Shift-click, menu and key press (Shift+Alt+Q, Esc, G, Shift+D) is a real input event sent to the window; every label, selection, name and status-bar report is Skintap's own. The GIFs were recorded one frame per pointer step and play at 30 frames per second: on this machine Blender draws the viewport in software, slower than that, so the motion here is smoother than it was live. The virtual display has no mouse cursor, so the arrow is drawn into each frame at the pointer's real position.</p>
+  </details>
+
+  <div class="box warn">
+    <strong>Where it matters.</strong> In Pose Mode, Blender's own click selects a bone only where the cursor lands on that bone's drawn shape, not on the body or the clothes around it. When the controls sit inside the body, under a top or behind the hair, most of the character selects nothing. On grids of points laid over two posed characters, Blender's click selected nothing at 25% to 67% of the points (with the armature's In Front on or off). Over the same points, Skintap selected a bone that moves the clicked spot at 208 of 208 on a Rigify rig and at 159 of 165 on Rain.
+  </div>
+
+  <figure>
+    <a href="img/rain-blender-click.png"><img src="img/rain-blender-click-vs-skintap.png" alt="Two captures of the same view of Rain, side by side. Left, labelled 'Blender's own click: nothing selected': the cursor on her jeans at the left thigh after a plain click in Pose Mode; no bone is highlighted. Right, labelled 'Skintap: FK-Thigh_Parent.L selected': the same spot with Skintap's picker, the label 'FK-Thigh_Parent.L, moves DEF-Thigh1.L on GEO-rain-jeans' and the thigh control highlighted" width="1172" height="616" loading="lazy"></a>
+    <figcaption>Same spot on Rain's jeans. Left: Blender's own click in Pose Mode selected nothing (her thigh control is drawn as a ring further down the leg, and the click landed on no bone shape). Right: Skintap selected the control that moves that spot. The labels above the two captures are ours; everything below them is Blender's window.</figcaption>
+  </figure>
+
+  <figure>
+    <a href="img/pick-hover.gif"><img src="img/pick-hover.gif" alt="Rain in Pose Mode. Shift+Alt+Q starts the picker; the cursor moves over her upper arm (label FK-Upperarm_Parent.L, moves DEF-Upperarm1.L on GEO-rain-body), her forearm (FK-Forearm.L), which is clicked and highlighted, down to her jeans at the thigh (FK-Thigh_Parent.L, moves DEF-Thigh1.L on GEO-rain-jeans), which is Shift-clicked and added, then over her shin (FK-Shin.L on GEO-rain-jeans) and her shoe (FK-Foot.L, moves DEF-Foot.L on GEO-rain-shoes)" width="740" height="740" loading="lazy"></a>
+    <figcaption>Hover to read which control moves the spot under the cursor, on her body, jeans and shoes; click selects it, Shift-click adds. After the two clicks, FK-Forearm.L and FK-Thigh_Parent.L were selected.</figcaption>
+  </figure>
+
+  <div class="box">
+    <strong>Who doesn't need it.</strong> Several of these jobs already work in Blender. Weight Paint mode lets you click bones while painting. Symmetrize mirrors a chain, with its constraints and bone collections, when the names already carry a side such as .L/.R or _l/_r. Auto-Name Left/Right adds sides. Batch Rename does find and replace. A rig whose controls sit outside the body is easy to click without help. In those cases the buyer is paying for four things: picking in Pose Mode on the deformed mesh with no setup; a copy of a chain that takes the next number instead of .001 in one step; a mirror of bones that have no side yet in one step; and renaming in chain order. If you don't need those, keep your money.
+  </div>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Pick Bones on Mesh</strong> (Pose Mode, <strong>Shift+Alt+Q</strong>). Hover over the posed character: a label next to the cursor names the bone that will be selected, and which deform bone it moves on which mesh. Click selects it and makes it active, Shift-click adds, Esc or right-click ends. Orbit, pan and zoom work while it runs, and one Ctrl+Z undoes a whole picking session. It reads the weights your character already has, on the mesh as it is posed right now: on every separate clothing piece (the piece in front wins), on accessories parented to a bone, and with Subdivision Surface on. Nothing to set up: no vertex groups to paint, no presets, and nothing added to your .blend.</li>
+    <li><strong>Finds the control behind a hidden bone.</strong> When the bone under the cursor is a hidden deform bone (Rigify's <code>DEF-</code> bones are), Skintap follows the rig's constraints, then the parents, to the nearest visible control and selects that. It follows the IK/FK switch as it is set. Tick <strong>Pick Deform Bones</strong> to select the deform bone itself.</li>
+    <li><strong>Duplicate Chain</strong> (Edit Mode). The copy takes the next chain number instead of <code>.001</code>: <code>hair_01_01..03</code> becomes <code>hair_02_01..03</code>, <code>Bone_12_0099.L</code> becomes <code>Bone_12_0100.L</code>, and a number already taken is skipped. It keeps parenting, roll, deform flag, bone collections, B-Bone segments, custom shapes and constraints; constraints that pointed inside the chain point inside the copy.</li>
+    <li><strong>Mirror Chain</strong> (Edit Mode). Creates the X-mirrored copy, roll included. Bones with no side get one in your convention (<code>.L/.R</code>, <code>_L/_R</code>, <code>_l/_r</code> or <code>Left/Right</code>), the source and the copy both; bones that already have a side get it flipped, side words included (<code>ear_left_tip</code> becomes <code>ear_right_tip</code>).</li>
+    <li><strong>Rename Chain</strong> and <strong>Fix .001 Names</strong> (Pose or Edit Mode). Rename Chain renames root to tip with a base name, start number, padding and side. Fix .001 Names turns Blender's <code>.001</code>, <code>.002</code> into the chain's own numbers, after Shift+D or Extrude. Vertex groups are renamed with their bones, so weights stay attached. Generated rigs find their bones by name, so Skintap refuses to rename a generated Rigify rig and tells you to rename in the metarig instead.</li>
+  </ul>
+  <p>Every tool says what it did in the status bar, or, when it can't run, why and what to do; each run is one undo step.</p>
+
+  <h2>In Blender, for real</h2>
+  <figure>
+    <a href="img/pick-deform-toggle.gif"><img src="img/pick-deform-toggle.gif" alt="Rain's left upper arm under the picker: the label reads FK-Upperarm_Parent.L, moves DEF-Upperarm1.L on GEO-rain-body. Esc ends the picker, the Pick Deform Bones checkbox in the Skintap tab is clicked and ticked, Shift+Alt+Q starts the picker again, and the same spot now reads DEF-Upperarm1.L, on GEO-rain-body (DEF-Upperarm1.L is in the hidden bone collection 'Body Deform Main')" width="1040" height="464" loading="lazy"></a>
+    <figcaption>Her upper arm's deform bone sits in a hidden bone collection, so Skintap selects the visible FK control that moves it. With Pick Deform Bones ticked, the same spot selects the deform bone itself, and the label says it is hidden.</figcaption>
+  </figure>
+  <figure>
+    <a href="img/duplicate-chain.gif"><img src="img/duplicate-chain.gif" alt="Edit Mode, the side of Rain's head with a three-bone hair strand named hair_01_01, hair_01_02, hair_01_03 selected. Duplicate Chain is clicked in the Skintap tab; the copy is moved back with G, Y. Duplicate Chain is clicked again and the second copy moved. The bone names on screen read hair_01_01..03, hair_02_01..03 and hair_03_01..03" width="1000" height="630" loading="lazy"></a>
+    <figcaption>Duplicate Chain, twice, on a hair strand added to Rain's rig. The status bar said "Duplicated 3 bones in 1 chain: hair_01_01 .. hair_01_03 -&gt; hair_02_01 .. hair_02_03", then the same for <code>hair_03</code>. Each copy was moved with G, Y.</figcaption>
+  </figure>
+  <figure>
+    <a href="img/fix-names.gif"><img src="img/fix-names.gif" alt="The same hair strands. hair_03 is copied with Blender's own Shift+D and moved: the copy's names read hair_03_01.001, hair_03_02.001, hair_03_03.001. Fix .001 Names is clicked in the Skintap tab and the names become hair_04_01, hair_04_02, hair_04_03" width="1000" height="630" loading="lazy"></a>
+    <figcaption>Copied with Blender's own Shift+D, the strand is named <code>hair_03_01.001</code> to <code>.003.001</code>. Fix .001 Names: "Fixed 3 names: hair_03_01.001 -&gt; hair_04_01; hair_03_02.001 -&gt; hair_04_02; hair_03_03.001 -&gt; hair_04_03".</figcaption>
+  </figure>
+  <figure>
+    <a href="img/mirror-chain.gif"><img src="img/mirror-chain.gif" alt="Edit Mode, Rain's hips with a three-bone ribbon named ribbon_01, ribbon_02, ribbon_03 on her left hip, selected. The Sides menu in the Skintap tab is opened, showing .L / .R, _L / _R, _l / _r and Left / Right, and .L / .R is chosen. Mirror Chain is clicked: a mirrored ribbon appears on her right hip, and the names read ribbon_01.L..03.L on the left and ribbon_01.R..03.R on the right" width="1060" height="610" loading="lazy"></a>
+    <figcaption>A ribbon with no side in its names, mirrored with <code>.L / .R</code>: "Mirrored 3 bones in 1 chain: ribbon_01.L .. ribbon_03.L -&gt; ribbon_01.R .. ribbon_03.R. Source renamed to carry its side". Rain's file has the armature's X-Axis Mirror option on, as many production files do; the mirror is correct with it on.</figcaption>
+  </figure>
+  <figure>
+    <a href="img/menu-pose-skintap.png"><img src="img/menu-pose-skintap.png" alt="The Pose menu open over Rain, with the Skintap submenu showing Pick Bones on Mesh (Shift Alt Q), Duplicate Chain, Mirror Chain, Rename Chain and Fix .001 Names; the Skintap tab is open in the sidebar on the right" width="1205" height="800" loading="lazy"></a>
+    <figcaption>Where it lives: the Skintap tab in the 3D Viewport sidebar (N), the Pose &gt; Skintap and Armature &gt; Skintap menus, and Shift+Alt+Q in Pose Mode (changeable in Preferences).</figcaption>
+  </figure>
+  <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We posed her, switched her limbs to FK, and added the hair strand and ribbon bones for the chain images. Rain is not included with Skintap, and Blender Studio does not endorse it.</p>
+
+  <h2 id="rigs">Which control a click selects</h2>
+  <p>Skintap selects the nearest visible bone that drives the spot, so the answer depends on the rig. Tested on a Rigify-generated human rig with a body and a separate jacket, Blender 4.2 and 5.2, a click from the front on each point selects:</p>
+  <div class="scroll-x">
+  <table>
+    <tr><th>point</th><th>as generated</th><th>Tweak hidden, IK</th><th>Tweak hidden, FK</th><th>Pick Deform Bones on</th></tr>
+    <tr><td>head</td><td>head</td><td>head</td><td>head</td><td>DEF-spine.006</td></tr>
+    <tr><td>neck</td><td>tweak_spine.004</td><td>neck</td><td>neck</td><td>DEF-spine.004</td></tr>
+    <tr><td>chest (jacket)</td><td>tweak_spine.003</td><td>chest</td><td>chest</td><td>DEF-spine.003</td></tr>
+    <tr><td>belly (jacket)</td><td>tweak_spine.001</td><td>hips</td><td>hips</td><td>DEF-spine.001</td></tr>
+    <tr><td>hips</td><td>tweak_spine</td><td>hips</td><td>hips</td><td>DEF-spine</td></tr>
+    <tr><td>upper arm L/R (jacket)</td><td>upper_arm_tweak.L/.R</td><td>upper_arm_ik.L/.R</td><td>upper_arm_fk.L/.R</td><td>DEF-upper_arm.L/.R</td></tr>
+    <tr><td>left forearm</td><td>forearm_tweak.L</td><td>hand_ik.L</td><td>forearm_fk.L</td><td>DEF-forearm.L</td></tr>
+    <tr><td>hand L/R</td><td>hand_tweak.L/.R</td><td>hand_ik.L/.R</td><td>hand_fk.L/.R</td><td>DEF-hand.L/.R</td></tr>
+    <tr><td>thigh L/R</td><td>thigh_tweak.L/.R</td><td>thigh_ik.L/.R</td><td>thigh_fk.L/.R</td><td>DEF-thigh.L/.R</td></tr>
+    <tr><td>left shin</td><td>shin_tweak.L</td><td>foot_heel_ik.L</td><td>shin_fk.L</td><td>DEF-shin.L</td></tr>
+    <tr><td>left foot</td><td>foot_tweak.L</td><td>foot_heel_ik.L</td><td>foot_fk.L</td><td>DEF-foot.L</td></tr>
+  </table>
+  </div>
+  <ul>
+    <li><strong>Rigify as generated</strong> shows its tweak controls, so clicks select tweak controls. Hide the Tweak bone collections to get the IK or FK controls.</li>
+    <li><strong>Rain's rig is CloudRig, not Rigify.</strong> With her limbs in FK, as on this page, each limb point selects that limb's own FK control (<code>FK-Upperarm_Parent.L</code>, <code>FK-Forearm.L</code>, <code>FK-Thigh_Parent.L</code>, <code>FK-Shin.L</code>). Her belly and pelvis select <code>MSTR-Hips</code>, which moves most of her body, and with her limbs in IK, as her file is saved, the leg picks select the foot-roll control and the forearm the root control. On rigs other than Rigify, switch the limb to FK or tick Pick Deform Bones for a precise pick.</li>
+    <li>Picking, copying and mirroring work on any armature; controller lookup is tested on Rigify.</li>
+  </ul>
+
+  <h2 id="tested">How we tested</h2>
+  <ul>
+    <li><strong>Against Blender's own click</strong>, in a separate review that tried to break Skintap: a grid of points over each posed character in front orthographic view, each clicked with Blender's Pose Mode click (In Front off and on) and with Skintap, and each selected bone then moved to see whether the clicked spot moved with it. Blender's click selected nothing at 52 of 208 points on a Rigify rig as generated, 94 of 208 with its Tweak controls hidden, and 110 of 165 on Rain. Skintap's pick moved the spot at 208 of 208, 208 of 208 and 159 of 165.</li>
+    <li><strong>On Rain with every piece subdivided</strong> (Subdivision Surface level 2; 96,560 vertices on her body alone): 14 of 14 test points from head to shoe land on the right clothing piece and the right deform bone, on Blender 4.2 and 5.2.</li>
+    <li><strong>Speed.</strong> On Rain, the first pick after a pose change took 13 ms at most and repeat picks 0.33 to 0.48 ms. On a deformed test mesh of 103,041 vertices, the median of 50 picks was 0.02 to 0.03 ms; the first pick after a pose change, when Blender builds its ray-cast tree, took 29 to 70 ms.</li>
+    <li><strong>Names.</strong> Every Duplicate Chain and Mirror Chain test checks that no name ends in <code>.001</code> and that no bone outside the selection is renamed, including hidden bones that Blender still flags as selected; Mirror and Duplicate are also tested with the armature's X-Axis Mirror on.</li>
+    <li><strong>Undo</strong>, in a real Blender window on 4.2 and 5.2: for every tool, one Ctrl+Z restores the bones, vertex groups and constraints, and redo brings them back.</li>
+    <li><strong>No new data.</strong> After picking, the file has the same data blocks, vertex groups, attributes and custom properties as before.</li>
+    <li>The automated suite, including a session in the real Blender window, runs on Blender 4.2 and 5.2 on every change.</li>
+  </ul>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li>Tested on Linux, on Blender 4.2 LTS and 5.2 LTS. Windows and macOS have not been tested yet.</li>
+    <li>One armature at a time: the picker works for the active armature in Pose Mode and picks only meshes it deforms.</li>
+    <li>A mesh without vertex groups (deformed by envelopes only) cannot be picked, nor a mesh whose modifiers rebuild it without its vertex groups (Remesh, some Geometry Nodes setups). A mesh scaled to zero is skipped.</li>
+    <li>The control lookup follows constraints and parents, not drivers' targets or rig scripts. On Rigify in IK, the shin and foot select the heel-roll control. On other rigs the nearest visible driver can be a master control (see above).</li>
+    <li>On Rigify, Pick Deform Bones selects the <code>DEF-</code> bone for inspection; it follows its controls, so moving it by hand does not move the mesh.</li>
+    <li>With GPU Subdivision on, Blender also computes the smooth surface on the CPU for the first pick after a pose change; that cost has not been measured on a GPU.</li>
+    <li>Renaming refuses generated Rigify rigs, and armatures that carry Auto-Rig Pro's markers (tested on an armature built with those markers, not on a real Auto-Rig Pro rig). Linked and library-override armatures are refused by the chain tools; picking on a library override works.</li>
+    <li>Mirror Chain copies constraint values as they are and leaves constraint targets outside the chain unchanged. Copies get no weights, drivers or keyframes.</li>
+    <li>Names are limited to Blender's 63 bytes (63 Latin letters, or 21 Chinese or Japanese characters); a tool whose new names would not fit refuses and changes nothing.</li>
+    <li>After Blender's own Shift+D in Edit Mode, undoing Fix .001 Names does not bring back the constraints Shift+D copied (Blender does the same when you leave Edit Mode and undo). Duplicate Chain doesn't have this problem.</li>
+    <li>The label next to the cursor can run under the sidebar when you hover near it; the status bar repeats what was selected.</li>
+    <li>The panel settings reset when Blender restarts; they are kept out of your .blend on purpose.</li>
+  </ul>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li>Buying: secure checkout by Polar. The download arrives by email right after payment; the zip is the extension itself, with the full source and license inside. No license key is checked and no account is needed. 12 months of updates and support are included, with no recurring charge; what you bought stays yours. If it doesn't work as described and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>). Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li>Blender 4.2 LTS and later; tested on 4.2 LTS and 5.2 LTS on Linux. Installs as a Blender extension from the zip. Uses only Blender's own Python API, with no extra packages.</li>
+    <li>GPL-3.0-or-later. Full source code included with your purchase.</li>
+    <li>Privacy: no network calls, no telemetry, no account. Skintap collects nothing, and it writes nothing outside your .blend file and Blender's preferences (its shortcut).</li>
+    <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Send your Blender version, what you did and what you expected; a small .blend helps most.</li>
+  </ul>
+
+  <h2 id="documentation">Documentation</h2>
+  <p>A one-page quick start: <a href="quick-start.html">Skintap quick start</a>.</p>
+  <h3>Install</h3>
+  <ol>
+    <li>After checkout, download <code>skintap-1.0.2.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it. (If your browser unzips downloads by itself, as Safari can, turn that off and download again.)</li>
+    <li>In Blender (4.2 or newer), open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.</li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Dragging the zip onto Blender's window also works.</li>
+    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Skintap</strong> tab.</li>
+  </ol>
+  <p>If Get Extensions asks about internet access, <strong>Continue Offline is fine</strong>: Skintap needs none.</p>
+
+  <div class="buy">
+    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_0ErzmMI66XIOzneZ6ESnGRImsVJbeKGEGab5801xS0x">Buy for $14</a></p>
+    <p class="fine">$14 once, source included, 12 months of updates and support · Polar checkout · <a href="../terms.html">14-day refund if it doesn't work as described</a> · tested on Blender 4.2 LTS and 5.2 LTS, Linux</p>
+  </div>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

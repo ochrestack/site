@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skintap quick start: install, pick bones on the mesh, copy and mirror chains</title>
+<meta name="description" content="Install Skintap for Blender 4.2 and later, pick bones by clicking the posed mesh, and copy, mirror and rename bone chains without .001 names.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Skintap quick start</h1>
+  <p>Installing Skintap and using its four tools. Back to the <a href="index.html">Skintap product page</a>.</p>
+
+  <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2 LTS and 5.2 LTS)</h2>
+  <ol>
+    <li>After checkout, download <code>skintap-1.0.2.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
+    <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
+      <ul>
+        <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Skintap needs no internet, so <strong>Continue Offline is fine</strong>.</li>
+      </ul>
+    </li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Dragging the zip onto the Blender window also works. Skintap is enabled at once.</li>
+    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Skintap</strong> tab.</li>
+  </ol>
+  <p>To update, install the newer zip the same way; it replaces the old version. If the picker was running while you updated, restart Blender. To remove Skintap, go to <strong>Preferences &gt; Add-ons</strong>, find <em>Skintap</em>, and choose <strong>Uninstall</strong> from its drop-down menu.</p>
+
+  <h2 id="pick">Pick Bones on Mesh</h2>
+  <ol>
+    <li>Select your character's armature and enter <strong>Pose Mode</strong> (Ctrl+Tab).</li>
+    <li>With the mouse over the 3D Viewport, press <strong>Shift+Alt+Q</strong>, or click <strong>Pick Bones on Mesh</strong> in the Skintap tab, or use <strong>Pose &gt; Skintap &gt; Pick Bones on Mesh</strong>.
+      <figure><img src="img/panel-pose-mode.png" alt="The Skintap tab in Pose Mode at Blender UI scale 1.4: Pick on Mesh with the Pick Bones on Mesh button, the Pick Deform Bones checkbox and 'Shortcut: Shift+Alt+Q, Esc to finish'; Chains with Duplicate Chain, Mirror Chain and Sides .L / .R, noted 'Edit Mode only (Tab)'; Rename with Base, Start, Padding, Side, Number Each Chain, Rename Chain and Fix .001 Names" width="360" height="600" loading="lazy"><figcaption>The Skintap tab in Pose Mode (Blender 5.2, UI scale 1.4).</figcaption></figure>
+    </li>
+    <li>Move the mouse over the body or the clothes. The label next to the cursor shows the bone that will be selected and, under it, which deform bone moves that spot, on which mesh.</li>
+    <li><strong>Click</strong> selects that bone and makes it active. <strong>Shift-click</strong> adds it to the selection. Orbit, pan and zoom work as usual while the picker runs.</li>
+    <li><strong>Esc</strong> or <strong>right-click</strong> ends the picker. The status bar reports what was selected. One Ctrl+Z undoes the whole picking session.</li>
+  </ol>
+  <p>The first surface under the cursor wins, so a jacket wins over the shirt under it. Skintap reads the weights of the mesh as it is posed now, after its modifiers, Subdivision Surface included. Nothing is set up first and nothing is added to your .blend.</p>
+
+  <h2 id="controls">When the pick lands on a tweak or master control</h2>
+  <p>When the bone with the most weight under the cursor is hidden (Rigify's <code>DEF-</code> bones are), Skintap selects the nearest visible bone that drives it: it follows the rig's constraints, then the parents, and reads the IK/FK switch as it is set.</p>
+  <ul>
+    <li><strong>Rigify as generated</strong> shows its tweak controls, so clicks select tweak controls (<code>upper_arm_tweak.L</code>). Hide the Tweak bone collections to get the IK or FK controls.</li>
+    <li><strong>Other rigs:</strong> the nearest visible driver can be a master control that moves most of the body. Switch the limb to FK, or tick <strong>Pick Deform Bones</strong>.</li>
+    <li><strong>Pick Deform Bones</strong> selects the deform bone itself, even when it is hidden; the label says when it is. On Rigify that bone follows its controls, so it is for checking which bone carries the weight, not for posing.</li>
+  </ul>
+
+  <h2 id="duplicate">Duplicate Chain</h2>
+  <ol>
+    <li>In <strong>Edit Mode</strong> (Tab), select one or more chains: click the root, then Shift-click or Ctrl+] to add the children.</li>
+    <li>Click <strong>Duplicate Chain</strong> (or <strong>Armature &gt; Skintap &gt; Duplicate Chain</strong>).</li>
+    <li>The copy appears in the same place, selected, ready to move with G. The status bar lists the old and new names.</li>
+  </ol>
+  <p>The copy takes the next free chain number: <code>hair_01_01..03</code> becomes <code>hair_02_01..03</code> (or <code>hair_03</code> if <code>hair_02</code> exists); <code>Bone_12_0099.L</code> becomes <code>Bone_12_0100.L</code>. A chain without a number gets one: <code>spine_01..03</code> becomes <code>spine_02_01..03</code>. Parenting, roll, deform flag, bone collections, B-Bone settings, custom shapes and constraints are carried over; constraint targets inside the chain point to the copy.</p>
+
+  <h2 id="mirror">Mirror Chain</h2>
+  <ol>
+    <li>In <strong>Edit Mode</strong>, select the chain(s) on one side.</li>
+    <li>Pick the convention under <strong>Sides</strong>: <code>.L / .R</code>, <code>_L / _R</code>, <code>_l / _r</code> or <code>Left / Right</code>.</li>
+    <li>Click <strong>Mirror Chain</strong>.</li>
+  </ol>
+  <p>The copy is mirrored across the armature's X axis. Bones with a side get it flipped (<code>ear.L</code> to <code>ear.R</code>, <code>ear_left_tip</code> to <code>ear_right_tip</code>). Bones with no side get one by where the chain sits (+X is Left): <code>strand_01</code> becomes <code>strand_01.L</code> and its copy <code>strand_01.R</code>, and the vertex groups of the renamed source follow. A chain on the center line, or a mirror whose names already exist, is refused (use Symmetrize to update an existing mirror). The armature's X-Axis Mirror option can stay on.</p>
+
+  <h2 id="rename">Rename Chain</h2>
+  <ol>
+    <li>Select the chain(s) in <strong>Pose Mode</strong> or <strong>Edit Mode</strong>.</li>
+    <li>In the tab, set <strong>Base</strong> (for example <code>hair</code>), <strong>Start</strong>, <strong>Padding</strong> (2 gives 01, 02, ...), <strong>Side</strong> (Keep, By Position, Left, Right, None) and, for several chains, <strong>Number Each Chain</strong>.</li>
+    <li>Click <strong>Rename Chain</strong>.</li>
+  </ol>
+  <p>Bones are numbered root to tip. One chain: <code>hair_01, hair_02, ...</code>; several chains with Number Each Chain on: <code>hair_01_01, ..., hair_02_01, ...</code>. A name already used outside the selection is refused, so nothing is overwritten. The bones of a generated Rigify rig are refused, because Rigify finds its bones by name: rename in the metarig and generate again.</p>
+
+  <h2 id="fix">Fix .001 Names</h2>
+  <p>Select bones that Blender numbered (after Shift+D, Extrude or a paste) and click <strong>Fix .001 Names</strong>:</p>
+  <ul>
+    <li>a copied chain takes the next chain number: <code>hair_01_01.001 .. hair_01_03.001</code> become <code>hair_02_01 .. hair_02_03</code>;</li>
+    <li>bones extruded from a numbered bone continue its count: <code>hair_02.001, hair_02.002</code> become <code>hair_03, hair_04</code>;</li>
+    <li>an extruded chain without a number gets one: <code>Finger.L, Finger.L.001, Finger.L.002</code> become <code>Finger_01.L .. Finger_03.L</code>.</li>
+  </ul>
+  <figure><img src="img/panel-edit-mode.png" alt="The Skintap tab in Edit Mode: Pick on Mesh noted 'Pose Mode only (Ctrl+Tab)', Chains with Duplicate Chain, Mirror Chain and Sides .L / .R, and Rename with Base, Start, Padding, Side, Number Each Chain, Rename Chain and Fix .001 Names" width="360" height="572" loading="lazy"><figcaption>The Skintap tab in Edit Mode.</figcaption></figure>
+  <p>Vertex groups that carry a renamed bone's name are renamed with it, so weights stay attached. The chain tools work only on the selected bones you can see. A tool that cannot finish refuses before it changes anything, and each run is one undo step.</p>
+
+  <h2 id="where">Where to find the tools</h2>
+  <ul>
+    <li><strong>3D Viewport &gt; Sidebar (N) &gt; Skintap</strong>, in Pose and Edit Mode.</li>
+    <li><strong>Pose &gt; Skintap</strong> (Pose Mode) and <strong>Armature &gt; Skintap</strong> (Edit Mode).</li>
+    <li><strong>Shift+Alt+Q</strong> starts Pick Bones on Mesh in Pose Mode. Change it in <strong>Preferences &gt; Add-ons &gt; Skintap</strong> or <strong>Preferences &gt; Keymap &gt; Pose &gt; Pick Bones on Mesh</strong>.</li>
+  </ul>
+  <figure><img src="img/menu-pose-skintap.png" alt="The Pose menu with the Skintap submenu open: Pick Bones on Mesh (Shift Alt Q), Duplicate Chain, Mirror Chain, Rename Chain, Fix .001 Names" width="1205" height="800" loading="lazy"><figcaption>Pose &gt; Skintap, over Blender Studio's Rain.</figcaption></figure>
+  <p style="font-size:14px;color:var(--muted)">Character in the images: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, posed by us. Rain is not included with Skintap.</p>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>Tested on Blender 4.2 LTS and 5.2 LTS on Linux; Windows and macOS not yet tested.</li>
+    <li>One armature at a time; the picker picks only meshes deformed by the active armature. A mesh without vertex groups cannot be picked.</li>
+    <li>The control lookup follows constraints and parents, not drivers' targets or rig scripts; it is tested on Rigify.</li>
+    <li>Linked and library-override armatures are refused by the chain tools (their names come from the library file). Generated Rigify rigs are refused by the renaming tools.</li>
+    <li>Copies get no weights, drivers or keyframes. Names are limited to Blender's 63 bytes.</li>
+    <li>The panel settings reset when Blender restarts.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Skintap makes no network connections, collects nothing and sends nothing anywhere.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version, what you did and what you expected, and if you can, a small .blend file that shows the problem.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
