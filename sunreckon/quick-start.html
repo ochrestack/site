@@ -38,10 +38,11 @@
 
   <h2 id="install">Install (Blender 4.2 LTS to 5.2 LTS)</h2>
   <ol>
-    <li>After checkout, download <code>sunreckon-1.1.1.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
+    <li>After checkout, download <code>sunreckon-1.2.0.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Sunreckon needs no internet, so <strong>Continue Offline is fine</strong>.</li>
+        <li>After Continue Offline, Blender may show a yellow <strong>Repository Alert</strong> saying the extensions.blender.org data is unavailable. That is Blender's own notice about its online catalogue, not an install error. Carry on with the next step.</li>
       </ul>
     </li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Dragging the zip onto the Blender window also works. Sunreckon is enabled at once.</li>
@@ -53,7 +54,8 @@
   <ol>
     <li><strong>Switch the viewport to Rendered shading</strong> (Z, then Rendered). Material Preview shows Blender's studio HDRI unless its Scene World option is on; the panel reminds you.</li>
     <li><strong>Pick the place.</strong> In <strong>Place &amp; Time</strong>, click <strong>City</strong> and start typing; pick from the list of 1,251 cities. The city sets latitude, longitude, its UTC offset and daylight saving for the date. Or paste coordinates into <strong>Paste</strong>: "48.8566, 2.3522", degrees-minutes-seconds such as 48°51'24"N 2°21'08"E, or a Google Maps or OpenStreetMap link. With pasted or typed coordinates, set <strong>UTC</strong> and <strong>DST</strong> yourself; the panel warns when the sun would be highest more than 2.5 hours from noon.</li>
-    <li><strong>Set the date and the local clock time</strong> (the Time slider shows hh:mm). If +Y is not north in your scene, set <strong>North Offset</strong>.</li>
+    <li><strong>Set the date and the local clock time.</strong> The Time slider shows hh:mm; to type a time, type hours as a decimal: <strong>10.5</strong> for 10:30, 14.25 for 14:15 (Blender's number fields do not take "10:30").</li>
+    <li>If +Y is not north in your scene, set <strong>North Offset</strong>: the angle from the scene's +Y axis to true north, <strong>clockwise seen from above</strong>. If north is 30° to the left of +Y in the Top view (anticlockwise), type −30; if it is 30° to the right, type 30.</li>
     <li><strong>Click Add Sky.</strong> The status bar says what it made, for example: "Created World 'Sunreckon Sky' and Sun light 'Sunreckon Sun': Multiple Scattering sky, sun 58.0° up at 257.0°, exposure -4.5."</li>
   </ol>
   <figure><img src="img/panel-place-time-sun.png" alt="The Sunreckon tab after Add Sky with Tokyo: Place &amp; Time with Tokyo, Japan, Lat 35.6870, Lon 139.7495, 2026 6 21, Time 14:00, UTC 9.00, Elevation 58.0°, Azimuth 257.0°, Sunrise 04:25, Sunset 19:00, Set Exposure and Remove Sunreckon Setup; the Sun section with the Sunreckon Sun light at strength 142.4 and 5133 K, and the day animation settings" width="421" height="863" loading="lazy"><figcaption>Place &amp; Time and Sun after Add Sky (Blender 5.2.3, real size).</figcaption></figure>
@@ -70,7 +72,7 @@
   <ul>
     <li>In <strong>Clouds</strong>, pick <strong>Few</strong>, <strong>Scattered</strong>, <strong>Broken</strong> or <strong>Overcast</strong>, then <strong>Fast</strong> or <strong>Volumetric</strong>. Coverage, Cloud Base, Wind From and Wind Speed can be changed after.</li>
     <li>Fast clouds cast no shadows; Volumetric ones do. Broken and Overcast dim the Sun light.</li>
-    <li>Leave <strong>Performance Mode</strong> on: the viewport shows Fast clouds and F12 renders the quality you chose. Before you send a file to a render farm that does not have Sunreckon, turn Performance Mode off, or the farm renders Fast clouds.</li>
+    <li>Leave <strong>Performance Mode</strong> on: with Volumetric clouds the viewport shows the Fast cloud layer and the cloud shadows, and F12 renders the quality you chose. In EEVEE the viewport then matches the render; in Cycles only the cloud volume waits for F12. Before you send a Cycles file to a render farm that does not have Sunreckon, turn Performance Mode off, or the farm renders no cloud volume.</li>
     <li>The box at the bottom of the section lists the measured render time of each preset on our reference scene.</li>
   </ul>
   <figure><img src="img/panel-clouds.png" alt="The Clouds section: Scattered and Volumetric selected, Performance Mode ticked, Coverage 0.42, Cloud Base 1800, Wind From 250, Wind Speed 8.0, Sun dimmed to 85% by the clouds, and the Measured render time box" width="421" height="863" loading="lazy"><figcaption>The Clouds section with Scattered, Volumetric.</figcaption></figure>
@@ -79,7 +81,7 @@
   <ol>
     <li>In <strong>HDRI</strong>, pick a <strong>Folder</strong> with your .hdr or .exr files (optional: Blender's own world HDRIs are always listed). <strong>Rescan</strong> (the arrows) looks again.</li>
     <li>Click the picture and pick an HDRI. It goes on the World at your scene's own exposure. Adjust <strong>Strength</strong> and <strong>Rotation</strong>.</li>
-    <li><strong>Align Sun to HDRI</strong> points the Sun light at the map's brightest point and matches its strength and colour. Without it, the Sun light is off while an HDRI is on the World.</li>
+    <li><strong>Align Sun to HDRI</strong> points the Sun light at the map's brightest point and matches its strength and colour. It also takes the map's sun out of the light the World casts, so in Cycles and in EEVEE the sun lights the scene once, through the Sun light, with its shadow; the camera still sees the map unchanged. Without Align Sun, the Sun light is off while an HDRI is on the World and the map lights the scene by itself.</li>
     <li><strong>Back to Sky</strong> brings the sky back with every setting it had, its exposure included.</li>
   </ol>
   <figure><img src="img/panel-hdri.png" alt="The HDRI section with Blender's city HDRI picked: the city thumbnail, Use This HDRI, Strength 1.00, Rotation 0°, Align Sun to HDRI, Back to Sky, On the World: city.exr, Sun aligned, 48° up" width="421" height="500" loading="lazy"><figcaption>The HDRI section after Align Sun to HDRI.</figcaption></figure>
@@ -91,6 +93,7 @@
   <h2 id="limits">Limits</h2>
   <ul>
     <li>Blender 4.2 LTS to 5.2 LTS, EEVEE and Cycles. Tested on official Linux builds; Windows and macOS not tested yet.</li>
+    <li>Blender's sky is black below the horizon: a finite floor shows a black band between its edge and the horizon. Extend the ground or frame it out.</li>
     <li>No night sky, stars, moon, planets, aurora, fog, rain or snow, and no clouds the camera can enter.</li>
     <li>EEVEE's cloud shadows cover 2.4 km around the camera and fade out at the edge.</li>
     <li>Daylight-saving dates follow each zone's 2026 rules; historical offsets are not modelled.</li>
