@@ -38,7 +38,7 @@
 
   <h2 id="install">Install (WordPress 6.5 or newer, PHP 7.4 or newer)</h2>
   <ol>
-    <li>Download <a href="download/linkrounds-1.1.0.zip"><code>linkrounds-1.1.0.zip</code></a>. Do not unzip it.</li>
+    <li>Download <a href="download/linkrounds-1.2.0.zip"><code>linkrounds-1.2.0.zip</code></a>. Do not unzip it.</li>
     <li>In WordPress, open <strong>Plugins &gt; Add New Plugin</strong>, click <strong>Upload Plugin</strong>, choose the zip, then <strong>Install Now</strong> and <strong>Activate</strong>.</li>
     <li>Open <strong>Tools &gt; Linkrounds</strong>.</li>
   </ol>
@@ -47,9 +47,9 @@
   <h2 id="scan">First scan</h2>
   <ol>
     <li>Click <strong>Scan now</strong>. Linkrounds reads your published posts, pages, public custom post types, synced patterns, the custom links in classic menus, and block-theme Navigation menus, and checks every link and image in them.</li>
-    <li>The count climbs as links are checked ("16 of 63 links checked"). <strong>Pause</strong> and <strong>Resume</strong> are next to it. You can leave the page; the scan carries on in the background.</li>
+    <li>The count climbs as links are checked ("15 of 63 links checked"). <strong>Pause</strong> and <strong>Resume</strong> are next to it. You can leave the page; the scan carries on in the background.</li>
   </ol>
-  <figure><img src="img/scan-progress.png" alt="Tools > Linkrounds during a scan: the Pause button, '16 of 63 links checked' with a progress bar, and the note 'The scan runs in the background in small batches. You can leave this page; it carries on.'" width="704" height="116" loading="lazy"><figcaption>A scan running on the demo blog.</figcaption></figure>
+  <figure><img src="img/scan-progress.png" alt="Tools > Linkrounds during a scan: the Pause button, '15 of 63 links checked' with a progress bar, and the note 'The scan runs in the background in small batches. You can leave this page; it carries on.'" width="704" height="92" loading="lazy"><figcaption>A scan running on the demo blog.</figcaption></figure>
   <div class="box">
     <strong>On a quiet site.</strong> WordPress runs background work (WP-Cron) when someone visits the site. If your site has few visitors, keep the Linkrounds screen open while it scans: the screen keeps the scan moving. Or ask your host to set up a real cron job for <code>wp-cron.php</code>.
   </div>
@@ -61,18 +61,18 @@
     <li><strong>Inconclusive</strong>: the other site blocked the check (403, 999), wanted a login (401), asked us to slow down (429), had a server error or did not answer in time. The reason is given. A link that failed once and is waiting for its second check is here too, with the time of that check. Inconclusive is never counted as broken.</li>
     <li><strong>OK</strong>: the link works.</li>
   </ul>
-  <p>So after your first scan, dead links show as Inconclusive with "checked again after …". Linkrounds checks them again by itself once that time has passed; only then do they move to Broken. The wait is 1 hour by default; you can choose 6 or 24 hours under <strong>Settings</strong>.</p>
+  <p>So after your first scan, dead links show as Inconclusive with "checked again after …". A line above the results says how many links failed once and when their second checks are due, and <strong>Waiting for second check</strong> lists them. Linkrounds checks them again by itself once that time has passed; only then do they move to Broken. The wait is 1 hour by default; you can choose 6 or 24 hours under <strong>Settings</strong>.</p>
   <p>Each row shows the page the link is on (with Edit and View), the full address, the link text, the status code, the reason and when it was last checked. Filter by answer or post type, search by address, and use <strong>Re-check now</strong> on any row.</p>
 
   <h2 id="fix">Fix a link, and undo it</h2>
   <ol>
     <li>Hover a row. Choose <strong>Edit address</strong>, type the new address and click <strong>Save</strong>; or choose <strong>Unlink</strong> to remove the link and keep its words.</li>
-    <li>The message says what changed. Only that link in that post changes, and an edited address is checked straight away.</li>
+    <li>The message says what changed. Only that link in that post changes, and an edited address is checked straight away. A File block links to its file twice (the name and the Download button); Edit address on either row changes both, and the message says so.</li>
     <li>To undo, open the post, then <strong>Revisions</strong>, and restore the version before the change.</li>
   </ol>
   <figure><img src="img/edit-address.png" alt="A Broken row on the Linkrounds results screen with Edit address open: the old Godot tutorial address, a field holding the new address, and Save and Cancel buttons" width="827" height="194" loading="lazy"><figcaption>Edit address on one row.</figcaption></figure>
   <figure><img src="img/unlink-done.png" alt="The message after Unlink: 'Removed the link from “the basics chapter of the plugin handbook” in “Plugins we run on the studio site (and why so few)” and kept the text. Saved as a revision: you can restore the previous version from the post’s Revisions screen.'" width="833" height="76" loading="lazy"><figcaption>The message after Unlink.</figcaption></figure>
-  <p>To fix several links at once, tick their rows, pick <strong>Unlink</strong> or <strong>Edit address</strong> under <strong>Bulk actions</strong> and click <strong>Apply</strong>. Only the rows you ticked change. Menu items have no revisions in WordPress; the message after a menu fix says so, and you undo it under Appearance &gt; Menus.</p>
+  <p>To fix several links at once, tick their rows, pick <strong>Unlink</strong> or <strong>Edit address</strong> under <strong>Bulk actions</strong> and click <strong>Apply</strong>. Only the rows you ticked change, and the message says what was done (or that nothing was changed). Menu items have no revisions in WordPress; the message after a menu fix says so, and you undo it under Appearance &gt; Menus.</p>
 
   <h2 id="settings">Exclusions and re-checks</h2>
   <ul>
