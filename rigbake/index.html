@@ -107,7 +107,7 @@
   </figure>
 
   <figure>
-    <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
+    <video controls preload="none" playsinline poster="video/poster-run.jpg" width="1280" height="720">
       <source src="video/rigbake-demo-720p.mp4" type="video/mp4">
     </video>
     <figcaption>The demo, 56 s, captions only: Rain's NLA clips, Blender's default FBX export against Rigbake 1.2.5's Godot preset (Blender 4.2 LTS), played in Godot 4.7.2. Apply Modifiers is set to Always so her Mask modifiers work in Godot; the Blender warnings name the shape keys that drops. Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
@@ -135,7 +135,7 @@
   </ul>
 
   <h2>In Blender, for real</h2>
-  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.2.4 installed, then re-captured on 1.2.5, where the panel and the dialog are pixel-identical, shown at its real size (the dialog a little smaller, to fit this column, and with one row left out, as its caption says), or a Godot 4.7 render of its files: not a mockup. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip, each on its own unmuted NLA track (as after Push Down), and her legs in IK. The two panel images link to the full Blender window.</p>
+  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.2.5, at real size (the dialog a little smaller and with one row left out, as its caption says), or a Godot 4.7 render of its files. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip, each on its own unmuted NLA track (as after Push Down), and her legs in IK. The two panel images link to the full Blender window.</p>
   <div class="pair">
     <figure>
       <a href="img/character-01-blender-rain-clips.png"><img class="ui" src="img/panel-before-export.png" alt="The Rigbake sidebar tab at real size with Rain's armature selected: Armature: RIG-rain, Validate Rig for Export, the Godot preset, the file it will write, ~/projects/rain/export/RIG-rain.glb, and '3 clips: Walk, Run, Idle' above the Export Game-Ready button, with Preset Settings closed below it" width="256" height="344" loading="lazy"></a>
@@ -184,12 +184,14 @@
   </ol>
   <p>If Get Extensions asks about internet access, <strong>Continue Offline is fine</strong>: Rigbake needs none. In Godot, set <strong>Animation &gt; FPS</strong> to your Blender frame rate (<a href="quick-start.html#godot">Importing into Godot</a>).</p>
 
-  <h2 id="words">Words used on this page</h2>
+  <details id="words">
+    <summary>Words used on this page: NLA, take, control rig</summary>
   <ul>
     <li><strong>NLA</strong>: Blender's Nonlinear Animation editor, where an armature's clips sit side by side. <em>Stashing</em> an action puts it there as a muted track; <em>Push Down</em> puts it on an unmuted track.</li>
     <li><strong>Take</strong>: one named animation inside an FBX file. Godot, Unity and Unreal list one animation per take.</li>
     <li><strong>Control rig</strong>: a second armature that the animator keys; the exported <em>deform rig</em>, the one that bends the mesh, follows it through constraints.</li>
   </ul>
+  </details>
 
   <h2>Known limits</h2>
   <ul>
