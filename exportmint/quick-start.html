@@ -38,15 +38,20 @@
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2.23 LTS and 5.2.3 LTS)</h2>
   <ol>
-    <li>Download <code>exportmint-1.1.0.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>Download <code>exportmint-1.1.1.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access. Exportmint needs none, so <strong>Continue Offline is fine</strong>.</li>
+        <li>Blender may then show a red <em>Repository Alert</em> saying the extensions.blender.org data is unavailable. That is Blender's own offline message; ignore it.</li>
       </ul>
     </li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Exportmint is installed and enabled.</li>
     <li>In the 3D Viewport, press <strong>N</strong> to open the sidebar and click the <strong>Exportmint</strong> tab.</li>
   </ol>
+  <p><strong>On a build machine, or any machine without a screen:</strong> install the same zip from a terminal with Blender's own extension command, as the user that runs your builds. It prints <code>Installed "exportmint"</code>; running it again with a newer zip upgrades it.</p>
+  <div class="box">
+    <p><code>blender --command extension install-file -r user_default -e exportmint-1.1.1.zip</code></p>
+  </div>
   <p>To remove Exportmint, remove it in <strong>Preferences &gt; Get Extensions</strong>. Your Collection Exporters are Blender's own and stay in your files: <strong>File &gt; Export All Collections</strong> keeps working.</p>
 
   <h2 id="exporters">1. Give your collections an exporter</h2>
@@ -83,8 +88,24 @@
   <p>Every run writes <code>exportmint-manifest.json</code> (for scripts) and <code>exportmint-manifest.txt</code> (plain words) next to the .blend file, and keeps a copy of each run in <code>exportmint-manifest-history/&lt;blend name&gt;/</code>. <strong>Open Manifest</strong> opens this .blend file's latest one in your text viewer. To write manifests somewhere else, set <strong>Manifest folder</strong> at the bottom of the tab (<code>//</code> paths are relative to the .blend).</p>
   <p>For each exporter the manifest gives collection, scene, format, output path, result, reason, file size, SHA-256 and export time; for the run, the .blend path, the Blender version, and the start and end time.</p>
 
-  <h2 id="command-line">5. Command line and build scripts</h2>
-  <p>Exportmint must be installed and enabled in the Blender that runs the command (do not add <code>--factory-startup</code>).</p>
+  <h2 id="git">5. Using with git</h2>
+  <p>Besides your exported files, Exportmint writes files of its own next to the .blend: the two manifests and a new history file on every run, and its record file after every run that wrote or failed something. To keep <code>git status</code> to real asset changes, add these lines to your <code>.gitignore</code>:</p>
+  <div class="box">
+<pre><code># Exportmint: manifests and run history
+exportmint-manifest.json
+exportmint-manifest.txt
+exportmint-manifest-history/
+# Exportmint: export record (read below before ignoring it)
+*.exportmint-record.json</code></pre>
+  </div>
+  <ul>
+    <li>Instead of the first three lines, you can set <strong>Manifest folder</strong> to a folder outside the repository. The record file always stays next to the .blend.</li>
+    <li><strong>The record file:</strong> working alone, ignore it as above; the record inside the .blend, saved with the file, is enough. Commit it instead (leave out the last line) when a build machine runs the command line and artists should see in the panel what it exported, or when several people export from the same .blend. It changes only after a run that wrote or failed something.</li>
+    <li>With these lines, <code>git status</code> after Export Changed lists only the files it wrote.</li>
+  </ul>
+
+  <h2 id="command-line">6. Command line and build scripts</h2>
+  <p>Exportmint must be installed and enabled in the Blender that runs the command (do not add <code>--factory-startup</code>). On a build machine, install it with <code>blender --command extension install-file -r user_default -e exportmint-1.1.1.zip</code> (see <a href="#install">Install</a>). For what to commit, see <a href="#git">Using with git</a>.</p>
   <div class="box">
     <p><code>blender --background --command exportmint [--all] [--manifest DIR] FILE.blend [FILE.blend ...]</code></p>
   </div>
