@@ -62,7 +62,7 @@
         <li>Below the File Name the tab shows the file and the clips it will write, for example "2 clips from CTRL: Walk, Run".</li>
         <li>"Save your file, or pick a Folder" means: save the .blend first. Export stays disabled until then.</li>
       </ul>
-      <figure><img src="img/panel-before-export.png" alt="The Rigbake tab at real size: Armature: RIG-rain, Validate Rig for Export, Not validated yet, Preset Godot, Folder //export/, the file ~/projects/rain/export/RIG-rain.glb it will write, '3 clips: Walk, Run, Idle', the Export Game-Ready button and Preset Settings closed below it" width="256" height="344" loading="lazy"><figcaption>The Rigbake tab before the first export (Blender 4.2, real size).</figcaption></figure>
+      <figure><img src="img/panel-before-export.png" alt="The Rigbake tab at real size (Rigbake 1.2.7, the next release; 1.2.5 words a few lines differently): Armature: RIG-rain, Validate Rig for Export, Not validated yet, Preset Godot (glTF), Folder //export/, the file ~/projects/rain/export/RIG-rain.glb it will write, '3 clips: Walk, Run, Idle', the grey line 'Godot keeps the shape keys; Unity and Unreal (FBX) drop them', the Export Game-Ready button and Preset Settings closed below it" width="256" height="396" loading="lazy"><figcaption>The Rigbake tab before the first export (Blender 4.2, real size; captured on Rigbake 1.2.7, the next release, whose panel words a few lines differently from 1.2.5).</figcaption></figure>
     </li>
     <li><strong>Click Validate Rig for Export.</strong>
       <ul>
@@ -70,7 +70,7 @@
         <li>Notes need nothing from you ("Handled: baked on export").</li>
         <li><strong>Close</strong> closes the dialog; the tab keeps the counts and a <strong>Report</strong> button.</li>
       </ul>
-      <figure><img src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Blender Studio's Rain: 7 issues and 2 notes, each issue with its fix and a Select button in one column, and Close and Open Full Report at the bottom" width="764" height="692" loading="lazy"><figcaption>The dialog on a production rig. One of the seven, a count of meshes with more than four bone weights per vertex, is left out of this picture.</figcaption></figure>
+      <figure><img src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Blender Studio's Rain: 7 issues and 2 notes, each issue with its fix and a Select button in one column, and Close and Open Full Report at the bottom" width="762" height="824" loading="lazy"><figcaption>The dialog on a production rig (Rigbake 1.2.7): each issue's text and fix in one column, its buttons beside them.</figcaption></figure>
     </li>
     <li><strong>Click Export Game-Ready.</strong>
       <ul>
@@ -78,7 +78,7 @@
         <li>The <strong>Last Export</strong> box lists each clip with its frame range, and one line per warning. Hover a line for the whole message. A mesh parented to a bone, such as a sword on a hand bone, is exported with the character, and the box names it.</li>
         <li>Exporting the same file again right away replaces it without asking. Otherwise (another file, or after you restart Blender) Rigbake asks before replacing a file.</li>
       </ul>
-      <figure><img src="img/panel-after-export.png" alt="The Rigbake tab after Export Game-Ready: '7 issues, 2 notes' with a Report button, and the Last Export box with RIG-rain.glb, 1-25 Walk, 1-17 Run, 1-49 Idle and the notes 'Modifiers left unapplied' and '3 baked actions kept in this file'" width="256" height="472" loading="lazy"><figcaption>After the export.</figcaption></figure>
+      <figure><img src="img/panel-after-export.png" alt="The Rigbake tab after Export Game-Ready: '7 issues, 2 notes' with a Report button, and the Last Export box with RIG-rain.glb, 1-25 Walk, 1-17 Run, 1-49 Idle and the notes 'Modifiers left unapplied' and '3 baked actions kept in this file'" width="256" height="508" loading="lazy"><figcaption>After the export.</figcaption></figure>
     </li>
   </ol>
   <p style="font-size:14px;color:var(--muted)">Character in the images: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, with animation clips we added. Rain is not included with Rigbake.</p>
