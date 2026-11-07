@@ -44,7 +44,6 @@
   figure { margin: 28px 0; }
   figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
-  .slot { aspect-ratio: 1840 / 900; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 10px; background: #fff; color: var(--muted); font-size: 15px; }
   .said { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; margin: 6px 0 14px; padding: 6px 0 6px 14px; border-left: 3px solid var(--ochre); }
   .narrow-only { display: none; }
   .fine { font-size: 15px; color: var(--muted); }
@@ -69,11 +68,12 @@
   <p class="sub">When a new page is created, the alphabetical order is no longer respected. Sortlatch keeps a page's child pages A to Z, permanently: new, renamed and moved pages go to their place within minutes.</p>
 
   <div class="buy">
-    <p class="price"><strong>Free for up to 10 users</strong>, with every feature. From 11 to 100 users, <strong>$0.15 per user per month</strong> (<a href="#pricing">price details</a>), billed by Atlassian.</p>
-    <!-- Until the listing URL exists the button stays href="#". When the listing is submitted, change the note's first words
-         to "Listing in review." and drop "has not been submitted"; when Atlassian approves it, set href to the listing URL and drop "pending" and onclick. -->
-    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on the Atlassian Marketplace</a></p>
-    <p class="note" id="buy-note"><strong>Next: listing in review.</strong> Sortlatch has not been submitted to the Atlassian Marketplace yet, so it can't be installed today. This button will link to the listing once Atlassian has approved it. For a note when it is live, email <a href="mailto:support@ochrestack.com?subject=Sortlatch%20listing">support@ochrestack.com</a>.</p>
+    <p class="price"><strong>Free for up to 10 users</strong>, with every feature. From 11 users, <strong>$0.15 per user per month</strong>, and less per user above 100 users (<a href="#pricing">all prices</a>), billed by Atlassian.</p>
+    <!-- Until the listing URL exists the button stays href="#". When the listing is submitted, change the note to "In review at the
+         Atlassian Marketplace, so it can't be installed yet. ..."; when Atlassian approves it, set href to the listing URL, change the
+         label to "Get it on the Atlassian Marketplace", and drop "pending", onclick and the note. -->
+    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Not on sale yet</a></p>
+    <p class="note" id="buy-note"><strong>Coming to the Atlassian Marketplace.</strong> Sortlatch has not been submitted yet, so it can't be installed today. When Atlassian lists it, this button will take you there. For a note on the day, email <a href="mailto:support@ochrestack.com?subject=Sortlatch%20listing">support@ochrestack.com</a>.</p>
     <p>For Confluence Cloud (Atlassian Forge). Not for Confluence Data Center or Server. English only. Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. <a href="#documentation">Documentation and install steps</a></p>
   </div>
 
@@ -124,55 +124,54 @@
   <p>The orders that came back from Confluence after each sort:</p>
   <p class="said">Title A→Z: Release 1, Release 2, Release 3, Release 10, Release 11, Release 12</p>
   <p class="said">Title Z→A: Release 12, Release 11, Release 10, Release 3, Release 2, Release 1</p>
-  <p class="said">Pins at both ends: Overview, Atlas CRM, Aurora Payments, Beacon Analytics, Ledger Pro, Zephyr Mobile, Archive (discontinued)</p>
+  <p class="said">Pins at both ends: Overview, Atlas CRM, Beacon Analytics, Ledger Pro, Zephyr Mobile, Archive (discontinued)</p>
+  <p class="said">A page created later, Aurora Payments, sorted in between the pins: Overview, Atlas CRM, Aurora Payments, Beacon Analytics, Ledger Pro, Zephyr Mobile, Archive (discontinued)</p>
   <p>And the reason Sortlatch gave for a page whose child pages include a folder, word for word:</p>
   <p class="said">Not sorted: this level has a folder among its child pages ("Onboarding"). Sortlatch moves pages only: Confluence's move for pages cannot move folders, whiteboards, databases or smart links, so sorting around them would leave the level half sorted. Move them to another page, or order this level by hand.</p>
   <p class="note">These lines come from the test log, laid out here by us; they are not screenshots of Confluence.</p>
 
-  <!-- Screenshot slots for the session in Confluence (control offers/o-0013/status.md, "Product page", shot list).
-       When an image exists, paste the <img> from its comment in place of the slot div. -->
+  <!-- Screenshots from the browser session in Confluence (docs/ui-check.md in the product). To publish: take the heading and each
+       figure below out of its comment.
   <h2 id="screens">In Confluence</h2>
-  <p class="note">Screenshots from Confluence are being taken and will replace the labelled slots below. Each slot says what its screenshot shows.</p>
-  <div>
+  -->
+  <!-- shot-1, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-1">
-    <!-- Shot 1. Replace the div with:
     <img src="img/shot-1-new-page-sorted.png" alt="Two crops of Confluence&#x27;s own page tree under Customers, side by side: on the left, just after it was published, Brightwater Ltd sits at the bottom of the list; on the right, after a refresh, Brightwater Ltd sits between Bluefin Analytics and Cobalt Health in A to Z order. The clock time is shown above each crop." width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 1, to be added: Two crops of Confluence&#x27;s own page tree under Customers, side by side: on the left, just after it was published, Brightwater Ltd sits at the bottom of the list; on the right, after a refresh, Brightwater Ltd sits between Bluefin Analytics and Cobalt Health in A to Z order. The clock time is shown above each crop.">
-      <strong>Screenshot 1, to be added from Confluence</strong>
-      <span>Confluence's own page tree, before and after: Brightwater Ltd at the bottom, then in its A to Z place a refresh later.</span>
-    </div>
     <figcaption>A new page lands at the bottom of Customers. A refresh later it is in its A to Z place. Nobody pressed a button.</figcaption>
   </figure>
+  -->
+  <!-- shot-2, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-2">
-    <!-- Shot 2. Replace the div with:
     <img src="img/shot-2-preview.png" alt="The Sort child pages dialog on Customers: Title A to Z and This level chosen, the preview saying how many of the 41 pages will move, Brightwater Ltd marked &#x27;moves (now #41)&#x27;, Contoso Phase 2 listed before Contoso Phase 10, and the Sort once and Keep sorted buttons" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 2, to be added: The Sort child pages dialog on Customers: Title A to Z and This level chosen, the preview saying how many of the 41 pages will move, Brightwater Ltd marked &#x27;moves (now #41)&#x27;, Contoso Phase 2 listed before Contoso Phase 10, and the Sort once and Keep sorted buttons">
-      <strong>Screenshot 2, to be added from Confluence</strong>
-      <span>The Sort child pages dialog: Title A→Z, the count of pages that will move, Brightwater Ltd marked, Contoso Phase 2 before Contoso Phase 10.</span>
-    </div>
     <figcaption>The preview marks and counts every page that will move. Contoso Phase 2 comes before Contoso Phase 10.</figcaption>
   </figure>
+  -->
+  <!-- shot-3, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-3">
-    <!-- Shot 3. Replace the div with:
     <img src="img/shot-3-space-overview.png" alt="Space settings, Sortlatch tab: three rules. Customers is In order with its last run and pages moved; Glossary is Sorting with its progress in pages moved; Team handbook needs attention, and the panel below says its level was not sorted because a folder is among its child pages" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 3, to be added: Space settings, Sortlatch tab: three rules. Customers is In order with its last run and pages moved; Glossary is Sorting with its progress in pages moved; Team handbook needs attention, and the panel below says its level was not sorted because a folder is among its child pages">
-      <strong>Screenshot 3, to be added from Confluence</strong>
-      <span>Space settings &gt; Sortlatch: Customers In order, Glossary Sorting with its progress, Team handbook Needs attention with the folder reason.</span>
-    </div>
     <figcaption>Every rule in the space with its status and last run, and why a level was skipped.</figcaption>
   </figure>
-  </div>
+  -->
 
   <h2 id="pricing">Price</h2>
+  <p><strong>Free for a site with up to 10 users</strong>, with every feature. A site with 11 or more users pays each month for every user, at the rate of the band the user falls in, the way Atlassian prices tiered apps (like tax brackets):</p>
   <table>
-    <tr><th>Users on your Confluence site</th><th>Price</th></tr>
-    <tr><td>1 to 10</td><td>Free, every feature</td></tr>
-    <tr><td>11 to 100</td><td>$0.15 per user per month</td></tr>
-    <tr><td>More than 100</td><td>Never more than $0.15 per user per month; the exact tiers will be on the Marketplace listing</td></tr>
+    <tr><th>Users</th><th>Per user per month</th></tr>
+    <tr><td>1st to 100th</td><td>$0.15</td></tr>
+    <tr><td>101st to 250th</td><td>$0.12</td></tr>
+    <tr><td>251st to 1,000th</td><td>$0.06</td></tr>
+    <tr><td>1,001st to 2,500th</td><td>$0.04</td></tr>
+    <tr><td>2,501st to 5,000th</td><td>$0.03</td></tr>
+    <tr><td>Beyond 5,000</td><td>$0.02</td></tr>
   </table>
+  <table>
+    <tr><th>Your site</th><th>Per month</th><th>Per year</th></tr>
+    <tr><td>8 users</td><td>$0</td><td>$0</td></tr>
+    <tr><td>45 users</td><td>45 × $0.15 = $6.75</td><td>$67.50</td></tr>
+    <tr><td>300 users</td><td>100 × $0.15 + 150 × $0.12 + 50 × $0.06 = $36</td><td>$360</td></tr>
+    <tr><td>1,000 users</td><td>$15 + $18 + 750 × $0.06 = $78</td><td>$780</td></tr>
+  </table>
+  <p>These are the prices the Marketplace listing will carry.</p>
   <p>One edition: every feature is in every tier, with nothing held back for a higher plan. Atlassian bills the subscription, monthly or annually (annual is 10 times the monthly price), and offers its standard free trial. Atlassian bills the renewal and sends the renewal notice; we add no upsell, no feature lock and no price change at renewal.</p>
 
   <h2 id="permissions">Who can use it</h2>
@@ -208,7 +207,8 @@
   <h3>How fast does a new page move?</h3>
   <p>Within a few minutes. Confluence tells apps about page changes up to 3 minutes after they happen. On our test site it took 11 to 17 seconds (median 11). A daily check puts back anything that was missed.</p>
   <h3>Does it sort folders?</h3>
-  <p>No. Folders, whiteboards, databases and smart links are not sorted, and neither are pages inside folders. If any of them is among a page's child pages, that level is skipped, and the preview and the space overview say why.</p>
+  <p>No. Folders, whiteboards, databases and smart links are not sorted, and neither are pages directly inside folders. If any of them is among a page's child pages, that level is skipped, and the preview and the space overview say why.</p>
+  <p><strong>What to do instead:</strong> keep the pages under a page rather than directly in a folder. That page can itself sit inside a folder: put the rule on it, and its child pages are sorted and kept sorted. For example, a folder <em>Engineering</em> holding a page <em>Release notes</em>, with the releases under that page.</p>
   <h3>Does it sort the top level of a space?</h3>
   <p>No. For the pages directly under the space's home page, use Space settings &gt; Manage content &gt; Reorder. A rule with "All levels below" on the home page still sorts every level beneath the top level.</p>
   <h3>How many pages can it handle?</h3>
@@ -224,14 +224,16 @@
   <h3>What happens to a page restored from the trash?</h3>
   <p>Confluence decides where a restored page goes. On our test site, a page restored through Confluence's REST API came back at the top level of the space, which Sortlatch does not sort. Once a restored page is under a page with a rule, Sortlatch sorts it in.</p>
   <h3>How are numbers with decimals sorted?</h3>
-  <p>Like version numbers: "Fee 1.5" comes before "Fee 1.25", as v1.5 comes before v1.25. Digits typed in full-width form are not read as numbers.</p>
+  <p>Like version numbers: "Fee 1.5" comes before "Fee 1.25", as v1.5 comes before v1.25, and Release 2.9.1 comes before Release 2.10.0. Digits typed in full-width form are not read as numbers.</p>
+  <h3>How are punctuation and words like "The" sorted?</h3>
+  <p>Punctuation counts, by its character: a hyphen sorts before letters and an en dash after them, so "Acme Corp - EMEA" comes before "ACME Corp – APAC". Confluence's editor sometimes turns a typed hyphen into a dash, so check titles that differ only there. A leading "The" counts like any other word: "The Grand Hotel" sorts under T. A version with a suffix comes after the bare version: "3.0.0" before "3.0.0-beta.2".</p>
   <h3>What if Atlassian ships permanent sorting?</h3>
   <p>Then Confluence does the main job itself, and Sortlatch is worth only its extras: Z to A, dates, pins, every level below, undo and the overview. This page will say so on the day.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
     <li><strong>A few minutes, not instantly.</strong> Confluence delivers page events to apps up to 3 minutes after a change.</li>
-    <li><strong>Folders, whiteboards, databases and smart links are not sorted</strong>, and a level that has one among its child pages is skipped, with the reason. Pages inside folders are not sorted.</li>
+    <li><strong>Folders, whiteboards, databases and smart links are not sorted</strong>, and a level that has one among its child pages is skipped, with the reason. Pages directly inside folders are not sorted; keep them under a page instead (<a href="#faq">see Questions</a>).</li>
     <li><strong>The top level of a space is not sorted.</strong></li>
     <li><strong>Up to 1,000 child pages under one page</strong>, and up to 5,000 pages in one "All levels below" rule.</li>
     <li><strong>Pages Sortlatch cannot see stay where they are.</strong> A page restricted after a rule was saved is reported only when someone opens the overview or the dialog.</li>
@@ -250,12 +252,13 @@
     <li><strong>Glossary</strong>, 1,000 shuffled terms: Term 1 to Term 1000 in order after one run, with no failures and progress on the space overview throughout. Sortlatch's own moves set off no further sorting.</li>
     <li>The folder parent was skipped with its reason, the space home page was treated as the top level, and the site-wide list was shown to a Confluence admin and refused to anyone else.</li>
   </ul>
-  <p>An automated suite of 110 tests covers the ordering, the preview, keeping sorted for each kind of change, undo and restore, the stated limits, Confluence's documented reasons for refusing a move, and the three screens rendered through Atlassian's own UI Kit code.</p>
+  <p>An automated suite of 112 tests covers the ordering, the preview, keeping sorted for each kind of change, undo and restore, the stated limits, Confluence's documented reasons for refusing a move, and the three screens rendered through Atlassian's own UI Kit code.</p>
   <p>Not yet covered:</p>
   <ul>
     <li><strong>Opening the screens in a browser.</strong> Everything behind the dialog and the overview has run on a real site, but the screens have not yet been opened by a person in Confluence, including the first-use "allow access" prompt. They will be before the listing goes to Atlassian.</li>
     <li>A move Confluence refuses. No move has failed on the real site, so the plain-words reasons have been checked only against Confluence's documented error answers.</li>
     <li>A restore from Confluence's own trash screen (see Questions).</li>
+    <li>A rule on a page that sits inside a folder (the workaround under "Does it sort folders?"): covered by the automated tests, not yet run on the real site.</li>
     <li>Which Confluence Cloud plans it has been tried on: only our test site's.</li>
   </ul>
 

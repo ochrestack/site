@@ -24,7 +24,6 @@
   th { color: var(--muted); font-weight: 600; }
   figure { margin: 20px 0; }
   figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
-  .slot { aspect-ratio: 1840 / 900; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 6px; background: #fff; color: var(--muted); font-size: 15px; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
   .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
   @media (max-width: 600px) {
@@ -43,8 +42,7 @@
 <main>
   <h1>Sortlatch quick start</h1>
   <p>Your first page tree kept in order, step by step. Back to the <a href="index.html">Sortlatch product page</a>.</p>
-  <p>Screenshots from Confluence are being taken; until then, each labelled slot below says what its screenshot shows.</p>
-  <!-- Screenshot slots (control offers/o-0013/status.md, "Product page"). When an image exists, paste the <img> from its comment in place of the slot div. -->
+  <!-- Screenshots from the browser session in Confluence (docs/ui-check.md in the product): each figure sits in a comment where it belongs; take it out of the comment to publish it. -->
 
   <h2 id="install">Install (Confluence Cloud)</h2>
   <ol>
@@ -62,53 +60,37 @@
     <li>Choose <strong>Sort once</strong> to sort now and save nothing, or <strong>Keep sorted</strong> to save the choice as a rule on this page and sort now.</li>
     <li>Progress shows in the dialog, then a line such as <em>Moved 12 pages under "Customers".</em> Refresh Confluence's page tree to see the new order. You can close the dialog while it runs.</li>
   </ol>
+  <!-- shot-2, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-2">
-    <!-- Shot 2. Replace the div with:
     <img src="img/shot-2-preview.png" alt="The Sort child pages dialog on Customers: Title A to Z and This level chosen, the preview saying how many of the 41 pages will move, Brightwater Ltd marked &#x27;moves (now #41)&#x27;, Contoso Phase 2 listed before Contoso Phase 10, and the Sort once and Keep sorted buttons" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 2, to be added: The Sort child pages dialog on Customers: Title A to Z and This level chosen, the preview saying how many of the 41 pages will move, Brightwater Ltd marked &#x27;moves (now #41)&#x27;, Contoso Phase 2 listed before Contoso Phase 10, and the Sort once and Keep sorted buttons">
-      <strong>Screenshot 2, to be added from Confluence</strong>
-      <span>The Sort child pages dialog: Title A→Z, the count of pages that will move, Brightwater Ltd marked, Contoso Phase 2 before Contoso Phase 10.</span>
-    </div>
     <figcaption>The preview marks and counts every page that will move. Contoso Phase 2 comes before Contoso Phase 10.</figcaption>
   </figure>
+  -->
   <p>Only people who can edit the page can sort its child pages or save a rule. Anyone else sees <em>You can't sort these pages</em> and the reason.</p>
+  <!-- shot-8, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-8">
-    <!-- Shot 8. Replace the div with:
     <img src="img/shot-8-cannot-edit.png" alt="The Sort child pages dialog opened by someone who can&#x27;t edit Customers: the warning &#x27;You can&#x27;t sort these pages&#x27; with the reason, and only a Close button" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 8, to be added: The Sort child pages dialog opened by someone who can&#x27;t edit Customers: the warning &#x27;You can&#x27;t sort these pages&#x27; with the reason, and only a Close button">
-      <strong>Screenshot 8, to be added from Confluence</strong>
-      <span>Opened by someone who can't edit the page: “You can't sort these pages” and the reason.</span>
-    </div>
     <figcaption>Someone who can't edit the page is told why, and can't sort.</figcaption>
   </figure>
+  -->
 
   <h2 id="hidden">If some child pages are restricted</h2>
   <p>If page restrictions keep Sortlatch out of some child pages you can see, the preview says how many. Tick <strong>Sort the pages Sortlatch can see, and leave the others where they are</strong> to go ahead: the pages Sortlatch can see are sorted among themselves, and the hidden ones stay put. Child pages you are not allowed to view are sorted with the others but only counted in the preview, never listed.</p>
+  <!-- shot-4, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-4">
-    <!-- Shot 4. Replace the div with:
     <img src="img/shot-4-hidden-pages.png" alt="The Sort child pages dialog with the notice &#x27;You can see 1 child page here that Sortlatch can&#x27;t see (page restrictions keep the app out)&#x27; and the unticked checkbox &#x27;Sort the pages Sortlatch can see, and leave the others where they are&#x27;, with Sort once and Keep sorted disabled" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 4, to be added: The Sort child pages dialog with the notice &#x27;You can see 1 child page here that Sortlatch can&#x27;t see (page restrictions keep the app out)&#x27; and the unticked checkbox &#x27;Sort the pages Sortlatch can see, and leave the others where they are&#x27;, with Sort once and Keep sorted disabled">
-      <strong>Screenshot 4, to be added from Confluence</strong>
-      <span>The notice about 1 child page Sortlatch can't see, the confirmation checkbox, and Sort once and Keep sorted still disabled.</span>
-    </div>
     <figcaption>When page restrictions keep Sortlatch out of a child page, the preview says so, and nothing is sorted until you confirm.</figcaption>
   </figure>
+  -->
 
   <h2 id="pins">2. Pin pages to the top or bottom</h2>
   <p>In the same dialog, pick pages in <strong>Pin to the top</strong> and <strong>Pin to the bottom</strong>, for example an <em>Overview</em> first and an <em>Archive</em> last. Pinned pages keep their place; the rest are sorted between them, including pages created later. Pins are picked from the first level, up to 50.</p>
+  <!-- shot-5, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-5">
-    <!-- Shot 5. Replace the div with:
     <img src="img/shot-5-pins.png" alt="The Sort child pages dialog on Products with Overview in Pin to the top and Archive (discontinued) in Pin to the bottom; the preview lists Overview first, the products A to Z, and Archive (discontinued) last" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 5, to be added: The Sort child pages dialog on Products with Overview in Pin to the top and Archive (discontinued) in Pin to the bottom; the preview lists Overview first, the products A to Z, and Archive (discontinued) last">
-      <strong>Screenshot 5, to be added from Confluence</strong>
-      <span>Pins: Overview pinned to the top, Archive (discontinued) to the bottom, the products A to Z between them.</span>
-    </div>
     <figcaption>Pinned pages stay first and last. The rest are sorted between them.</figcaption>
   </figure>
+  -->
 
   <h2 id="keep">3. Let it keep the order</h2>
   <p>Under a page with a rule, these go back into the order within a few minutes, with nobody pressing a button:</p>
@@ -118,26 +100,18 @@
     <li>a page restored from the trash, if Confluence puts it back under that page.</li>
   </ul>
   <p>Confluence tells apps about page changes up to 3 minutes after they happen; on our test site, each change was in place 11 to 17 seconds later. A daily check puts back anything that was missed. A level already in order is left alone.</p>
+  <!-- shot-1, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-1">
-    <!-- Shot 1. Replace the div with:
     <img src="img/shot-1-new-page-sorted.png" alt="Two crops of Confluence&#x27;s own page tree under Customers, side by side: on the left, just after it was published, Brightwater Ltd sits at the bottom of the list; on the right, after a refresh, Brightwater Ltd sits between Bluefin Analytics and Cobalt Health in A to Z order. The clock time is shown above each crop." width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 1, to be added: Two crops of Confluence&#x27;s own page tree under Customers, side by side: on the left, just after it was published, Brightwater Ltd sits at the bottom of the list; on the right, after a refresh, Brightwater Ltd sits between Bluefin Analytics and Cobalt Health in A to Z order. The clock time is shown above each crop.">
-      <strong>Screenshot 1, to be added from Confluence</strong>
-      <span>Confluence's own page tree, before and after: Brightwater Ltd at the bottom, then in its A to Z place a refresh later.</span>
-    </div>
     <figcaption>A new page lands at the bottom of Customers. A refresh later it is in its A to Z place. Nobody pressed a button.</figcaption>
   </figure>
+  -->
+  <!-- shot-6, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-6">
-    <!-- Shot 6. Replace the div with:
     <img src="img/shot-6-newest-first.png" alt="Confluence&#x27;s page tree under Meeting notes after a Newest first sort: the most recently created meeting notes page at the top, the oldest at the bottom" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 6, to be added: Confluence&#x27;s page tree under Meeting notes after a Newest first sort: the most recently created meeting notes page at the top, the oldest at the bottom">
-      <strong>Screenshot 6, to be added from Confluence</strong>
-      <span>The Meeting notes page tree after Newest first: the latest page on top.</span>
-    </div>
     <figcaption>Newest first, by creation date.</figcaption>
   </figure>
+  -->
 
   <h2 id="overview">4. Check the space overview</h2>
   <p>Open <strong>Space settings &gt; Sortlatch</strong>. Each rule in the space has a row:</p>
@@ -150,16 +124,12 @@
     <tr><td>Actions</td><td><strong>Sort now</strong>, <strong>Pause</strong> or <strong>Resume</strong>, <strong>Undo last sort</strong>, <strong>Restore original order</strong>, <strong>Remove</strong></td></tr>
   </table>
   <p>Below the table, a panel for each rule that needs attention says why in plain words: a level skipped because a folder is among its child pages, child pages Sortlatch can't see, or a page Confluence refused to move, with Confluence's reason. Each action needs edit permission on the rule's page.</p>
+  <!-- shot-3, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-3">
-    <!-- Shot 3. Replace the div with:
     <img src="img/shot-3-space-overview.png" alt="Space settings, Sortlatch tab: three rules. Customers is In order with its last run and pages moved; Glossary is Sorting with its progress in pages moved; Team handbook needs attention, and the panel below says its level was not sorted because a folder is among its child pages" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 3, to be added: Space settings, Sortlatch tab: three rules. Customers is In order with its last run and pages moved; Glossary is Sorting with its progress in pages moved; Team handbook needs attention, and the panel below says its level was not sorted because a folder is among its child pages">
-      <strong>Screenshot 3, to be added from Confluence</strong>
-      <span>Space settings &gt; Sortlatch: Customers In order, Glossary Sorting with its progress, Team handbook Needs attention with the folder reason.</span>
-    </div>
     <figcaption>Every rule in the space with its status and last run, and why a level was skipped.</figcaption>
   </figure>
+  -->
 
   <h2 id="undo">5. Undo, restore, pause or remove</h2>
   <ul>
@@ -168,35 +138,27 @@
     <li><strong>Pause</strong> and <strong>Remove</strong> never move a page.</li>
   </ul>
   <p>On the space overview, Undo last sort, Restore original order and Remove each ask for confirmation first.</p>
+  <!-- shot-7, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-7">
-    <!-- Shot 7. Replace the div with:
     <img src="img/shot-7-undo.png" alt="The Sort child pages dialog after Undo last sort, with the message &#x27;Undone:&#x27; followed by the number of pages put back where they were" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 7, to be added: The Sort child pages dialog after Undo last sort, with the message &#x27;Undone:&#x27; followed by the number of pages put back where they were">
-      <strong>Screenshot 7, to be added from Confluence</strong>
-      <span>After Undo last sort: the message saying how many pages were put back where they were.</span>
-    </div>
     <figcaption>Undo last sort puts back what the latest run moved, and pauses the rule.</figcaption>
   </figure>
+  -->
 
   <h2 id="admins">For Confluence admins</h2>
   <p><strong>Confluence admin settings &gt; Sortlatch</strong> lists every rule on the site, with its space, parent page, order, depth, status and last run. Anyone who isn't a Confluence admin is refused, and space admins are pointed to their own Space settings tab.</p>
+  <!-- shot-9, to publish once captured (docs/ui-check.md in the product): take this figure out of the comment.
   <figure id="shot-9">
-    <!-- Shot 9. Replace the div with:
     <img src="img/shot-9-site-wide.png" alt="Confluence admin settings, Sortlatch: the site-wide list of rules, with the columns Space, Parent page, Order, Depth, Status and Last run, and rules from two spaces" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 9, to be added: Confluence admin settings, Sortlatch: the site-wide list of rules, with the columns Space, Parent page, Order, Depth, Status and Last run, and rules from two spaces">
-      <strong>Screenshot 9, to be added from Confluence</strong>
-      <span>Confluence admin settings &gt; Sortlatch: every rule on the site, from two spaces.</span>
-    </div>
     <figcaption>Confluence admins see every rule on the site in one list.</figcaption>
   </figure>
+  -->
 
   <div class="box">
     <p><strong>Where to put a rule</strong></p>
     <ul>
       <li>On the page whose child pages should stay in order. One rule per level: a page with its own rule keeps it, even under an "All levels below" rule higher up.</li>
-      <li>Not on a page whose child pages include a folder, whiteboard, database or smart link: that level is skipped. Move those elsewhere, or order the level by hand.</li>
+      <li>Not on a page whose child pages include a folder, whiteboard, database or smart link: that level is skipped. Move those elsewhere, or order the level by hand. For pages you keep in a folder, put them under a page inside the folder and put the rule on that page.</li>
       <li>Not on the top level of a space: use Space settings &gt; Manage content &gt; Reorder there. "All levels below" on the home page still sorts every level beneath it.</li>
     </ul>
   </div>
