@@ -92,6 +92,18 @@
     <strong>Who needs Pro, and who doesn't.</strong> WordPress itself has no broken-link checker. Free plugins already check links on your own server without an account: Broken Link Checker's local engine, Dragon Broken Links and DevDome Link Monitor. A buyer who does one cleanup a year needs only the free Linkrounds, and the copy says so. Pro's $29 buys hands-off scheduled full-site scans, an emailed report of what broke since the last one, and a CSV for a client or an editor. Links inside page-builder layouts stored outside the post content, custom fields, widgets and comments are not checked in version one, and the listing says so plainly.
   </div>
 
+  <h2 id="watch">Watch it work</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
+      <source src="video/linkrounds-demo-720p.mp4" type="video/mp4">
+    </video>
+    <figcaption>The demo, 58 s, captions only, no sound: Linkrounds 1.1.0 on the demo blog described <a href="#tested">below</a> (WordPress 7.1.4), recorded at 60 fps in Chromium on November 7, 2026 (UTC). The links are the blog's real links; the film opens on a click on a 2020 post's tutorial link, which now ends on the Godot documentation's own "Page not found". For the first scan only, the demo used small batches so the live count is visible; the second checks then ran by themselves an hour later. The last shot shows Linkrounds Pro 1.0.1; every other shot is the free plugin alone. <a href="video/linkrounds-edit-address.gif">The fix as a looping GIF</a> (0.9 MB).</figcaption>
+  </figure>
+  <figure>
+    <img src="video/linkrounds-edit-address.gif" alt="Looping clip from the demo: the Broken view after the second check, with Broken (10); Edit address on the old Godot tutorial link in “Our first Godot import: a low-poly lighthouse”, the new first_2d_game address typed and saved; the message names the post, says the change was saved as a revision, and reports the new address checked: OK, the page answered normally (200); Broken goes to (9)" width="1280" height="720" loading="lazy">
+    <figcaption>The fix from the demo, looping: Edit address on one Broken link, and the new address checked at once.</figcaption>
+  </figure>
+
   <h2>Four answers, in plain words</h2>
   <ul>
     <li><strong>Broken</strong>: not found (404), gone (410), or the domain does not exist, and the same thing happened again on a second check at least an hour later (1, 6 or 24 hours, you choose).</li>
