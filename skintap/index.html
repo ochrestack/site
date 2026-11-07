@@ -96,6 +96,18 @@
     <p>Every image and GIF on this page is a capture of a real Blender 5.2.3 LTS window on Linux at 1920x960 and UI scale 1.4, with Skintap 1.0.2 installed from its zip through Blender's extension installer (the Install from Disk path). The character is Rain v3.3 as downloaded from studio.blender.org (CC BY 4.0, credit below), in her own file and rig. By script, between shots, we switched her arms and legs to FK, set her rig's Quality to 2 (Subdivision Surface level 2 on every piece of clothing and the body), posed her on her FK controls and set the view; for the chain images we added a three-bone hair strand and a three-bone ribbon to her rig, showed only their bone collection, and hid the viewport's navigation buttons. Every hover, click, Shift-click, menu and key press (Shift+Alt+Q, Esc, G, Shift+D) is a real input event sent to the window; every label, selection, name and status-bar report is Skintap's own. The GIFs were recorded one frame per pointer step and play at 30 frames per second: on this machine Blender draws the viewport in software, slower than that, so the motion here is smoother than it was live. The virtual display has no mouse cursor, so the arrow is drawn into each frame at the pointer's real position.</p>
   </details>
 
+  <h2 id="watch">Watch it work</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
+      <source src="video/skintap-demo-720p60.mp4" type="video/mp4">
+    </video>
+    <figcaption>The demo, 46 s, captions only, no sound: Skintap 1.0.2 in Blender 5.2.3 LTS on Blender Studio's Rain, arms and legs in FK, Subdivision Surface level 2. Blender's own click on her jeans, then Skintap's picker: hover, click, rotate, Shift-click, Pick Deform Bones; then Duplicate Chain, Mirror Chain and Fix .001 Names on a hair strand and a ribbon added to her rig. Every label, selection and name is Skintap's own. It was recorded one frame at a time at 60 frames per second: this test machine draws the viewport in software, slower than that, so it plays smoother than it ran live. The arrow and the orange click rings are drawn in at the pointer's real positions. Rain Rig (CC) Blender Foundation | studio.blender.org. <a href="video/skintap-pick.gif">The picking moment as a looping GIF</a> (3.6 MB).</figcaption>
+  </figure>
+  <figure>
+    <img src="video/skintap-pick.gif" alt="Looping clip from the demo: Skintap's picker on Rain. The label next to the cursor reads FK-Thigh_Parent.L on her jeans, then FK-Upperarm_Parent.L and FK-Forearm.L on her arm; a click selects FK-Forearm.L, and R rotates it so her hand comes up to her chest. The picker starts again, a Shift-click on her jeans adds FK-Thigh_Parent.L, and the cursor moves to her shoe, where the label reads FK-Foot.L, moves DEF-Foot.L on GEO-rain-shoes" width="960" height="540" loading="lazy">
+    <figcaption>The picking moment from the demo, looping: hover, click, rotate the control that was picked, then Shift-click her jeans and hover her shoe.</figcaption>
+  </figure>
+
   <div class="box warn">
     <strong>Where it matters.</strong> In Pose Mode, Blender's own click selects a bone only where the cursor lands on that bone's drawn shape, not on the body or the clothes around it. When the controls sit inside the body, under a top or behind the hair, most of the character selects nothing. On grids of points laid over two posed characters, Blender's click selected nothing at 25% to 67% of the points (with the armature's In Front on or off). Over the same points, Skintap selected a bone that moves the clicked spot at 208 of 208 on a Rigify rig and at 159 of 165 on Rain.
   </div>
