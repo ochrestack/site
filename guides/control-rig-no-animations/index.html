@@ -131,7 +131,7 @@
   <h2 id="limits">7. Limits</h2>
   <ul>
     <li>Rigbake handles one control rig per deform rig. If a deform rig follows two or more armatures, pick the control rig in Rigbake's Advanced Bake section.</li>
-    <li>Motion keyed on the armature object itself (not on a bone) is not exported by Rigbake; it tells you so on every export. Blender's own FBX export keeps it. Put it on a root bone.</li>
+    <li>Motion keyed on the exported armature object itself (not on a bone) is not exported by Rigbake; it tells you so on every export. Blender's own FBX export keeps it. Put it on a root bone. Motion keyed on the control rig's object is different: Rigbake bakes it into the deform rig's bones (a control rig rolling 2 m forward arrives as 2 m in the hips).</li>
     <li>The results on this page were measured by re-importing the files in Blender and by importing them in Godot 4.7, not inside Unity or Unreal.</li>
   </ul>
   <p>Related: <a href="../fbx-duplicate-takes/">Why Blender's FBX export gives duplicate takes, and why one of them is wrong</a>.</p>

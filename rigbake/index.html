@@ -143,9 +143,10 @@
     </figure>
     <figure>
       <a href="img/character-03-export-summary.png"><img class="ui" src="img/panel-after-export.png" alt="The Rigbake tab at real size after Export Game-Ready with the default settings: the row '7 issues, 2 notes' with a Report button, and the Last Export box naming RIG-rain.glb with 1-25 Walk, 1-17 Run, 1-49 Idle and the notes 'Modifiers left unapplied' and '3 baked actions kept in this file'" width="256" height="472" loading="lazy"></a>
-      <figcaption>After: the validator's count, each clip with its frame range, one line per note. Her seven issues are in the dialog below. Two of them matter in the engine: her Mask modifiers hide nothing unless Apply Modifiers is set to Always (the Rain images from Godot on this page use Always), and modifiers kept unapplied for her shape keys don't reach the engine. Others are leftovers in a production rig, such as empty or unmatched vertex groups.</figcaption>
+      <figcaption>After: her issues, each clip with its frame range, one line per note.</figcaption>
     </figure>
   </div>
+  <p>Her seven issues are in the dialog below. Two of them matter in the engine: her Mask modifiers hide nothing unless Apply Modifiers is set to Always (the Rain images from Godot on this page use Always), and modifiers kept unapplied for her shape keys don't reach the engine. Others are leftovers in a production rig, such as empty or unmatched vertex groups.</p>
   <figure>
     <p class="swipe-hint narrow-only">Rigbake's rig check on Rain, at Blender's own UI size: swipe the dialog sideways to read each line &rarr;</p>
     <div class="swipe-wrap"><div class="scroll-x"><picture>
@@ -161,7 +162,10 @@
     </picture>
     <figcaption>The setup behind the Rain image above, and the animation lists of both files in Godot 4.7. Left: Blender's default FBX export (File &gt; Export &gt; FBX), 23 takes for 3 clips, and in Idle Run's legs leak in (0.33 m off). Right: Rigbake, 3 takes, posed as in Blender. Both files from the same rig, played at the same frame. For this export Rigbake's Apply Modifiers was set to Always (not the default), as its validator advises for her Mask modifiers.</figcaption>
   </figure>
-  <p id="takes"><strong>Why the take counts differ.</strong> Blender's default FBX export (All Actions and NLA Strips both on) writes each clip on an unmuted NLA track twice, once under the track's name and once as <code>Rig|Clip</code>, and adds every other action in the file that fits the rig. Tracks are unmuted after Push Down, for example. Our minimal test rig has two unmuted tracks and no other actions: 4 takes for 2 clips. Rain's three clips are on unmuted tracks and her file adds 17 face-rig pose actions: 23 takes for 3 clips. Ellie's three are on unmuted tracks and her file adds 16 rig pose actions, a camera pose library and a shader action: 24 takes for 3 clips. Stashed clips are different: Stash puts a clip on a muted track, which the FBX exporter skips, so each stashed clip is written once, as <code>Rig|Clip</code>. It can still be wrong: in our test suite a stashed Idle clip comes out 0.60 m off, and in a separate pre-release check on a different rig, a stashed Attack clip came out 0.56 m off (Blender 4.2.23). Rigbake writes one take per clip, named after the action, in each case.</p>
+  <details id="takes">
+    <summary>Why the take counts differ (23 against 3)</summary>
+    <p>Blender's default FBX export (All Actions and NLA Strips both on) writes each clip on an unmuted NLA track twice, once under the track's name and once as <code>Rig|Clip</code>, and adds every other action in the file that fits the rig. Tracks are unmuted after Push Down, for example. Our minimal test rig has two unmuted tracks and no other actions: 4 takes for 2 clips. Rain's three clips are on unmuted tracks and her file adds 17 face-rig pose actions: 23 takes for 3 clips. Ellie's three are on unmuted tracks and her file adds 16 rig pose actions, a camera pose library and a shader action: 24 takes for 3 clips. Stashed clips are different: Stash puts a clip on a muted track, which the FBX exporter skips, so each stashed clip is written once, as <code>Rig|Clip</code>. It can still be wrong: in our test suite a stashed Idle clip comes out 0.60 m off, and in a separate pre-release check on a different rig, a stashed Attack clip came out 0.56 m off (Blender 4.2.23). Rigbake writes one take per clip, named after the action, in each case.</p>
+  </details>
   <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We added the animation clips and simplified two eye materials for the game-engine export. Rain is not included with Rigbake. Rain has no separate control rig; the control-rig case is the Ellie image at the top of this page and the first row of "How we tested" below.</p>
 
   <h2 id="details">Details</h2>
@@ -196,7 +200,7 @@
   <h2>Known limits</h2>
   <ul>
     <li>Only bone motion is baked. Shape keys and their animation are exported as they are (Godot preset), or dropped with a warning (FBX presets, when the mesh has other modifiers).</li>
-    <li>Motion keyed on the armature object itself is not exported; the validator and the export summary say so on every export. Blender's own FBX export keeps it, so for such a rig plain FBX does better. Put it on a root bone.</li>
+    <li>Motion keyed on the exported armature object itself is not exported; the validator and the export summary say so on every export. Blender's own FBX export keeps it, so for such a rig plain FBX does better. Put it on a root bone. Motion keyed on a control rig's object is different: it is baked into the deform rig's bones (a control rig rolling 2 m forward arrives as 2 m in the hips).</li>
     <li>The default exports the active action and every action on the NLA. Other actions of the rig are named in the panel, not exported, until you add them to the NLA.</li>
     <li>Keys are baked on whole frames. One control rig per deform rig. One file per export.</li>
     <li>Blender 4.5's own FBX importer misreads multi-take files; exports from Rigbake are correct, but re-importing them into 4.5 for checking is not reliable. Use 4.2 or 5.0 to verify, or your engine.</li>

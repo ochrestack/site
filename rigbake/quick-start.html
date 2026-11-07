@@ -109,7 +109,7 @@
   <ul>
     <li>Tested on Blender 4.2 LTS, 4.5 and 5.0; requires 4.2 or newer. Checked in Godot 4.7 and in a real Blender 4.2 LTS window (1600x900 and 1280x720). The Unity preset's FBX was checked through Godot's FBX importer. The Unreal preset has not been checked in Unreal Engine. Neither has been opened in Unity or Unreal.</li>
     <li>Only bone motion is baked. Shape keys and their animation are exported as they are (Godot preset), or dropped with a warning (FBX presets, when the mesh has other modifiers). Custom properties and B-Bone properties are not baked. Keys are baked on whole frames.</li>
-    <li>Motion keyed on the armature object itself is not exported; the validator and the Last Export box say so on every export. Blender's own FBX export would keep it.</li>
+    <li>Motion keyed on the exported armature object itself is not exported; the validator and the Last Export box say so on every export. Blender's own FBX export would keep it. Motion keyed on a control rig's object is baked into the deform rig's bones (a control rig rolling 2 m forward arrives as 2 m in the hips).</li>
     <li>One control rig per deform rig. One file per export.</li>
   </ul>
 
