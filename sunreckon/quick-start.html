@@ -38,7 +38,7 @@
 
   <h2 id="install">Install (Blender 4.2 LTS to 5.2 LTS)</h2>
   <ol>
-    <li>After checkout, download <code>sunreckon-1.2.0.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
+    <li>After checkout, download <code>sunreckon-1.3.0.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Sunreckon needs no internet, so <strong>Continue Offline is fine</strong>.</li>
@@ -48,47 +48,48 @@
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Dragging the zip onto the Blender window also works. Sunreckon is enabled at once.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Sunreckon</strong> tab.</li>
   </ol>
-  <p>To update, install the newer zip the same way; your .blend files keep their settings. To remove Sunreckon, first run <strong>Remove Sunreckon Setup</strong> in any file you want back as it was, then go to <strong>Preferences &gt; Add-ons</strong>, find <em>Sunreckon</em>, and choose <strong>Uninstall</strong> from its drop-down menu. Without Remove, the World, the Sun light and the clouds stay in the file as ordinary Blender data and keep rendering.</p>
+  <p>To update, install the newer zip the same way; your .blend files keep their settings. To remove Sunreckon, first click <strong>Remove</strong> (in Place &amp; Time) in any file you want back as it was, then go to <strong>Preferences &gt; Add-ons</strong>, find <em>Sunreckon</em>, and choose <strong>Uninstall</strong> from its drop-down menu. Without Remove, the World, the Sun light and the clouds stay in the file as ordinary Blender data and keep rendering.</p>
 
   <h2 id="first-sky">Your first sky</h2>
   <ol>
-    <li><strong>Switch the viewport to Rendered shading</strong> (Z, then Rendered). Material Preview shows Blender's studio HDRI unless its Scene World option is on; the panel reminds you.</li>
-    <li><strong>Pick the place.</strong> In <strong>Place &amp; Time</strong>, click <strong>City</strong> and start typing; pick from the list of 1,251 cities. The city sets latitude, longitude, its UTC offset and daylight saving for the date. Or paste coordinates into <strong>Paste</strong>: "48.8566, 2.3522", degrees-minutes-seconds such as 48°51'24"N 2°21'08"E, or a Google Maps or OpenStreetMap link. With pasted or typed coordinates, set <strong>UTC</strong> and <strong>DST</strong> yourself; the panel warns when the sun would be highest more than 2.5 hours from noon.</li>
-    <li><strong>Set the date and the local clock time.</strong> The Time slider shows hh:mm; to type a time, type hours as a decimal: <strong>10.5</strong> for 10:30, 14.25 for 14:15 (Blender's number fields do not take "10:30").</li>
+    <li><strong>Pick the place.</strong> In <strong>Place &amp; Time</strong>, click <strong>City</strong> and start typing; pick from the list of 1,251 cities (Enter picks the first). The city sets latitude, longitude, its UTC offset and daylight saving for the date. Or paste into <strong>Coords</strong>: "48.8566, 2.3522", degrees-minutes-seconds such as 48°51'24"N 2°21'08"E, or a Google Maps or OpenStreetMap link. A paste also sets an estimated clock (from the nearest listed city, or the longitude) and says so: check it near a zone border.</li>
+    <li><strong>Set the date and the local clock time.</strong> Y, M and D are the date. Type the time the way you write it: <strong>10:30</strong>, 16:45 or 4:45 pm. The arrows beside it move it by 15 minutes.</li>
     <li>If +Y is not north in your scene, set <strong>North Offset</strong>: the angle from the scene's +Y axis to true north, <strong>clockwise seen from above</strong>. If north is 30° to the left of +Y in the Top view (anticlockwise), type −30; if it is 30° to the right, type 30.</li>
-    <li><strong>Click Add Sky.</strong> The status bar says what it made, for example: "Created World 'Sunreckon Sky' and Sun light 'Sunreckon Sun': Multiple Scattering sky, sun 58.0° up at 257.0°, exposure -4.5."</li>
+    <li><strong>Click Add Sky.</strong> The status bar says, for example, "Sky added: sun 64.5° up at 184°, exposure -4.5." The button's place now reads "Sky on · Multiple Scattering" (Nishita on 4.2 to 4.5).</li>
+    <li><strong>Switch the viewport to Rendered shading</strong> (Z, then Rendered) to see the sky; until you do, the panel reminds you.</li>
   </ol>
-  <figure><img src="img/panel-place-time-sun.png" alt="The Sunreckon tab after Add Sky with Tokyo: Place &amp; Time with Tokyo, Japan, Lat 35.6870, Lon 139.7495, 2026 6 21, Time 14:00, UTC 9.00, Elevation 58.0°, Azimuth 257.0°, Sunrise 04:25, Sunset 19:00, Set Exposure and Remove Sunreckon Setup; the Sun section with the Sunreckon Sun light at strength 142.4 and 5133 K, and the day animation settings" width="421" height="863" loading="lazy"><figcaption>Place &amp; Time and Sun after Add Sky (Blender 5.2.3, real size).</figcaption></figure>
-  <p>The box under the atmosphere buttons shows the sun's elevation and azimuth and that day's sunrise and sunset. <strong>Set Exposure</strong> puts the exposure back to -4.5 if you changed it. For golden-hour shots, with the sun below about 15°, raise the exposure about a stop.</p>
+  <figure><img src="img/panel-place-time-sun.png" alt="The Sunreckon tab after Add Sky with Lisbon: Sky on, City Lisbon, Portugal, Y 2026 M 6 D 21, Time 17:30, UTC and DST, Air Clear, the sun's elevation, azimuth, sunrise and sunset, Set Exposure and Remove; the Sun section with the Sun light in W/m² and kelvin, Strength ×, Angle, and the day animation with From and To at sunrise and sunset" width="488" height="842" loading="lazy"><figcaption>Place &amp; Time and Sun after Add Sky (Blender 5.2.3, real size).</figcaption></figure>
+  <p>The box under the Air buttons shows the sun's elevation and azimuth and that day's sunrise and sunset. <strong>Set Exposure</strong> puts the exposure back to -4.5 if you changed it. For golden-hour shots, with the sun below about 15°, raise the exposure about a stop.</p>
 
   <h2 id="day">Animate a day</h2>
   <ol>
-    <li>In the <strong>Sun</strong> section, set <strong>From</strong> and <strong>To</strong> (local times; 06:00 to 20:00 by default) and <strong>Key Every</strong>. The scene's frame range is used.</li>
-    <li>Click <strong>Animate Day</strong>. The status bar says how many keys it wrote, for example "Animated the day from 07:00 to 21:30 over frames 1-120: 48 keys on the sky and the Sun light."</li>
-    <li>Play or scrub the timeline. Change the place, date, air, clouds or strength later and the keys are rewritten to match. The X button next to Animate Day removes them.</li>
+    <li>In the <strong>Sun</strong> section, <strong>From</strong> and <strong>To</strong> already follow that day's sunrise + 20 minutes and sunset − 20 minutes. Type your own times to change them; <strong>Sunrise to Sunset</strong> goes back. <strong>Key Every</strong> sets the frames between keys; the scene's frame range is used.</li>
+    <li>Click <strong>Animate Day</strong>. The status bar says how many keys it wrote.</li>
+    <li>Play or scrub the timeline. The box in Place &amp; Time now shows the current frame's clock and sun ("Frame 1 · 06:30"), and the Time field is greyed: the timeline drives the sun. Change the place, date, air, clouds or strength and the keys are rewritten. The X removes them.</li>
   </ol>
 
   <h2 id="clouds">Clouds</h2>
   <ul>
-    <li>In <strong>Clouds</strong>, pick <strong>Few</strong>, <strong>Scattered</strong>, <strong>Broken</strong> or <strong>Overcast</strong>, then <strong>Fast</strong> or <strong>Volumetric</strong>. Coverage, Cloud Base, Wind From and Wind Speed can be changed after.</li>
+    <li>In <strong>Clouds</strong>, pick <strong>Few</strong>, <strong>Scattered</strong>, <strong>Broken</strong> or <strong>Overcast</strong>, then <strong>Fast</strong> or <strong>Volumetric</strong>. Coverage, Cloud Base (m), Wind From (°) and Wind Speed (m/s) can be changed after.</li>
     <li>Fast clouds cast no shadows; Volumetric ones do. Broken and Overcast dim the Sun light.</li>
-    <li>Leave <strong>Performance Mode</strong> on: with Volumetric clouds the viewport shows the Fast cloud layer and the cloud shadows, and F12 renders the quality you chose. In EEVEE the viewport then matches the render; in Cycles only the cloud volume waits for F12. Before you send a Cycles file to a render farm that does not have Sunreckon, turn Performance Mode off, or the farm renders no cloud volume.</li>
-    <li>The box at the bottom of the section lists the measured render time of each preset on our reference scene.</li>
+    <li>If the cloud shadows miss your shot, click <strong>Shadow in View</strong>: it changes the <strong>Pattern</strong> until a cloud's shadow falls where the camera looks.</li>
+    <li>Leave <strong>Performance Mode</strong> on: with Volumetric clouds the viewport shows the Fast cloud layer and the cloud shadows, and F12 renders the quality you chose. Before you send a Cycles file to a render farm that does not have Sunreckon, turn it off.</li>
+    <li>The line under <strong>Render cost vs clear sky</strong> gives the chosen preset's cost, for example "EEVEE ×1.0 · Cycles ×4.6"; open it for every preset.</li>
   </ul>
-  <figure><img src="img/panel-clouds.png" alt="The Clouds section: Scattered and Volumetric selected, Performance Mode ticked, Coverage 0.42, Cloud Base 1800, Wind From 250, Wind Speed 8.0, Sun dimmed to 85% by the clouds, and the Measured render time box" width="421" height="863" loading="lazy"><figcaption>The Clouds section with Scattered, Volumetric.</figcaption></figure>
+  <figure><img src="img/panel-clouds.png" alt="The Clouds section: Scattered and Volumetric selected, Performance Mode ticked, Coverage, Cloud Base 1800 m, Wind From 250°, Wind Speed 8 m/s, Pattern and Shadow in View, and the folded render cost line" width="488" height="445" loading="lazy"><figcaption>The Clouds section with Scattered, Volumetric.</figcaption></figure>
 
   <h2 id="hdri">Use an HDRI</h2>
   <ol>
     <li>In <strong>HDRI</strong>, pick a <strong>Folder</strong> with your .hdr or .exr files (optional: Blender's own world HDRIs are always listed). <strong>Rescan</strong> (the arrows) looks again.</li>
-    <li>Click the picture and pick an HDRI. It goes on the World at your scene's own exposure. Adjust <strong>Strength</strong> and <strong>Rotation</strong>.</li>
-    <li><strong>Align Sun to HDRI</strong> points the Sun light at the map's brightest point and matches its strength and colour. It also takes the map's sun out of the light the World casts, so in Cycles and in EEVEE the sun lights the scene once, through the Sun light, with its shadow; the camera still sees the map unchanged. Without Align Sun, the Sun light is off while an HDRI is on the World and the map lights the scene by itself.</li>
+    <li>Click the picture and pick an HDRI. It goes on the World at your scene's own exposure, and the status bar says so. Adjust <strong>Strength</strong> and <strong>Rotation</strong>. While an HDRI is on the World, Clouds and the day animation are greyed: they belong to the sky.</li>
+    <li><strong>Align Sun to HDRI</strong> points the Sun light at the map's brightest point and matches its strength and colour, and takes the map's sun out of the light the World casts, so the sun lights the scene once, with its shadow; the camera still sees the map unchanged.</li>
     <li><strong>Back to Sky</strong> brings the sky back with every setting it had, its exposure included.</li>
   </ol>
-  <figure><img src="img/panel-hdri.png" alt="The HDRI section with Blender's city HDRI picked: the city thumbnail, Use This HDRI, Strength 1.00, Rotation 0°, Align Sun to HDRI, Back to Sky, On the World: city.exr, Sun aligned, 48° up" width="421" height="500" loading="lazy"><figcaption>The HDRI section after Align Sun to HDRI.</figcaption></figure>
+  <figure><img src="img/panel-hdri.png" alt="The HDRI section with Blender's sunset HDRI picked: the thumbnail, On the World: sunset.exr, Strength, Rotation, Align Sun to HDRI, Back to Sky, Sun aligned" width="488" height="400" loading="lazy"><figcaption>The HDRI section after Align Sun to HDRI.</figcaption></figure>
   <p style="font-size:14px;color:var(--muted)">The panel images come from a scene with Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Rain is not included with Sunreckon.</p>
 
   <h2 id="remove">Undo it all</h2>
-  <p><strong>Remove Sunreckon Setup</strong> (in Place &amp; Time) deletes the Sunreckon World, Sun light, clouds and keys, and restores the exposure from before Add Sky. It puts the previous World back only if the scene still shows the Sunreckon sky, and leaves anything another scene uses in place; the status bar says what it kept.</p>
+  <p><strong>Remove</strong> (in Place &amp; Time) deletes the Sunreckon World, Sun light, clouds and keys, and restores the exposure from before Add Sky. It puts the previous World back only if the scene still shows the Sunreckon sky, and leaves anything another scene uses in place; the status bar says what it kept.</p>
 
   <h2 id="limits">Limits</h2>
   <ul>
@@ -96,7 +97,7 @@
     <li>Blender's sky is black below the horizon: a finite floor shows a black band between its edge and the horizon. Extend the ground or frame it out.</li>
     <li>No night sky, stars, moon, planets, aurora, fog, rain or snow, and no clouds the camera can enter.</li>
     <li>EEVEE's cloud shadows cover 2.4 km around the camera and fade out at the edge.</li>
-    <li>Daylight-saving dates follow each zone's 2026 rules; historical offsets are not modelled.</li>
+    <li>Daylight-saving dates follow each zone's 2026 rules; historical offsets are not modelled. A pasted place's clock is an estimate.</li>
     <li>Align Sun to HDRI needs about 0.6 GB extra memory for an 8k map and 2.2 GB for a 16k map. The HDRI list shows files directly in the chosen folder, not in subfolders.</li>
   </ul>
 

@@ -3,70 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sunreckon for Blender: sky and sun from a place, date and time</title>
-<meta name="description" content="Sunreckon sets Blender's own physical sky and a matching Sun light from a real place, date and clock time in one click, sets the exposure, and adds clouds with a measured render cost and an HDRI switch. Tested on Blender 4.2 LTS to 5.2 LTS. $19 once.">
+<title>Sunreckon for Blender: the real sun for any place, date and time</title>
+<meta name="description" content="Sunreckon sets Blender's own physical sky and a matching Sun light for any place, date and clock time in one click, with the exposure set, clouds that cast shadows and your HDRIs in the same tab. Blender 4.2 LTS to 5.2 LTS. $19 once.">
 <link rel="canonical" href="https://ochrestack.com/sunreckon/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ochrestack">
-<meta property="og:title" content="Sunreckon for Blender: sky and sun from a place, date and time">
-<meta property="og:description" content="Sky add-on broke after a Blender update? Sunreckon sets Blender's physical sky and a matching Sun light from a place, date and time, in one tab. Tested on Blender 4.2 LTS to 5.2 LTS. $19, source included.">
+<meta property="og:title" content="Sunreckon for Blender: the real sun for any place, date and time">
+<meta property="og:description" content="The real sun for any place, date and clock time, in one click: Blender's physical sky, a matching Sun light and the exposure. Clouds that cast shadows, HDRIs in the same tab. Blender 4.2 LTS to 5.2 LTS. $19, source included.">
 <meta property="og:url" content="https://ochrestack.com/sunreckon/">
-<meta property="og:image" content="https://ochrestack.com/sunreckon/img/og-sunreckon-2x1.jpg">
+<meta property="og:image" content="https://ochrestack.com/sunreckon/img/hero-courtyard-2x1.jpg">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="800">
-<meta property="og:image:alt" content="Blender 5.2 with Blender Studio's Rain in a courtyard in Paris at 19:30 on 21 June under Sunreckon's sky and Scattered clouds, the Sunreckon tab on the right">
+<meta property="og:image:alt" content="Blender Studio's Rain in a sunlit courtyard in Lisbon on a June afternoon, a cloud's shadow on the paving, with the Sunreckon panel inset">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sunreckon for Blender: sky and sun from a place, date and time">
-<meta name="twitter:description" content="Blender's physical sky and a matching Sun light from a place, date and time, in one click. Clouds with a measured render cost, HDRIs in the same tab. Tested on 4.2 LTS to 5.2 LTS.">
-<meta name="twitter:image" content="https://ochrestack.com/sunreckon/img/og-sunreckon-2x1.jpg">
-<meta name="twitter:image:alt" content="Rain in a courtyard at golden hour under Sunreckon's sky in Blender 5.2, with the Sunreckon tab">
+<meta name="twitter:title" content="Sunreckon for Blender: the real sun for any place, date and time">
+<meta name="twitter:description" content="Blender's physical sky and a matching Sun light for any place, date and clock time, in one click. Clouds that cast shadows, HDRIs in the same tab. Blender 4.2 LTS to 5.2 LTS.">
+<meta name="twitter:image" content="https://ochrestack.com/sunreckon/img/hero-courtyard-2x1.jpg">
+<meta name="twitter:image:alt" content="Rain in a sunlit courtyard under Sunreckon's sky, a cloud's shadow on the paving, the Sunreckon panel inset">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <style>
   :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
   * { box-sizing: border-box; }
   body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
-  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header, main, footer { max-width: 860px; margin: 0 auto; padding: 0 24px; }
   header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
   header img { width: 36px; height: 36px; }
   header a { color: var(--ink); text-decoration: none; font-weight: 600; }
-  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
-  h2 { font-size: 20px; margin-top: 40px; }
-  p, li { max-width: 64ch; }
-  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
-  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
-  .box.warn { border-color: var(--ochre); }
-  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
-  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  h1 { font-size: 32px; line-height: 1.2; margin: 36px 0 14px; }
+  h2 { font-size: 22px; margin: 48px 0 10px; }
+  p, li { max-width: 66ch; }
+  .sub { font-size: 21px; line-height: 1.45; margin: 14px 0 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 16px 22px; margin: 24px 0; }
+  table { border-collapse: collapse; margin: 12px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
   th { color: var(--muted); font-weight: 600; }
   a { color: var(--ochre-text); }
   .buy { margin: 18px 0 8px; }
   .buy p { margin: 0 0 10px; }
-  .buy .price { font-size: 19px; }
-  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; font-size: 18px; padding: 11px 22px; border-radius: 8px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
-  figure { margin: 28px 0; }
-  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
-  figure video { background: #2B2118; }
-  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
-  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
-  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
-  .pair figure { flex: 0 1 256px; margin: 0; }
+  figure { margin: 22px 0; }
+  figure img, figure video { width: 100%; height: auto; border-radius: 10px; display: block; background: #E6DED3; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+  .grid figure { margin: 0; }
+  .grid figcaption { font-size: 16px; color: var(--ink); font-weight: 600; margin-top: 4px; }
+  .grid figcaption span { font-weight: 400; color: var(--muted); }
+  .panels { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; }
+  .panels figure { margin: 0; flex: 0 1 380px; min-width: 0; }
+  .panels img { width: 100%; border-radius: 6px; }
+  .hero { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  ul.points { padding-left: 20px; }
+  ul.points li { margin: 6px 0; }
+  details { margin: 14px 0; background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 10px 18px; }
+  details[open] { padding-bottom: 16px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p, details li { font-size: 15px; color: var(--muted); }
   .narrow-only { display: none; }
   .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .scroll-x a, .scroll-x picture { display: block; }
-  .hero { display: block; width: 100%; max-width: 640px; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
-  .fine { font-size: 15px; color: var(--muted); }
-  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
-  summary { cursor: pointer; }
   @media (max-width: 600px) {
-    h1 { margin-top: 28px; }
+    h1 { margin-top: 26px; font-size: 28px; }
+    .sub { font-size: 19px; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
-    .scroll-x img.ui { max-width: none; width: 764px; }
-    .swipe-wrap { position: relative; }
-    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
-    .swipe-wrap.at-end::after { display: none; }
-    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    .grid { grid-template-columns: 1fr; }
+    .grid.small { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .grid.small figcaption { font-size: 14px; }
     table { font-size: 14px; }
     th, td { padding: 6px; }
   }
@@ -81,206 +84,177 @@
 </header>
 <main>
   <h1>Sunreckon for Blender</h1>
-  <a href="img/hero-window-paris-1930.jpg"><img class="hero" src="img/og-sunreckon-2x1.jpg" alt="A Blender 5.2 window. In the viewport, in EEVEE, Blender Studio's Rain stands in a paved courtyard in front of a long plastered building at 19:30 on 21 June in Paris: low evening sun from the west on the facade and the paving, scattered clouds in a blue sky, her shadow beside her. On the right, the Sunreckon tab: City Paris, France, date 2026 6 21, Time 19:30, UTC 1.00 with DST, Clear air, Elevation 21.1°, Azimuth 282.0°, Sunrise 05:47, Sunset 21:58, then the Sun section with the Sunreckon Sun light at strength 98.7 and 4463 K, and the Clouds section with Scattered and Fast selected" width="1600" height="800"></a>
-  <p class="sub">Sky add-on broke after a Blender update? Sunreckon sets Blender's own physical sky and a matching Sun light from a place, date and clock time, in one sidebar tab, tested on every Blender from 4.2 LTS to 5.2 LTS.</p>
+  <a href="img/hero-courtyard-2x1.jpg"><img class="hero" src="img/hero-courtyard-2x1.jpg" alt="An EEVEE render: Blender Studio's Rain in a paved courtyard in Lisbon on 21 June in the late afternoon, warm sun on the plastered facade, a cloud's shadow crossing the paving, scattered clouds in a blue sky. Top right, an inset of the Sunreckon panel: Sky on, City Lisbon, Portugal, the date 21 June, Time 17:30, the sun's elevation and azimuth" width="1600" height="800"></a>
+  <p class="sub"><strong>The real sun for any place, date and clock time, in one click.</strong> Pick a city, type a time, click Add Sky: Blender's own physical sky, a Sun light that matches it, and an exposure that is not blown out.</p>
 
   <div class="buy">
-    <p class="price"><strong>$19, one-time, source included</strong> (GPL-3.0-or-later). Updates for the life of the product. Blender 4.2 LTS to 5.2 LTS, tested on seven versions (official Linux builds).</p>
     <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_A8GNENmQbtKykEn8cQ9jQwyA5lgLT0MdhkmKj1BvKMW">Buy for $19</a></p>
-    <p class="fine">Polar checkout · download by email · <a href="../terms.html">14-day refund if it doesn't work as described</a> · no subscription, no licence key, no account · <a href="#details">details</a></p>
+    <p class="fine">One payment, source included (GPL-3.0-or-later), updates for the life of the product · Blender 4.2 LTS to 5.2 LTS · <a href="../terms.html">14-day refund if it doesn't work as described</a> · no subscription, no licence key, no account</p>
   </div>
 
-  <p class="fine">Above: Rain, Blender Studio's free character, in a courtyard in Paris at 19:30 on 21 June, Scattered clouds, EEVEE, the Sunreckon tab on the right. Every image here is a real Blender 5.2.3 window or render (<a href="#how-made">how they were made</a>).</p>
-
   <h2 id="watch">Watch it work</h2>
-  <figure>
+  <figure class="wide-only">
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/sunreckon-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 54 s, captions only, no sound: Blender's own Sky Texture in EEVEE, then Sunreckon 1.1.1 in a real Blender 5.2.3 window. Pick Lisbon, click Add Sky, run the clock from 13:00 to 20:40, Oslo and Singapore at noon on 21 December, Scattered clouds and their shadows, an F12 render in Cycles with its render time, an HDRI and back to the sky. The interface is recorded at 60 fps with real clicks and typing; the viewport passages are one fully drawn EEVEE frame per video frame, because this machine has no graphics card. Rain Rig (CC) Blender Foundation | studio.blender.org. Recorded with 1.1.1: everything it shows works the same in 1.2.0. One difference: in the video, Performance Mode is unticked to show the cloud shadows in the viewport; since 1.2.0 they show with it ticked too.</figcaption>
+    <figcaption>47 seconds, captions only, no sound. Sunreckon 1.3.0 in Blender 5.2.3: the interface with real clicks and typing, and EEVEE renders.</figcaption>
   </figure>
-  <figure>
-    <a href="video/sunreckon-cloud-shadows.gif"><img src="video/sunreckon-cloud-shadows.gif" alt="EEVEE viewport, Lisbon, 21 June, 16:00, Scattered clouds in Volumetric quality: a cloud shadow with a sharp edge moves across the paved courtyard and past Rain, the sun comes out on her and the paving, and the clouds drift across the sky" width="640" height="382" loading="lazy"></a>
-    <figcaption>Volumetric clouds drifting with Scattered's 8 m/s wind: their shadow crosses the courtyard (EEVEE viewport, 10 s GIF, played at 0.42x the video's speed).</figcaption>
+  <figure class="narrow-only">
+    <video controls preload="none" playsinline poster="video/poster-vertical.jpg" width="720" height="1280">
+      <source src="video/sunreckon-demo-vertical.mp4" type="video/mp4">
+    </video>
+    <figcaption>47 seconds, captions only, no sound. Sunreckon 1.3.0 in Blender 5.2.3: the interface with real clicks and typing, and EEVEE renders.</figcaption>
   </figure>
 
-  <div class="box warn">
-    <strong>Where it matters.</strong> In EEVEE, Blender's physical sky alone casts almost no sun shadow, because the Sky Texture's sun disc renders in Cycles only, and at Blender's default exposure the sky is far too bright. On a house scene in Paris at 14:00 on 21 June, Blender 5.2, the plain Sky Texture gave EEVEE a ground-shadow contrast of 1.4:1 and clipped 7% of the frame to white (18% in Cycles). After Add Sky, EEVEE gave 10:1, Cycles 11:1, and nothing clipped. Sunreckon's Sun light takes its strength and colour from Blender's own sky, so the two engines agree.
+  <h2>What you get</h2>
+  <ul class="points">
+    <li><strong>The sun where it really is.</strong> 1,251 cities, each on its own clock (UTC offset and daylight saving). Or paste coordinates or a Google Maps link; the clock is estimated for you and the panel says so. Within 0.014° of NREL's reference algorithm.</li>
+    <li><strong>One click to daylight.</strong> Blender's own Sky Texture (Multiple Scattering on 5.x, Nishita on 4.2 to 4.5), a Sun light that points where the sky's sun is and takes its strength and colour from it, and the exposure set to -4.5.</li>
+    <li><strong>A whole day, keyed.</strong> Animate Day runs from sunrise to sunset across your frame range. Plain keyframes: the file renders without Sunreckon.</li>
+    <li><strong>Clouds that cast shadows.</strong> Four presets, Fast or Volumetric, with the render cost shown in the panel. Shadow in View puts a cloud's shadow in your shot.</li>
+    <li><strong>Your HDRIs in the same tab.</strong> One click on, Align Sun to HDRI, one click back to the sky.</li>
+    <li><strong>One tab, a clean way out.</strong> Four sections in the sidebar, nothing in any menu. Remove puts your World and exposure back.</li>
+  </ul>
+
+  <h2>Before and after one click</h2>
+  <div class="grid">
+    <figure><a href="img/before-plain.jpg"><img src="img/before-plain.jpg" alt="The courtyard in EEVEE with Blender's Sky Texture alone at exposure 0: washed out, nearly white sky, no shadow under Rain" width="960" height="540" loading="lazy"></a><figcaption>Blender's Sky Texture alone <span>exposure 0</span></figcaption></figure>
+    <figure><a href="img/before-sunreckon.jpg"><img src="img/before-sunreckon.jpg" alt="The same view after Add Sky: blue sky, sunlit facade and paving, a sharp shadow beside Rain" width="960" height="540" loading="lazy"></a><figcaption>After Add Sky <span>same sun, same view</span></figcaption></figure>
   </div>
+  <p class="fine">EEVEE, Lisbon, 21 June, 16:00. Left: a new World with Blender's Sky Texture at its defaults, its sun put where Sunreckon puts it, no Sun light. EEVEE does not draw the sky's sun disc, so without a matched Sun light there is almost no sun shadow.</p>
 
-  <figure>
-    <a href="img/plain-vs-sunreckon-eevee.jpg"><img src="img/plain-vs-sunreckon-eevee.jpg" alt="The courtyard twice in EEVEE at 14:00 on 21 June in Paris. Left, labelled Blender's Sky Texture alone, exposure 0: the picture is washed out, the sky nearly white, and Rain casts no visible shadow. Right, labelled Sunreckon: one click on Add Sky: a blue sky, the building's west face in shade, and a sharp shadow beside Rain's feet" width="1600" height="494" loading="lazy"></a>
-    <figcaption>Same view, same sun position, EEVEE. Left: a new World with Blender's own Sky Texture at its defaults, its sun set to Sunreckon's elevation and rotation, no Sun light, exposure 0. Right: after Add Sky.</figcaption>
-  </figure>
-
-  <div class="box">
-    <strong>Who does not need it.</strong> Blender already provides most of the parts for free. Its Sky Texture is physically based and built in, and since 5.0 it has the Multiple Scattering model. The free Sun Position extension already places a Sun light and a Sky Texture from a place, date and time. If you are happy to set up Sun Position, a Sun light and the exposure by hand, and you need no clouds, you do not need Sunreckon. There is also no night sky in this version: no stars, moon, planets or aurora, and no clouds the camera can enter. If you need those, Physical Starlight and Atmosphere or True Sky are built for them.
+  <h2>A day, keyed</h2>
+  <div class="grid small">
+    <figure><img src="img/day-0800.jpg" alt="The courtyard at 08:00: the building shades most of the courtyard, low light on the lawn" width="960" height="540" loading="lazy"><figcaption>08:00 <span>sun 18&deg; up, 07:59 on the frame</span></figcaption></figure>
+    <figure><img src="img/day-1300.jpg" alt="The courtyard at 13:00: high sun, short shadows" width="960" height="540" loading="lazy"><figcaption>13:00 <span>sun 73&deg; up, 13:01 on the frame</span></figcaption></figure>
+    <figure><img src="img/day-1800.jpg" alt="The courtyard at 18:00: warm light on the facade, long shadows" width="960" height="540" loading="lazy"><figcaption>18:00 <span>sun 33&deg; up, 18:00 on the frame</span></figcaption></figure>
+    <figure><img src="img/day-2030.jpg" alt="The courtyard at 20:30: the sun near the horizon, orange light on the facade" width="960" height="540" loading="lazy"><figcaption>20:30 <span>sun 5&deg; up, 20:29 on the frame</span></figcaption></figure>
   </div>
+  <p class="fine">Lisbon, 21 June, EEVEE, frames of one Animate Day. The sky, the Sun light and every shadow move together.</p>
 
-  <h2>Pick a place, a date, a clock time. One click.</h2>
-  <figure>
-    <a href="img/add-sky-tokyo.gif"><img src="img/add-sky-tokyo.gif" alt="The Blender viewport in Rendered shading shows the courtyard lit only by Blender's default grey World, almost black, while the Sunreckon tab already reads Paris's sun for the default date and time (Elevation 64.5°). The cursor clicks the City field and types Tok; the list shows Tokyo, Japan, Vladivostok, Russia and Vostok, Antarctica. Tokyo, Japan is clicked: latitude 35.6870, longitude 139.7495, UTC 9.00, and the read-out says Elevation 58.0°, Azimuth 257.0°, Sunrise 04:25, Sunset 19:00. Add Sky is clicked: the viewport turns to a blue afternoon sky with sunlight on the paving and Rain's shadow beside her, and the Sun section shows the Sunreckon Sun light, strength 142.4, 5133 K" width="1200" height="594" loading="lazy"></a>
-    <figcaption>Type "Tok", pick Tokyo, click Add Sky. The city sets its own UTC offset (+9) and daylight saving, so 14:00 is Tokyo's afternoon. Blender 5.2.3, EEVEE, 21 June.</figcaption>
-  </figure>
-
-  <h2>A whole day, keyed</h2>
-  <figure>
-    <a href="img/day-paris.gif"><img src="img/day-paris.gif" alt="The courtyard through a day in Paris, 21 June, from 07:00 to 21:30, as the timeline below plays from frame 1 to 120 with Sunreckon's keyframes on it. In the morning the building shades the courtyard and Rain; the shade retreats toward the building, the sun reaches her around midday and her shadow swings from behind her to her left, and in the evening the building's face turns orange and the sky darkens" width="860" height="936" loading="lazy"></a>
-    <figcaption>Animate Day from 07:00 to 21:30 over frames 1 to 120, then the timeline played back in EEVEE: the sky, the Sun light and every shadow move together. The keys are ordinary Blender keyframes; the file plays and renders without Sunreckon installed.</figcaption>
-  </figure>
-  <figure>
-    <a href="img/oslo-vs-singapore.jpg"><img src="img/oslo-vs-singapore.jpg" alt="The courtyard twice at noon on 21 December. Left, labelled Oslo, 21 December, 12:00: sun 6.7° up: a warm, low light, the paving dim, a long shadow running away from Rain. Right, labelled Singapore, 21 December, 12:00: sun 61.0° up: bright daylight and a short shadow beside her" width="1600" height="494" loading="lazy"></a>
-    <figcaption>Same clock time, same date, two cities: the sun is where it really is. Picking the city is the only change.</figcaption>
-  </figure>
+  <h2>Clouds</h2>
+  <div class="grid small">
+    <figure><img src="img/clouds-few.jpg" alt="Few clouds: a few small clouds, the courtyard in sun" width="960" height="540" loading="lazy"><figcaption>Few <span>EEVEE &times;1.0 &middot; Cycles &times;4.2</span></figcaption></figure>
+    <figure><img src="img/clouds-scattered.jpg" alt="Scattered clouds: a cloud's shadow on part of the courtyard" width="960" height="540" loading="lazy"><figcaption>Scattered <span>EEVEE &times;1.0 &middot; Cycles &times;4.6</span></figcaption></figure>
+    <figure><img src="img/clouds-broken.jpg" alt="Broken clouds: most of the sky cloudy, large cloud shadows" width="960" height="540" loading="lazy"><figcaption>Broken <span>EEVEE &times;0.9 &middot; Cycles &times;5.2</span></figcaption></figure>
+    <figure><img src="img/clouds-overcast.jpg" alt="Overcast: a grey sky and no direct sunlight, no sharp shadows" width="960" height="540" loading="lazy"><figcaption>Overcast <span>EEVEE &times;0.9 &middot; Cycles &times;6.0</span></figcaption></figure>
+  </div>
+  <p class="fine">Volumetric quality in EEVEE, Lisbon, 21 June, 15:00, presets at their defaults (Shadow in View for the first three). Render cost is the time of a frame against a clear sky, measured on our reference scene.</p>
+  <div class="grid">
+    <figure><img src="img/fast-scattered.jpg" alt="EEVEE, Scattered clouds in Fast quality: clouds in the sky, the whole building and courtyard in sun" width="960" height="540" loading="lazy"><figcaption>Fast <span>a layer in the sky, no shadows</span></figcaption></figure>
+    <figure><img src="img/clouds-scattered.jpg" alt="The same clouds in Volumetric quality: a cloud's shadow on the left end of the building" width="960" height="540" loading="lazy"><figcaption>Volumetric <span>the same clouds cast shadows</span></figcaption></figure>
+  </div>
+  <p class="fine">EEVEE, Scattered, the same clouds and sun. Performance Mode keeps the viewport quick: with Volumetric clouds it shows the Fast layer and the cloud shadows while you work; in Cycles, F12 renders the cloud volume.</p>
 
   <h2 id="shadow-study">Shadow studies at a real address</h2>
   <figure>
-    <a href="img/shadow-study-krakow.jpg"><img src="img/shadow-study-krakow.jpg" alt="A 3 by 3 sheet titled Shadow study: Krakow, Poland (50.0619 N, 19.9581 E). The same oblique view of a two-storey house with a red gable roof, a garage, a terrace, a fenced garden, trees and a neighbour's house, in rows for 21 March, 21 June and 21 December and columns for 09:00, 12:00 and 15:00. Each tile is labelled with the sun's elevation and azimuth: in June the shadows are short (62.2 degrees at noon); in December they are long and the light is low and warm (8.7, 16.4 and 4.2 degrees); a north arrow sits top right" width="1600" height="1161" loading="lazy"></a>
-    <figcaption>A house in Krakow (picked from the city list) on 21 March, 21 June and 21 December at 09:00, 12:00 and 15:00 local time. Nine EEVEE renders in Blender 5.2.3 with Sunreckon 1.2.0 at its defaults; the labels are the panel's own read-outs, and each one is within 0.05° of NREL's Solar Position Algorithm. The city sets the clock: 21 June is on summer time (UTC+2), March and December on UTC+1.</figcaption>
-  </figure>
-  <figure>
-    <a href="img/shadow-study-window.jpg"><img src="img/shadow-study-window.jpg" alt="The Blender 5.2 window: EEVEE Rendered viewport of the house from the sheet above at 15:00 on 21 March, long shadows of the house and trees falling to the north-east. The Sunreckon tab shows City Krakow, Poland, Lat 50.0619, Lon 19.9581, date 2026 3 21, Time 15:00, UTC 1.00 with DST off, North Offset 0, Clear, Elevation 25.7°, Azimuth 235.8°, Sunrise 05:41, Sunset 17:55, and the Sun section with the Sunreckon Sun light at strength 122.6 and 4625 K" width="1576" height="952" loading="lazy"></a>
-    <figcaption>One of the nine cases in the Blender window: type "Krak", pick Krakow, set 3 and 15, click Add Sky. If your site plan's north is not the scene's +Y, North Offset turns the sun with it (clockwise from +Y, seen from above).</figcaption>
+    <a href="img/shadow-study-krakow.jpg"><img src="img/shadow-study-krakow.jpg" alt="A 3 by 3 sheet: a house in Krakow on 21 March, 21 June and 21 December at 09:00, 12:00 and 15:00, each tile labelled with the sun's elevation and azimuth; short shadows in June, long low shadows in December" width="1600" height="1161" loading="lazy"></a>
+    <figcaption>Krakow, 21 March, June and December at 09:00, 12:00 and 15:00. Nine EEVEE renders; each label is the panel's own read-out.</figcaption>
   </figure>
 
-  <h2>What it does</h2>
-  <ul>
-    <li><strong>The sun where it really is.</strong> Pick one of 1,251 cities: each sets its latitude, longitude, UTC offset and daylight saving for the date, from the IANA time zone database stored in the add-on. Or paste coordinates as you copied them: "48.8566, 2.3522", degrees-minutes-seconds from Wikipedia or Google Earth, or a Google Maps or OpenStreetMap link; typed coordinates get a warning when the UTC offset does not fit the place. Set the date and local clock time, the scene's north, the altitude, and Clear, Hazy or City air. The panel shows the sun's elevation and azimuth and that day's sunrise and sunset.</li>
-    <li><strong>Measured against the reference.</strong> Against the NREL Solar Position Algorithm, the largest error is 0.010° over 14 reference cases (both hemispheres, solstices, equinoxes, high latitudes, daylight saving), and at most 0.014° in an independent check of 2,000 random places and dates from 1900 to 2100 with the sun above the horizon.</li>
-    <li><strong>One click to a daylight setup.</strong> Add Sky puts Blender's own Sky Texture on the World with the most accurate model your Blender has (Multiple Scattering on 5.0 and later, Nishita on 4.2 to 4.5), adds a Sun light that points where the sky's sun is (within 0.1°), and sets the exposure to -4.5 for the very bright physical sky. The light turns warmer and weaker toward the horizon and switches off below it.</li>
-    <li><strong>Animate Day.</strong> Keys the sky and the Sun light from a start time to an end time across your frame range; every frame stays within 0.1° of the true sun, including the tropics, where the sun swings fast near noon. Change the place, date, air, clouds or strength afterwards and the keys follow.</li>
-    <li><strong>Clouds with their render cost written down.</strong> Four presets named after cloud cover (Few, Scattered, Broken, Overcast) in two qualities, Fast and Volumetric, with the measured render time of each in the panel. Broken and Overcast dim the Sun light so the light agrees with the sky.</li>
-    <li><strong>Your HDRIs in the same tab.</strong> Thumbnails of the .hdr and .exr files in a folder you pick, plus the world HDRIs that ship with Blender. One click puts one on the World at your scene's own exposure, with rotation and strength. Align Sun to HDRI turns the Sun light toward the map's brightest point with the strength and colour of the map's sun, and takes that sun out of the light the World casts, so it counts once, in Cycles and in EEVEE. Back to Sky brings the sky back as it was, exposure included. No HDRIs are included and nothing is downloaded.</li>
-    <li><strong>One tab, and a clean way out.</strong> Everything is in one Sunreckon tab in the 3D Viewport sidebar, with four sections you can fold: Place &amp; Time, Sun, Clouds, HDRI. Nothing in any menu or header. All settings are saved in the .blend file; a file made in 4.2 opens in every later version with the same sun and the same panel values. Remove Sunreckon Setup deletes everything Sunreckon made and puts back the World and exposure you had, and never deletes anything another scene uses.</li>
-  </ul>
+  <h2>Your HDRIs, and back</h2>
+  <figure>
+    <a href="img/hdri-window.jpg"><img src="img/hdri-window.jpg" alt="The Blender window: Blender's bundled sunset HDRI on the World behind the courtyard, the Sun light aligned to the map's sun, and the HDRI section of the Sunreckon tab with the thumbnail, On the World: sunset.exr and Sun aligned" width="1600" height="900" loading="lazy"></a>
+    <figcaption>Blender's own sunset.exr on the World, turned 120&deg;, the Sun light aligned to its low sun. Back to Sky brings the sky back as it was, exposure included.</figcaption>
+  </figure>
 
-  <h2>Clouds</h2>
-  <figure>
-    <a href="img/cloud-presets-eevee.jpg"><img src="img/cloud-presets-eevee.jpg" alt="Four views of the courtyard at 13:00 in Paris in EEVEE, labelled Few, Fast; Scattered, Fast; Broken, Fast (Sun light dimmed); Overcast, Fast (Sun light dimmed). The sky goes from a few thin clouds to a grey overcast, and the light on the paving and the shadows soften from the first to the last" width="1600" height="988" loading="lazy"></a>
-    <figcaption>The four presets in Fast quality, EEVEE, Paris, 21 June, 13:00. Fast clouds are a layer in the sky: they colour the light and cast no shadows on the ground.</figcaption>
-  </figure>
-  <figure>
-    <a href="img/cycles-fast-vs-volumetric.jpg"><img src="img/cycles-fast-vs-volumetric.jpg" alt="Two Cycles renders of the courtyard at 16:00 with Broken clouds. Left, labelled Broken, Fast: Cycles, 25 s: flat cloud layer in the sky, the courtyard in sunlight with Rain's shadow on the paving. Right, labelled Broken, Volumetric: Cycles, 60 s: rounded clouds with depth, and a cloud's shadow over the courtyard, the building and Rain" width="1600" height="494" loading="lazy"></a>
-    <figcaption>Fast against Volumetric, rendered with F12 in Cycles (960x540, 64 samples, CPU, this page's scene; the times are Blender's own render stats). Only Volumetric clouds cast shadows: here a cloud's shadow covers the courtyard. Captured with 1.1.0 and Performance Mode on: the viewport showed Fast clouds and F12 rendered Volumetric. Since 1.2.0 the viewport also shows the cloud shadows.</figcaption>
-  </figure>
-  <ul>
-    <li><strong>Fast:</strong> a cloud layer in the sky, for EEVEE and Cycles. It colours the light and casts no shadows on the ground.</li>
-    <li><strong>Volumetric:</strong> clouds that cast shadows. In Cycles, a real volume 16 km wide; in EEVEE, the clouds draw like Fast and a hidden shadow layer shaped like them, 2.4 km wide and thinning toward its edge, casts their shadows. Both are centred under your camera, and cloud heights follow the scene's unit scale.</li>
-    <li><strong>Performance Mode</strong>, on by default: with Volumetric clouds the viewport shows the Fast cloud layer and the cloud shadows, and F12 renders the quality you chose. In EEVEE the viewport shows the same clouds and shadows as the render. In Cycles only the slow cloud volume waits for F12; the viewport's shadows fall in the same places, with sharper edges.</li>
-  </ul>
-  <p id="cost"><strong>Render cost on the reference scene</strong> (a house on a lawn with trees, Paris, 21 June, 10:30, 1920x1080, Blender 5.2.3; Cycles on the CPU at 128 samples with adaptive sampling and denoising, EEVEE at 64 samples). Measured on a 4-thread machine without a graphics card, so EEVEE ran in software and its times are far longer than on any GPU; the "vs clear" columns are the part that carries over to your machine.</p>
-  <div class="scroll-x">
-  <table>
-    <tr><th>Clouds</th><th>EEVEE</th><th>EEVEE vs clear</th><th>Cycles</th><th>Cycles vs clear</th></tr>
-    <tr><td>Clear sky</td><td>63 s</td><td>x1.00</td><td>135 s</td><td>x1.00</td></tr>
-    <tr><td>Few, Fast</td><td>63 s</td><td>x1.00</td><td>163 s</td><td>x1.21</td></tr>
-    <tr><td>Few, Volumetric</td><td>61 s</td><td>x0.97</td><td>578 s</td><td>x4.29</td></tr>
-    <tr><td>Scattered, Fast</td><td>62 s</td><td>x0.99</td><td>167 s</td><td>x1.24</td></tr>
-    <tr><td>Scattered, Volumetric</td><td>64 s</td><td>x1.02</td><td>621 s</td><td>x4.62</td></tr>
-    <tr><td>Broken, Fast</td><td>61 s</td><td>x0.98</td><td>181 s</td><td>x1.35</td></tr>
-    <tr><td>Broken, Volumetric</td><td>62 s</td><td>x0.99</td><td>702 s</td><td>x5.22</td></tr>
-    <tr><td>Overcast, Fast</td><td>62 s</td><td>x0.98</td><td>190 s</td><td>x1.41</td></tr>
-    <tr><td>Overcast, Volumetric</td><td>66 s</td><td>x1.04</td><td>779 s</td><td>x5.79</td></tr>
-  </table>
+  <h2>The tab</h2>
+  <div class="panels">
+    <figure><a href="img/panel-place-time-sun.png"><img src="img/panel-place-time-sun.png" alt="The Place &amp; Time and Sun sections at real size: Sky on, City Lisbon, Portugal, Y 2026 M 6 D 21, Time 17:30 with arrows, UTC and DST, North Offset, Altitude 0 m, Air Clear Hazy Urban, the sun's elevation, azimuth, sunrise and sunset; then Sun light in W/m² and kelvin, Strength ×, Angle, and the day animation with From and To at sunrise and sunset" width="488" height="842" loading="lazy"></a><figcaption>Place &amp; Time, Sun</figcaption></figure>
+    <figure><a href="img/panel-clouds.png"><img src="img/panel-clouds.png" alt="The Clouds section at real size: Scattered and Volumetric, Performance Mode, Coverage, Cloud Base 1800 m, Wind From 250°, Wind Speed 8 m/s, Pattern with Shadow in View, and the folded render cost line" width="488" height="445" loading="lazy"></a><figcaption>Clouds</figcaption></figure>
+    <figure><a href="img/panel-hdri.png"><img src="img/panel-hdri.png" alt="The HDRI section at real size: folder, thumbnail, On the World, Strength, Rotation, Align Sun to HDRI, Back to Sky, Sun aligned" width="488" height="400" loading="lazy"></a><figcaption>HDRI</figcaption></figure>
   </div>
-  <p class="fine">These were measured on version 1.0.0; the cloud shaders have not changed since. 1.1.0 widened EEVEE's Volumetric shadow layer to 2.4 km, so the EEVEE Volumetric rows may now be slightly higher.</p>
 
-  <h2>Your HDRIs, and back to the sky</h2>
-  <figure>
-    <a href="img/hdri-switch.gif"><img src="img/hdri-switch.gif" alt="The Sunreckon tab with only the HDRI section open, over the courtyard under Tokyo's afternoon sky. The picture is clicked and a grid of thumbnails opens: Pick an HDRI, then Blender: city, courtyard, forest, interior, night, studio, sunrise and sunset. Blender: sunrise is clicked; the World becomes the sunrise HDRI with a misty meadow and trees behind the courtyard, and the panel says On the World: sunrise.exr. Align Sun to HDRI is clicked and the panel says Sun aligned, 8° up: the low sun is behind the building, which stays in shade. Back to Sky is clicked and the blue afternoon sky and Rain's shadow return" width="1200" height="594" loading="lazy"></a>
-    <figcaption>Pick an HDRI from the thumbnails (here one of the HDRIs that ship with Blender), Align Sun to HDRI, then Back to Sky. Rotation and Strength sit under the picture.</figcaption>
-  </figure>
-  <figure>
-    <a href="img/hdri-aligned-cycles.jpg"><img src="img/hdri-aligned-cycles.jpg" alt="The Blender window, Cycles Rendered viewport: the Krakow house lit by Blender's bundled city HDRI, one set of soft sun shadows from the house and trees. The HDRI section shows the city thumbnail, Strength 1.00, Rotation 0°, On the World: city.exr and Sun aligned, 48° up; the Sun section shows the Sunreckon Sun at strength 3.0" width="1576" height="952" loading="lazy"></a>
-    <figcaption>In Cycles too. Align Sun to HDRI points the Sun light at the map's sun with the map's strength and colour, then takes that sun out of the light the World casts, so the scene is lit by one sun, not two. On a test map with a 5.5 W/m² sun the ground under the aligned light is as bright as under the HDRI alone (×1.00 in Cycles, ×0.97 in EEVEE); version 1.1.1 gave ×1.67 in Cycles. The camera still sees the map unchanged. Blender 5.2.3, Sunreckon 1.2.0, Blender's own city.exr (a dim map, hence the soft shadow).</figcaption>
-  </figure>
-
-  <h2>In Blender, for real</h2>
-  <p>The tab at Blender's own size, captured from the same window as the images above.</p>
-  <div class="pair" style="gap:20px">
-    <figure style="flex-basis:340px">
-      <a href="img/panel-place-time-sun.png"><img class="ui" src="img/panel-place-time-sun.png" alt="The Sunreckon tab at real size after Add Sky with Tokyo: Place &amp; Time with City Tokyo, Japan, Lat 35.6870, Lon 139.7495, date 2026 6 21, Time 14:00, UTC 9.00, DST off, North Offset 0°, Altitude 0, Clear selected, Elevation 58.0°, Azimuth 257.0°, Sunrise 04:25, Sunset 19:00, Set Exposure and Remove Sunreckon Setup; then the Sun section with Sun Light Sunreckon Sun, Strength 142.4, 5133 K, Strength 1.00, Angle 0.53°, Sun Disc in Sky off, Day: 06:00 to 20:00 over frames 1-120, From, To, Key Every 10 and Animate Day" width="421" height="863" loading="lazy"></a>
-      <figcaption>Place &amp; Time and Sun.</figcaption>
-    </figure>
-    <figure style="flex-basis:340px">
-      <a href="img/panel-clouds.png"><img class="ui" src="img/panel-clouds.png" alt="The Clouds section at real size: Scattered and Volumetric selected, Performance Mode ticked, Coverage 0.42, Cloud Base 1800, Wind From 250, Wind Speed 8.0, 'Sun dimmed to 85% by the clouds', and the Measured render time box for the 1920x1080 house scene listing EEVEE and Cycles times for a clear sky and each preset in Fast and Volumetric, '4 CPU threads, no GPU; Blender 5.2.3' and 'xN: time relative to a clear sky'" width="421" height="863" loading="lazy"></a>
-      <figcaption>Clouds, with the measured render times.</figcaption>
-    </figure>
+  <div class="box">
+    <p><strong>Who it is for.</strong> You light exteriors with daylight (archviz, products, vehicles, animation) and want the sun where it really is without a node session. Your sky add-on stopped working after a Blender update, or you wired Sun Position, a Sun light and the exposure by hand and would rather click once.</p>
+    <p><strong>Who does not need it.</strong> Blender already provides most of the parts for free: its Sky Texture is physically based, and the free Sun Position extension places a Sun light and a Sky Texture from a place and time. If you are happy to set the light and the exposure by hand and need no clouds, you do not need Sunreckon. There is no night sky (stars, moon, aurora) and no clouds to fly through: Physical Starlight and Atmosphere or True Sky are built for those.</p>
   </div>
-  <figure>
-    <a href="img/hdri-city-aligned.jpg"><img src="img/hdri-city-aligned.jpg" alt="The Blender window with Blender's bundled city HDRI on the World: office towers blurred behind the courtyard and Rain. The HDRI section shows the city thumbnail, Use This HDRI, Strength 1.00, Rotation 0°, Align Sun to HDRI, Back to Sky, On the World: city.exr and Sun aligned, 48° up" width="1400" height="700" loading="lazy"></a>
-    <figcaption>Blender's own city.exr on the World, the Sun light aligned to its brightest point (48° up). The aligned light takes its strength from the map; this bundled map is dim, so the shadow is faint. Sunreckon 1.2.0.</figcaption>
-  </figure>
-  <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We switched her arms to FK and lowered them, and placed her in a courtyard scene of our own. Rain is not included with Sunreckon, and Blender Studio does not endorse it.</p>
 
-  <h2 id="tested">How we tested</h2>
-  <p>Every release runs one command that downloads the official Linux build of each Blender below, installs the zip with Install from Disk into a fresh user folder, and runs the full test suite and a separate set of acceptance tests written by an independent reviewer. Results for 1.2.0:</p>
+  <h2 id="tested">Tested on every Blender from 4.2 LTS to 5.2 LTS</h2>
   <div class="scroll-x">
   <table id="matrix">
     <tr><th>Blender</th><th>Installs from the zip</th><th>Tests passed</th><th>Acceptance tests passed</th><th>Failed</th></tr>
-    <tr><td>4.2.23 LTS</td><td>yes</td><td>147</td><td>22</td><td>0</td></tr>
-    <tr><td>4.3.2</td><td>yes</td><td>146</td><td>22</td><td>0</td></tr>
-    <tr><td>4.4.3</td><td>yes</td><td>146</td><td>22</td><td>0</td></tr>
-    <tr><td>4.5.15 LTS</td><td>yes</td><td>146</td><td>21</td><td>0</td></tr>
-    <tr><td>5.0.1</td><td>yes</td><td>146</td><td>21</td><td>0</td></tr>
-    <tr><td>5.1.2</td><td>yes</td><td>146</td><td>21</td><td>0</td></tr>
-    <tr><td>5.2.3 LTS</td><td>yes</td><td>146</td><td>21</td><td>0</td></tr>
+    <tr><td>4.2.23 LTS</td><td>yes</td><td>196</td><td>22</td><td>0</td></tr>
+    <tr><td>4.3.2</td><td>yes</td><td>195</td><td>22</td><td>0</td></tr>
+    <tr><td>4.4.3</td><td>yes</td><td>195</td><td>22</td><td>0</td></tr>
+    <tr><td>4.5.15 LTS</td><td>yes</td><td>195</td><td>21</td><td>0</td></tr>
+    <tr><td>5.0.1</td><td>yes</td><td>195</td><td>21</td><td>0</td></tr>
+    <tr><td>5.1.2</td><td>yes</td><td>195</td><td>21</td><td>0</td></tr>
+    <tr><td>5.2.3 LTS</td><td>yes</td><td>195</td><td>21</td><td>0</td></tr>
   </table>
   </div>
-  <p class="fine">On 4.3 and later one test is skipped (the 4.2-only test that saves the file the later versions open); on 4.5 and later a second (a check of the RGB light colour that only 4.2 to 4.4 use). The zip also passes Blender's own <code>extension validate</code>.</p>
-  <p>Not yet tested: Windows and macOS builds. Tell us if anything behaves differently there.</p>
+  <p class="fine">Sunreckon 1.3.0, official Linux builds. Windows and macOS are not tested yet.</p>
 
-  <h2 id="farms">Render farms and shared files</h2>
-  <ul>
-    <li>The sky, the Sun light and an animated day are plain Blender data and keyframes. They render the same on a machine without Sunreckon.</li>
-    <li>Performance Mode swaps the cloud quality at render time with Blender's render handlers, which need the add-on. A farm without Sunreckon renders what the viewport shows: the Fast clouds and the cloud shadows. That is what EEVEE renders anyway; in Cycles the farm renders no cloud volume and the shadows have sharp edges. For a Cycles file, turn Performance Mode off before you send it, or install Sunreckon on the farm.</li>
-  </ul>
+  <h2 id="cost">Render cost of the clouds</h2>
+  <div class="scroll-x">
+  <table>
+    <tr><th>Clouds</th><th>EEVEE vs clear sky</th><th>Cycles vs clear sky</th></tr>
+    <tr><td>Clear sky</td><td>&times;1.0</td><td>&times;1.0</td></tr>
+    <tr><td>Few, Fast</td><td>&times;1.0</td><td>&times;1.2</td></tr>
+    <tr><td>Few, Volumetric</td><td>&times;1.0</td><td>&times;4.2</td></tr>
+    <tr><td>Scattered, Fast</td><td>&times;0.9</td><td>&times;1.2</td></tr>
+    <tr><td>Scattered, Volumetric</td><td>&times;1.0</td><td>&times;4.6</td></tr>
+    <tr><td>Broken, Fast</td><td>&times;0.9</td><td>&times;1.3</td></tr>
+    <tr><td>Broken, Volumetric</td><td>&times;0.9</td><td>&times;5.2</td></tr>
+    <tr><td>Overcast, Fast</td><td>&times;0.9</td><td>&times;1.5</td></tr>
+    <tr><td>Overcast, Volumetric</td><td>&times;0.9</td><td>&times;6.0</td></tr>
+  </table>
+  </div>
+  <p class="fine">The time of one 1920x1080 frame against the same frame with a clear sky, on our reference scene (a house on a lawn with trees).</p>
 
-  <h2 id="how-made">How these images were made</h2>
-  <p>Every image and GIF on this page comes from the official Blender 5.2.3 LTS build on Linux with Sunreckon installed from its zip through Blender's extension installer: captures of the real 1920x1080 window, and for the Krakow sheet, EEVEE renders. Every number in the panel is Sunreckon's own.</p>
-  <p>The courtyard images star Rain v3.3 as downloaded from studio.blender.org (CC BY 4.0, credit above), in her own rig; we switched her arms to FK and lowered them. The courtyard (paving, a plastered building, a bench, a planter, a lamp post, a lawn and a hedge) is ours, made of simple meshes with procedural materials. The Krakow house, its garage, terrace, fence, neighbour and trees are ours too, built in code for the shadow study.</p>
-  <p>Every click, typed letter and menu pick in the GIFs is a real input event sent to the window. The machine has no graphics card, so Blender draws the viewport in software and takes 15 to 20 seconds to settle after each change; in the click-through GIFs that wait plays four times faster than it happened, and the clicks play at real speed. The time-of-day GIF has one capture per three timeline frames, played at 8 per second, with the clock label added afterwards from the frame number. The labels on the side-by-side images and on the Krakow sheet, and the sheet's north arrow, were added afterwards, from the panel's read-outs and the camera's angle.</p>
-  <p>Versions: the window at the top, the Add Sky and HDRI GIFs, the city HDRI still, every panel image, the Krakow images and the Cycles HDRI capture show 1.2.0, the version you download. The time-of-day GIF and the side-by-side and cloud images (viewport and render crops, no panel in them) were captured with 1.1.0, which draws the sky, the light and the clouds the same way. The demo video was captured with 1.1.1; see its caption.</p>
-  <p>The video and its cloud GIF come from a second session on the courtyard, with Sunreckon 1.1.1, in a 2560x1174 Blender window at twice the normal interface size. Clicks and typing are real input events recorded at 60 frames a second; the pointer is drawn at its recorded position with a ring at each click, and the waits while Blender redraws in software are cut. The camera move, the clock running from 13:00 to 20:40 and the drifting clouds were stepped one frame at a time, each frame drawn to EEVEE's full 16 samples before it was saved. The slow push-in on every shot, the captions and the clock in the caption bar were added in the edit; the clock shows the panel's own time. The Cycles render took 5 min 44 s on this 4-thread CPU, as Blender's own render line in the shot says.</p>
+  <details id="how-tested">
+    <summary>How we tested, and how these images were made</summary>
+    <p>Every release runs one command that downloads the official Linux build of each Blender in the table, installs the zip with Install from Disk into a fresh user folder, and runs the full test suite and a separate set of acceptance tests written by an independent reviewer. The zip also passes Blender's own <code>extension validate</code>.</p>
+    <p>Render cost: Sunreckon 1.3.0 in Blender 5.2.3, one 1920x1080 frame of the reference scene; Cycles on the CPU at 128 samples with adaptive sampling and denoising, EEVEE at 64 samples. The machine has 4 CPU threads and no graphics card, so EEVEE ran in software; EEVEE's differences under 10% are run-to-run noise. The seconds:</p>
+    <table>
+      <tr><th>Clouds</th><th>EEVEE</th><th>Cycles</th></tr>
+      <tr><td>Clear sky</td><td>64 s</td><td>117 s</td></tr>
+      <tr><td>Few, Fast</td><td>61 s</td><td>145 s</td></tr>
+      <tr><td>Few, Volumetric</td><td>64 s</td><td>495 s</td></tr>
+      <tr><td>Scattered, Fast</td><td>60 s</td><td>142 s</td></tr>
+      <tr><td>Scattered, Volumetric</td><td>63 s</td><td>537 s</td></tr>
+      <tr><td>Broken, Fast</td><td>60 s</td><td>152 s</td></tr>
+      <tr><td>Broken, Volumetric</td><td>60 s</td><td>612 s</td></tr>
+      <tr><td>Overcast, Fast</td><td>58 s</td><td>170 s</td></tr>
+      <tr><td>Overcast, Volumetric</td><td>59 s</td><td>703 s</td></tr>
+    </table>
+    <p>Sun position: against NREL's Solar Position Algorithm, the largest error is 0.010&deg; over 14 reference cases, and 0.014&deg; in an independent check of 2,000 random places and dates from 1900 to 2100.</p>
+    <p>Images: Sunreckon 1.3.0 installed from its zip in the official Blender 5.2.3 build. The courtyard images are EEVEE renders at Sunreckon's settings (the exposure raised a third of a stop on the top image); the four day tiles are frames of the video's crane sequence, rendered at 1600x900 with 8 samples; the panel images and the HDRI image are captures of the real window. Rain v3.3 is from studio.blender.org (CC BY 4.0), with her arms lowered; the courtyard and the Krakow house are ours.</p>
+    <p>Video: the interface is recorded at 60 frames a second with real clicks and typing; the pointer is drawn where it was, and the waits while Blender redraws in software are cut. The day from the crane and the drifting clouds are EEVEE renders stepped one frame per video frame; the clouds move at 4.2 times real time.</p>
+  </details>
 
   <h2 id="details">Details</h2>
   <ul>
-    <li>Buying: secure checkout by Polar. The download arrives by email right after payment; the zip includes the full source. One payment; updates for the life of the product at no charge. No subscription, no licence key, no account, no paid V2, and no personal or commercial split: commercial use is included. If it doesn't work as described and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>). Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
-    <li>Blender 4.2 LTS to 5.2 LTS; earlier versions will not install. EEVEE and Cycles only. Installed as an extension from a zip.</li>
-    <li>GPL-3.0-or-later. Full source code included with your purchase.</li>
-    <li>Privacy: Sunreckon makes no network calls: no licence key, no account, no telemetry. It reads only the HDRI folder you pick and the HDRIs that ship with Blender, and writes only into your .blend file and Blender's thumbnail cache.</li>
+    <li>Buying: secure checkout by Polar; the download arrives by email; the zip includes the full source. One payment, updates for the life of the product. No subscription, no licence key, no account, no paid V2, no personal or commercial split. If it doesn't work as described and we can't fix it, email us within 14 days for a full refund (<a href="../terms.html">terms</a>).</li>
+    <li>Blender 4.2 LTS to 5.2 LTS, EEVEE and Cycles. Installed as an extension from the zip.</li>
+    <li>Privacy: Sunreckon makes no network calls. It reads only the HDRI folder you pick and the HDRIs that ship with Blender, and writes only into your .blend file and Blender's thumbnail cache.</li>
     <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>, with your Blender version, your operating system and what you did.</li>
   </ul>
 
-  <h2 id="documentation">Documentation</h2>
-  <p>The <a href="quick-start.html">Sunreckon quick start</a> walks through every section of the tab; the limits and test results are on this page. Install the zip itself, as it is.</p>
-  <h3>Install</h3>
+  <h2 id="documentation">Install</h2>
   <ol>
-    <li>After checkout, download <code>sunreckon-1.2.0.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
-    <li>In Blender (4.2 LTS or newer), open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.</li>
-    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Dragging the zip into Blender's window also works.</li>
-    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Sunreckon</strong> tab. To see the sky in the viewport, use Rendered shading.</li>
+    <li>Download <code>sunreckon-1.3.0.zip</code> from the link in Polar's email. Do not unzip it.</li>
+    <li>In Blender, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, open the menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip.</li>
+    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Sunreckon</strong> tab.</li>
   </ol>
-  <p>If Get Extensions asks about internet access, <strong>Continue Offline is fine</strong>: Sunreckon needs none. Blender may then show a yellow "Repository Alert" saying the extensions.blender.org data is unavailable. That is Blender's own notice about its online catalogue, not an install error; Install from Disk works as usual.</p>
+  <p class="fine">If Blender asks about internet access, Continue Offline is fine; a yellow "Repository Alert" afterwards is Blender's notice about its online catalogue, not an install error. The <a href="quick-start.html">quick start</a> walks through every section.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
-    <li>Fast clouds cast no shadows on the ground; only Volumetric clouds do.</li>
-    <li>No night sky, stars, moon, planets, aurora, fog, rain or snow, and no clouds the camera can enter.</li>
-    <li>EEVEE's cloud shadows cover 2.4 km around the camera and fade out at the edge; wide aerial views show the fade. They are cut-outs, not soft volumes.</li>
-    <li>The exposure is a fixed -4.5 for the sky: golden-hour shots, with the sun below about 15°, come out about a stop darker than midday. Raise the exposure for them.</li>
-    <li>Time zones come with the city list, using each zone's 2026 daylight-saving rules: in other years the switch date can be a few days off, and historical offsets are not modelled. With typed or pasted coordinates you set the UTC offset yourself; the panel warns when it looks wrong.</li>
-    <li>The Sun light's strength and colour are calibrated at sea level for each air preset; at high altitude the sky is Blender's, the light is not recalibrated.</li>
-    <li>Align Sun to HDRI reads the whole map into memory once: about 0.6 GB extra for an 8k map and 2.2 GB for a 16k map, on top of Blender's own copy.</li>
-    <li>The HDRI list shows the files directly in the folder you pick, not in its subfolders.</li>
-    <li>Blender's sky is black below the horizon: a finite floor (a studio floor, the end of a street) shows a black band between its edge and the horizon. Extend the ground or frame it out.</li>
-    <li>Tested on the official Linux builds. Windows and macOS are not tested yet. Sunreckon is pure Python with no compiled parts and nothing specific to an operating system (a test checks this), and the 14-day refund applies if it does not work on yours.</li>
+    <li>Fast clouds cast no shadows; Volumetric ones do. EEVEE's cloud shadows cover 2.4 km around the camera and fade out at the edge.</li>
+    <li>No night sky, stars, moon, aurora, fog, rain or snow, and no clouds the camera can enter.</li>
+    <li>The exposure is a fixed -4.5: golden-hour shots come out about a stop darker than midday; raise the exposure for them.</li>
+    <li>Time zones come from the city list (2026 daylight-saving rules). A pasted place gets an estimate from the nearest listed city or the longitude: check it near a zone border.</li>
+    <li>Blender's sky is black below the horizon: a finite floor shows a black band at its edge. Extend the ground or frame it out.</li>
+    <li>Align Sun to HDRI needs about 0.6 GB extra memory for an 8k map. The HDRI list shows the files directly in the chosen folder.</li>
+    <li>Performance Mode switches the clouds at render time with the add-on: a Cycles file sent to a render farm without Sunreckon renders no cloud volume; turn Performance Mode off before you send it.</li>
   </ul>
 
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_A8GNENmQbtKykEn8cQ9jQwyA5lgLT0MdhkmKj1BvKMW">Buy for $19</a></p>
-    <p class="fine">$19 once, source included, updates for the life of the product · Polar checkout · <a href="../terms.html">14-day refund if it doesn't work as described</a> · Blender 4.2 LTS to 5.2 LTS</p>
+    <p class="fine">$19 once, source included, updates for the life of the product · <a href="../terms.html">14-day refund if it doesn't work as described</a></p>
   </div>
+  <p class="fine">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, arms lowered, in a courtyard of our own. Rain is not included with Sunreckon, and Blender Studio does not endorse it.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>
