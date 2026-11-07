@@ -16,6 +16,8 @@ Allow: /labelkeep/
 Allow: /labelkeep/quick-start.html
 Allow: /sortlatch/
 Allow: /sortlatch/quick-start.html
+Allow: /linkhither/
+Allow: /linkhither/quick-start.html
 Allow: /xsdtrail/
 Allow: /xsdtrail/quick-start.html
 Allow: /guides/

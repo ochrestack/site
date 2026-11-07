@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <title>How Linkhither works: it indexes every page and blog post on install and keeps up within a few minutes; every page shows its incoming links under the title and in the macro; every space gets an Incoming links report with CSV. Every list is checked as the person reading it.</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B5E52"/>
+    </marker>
+  </defs>
+  <rect width="720" height="330" fill="#FAF7F2"/>
+
+  <!-- Step 1: the index -->
+  <rect x="8" y="40" width="208" height="200" rx="12" fill="#FFFFFF" stroke="#E6DED3"/>
+  <text x="112" y="74" text-anchor="middle" font-size="17" font-weight="600" fill="#2B2118">Indexed on install</text>
+  <text x="112" y="108" text-anchor="middle" font-size="15" fill="#5A4E43">reads every page and</text>
+  <text x="112" y="132" text-anchor="middle" font-size="15" fill="#5A4E43">blog post, then keeps up</text>
+  <text x="112" y="156" text-anchor="middle" font-size="15" fill="#5A4E43">with edits in minutes;</text>
+  <text x="112" y="180" text-anchor="middle" font-size="15" fill="#5A4E43">admins see progress</text>
+  <text x="112" y="214" text-anchor="middle" font-size="15" font-weight="600" fill="#7A4E14">1. Install</text>
+
+  <line x1="220" y1="140" x2="250" y2="140" stroke="#6B5E52" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 2: on the page -->
+  <rect x="254" y="40" width="208" height="200" rx="12" fill="#2B2118"/>
+  <text x="358" y="74" text-anchor="middle" font-size="17" font-weight="600" fill="#FAF7F2">On every page</text>
+  <text x="358" y="108" text-anchor="middle" font-size="15" fill="#E6DED3">"7 incoming links"</text>
+  <text x="358" y="132" text-anchor="middle" font-size="15" fill="#E6DED3">under the title,</text>
+  <text x="358" y="156" text-anchor="middle" font-size="15" fill="#E6DED3">click it for the list,</text>
+  <text x="358" y="180" text-anchor="middle" font-size="15" fill="#E6DED3">or insert the macro</text>
+  <text x="358" y="214" text-anchor="middle" font-size="15" font-weight="600" fill="#F2C98E">2. See what links here</text>
+
+  <line x1="466" y1="140" x2="496" y2="140" stroke="#6B5E52" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: the space report -->
+  <rect x="500" y="40" width="212" height="200" rx="12" fill="#FFFFFF" stroke="#C8842B" stroke-width="2"/>
+  <text x="606" y="74" text-anchor="middle" font-size="17" font-weight="600" fill="#2B2118">In every space</text>
+  <text x="606" y="108" text-anchor="middle" font-size="15" fill="#5A4E43">each page's incoming</text>
+  <text x="606" y="132" text-anchor="middle" font-size="15" fill="#5A4E43">links, what includes it,</text>
+  <text x="606" y="156" text-anchor="middle" font-size="15" fill="#5A4E43">a no-links filter</text>
+  <g font-size="15" fill="#2B2118">
+    <rect x="542" y="166" width="128" height="24" rx="6" fill="#FAF7F2" stroke="#E6DED3"/><text x="606" y="183" text-anchor="middle">Download CSV</text>
+  </g>
+  <text x="606" y="214" text-anchor="middle" font-size="15" font-weight="600" fill="#7A4E14">3. Check a space</text>
+
+  <text x="360" y="284" text-anchor="middle" font-size="15" fill="#5A4E43">Every list is checked as the person reading it: a page they cannot open</text>
+  <text x="360" y="306" text-anchor="middle" font-size="15" fill="#5A4E43">is never shown or counted. Nothing leaves Atlassian.</text>
+</svg>

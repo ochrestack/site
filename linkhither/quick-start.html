@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linkhither quick start: install, the macro, the byline and the space report</title>
+<meta name="description" content="Install Linkhither for Confluence Cloud, follow the first index, insert the Incoming links macro, use the count under each title, and download a space's Incoming links report as CSV.">
+<link rel="canonical" href="https://ochrestack.com/linkhither/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .slot { min-height: 340px; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 10px; background: #fff; color: var(--muted); font-size: 15px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  @media (max-width: 600px) {
+    .slot { min-height: 160px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Linkhither quick start</h1>
+  <p>Installing Linkhither for Confluence and using its four screens: the Incoming links macro, the count under each title, the space report and the admin page. Back to the <a href="index.html">Linkhither product page</a>.</p>
+
+  <h2 id="install">Install (Confluence Cloud)</h2>
+  <ol>
+    <li>In Confluence, open <strong>Apps &gt; Explore more apps</strong> (or <strong>Settings &gt; Find new apps</strong>), search for <em>Linkhither for Confluence</em> and choose <strong>Get app</strong>. You need to be a site or Confluence admin. The app can be found there once its Marketplace listing is live.</li>
+    <li>Review the permissions and confirm. The <a href="index.html#permissions">product page lists each permission and what it is for</a>.</li>
+    <li>Indexing starts by itself. There is nothing to set up.</li>
+  </ol>
+
+  <h2 id="first-index">The first index</h2>
+  <p>Open <strong>Settings &gt; Linkhither</strong> in Confluence (Confluence admins only). It shows:</p>
+  <ul>
+    <li>pages and blog posts read out of those found, with a progress bar that refreshes while indexing runs;</li>
+    <li>when the index last changed, and when the last page event was handled;</li>
+    <li>how many pages and blog posts the app was not permitted to read, and why: spaces closed to apps (for example by an app access rule), pages you can open but the app cannot because page restrictions leave it out, and pages that were listed but could not be read. The restricted-page check goes space by space, a few seconds at a time, and says how many spaces it has checked.</li>
+  </ul>
+  <p>Until the first index finishes, lists may be incomplete. On our test site it read 108 to 517 ms per page or blog post, so 10,000 pages take very roughly 20 to 90 minutes. <strong>Rebuild index</strong> reads everything again; only Confluence admins can use it.</p>
+
+  <h2 id="macro">Put the list on a page: the Incoming links macro</h2>
+  <ol>
+    <li>Edit a page, type <code>/Incoming links</code>, and press Enter.</li>
+    <li>Optionally, open the macro's settings (the pencil icon) to:
+      <ul>
+        <li>show links from <strong>all spaces</strong>, <strong>this space only</strong>, or <strong>these spaces only</strong> (space keys, separated by commas);</li>
+        <li>show only pages and blog posts with a <strong>label</strong>;</li>
+        <li>choose what readers see when nothing links here: <strong>a message</strong> you can edit, or <strong>nothing at all</strong>.</li>
+      </ul>
+      <figure id="shot-5">
+        <!-- Shot 5. Replace the div with:
+        <img src="img/shot-5-macro-settings.png" alt="The Incoming links macro's settings panel: These spaces only with QMS entered, a label, and Show nothing at all chosen for when nothing links here" width="1840" height="900" loading="lazy">
+        -->
+        <div class="slot" role="img" aria-label="Screenshot 5, to be added: the Incoming links macro's settings panel, with These spaces only and QMS entered, a label, and Show nothing at all chosen for when nothing links here">
+          <strong>Screenshot 5, to be added from Confluence</strong>
+          <span>The macro's settings: "These spaces only" with QMS, a label, and "Show nothing at all".</span>
+        </div>
+        <figcaption>Limit the macro to this space, chosen spaces or a label, and choose what readers see when nothing links here.</figcaption>
+      </figure>
+    </li>
+    <li>Publish. Readers see a table of the linking pages and blog posts: title (linked), space, and last updated, with a <em>Blog post</em> marker on blog posts. Click <strong>Page or blog post</strong> or <strong>Last updated</strong> to sort; click again to reverse.</li>
+  </ol>
+
+  <h2 id="byline">The count under every title</h2>
+  <p>Under the title of every page and blog post, Linkhither adds "N incoming links" ("1 incoming link" when there is one). Click it to open the same list in a popup.</p>
+  <figure id="shot-4">
+    <!-- Shot 4. Replace the div with:
+    <img src="img/shot-4-byline-popup.png" alt="The top of SOP-012 Change Control Procedure with the byline popup open: the heading 7 incoming links, the list of linking pages and blog posts, and the note Only pages and blog posts you can open are listed" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 4, to be added: the top of SOP-012 Change Control Procedure with the byline popup open, the heading 7 incoming links, the list of linking pages and blog posts, and the note Only pages and blog posts you can open are listed">
+      <strong>Screenshot 4, to be added from Confluence</strong>
+      <span>The byline popup on a procedure page: "7 incoming links", the list, and "Only pages and blog posts you can open are listed."</span>
+    </div>
+    <figcaption>Click the count under any title to see the list. Only pages and blog posts you can open are listed.</figcaption>
+  </figure>
+
+  <h2 id="report">The space report and CSV</h2>
+  <ol>
+    <li>In any space, open <strong>Incoming links report</strong> under <strong>Apps</strong> in the space sidebar. It loads in steps and shows how far it has got.</li>
+    <li>Each page in the space that you can view is listed with its number of incoming links, the pages and blog posts that link to it (with their space key), and its last update. Pages that pull it in with Include Page or Excerpt Include are marked <em>includes this page</em>; they are not counted as links.</li>
+    <li>Tick <strong>Only pages with no incoming links</strong> to see the pages that no other page links to or includes. Click a column header to sort.</li>
+    <li>Click <strong>Download CSV</strong>. The file has exactly the rows and columns shown, with your filter and sort applied, as UTF-8 that Excel, Numbers and Google Sheets open directly. Pages that include a page appear in the "Linked from" column, marked "[includes this page]".</li>
+  </ol>
+  <div class="box">
+    <p style="margin:0"><strong>Before you archive a page,</strong> also check its Page information in Confluence: Linkhither does not see links held in other macros' settings, such as Children Display.</p>
+  </div>
+
+  <h2 id="links">Which links count</h2>
+  <ul>
+    <li><strong>Counted:</strong> page links made with the link picker, with or without a space key; pasted page URLs, full or short (<code>/wiki/x/…</code>), and old <code>viewpage.action</code> links; smart links in inline, card or embed view; and any of these inside panels, expands and other macro bodies. Links copied from the Share dialog (<code>/l/cp/…</code>) are counted when Confluence redirects them to the page for the app; this is not yet checked on a real site.</li>
+    <li><strong>Not counted:</strong> links held in other macros' settings (Include Page, Excerpt Include, Children Display); links in comments, Jira or outside websites; links from live docs, whiteboards, databases and folders; a page's links to itself.</li>
+  </ul>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>New and changed links appear within a few minutes, not instantly: Atlassian delivers page events to apps up to 3 minutes after an edit. An hourly check picks up any change whose event never arrived.</li>
+    <li>Pages the app is not permitted to read are not indexed, even for readers who may open them. The admin page shows how many and why.</li>
+    <li>Each list is checked as the reader, so two people can see different counts on the same page.</li>
+    <li>Guests and anonymous visitors see neither the macro nor the byline.</li>
+    <li>The space report lists pages, not blog posts; blog posts still appear as linking content. Archived pages and drafts are not counted as linking content.</li>
+    <li>In Word and PDF exports, the macro prints a one-line note instead of the list.</li>
+    <li>Confluence Cloud only; no Data Center or Server. English only.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Linkhither runs on Atlassian Forge and talks only to your own Confluence site. It sends nothing anywhere else and has no analytics. It stores ids and which page links to which, never page content, titles or account ids. Details on the <a href="index.html#privacy">product page</a> and in the <a href="../privacy.html">privacy policy</a>.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your site URL and, for a problem with a specific page, the page URL.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
