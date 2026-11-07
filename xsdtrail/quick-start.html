@@ -39,7 +39,7 @@
 
   <h2 id="install">Install (IntelliJ IDEA 2025.1 or later, or another JetBrains IDE on the 2025.1 platform with XML support)</h2>
   <ol>
-    <li>In the IDE, open <strong>Settings &gt; Plugins &gt; Marketplace</strong>, search for <em>Xsdtrail</em> (once the listing is live; it is in review), and click <strong>Install</strong>.</li>
+    <li>In the IDE, open <strong>Settings &gt; Plugins &gt; Marketplace</strong>, search for <em>Xsdtrail</em> (once the listing is live; it has not been submitted yet), and click <strong>Install</strong>.</li>
     <li>Restart the IDE if asked.</li>
   </ol>
   <p>Xsdtrail registers no file type and changes no file type association, so installing it does not change how your files open.</p>
@@ -58,10 +58,10 @@
     <li>Elements show their name and type. Optional ones have a dashed border, repeating ones a stacked shadow, and the cardinality is in the box: <code>[0..1]</code>, <code>[1..*]</code>.</li>
     <li><code>sequence</code>, <code>choice</code> and <code>all</code> appear as their own boxes between a parent and its children. Attributes appear as <code>@name</code> with required or optional, default and fixed values. <code>extension of …</code> and <code>restriction of …</code> boxes unfold to the base type. Enumeration values appear as <code>= value</code>.</li>
     <li>↻ marks a type that already appears above it, instead of unfolding forever.</li>
-    <li>A red box is something that cannot be resolved; it names the missing namespace, file or declaration.</li>
+    <li>A red box is something that cannot be resolved; it names the missing namespace, file or declaration. A long reason wraps over up to three lines, and the tooltip has all of it.</li>
     <li>Hover a box for its tooltip: the <code>xs:documentation</code> text and the details of the declaration.</li>
   </ul>
-  <p><strong>Toolbar:</strong> Expand All (stops at 4,000 boxes on very large schemas and says so), Collapse All, Zoom In, Zoom Out, Actual Size, Fit to Window, Rebuild Diagram. Ctrl+mouse wheel zooms around the pointer. The search box on the right finds a global element or type by name; when several match equally well, the status line says "Match 1 of 2" with the file name, and Enter steps to the next.</p>
+  <p><strong>Toolbar:</strong> Expand All (unfolds up to 4,000 boxes, counting those already shown; when the next unfold would pass that, it stops and says so), Collapse All, Zoom In, Zoom Out, Actual Size, Fit to Window, Rebuild Diagram. Ctrl+mouse wheel zooms around the pointer. The search box on the right finds a global element or type by name; when several match equally well, the status line says "Match 1 of 2" with the file name, and Enter steps to the next.</p>
 
   <h2 id="navigate">Navigate both ways</h2>
   <ul>
@@ -80,14 +80,15 @@
   </ol>
   <p>Types and elements from other files appear in place, labelled with their file name. When a schema file is added, renamed or changed on disk, for example after a pull or a branch switch, the diagram rebuilds. While the IDE is still indexing, the project and library search waits: the import says so, and the diagram rebuilds when indexing ends. Nothing is ever downloaded: a <code>schemaLocation</code> that is a URL is reported as not downloaded.</p>
 
-  <h2 id="wsdl">WSDL operation view (licence)</h2>
-  <p>For a WSDL 1.1 file the Design tab has two sections. <strong>Types</strong> holds the schemas inline in <code>wsdl:types</code> and is free. <strong>Services and operations</strong> lists each service, its ports with their addresses, each port's binding with SOAP 1.1 or 1.2 and the document or rpc style, and the operations. An operation unfolds to its input, output and fault messages, their parts, and the XSD elements or types those parts reference. A missing message, part element or binding, and a binding that no port uses, appear as red boxes that say what is missing. An abstract WSDL, with operations in a <code>wsdl:portType</code> and no binding, lists those operations, each naming its portType.</p>
-  <figure><a href="img/wsdl-operation.png"><img src="img/wsdl-operation-diagram.png" alt="checkVatService.wsdl in the Design tab: binding checkVatBinding (SOAP 1.1 · document), operation checkVat with its input and output messages, their parameters parts, and the fields of checkVat and checkVatResponse" width="1125" height="410" loading="lazy"></a><figcaption>The EU's VIES <code>checkVatService.wsdl</code>, unfolded from the binding to the fields of each message.</figcaption></figure>
+  <h2 id="wsdl">WSDL operation view (operation names free, messages with a licence)</h2>
+  <p>For a WSDL 1.1 file the Design tab has two sections. <strong>Types</strong> holds the schemas inline in <code>wsdl:types</code>. <strong>Services and operations</strong> lists each service, its ports with their addresses, each port's binding with SOAP 1.1 or 1.2 and the document or rpc style, and the operations; without a licence you see all of that for the open file, with each operation locked. With a licence an operation unfolds to its input, output and fault messages, their parts, and the XSD elements or types those parts reference. A missing message, part element or binding, and a binding that no port uses, appear as red boxes that say what is missing. An abstract WSDL, with operations in a <code>wsdl:portType</code> and no binding, lists those operations, each naming its portType.</p>
+  <figure><a href="img/wsdl-operation.png"><img src="img/wsdl-operation-diagram.png" alt="checkVatService.wsdl in the Design tab: binding checkVatBinding (SOAP 1.1 · document), operation checkVat with its input and output messages, their parameters parts, and the fields of checkVat and checkVatResponse" width="1125" height="410" loading="lazy"></a><figcaption>The EU's VIES <code>checkVatService.wsdl</code> with a licence, unfolded from the binding to the fields of each message.</figcaption></figure>
+  <figure><a href="img/wsdl-free.png"><img src="img/wsdl-free-diagram.png" alt="The same WSDL without a licence: service checkVatService, port checkVatPort with its address, binding checkVatBinding (SOAP 1.1 · document), and the operations checkVat and checkVatApprox, each locked" width="1160" height="140" loading="lazy"></a><figcaption>Without a licence: service, port, binding and operation names; each operation's messages are locked.</figcaption></figure>
 
   <h2 id="licence">Licence and trial</h2>
-  <p>Without a licence, every box from another file is shown with its name, its file label, a lock and "Locked: needs a licence". The WSDL operation view shows one locked box. Nothing pops up. A line under the status line offers <strong>Get a licence or trial</strong>, which opens the IDE's own licence dialog only when you click it.</p>
+  <p>Without a licence, every box from another file is shown with its name, its file label, a lock and "Locked: needs a licence". In a WSDL, each operation is shown by name and locked; double-clicking it says what the licence adds. Nothing pops up. Whenever something in the diagram is locked, a line under the status line reads "Free: this file and WSDL operation names. Other files and operation messages are locked." followed by <strong>Get a licence or trial</strong>, which opens the IDE's own licence dialog only when you click it. In IntelliJ IDEA Community the licence dialog is also under <strong>Help &gt; Manage Licenses…</strong>.</p>
   <p>When the trial or licence becomes active, open Design tabs unlock by themselves; nothing needs reopening. The licence is a JetBrains Marketplace perpetual licence: $12 once, personal or commercial, every update included, nothing to renew. A 30-day trial unlocks everything, and the free features never lock.</p>
-  <figure><a href="img/free-tier.png"><img src="img/free-tier-detail.png" alt="UBL Invoice without a licence: boxes from the common-component files grey with a lock, the file name and 'Locked: needs a licence'; under the diagram, 'Free: this file. Other files and WSDL operations are locked. Get a licence or trial'" width="890" height="432" loading="lazy"></a><figcaption>Without a licence: the open file works, boxes from other files are locked, and one line explains why.</figcaption></figure>
+  <figure><a href="img/free-tier.png"><img src="img/free-tier-detail.png" alt="UBL Invoice without a licence: boxes from the common-component files grey with a lock, the file name and 'Locked: needs a licence'; under the diagram, 'Free: this file and WSDL operation names. Other files and operation messages are locked. Get a licence or trial'" width="890" height="432" loading="lazy"></a><figcaption>Without a licence: the open file works, boxes from other files are locked, and one line explains why.</figcaption></figure>
 
   <h2 id="limits">Known limits</h2>
   <ul>
@@ -95,6 +96,7 @@
     <li>Not supported: WSDL 2.0, XSD 1.1 assertions and conditional types, DTD, RELAX NG, validation of XML instance documents. English only.</li>
     <li>The root element must start within the first 1 MB of the file.</li>
     <li>When one namespace matches several files that declare the same component, the diagram uses the first (folder before project, then by path) and the import box warns.</li>
+    <li>Expand All unfolds up to 4,000 boxes, counting those already shown; a file whose first level alone has more than 4,000 declarations unfolds nothing. Unfold the rest one branch at a time.</li>
     <li>On files over the IDE's code-insight limit (2.5 MB by default), following the caret can take a tenth of a second per move.</li>
   </ul>
 
