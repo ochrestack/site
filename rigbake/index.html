@@ -54,7 +54,7 @@
   .narrow-only { display: none; }
   .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .scroll-x a, .scroll-x picture { display: block; }
-  .hero { display: block; width: 100%; max-width: 640px; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
   .fine { font-size: 15px; color: var(--muted); }
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
   summary { cursor: pointer; }
@@ -135,14 +135,14 @@
   </ul>
 
   <h2>In Blender, for real</h2>
-  <p>Every image below is a capture from a real Blender 4.2 LTS window at real size, or a Godot 4.7 render of the exported files. The panel and dialog captures show Rigbake 1.2.7, the next release, which is in testing; the download today is 1.2.5, which writes the same files and words a few panel lines differently (for example its preset menu says "Godot", not "Godot (glTF)"). The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip, each on its own unmuted NLA track (as after Push Down), and her legs in IK. The two panel images link to the full Blender window.</p>
+  <p>Every image below is a capture from a real Blender 4.2 LTS window with Rigbake 1.2.5, at real size (the dialog a little smaller and with one row left out, as its caption says), or a Godot 4.7 render of its files. The character is Rain, the Blender Studio's free production rig (2166 bones, 2788 bone constraints), with an Idle, a Walk and a Run clip, each on its own unmuted NLA track (as after Push Down), and her legs in IK. The two panel images link to the full Blender window.</p>
   <div class="pair">
     <figure>
-      <a href="img/character-01-blender-rain-clips.png"><img class="ui" src="img/panel-before-export.png" alt="The Rigbake sidebar tab at real size with Rain's armature selected: Armature: RIG-rain, Validate Rig for Export, the Godot (glTF) preset, the file it will write, ~/projects/rain/export/RIG-rain.glb, '3 clips: Walk, Run, Idle' and the grey line 'Godot keeps the shape keys; Unity and Unreal (FBX) drop them' above the Export Game-Ready button, with Preset Settings closed below it" width="256" height="382" loading="lazy"></a>
+      <a href="img/character-01-blender-rain-clips.png"><img class="ui" src="img/panel-before-export.png" alt="The Rigbake sidebar tab at real size with Rain's armature selected: Armature: RIG-rain, Validate Rig for Export, the Godot preset, the file it will write, ~/projects/rain/export/RIG-rain.glb, and '3 clips: Walk, Run, Idle' above the Export Game-Ready button, with Preset Settings closed below it" width="256" height="344" loading="lazy"></a>
       <figcaption>Before you click: the file, and her three clips.</figcaption>
     </figure>
     <figure>
-      <a href="img/character-03-export-summary.png"><img class="ui" src="img/panel-after-export.png" alt="The Rigbake tab at real size after Export Game-Ready with the default settings: the row '7 issues, 2 notes' with a Report button, and the Last Export box naming RIG-rain.glb with 1-25 Walk, 1-17 Run, 1-49 Idle and the notes 'Modifiers left unapplied' and '3 baked actions kept in this file'" width="256" height="508" loading="lazy"></a>
+      <a href="img/character-03-export-summary.png"><img class="ui" src="img/panel-after-export.png" alt="The Rigbake tab at real size after Export Game-Ready with the default settings: the row '7 issues, 2 notes' with a Report button, and the Last Export box naming RIG-rain.glb with 1-25 Walk, 1-17 Run, 1-49 Idle and the notes 'Modifiers left unapplied' and '3 baked actions kept in this file'" width="256" height="472" loading="lazy"></a>
       <figcaption>After: her issues, each clip with its frame range, one line per note.</figcaption>
     </figure>
   </div>
@@ -150,10 +150,10 @@
   <figure>
     <p class="swipe-hint narrow-only">Rigbake's rig check on Rain, at Blender's own UI size: swipe the dialog sideways to read each line &rarr;</p>
     <div class="swipe-wrap"><div class="scroll-x"><picture>
-      <source media="(max-width: 600px)" srcset="img/validate-dialog-phone.png 2x" width="762" height="258">
-      <img class="ui" src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Rain: '7 issues, 2 notes in RIG-rain'; meshes whose modifiers stay unapplied to keep shape keys, two meshes whose Mask modifiers then hide nothing in the engine, vertex groups with no weights or no matching bone, deform bones without weights, each with its fix and a Select button in one column; then a note that her shoes keep their shape keys over an unapplied Subdivision, fine for most games, and one more note in the full report; Close and Open Full Report" width="762" height="824" loading="lazy">
+      <source media="(max-width: 600px)" srcset="img/validate-dialog-phone.png 2x" width="764" height="264">
+      <img class="ui" src="img/validate-dialog.png" alt="The Validate Rig for Export dialog on Rain: '7 issues, 2 notes in RIG-rain'; meshes whose modifiers stay unapplied to keep shape keys, two meshes whose Mask modifiers then hide nothing in the engine, vertex groups with no weights or no matching bone, deform bones without weights, each with its fix and a Select button in one column; then a note that her shoes keep their shape keys over an unapplied Subdivision, fine for most games, and one more note in the full report; Close and Open Full Report" width="764" height="692" loading="lazy">
     </picture></div></div>
-    <figcaption>Validate Rig for Export on a production rig: seven issues, each summed up across her meshes with its fix, then notes for what is fine as it is or handled by the export (her 1,806 constrained bones are baked on export). The full report names every bone and vertex group. Each issue's text and its fix share one column, with its buttons beside them.<span class="narrow-only"> On a phone: the header and the shape-key and Mask issues.</span></figcaption>
+    <figcaption>Validate Rig for Export on a production rig: seven issues, each summed up across her meshes with its fix, then notes for what is fine as it is or handled by the export (her 1,806 constrained bones are baked on export). The full report names every bone and vertex group. One of the seven, a count of meshes with more than four bone weights per vertex, is left out of this picture.<span class="narrow-only"> On a phone: the header and the shape-key and Mask issues.</span></figcaption>
   </figure>
   <figure id="rain">
     <picture>
