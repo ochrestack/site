@@ -84,12 +84,16 @@
   <p class="sub">Display incoming links per page, right on the page. Show traceability between pages without the tedious one-by-one trip to Page information.</p>
 
   <div class="buy">
-    <p class="price"><strong>Free for up to 10 users</strong>, with every feature. From 11 to 100 users, <strong>$0.40 per user per month</strong>; larger sites pay no more per user than that (<a href="#pricing">price</a>). Billed by Atlassian.</p>
-    <!-- Until the listing URL exists the button stays href="#" with the note. When Atlassian approves the listing, set both
-         buttons' href to the listing URL, drop "pending" and onclick, and remove the note. -->
+    <p class="price"><strong>Free for up to 10 users</strong>, with every feature. Then <strong>$0.40 per user per month</strong> for 11 to 100 users, and less per user on larger sites (<a href="#pricing">every price</a>). Billed by Atlassian.</p>
+    <!-- Until the listing is submitted the note says so; once submitted it may say "In review"; when Atlassian approves the
+         listing, set both buttons' href to the listing URL, drop "pending" and onclick, and remove the note. -->
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on the Atlassian Marketplace</a></p>
-    <p class="note" id="buy-note"><strong>Listing in review.</strong> Linkhither is not on the Atlassian Marketplace yet and has not been submitted to Atlassian, so it can't be installed today. This button will link to the listing once Atlassian has approved it. For a note when it is live, email <a href="mailto:support@ochrestack.com?subject=Linkhither%20listing">support@ochrestack.com</a>.</p>
-    <p>For Confluence Cloud (Atlassian Forge). Not for Confluence Data Center or Server. English only. Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. <a href="#documentation">Documentation and install steps</a></p>
+    <p class="note" id="buy-note"><strong>Coming to the Atlassian Marketplace.</strong> Not submitted to Atlassian yet, so it can't be installed today. This button will link to the listing once it is live. For a note when it is, email <a href="mailto:support@ochrestack.com?subject=Linkhither%20listing">support@ochrestack.com</a>.</p>
+  </div>
+
+  <div class="box warn">
+    <p style="margin-top:0"><strong>Why it is needed.</strong> Before you change, move or archive a procedure, you need to know which pages depend on it. Confluence Cloud has no way to put a page's incoming links on the page itself. The request, <a href="https://jira.atlassian.com/browse/CONFCLOUD-35218">CONFCLOUD-35218</a>, has been open since 2014 with over 600 votes.</p>
+    <p style="margin-bottom:0"><strong>Who can use it:</strong> Confluence Cloud only (not Data Center or Server), in English. Guests and anonymous visitors don't see the macro or the count, because the app cannot check what a guest may open. <a href="#documentation">Install steps and documentation</a>.</p>
   </div>
 
   <figure class="wide-only">
@@ -102,12 +106,8 @@
     <li><strong>In every space:</strong> an Incoming links report with each page's links, what includes it, a filter for pages with no incoming links, and <strong>Download CSV</strong>.</li>
   </ol>
 
-  <div class="box warn">
-    <strong>Why it is needed.</strong> Before you change, move or archive a procedure, you need to know which pages depend on it. Confluence Cloud has no way to put a page's incoming links on the page itself. The request, <a href="https://jira.atlassian.com/browse/CONFCLOUD-35218">CONFCLOUD-35218</a>, has been open since 2014 with over 600 votes.
-  </div>
-
   <div class="box">
-    <p style="margin-top:0"><strong>Good to know:</strong> for a single page, Confluence's own Page information view already lists incoming links (CONFCLOUD-35218: "It can be found under page information but that is buried and a one-by-one traceability march"). If one admin checks one page now and then, that is enough.</p>
+    <p style="margin-top:0"><strong>Good to know:</strong> for a single page, Confluence already lists incoming links: click <strong>(i)</strong> at the right edge of the page to open the Details panel, then look under <strong>Connections</strong>. CONFCLOUD-35218 calls that place Page information: "It can be found under page information but that is buried and a one-by-one traceability march". If one admin checks one page now and then, that is enough.</p>
     <p style="margin-bottom:0">Linkhither is for teams who need it everywhere. You pay for four things: the list shown on the page itself for every reader, a count in the byline of every page, a whole-space report with the pages no other page links to or includes and a CSV, and all of it filtered to what each reader may open.</p>
   </div>
 
@@ -121,8 +121,12 @@
     <li><strong>Each list is checked as the reader.</strong> Every list and count is checked against Confluence as the person viewing it, every time. A page or blog post they cannot open is never shown to them and never counted for them.</li>
   </ul>
 
-  <h2 id="screens">In Confluence</h2>
-  <p class="note">The screenshots below will be taken in a real Confluence Cloud site, on a quality-management documentation space, before the listing goes to Atlassian. Until then each frame says what it will show.</p>
+  <!-- Screenshots from a real Confluence Cloud site, on a quality-management documentation space, go here
+       (captured by the product's showcase workflow, or by hand). The section stays hidden until they exist:
+       a buyer should not see grey placeholder frames. To publish: put the PNGs in img/, swap each slot img
+       for the commented one, delete the slot SVGs, and remove "hidden" from the section. -->
+  <section id="screens" hidden>
+  <h2>In Confluence</h2>
   <figure id="shot-1">
     <!-- Shot 1. Replace the placeholder img below with:
     <img src="img/shot-1-page-and-macro.png" alt="SOP-012 Change Control Procedure in Confluence: '7 incoming links' under the title, and the Incoming links macro listing the seven pages and blog posts that link here, from two spaces, sorted by last updated" width="1840" height="900" loading="lazy">
@@ -151,6 +155,7 @@
     <img class="slot" src="img/shot-6-slot.svg" alt="Screenshot 6, to be added: side by side for SOP-012, the Incoming links macro with eight rows including WI-030 Change Board Checklist, which links with a pasted short link, and Confluence's own incoming-links view for the same page without WI-030" width="1840" height="900" loading="lazy">
     <figcaption>Pasted short /wiki/x/ links count too. Confluence's own incoming-links view did not list this one.</figcaption>
   </figure>
+  </section>
 
   <h2 id="links">Which links count</h2>
   <p>A page or blog post counts as linking to a page when its body contains any of these:</p>
@@ -162,16 +167,31 @@
   </ul>
   <p>Not counted: links held in other macros' settings (Include Page, Excerpt Include, Children Display); links in comments, Jira or outside websites; links from live docs, whiteboards, databases and folders; a page's links to itself. Include Page and Excerpt Include are not counted as links, but the space report shows them as "includes this page".</p>
 
-  <h2 id="page-information">Compared with Confluence's Page information</h2>
-  <p>The two lists can differ, on purpose. On our test site, on 6 November 2026:</p>
-  <ul>
-    <li>Linkhither listed pages that linked with a short <code>/wiki/x/</code> URL or an old <code>viewpage.action</code> link. Page information did not list them.</li>
-    <li>Page information listed pages that only pull the page in with Include Page or Excerpt Include. Linkhither does not count those as links; its space report shows them as "includes this page".</li>
-  </ul>
-  <p>So before you archive a page, check its Page information too: Linkhither does not see links held in other macros' settings, such as Children Display.</p>
+  <h2 id="pricing">Price</h2>
+  <table>
+    <tr><th>Users on your Confluence site</th><th>Per user per month</th></tr>
+    <tr><td>1 to 10</td><td>$0 (free)</td></tr>
+    <tr><td>11 to 100</td><td>$0.40</td></tr>
+    <tr><td>101 to 250</td><td>$0.28</td></tr>
+    <tr><td>251 to 1,000</td><td>$0.15</td></tr>
+    <tr><td>1,001 to 2,500</td><td>$0.12</td></tr>
+    <tr><td>2,501 and more</td><td>$0.09</td></tr>
+  </table>
+  <p>Atlassian bills each band of users at that band's rate. For example, 25 users pay $10 a month ($100 a year); 400 users pay 100 × $0.40 + 150 × $0.28 + 150 × $0.15 = <strong>$104.50 a month</strong>. These are the prices the Marketplace listing will carry when it opens.</p>
+  <p>One edition: every feature is in every tier, and there is no paid upgrade inside the app. Atlassian bills the subscription, monthly or annually (annual is 10 times the monthly price), and offers its standard 30-day free trial. Atlassian bills the renewal and sends the renewal notice; we add no upsell, no feature lock and no price change at renewal.</p>
 
-  <h2 id="run">What the test runs showed</h2>
-  <p>Linkhither is tested on a real Confluence Cloud site, through the app's own backend functions, with every result read back from Confluence. From the runs on 6 November 2026:</p>
+  <h2 id="page-information">Compared with Confluence's own list</h2>
+  <p>The two lists can differ, on purpose. On our test site, on 6 November 2026, reading Confluence's list from its Page information view:</p>
+  <ul>
+    <li>Linkhither listed pages that linked with a short <code>/wiki/x/</code> URL or an old <code>viewpage.action</code> link. Confluence's list did not.</li>
+    <li>Confluence's list included pages that only pull the page in with Include Page or Excerpt Include. Linkhither does not count those as links; its space report shows them as "includes this page".</li>
+  </ul>
+  <p>So before you archive a page, check Confluence's own list too: Linkhither does not see links held in other macros' settings, such as Children Display.</p>
+
+  <h2 id="tested">How we tested</h2>
+  <p>Linkhither is tested on a real Confluence Cloud site: an end-to-end run installs it, creates a space with a page linked to by one page or blog post for every kind of link, and checks every list through the app's own backend functions against what Confluence holds. It found the exact set of linking pages, reflected an edit and a trash within a minute, and kept pages restricted from the app out of the index. An automated suite of 111 tests covers the link parser (on storage format captured from a real site), sorting, filters, the report and CSV, every page event, resuming an interrupted index, the admin-only rebuild, and readers who can see only some pages.</p>
+  <details>
+    <summary>The measurements from the runs on 6 November 2026</summary>
   <table>
     <tr><th>Check</th><th>Result</th></tr>
     <tr><td>A target page with one linking page or blog post per kind of link</td><td>The exact set of 12 linking pages and blog posts, from page events alone, in 11.7 s</td></tr>
@@ -181,18 +201,15 @@
     <tr><td>Rebuild index</td><td>1,129 pages and blog posts at 218 ms each</td></tr>
     <tr><td>A page restricted to named people</td><td>Not read by the app; the admin page counted it</td></tr>
   </table>
-  <p>On a page with three linking pages, the byline under the title read, in a browser:</p>
-  <p class="said">3 incoming links</p>
-  <p class="note">These lines come from the test log, laid out here by us; they are not screenshots of Confluence.</p>
-
-  <h2 id="pricing">Price</h2>
-  <table>
-    <tr><th>Users on your Confluence site</th><th>Per user per month</th><th>Example</th></tr>
-    <tr><td>1 to 10</td><td>$0 (free)</td><td>10 users: $0</td></tr>
-    <tr><td>11 to 100</td><td>$0.40</td><td>25 users: $10 a month, or $100 a year</td></tr>
-    <tr><td>Over 100</td><td>no more than $0.40</td><td>the Marketplace listing will give each tier</td></tr>
-  </table>
-  <p>One edition: every feature is in every tier, and there is no paid upgrade inside the app. Atlassian bills the subscription, monthly or annually (annual is 10 times the monthly price), and offers its standard 30-day free trial. Atlassian bills the renewal and sends the renewal notice; we add no upsell, no feature lock and no price change at renewal.</p>
+    <p>On a page with three linking pages, the byline under the title read, in a browser: "3 incoming links".</p>
+  </details>
+  <p>Not yet covered:</p>
+  <ul>
+    <li><strong>Every screen in a browser.</strong> The byline, the macro and the space report have been rendered in a browser on our test site by an automated check. The popup, the macro settings, the CSV download and the admin page have not yet, and no person has yet gone through the screens. They will be before the listing goes to Atlassian.</li>
+    <li><strong>A second, non-admin account</strong> on the real site, for the permission filter.</li>
+    <li><strong>Share-dialog links</strong> on a real site (see Known limits).</li>
+    <li><strong>A site of thousands of pages.</strong> The largest real-site rebuild so far was 1,129 items, and a 3,000-page space report has been tested only against a model.</li>
+  </ul>
 
   <h2 id="permissions">Permissions it asks for</h2>
   <table>
@@ -235,33 +252,23 @@
   <ul>
     <li><strong>A few minutes, not instantly.</strong> Atlassian delivers page events to apps up to 3 minutes after an edit; an edit whose event never arrives is picked up by the hourly check.</li>
     <li><strong>Pages restricted from the app are not indexed</strong>, even for readers who may open them. The admin page counts them.</li>
-    <li><strong>Links held in other macros' settings are not counted</strong> (Include Page, Excerpt Include, Children Display). Include Page and Excerpt Include are shown in the space report; check Page information before you archive a page.</li>
-    <li><strong>Links copied from the Share dialog</strong> (<code>/l/cp/…</code>) count only if Confluence redirects them to the page for the app. That has been tested against a model of Confluence, not yet on a real site. Page information does not list these links either.</li>
+    <li><strong>Links held in other macros' settings are not counted</strong> (Include Page, Excerpt Include, Children Display). Include Page and Excerpt Include are shown in the space report; check Confluence's own list in the Details panel before you archive a page.</li>
+    <li><strong>Links copied from the Share dialog</strong> (<code>/l/cp/…</code>) count only if Confluence redirects them to the page for the app. That has been tested against a model of Confluence, not yet on a real site. Confluence's own list does not include these links either.</li>
     <li><strong>Guests and anonymous visitors</strong> see neither the macro nor the byline.</li>
     <li><strong>The space report lists pages, not blog posts</strong>; blog posts still appear as linking content. A page moved together with its parent can show a low count until it is edited or the index is rebuilt; it is never offered as having no incoming links.</li>
     <li><strong>Archived pages, drafts and comments</strong> are not counted as linking content. In Word and PDF exports, the macro prints a one-line note instead of the list.</li>
     <li>No outgoing links, graphs, broken-link checks or bulk link editing. Confluence Cloud only; no Data Center or Server. English only.</li>
   </ul>
 
-  <h2 id="tested">How we tested</h2>
-  <p>An end-to-end test installs Linkhither on a real Confluence Cloud site, creates a test space with a target page, a target blog post and one linking page or blog post for every kind of link, and checks the results through the app's own backend functions. It then edits and trashes linking pages, builds a 300-page space, rebuilds the index as a Confluence admin, and compares the result with Confluence's Page information. An automated suite of 106 tests covers the link parser (on storage format captured from a real site), sorting, filters, both empty states, the report and CSV (commas, quotes, line breaks, non-ASCII titles), every page event, resuming an interrupted index, the admin-only rebuild, and readers who can see only some pages.</p>
-  <p>Not yet covered:</p>
-  <ul>
-    <li><strong>Opening every screen in a browser.</strong> The byline, the macro and the space report have been rendered in a browser on our test site by an automated check. The popup, the macro settings, the CSV download and the admin page have not yet, and no person has yet gone through the screens. They will be before the listing goes to Atlassian.</li>
-    <li><strong>A second, non-admin account</strong> on the real site, for the permission filter.</li>
-    <li><strong>Share-dialog links</strong> on a real site (see Known limits).</li>
-    <li><strong>A site of thousands of pages.</strong> The largest real-site rebuild so far was 1,129 items, and a 3,000-page space report has been tested only against a model.</li>
-  </ul>
-
   <h2 id="privacy">Privacy</h2>
   <p>Nothing leaves Atlassian. Linkhither runs on Atlassian Forge, talks only to your own Confluence site, and has no permission to reach any other server. No analytics, no tracking. Its app storage, hosted by Atlassian for your site only, holds the ids of pages, blog posts and spaces, which page links to (or includes) which, and one-way hashes of the titles that links name. It stores no page content, no titles and no account ids; titles are read live from Confluence when you open a list, as you. When Confluence gives the byline no session token, the app reads as that same person through Forge's user impersonation, never as anyone else. See also the <a href="../privacy.html">privacy policy</a>.</p>
 
   <h2 id="support">Support</h2>
-  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your site URL and, for a problem with a specific page, the page URL. Bug reports and feature requests are welcome at the same address.</p>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your site URL and, for a problem with a specific page, the page URL. We answer every message, usually within one business day (Monday to Friday). Bug reports and feature requests are welcome at the same address.</p>
 
   <div class="buy">
     <p><a class="button pending" id="buy-2" href="#" aria-describedby="buy-note" onclick="return false;">Get it on the Atlassian Marketplace</a></p>
-    <p class="fine">Listing in review · free for up to 10 users, $0.40 per user per month from 11 users · billed by Atlassian · Confluence Cloud</p>
+    <p class="fine">Coming to the Atlassian Marketplace, not submitted yet · free for up to 10 users, then from $0.40 per user per month · billed by Atlassian · Confluence Cloud</p>
   </div>
 </main>
 <footer>
