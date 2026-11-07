@@ -228,6 +228,7 @@
 </script>
 <script>
 // ?src=<venue> sends the Buy button to that venue's Polar checkout link, so each order is counted for the venue it came from.
+// TikTok and Instagram use the site link with utm_* parameters, which Polar stores on the checkout and the order.
 (function () {
   var base = "https://buy.polar.sh/";
   var links = {
@@ -240,7 +241,9 @@
     "mastodon": "polar_cl_JwbYjv34PvvfBhDwNL4QxfAEoJZTEwkL0FTWL3aH821",
     "youtube": "polar_cl_CPrYPfSpC7FWkHqHxBXs6CiSYDLZ8KaLRnAAN1WhN9B",
     "email": "polar_cl_GFiIGgMFrGsbzNg5PeGSuz9ydMDHzKtr4yKYU1viWtC",
-    "producthunt": "polar_cl_4tKoS8HUw2QRISNK9z3bPxBooVWag5Z8vD8Fp3iDThs"
+    "producthunt": "polar_cl_4tKoS8HUw2QRISNK9z3bPxBooVWag5Z8vD8Fp3iDThs",
+    "tiktok": "polar_cl_ZmTfBbKKwOak1EOpaKTly0p1ApRBX3OVowjuz1kcpEx?utm_source=tiktok&utm_medium=short&utm_campaign=rigbake-2026-w45",
+    "instagram": "polar_cl_ZmTfBbKKwOak1EOpaKTly0p1ApRBX3OVowjuz1kcpEx?utm_source=instagram&utm_medium=reel&utm_campaign=rigbake-2026-w45"
   };
   var alias = { "godot-forum": "godot-community", "reddit-blender": "reddit", "reddit-godot": "reddit", "reddit-gamedev": "reddit" };
   var src = null;
