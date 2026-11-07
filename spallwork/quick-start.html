@@ -91,7 +91,7 @@
   <h2 id="limits">Limits</h2>
   <ul>
     <li>Closed meshes only. Curves, text and Grease Pencil must be converted to a mesh first. Loose parts that overlap are chipped as one where they overlap.</li>
-    <li>A collection instance at another scale shows chips at that scale; damage the object at its final size, or make the instances real. Check model warns.</li>
+    <li>A collection instance at another scale shows chips at that scale. Check model flags it; its <strong>Make Instances Real</strong> button gives each instance an object of its own, chipped at the set size.</li>
     <li>Fill Holes caps every hole, including one that should stay open, such as a window. Look before you press Damage.</li>
     <li>Chips can knock a small fragment loose where two chips meet at a corner. For a 3D print, compare Check model's loose-part count before and after Apply.</li>
     <li>Don't press Shift+N on a heavily chipped small part after Apply: normals are already outward, and Blender's Recalculate Outside can guess wrong there.</li>
