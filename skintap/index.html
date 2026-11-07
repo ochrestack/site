@@ -88,24 +88,21 @@
     <p class="price"><strong>$14, one-time, 12 months of updates and support included, source included</strong> (GPL-3.0-or-later). Blender 4.2 LTS and later; tested on 4.2 LTS and 5.2 LTS, on Linux.</p>
     <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_0ErzmMI66XIOzneZ6ESnGRImsVJbeKGEGab5801xS0x">Buy for $14</a></p>
     <p class="fine">Polar checkout · download by email · <a href="../terms.html">14-day refund if it doesn't work as described</a> · no license check, no account · <a href="#details">details</a></p>
+    <p class="fine">One purchase is one seat: one artist, on all of their own computers. A team of up to 10 artists: $70, see <a href="#teams">Teams</a>. Windows and macOS have not been tested yet; if Skintap doesn't work as described on yours, the 14-day refund covers it.</p>
   </div>
 
   <p class="fine">Above: Rain, Blender Studio's free production character, posed in Pose Mode. Skintap's picker is running: the label names the control under the cursor and the deform bone it moves on her jeans, and the click has just selected that control.</p>
-  <details>
-    <summary>How these images were made</summary>
-    <p>Every image and GIF on this page is a capture of a real Blender 5.2.3 LTS window on Linux at 1920x960 and UI scale 1.4, with Skintap 1.0.2 installed from its zip through Blender's extension installer (the Install from Disk path). The character is Rain v3.3 as downloaded from studio.blender.org (CC BY 4.0, credit below), in her own file and rig. By script, between shots, we switched her arms and legs to FK, set her rig's Quality to 2 (Subdivision Surface level 2 on every piece of clothing and the body), posed her on her FK controls and set the view; for the chain images we added a three-bone hair strand and a three-bone ribbon to her rig, showed only their bone collection, and hid the viewport's navigation buttons. Every hover, click, Shift-click, menu and key press (Shift+Alt+Q, Esc, G, Shift+D) is a real input event sent to the window; every label, selection, name and status-bar report is Skintap's own. The GIFs were recorded one frame per pointer step and play at 30 frames per second: on this machine Blender draws the viewport in software, slower than that, so the motion here is smoother than it was live. The virtual display has no mouse cursor, so the arrow is drawn into each frame at the pointer's real position.</p>
-  </details>
+  <figure>
+    <img src="video/skintap-pick.gif" alt="Looping clip from the demo: Skintap's picker on Rain. The label next to the cursor reads FK-Thigh_Parent.L on her jeans, then FK-Upperarm_Parent.L and FK-Forearm.L on her arm; a click selects FK-Forearm.L, and R rotates it so her hand comes up to her chest. The picker starts again, a Shift-click on her jeans adds FK-Thigh_Parent.L, and the cursor moves to her shoe, where the label reads FK-Foot.L, moves DEF-Foot.L on GEO-rain-shoes" width="960" height="540">
+    <figcaption>Hover: the label names the control that moves the spot under the cursor. Click selects it; here R rotates the forearm control that was picked. Shift-click her jeans adds the thigh control. A loop from the <a href="#watch">demo video</a>.</figcaption>
+  </figure>
 
   <h2 id="watch">Watch it work</h2>
   <figure>
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/skintap-demo-720p60.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 46 s, captions only, no sound: Skintap 1.0.2 in Blender 5.2.3 LTS on Blender Studio's Rain, arms and legs in FK, Subdivision Surface level 2. Blender's own click on her jeans, then Skintap's picker: hover, click, rotate, Shift-click, Pick Deform Bones; then Duplicate Chain, Mirror Chain and Fix .001 Names on a hair strand and a ribbon added to her rig. Every label, selection and name is Skintap's own. It was recorded one frame at a time at 60 frames per second: this test machine draws the viewport in software, slower than that, so it plays smoother than it ran live. The arrow and the orange click rings are drawn in at the pointer's real positions. Rain Rig (CC) Blender Foundation | studio.blender.org. <a href="video/skintap-pick.gif">The picking moment as a looping GIF</a> (3.6 MB).</figcaption>
-  </figure>
-  <figure>
-    <img src="video/skintap-pick.gif" alt="Looping clip from the demo: Skintap's picker on Rain. The label next to the cursor reads FK-Thigh_Parent.L on her jeans, then FK-Upperarm_Parent.L and FK-Forearm.L on her arm; a click selects FK-Forearm.L, and R rotates it so her hand comes up to her chest. The picker starts again, a Shift-click on her jeans adds FK-Thigh_Parent.L, and the cursor moves to her shoe, where the label reads FK-Foot.L, moves DEF-Foot.L on GEO-rain-shoes" width="960" height="540" loading="lazy">
-    <figcaption>The picking moment from the demo, looping: hover, click, rotate the control that was picked, then Shift-click her jeans and hover her shoe.</figcaption>
+    <figcaption>The demo, 46 s, captions only, no sound: Skintap on Blender Studio's Rain, from Blender's own click to picking, Pick Deform Bones and the three chain tools. How it was recorded is under <a href="#how">How these images were made</a>.</figcaption>
   </figure>
 
   <div class="box warn">
@@ -116,6 +113,13 @@
     <a href="img/rain-blender-click.png"><img src="img/rain-blender-click-vs-skintap.png" alt="Two captures of the same view of Rain, side by side. Left, labelled 'Blender's own click: nothing selected': the cursor on her jeans at the left thigh after a plain click in Pose Mode; no bone is highlighted. Right, labelled 'Skintap: FK-Thigh_Parent.L selected': the same spot with Skintap's picker, the label 'FK-Thigh_Parent.L, moves DEF-Thigh1.L on GEO-rain-jeans' and the thigh control highlighted" width="1172" height="616" loading="lazy"></a>
     <figcaption>Same spot on Rain's jeans. Left: Blender's own click in Pose Mode selected nothing (her thigh control is drawn as a ring further down the leg, and the click landed on no bone shape). Right: Skintap selected the control that moves that spot. The labels above the two captures are ours; everything below them is Blender's window.</figcaption>
   </figure>
+
+  <h2 id="imported">Imported game characters</h2>
+  <figure>
+    <a href="img/mixamo-skintap.png"><img src="img/mixamo-blender-click-vs-skintap.png" alt="Two captures of the same view of Michelle, a Mixamo character imported into Blender 5.2, in Pose Mode with her bones drawn in front: grey octahedral bones run through her arms, legs, spine and head. Left, labelled 'Blender's own click: nothing selected': the cursor on her hair, to the right of her head, after a plain click; no bone is highlighted. Right, labelled 'Skintap: mixamorig:Head selected': the same spot with Skintap's picker, the label 'mixamorig:Head, on Ch03' next to the cursor and the head bone highlighted" width="1092" height="752" loading="lazy"></a>
+    <figcaption>Michelle, a Mixamo character imported with Blender's glTF importer. A click on her hair: Blender's own click selected nothing; Skintap selected <code>mixamorig:Head</code>. The bones are drawn in front (In Front on) so you can see where they are; the labels above the captures are ours. Character: Michelle, from Adobe Mixamo, not included with Skintap.</figcaption>
+  </figure>
+  <p>On imported Mixamo, FBX or glTF skeletons the bones run through the middle of each limb, so Blender's own click often finds the limb bones already. On Michelle, over 1,077 points on her posed body in front view, Blender's click selected nothing at 521: on her head and hair, on her wide trousers away from the bone, and on her torso. It selected a bone that moves the clicked spot at 511. Skintap did at all 1,077, on Blender 4.2 and 5.2. On such rigs the bones are the deform bones, so Skintap selects the bone itself, and names like <code>mixamorig:LeftArm</code> work as they are.</p>
 
   <figure>
     <a href="img/pick-hover.gif"><img src="img/pick-hover.gif" alt="Rain in Pose Mode. Shift+Alt+Q starts the picker; the cursor moves over her upper arm (label FK-Upperarm_Parent.L, moves DEF-Upperarm1.L on GEO-rain-body), her forearm (FK-Forearm.L), which is clicked and highlighted, down to her jeans at the thigh (FK-Thigh_Parent.L, moves DEF-Thigh1.L on GEO-rain-jeans), which is Shift-clicked and added, then over her shin (FK-Shin.L on GEO-rain-jeans) and her shoe (FK-Foot.L, moves DEF-Foot.L on GEO-rain-shoes)" width="740" height="740" loading="lazy"></a>
@@ -186,6 +190,7 @@
   <h2 id="tested">How we tested</h2>
   <ul>
     <li><strong>Against Blender's own click</strong>, in a separate review that tried to break Skintap: a grid of points over each posed character in front orthographic view, each clicked with Blender's Pose Mode click (In Front off and on) and with Skintap, and each selected bone then moved to see whether the clicked spot moved with it. Blender's click selected nothing at 52 of 208 points on a Rigify rig as generated, 94 of 208 with its Tweak controls hidden, and 110 of 165 on Rain. Skintap's pick moved the spot at 208 of 208, 208 of 208 and 159 of 165.</li>
+    <li><strong>On an imported Mixamo character</strong> (Michelle, above), with the same grid method: Blender's click selected nothing at 521 of 1,077 points and a bone that moves the spot at 511 (512 on 4.2); Skintap at 1,077 of 1,077, on Blender 4.2.23 and 5.2.3.</li>
     <li><strong>On Rain with every piece subdivided</strong> (Subdivision Surface level 2; 96,560 vertices on her body alone): 14 of 14 test points from head to shoe land on the right clothing piece and the right deform bone, on Blender 4.2 and 5.2.</li>
     <li><strong>Speed.</strong> On Rain, the first pick after a pose change took 13 ms at most and repeat picks 0.33 to 0.48 ms. On a deformed test mesh of 103,041 vertices, the median of 50 picks was 0.02 to 0.03 ms; the first pick after a pose change, when Blender builds its ray-cast tree, took 29 to 70 ms.</li>
     <li><strong>Names.</strong> Every Duplicate Chain and Mirror Chain test checks that no name ends in <code>.001</code> and that no bone outside the selection is renamed, including hidden bones that Blender still flags as selected; Mirror and Duplicate are also tested with the armature's X-Axis Mirror on.</li>
@@ -196,7 +201,7 @@
 
   <h2 id="limits">Known limits</h2>
   <ul>
-    <li>Tested on Linux, on Blender 4.2 LTS and 5.2 LTS. Windows and macOS have not been tested yet.</li>
+    <li>Tested on Linux, on Blender 4.2 LTS and 5.2 LTS. Windows and macOS have not been tested yet. Skintap is plain Python on Blender's own API, with no compiled parts, but that is not a test: if it doesn't work as described on your machine, the 14-day refund covers it.</li>
     <li>One armature at a time: the picker works for the active armature in Pose Mode and picks only meshes it deforms.</li>
     <li>A mesh without vertex groups (deformed by envelopes only) cannot be picked, nor a mesh whose modifiers rebuild it without its vertex groups (Remesh, some Geometry Nodes setups). A mesh scaled to zero is skipped.</li>
     <li>The control lookup follows constraints and parents, not drivers' targets or rig scripts. On Rigify in IK, the shin and foot select the heel-roll control. On other rigs the nearest visible driver can be a master control (see above).</li>
@@ -210,10 +215,19 @@
     <li>The panel settings reset when Blender restarts; they are kept out of your .blend on purpose.</li>
   </ul>
 
+  <h2 id="teams">Teams</h2>
+  <div class="box">
+    <ul>
+      <li><strong>One seat</strong> is one artist, on all of their own computers: $14.</li>
+      <li><strong>Studio licence:</strong> up to 10 artists in one team, $70, with the same 12 months of updates and support. To buy it, email <a href="mailto:support@ochrestack.com?subject=Skintap%20studio%20licence">support@ochrestack.com</a> with your team's name and we send the studio checkout. It is the same zip.</li>
+      <li>Skintap has no license check, so installing it on your team's machines is just the zip, the same Install from Disk steps on each.</li>
+    </ul>
+  </div>
+
   <h2 id="details">Details</h2>
   <ul>
-    <li>Buying: secure checkout by Polar. The download arrives by email right after payment; the zip is the extension itself, with the full source and license inside. No license key is checked and no account is needed. 12 months of updates and support are included, with no recurring charge; what you bought stays yours. If it doesn't work as described and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>). Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
-    <li>Blender 4.2 LTS and later; tested on 4.2 LTS and 5.2 LTS on Linux. Installs as a Blender extension from the zip. Uses only Blender's own Python API, with no extra packages.</li>
+    <li>Buying: secure checkout by Polar. The download arrives by email right after payment; the zip is the extension itself, with the full source and license inside. No license key is checked and no account is needed. $14 is one seat (one artist); a team of up to 10: $70, see <a href="#teams">Teams</a>. 12 months of updates and support are included, with no recurring charge; what you bought stays yours. If it doesn't work as described and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>). Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li>Blender 4.2 LTS and later; tested on 4.2 LTS and 5.2 LTS on Linux; Windows and macOS not tested yet (the refund covers it). Installs as a Blender extension from the zip. Uses only Blender's own Python API, with no extra packages.</li>
     <li>GPL-3.0-or-later. Full source code included with your purchase.</li>
     <li>Privacy: no network calls, no telemetry, no account. Skintap collects nothing, and it writes nothing outside your .blend file and Blender's preferences (its shortcut).</li>
     <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Send your Blender version, what you did and what you expected; a small .blend helps most.</li>
@@ -223,16 +237,24 @@
   <p>A one-page quick start: <a href="quick-start.html">Skintap quick start</a>.</p>
   <h3>Install</h3>
   <ol>
-    <li>After checkout, download <code>skintap-1.0.2.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it. (If your browser unzips downloads by itself, as Safari can, turn that off and download again.)</li>
+    <li>After checkout, download <code>skintap-1.0.3.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it. (If your browser unzips downloads by itself, as Safari can, turn that off and download again.)</li>
     <li>In Blender (4.2 or newer), open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.</li>
-    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Dragging the zip onto Blender's window also works.</li>
-    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Skintap</strong> tab.</li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. In Blender 4.2 that &#8964; is the small arrow at the far right, next to <strong>Repositories &#8964;</strong>. Dragging the zip onto Blender's window also works.</li>
+    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Skintap</strong> tab, the last tab of the sidebar.</li>
   </ol>
-  <p>If Get Extensions asks about internet access, <strong>Continue Offline is fine</strong>: Skintap needs none.</p>
+  <p>If Get Extensions asks about internet access, <strong>Continue Offline is fine</strong>: Skintap needs none. Blender may then show a red "Repository Alert" saying the remote data of extensions.blender.org is unavailable. That is Blender's own offline message, not an install error.</p>
+  <p>To remove Skintap: <strong>Preferences &gt; Get Extensions</strong>, open the <strong>&#8964;</strong> menu on Skintap's row, choose <strong>Uninstall</strong>. Inside Blender, <strong>Visit Website</strong> in that menu opens the quick start, and Preferences &gt; Add-ons &gt; Skintap shows the support address.</p>
+
+  <details id="how">
+    <summary>How these images were made</summary>
+    <p>Every image and GIF of Rain on this page, apart from the demo video and the looping clip taken from it, is a capture of a real Blender 5.2.3 LTS window on Linux at 1920x960 and UI scale 1.4, with Skintap 1.0.2 installed from its zip through Blender's extension installer (the Install from Disk path); 1.0.3 changed only the extension's website link and its preferences text, so the tools look and work the same. The character is Rain v3.3 as downloaded from studio.blender.org (CC BY 4.0, credit below), in her own file and rig. By script, between shots, we switched her arms and legs to FK, set her rig's Quality to 2 (Subdivision Surface level 2 on every piece of clothing and the body), posed her on her FK controls and set the view; for the chain images we added a three-bone hair strand and a three-bone ribbon to her rig, showed only their bone collection, and hid the viewport's navigation buttons. Every hover, click, Shift-click, menu and key press (Shift+Alt+Q, Esc, G, Shift+D) is a real input event sent to the window; every label, selection, name and status-bar report is Skintap's own. The GIFs were recorded one frame per pointer step and play at 30 frames per second: on this machine Blender draws the viewport in software, slower than that, so the motion here is smoother than it was live. The virtual display has no mouse cursor, so the arrow is drawn into each frame at the pointer's real position.</p>
+    <p>The Michelle comparison was captured the same way, with Skintap 1.0.3, on Michelle.glb from the three.js examples, imported with Blender's glTF importer (Bone Dir: Temperance, bone shapes off; with the default Bone Dir this file's bones are drawn about 100 times too long) and left at frame 1 of the dance it carries. For that image only, the armature's In Front is on and the viewport shows textures; the click on her hair and the picker are real input, and the selection after each click was read back from Blender. Character: Michelle, from Adobe Mixamo; not included with Skintap.</p>
+    <p>The demo video: Skintap 1.0.2 in Blender 5.2.3 LTS on Blender Studio's Rain, arms and legs in FK, Subdivision Surface level 2. Blender's own click on her jeans, then Skintap's picker: hover, click, rotate, Shift-click, Pick Deform Bones; then Duplicate Chain, Mirror Chain and Fix .001 Names on a hair strand and a ribbon added to her rig. Every label, selection and name is Skintap's own. It was recorded one frame at a time at 60 frames per second: this test machine draws the viewport in software, slower than that, so it plays smoother than it ran live. The arrow and the orange click rings are drawn in at the pointer's real positions. Rain Rig (CC) Blender Foundation | studio.blender.org. <a href="video/skintap-pick.gif">The picking moment as a looping GIF</a> (3.6 MB).</p>
+  </details>
 
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_0ErzmMI66XIOzneZ6ESnGRImsVJbeKGEGab5801xS0x">Buy for $14</a></p>
-    <p class="fine">$14 once, source included, 12 months of updates and support · Polar checkout · <a href="../terms.html">14-day refund if it doesn't work as described</a> · tested on Blender 4.2 LTS and 5.2 LTS, Linux</p>
+    <p class="fine">$14 once, source included, 12 months of updates and support · Polar checkout · <a href="../terms.html">14-day refund if it doesn't work as described</a> · tested on Blender 4.2 LTS and 5.2 LTS, Linux · a team of up to 10: <a href="#teams">$70</a></p>
   </div>
 </main>
 <footer>

@@ -37,16 +37,18 @@
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2 LTS and 5.2 LTS)</h2>
   <ol>
-    <li>After checkout, download <code>skintap-1.0.2.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
+    <li>After checkout, download <code>skintap-1.0.3.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Skintap needs no internet, so <strong>Continue Offline is fine</strong>.</li>
+        <li>Blender may then show a red <strong>"Repository Alert"</strong> saying the remote data of extensions.blender.org is unavailable. That is Blender's own offline message, not an install error; carry on.</li>
       </ul>
     </li>
-    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Dragging the zip onto the Blender window also works. Skintap is enabled at once.</li>
-    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Skintap</strong> tab.</li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. In Blender 4.2 that &#8964; is the small arrow at the far right of the row, just right of <strong>Repositories &#8964;</strong>; Install from Disk is not under Repositories. Dragging the zip onto the Blender window also works. Skintap is enabled at once.</li>
+    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Skintap</strong> tab. It is added at the end of the sidebar's tabs, below the others.</li>
   </ol>
-  <p>To update, install the newer zip the same way; it replaces the old version. If the picker was running while you updated, restart Blender. To remove Skintap, go to <strong>Preferences &gt; Add-ons</strong>, find <em>Skintap</em>, and choose <strong>Uninstall</strong> from its drop-down menu.</p>
+  <p>To update, install the newer zip the same way; it replaces the old version. If the picker was running while you updated, restart Blender. To remove Skintap, go to <strong>Preferences &gt; Get Extensions</strong>, open the <strong>&#8964;</strong> menu on Skintap's row and choose <strong>Uninstall</strong>. (Preferences &gt; Add-ons only turns it on and off.)</p>
+  <p>Help inside Blender: <strong>Visit Website</strong> in that same menu, or the <strong>Website</strong> button in Preferences &gt; Add-ons &gt; Skintap, opens this page; the Add-ons entry also shows the support address.</p>
 
   <h2 id="pick">Pick Bones on Mesh</h2>
   <ol>
@@ -113,7 +115,7 @@
 
   <h2 id="limits">Limits</h2>
   <ul>
-    <li>Tested on Blender 4.2 LTS and 5.2 LTS on Linux; Windows and macOS not yet tested.</li>
+    <li>Tested on Blender 4.2 LTS and 5.2 LTS on Linux; Windows and macOS not yet tested. If it doesn't work as described on yours, email us within 14 days of purchase for a full refund.</li>
     <li>One armature at a time; the picker picks only meshes deformed by the active armature. A mesh without vertex groups cannot be picked.</li>
     <li>The control lookup follows constraints and parents, not drivers' targets or rig scripts; it is tested on Rigify.</li>
     <li>Linked and library-override armatures are refused by the chain tools (their names come from the library file). Generated Rigify rigs are refused by the renaming tools.</li>
