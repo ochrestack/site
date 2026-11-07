@@ -12,6 +12,8 @@ Allow: /skintap/
 Allow: /skintap/quick-start.html
 Allow: /sunreckon/
 Allow: /sunreckon/quick-start.html
+Allow: /spallwork/
+Allow: /spallwork/quick-start.html
 Allow: /attachkeep/
 Allow: /attachkeep/quick-start.html
 Allow: /labelkeep/
