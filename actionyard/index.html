@@ -52,6 +52,8 @@
   .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
   .pair figure { flex: 0 1 256px; margin: 0; }
   .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
   .hero { display: block; width: 100%; max-width: 640px; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
   .fine { font-size: 15px; color: var(--muted); }
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
@@ -60,6 +62,11 @@
     h1 { margin-top: 28px; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
     table { font-size: 14px; }
     th, td { padding: 6px; }
   }
@@ -74,8 +81,11 @@
 </header>
 <main>
   <h1>Actionyard for Blender</h1>
-  <a href="img/rain-stash-column.png"><img class="hero" src="img/rain-stash-column-2x1.png" alt="Blender 4.5 with Blender Studio's Rain in her Attack_Heavy pose on the left; in the middle her NLA editor, with the active Attack_Heavy action, a Locomotion track and a column of 16 [Action Stash] tracks below it holding Death_v1, Dodge_v1, Block_v1, Attack_Heavy_v2, Attack_Heavy_v1, Jump_v1, Run_v2, Run_v1, Walk_v2, Walk_blockout, Idle_v1 and older strips; on the right the Actionyard sidebar tab, filtered to Stashed, reading '47 actions, 13 stashed, 0 with no users' above the list of stashed actions and the Action Stashes panel" width="1600" height="800"></a>
-  <p class="sub">When many stashed actions exist, they clutter the NLA editor, and Purge won't remove them. Actionyard lists every action with where it is used, and clears the stashes you pick, previewed first.</p>
+  <p class="sub">Actionyard clears the [Action Stash] tracks that Blender's Purge won't remove, and shows where every action in your file is used.</p>
+  <div class="pair">
+    <figure style="flex:1 1 300px"><a href="img/rain-stash-column.png"><img src="img/nla-before.png" alt="Before: Rain's NLA editor with the active Attack_Heavy action, a Locomotion track and a column of 16 [Action Stash] tracks holding Death_v1, Dodge_v1, Block_v1, Attack_Heavy_v2, Attack_Heavy_v1, Jump_v1, Run_v2, Run_v1, Walk_v2, Walk_blockout, Idle_v1, two of her face actions and three empty strips" width="678" height="548"></a><figcaption><strong>Before:</strong> 16 [Action Stash] tracks under Rain's rig.</figcaption></figure>
+    <figure style="flex:1 1 300px"><a href="img/rain-after-clear.png"><img src="img/nla-after.png" alt="After: the same NLA editor with only the active Attack_Heavy action and the Locomotion track left" width="678" height="548"></a><figcaption><strong>After one Clear Stashes:</strong> none. Her Locomotion track and all 47 actions stay.</figcaption></figure>
+  </div>
 
   <div class="buy">
     <p class="price"><strong>$12, one-time, every future version included</strong>, source included (GPL-3.0-or-later). For Blender 4.4 and later; tested on Blender 4.4, 4.5 LTS and 5.2 LTS.</p>
@@ -83,11 +93,17 @@
     <p class="fine">Polar checkout · <a href="../terms.html">14-day refund</a> · no license check · <a href="#details">details</a></p>
   </div>
 
-  <p class="fine">Above: Blender Studio's Rain with a game move set, in Blender 4.5 LTS with Actionyard 1.1.0. Each older take sits on its own [Action Stash] track, and the tab lists the 13 stashed actions.</p>
-  <details>
-    <summary>How these images were made</summary>
-    <p>The character is Rain, Blender Studio's free production rig (CC BY 4.0, credit below), in her own file as downloaded from studio.blender.org, with its 19 face actions and their Action constraints. Her file already holds 5 [Action Stash] tracks. We added a game move set keyed on her controls: 17 final actions (Idle, Walk, Run, Sprint, Jump, three attacks, Block, Dodge and more), each kept with Fake User, and 11 older takes, each stashed with Blender's own Stash operator, as New Action does. The result is 47 actions and 16 [Action Stash] tracks. Every image and GIF on this page is a capture of a real Blender 4.5.15 LTS window on Linux at 1920x960, with Actionyard 1.1.0 installed from its zip through Blender's extension installer. The mouse and keyboard input is scripted. The GIFs are cut from screen recordings of the same session, in real time. A check after every step compared the file's data with what the screen shows: 21 checks, all passed.</p>
-  </details>
+  <div class="box">
+    <ul style="margin:0;padding-left:20px">
+      <li><strong>For you if</strong> one file holds many actions: a game move set, or takes made with New Action, which stashes the old one every time.</li>
+      <li><strong>Not needed</strong> for a few actions on one rig: Blender's Outliner and Purge cover that.</li>
+      <li><strong>Not included:</strong> onion skins and channel locking.</li>
+    </ul>
+    <details style="margin:10px 0 0">
+      <summary>The scope in full</summary>
+      <p>Blender already lists every action with its user count (Outliner, Blender File mode), toggles Fake User, purges actions with no users (Outliner, Unused Data, Purge), deletes a stash track by hand in the NLA editor, and remaps users (Action menu). A buyer with a few actions on one rig needs none of this. With many actions and stashes, the buyer pays for one list that names, per action, every object, NLA track, Action Stash and Action constraint that uses it, and for removing chosen stashes in one previewed, undoable step, which Purge does not do because a stashed action is still in use. Version one does not show onion skins and does not lock channels.</p>
+    </details>
+  </div>
 
   <section id="watch">
   <h2>Watch it work</h2>
@@ -95,16 +111,12 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/actionyard-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 39 s, captions only, no sound. Rain's file in Blender 4.5 LTS with Actionyard 1.1.0: Purge leaves the 16 stash tracks, then the list, Used by, the Clear Stashes preview, the result, and Ctrl+Z. It is a real Blender window: her animation captured frame by frame, the clicks recorded at 60 fps. Rain Rig (CC) Blender Foundation | studio.blender.org. <a href="video/actionyard-clear-stashes.gif">The Clear Stashes moment as a looping GIF</a> (7 MB).</figcaption>
-  </figure>
-  <figure>
-    <a href="video/actionyard-clear-stashes.gif"><img src="video/actionyard-clear-stashes.gif" alt="Looping GIF cut from the demo: in Rain's file, Whole File and Clear Stashes are clicked, the preview reads 'Removes 13 Action Stash tracks from 1 data-block', Walk_blockout's keep tick is cleared, Clear Stashes is confirmed and 13 stash tracks leave the NLA editor while the tab reads '47 actions, 0 stashed, 1 with no users'; then Ctrl+Z brings every track back" width="1280" height="720" loading="lazy"></a>
-    <figcaption>The Clear Stashes moment from the demo, as a looping GIF (13 s, 7 MB).</figcaption>
+    <figcaption>The demo, 38 s, captions only, no sound. Rain's file in Blender 4.5 LTS with Actionyard 1.2.0: Purge leaves the 16 stash tracks, then the list, Used by, the Clear Stashes preview with one take let go, all 16 tracks gone, and Ctrl+Z. It is a real Blender window: her animation captured frame by frame, the clicks recorded at 60 fps. Rain Rig (CC) Blender Foundation | studio.blender.org. <a href="video/actionyard-clear-stashes.gif">The Clear Stashes moment as a looping GIF</a> (7 MB).</figcaption>
   </figure>
   </section>
 
   <div class="box warn">
-    <strong>Where it matters.</strong> Press New Action and Blender stashes the previous take on a muted [Action Stash] track. A file built take by take ends up with a column of them. Purge won't clear them out: a stashed action still has a user, so Purge leaves it in the file. Deleting the stashed actions themselves is no better. Blender removes the actions but leaves every [Action Stash] track behind, each holding a strip with no action.
+    <strong>Why Purge doesn't help.</strong> Press New Action and Blender stashes the previous take on a muted [Action Stash] track. A stashed action still has a user, so Purge leaves it in the file. Deleting the stashed actions themselves is no better: Blender removes the actions but leaves every [Action Stash] track behind, each holding a strip with no action. Actionyard clears those empty tracks too.
   </div>
 
   <figure>
@@ -112,21 +124,13 @@
     <figcaption>Blender's own Purge on Rain's file. With 16 [Action Stash] tracks in the NLA editor, it offers to delete 1 text block and no actions. After Delete, the file still had all 47 actions and all 16 stash tracks.</figcaption>
   </figure>
 
-  <div class="box">
-    <strong>Who needs it, and who doesn't.</strong> Blender already lists every action with its user count (Outliner, Blender File mode), toggles Fake User, purges actions with no users (Outliner, Unused Data, Purge), deletes a stash track by hand in the NLA editor, and remaps users (Action menu). A buyer with a few actions on one rig needs none of this. With many actions and stashes, the buyer pays for one list that names, per action, every object, NLA track, Action Stash and Action constraint that uses it, and for removing chosen stashes in one previewed, undoable step, which Purge does not do because a stashed action is still in use. Version one does not show onion skins and does not lock channels.
-  </div>
-
-  <figure>
-    <a href="img/clear-stashes.gif"><img src="img/clear-stashes.gif" alt="Screen recording: in the Action Stashes panel, Whole File is chosen and Clear Stashes is clicked; the preview lists 'Removes 13 Action Stash tracks from 1 data-block', each take with a keep-with-Fake-User tick, and each track; the tick for Walk_blockout is cleared, the dialog is confirmed, and 13 of the stash tracks disappear from the NLA editor (the 3 holding strips with no action stay) while the status bar reports the result; then Ctrl+Z brings every track back" width="1180" height="940" loading="lazy"></a>
-    <figcaption>Clear Stashes on Rain's file, in real time: the preview, one take let go (Walk_blockout), confirm, then Ctrl+Z brings it all back. The two face actions on the list are still used by her face rig, so the preview says "no change" for them.</figcaption>
-  </figure>
-
   <h2>What it does</h2>
   <p>Actionyard is a sidebar tab in the NLA editor and the Dope Sheet.</p>
   <ul>
     <li><strong>One list of every action.</strong> Each action in the file with its frame range, how many places use it, Blender's user count and a Fake User toggle. Search by name, filter to <em>Stashed</em>, <em>No users</em>, <em>Fake User only</em> or <em>Used</em>, and sort by name or by number of uses. A line above the list counts the actions, the stashed ones and the ones with no users.</li>
     <li><strong>Used by: every place, with the slot.</strong> Click an action to see each place that uses it: the active action of an object, shape keys or material; an NLA track, with the track and strip names; an Action Stash; or an Action constraint, with the armature, bone and constraint names. Click a row, and that object is selected and made active.</li>
-    <li><strong>Clear Stashes, previewed.</strong> For the active object or the whole file. Before anything changes, the preview says how many stash tracks go and from how many objects, which actions are on them, and, for each action left unused, whether to keep it in the file with Fake User (the default) or let it go. A stash track you have unmuted, so it plays, is marked and starts unticked. Only Action Stash tracks are removed; your other NLA tracks stay, muted or not. One Ctrl+Z undoes it all.</li>
+    <li><strong>Clear Stashes, previewed.</strong> For the active object or the whole file. Before anything changes, the preview says how many stash tracks go, from how many objects and how many are empty, and which actions are on them. For each action left unused you choose: keep it in the file with Fake User, or let it go. Keep is the default every time the preview opens, also after Ctrl+Z. A take you already gave a Fake User is marked as already kept. A stash track you have unmuted, so it plays, is marked and starts unticked. Only Action Stash tracks are removed; your other NLA tracks stay, muted or not. One Ctrl+Z undoes it all.</li>
+    <li><strong>Empty stash tracks too.</strong> The [Action Stash] tracks Blender leaves behind when a stashed action is deleted the plain way are listed as "empty, from a deleted action" and cleared with the rest.</li>
     <li><strong>Delete Action Everywhere.</strong> Tick the actions you want gone. The preview lists every place that will lose each one; then they are removed from all of those places and from the file in one undo step, with no empty stash tracks left behind.</li>
     <li><strong>Remove Unused Actions.</strong> Deletes actions with no users, keeps Fake User actions unless you tick them, and always keeps pose-library assets.</li>
     <li><strong>Works with linked and overridden rigs.</strong> Linked data, and everything a library override takes from its library file, is listed with a lock and never changed. Stash tracks you added on the override in your own file are yours to clear, as they are in Blender's NLA editor.</li>
@@ -134,24 +138,36 @@
   </ul>
 
   <h2>In Blender, for real</h2>
-  <p>Captured on Rain's file in Blender 4.5.15 LTS with Actionyard 1.1.0. The panel and dialog captures are shown at real size on a wide screen; tap an image for the full capture.</p>
+  <p>Captured on Rain's file in Blender 4.5.15 LTS with Actionyard 1.2.0. The panel and dialog captures are shown at real size on a wide screen; tap an image for the full capture.</p>
   <figure>
-    <a href="img/used-by.gif"><img class="ui" src="img/used-by.gif" alt="Screen recording of the Actionyard tab at real size: 'lips_roll' typed in the search field, Rain_Lips_Roll_Lower clicked (16 uses, 16 users), and its Used by list scrolled: 16 places, first an Action Stash on RIG-rain (track [Action Stash], strip Rain_LipRoll_Lower, Legacy Slot), then Action constraints on RIG-rain, bones P-GRP-Lip_Bot.M, GRP-Lip_Bot.M, P-BB-Lip_Bot_Bot.M and more, constraint Action_Lips_Lower_Roll, each with its slot" width="494" height="884" loading="lazy"></a>
-    <figcaption>Used by on one of Rain's face actions: 1 Action Stash and 15 Action constraints in her face rig, each with bone, constraint and slot. Clearing its stash track leaves it in use, and the preview says so.</figcaption>
+    <a href="img/clear-stashes.gif"><img src="img/clear-stashes.gif" alt="Screen recording: in the Action Stashes panel, Whole File is chosen and Clear Stashes is clicked; the preview reads 'Removes 16 Action Stash tracks from 1 data-block (3 empty)'; the action list is scrolled with the mouse wheel to Walk_blockout and its keep tick is cleared; the dialog is confirmed and all 16 stash tracks leave the NLA editor while the status bar reports the result; then Ctrl+Z brings every track back" width="1180" height="940" loading="lazy"></a>
+    <figcaption>Clear Stashes on Rain's file, in real time: the preview, one take let go (Walk_blockout), confirm, then Ctrl+Z brings it all back.</figcaption>
   </figure>
   <figure>
-    <a href="img/clear-stashes-preview.png"><img class="ui" src="img/clear-stashes-preview.png" alt="The Clear Stashes dialog at real size: 'Removes 13 Action Stash tracks from 1 data-block. Only Action Stash tracks are removed; other NLA tracks stay as they are.' Actions on these tracks: Rain_Lips_Roll_Lower still used by 15 other places, no change; Rain_Eyelid_Twist_Upper still used by 6 other places, no change; Idle_v1 keep in the file with Fake User, kept; Walk_blockout unticked, becomes unused; Walk_v2, Run_v1, Run_v2, Jump_v1, Attack_Heavy_v1, Attack_Heavy_v2, Block_v1, Dodge_v1 and Death_v1 kept. Then each of the 13 Action Stash tracks with its own tick" width="552" height="934" loading="lazy"></a>
-    <figcaption>The preview before anything changes: each take kept with Fake User unless you untick it (Walk_blockout here), and each track with its own tick.</figcaption>
+    <a href="img/clear-stashes-preview.png"><img class="ui" src="img/clear-stashes-preview.png" alt="The Clear Stashes dialog at real size: 'Removes 16 Action Stash tracks from 1 data-block (3 empty). Only Action Stash tracks are removed; other NLA tracks stay as they are.' Actions on these tracks (13), scrolled: Dodge_v1, Idle_v1 and Jump_v1 kept; Rain_Eyelid_Twist_Upper still used by 6 other places and Rain_Lips_Roll_Lower by 15, no change; Run_v1 and Run_v2 kept; Walk_blockout unticked, becomes unused. Action Stash tracks (16): each with its tick, three of them 'empty, from a deleted action'. Then 'Scroll a list to see every row. Return confirms.' and the Cancel and Clear Stashes buttons" width="552" height="619" loading="lazy"></a>
+    <figcaption>The preview before anything changes: each take kept with Fake User unless you untick it (Walk_blockout here), Rain's face actions left alone because her face rig still uses them, and her three empty stash tracks named as such. The lists scroll, so the buttons stay on screen.</figcaption>
   </figure>
   <figure>
-    <a href="img/rain-after-clear.png"><img src="img/rain-after-clear-2x1.png" alt="The same Blender window after Clear Stashes: Rain's NLA editor now shows Attack_Heavy, the Locomotion track and three [Action Stash] tracks (.004, .003, .001) whose strips have no action; the Actionyard tab reads '47 actions, 0 stashed, 1 with no users' and 'No Action Stash tracks here'; the status bar says 'Cleared 13 Action Stash tracks from 1 data-block; 10 actions kept with Fake User, 1 left unused'" width="1600" height="800" loading="lazy"></a>
-    <figcaption>After: 13 stash tracks gone, the Locomotion track untouched, all 47 actions still in the file, and the summary in the status bar. Three [Action Stash] tracks remain. They come with Rain's file as downloaded and hold strips with no action. Actionyard 1.1.0 neither lists them nor clears them (see <a href="#limits">Known limits</a>).</figcaption>
+    <a href="img/rain-after-clear.png"><img src="img/rain-after-clear-2x1.png" alt="The same Blender window after Clear Stashes: Rain's NLA editor now shows only Attack_Heavy and the Locomotion track; the Actionyard tab reads '47 actions, 0 stashed, 1 with no users' and 'No Action Stash tracks here'; the status bar says 'Cleared 16 Action Stash tracks from 1 data-block; 10 actions kept with Fake User, 1 left unused'" width="1600" height="800" loading="lazy"></a>
+    <figcaption>After: all 16 stash tracks gone, the 3 empty ones included; the Locomotion track untouched; all 47 actions still in the file; the summary in the status bar.</figcaption>
+  </figure>
+  <figure>
+    <a href="img/rain-override-2x1.png"><img class="ui" src="img/override-preview.png" alt="The Clear Stashes dialog at real size in a shot file where Rain is linked from her own file and made a library override: 'Removes 4 Action Stash tracks from 1 data-block.' Shot020_take1 to Shot020_take4 kept with Fake User. Action Stash tracks (9): the five that come from Rain's library file are locked, each marked 'read-only, library override', two holding her face actions and three empty; below them the shot's own takes, ticked" width="552" height="535" loading="lazy"></a>
+    <figcaption>Rain linked from her own file into a shot and made a library override, with four takes stashed in the shot. The preview locks the five stash tracks that come from her library file ("read-only, library override") and clears only the shot's own four. After confirming, her library file on disk was not written.</figcaption>
+  </figure>
+  <figure>
+    <a href="img/used-by.gif"><img class="ui" src="img/used-by.gif" alt="Screen recording of the Actionyard tab at real size: 'lips_roll' typed in the search field, Rain_Lips_Roll_Lower clicked (16 uses, 16 users), and its Used by list scrolled: 16 places, first an Action Stash on RIG-rain, then Action constraints on bones of her face rig, each with its constraint and slot" width="494" height="884" loading="lazy"></a>
+    <figcaption>Used by on one of Rain's face actions: 1 Action Stash and 15 Action constraints in her face rig, each with bone, constraint and slot.</figcaption>
   </figure>
   <figure>
     <a href="img/search-filter-sort.gif"><img class="ui" src="img/search-filter-sort.gif" alt="Screen recording of the Actionyard list at real size: 'attack' typed in the search field shows 5 actions; the search is cleared; the Show menu is set to Stashed (13 shown), then to Fake User only; finally the list is sorted by Uses, putting Rain_Lips_UpDown (58 uses) and Rain_Lips_Wide (54) on top" width="494" height="410" loading="lazy"></a>
     <figcaption>Search, the filters and the sort by number of uses, in real time.</figcaption>
   </figure>
-  <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We added the game actions and the stashed takes. Rain is not included with Actionyard.</p>
+  <details>
+    <summary>How these images were made</summary>
+    <p>The character is Rain, Blender Studio's free production rig (CC BY 4.0, credit below), in her own file as downloaded from studio.blender.org, with its 19 face actions and their Action constraints. Her file already holds 5 [Action Stash] tracks, 3 of them empty. We added a game move set keyed on her controls: 17 final actions, each kept with Fake User, and 11 older takes, each stashed with Blender's own Stash operator, as New Action does. The result is 47 actions and 16 [Action Stash] tracks. For the override image, a new shot file links Rain from her downloaded file, makes her a library override and stashes four takes. Every image and GIF on this page is a capture of a real Blender 4.5.15 LTS window on Linux at 1920x960, with Actionyard 1.2.0 installed from its zip through Blender's extension installer. The mouse and keyboard input is scripted. The GIFs are cut from screen recordings of the same session, in real time. A check after every step compared the file's data with what the screen shows: 29 checks, all passed.</p>
+  </details>
+  <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We added the game actions, the stashed takes and the shot file. Rain is not included with Actionyard.</p>
 
   <h2 id="tested">Blender's way against Actionyard</h2>
   <p>Measured on a file with two rigs, each with 5 takes stashed by Blender's Stash operator and 1 active take, and one stash on a mesh's shape keys: 13 actions and 11 [Action Stash] tracks to begin with. Blender 4.5 LTS and 5.2 LTS gave the same numbers.</p>
@@ -163,8 +179,8 @@
     <tr><td>Actionyard: Clear Stashes, Whole File, keep unticked, then Purge</td><td>2</td><td>0</td><td>0</td></tr>
     <tr><td>Actionyard: Delete Action Everywhere on the same 11</td><td>2</td><td>0</td><td>0</td></tr>
   </table>
-  <p>On Rain's file, in the real Blender window: Purge deleted 1 text block and left all 47 actions and 16 stash tracks. Clear Stashes (Whole File, one take let go) removed the 13 stash tracks that hold actions, left the Locomotion track and all 47 actions in place, kept 10 takes with Fake User and left 1 with no users. One Ctrl+Z brought every track and every Fake User flag back.</p>
-  <p>Big files: a file with 12 rigs of 200 bones, 800 actions and 792 NLA tracks is scanned in under half a second in our test suite, on every tested Blender version.</p>
+  <p>On Rain's file, in the real Blender window: Purge deleted 1 text block and left all 47 actions and 16 stash tracks. Clear Stashes (Whole File, one take let go) removed all 16 stash tracks, the 3 empty ones too, left the Locomotion track and all 47 actions in place, kept 10 takes with Fake User and left 1 with no users. One Ctrl+Z brought every track and every Fake User flag back.</p>
+  <p>In the real interface of Blender 4.5 LTS and 5.2 LTS, on a character with 28 stash tracks (2 of them empty): the preview fits a 1080-pixel screen with its buttons in view, and after a take is let go, Ctrl+Z and a second Clear Stashes start back on "keep". Big files: a file with 12 rigs of 200 bones, 800 actions and 792 NLA tracks is scanned in under half a second in our test suite, on every tested Blender version.</p>
 
   <h2 id="details">Details</h2>
   <ul>
@@ -180,12 +196,12 @@
   <p>The manual (<code>README.md</code>) is inside the zip: open the zip to read it, but install the zip itself, as it is. A one-page guide is online: <a href="quick-start.html">Actionyard quick start</a>.</p>
   <h3>Install</h3>
   <ol>
-    <li>Download <code>actionyard-1.1.0.zip</code>. Do not unzip it.</li>
+    <li>Download <code>actionyard-1.2.0.zip</code>. Do not unzip it.</li>
     <li>In Blender 4.4 or newer, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.</li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip.</li>
     <li>In the NLA editor or the Dope Sheet, press <strong>N</strong> and open the <strong>Actionyard</strong> tab.</li>
   </ol>
-  <p>If Get Extensions asks about internet access, <strong>Continue Offline is fine</strong>: Actionyard needs none.</p>
+  <p>If Get Extensions asks about internet access, <strong>Continue Offline is fine</strong>: Actionyard needs none. Blender may then show a red "Repository Alert" about extensions.blender.org; that is Blender's note about its online catalogue, and Install from Disk works anyway.</p>
 
   <h2 id="words">Words used on this page</h2>
   <ul>
@@ -198,13 +214,13 @@
   <h2 id="limits">Known limits</h2>
   <ul>
     <li>No onion skins and no channel locking. No action switching, frame-range setting, export, NLA merging or baking.</li>
-    <li>A stash track whose strips have no action is not listed or cleared in 1.1.0. Blender leaves those behind when a stashed action is deleted the plain way; Rain's file comes with three. Delete them by hand in the NLA editor.</li>
-    <li>Linked data, and what a library override takes from its library, is read-only: an action that such data uses is not deleted. Tracks you added on an override in your own file are not affected by this.</li>
+    <li>Linked data, and what a library override takes from its library, is read-only: an action that such data uses is not deleted, and an empty stash track from the library stays. Tracks you added on an override in your own file are not affected by this.</li>
     <li>Delete Action Everywhere leaves an action alone when one of its strips is on a locked NLA track; unlock the track first. Blender locks its own stash tracks, and those are still cleared.</li>
     <li>NLA tweak mode: exit it before clearing stashes or deleting actions on that object.</li>
     <li>A strip inside a meta strip loses its action but stays in the meta strip; Blender's Python API cannot remove it.</li>
     <li>What counts as a stash is Blender's own rule: a track name containing "[Action Stash]". A track you named that way yourself counts too, so check the preview.</li>
     <li>In a narrow sidebar the Uses column hides and very long names are cut; widen the sidebar.</li>
+    <li>Opening the Actionyard Report in a Text Editor adds an undo step of its own; press Ctrl+Z once more to undo the clean-up, or use Edit &gt; Undo History.</li>
     <li>Not tested yet: Windows, macOS, and overrides of overrides (nested library overrides). English only.</li>
   </ul>
 </main>

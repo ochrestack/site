@@ -38,10 +38,11 @@
 
   <h2 id="install">Install (Blender 4.4 or newer; tested on 4.4, 4.5 LTS and 5.2 LTS)</h2>
   <ol>
-    <li>Download <code>actionyard-1.1.0.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>Download <code>actionyard-1.2.0.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Actionyard needs no internet, so <strong>Continue Offline is fine</strong>.</li>
+        <li>After Continue Offline, Blender may show a red <strong>Repository Alert</strong> saying the extensions.blender.org data is unavailable. That is Blender's note about its online catalogue, not an error in Actionyard. Install from Disk works anyway.</li>
       </ul>
     </li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Actionyard is enabled straight away.</li>
@@ -57,14 +58,15 @@
     </li>
     <li><strong>In Action Stashes, choose Active Object or Whole File and click Clear Stashes...</strong> Nothing changes until you confirm. The preview shows:
       <ul>
-        <li>how many stash tracks go, and from how many objects or other data-blocks;</li>
-        <li>each action on them. An action that something else still uses says so and is left alone. Every other action has a tick: keep it in the file with Fake User (ticked by default), or untick it to let it go;</li>
+        <li>how many stash tracks go, from how many objects or other data-blocks, and how many are empty. An empty stash track is what Blender leaves behind when a stashed action is deleted the plain way; it is listed as "empty, from a deleted action" and cleared with the rest;</li>
+        <li>each action on them. An action that something else still uses says so and is left alone. An action you already gave a Fake User says "already kept by its Fake User; stays". Every other action has a tick: keep it in the file with Fake User, or untick it to let it go. The ticks start on "keep" every time the dialog opens, also after Ctrl+Z;</li>
         <li>each track, with its own tick. A stash track you have unmuted plays in your animation, so it is marked and starts unticked.</li>
+        <li>With many stashes, both lists scroll (8 rows each), so <strong>Clear Stashes</strong> and <strong>Cancel</strong> stay on screen. Return confirms.</li>
       </ul>
-      <figure><img src="img/clear-stashes-preview.png" alt="The Clear Stashes dialog at real size: 'Removes 13 Action Stash tracks from 1 data-block', the two face actions still used elsewhere, each take with its keep-with-Fake-User tick (Walk_blockout unticked, becomes unused), and the 13 tracks, each ticked" width="552" height="934" loading="lazy"><figcaption>The preview on Rain's file, with one take let go.</figcaption></figure>
+      <figure><img src="img/clear-stashes-preview.png" alt="The Clear Stashes dialog at real size: 'Removes 16 Action Stash tracks from 1 data-block (3 empty)', the action list scrolled to show the two face actions still used elsewhere and the takes with their keep-with-Fake-User ticks (Walk_blockout unticked, becomes unused), the track list with Rain's three empty stash tracks, and the Cancel and Clear Stashes buttons" width="552" height="619" loading="lazy"><figcaption>The preview on Rain's file (Actionyard 1.2.0), with one take let go.</figcaption></figure>
     </li>
     <li><strong>Confirm.</strong> The status bar says what changed, and the details go to a text block named <strong>Actionyard Report</strong> (open it in the Text Editor). Only Action Stash tracks are removed; your other NLA tracks stay as they are.</li>
-    <li><strong>Changed your mind?</strong> One <strong>Ctrl+Z</strong> undoes the whole operation.</li>
+    <li><strong>Changed your mind?</strong> One <strong>Ctrl+Z</strong> undoes the whole operation. If you opened the Actionyard Report in a Text Editor afterwards, Blender counts that as an undo step of its own: press Ctrl+Z once more, or pick the operation in <strong>Edit &gt; Undo History</strong>.</li>
     <li>If you let actions go, run <strong>Remove Unused Actions...</strong>, or save and reopen the file: Blender drops data with no users when it saves.</li>
   </ol>
   <p style="font-size:14px;color:var(--muted)">Character in the images: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, with game actions and stashed takes we added. Rain is not included with Actionyard.</p>
@@ -76,7 +78,7 @@
       <li><strong>Remove Unused Actions...</strong>: deletes actions with no users. It keeps Fake User actions unless you tick "Also Fake User Actions", and always keeps actions marked as assets (pose library poses).</li>
     </ul>
   </div>
-  <p>Deleting a stashed action as a data-block instead (what the Outliner's Delete does) removes the action but leaves its [Action Stash] track behind, holding a strip with no action. Delete Action Everywhere removes the track too.</p>
+  <p>Deleting a stashed action as a data-block instead (what the Outliner's Delete does) removes the action but leaves its [Action Stash] track behind, holding a strip with no action. Delete Action Everywhere removes the track too, and Clear Stashes clears such empty tracks if you already have them.</p>
 
   <h2 id="words">Words used here</h2>
   <ul>
@@ -88,7 +90,6 @@
   <h2 id="limits">Limits</h2>
   <ul>
     <li>Requires Blender 4.4 or newer. Tested on Blender 4.4, 4.5 LTS and 5.2 LTS, on Linux; Windows and macOS have not been tested yet.</li>
-    <li>A stash track whose strips have no action (what deleting a stashed action as a data-block leaves behind) is not listed or cleared in 1.1.0; delete it by hand in the NLA editor.</li>
     <li>Linked data, and everything a library override takes from its library file, is shown with a lock and never changed. Stash tracks you added on an override in your own file can be cleared.</li>
     <li>Delete Action Everywhere leaves an action alone when one of its strips is on a locked NLA track (not a stash track); unlock the track first.</li>
     <li>A data-block in NLA tweak mode is skipped; exit tweak mode first. A strip inside a meta strip loses its action but stays in the meta strip.</li>
