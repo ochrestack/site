@@ -22,13 +22,11 @@
   figure { margin: 20px 0; }
   figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
-  .slot { min-height: 340px; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 10px; background: #fff; color: var(--muted); font-size: 15px; }
   .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
-  @media (max-width: 600px) {
-    .slot { min-height: 160px; }
-  }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
+  /* Linkhither additions */
+  figure img.slot { width: 100%; border: 0; border-radius: 10px; }
 </style>
 </head>
 <body>
@@ -66,13 +64,10 @@
         <li>choose what readers see when nothing links here: <strong>a message</strong> you can edit, or <strong>nothing at all</strong>.</li>
       </ul>
       <figure id="shot-5">
-        <!-- Shot 5. Replace the div with:
+        <!-- Shot 5. Replace the placeholder img below with:
         <img src="img/shot-5-macro-settings.png" alt="The Incoming links macro's settings panel: These spaces only with QMS entered, a label, and Show nothing at all chosen for when nothing links here" width="1840" height="900" loading="lazy">
         -->
-        <div class="slot" role="img" aria-label="Screenshot 5, to be added: the Incoming links macro's settings panel, with These spaces only and QMS entered, a label, and Show nothing at all chosen for when nothing links here">
-          <strong>Screenshot 5, to be added from Confluence</strong>
-          <span>The macro's settings: "These spaces only" with QMS, a label, and "Show nothing at all".</span>
-        </div>
+        <img class="slot" src="img/shot-5-slot.svg" alt="Screenshot 5, to be added: the Incoming links macro's settings panel, with These spaces only and QMS entered, a label, and Show nothing at all chosen for when nothing links here" width="1840" height="900" loading="lazy">
         <figcaption>Limit the macro to this space, chosen spaces or a label, and choose what readers see when nothing links here.</figcaption>
       </figure>
     </li>
@@ -82,13 +77,10 @@
   <h2 id="byline">The count under every title</h2>
   <p>Under the title of every page and blog post, Linkhither adds "N incoming links" ("1 incoming link" when there is one). Click it to open the same list in a popup.</p>
   <figure id="shot-4">
-    <!-- Shot 4. Replace the div with:
+    <!-- Shot 4. Replace the placeholder img below with:
     <img src="img/shot-4-byline-popup.png" alt="The top of SOP-012 Change Control Procedure with the byline popup open: the heading 7 incoming links, the list of linking pages and blog posts, and the note Only pages and blog posts you can open are listed" width="1840" height="900" loading="lazy">
     -->
-    <div class="slot" role="img" aria-label="Screenshot 4, to be added: the top of SOP-012 Change Control Procedure with the byline popup open, the heading 7 incoming links, the list of linking pages and blog posts, and the note Only pages and blog posts you can open are listed">
-      <strong>Screenshot 4, to be added from Confluence</strong>
-      <span>The byline popup on a procedure page: "7 incoming links", the list, and "Only pages and blog posts you can open are listed."</span>
-    </div>
+    <img class="slot" src="img/shot-4-slot.svg" alt="Screenshot 4, to be added: the top of SOP-012 Change Control Procedure with the byline popup open, the heading 7 incoming links, the list of linking pages and blog posts, and the note Only pages and blog posts you can open are listed" width="1840" height="900" loading="lazy">
     <figcaption>Click the count under any title to see the list. Only pages and blog posts you can open are listed.</figcaption>
   </figure>
 

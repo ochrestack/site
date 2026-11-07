@@ -25,7 +25,6 @@
   header a { color: var(--ink); text-decoration: none; font-weight: 600; }
   h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
   h2 { font-size: 20px; margin-top: 40px; }
-  h3 { font-size: 17px; margin: 24px 0 4px; }
   p, li { max-width: 64ch; }
   .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
   .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
@@ -39,25 +38,40 @@
   .buy .price { font-size: 19px; }
   .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
-  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
-  .note { font-size: 15px; color: var(--muted); }
   figure { margin: 28px 0; }
-  figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
-  .slot { min-height: 340px; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 24px; border: 2px dashed #D9CBB8; border-radius: 10px; background: #fff; color: var(--muted); font-size: 15px; }
-  .said { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; margin: 6px 0 14px; padding: 6px 0 6px 14px; border-left: 3px solid var(--ochre); }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
   .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; max-width: 640px; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
   .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
   @media (max-width: 600px) {
     h1 { margin-top: 28px; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
-    .slot { min-height: 160px; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
     table { font-size: 14px; }
     th, td { padding: 6px; }
   }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
+  /* Linkhither additions */
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .note { font-size: 15px; color: var(--muted); }
+  .said { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; margin: 6px 0 14px; padding: 6px 0 6px 14px; border-left: 3px solid var(--ochre); }
+  figure img.slot { border: 0; background: #fff; }
 </style>
 </head>
 <body>
@@ -110,43 +124,31 @@
   <h2 id="screens">In Confluence</h2>
   <p class="note">The screenshots below will be taken in a real Confluence Cloud site, on a quality-management documentation space, before the listing goes to Atlassian. Until then each frame says what it will show.</p>
   <figure id="shot-1">
-    <!-- Shot 1. Replace the div with:
+    <!-- Shot 1. Replace the placeholder img below with:
     <img src="img/shot-1-page-and-macro.png" alt="SOP-012 Change Control Procedure in Confluence: '7 incoming links' under the title, and the Incoming links macro listing the seven pages and blog posts that link here, from two spaces, sorted by last updated" width="1840" height="900" loading="lazy">
     -->
-    <div class="slot" role="img" aria-label="Screenshot 1, to be added: SOP-012 Change Control Procedure in Confluence, with '7 incoming links' under the title and the Incoming links macro listing the seven pages and blog posts that link here, from two spaces, sorted by last updated">
-      <strong>Screenshot 1, to be added from Confluence</strong>
-      <span>A procedure page: "7 incoming links" under the title, and the macro listing the seven pages and blog posts that link here, from two spaces, sorted by last updated.</span>
-    </div>
+    <img class="slot" src="img/shot-1-slot.svg" alt="Screenshot 1, to be added: SOP-012 Change Control Procedure in Confluence, with '7 incoming links' under the title and the Incoming links macro listing the seven pages and blog posts that link here, from two spaces, sorted by last updated" width="1840" height="900" loading="lazy">
     <figcaption>SOP-012 Change Control Procedure: the count under the title, and the macro listing the seven pages and blog posts that link here.</figcaption>
   </figure>
   <figure id="shot-2">
-    <!-- Shot 2. Replace the div with:
+    <!-- Shot 2. Replace the placeholder img below with:
     <img src="img/shot-2-space-report.png" alt="The Incoming links report for the QMS space: the summary line, every page with its incoming links sorted by count, the Approved supplier list row with two pages marked 'includes this page', and the Download CSV button" width="1840" height="900" loading="lazy">
     -->
-    <div class="slot" role="img" aria-label="Screenshot 2, to be added: the Incoming links report for the QMS space, every page with its incoming links sorted by count, the Approved supplier list row with two pages marked 'includes this page', and the Download CSV button">
-      <strong>Screenshot 2, to be added from Confluence</strong>
-      <span>The QMS space report: every page with its incoming links, "includes this page" for Include Page and Excerpt Include, and Download CSV.</span>
-    </div>
+    <img class="slot" src="img/shot-2-slot.svg" alt="Screenshot 2, to be added: the Incoming links report for the QMS space, every page with its incoming links sorted by count, the Approved supplier list row with two pages marked 'includes this page', and the Download CSV button" width="1840" height="900" loading="lazy">
     <figcaption>The space report: each page's incoming links, the pages that include it, and Download CSV for exactly the rows shown.</figcaption>
   </figure>
   <figure id="shot-3">
-    <!-- Shot 3. Replace the div with:
+    <!-- Shot 3. Replace the placeholder img below with:
     <img src="img/shot-3-admin-page.png" alt="Settings, Linkhither: Up to date, every page and blog post read out of those found, the last change to the index, the pages the app was not permitted to read with the reason, and the Rebuild index button" width="1840" height="900" loading="lazy">
     -->
-    <div class="slot" role="img" aria-label="Screenshot 3, to be added: Settings, Linkhither, showing Up to date, every page and blog post read out of those found, the last change to the index, the pages the app was not permitted to read with the reason, and the Rebuild index button">
-      <strong>Screenshot 3, to be added from Confluence</strong>
-      <span>Settings &gt; Linkhither: pages read out of pages found, the last change to the index, the pages the app was not permitted to read with the reason, and Rebuild index.</span>
-    </div>
+    <img class="slot" src="img/shot-3-slot.svg" alt="Screenshot 3, to be added: Settings, Linkhither, showing Up to date, every page and blog post read out of those found, the last change to the index, the pages the app was not permitted to read with the reason, and the Rebuild index button" width="1840" height="900" loading="lazy">
     <figcaption>The admin page: indexing progress you can see, and the pages the app could not read, with the reason.</figcaption>
   </figure>
   <figure id="shot-6">
-    <!-- Shot 6. Replace the div with:
+    <!-- Shot 6. Replace the placeholder img below with:
     <img src="img/shot-6-page-information.png" alt="Side by side for SOP-012: on the left the Incoming links macro with eight rows, including WI-030 Change Board Checklist, which links with a pasted short link; on the right Confluence's own incoming-links view for the same page, without WI-030" width="1840" height="900" loading="lazy">
     -->
-    <div class="slot" role="img" aria-label="Screenshot 6, to be added: side by side for SOP-012, the Incoming links macro with eight rows including WI-030 Change Board Checklist, which links with a pasted short link, and Confluence's own incoming-links view for the same page without WI-030">
-      <strong>Screenshot 6, to be added from Confluence</strong>
-      <span>Side by side for the same page: the macro, including a page that links with a pasted short /wiki/x/ link, and Confluence's own incoming-links view, which leaves that page out.</span>
-    </div>
+    <img class="slot" src="img/shot-6-slot.svg" alt="Screenshot 6, to be added: side by side for SOP-012, the Incoming links macro with eight rows including WI-030 Change Board Checklist, which links with a pasted short link, and Confluence's own incoming-links view for the same page without WI-030" width="1840" height="900" loading="lazy">
     <figcaption>Pasted short /wiki/x/ links count too. Confluence's own incoming-links view did not list this one.</figcaption>
   </figure>
 
@@ -255,7 +257,7 @@
   <p>Nothing leaves Atlassian. Linkhither runs on Atlassian Forge, talks only to your own Confluence site, and has no permission to reach any other server. No analytics, no tracking. Its app storage, hosted by Atlassian for your site only, holds the ids of pages, blog posts and spaces, which page links to (or includes) which, and one-way hashes of the titles that links name. It stores no page content, no titles and no account ids; titles are read live from Confluence when you open a list, as you. When Confluence gives the byline no session token, the app reads as that same person through Forge's user impersonation, never as anyone else. See also the <a href="../privacy.html">privacy policy</a>.</p>
 
   <h2 id="support">Support</h2>
-  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your site URL and, for a problem with a specific page, the page URL. We answer every message. Bug reports and feature requests are welcome at the same address.</p>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your site URL and, for a problem with a specific page, the page URL. Bug reports and feature requests are welcome at the same address.</p>
 
   <div class="buy">
     <p><a class="button pending" id="buy-2" href="#" aria-describedby="buy-note" onclick="return false;">Get it on the Atlassian Marketplace</a></p>
