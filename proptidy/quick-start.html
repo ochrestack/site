@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proptidy quick start: install and order your first properties</title>
+<meta name="description" content="Install Proptidy for Blender 4.2 LTS to 5.3, put your custom properties in your order, edit their settings below the list, and show the same order to animators in the Sidebar and in shot files.">
+<link rel="canonical" href="https://ochrestack.com/proptidy/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  code { font-size: 15px; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Proptidy quick start</h1>
+  <p>Installing Proptidy, ordering your first properties, and what the animator sees. Back to the <a href="index.html">Proptidy product page</a>.</p>
+
+  <h2 id="install">Install (Blender 4.2 LTS to 5.3)</h2>
+  <ol>
+    <li>After checkout, download <code>proptidy-1.0.1.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it.</li>
+    <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
+      <ul>
+        <li>Blender may first say that internet access is required, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Proptidy needs no internet, and Install from Disk works either way, so <strong>Continue Offline is fine</strong>.</li>
+      </ul>
+    </li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Dragging the zip onto the Blender window also works. Proptidy is enabled at once, with no restart.</li>
+    <li>Open the Properties editor on a tab with custom properties, for example the <strong>Bone</strong> tab of your rig's properties bone in Pose Mode. The <strong>Proptidy</strong> panel sits directly above Blender's Custom Properties panel.</li>
+  </ol>
+  <p>To update, install the newer zip the same way; your orders live in your .blend files and stay as they are. To remove Proptidy, go to <strong>Edit &gt; Preferences &gt; Add-ons</strong>, find Proptidy, and choose <strong>Uninstall</strong> from its menu: your files keep every property, value, keyframe and driver, and Blender's panel shows them sorted by name again.</p>
+
+  <h2 id="order">Put your properties in order</h2>
+  <figure><img src="img/list-and-settings.png" alt="The Proptidy panel on the Bone tab of Rain's Properties_IKFK: the heading Arms and legs over ik_arm_left, ik_arm_right, ik_leg_left and ik_leg_right, a spacer, the heading Stretch over ik_stretch_arms (selected), ik_stretch_legs and ik_stretch_spine, then cloudrig_component and the fk_hinge switches; the buttons +, -, Duplicate, the menu, Move to Top, Move Up, Move Down and Move to Bottom beside the list; the filter field under it; below, the settings of ik_stretch_arms: Edit Property, Description 'Stretch the arms when in IK', Default Value 1.000, Min 0.00, Max 1.50, Soft Limits on, Soft Min 0.00, Max 1.00, Step 1.00, Precision 3, Subtype Factor, Library Overridable on" width="458" height="770" loading="lazy"><figcaption>The panel on Rain's properties bone in Blender 5.2, real size: the list, the buttons beside it, the filter, and the selected property's settings.</figcaption></figure>
+  <ol>
+    <li><strong>Click a row's name</strong> to select it.</li>
+    <li><strong>Move it</strong> with the buttons beside the list: <strong>Move to Top</strong>, <strong>Move Up</strong>, <strong>Move Down</strong>, <strong>Move to Bottom</strong>. Nothing is renamed, so drivers, keyframes and scripts that use the name keep working. Each action prints a one-line report in the status bar.</li>
+    <li><strong>Group it</strong>: the list's menu (the down arrow) has <strong>Add Heading</strong>, which puts a heading above the selected row (type its text in the <strong>Heading</strong> field below the list), and <strong>Add Spacer</strong>, which puts an empty row above it. Select a heading or spacer and press <strong>-</strong> to remove it.</li>
+    <li><strong>Find it</strong>: type in the filter field under the rows. "leg" lists every property with "leg" in its name; <code>*</code> and <code>?</code> work as wildcards.</li>
+  </ol>
+  <ul>
+    <li><strong>+</strong> adds a property at the bottom, <strong>Duplicate</strong> copies the selected one with its value and settings (not its keyframes) right below it, <strong>-</strong> removes it.</li>
+    <li>Values are edited right in the rows. Long arrays and group properties show Blender's own <strong>Edit Value</strong> button.</li>
+    <li>A property set you have not touched shows Blender's order. From your first action on, Proptidy keeps yours; properties added any other way (Blender's own New button, a script, Rigify) appear at the bottom.</li>
+    <li><strong>Menu &gt; Sort by Name</strong> returns to Blender's order (headings and spacers go, after a confirmation). Ctrl+Z brings your order back.</li>
+    <li>In Edit Mode the Bone tab shows a note instead of the list: order bone properties in Object Mode or Pose Mode.</li>
+  </ul>
+
+  <h2 id="settings">Edit settings below the list</h2>
+  <p>Select a property: its <strong>Description</strong> (the tooltip), <strong>Default Value</strong>, <strong>Min</strong>, <strong>Max</strong>, <strong>Soft Limits</strong> with <strong>Soft Min</strong> and <strong>Soft Max</strong>, <strong>Step</strong>, <strong>Precision</strong>, <strong>Subtype</strong> and <strong>Library Overridable</strong> appear below the list, as far as they apply to its type. Type a value and press Enter, tick a box, or pick a subtype: the change applies at once, and Ctrl+Z undoes one change at a time.</p>
+  <p>To change a property's <strong>type</strong> or <strong>name</strong>, click <strong>Edit Property</strong>: it opens Blender's own pop-up. A property renamed there keeps its row. Rename before you wire drivers: neither Blender nor Proptidy rewrites the drivers that read a renamed bone property.</p>
+
+  <h2 id="sidebar">What the animator sees</h2>
+  <figure><img src="img/sidebar.png" alt="The 3D Viewport with Rain in Pose Mode and the Sidebar's Item tab: the Proptidy panel with the heading Arms and legs over the four IK switches, an empty row, the heading Stretch over ik_stretch_arms and ik_stretch_legs, then the other switches; ik_stretch_spine and cloudrig_component are not listed" width="957" height="700" loading="lazy"><figcaption>3D Viewport &gt; Sidebar (N) &gt; Item, in Pose Mode.</figcaption></figure>
+  <ul>
+    <li>In the 3D Viewport press <strong>N</strong> and open the <strong>Item</strong> tab. The Proptidy panel shows the active object's properties, or the active pose bone's in Pose Mode, in your order, with values editable.</li>
+    <li>The eye at the end of each row in the list is <strong>Show in Sidebar</strong>. Switch it off for properties the animator does not need. Headings and spacers show in both places.</li>
+    <li>Blender's own Item &gt; Properties panel stays as it is.</li>
+  </ul>
+
+  <h2 id="shots">Linked rigs and shot files</h2>
+  <figure><img src="img/shot-file.png" alt="A shot file with Rain linked through a library override, Bone tab: the list in the rig file's order, the New, Remove, Duplicate and move buttons greyed out, and the line 'Library override of rain_demo.blend: change the order in that file'" width="757" height="495" loading="lazy"><figcaption>A shot file linking the rig through a library override.</figcaption></figure>
+  <ol>
+    <li>Set the order in the rig's own file and save it.</li>
+    <li>Every shot file that links the rig, with or without a library override, shows that order in the Properties editor and the Sidebar, and picks up a new order when it reloads.</li>
+    <li>In the shot file the buttons that would change the order are greyed out with a one-line reason. Values you may override stay editable.</li>
+  </ol>
+
+  <h2 id="copy-layout">Copy Layout to Selected</h2>
+  <p>In Pose Mode, select the pose bones to change, then the one whose layout you want, so it is active. On its Bone tab choose <strong>Menu &gt; Copy Layout to Selected</strong> (for objects, do the same on the Object tab). Properties with the same name take its order, headings, spacers and Sidebar switches; properties only a target has keep their order after them. The report says how many matched and how many did not.</p>
+
+  <h2 id="files">What stays in your files</h2>
+  <p>Proptidy stores one short text, <code>proptidy_layout</code>, on each object, bone or data-block you order. With Proptidy installed you never see it. On Blender 4.2 to 4.5 without Proptidy, Blender's panel shows it as a text property you can delete; on Blender 5.0 and later it does not show. Sort by Name removes it when only Blender's order is left.</p>
+  <div class="box">
+    <ul>
+      <li><strong>Exports:</strong> glTF leaves it out while Proptidy is enabled; FBX never exports it; USD and Alembic on Blender 4.2 to 4.5 export it with the other custom properties. Untick their Custom Properties option, or use Sort by Name before export, if your pipeline reads them.</li>
+      <li><strong>Upgrading from 4.x to 5.x:</strong> files opened on 5.x with Proptidy installed are cleaned automatically. A rig ordered on 4.x and linked into a 5.x shot shows the text until the rig's own file is opened and saved once on 5.x with Proptidy.</li>
+    </ul>
+  </div>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>Tested on Blender 4.2.23 LTS, 4.5.15 LTS, 5.2.3 LTS and the 5.3.0 release candidate, on Linux. Windows and macOS have not been tested yet.</li>
+    <li>Move buttons only, no drag-and-drop. Headings and spacers, no collapsible groups.</li>
+    <li>Blender's own Custom Properties panels are not hidden or replaced. Enum (drop-down) properties: Proptidy edits their Description and Library Overridable only.</li>
+    <li>Not covered: custom properties on bone collections, sequencer strips, textures, particle settings and node trees.</li>
+    <li>A property renamed through Blender's own panel or a script moves to the bottom of the list.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Proptidy makes no network connections, has no telemetry and no license check, and sends nothing anywhere. It changes only the custom properties and order data you act on, saved in your .blend.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version, your operating system and, if you can, a small .blend that shows the problem.</p>
+  <p style="font-size:14px;color:var(--muted)">Character in the images: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, posed by us. Rain is not included with Proptidy, and Blender Studio does not endorse it.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
