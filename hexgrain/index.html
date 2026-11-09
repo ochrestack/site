@@ -110,7 +110,7 @@
   <p class="sub">In the IntelliJ IDEA debugger, a <code>byte[]</code> is a column of signed decimals, 100 at a time. Reading a header means scrolling, converting and counting. Hexgrain shows it as a hex dump.</p>
   <figure class="top-image">
     <a href="img/step-over-marks-the-stamped-dates-window.png"><img class="hero" src="img/step-over-marks.png" alt="Hexgrain's Hex tab in IntelliJ IDEA on a 1,262-byte PNG, 16 bytes per row: offsets on the left, hex in the middle, and the XMP text on the right, readable as 'xmp:ModifyDate=&quot;2026-11-09T10:42:07&quot;' and 'xmp:MetadataDate=&quot;2026-11-09T10:42:07&quot;'. After Step Over the digits the program just rewrote are marked in orange in both columns; the status line reads '24 changed since the last pause' and 'Rows 0x230–0x35F of 1,262 bytes'. Above the rows, one line says what a licence adds and its price; the data inspector panel says it comes with a licence" width="958" height="522"></a>
-    <figcaption>Free tier, one Step Over after the program rewrote two dates in a PNG: the changed digits are marked (the checksum, further down, makes 24).</figcaption>
+    <figcaption>Free tier, one Step Over later: the bytes the program just rewrote are marked.</figcaption>
   </figure>
   <ul class="benefits">
     <li><strong>Read it like a hex editor:</strong> 8, 16 or 32 bytes a row, the characters beside them.</li>
@@ -126,7 +126,7 @@
 </section>
 <main>
   <div class="box">
-    <strong>What the IDE already does.</strong> The IDEs already do part of this, and the listing says so. View as &gt; Hex shows each element in hex, one per row, 100 at a time; View as &gt; String shows one line of text; a Type Renderer you write can print one line of hex. Memory View covers C, C++ and Rust, and a free plugin offers a binary view of some debugger values, including Java byte arrays.
+    <strong>What the IDE already does.</strong> The IDEs already do part of this, and the listing says so. View as &gt; Hex shows each element in hex, one per row; View as &gt; String shows one line of text; a Type Renderer you write can print hex. Memory View covers C, C++ and Rust, and a free plugin offers a binary view of some debugger values, including Java byte arrays.
   </div>
 
   <h2 id="tiers">Free, and what the licence adds</h2>
@@ -138,8 +138,7 @@
   </table>
 
   <h2 id="real">In the IDE, for real</h2>
-  <p>IntelliJ IDEA 2025.3 and Hexgrain 1.0.1 on the open-source metadata-extractor project and its test images. Tap for the whole window.</p>
-
+  
   <div class="pair">
     <figure style="flex-basis: 358px">
       <a href="img/variables-signed-decimals-window.png"><img class="ui" src="img/variables-signed-decimals.png" alt="IntelliJ IDEA's Variables view with png, a byte array of 1,262 elements, expanded: one row per element, 0 = -119, 1 = 80, 2 = 78, 3 = 71, 4 = 13, 5 = 10 and so on, down the panel" width="358" height="522" loading="lazy"></a>
@@ -147,28 +146,28 @@
     </figure>
     <figure style="flex-basis: 330px">
       <a href="img/context-menu-window.png"><img class="ui" src="img/context-menu.png" alt="The Variables context menu on png, with 'View as Hex Dump  Ctrl+Alt+Shift+Q' under Inspect" width="330" height="680" loading="lazy"></a>
-      <figcaption>Right-click, <strong>View as Hex Dump</strong>. Also in Watches and Evaluate Expression.</figcaption>
+      <figcaption>Right-click, <strong>View as Hex Dump</strong>.</figcaption>
     </figure>
   </div>
 
   <figure class="real-size">
     <a href="img/free-tier-64kb-window.png"><img src="img/free-tier-64kb.png" alt="Without a licence, the Hex tab on a 781,204-byte camera JPEG: the Exif header from offset 0, 'Exif..II*.' and further down 'NIKON', 'E995v1.6' and '2002:08:29 17:31:40' in the characters; under the rows one line: 'Showing the first 65,536 bytes (64 KB) of 781,204. A Hexgrain licence opens the whole array with Go to offset, and adds find, copy as, save and the data inspector: $9 once, the same for personal and commercial use, with a 30-day free trial.' and Get a licence or trial" width="958" height="522" loading="lazy"></a>
-    <figcaption>Free on a 781,204-byte JPEG: the first 64 KB and one line saying what a licence adds.</figcaption>
+    <figcaption>Free: the first 64 KB of a 781,204-byte JPEG.</figcaption>
   </figure>
 
   <figure class="real-size">
     <a href="img/find-hex-backward-past-64kb-window.png"><img src="img/find-past-64kb.png" alt="With a licence, the same JPEG: Find, Hex 'FF D9', Previous from the last byte, 'Match 5 of 5'. The match at 0xBE643 is selected; the rows after it hold readable text such as 'Dateiname : DSCN1767.JPG', '2048 x 1536 Pixel' and '300 x 300 dpi'. Status line: 'Rows 0xBE610–0xBE72F of 781,204 bytes (99.9%)'" width="958" height="522" loading="lazy"></a>
-    <figcaption>Licensed: the whole file. Find <code>FF D9</code> backward lands on match 5 of 5, 99.9% of the way in.</figcaption>
+    <figcaption>Licensed: the whole file, searched backward.</figcaption>
   </figure>
 
   <figure class="real-size">
     <a href="img/data-inspector-sof0-width-window.png"><img src="img/data-inspector.png" alt="Go to 0x6D33 in the JPEG: two bytes, 08 00, selected in the image's frame header; the data inspector shows int16 and uint16 2048 big-endian and 8 little-endian, with int8, uint8, bits, UTF-8 and UTF-16 rows" width="958" height="522" loading="lazy"></a>
-    <figcaption>The data inspector: two bytes of the frame header read 2048 big-endian, the image's width.</figcaption>
+    <figcaption>The data inspector: the image width, 2048.</figcaption>
   </figure>
 
   <figure class="real-size">
     <a href="img/find-and-copy-as-window.png"><img src="img/find-and-copy-as.png" alt="Find, Text 'NIKON': Match 1 of 1 at offset 0xAA; ten bytes 'NIKON.E995' selected in both columns, and the Copy As menu open with Hex (spaced), Hex String, Base64, Java Array Literal, Kotlin Array Literal and C# Array Literal" width="958" height="522" loading="lazy"></a>
-    <figcaption>Find text, then Copy As an array literal for your test.</figcaption>
+    <figcaption>Find, then Copy As.</figcaption>
   </figure>
   <details>
     <summary>How these images were made</summary>
@@ -178,14 +177,13 @@
 
   <h2 id="limits">Known limits</h2>
   <ul>
-    <li>Java and Kotlin in IntelliJ IDEA only: not Rider, Python, Go, JavaScript, C, C++, Rust, Remote Development or Android Studio.</li>
-    <li>Change marks cover the whole array up to 1 MiB; above that, the rows read at both pauses.</li>
-    <li>Read-only. A direct <code>ByteBuffer</code> is read through a copy in the program's heap.</li>
+    <li>Java and Kotlin in IntelliJ IDEA only: not Rider, Python, Go, JavaScript, C, C++ or Rust.</li>
     <li>Arrays larger than 1 GiB have not been measured.</li>
   </ul>
 
   <details>
-    <summary>Measured speed, and more questions</summary>
+    <summary>Speed, more limits, questions</summary>
+    <p><strong>More limits.</strong> Not Remote Development clients or Android Studio. Change marks cover the whole array up to 1 MiB; above that, the rows read at both pauses. Read-only: a direct <code>ByteBuffer</code> is read through a copy in the program's heap.</p>
     <p><strong>Measured.</strong> On a 1 GiB <code>byte[]</code>, every recorded run: first rows within 85 ms, Go to in 1 to 2 ms (median). A Find through all of it with no match: 38 to 53 seconds.</p>
     <p><strong>Does it slow down debugging?</strong> It reads only while a Hex tab is open and the program is paused, and after Resume it reads nothing until the next pause. Arrays and heap buffers are read directly, without running program code. A Save of a large array holds the pause until it is written (about 5 seconds per 128 MiB).</p>
     <p><strong>A called method has its own variable with the same name.</strong> The tab keeps showing the array you opened, read at this pause, with a line naming the other method. If your variable is given a new array, the tab shows the new one, says so, and marks nothing. Re-reads follow variables, fields, casts and numeric indexes; an expression with method calls is not run again, and the tab says so.</p>
@@ -196,7 +194,7 @@
 
   <h2 id="details">Details</h2>
   <ul>
-    <li>Sold and refunded by JetBrains Marketplace; <a href="eula.html">licence agreement</a>. The plugin zip includes its source code (version 1.0.2).</li>
+    <li>Sold through JetBrains Marketplace; <a href="eula.html">licence agreement</a>.</li>
     <li>No network calls, no telemetry (<a href="../privacy.html">privacy</a>).</li>
     <li><a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">quick start</a></li>
   </ul>
