@@ -37,7 +37,7 @@
 
   <h2 id="install">Install (Blender 4.5 LTS or newer; tested on 4.5.15, 5.0.1, 5.1.2 and 5.2.3)</h2>
   <ol>
-    <li>After checkout, download <code>spallwork-1.2.0.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>After checkout, download <code>spallwork-1.3.0.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>. If Blender asks about internet access, <strong>Continue Offline is fine</strong>: Spallwork needs none. Blender may then show its own yellow "Repository Alert" about extensions.blender.org; it is about Blender's online catalogue, not Spallwork, and you can ignore it.</li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Spallwork is enabled straight away.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Spallwork</strong> tab.</li>
@@ -54,7 +54,7 @@
         <li><strong>Zero-area faces</strong>: <strong>Remove Zero-Area Faces</strong>.</li>
         <li>Scale and loose parts are for information: chip sizes stay in metres whatever the scale, and each loose part is chipped on its own.</li>
       </ul>
-      The findings stay until you check again. If you change the mesh or its modifiers, its findings are replaced by "Changed since Check Model"; Damage clears the findings of the objects it damaged, and the X beside "Check model" hides them all.
+      With several objects selected, only the objects with problems are listed, under a line such as "11 of 12 objects ready for Damage." The findings stay until you check again. If you change the mesh or its modifiers, its findings are replaced by "Changed since Check Model"; Damage clears the findings of the objects it damaged, and the X beside "Check model" hides them all.
       <figure><img src="img/check-model-rain.png" alt="Check Model's findings at real size for a statue made from Blender Studio's Rain: 2,040 open edges, with the advice to Weld Seams first (72 split seams), then Fill Holes (1,968 holes), or give a thin sheet thickness, and a Weld Seams button; then no edge with more than two faces, normals consistent and outward, scale applied, 58 loose parts, no zero-area faces" width="254" height="560" loading="lazy"><figcaption>Check model on a character converted to one mesh: Weld Seams first, then Fill Holes (Blender 5.2.3, real size).</figcaption></figure>
     </li>
     <li><strong>Select one or many meshes in Object Mode and click Damage.</strong> Each gets a geometry-nodes modifier named "Spallwork"; its own mesh is not changed. An object Damage cannot work on is skipped, and the status bar says why.</li>
@@ -65,7 +65,7 @@
         <li><strong>Ruined</strong>: Amount 0.85, Chip size 0.10 m, Depth 0.90, Edge angle 25°, Edges and surface.</li>
       </ul>
     </li>
-    <li><strong>Adjust the sliders.</strong> <strong>Amount</strong>: how many of the possible chips are made. <strong>Chip size</strong>: the typical chip width, in your scene's units, the same physical size on every object. Before the first Damage the panel already shows the size Damage will use (5 cm in a centimetre scene). The looks are sized for buildings and props; for a 5 cm miniature, type something like <strong>0.004 m</strong>. <strong>Depth</strong>: how deep each chip bites. <strong>Edge angle</strong>: how sharp an edge must be to chip. <strong>Seed</strong>: another random placement. <strong>Mode</strong>: edges only, or edges and surface (shallow pits on flat faces too).</li>
+    <li><strong>Adjust the sliders.</strong> With several objects selected, a change goes to all of them, as the looks do; Seed changes the active object only. <strong>Amount</strong>: how many of the possible chips are made. <strong>Chip size</strong>: the typical chip width, in your scene's units, the same physical size on every object. Before the first Damage the panel already shows the size Damage will use (5 cm in a centimetre scene). The looks are sized for buildings and props; for a 5 cm miniature, type something like <strong>0.004 m</strong> (the panel warns when the size is more than half the object's thinnest side). <strong>Depth</strong>: how deep each chip bites. <strong>Edge angle</strong>: how sharp an edge must be to chip. <strong>Seed</strong>: another random placement. <strong>Mode</strong>: edges only, or edges and surface (shallow pits on flat faces too).</li>
     <li><strong>Copy to Selected</strong> gives the other selected objects the active object's settings, each with its own seed unless you tick <strong>Same seed</strong>. <strong>Remove</strong> takes the damage off and leaves the object as it was.</li>
   </ol>
   <p><strong>Preview detail</strong> is what the viewport shows while you work; <strong>Final detail</strong> is used for F12 renders and for Apply, with no switching by hand. <strong>Last update</strong> shows what the active object's damage took to compute. If a big model feels slow, lower Preview detail.</p>
@@ -82,7 +82,7 @@
   <h2 id="apply">Apply and Revert</h2>
   <ul>
     <li><strong>Target faces</strong> (0 = off): for game assets, Apply reduces the result to about this many faces, and keeps every part closed. Each low-poly chip costs about 14 faces on top of the model's own, so <strong>start at twice the model's face count</strong>; a lower target leaves few chips, and the Apply section warns you with the number to type.</li>
-    <li><strong>Apply</strong> turns the damage into ordinary mesh data at Final detail, with outward normals. Modifiers above Spallwork are applied with it (the report names them); particle systems and collision stay.</li>
+    <li><strong>Apply</strong> turns the damage into ordinary mesh data at Final detail, with outward normals, no zero-area faces and triangles that close up, so an exported STL is watertight. An object with no material gets no empty slot. Modifiers above Spallwork are applied with it (the report names them); particle systems and collision stay.</li>
     <li><strong>Revert to Original</strong> restores the exact mesh from before Apply, with the modifiers Apply baked, even after you save, close and reopen the file. It gives back the clean mesh; press <strong>Damage</strong> to chip it again with the same settings.</li>
     <li><strong>Forget Original</strong> deletes the stored copy, so the file holds only the applied mesh. Another object that uses the same mesh keeps it.</li>
   </ul>

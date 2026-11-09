@@ -11,15 +11,15 @@
 <meta property="og:title" content="Spallwork for Blender: chipped edges that keep separate bricks separate">
 <meta property="og:description" content="Remesh and Displace fuse your bricks into one blob? Spallwork chips the edges of closed meshes, keeps every separate brick separate, sizes chips in metres, and lets you Revert even after Apply. $15, source included.">
 <meta property="og:url" content="https://ochrestack.com/spallwork/">
-<meta property="og:image" content="https://ochrestack.com/spallwork/img/hero-facade.jpg">
+<meta property="og:image" content="https://ochrestack.com/spallwork/img/hero-steps-closeup.jpg">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="800">
-<meta property="og:image:alt" content="A rendered brick facade with a sandstone door surround and granite steps, every brick, stone and step chipped by Spallwork, and Blender Studio's Rain standing on the top step in a low evening sun">
+<meta property="og:image:alt" content="Granite steps beside a brick wall, every step edge broken into small chips by Spallwork, with Blender Studio's Rain standing on the top step">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Spallwork for Blender: chipped edges that keep separate bricks separate">
 <meta name="twitter:description" content="Remesh and Displace fuse your bricks into one blob? Spallwork chips the edges of closed meshes, keeps every separate brick separate, sizes chips in metres, and lets you Revert even after Apply. $15, source included.">
-<meta name="twitter:image" content="https://ochrestack.com/spallwork/img/hero-facade.jpg">
-<meta name="twitter:image:alt" content="A rendered brick facade with a sandstone door surround and granite steps, every brick, stone and step chipped by Spallwork, and Blender Studio's Rain standing on the top step in a low evening sun">
+<meta name="twitter:image" content="https://ochrestack.com/spallwork/img/hero-steps-closeup.jpg">
+<meta name="twitter:image:alt" content="Granite steps beside a brick wall, every step edge broken into small chips by Spallwork, with Blender Studio's Rain standing on the top step">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <style>
   :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
@@ -54,6 +54,10 @@
   .narrow-only { display: none; }
   .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .scroll-x a, .scroll-x picture { display: block; }
+  .who { display: flex; flex-wrap: wrap; gap: 18px; margin: 8px 0 20px; }
+  .who > div { flex: 1 1 220px; background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 12px 14px; }
+  .who img { display: block; width: 100%; height: 110px; object-fit: cover; border-radius: 6px; margin-bottom: 8px; }
+  .who p { margin: 0; font-size: 15px; }
   .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
   .fine { font-size: 15px; color: var(--muted); }
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
@@ -81,7 +85,7 @@
 </header>
 <main>
   <h1>Spallwork for Blender</h1>
-  <a href="img/hero-facade-full.jpg"><img class="hero" src="img/hero-facade.jpg" alt="A Cycles render in late sun: a long red-brick facade of separate bricks with a sandstone door surround and a dark green door, on a granite plinth with three granite steps. Blender Studio's Rain stands on the top step in the doorway. The steps and the plinth have large broken chips along every edge, the door surround has chipped arrises, and the bricks show small pale breaks at their corners and edges" width="1600" height="800"></a>
+  <a href="img/hero-steps-closeup-full.jpg"><img class="hero" src="img/hero-steps-closeup.jpg" alt="A Cycles render close up in low sun: three granite steps and a granite plinth beside a red-brick wall and a sandstone door surround. Every step edge and the plinth's top edge is broken into many small faceted chips along its whole length, dark with shadow inside. On the top step stand the jeans and orange sneakers of Blender Studio's Rain" width="1600" height="800"></a>
   <p class="sub">Remesh and Displace fuse your bricks into one blob? Spallwork chips the edges of closed meshes and keeps every separate brick or block separate, sizes its chips in metres whatever the object's scale, and lets you Revert even after Apply and reopening the file.</p>
 
   <div class="buy">
@@ -90,12 +94,34 @@
     <p class="fine">Polar checkout · download by email · <a href="../terms.html">14-day refund if it doesn't work as described</a> · no subscription, no license key, no account · <a href="#details">details</a></p>
   </div>
 
-  <p class="fine">Above: a render, not a mock-up. Our brick facade (four objects of separate bricks, Ruined with Chip size 0.045 m and a pale "Fresh Brick" Break material), sandstone door surround (Chipped) and granite plinth and steps (Ruined), damaged with Spallwork 1.2.0's own buttons and rendered with Cycles in Blender 5.2.3, so at Final detail. A brick's chips are at most half its thickness, so they read as small breaks at this distance; the steps show how far Ruined goes on bigger stones. Rain, Blender Studio's free character, stands on the top step.</p>
-  <details>
-    <summary>How these images were made</summary>
-    <p>Three images are Cycles renders made with Spallwork 1.2.0: the facade at the top and the two worked examples (tabletop pieces and a game wall). Each scene is built in code by us, damaged by pressing Spallwork's own operators, and rendered as F12 would, at Final detail; nothing was drawn on them. Every other image and GIF on this page, apart from the demo video and its GIF, is a capture of a real Blender 5.2.3 LTS window on Linux, 1920x1080, with the Spallwork zip installed through Blender's extension installer: the statue GIF and the Check model panel with 1.2.0, the rest with 1.1.0. In those, 1.2.0 would differ only in small panel details: before the first Damage its Seed field shows the object's own seed instead of 0. The character is Rain v3.3 as downloaded from studio.blender.org (CC BY 4.0, credit further down), in her own rig with her arms switched to FK and lowered. The stone pieces are the models we test Spallwork on (our own, built in code) with procedural stone, brick and wood materials of ours; two brick walls are three copies each of the test wall, and the short column is the test column at an unapplied scale of 0.42 in height. Every click, key, box selection and typed letter in the GIFs is a real input event sent to the window, played at the speed it happened, and every number in the panel and the status bar is Spallwork's or Blender's own. Only the view (the camera position) was set by script. The GIFs use Solid shading, which Blender draws instantly; the stills use Material Preview, which on this machine (no graphics card) needed about a minute to settle, so they were taken after it had. Nothing was drawn on the images.</p>
-    <p>The demo video and its GIF were captured with Spallwork 1.2.0, differently, in the same Blender and scenes at 2560x1174: each frame is one real input step (a pointer step, a click, a key, a wheel notch, a typed letter) followed by one redraw of the window, so waits such as Damage on 14 objects take no screen time. The pointer arrow and the ochre click rings are drawn by the edit at the position logged for each frame, and the captions and cards are added by the edit; the push-ins are crops of the captured frames. The rendered courtyard at the end is EEVEE, 4 samples, after Damage, Ruined and Apply (Final detail) on the 14 pieces; it was rendered for the 1.1.0 cut and kept, because it shows no interface and 1.2.0 makes the same geometry (its damage node group is unchanged).</p>
-  </details>
+  <section id="who" aria-label="Who it is for">
+  <div class="who">
+    <div>
+      <a href="#numbers"><img src="img/game-target-faces.jpg" alt="Three copies of a castle wall of separate blocks with their wireframe, applied at three Target faces values" width="1944" height="480"></a>
+      <p><strong>Game kits.</strong> Every block of a wall module stays its own closed part. Target faces reduces the applied result for the engine: our 46-block castle wall (2,484 faces) at Target 4,968 came out at 5,194 faces with 242 chips. <a href="#numbers">The numbers to type</a></p>
+    </div>
+    <div>
+      <a href="img/hero-facade-full.jpg"><img src="img/hero-facade.jpg" alt="A rendered brick facade with a sandstone door surround and granite steps, all chipped" width="1600" height="800"></a>
+      <p><strong>Archviz.</strong> Old steps, sills, plinths and facades at a chip size in metres, in a metre or a centimetre scene. A wall that is a plane with a Solidify modifier works without applying it. <a href="#facade">The whole facade</a></p>
+    </div>
+    <div>
+      <a href="#tabletop"><img src="img/tabletop-ruined-4mm.jpg" alt="A small chipped tower and wall piece on a cutting mat with a 10 mm grid" width="1200" height="800"></a>
+      <p><strong>Tabletop.</strong> Type the chip size in millimetres. After Apply, the STL of each of our five test pieces was watertight and PrusaSlicer sliced it. It chips edges and pits faces; it does not make rubble. <a href="#tabletop">What we measured</a></p>
+    </div>
+  </div>
+  </section>
+
+  <p class="fine">The top image is a render, not a mock-up: our granite steps and plinth, about 1.5 m from the camera, at the Worn look with Chip size 0.04 m, Amount 0.95 and Depth 0.35, typed in the panel, then rendered with Cycles in Blender 5.2.3 with Spallwork 1.3.0, so at Final detail (565 chips on the steps, 737 on the plinth). The chips are crisp breaks, not rounded wear. Rain, Blender Studio's free character, stands on the top step. <a href="#images">How these images were made</a>.</p>
+
+  <figure>
+    <a href="img/before-after-close.jpg"><img src="img/before-after-close.jpg" alt="The same view of the courtyard twice in Material Preview. Left, before: the column, the arch, the stairs, the rock and the short column have clean, sharp edges. Right, after Damage with the Ruined look: the column's flutes and capital are chipped, the arch stones have broken corners, the stair edges are chipped, the rock is pitted and the short column is heavily broken, while Rain and the paving are unchanged" width="1600" height="614" loading="lazy"></a>
+    <figcaption>Same view before (left) and after (right): Ruined look, Preview detail, Material Preview. The originals stay untouched under a "Spallwork" modifier until you press Apply.</figcaption>
+  </figure>
+
+  <figure id="facade">
+    <a href="img/hero-facade-full.jpg"><img src="img/hero-facade.jpg" alt="A Cycles render in late sun: a long red-brick facade of separate bricks with a sandstone door surround and a dark green door, on a granite plinth with three granite steps. Blender Studio's Rain stands on the top step in the doorway. The steps and the plinth have large broken chips along every edge, the door surround has chipped arrises, and the bricks show small pale breaks at their corners and edges" width="1600" height="800" loading="lazy"></a>
+    <figcaption>The whole facade, rendered with Spallwork 1.2.0: four objects of separate bricks (Ruined, Chip size 0.045 m, a pale "Fresh Brick" Break material), a sandstone door surround (Chipped) and granite plinth and steps (Ruined), Cycles in Blender 5.2.3, so at Final detail. A brick's chips are at most half its thickness, so they read as small breaks at this distance; the steps show how far Ruined goes on bigger stones.</figcaption>
+  </figure>
 
   <section id="watch">
   <h2>Watch it work</h2>
@@ -117,13 +143,9 @@
 
   <figure>
     <a href="img/damage-worn-chipped-ruined.gif"><img src="img/damage-worn-chipped-ruined.gif" alt="The courtyard in Solid shading with nothing selected. The cursor moves into the viewport and A selects all 14 stone pieces, outlined in orange (Rain cannot be selected in this file). The cursor clicks Damage in the Spallwork tab: after a few seconds chips appear along the edges of the column, the arch, the walls, the stairs and the rock, and the panel shows Last update. Worn is clicked: smaller, shallower chips. Chipped: medium chips. Ruined: big chips, and pits on the flat faces of the columns and the stump" width="1200" height="675" loading="lazy"></a>
-    <figcaption>Select all, Damage, then the three starting looks: Worn, Chipped, Ruined. 14 objects at once, played at the speed it happened on a 4-thread CPU with no graphics card (Blender 5.2.3, Solid shading). The report reads "Damaged 14 objects: Stone Arch, Brick Wall L1, Brick Wall L2, Brick Wall L3 and 10 more."</figcaption>
+    <figcaption>Select all, Damage, then the three starting looks: Worn, Chipped, Ruined. 14 objects at once, played at the speed it happened on a 4-thread CPU with no graphics card (Blender 5.2.3, Spallwork 1.3.0, Solid shading). The panel notes that its sliders now change all 14 selected objects; the last report reads "Ruined look on Stone Arch, Brick Wall L1, Brick Wall L2, Brick Wall L3 and 10 more".</figcaption>
   </figure>
 
-  <figure>
-    <a href="img/before-after-close.jpg"><img src="img/before-after-close.jpg" alt="The same view of the courtyard twice in Material Preview. Left, before: the column, the arch, the stairs, the rock and the short column have clean, sharp edges. Right, after Damage with the Ruined look: the column's flutes and capital are chipped, the arch stones have broken corners, the stair edges are chipped, the rock is pitted and the short column is heavily broken, while Rain and the paving are unchanged" width="1600" height="614" loading="lazy"></a>
-    <figcaption>Same view before (left) and after (right): Ruined look, Preview detail, Material Preview. The originals stay untouched under a "Spallwork" modifier until you press Apply.</figcaption>
-  </figure>
 
   <div class="box">
     <strong>Who does not need it.</strong> Blender already gives a patient artist the parts for free. Sculpt Mode, or the Remesh and Displace modifiers with a noise texture, can make chipped edges by hand. A displacement or bevel shader gives worn edges at render time without new geometry. The free Cell Fracture extension breaks objects into shards. A buyer who is happy to sculpt each chip, or who only needs wear in the render and never in the mesh, does not need Spallwork. Version 1 draws no cracks, cuts nothing apart, and adds no rebar, debris or grime shaders: for building destruction, look at a crack or destruction tool. And it needs a closed solid: a plane or a single wall face with no thickness is refused with the reason, never damaged silently (a Solidify modifier on it is enough, applied or not).
@@ -131,13 +153,13 @@
 
   <h2>What it does</h2>
   <ul>
-    <li><strong>Damage many objects at once, and keep editing.</strong> Select one or many meshes in Object Mode and press Damage. Each gets a "Spallwork" modifier, and its own mesh is not touched until you press Apply. Three starting looks, Worn, Chipped and Ruined, only set the sliders: Amount, Chip size, Depth, Edge angle, Seed, and Mode (edges only, or edges and surface). Copy to Selected gives other objects the same settings, each with its own seed unless you tick Same seed. Remove takes the damage off and leaves the object as it was.</li>
+    <li><strong>Damage many objects at once, and keep editing.</strong> Select one or many meshes in Object Mode and press Damage. Each gets a "Spallwork" modifier, and its own mesh is not touched until you press Apply. Three starting looks, Worn, Chipped and Ruined, only set the sliders: Amount, Chip size, Depth, Edge angle, Seed, and Mode (edges only, or edges and surface). With several objects selected, a change to a slider goes to all of them, as the looks do; Seed stays per object. Copy to Selected gives other objects all of the active object's settings, each with its own seed unless you tick Same seed. Remove takes the damage off and leaves the object as it was.</li>
     <li><strong>Chips in metres.</strong> Chip size is a physical size: an object at unapplied scale 3, a parent's scale, or a scale of (1, 1, 3) gets chips about the same size as an unscaled copy (in our test, median chips of 0.066 to 0.073 m against 0.073 m, at Chip size 0.05 m), and a scene in centimetres gets the same sizes.</li>
     <li><strong>Built for walls of separate pieces.</strong> Each loose part is chipped on its own. A part that would be left with less than a fifth of its volume is put back whole.</li>
     <li><strong>Check model, for imported and messy meshes.</strong> It reports open edges, edges shared by three or more faces, faces pointing inward, unapplied or negative scale, the number of loose parts and zero-area faces, each in one line, with a fix button where Blender can fix it safely: Weld Seams for meshes split at UV seams (glTF imports arrive like that), Fill Holes, Fix Normals, Remove Zero-Area Faces. A sheet with a Solidify modifier, or half a model with a Mirror, is judged as the modifiers leave it, so you do not have to apply them first.</li>
     <li><strong>A light viewport, full detail at render and Apply.</strong> Preview detail is what the viewport shows; Final detail is used for F12 renders and for Apply, with no switching by hand. Last update shows what the active object's damage took to compute.</li>
     <li><strong>Masks and a Break material.</strong> Protect Selected Faces in Edit Mode, or Paint Mask in Weight Paint, and the damage leaves those faces alone. Pick a Break material and the faces the damage creates get it; every other face keeps its material and UVs. Broken faces get box-projected UVs, so a tiling texture shows on them.</li>
-    <li><strong>Apply for export, Revert any time.</strong> Apply turns the damage into ordinary mesh data with outward normals. Target faces reduces the applied result for game assets and keeps every part closed; start at twice the model's own face count (see below). Revert to Original brings back the exact mesh from before Apply, even after you save, close and reopen the file, until you choose Forget Original.</li>
+    <li><strong>Apply for export, Revert any time.</strong> Apply turns the damage into ordinary mesh data with outward normals, removes zero-area slivers, and dissolves the vertices that make triangles fold over, so an exported STL is watertight; an object with no material gets no empty slot. Target faces reduces the applied result for game assets and keeps every part closed; start at twice the model's own face count (see below). Revert to Original brings back the exact mesh from before Apply, even after you save, close and reopen the file, until you choose Forget Original.</li>
     <li><strong>One tab.</strong> Everything is in the Spallwork tab of the 3D Viewport sidebar, in three sections you can fold: Damage, Mask &amp; Material, Apply. No menus, pop-ups or shortcuts are added, and every setting is saved in your .blend file.</li>
   </ul>
 
@@ -188,11 +210,12 @@
     <figcaption>One 46-block castle wall (2,484 faces of its own), Ruined, applied with Target faces 3,000, 4,968 and 9,936: 2,970, 5,194 and 9,712 faces, with 87, 242 and 593 low-poly chips. Every block stays a closed part.</figcaption>
   </figure>
   <p><strong>Target faces for game assets.</strong> The chips are paid for with the faces above the model's own count, about 14 faces per low-poly chip. A target at or just above the model's own face count reduces the model itself and leaves very few chips, so the result looks almost clean. <strong>Start at twice the model's face count</strong>; when the target is lower, the Apply section says how many faces the model has and what to type, and the Apply report says few chips fit.</p>
-  <figure>
+  <figure id="tabletop">
     <a href="img/tabletop-ruined-4mm.jpg"><img src="img/tabletop-ruined-4mm.jpg" alt="A grey 5 cm tower with a ring of crenellations and a thin 60 by 40 millimetre wall piece standing on a green cutting mat with a 10 millimetre grid. Both have crisp small chips along every edge and a few shallow pits on their faces" width="1200" height="800" loading="lazy"></a>
     <figcaption>Tabletop scale, on a 10 mm grid: a 4.9 cm tower of 9 parts and a 60 × 40 mm wall piece that is a plane with a 4 mm Solidify modifier, not applied. Both Ruined with Chip size 0.004 m, then applied: closed, with no non-manifold edges.</figcaption>
   </figure>
-  <p><strong>Chip size for miniatures.</strong> The starting looks are sized for buildings and props (3 to 10 cm chips), so a 5 cm piece gets only a handful. Pick a look, then type the chip size: <strong>0.004 m</strong> (4 mm) gave the tower above crisp chips. After Apply both pieces were closed with no non-manifold edges and kept 97.6% to 99.3% of their volume, on Blender 4.5.15 and 5.2.3. On the tower one 2.7 mm fragment came loose where two chips met (9 parts before, 10 after), so for a print, compare Check model's loose-part count before and after Apply. We have not tested the results in a slicer.</p>
+  <p><strong>Chip size for miniatures.</strong> The starting looks are sized for buildings and props (3 to 10 cm chips), so a 5 cm piece gets only a handful, and the panel says so when the Chip size is more than half the object's thinnest side. Pick a look, then type the chip size: <strong>0.004 m</strong> (4 mm) gave the tower above crisp chips. After Apply both pieces were closed with no non-manifold edges and kept 97.6% to 99.3% of their volume, on Blender 4.5.15 and 5.2.3. On the tower one 2.7 mm fragment came loose where two chips met (9 parts before, 10 after), so for a print, compare Check model's loose-part count before and after Apply.</p>
+  <p><strong>The STL, measured.</strong> With Spallwork 1.3.0 we applied five pieces of our own and exported each as STL with Blender's exporter, on 4.5.15 and 5.2.3: the tower and wall piece above, and, in a millimetre scene, a 60 × 6 × 45 mm wall with a Boolean doorway, a 10 × 18 mm column drum and a 75 × 40 × 3 mm base tile (Ruined, Chip size 1.5 mm). In every file each edge is shared by exactly two triangles, and no piece has a zero-area face (1.2.0, on 5.2.3, left 24 to 243 unshared edges per file). PrusaSlicer 2.8.1's command line read every file as manifold and sliced it with its default printer profile, warning about bed adhesion or bridges on four of the five, which is about supports and orientation. We have not printed them. What you get is chipped edges and pitted faces: a chip is never wider than about half the part's thickness, so a 6 mm wall gets small chips and no corner breaks off, and there is no rubble.</p>
 
   <h2>In Blender, for real</h2>
   <figure>
@@ -205,6 +228,10 @@
       <figcaption>The whole tab, at Blender's own size, on the arch with a mask and a Break material.</figcaption>
     </figure>
     <figure style="flex-basis:254px">
+      <img class="ui" src="img/panel-several-selected.png" alt="The Damage section at real size with three objects selected: Amount 0.61, Chip size 0.04 m being typed, Depth 0.50, Edge angle 40°, Seed 7, Edges and surface, then the note 'These sliders change all 3 selected objects; Seed changes Brick Wall only.', Copy to Selected and Same seed (ticked), Preview detail 2, Final detail 3, Last update 1.68 s (Preview)" width="254" height="512" loading="lazy">
+      <figcaption>Spallwork 1.3.0 with three objects selected: one Chip size typed reached all three (real-window check, Blender 5.2.3).</figcaption>
+    </figure>
+    <figure style="flex-basis:254px">
       <a href="img/rain-statue-check-weld-fill-damage.gif"><img class="ui" src="img/check-model-rain.png" alt="Check Model's findings for the Rain statue at real size: 2,040 open edges, with the advice to Weld Seams first (72 split seams), then Fill Holes (1,968 holes), or give a thin sheet thickness (Solidify), and a Weld Seams button; no edge with more than two faces; normals consistent and pointing outward; scale applied; 58 loose parts, each chipped on its own, overlapping parts chipped as one; no zero-area faces" width="254" height="560" loading="lazy"></a>
       <figcaption>Check model on the Rain statue, before the fixes.</figcaption>
     </figure>
@@ -212,7 +239,7 @@
   <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We switched her arms to FK and lowered them, placed her in a scene of our own, and for the statue converted her posed meshes to one mesh. Rain is not included with Spallwork, and Blender Studio does not endorse it.</p>
 
   <h2 id="tested">How we tested</h2>
-  <p>Every release runs the full test suite headless on the official Linux builds of Blender 4.5.15, 5.0.1, 5.1.2 and 5.2.3. Each model is damaged at each starting look, at Preview and at Final detail, and every run must lose no loose part, leave no face pointing inward, and keep 60 to 100% of the volume. For 1.2.0, the suite is green on each version: 172 tests pass, and one more, which checks chips seen through a scaled collection instance, is a known limit listed below and marked as an expected failure (its fix is a button, Make Instances Real, which has its own passing test). The window itself was driven by real clicks through 42 steps on 4.5.15 and on 5.2.3, with 42 of 42 passing, including a sheet with an unapplied Solidify and the Target faces warning.</p>
+  <p>Every release runs the full test suite headless on the official Linux builds of Blender 4.5.15, 5.0.1, 5.1.2 and 5.2.3. Each model is damaged at each starting look, at Preview and at Final detail, and every run must lose no loose part, leave no face pointing inward, and keep 60 to 100% of the volume. For 1.3.0, the suite is green on each version: 184 tests pass, and one more, which checks chips seen through a scaled collection instance, is a known limit listed below and marked as an expected failure (its fix is a button, Make Instances Real, which has its own passing test). The window itself was driven by real clicks through 43 steps on 4.5.15 and on 5.2.3, with 43 of 43 passing, including a sheet with an unapplied Solidify, the Target faces warning, and one Chip size typed with three objects selected.</p>
   <p><strong>12 purpose-built models</strong> (ours, clean and closed, with small gaps between separate parts). All pass on all four versions.</p>
   <div class="scroll-x">
   <table>
@@ -258,7 +285,7 @@
   </table>
   </div>
   </details>
-  <p class="fine">The Last update times in the GIFs above come from another 4-thread cloud machine (Intel Xeon at 2.30 GHz) that was recording the screen at the same time; they are not part of these figures.</p>
+  <p class="fine">The Last update times in the GIFs and panels above were shown while the screen was being recorded, on 4-thread cloud machines (Intel Xeon at 2.30 GHz for the 1.1.0 and 1.2.0 captures, 2.10 GHz for the 1.3.0 ones); they are not part of these figures.</p>
   <p>Not yet tested: Windows and macOS builds. Spallwork uses only Blender's own Python API and no operating-system calls, so we expect no difference, but we have not run it there. Tell us if anything behaves differently.</p>
 
   <h2 id="details">Details</h2>
@@ -274,7 +301,7 @@
   <p>The full manual (<code>README.md</code>) is inside the zip: open the zip to read it, but install the zip itself, as it is. The first steps are also online: <a href="quick-start.html">Spallwork quick start</a>.</p>
   <h3>Install</h3>
   <ol>
-    <li>After checkout, download <code>spallwork-1.2.0.zip</code> from the link in Polar's email. Do not unzip it.</li>
+    <li>After checkout, download <code>spallwork-1.3.0.zip</code> from the link in Polar's email. Do not unzip it.</li>
     <li>In Blender (4.5 LTS or newer), open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.</li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Spallwork</strong> tab.</li>
@@ -290,11 +317,19 @@
     <li><strong>Other UV maps get a box projection on the broken faces.</strong> Repack a lightmap after Apply if your engine needs unique lightmap UVs.</li>
     <li><strong>Large models update more slowly</strong> (see <a href="#speed">Measured speed</a>). Very heavy settings make updates slow, and Apply cannot be cancelled once it starts.</li>
     <li><strong>Masks protect whole faces,</strong> with no soft falloff.</li>
-    <li><strong>Chips can knock a small fragment loose</strong> where two chips meet at a corner (one 2.7 mm piece on our 5 cm tower). Compare Check model's loose-part count before and after Apply if that matters, as for a print.</li>
+    <li><strong>Chips can knock a small fragment loose</strong> where two chips meet at a corner (one 2.7 mm piece on our 5 cm tower, one crumb on our base tile). Compare Check model's loose-part count before and after Apply if that matters, as for a print.</li>
+    <li><strong>Thin parts get small chips.</strong> A chip is never wider than about half the part's thickness; corners of thin walls do not break off.</li>
+    <li><strong>Not a printing tool.</strong> Our STL files were watertight and sliced, but we have not printed them; Spallwork adds no supports and checks no wall thickness.</li>
     <li><strong>Apply bakes the modifiers above Spallwork.</strong> Revert restores them. Bound modifiers (Surface Deform, Mesh Deform) need binding again.</li>
     <li><strong>Don't press Shift+N on a heavily chipped small part.</strong> Normals already come out outward, and Blender's Recalculate Outside can guess wrong there and turn it inside out.</li>
     <li>No cracks, fracture, rebar, debris, grime shaders or wood splinters in version 1. English only. Tested on Linux builds only so far.</li>
   </ul>
+
+  <h2 id="images">How these images were made</h2>
+  <div class="fine">
+    <p>Four images are Cycles renders: the close-up of the steps at the top, made with Spallwork 1.3.0 (the plinth and steps at Worn with Chip size 0.04 m, Amount 0.95 and Depth 0.35, typed in the panel; the bricks Ruined at 0.045 m; the door surround Chipped), and the whole facade and the two worked examples (tabletop pieces and a game wall), made with 1.2.0, whose damage node group 1.3.0 keeps unchanged. Each scene is built in code by us, damaged by pressing Spallwork's own operators, and rendered as F12 would, at Final detail; nothing was drawn on them. For the close-up our granite material was darkened where the stone is occluded, so the steps read as weathered; that is the scene's material, not Spallwork. Every other image and GIF on this page, apart from the demo video and its GIF, is a capture of a real Blender 5.2.3 LTS window on Linux, 1920x1080, with the Spallwork zip installed through Blender's extension installer: the GIF of Damage and the three looks, and the panel with three objects selected, with 1.3.0; the statue GIF and the Check model panel with 1.2.0; the rest with 1.1.0. In those older captures, 1.3.0 would differ only in small panel details: before the first Damage its Seed field shows the object's own seed instead of 0, and with several objects selected the Damage section has one more line. The character is Rain v3.3 as downloaded from studio.blender.org (CC BY 4.0, credit further up), in her own rig with her arms switched to FK and lowered. The stone pieces are the models we test Spallwork on (our own, built in code) with procedural stone, brick and wood materials of ours; two brick walls are three copies each of the test wall, and the short column is the test column at an unapplied scale of 0.42 in height. Every click, key, box selection and typed letter in the GIFs is a real input event sent to the window, played at the speed it happened, and every number in the panel and the status bar is Spallwork's or Blender's own. Only the view (the camera position) was set by script. The GIFs use Solid shading, which Blender draws instantly; the stills use Material Preview, which on this machine (no graphics card) needed about a minute to settle, so they were taken after it had. Nothing was drawn on the images.</p>
+    <p>The demo video and its GIF were captured with Spallwork 1.2.0, differently, in the same Blender and scenes at 2560x1174: each frame is one real input step (a pointer step, a click, a key, a wheel notch, a typed letter) followed by one redraw of the window, so waits such as Damage on 14 objects take no screen time. The pointer arrow and the ochre click rings are drawn by the edit at the position logged for each frame, and the captions and cards are added by the edit; the push-ins are crops of the captured frames. The rendered courtyard at the end is EEVEE, 4 samples, after Damage, Ruined and Apply (Final detail) on the 14 pieces; it was rendered for the 1.1.0 cut and kept, because it shows no interface and 1.2.0 makes the same geometry (its damage node group is unchanged).</p>
+  </div>
 
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_XOYxPe9aOGOmQEuXD3MPneeNoR92XubuzuZf60B2xgq">Buy for $15</a></p>
