@@ -126,27 +126,26 @@
 </section>
 <main>
   <div class="box">
-    <strong>What the IDE already does.</strong> The IDEs already do part of this, and the listing says so. IntelliJ IDEA's View as &gt; Hex shows each element in hex, still one element per row, 100 at a time; View as &gt; String decodes the whole array as one line of text, hiding bytes that are not text; a Java Type Renderer you write yourself can print it as one line of hex. For C, C++ and Rust the IDE's Memory View already shows hex with characters, and a free plugin already offers a binary view of some debugger values, including Java byte arrays.
+    <strong>What the IDE already does.</strong> The IDEs already do part of this, and the listing says so. View as &gt; Hex shows each element in hex, one per row, 100 at a time; View as &gt; String shows one line of text; a Type Renderer you write can print one line of hex. Memory View covers C, C++ and Rust, and a free plugin offers a binary view of some debugger values, including Java byte arrays.
   </div>
 
   <h2 id="tiers">Free, and what the licence adds</h2>
   <table>
     <tr><th scope="col">What you get</th><th scope="col">Free</th><th scope="col" style="white-space:nowrap">$9 once</th></tr>
-    <tr><td>Hex dump of a <code>byte[]</code>: 8/16/32 per row, ASCII, Latin-1 or UTF-8, selection, copy as hex, changed bytes marked</td><td>First 64 KB</td><td>Any size</td></tr>
-    <tr><td>Go to offset, Find (hex or text), Copy As (Base64, Java, Kotlin, C# literals), Save to a .bin file</td><td>No</td><td>Yes</td></tr>
-    <tr><td><code>ByteBuffer</code>, <code>short[]</code>, <code>int[]</code>, <code>long[]</code>, <code>char[]</code>; the data inspector (int8 to int64, floats, both byte orders)</td><td>No</td><td>Yes</td></tr>
+    <tr><td>Hex dump of a <code>byte[]</code>, changed bytes marked, copy as hex</td><td>First 64 KB</td><td>Any size</td></tr>
+    <tr><td>Go to offset, Find, Copy As, Save to a file</td><td>No</td><td>Yes</td></tr>
+    <tr><td><code>ByteBuffer</code>, <code>short[]</code>, <code>int[]</code>, <code>long[]</code>, <code>char[]</code>; the data inspector</td><td>No</td><td>Yes</td></tr>
   </table>
-  <p class="fine">Without a licence, a locked control shows one line with the price. Nothing pops up, and the free tier will not shrink in a later version.</p>
 
   <h2 id="real">In the IDE, for real</h2>
-  <p>Captures of IntelliJ IDEA 2025.3 with Hexgrain 1.0.1, debugging a small program in a clone of the open-source metadata-extractor library, on its own test images. Tap an image for the whole window.</p>
+  <p>IntelliJ IDEA 2025.3 and Hexgrain 1.0.1 on the open-source metadata-extractor project and its test images. Tap for the whole window.</p>
 
   <div class="pair">
-    <figure>
+    <figure style="flex-basis: 358px">
       <a href="img/variables-signed-decimals-window.png"><img class="ui" src="img/variables-signed-decimals.png" alt="IntelliJ IDEA's Variables view with png, a byte array of 1,262 elements, expanded: one row per element, 0 = -119, 1 = 80, 2 = 78, 3 = 71, 4 = 13, 5 = 10 and so on, down the panel" width="358" height="522" loading="lazy"></a>
       <figcaption>Without Hexgrain: signed decimals, one per row.</figcaption>
     </figure>
-    <figure>
+    <figure style="flex-basis: 330px">
       <a href="img/context-menu-window.png"><img class="ui" src="img/context-menu.png" alt="The Variables context menu on png, with 'View as Hex Dump  Ctrl+Alt+Shift+Q' under Inspect" width="330" height="680" loading="lazy"></a>
       <figcaption>Right-click, <strong>View as Hex Dump</strong>. Also in Watches and Evaluate Expression.</figcaption>
     </figure>
@@ -176,19 +175,18 @@
     <p>IntelliJ IDEA 2025.3 (IU-253.28294.334), started with <code>./gradlew runIde</code> from Hexgrain 1.0.1 under a virtual display at 1280×800, dark theme, driven with real clicks and keys. The project is metadata-extractor (Apache-2.0) at commit 4d5cd469. The PNG is its test file <code>photoshop-8x12-rgb24-all-metadata.png</code>, the JPEG its test file <code>nikonMakernoteType2b.jpg</code>. The added program overwrites <code>xmp:ModifyDate</code> and <code>xmp:MetadataDate</code> and recomputes the chunk's CRC; an independent check of the same edit counts the same 24 changed bytes. The listing does not exist yet, so the images with licensed features were taken with a stand-in for JetBrains Marketplace licensing in that sandbox IDE, and the free-tier images with the same stand-in set to "no licence".</p>
   </details>
 
-  <h2 id="measured">Measured</h2>
-  <p>A 1 GiB <code>byte[]</code> (Linux, 4 CPUs), every recorded run: first rows within 85 ms, Go to in 1 to 2 ms (median), the IDE never held for more than 27 ms. Find through all 1 GiB with no match: 38 to 53 seconds.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
-    <li>Java and Kotlin in IntelliJ IDEA only. Not Rider, Python, Go, JavaScript, C, C++ or Rust; not Remote Development clients or Android Studio.</li>
+    <li>Java and Kotlin in IntelliJ IDEA only: not Rider, Python, Go, JavaScript, C, C++, Rust, Remote Development or Android Studio.</li>
     <li>Change marks cover the whole array up to 1 MiB; above that, the rows read at both pauses.</li>
-    <li>Read-only: it never changes your program's values. Reading a direct <code>ByteBuffer</code> copies the bytes into a new array in the program's heap.</li>
+    <li>Read-only. A direct <code>ByteBuffer</code> is read through a copy in the program's heap.</li>
     <li>Arrays larger than 1 GiB have not been measured.</li>
   </ul>
 
   <details>
-    <summary>More questions: slowdowns, same-name variables, trial end, Rider</summary>
+    <summary>Measured speed, and more questions</summary>
+    <p><strong>Measured.</strong> On a 1 GiB <code>byte[]</code>, every recorded run: first rows within 85 ms, Go to in 1 to 2 ms (median). A Find through all of it with no match: 38 to 53 seconds.</p>
     <p><strong>Does it slow down debugging?</strong> It reads only while a Hex tab is open and the program is paused, and after Resume it reads nothing until the next pause. Arrays and heap buffers are read directly, without running program code. A Save of a large array holds the pause until it is written (about 5 seconds per 128 MiB).</p>
     <p><strong>A called method has its own variable with the same name.</strong> The tab keeps showing the array you opened, read at this pause, with a line naming the other method. If your variable is given a new array, the tab shows the new one, says so, and marks nothing. Re-reads follow variables, fields, casts and numeric indexes; an expression with method calls is not run again, and the tab says so.</p>
     <p><strong>When the trial ends</strong> each licensed control shows one line with the price and a link to the IDE's licence dialog. No pop-up, banner or notification; the free hex dump keeps working.</p>
@@ -198,9 +196,9 @@
 
   <h2 id="details">Details</h2>
   <ul>
-    <li>Sold, billed and refunded by JetBrains Marketplace under its terms; <a href="eula.html">licence agreement</a>.</li>
-    <li>Privacy: no network calls, no telemetry; bytes go to disk only when you choose Save (<a href="../privacy.html">privacy policy</a>).</li>
-    <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">quick start</a>.</li>
+    <li>Sold and refunded by JetBrains Marketplace; <a href="eula.html">licence agreement</a>.</li>
+    <li>No network calls, no telemetry (<a href="../privacy.html">privacy</a>).</li>
+    <li><a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">quick start</a></li>
   </ul>
   <p style="font-size:14px;color:var(--muted)">Images: metadata-extractor by Drew Noakes and contributors (Apache-2.0). IntelliJ IDEA is a trademark of JetBrains s.r.o.; Ochrestack is not affiliated with JetBrains.</p>
 </main>
