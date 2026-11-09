@@ -38,22 +38,18 @@
 
   <h2 id="install">Install (Blender 4.4 or newer; tested on 4.4, 4.5 LTS and 5.2 LTS)</h2>
   <ol>
-    <li>Download <code>actionyard-1.2.0.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
-    <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
-      <ul>
-        <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Actionyard needs no internet, so <strong>Continue Offline is fine</strong>.</li>
-        <li>After Continue Offline, Blender may show a red <strong>Repository Alert</strong> saying the extensions.blender.org data is unavailable. That is Blender's note about its online catalogue, not an error in Actionyard. Install from Disk works anyway.</li>
-      </ul>
-    </li>
-    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Actionyard is enabled straight away.</li>
-    <li>Open an NLA editor or a Dope Sheet, press <strong>N</strong> for the sidebar and click the <strong>Actionyard</strong> tab. The sidebar starts narrow: drag its left edge to widen it, so the Uses column and long names show.</li>
+    <li>Download <code>actionyard-1.3.0.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>In Blender, open <strong>Edit &gt; Preferences &gt; Add-ons</strong>.</li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right of the Add-ons page, choose <strong>Install from Disk...</strong> and pick the zip. The status bar says <code>Installed "actionyard"</code>, and Actionyard is enabled straight away.</li>
+    <li>Open an NLA editor or a Dope Sheet, press <strong>N</strong> for the sidebar and click the <strong>Actionyard</strong> tab. The sidebar starts narrow, so the list shows Name, Uses and Fake User, and Used by shows the clicked action's frames and users. Drag the sidebar's left edge to widen it for the Frames and Users columns.</li>
   </ol>
-  <p><strong>Upgrading:</strong> install the new zip the same way; it replaces the old version. If Blender shows an error, remove Actionyard in <strong>Preferences &gt; Get Extensions</strong>, restart Blender, then install the new zip.</p>
+  <p>The Add-ons page does not go online, so Blender asks nothing about internet access there. <strong>Get Extensions</strong> has the same Install from Disk. If you use it, Blender may first ask about internet access (<strong>Continue Offline is fine</strong>; Actionyard needs no internet) and then show a red <strong>Repository Alert</strong> saying the extensions.blender.org data is unavailable. That is Blender's note about its online catalogue, not an error in Actionyard.</p>
+  <p><strong>Upgrading:</strong> install the new zip the same way; it replaces the old version. If Blender shows an error, remove Actionyard in <strong>Preferences &gt; Add-ons</strong>, restart Blender, then install the new zip.</p>
 
   <h2 id="clean-up">A first clean-up</h2>
   <ol>
     <li><strong>Set the list to Stashed</strong> to see which actions live in stashes. The line above the list counts the actions in the file, the stashed ones and the ones with no users.</li>
-    <li><strong>Click an action</strong> to see its <strong>Used by</strong> places: is it still the active action somewhere, on an NLA track, or in an Action constraint? Each row names the object, its role and the slot. Click a row to select that object and make it active.
+    <li><strong>Click an action</strong> to see its <strong>Used by</strong> places: is it still the active action somewhere, on an NLA track, or in an Action constraint? Each row names the object, its role and the slot; shape keys and materials are named by their object, as in "Kit_Head (shape keys)". Click a row to select that object and make it active.
       <figure><img src="img/used-by-panel.png" alt="The Actionyard tab at real size, searched for 'lips_roll': Rain_Lips_Roll_Lower selected with 16 uses and 16 users, and its Used by list: one Action Stash on RIG-rain, then Action constraints on bones P-GRP-Lip_Bot.M and GRP-Lip_Bot.M of Rain's face rig, each with constraint and slot" width="494" height="884" loading="lazy"><figcaption>Used by on one of Rain's face actions: one Action Stash and 15 Action constraints (Blender 4.5, real size).</figcaption></figure>
     </li>
     <li><strong>In Action Stashes, choose Active Object or Whole File and click Clear Stashes...</strong> Nothing changes until you confirm. The preview shows:
@@ -63,7 +59,7 @@
         <li>each track, with its own tick. A stash track you have unmuted plays in your animation, so it is marked and starts unticked.</li>
         <li>With many stashes, both lists scroll (8 rows each), so <strong>Clear Stashes</strong> and <strong>Cancel</strong> stay on screen. Return confirms.</li>
       </ul>
-      <figure><img src="img/clear-stashes-preview.png" alt="The Clear Stashes dialog at real size: 'Removes 16 Action Stash tracks from 1 data-block (3 empty)', the action list scrolled to show the two face actions still used elsewhere and the takes with their keep-with-Fake-User ticks (Walk_blockout unticked, becomes unused), the track list with Rain's three empty stash tracks, and the Cancel and Clear Stashes buttons" width="552" height="619" loading="lazy"><figcaption>The preview on Rain's file (Actionyard 1.2.0), with one take let go.</figcaption></figure>
+      <figure><img src="img/clear-stashes-preview.png" alt="The Clear Stashes dialog at real size: 'Removes 16 Action Stash tracks from 1 data-block (3 empty)', the action list scrolled to show the two face actions still used elsewhere and the takes with their keep-with-Fake-User ticks (Walk_blockout unticked, becomes unused), the track list with Rain's three empty stash tracks, and the Cancel and Clear Stashes buttons" width="552" height="619" loading="lazy"><figcaption>The preview on Rain's file (Actionyard 1.2.0; the dialog is unchanged in 1.3.0), with one take let go.</figcaption></figure>
     </li>
     <li><strong>Confirm.</strong> The status bar says what changed, and the details go to a text block named <strong>Actionyard Report</strong> (open it in the Text Editor). Only Action Stash tracks are removed; your other NLA tracks stay as they are.</li>
     <li><strong>Changed your mind?</strong> One <strong>Ctrl+Z</strong> undoes the whole operation. If you opened the Actionyard Report in a Text Editor afterwards, Blender counts that as an undo step of its own: press Ctrl+Z once more, or pick the operation in <strong>Edit &gt; Undo History</strong>.</li>
@@ -74,8 +70,8 @@
   <h2 id="delete">Deleting actions for good</h2>
   <div class="box">
     <ul>
-      <li><strong>Delete Action Everywhere...</strong>: tick actions with the check box at the left of each row (or just click one). The preview lists every place that will lose each action. Then Actionyard removes it from all of them and from the file, in one undo step. The active action is cleared, NLA and stash strips are removed (a stash track left empty is removed too), and Action constraints are kept but lose their action.</li>
-      <li><strong>Remove Unused Actions...</strong>: deletes actions with no users. It keeps Fake User actions unless you tick "Also Fake User Actions", and always keeps actions marked as assets (pose library poses).</li>
+      <li><strong>Delete Action Everywhere...</strong>: tick actions with the check box at the left of each row (or just click one). The preview lists every place that will lose each action, in one list that scrolls, so <strong>Delete Everywhere</strong> and <strong>Cancel</strong> stay on screen however many you pick. If nothing you picked can be deleted (for example, it is on a locked NLA track), it says why and offers no Delete button. Otherwise Actionyard removes each action from all of those places and from the file, in one undo step. The active action is cleared, NLA and stash strips are removed (a stash track left empty is removed too), and Action constraints are kept but lose their action.</li>
+      <li><strong>Remove Unused Actions...</strong>: deletes actions with no users. It keeps Fake User actions unless you tick "Also Fake User Actions", and always keeps actions marked as assets (pose library poses). Its preview lists every action it will delete.</li>
     </ul>
   </div>
   <p>Deleting a stashed action as a data-block instead (what the Outliner's Delete does) removes the action but leaves its [Action Stash] track behind, holding a strip with no action. Delete Action Everywhere removes the track too, and Clear Stashes clears such empty tracks if you already have them.</p>
@@ -90,6 +86,7 @@
   <h2 id="limits">Limits</h2>
   <ul>
     <li>Requires Blender 4.4 or newer. Tested on Blender 4.4, 4.5 LTS and 5.2 LTS, on Linux; Windows and macOS have not been tested yet.</li>
+    <li>If the search or a filter hides the action you clicked, Used by says so instead of showing it.</li>
     <li>Linked data, and everything a library override takes from its library file, is shown with a lock and never changed. Stash tracks you added on an override in your own file can be cleared.</li>
     <li>Delete Action Everywhere leaves an action alone when one of its strips is on a locked NLA track (not a stash track); unlock the track first.</li>
     <li>A data-block in NLA tweak mode is skipped; exit tweak mode first. A strip inside a meta strip loses its action but stays in the meta strip.</li>
