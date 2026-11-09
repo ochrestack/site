@@ -38,7 +38,7 @@
 
   <h2 id="install">Install (WordPress 6.5 or newer, PHP 7.4 or newer)</h2>
   <ol>
-    <li>Download <a href="download/linkrounds-1.2.0.zip"><code>linkrounds-1.2.0.zip</code></a>. Do not unzip it.</li>
+    <li>Download <a href="download/linkrounds-1.2.1.zip"><code>linkrounds-1.2.1.zip</code></a>. Do not unzip it.</li>
     <li>In WordPress, open <strong>Plugins &gt; Add New Plugin</strong>, click <strong>Upload Plugin</strong>, choose the zip, then <strong>Install Now</strong> and <strong>Activate</strong>.</li>
     <li>Open <strong>Tools &gt; Linkrounds</strong>.</li>
   </ol>
@@ -61,14 +61,15 @@
     <li><strong>Inconclusive</strong>: the other site blocked the check (403, 999), wanted a login (401), asked us to slow down (429), had a server error or did not answer in time. The reason is given. A link that failed once and is waiting for its second check is here too, with the time of that check. Inconclusive is never counted as broken.</li>
     <li><strong>OK</strong>: the link works.</li>
   </ul>
-  <p>So after your first scan, dead links show as Inconclusive with "checked again after …". A line above the results says how many links failed once and when their second checks are due, and <strong>Waiting for second check</strong> lists them. Linkrounds checks them again by itself once that time has passed; only then do they move to Broken. The wait is 1 hour by default; you can choose 6 or 24 hours under <strong>Settings</strong>.</p>
+  <p>So straight after your first scan, Broken shows 0. That does not mean nothing was found: a line above the results leads with how many links <strong>look broken</strong> (they failed once), and says when Linkrounds checks them again by itself, for example "from 8:12 pm (in 54 minutes)". You do not need to scan again, and you can fix those links right away from <strong>Waiting for second check</strong>. Those that fail the second check move to Broken. The wait is 1 hour by default; you can choose 6 or 24 hours under <strong>Settings</strong>.</p>
+  <figure><img src="img/first-scan.png" alt="The results screen straight after the first scan on the demo blog: '7 links look broken. They failed once (not found, gone or no such domain). Linkrounds checks them again by itself from November 9, 2026 8:12 pm (in 59 minutes) and calls Broken only those that fail again. You do not need to scan again, and you can fix them now. Show the 7 links', then the counts All (70), Broken (0), Waiting for second check (7), Redirected (7), Inconclusive (15), OK (48)" width="835" height="971" loading="lazy"><figcaption>Straight after the first scan on the demo blog, with only the free plugin active.</figcaption></figure>
   <p>Each row shows the page the link is on (with Edit and View), the full address, the link text, the status code, the reason and when it was last checked. Filter by answer or post type, search by address, and use <strong>Re-check now</strong> on any row.</p>
 
   <h2 id="fix">Fix a link, and undo it</h2>
   <ol>
     <li>Hover a row. Choose <strong>Edit address</strong>, type the new address and click <strong>Save</strong>; or choose <strong>Unlink</strong> to remove the link and keep its words.</li>
     <li>The message says what changed. Only that link in that post changes, and an edited address is checked straight away. A File block links to its file twice (the name and the Download button); Edit address on either row changes both, and the message says so.</li>
-    <li>To undo, open the post, then <strong>Revisions</strong>, and restore the version before the change.</li>
+    <li>To undo, open the post, then <strong>Revisions</strong>, and restore the version before the change. The old link comes back as a new link, so it waits for its second check again before it is called Broken.</li>
   </ol>
   <figure><img src="img/edit-address.png" alt="A Broken row on the Linkrounds results screen with Edit address open: the old Godot tutorial address, a field holding the new address, and Save and Cancel buttons" width="827" height="194" loading="lazy"><figcaption>Edit address on one row.</figcaption></figure>
   <figure><img src="img/unlink-done.png" alt="The message after Unlink: 'Removed the link from “the basics chapter of the plugin handbook” in “Plugins we run on the studio site (and why so few)” and kept the text. Saved as a revision: you can restore the previous version from the post’s Revisions screen.'" width="833" height="76" loading="lazy"><figcaption>The message after Unlink.</figcaption></figure>
@@ -87,9 +88,11 @@
     <li>Install and activate the free plugin first.</li>
     <li>Install <code>linkrounds-pro.zip</code> the same way: <strong>Plugins &gt; Add New Plugin &gt; Upload Plugin</strong>, <strong>Install Now</strong>, <strong>Activate</strong>. WordPress will not activate Pro without the free plugin.</li>
     <li>Open <strong>Tools &gt; Linkrounds &gt; Schedule &amp; email</strong>. Choose daily, weekly or monthly and the hour (in the time zone set under Settings &gt; General), add the addresses that should get the report, one per line, and save.</li>
+    <li>Click <strong>Send a test email</strong>. The message at the top says straight away whether WordPress could send it, and if not, WordPress's own reason (for example "Could not instantiate mail function."). If WordPress sent it but it does not arrive, look in spam, then ask your host about outgoing mail.</li>
     <li>On the Results tab, <strong>Export CSV of these results</strong> downloads the rows of the current filter, all pages.</li>
   </ol>
-  <p>The email report is sent after each scheduled scan, once the links that failed have had their second check, through your site's own mail setup. Make sure your site can send email (many hosts need an SMTP plugin for that).</p>
+  <p>The email report is sent after each scheduled scan, once the links that failed have had their second check, through your site's own mail setup. Many hosts need an SMTP plugin before WordPress can send mail; the test email tells you. If your site's mail setup ever refuses a report, the Schedule &amp; email tab shows when and WordPress's reason, a line above the results points to it, and the links it would have listed go into the next report.</p>
+  <figure><img src="img/pro-report-failed.png" alt="The Schedule &amp; email tab on a site that cannot send mail: 'The last report could not be sent (November 9, 2026 7:14 pm). Your site’s mail setup refused it. WordPress said: “Could not instantiate mail function.” No email went out; the links it would have listed will be in the next report. Many hosts need an SMTP plugin before WordPress can send mail. Fix that, then use Send a test email below.' Below it, 'Can this site send email?' and the Send a test email button" width="835" height="805" loading="lazy"><figcaption>Linkrounds Pro 1.1.0 on the demo blog with no mail server. We ran the report event by hand, the site's mail setup refused it, and the tab says why.</figcaption></figure>
 
   <h2 id="limits">Limits</h2>
   <ul>
@@ -100,7 +103,7 @@
   </ul>
 
   <h2 id="privacy">Privacy</h2>
-  <p>To check a link, your server sends a HEAD request (and a GET when HEAD does not succeed) to the linked address. Nothing else is sent: nothing about your site, your users or your content goes to Ochrestack or to any other service. No account, no telemetry, no licence or update check. Pro's email goes only to the addresses you set.</p>
+  <p>To check a link, your server sends a HEAD request (and a GET when HEAD does not succeed) to the linked address. Addresses in private or local networks (10.x, 192.168.x, 127.0.0.1) are never requested, except your own site's address: links to your own site that Linkrounds cannot match to a post, page, the home page or an upload are requested from your site, so on a local or staging install those requests go to a local address. Nothing else is sent: nothing about your site, your users or your content goes to Ochrestack or to any other service. No account, no telemetry, no licence or update check. Pro's email report and test email go only to the addresses you set.</p>
 
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your WordPress and PHP versions, the Linkrounds version, and the address and reason shown on the row that puzzles you.</p>
