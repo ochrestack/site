@@ -68,6 +68,19 @@
   .note { font-size: 15px; color: var(--muted); }
   .hero.wide { max-width: none; }
   code { font-size: 15px; }
+  header { max-width: 1200px; }
+  .top { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .top h1 { margin-top: 20px; }
+  .top .sub { font-size: 18px; line-height: 1.5; }
+  #tiers { font-size: 14px; margin: 12px 0; }
+  #tiers th, #tiers td { padding: 5px 8px; }
+  .top .buy { margin-top: 10px; }
+  .top .note, .top .fine { margin: 0 0 6px; line-height: 1.45; }
+  .top-hero { max-width: 100%; margin-top: 0; }
+  @media (min-width: 1000px) {
+    .top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 500px); gap: 36px; align-items: start; }
+    .top-image { padding-top: 34px; }
+  }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
 </style>
@@ -77,26 +90,29 @@
   <img src="../icon.svg" alt="">
   <a href="../index.html">Ochrestack</a>
 </header>
-<main>
+<section class="top">
+<div class="top-text">
   <h1>Xsdtrail for XSD and WSDL</h1>
   <p class="sub">Large XSDs split across multiple files in the same folder? Open a Design tab that shows them as one diagram, then double-click any box to land on its source line. Free for one file; pay once for all of them.</p>
-  <a href="img/invoice-project.png"><img class="hero wide" src="img/invoice-design-tab.png" alt="Xsdtrail's Design tab on UBL-Invoice-2.1.xsd in IntelliJ IDEA: the file box, its three imports with the files they resolved to (UBL-CommonAggregateComponents, UBL-CommonBasicComponents and UBL-CommonExtensionComponents), and Invoice unfolded through a sequence into ext:UBLExtensions, cbc:UBLVersionID, cbc:CustomizationID, cbc:ProfileID and more, each marked [0..1] and labelled 'in UBL-CommonBasicComponents-2.1.xsd' or the extension file. Under it: '14 files, 2843 components, built in 922 ms' and the Text and Design tabs" width="910" height="760"></a>
-  <p class="fine">The OASIS UBL 2.1 Invoice schema and the 13 files behind it in one Design tab: 14 files, 2,843 components, and every box from another file names that file. Tap any image for the full IDE window.</p>
-
   <table id="tiers">
     <tr><th scope="col">What you get</th><th scope="col">Free, no time limit</th><th scope="col" style="white-space:nowrap">$12 once</th></tr>
     <tr><td>A single XSD file: the Design tab, diagram, search, zoom, navigation both ways</td><td>Yes</td><td>Yes</td></tr>
     <tr><td>A WSDL's services, ports with addresses, bindings and operation names</td><td>Yes</td><td>Yes</td></tr>
     <tr><td>Schemas split across files, as one diagram; each WSDL operation's messages, parts and XSD fields</td><td>Shown as locked boxes that name their file</td><td>Yes</td></tr>
   </table>
-
   <div class="buy">
     <p class="price"><strong>$12 once</strong>: personal or commercial, every update included, nothing to renew. 30-day trial.</p>
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
-    <p class="note" id="buy-note">Not on JetBrains Marketplace yet, so it cannot be installed or tried today. The listing goes to JetBrains for review next; this button links to it once JetBrains has approved it, and the free tier and the 30-day trial start from there. For a note when it is live, email <a href="mailto:support@ochrestack.com?subject=Xsdtrail%20listing">support@ochrestack.com</a>.</p>
-    <p class="fine">For IntelliJ IDEA 2025.1 or later, and other JetBrains IDEs on the 2025.1 platform or later that include XML support. Tested in IntelliJ IDEA Community 2025.1.7 on Linux; the other JetBrains IDEs, IntelliJ IDEA Ultimate, Windows and macOS are not tested yet. No network calls, no telemetry. <a href="#documentation">Install steps</a> · <a href="quick-start.html">Quick start</a></p>
+    <p class="note" id="buy-note">Not on JetBrains Marketplace yet, so it cannot be installed or tried today. For a note when it is live, email <a href="mailto:support@ochrestack.com?subject=Xsdtrail%20listing">support@ochrestack.com</a>.</p>
+    <p class="fine">For IntelliJ IDEA 2025.1+ and JetBrains IDEs with XML support. Tested: IDEA Community 2025.1.7 on Linux; other IDEs, IDEA Ultimate, Windows and macOS not tested yet. <a href="quick-start.html">Quick start</a></p>
   </div>
-
+</div>
+<div class="top-image">
+  <a href="img/invoice-project.png"><img class="hero top-hero" src="img/invoice-design-tab.png" alt="Xsdtrail's Design tab on UBL-Invoice-2.1.xsd in IntelliJ IDEA: the file box, its three imports with the files they resolved to (UBL-CommonAggregateComponents, UBL-CommonBasicComponents and UBL-CommonExtensionComponents), and Invoice unfolded through a sequence into ext:UBLExtensions, cbc:UBLVersionID, cbc:CustomizationID, cbc:ProfileID and more, each marked [0..1] and labelled 'in UBL-CommonBasicComponents-2.1.xsd' or the extension file. Under it: '14 files, 2843 components, built in 922 ms' and the Text and Design tabs" width="910" height="760"></a>
+  <p class="fine">The OASIS UBL 2.1 Invoice schema and the 13 files behind it in one Design tab: 14 files, 2,843 components, and every box from another file names that file. Tap any image for the full IDE window.</p>
+</div>
+</section>
+<main>
   <h2 id="soap">For SOAP contracts</h2>
   <p>Free: open a WSDL and its Design tab lists each service, its ports with their addresses, each binding with SOAP 1.1 or 1.2 and the document or rpc style, and the operation names, so you can see your own contract's shape before you pay. With a licence, each operation unfolds to its input, output and fault messages, their parts, and the XSD fields behind them, from schemas inline in the WSDL or imported from the folder. A missing message, part element or binding is a red box that says what is missing.</p>
   <figure>
