@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rigbake Check: check a rig before game export (free Blender extension)</title>
+<meta name="description" content="A free Blender 4.2+ extension that lists what Blender's FBX or glTF export will drop or change in your rig (animation, shape keys, modifiers, scale, weights, vertex groups), each with a fix.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://ochrestack.com/rigbake/check/">
+<link rel="icon" href="../../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 24px 64px; }
+  h1 { font-size: 26px; line-height: 1.3; } h2 { font-size: 19px; margin-top: 36px; }
+  p, li { max-width: 68ch; } a { color: var(--ochre-text); }
+  code { font-size: 15px; background: #EFE8DD; padding: 1px 5px; border-radius: 4px; }
+  .back { display: inline-block; margin-bottom: 24px; }
+  .note { color: var(--muted); font-size: 15px; }
+  .studio { margin-top: 48px; padding-top: 16px; border-top: 1px solid #E2D8CA; color: var(--muted); font-size: 15px; }
+  footer { max-width: 760px; margin: 0 auto; padding: 0 24px 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="../../index.html">Ochrestack</a>
+  <h1>Rigbake Check: check a rig before game export</h1>
+  <p>Rigbake Check is a free extension for Blender 4.2 and later. Select an armature or a mesh it deforms and click <strong>Check Rig for Export</strong>. It lists what Blender's own FBX or glTF export will drop or change on the way to a game engine, the worst problems first, each with a one-line fix. The check itself changes nothing in your scene.</p>
+  <p class="note">This page documents Rigbake Check 1.0.1. The extension is being prepared for extensions.blender.org; once it is listed there, you install it from Blender's Get Extensions.</p>
+
+  <h2>What it checks</h2>
+  <ul>
+    <li><strong>No animation reaches the file.</strong> The rig has no actions, no NLA strips and no control rig. Or its bones follow a separate control rig, whose clips Blender's exporters do not write for it.</li>
+    <li><strong>FBX takes that come out twice or wrong</strong> (when you check against FBX):
+      <ul>
+        <li>clips on unmuted NLA tracks, as after Push Down, which Blender's FBX export at its defaults (All Actions and NLA Strips on) writes twice;</li>
+        <li>clips that key different bone channels, for example one keys the IK target and another doesn't, so a take can carry another clip's pose.</li>
+      </ul>
+      The fixes are plain Blender: mute or stash the tracks (or turn off NLA Strips), key every channel in every clip, or export with glTF.</li>
+    <li><strong>Shape keys the export will drop.</strong> The FBX exporter, and the glTF exporter with Apply Modifiers on, drop the shape keys of a mesh whose other modifiers they apply.</li>
+    <li><strong>Modifiers the export leaves out.</strong> With Apply Modifiers off, a Mirror or Solidify modifier is not in the file, and a Mask hides nothing in the engine.</li>
+    <li><strong>Unapplied or non-uniform scale</strong> on the armature or its meshes.</li>
+    <li><strong>Vertices with more than four bone weights.</strong> Blender's glTF export keeps only the four largest by default.</li>
+    <li><strong>Vertex group problems:</strong> groups that match no bone, groups of bones with Deform unchecked, empty groups, vertices assigned to no deform bone, deform bones that move nothing.</li>
+    <li><strong>A rig with no mesh to skin.</strong> When you selected a control rig, it says which armature is the character.</li>
+    <li><strong>Notes</strong> that need no change, each with a tip: constraints and drivers (Blender's exporters sample them for the armature's own actions), motion keyed on the armature object itself, smoothing modifiers left unapplied.</li>
+  </ul>
+  <p>Each issue has a <strong>Select</strong> button. Two kinds of issue also have a one-click fix that uses Blender's own operators, after which the rig is checked again: <strong>Apply Scale</strong> for mesh scale, and <strong>Limit Weights</strong> for more than four weights (Limit Total to 4, then Normalize All; if a bone loses all its weights, Rigbake Check names it). Ctrl+Z undoes either fix.</p>
+
+  <h2>How to use it</h2>
+  <ol>
+    <li>In the 3D Viewport press <strong>N</strong> and open the <strong>Rigbake Check</strong> tab.</li>
+    <li>Select the armature, or a mesh it deforms. Object, Pose and Weight Paint mode all work.</li>
+    <li>Under <strong>Check Against</strong>, set <strong>Exporter</strong> to the format you export with, FBX or glTF 2.0. <strong>Apply Modifiers</strong> switches to that exporter's default (on for FBX, off for glTF); change it if you changed the same option in the export dialog.</li>
+    <li>Click <strong>Check Rig for Export</strong>. A dialog shows the count and the exporter settings, every issue with its fix and a Select button, and the notes.</li>
+    <li>Click <strong>Open Full Report</strong> to see every finding in the Text Editor (text block "Rigbake Check Report.txt"), with every bone and vertex group by name.</li>
+    <li>The panel keeps the result for the selection, for example "2 issues, 1 note", with a <strong>Report</strong> button. When you change the rig or the settings, it says <strong>Changed: check again</strong>.</li>
+  </ol>
+
+  <h2>Limits</h2>
+  <ul>
+    <li><strong>It checks; it does not export or bake.</strong> It predicts what Blender's glTF and FBX exporters will do with the settings you set under Check Against. Other exporter options (Deform Bones Only, Animation Mode, NLA Strips, Bake Animation) are not modelled, and settings you change in the export dialog but not here are not seen.</li>
+    <li><strong>The engine side is not checked.</strong> It does not open Godot, Unity or Unreal, and engine import settings are outside what it can see.</li>
+    <li><strong>Control rigs are detected automatically</strong> when a rig has no actions of its own and its bone constraints follow exactly one other armature. A rig that follows two armatures is not treated as having a control rig.</li>
+    <li><strong>Props parented to a bone</strong> (a sword on a hand) are not checked.</li>
+    <li><strong>Weights are counted per vertex</strong> across the bones that deform it. A vertex group of a non-deform bone is reported, but its weights are not counted.</li>
+    <li><strong>Hidden meshes are left out</strong>, because an export of the selection never includes them.</li>
+    <li>Tested with Blender 4.2.0, 4.5.15 and 5.0.1 (the Python-module builds of those versions). On 4.5.15, seven checks that re-import multi-take FBX files are skipped, because of Blender 4.5's own FBX importer.</li>
+  </ul>
+
+  <h2>Privacy</h2>
+  <p>Rigbake Check makes no network connections. It sends nothing anywhere, collects no telemetry or analytics, and needs no account or key. Its only output is the report text block inside your .blend file, which is not kept unless something else uses it.</p>
+
+  <h2>Support</h2>
+  <p><a href="support/">How to report a problem</a> · <a href="mailto:support@ochrestack.com?subject=Rigbake%20Check">support@ochrestack.com</a></p>
+  <p class="note">License: GPL-3.0-or-later. Copyright 2026 Ochrestack.</p>
+
+  <div class="studio">
+    <h2>From the same studio</h2>
+    <p>Rigbake, our paid add-on, also bakes and exports: one clean clip per action, with presets for Godot, Unity and Unreal (checked in Godot 4.7; not yet opened in Unity or Unreal). <a href="../?src=check">Rigbake</a></p>
+  </div>
+</main>
+<footer>
+  <a href="../../privacy.html">Privacy</a>
+  <a href="../../terms.html">Terms</a>
+  <a href="../../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
