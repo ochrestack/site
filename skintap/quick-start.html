@@ -37,7 +37,7 @@
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2 LTS and 5.2 LTS)</h2>
   <ol>
-    <li>After checkout, download <code>skintap-1.0.3.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
+    <li>After checkout, download <code>skintap-1.0.4.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Skintap needs no internet, so <strong>Continue Offline is fine</strong>.</li>
@@ -65,14 +65,22 @@
   <h2 id="controls">When the pick lands on a tweak or master control</h2>
   <p>When the bone with the most weight under the cursor is hidden (Rigify's <code>DEF-</code> bones are), Skintap selects the nearest visible bone that drives it: it follows the rig's constraints, then the parents, and reads the IK/FK switch as it is set.</p>
   <ul>
-    <li><strong>Rigify as generated</strong> shows its tweak controls, so clicks select tweak controls (<code>upper_arm_tweak.L</code>). Hide the Tweak bone collections to get the IK or FK controls.</li>
+    <li><strong>Rigify:</strong> Skintap skips Rigify's tweak controls, so a click selects the IK or FK control (<code>upper_arm_ik.L</code> or <code>upper_arm_fk.L</code>, as the IK/FK switch is set), even while the tweak controls are shown. To pick the tweak controls (<code>upper_arm_tweak.L</code>), untick <strong>Skip Rigify Tweak Controls</strong> in <strong>Preferences &gt; Add-ons &gt; Skintap</strong>. The setting is kept when Blender restarts.</li>
     <li><strong>Other rigs:</strong> the nearest visible driver can be a master control that moves most of the body. Switch the limb to FK, or tick <strong>Pick Deform Bones</strong>.</li>
     <li><strong>Pick Deform Bones</strong> selects the deform bone itself, even when it is hidden; the label says when it is. On Rigify that bone follows its controls, so it is for checking which bone carries the weight, not for posing.</li>
   </ul>
 
+  <h2 id="imported">Imported game characters (Mixamo, glTF)</h2>
+  <p>On an imported skeleton the bones are the deform bones, so the pick is the bone itself (<code>mixamorig:LeftArm</code>); there is no control to look up and nothing to set.</p>
+  <ol>
+    <li><strong>File &gt; Import &gt; glTF 2.0</strong>. In the import options, open <strong>Bones</strong> (Blender 4.2) or <strong>Bones &amp; Skin</strong> (Blender 5.2) and set <strong>Bone Dir</strong> to <strong>Temperance</strong>. With the default, Blender draws the bones of Mixamo files about 100 times too long and adds a large sphere as their shape; with Temperance they sit inside the body and get no sphere.</li>
+    <li>Select the armature, Ctrl+Tab for Pose Mode, then Shift+Alt+Q and click the body, hair or clothes.</li>
+  </ol>
+  <p>Already imported with the default? Skintap still picks the right bone, because it reads the mesh's weights, not the bones' drawn shapes. To tidy the view: Armature properties &gt; Viewport Display, untick <strong>Shapes</strong> and set <strong>Display As</strong> to <strong>Wire</strong>.</p>
+
   <h2 id="duplicate">Duplicate Chain</h2>
   <ol>
-    <li>In <strong>Edit Mode</strong> (Tab), select one or more chains: click the root, then Shift-click or Ctrl+] to add the children.</li>
+    <li>In <strong>Edit Mode</strong> (Tab), select one or more chains: click the root, then Shift-click the other bones, or press <strong>Shift+]</strong> once per bone to add the next child (Blender's <strong>Select &gt; Extend Child</strong>).</li>
     <li>Click <strong>Duplicate Chain</strong> (or <strong>Armature &gt; Skintap &gt; Duplicate Chain</strong>).</li>
     <li>The copy appears in the same place, selected, ready to move with G. The status bar lists the old and new names.</li>
   </ol>
