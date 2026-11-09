@@ -40,7 +40,7 @@
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2.23 LTS and 5.2.3 LTS, on Linux)</h2>
   <ol>
-    <li>Download <code>exportmint-1.2.0.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>Download <code>exportmint-1.1.3.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access. Exportmint needs none, so <strong>Continue Offline is fine</strong>.</li>
@@ -53,7 +53,7 @@
   <p><strong>Using the command line on the same computer?</strong> After installing from Preferences, quit Blender once, or choose <strong>Save Preferences</strong> in the menu at the bottom left of the Preferences window, before using the command line. Until then the command line reports <code>Unrecognized command: "exportmint"</code>, because Blender records installed extensions only when it saves its preferences.</p>
   <p><strong>On a build machine, or any machine without a screen:</strong> install the same zip from a terminal with Blender's own extension command, as the user that runs your builds. It prints <code>Installed "exportmint"</code>; running it again with a newer zip upgrades it.</p>
   <div class="box">
-    <p><code>blender --command extension install-file -r user_default -e exportmint-1.2.0.zip</code></p>
+    <p><code>blender --command extension install-file -r user_default -e exportmint-1.1.3.zip</code></p>
   </div>
   <p>To remove Exportmint, remove it in <strong>Preferences &gt; Get Extensions</strong>. Your Collection Exporters are Blender's own and stay in your files: <strong>File &gt; Export All Collections</strong> keeps working.</p>
 
@@ -109,7 +109,7 @@ exportmint-manifest-history/
   </ul>
 
   <h2 id="command-line">6. Command line and build scripts</h2>
-  <p>Exportmint must be installed and enabled in the Blender that runs the command (do not add <code>--factory-startup</code>). After installing from Preferences, quit Blender once, or click <strong>Save Preferences</strong>, before using the command line; until then the command line reports <code>Unrecognized command: "exportmint"</code>. On a build machine, install it with <code>blender --command extension install-file -r user_default -e exportmint-1.2.0.zip</code> (see <a href="#install">Install</a>). For what to commit, see <a href="#git">Using with git</a>.</p>
+  <p>Exportmint must be installed and enabled in the Blender that runs the command (do not add <code>--factory-startup</code>). After installing from Preferences, quit Blender once, or click <strong>Save Preferences</strong>, before using the command line; until then the command line reports <code>Unrecognized command: "exportmint"</code>. On a build machine, install it with <code>blender --command extension install-file -r user_default -e exportmint-1.1.3.zip</code> (see <a href="#install">Install</a>). For what to commit, see <a href="#git">Using with git</a>.</p>
   <div class="box">
     <p><code>blender --background --command exportmint [--all] [--strict] [--manifest DIR] FILE.blend [FILE.blend ...]</code></p>
   </div>
