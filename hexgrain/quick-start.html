@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hexgrain quick start: a hex dump of byte arrays in the IntelliJ IDEA debugger</title>
+<meta name="description" content="Install Hexgrain in IntelliJ IDEA 2025.3 or later, open a Hex tab on a Java or Kotlin byte array while debugging, read the changed-byte marks, and use Go to offset, Find, Copy As, Save and the data inspector with a licence.">
+<link rel="canonical" href="https://ochrestack.com/hexgrain/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  code { font-size: 15px; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Hexgrain quick start</h1>
+  <p>Installing Hexgrain, your first Hex tab, and what the licence adds. Back to the <a href="index.html">Hexgrain product page</a>.</p>
+
+  <h2 id="install">Install (IntelliJ IDEA 2025.3 or later)</h2>
+  <ol>
+    <li>In the IDE, open <strong>Settings | Plugins | Marketplace</strong>, search for <em>Hexgrain</em> and click <strong>Install</strong>. The listing is in review; until it is live, the search finds nothing.</li>
+    <li>If the IDE asks for a restart, restart it.</li>
+  </ol>
+  <p>Hexgrain works with Java and Kotlin programs debugged in IntelliJ IDEA. Tested in IntelliJ IDEA 2025.3 on Linux and checked against 2026.3 with JetBrains' Plugin Verifier; Windows and macOS are not tested yet. Rider will not install it in this version. Other JetBrains IDEs can install it, but have nothing for it to show.</p>
+
+  <h2 id="open">Open a Hex tab</h2>
+  <ol>
+    <li>Start your program with <strong>Debug</strong> and pause at a breakpoint where a <code>byte[]</code> is in scope.</li>
+    <li>In <strong>Variables</strong>, right-click the array and choose <strong>View as Hex Dump</strong>, or select it and press <strong>Ctrl+Alt+Shift+Q</strong>. The same item is in the context menu of <strong>Watches</strong> and of an <strong>Evaluate Expression</strong> result, and in <strong>Find Action</strong> (Ctrl+Shift+A, type "hex dump").</li>
+    <li>A <strong>Hex</strong> tab opens in the Debug tool window, titled with the expression: an offset column, the bytes in hex, and the characters.</li>
+  </ol>
+  <figure><a href="img/context-menu-window.png"><img src="img/context-menu.png" alt="The Variables context menu on a byte array named png, with 'View as Hex Dump  Ctrl+Alt+Shift+Q' under Inspect" width="330" height="680" loading="lazy"></a><figcaption>The Variables context menu on a <code>byte[]</code>.</figcaption></figure>
+
+  <h2 id="read">Read the dump</h2>
+  <ul>
+    <li><strong>Bytes per row:</strong> 8, 16 or 32. <strong>Characters:</strong> ASCII, Latin-1 or UTF-8. Non-printable bytes show as a dot; in UTF-8 a character shows at its first byte. Changing these in a tab changes that tab only.</li>
+    <li><strong>Select</strong> by dragging in the hex columns or in the characters; the selection shows in both, with its offset and length below. <strong>Ctrl+C</strong> (or right-click <strong>Copy as Hex</strong>) copies it as <code>89 50 4E 47</code>.</li>
+    <li><strong>Step Over</strong>, or any pause: the tab reads the array again and marks the bytes that changed since the last pause. Arrays up to 1 MiB (1,048,576 elements) are read whole at every pause, so a change anywhere in them is marked; in larger arrays, changes are marked in the rows read at both pauses.</li>
+    <li>The tab follows the array it was opened on. When a called method has its own variable of the same name, the tab keeps showing your array, read at this pause, and says so. When your variable is given a new array, the tab shows the new one, marks nothing, and says so. When the variable is not in the selected frame any more, the tab says so and keeps the last bytes, greyed.</li>
+    <li>After <strong>Resume</strong>, the tab shows the bytes from the last pause, greyed, and reads nothing from the running program.</li>
+    <li>Null and empty arrays show a one-line message. Without a licence, arrays over 64 KB show their first 64 KB (65,536 bytes) and one line with the array's length and what a licence adds.</li>
+  </ul>
+  <figure><a href="img/step-over-marks-the-stamped-dates-window.png"><img src="img/step-over-marks.png" alt="The Hex tab on a PNG's XMP packet after Step Over: the rewritten digits of xmp:ModifyDate and xmp:MetadataDate marked in both columns, and '24 changed since the last pause' in the status line" width="958" height="522" loading="lazy"></a><figcaption>After Step Over: the bytes the code just changed are marked, and the status line counts them.</figcaption></figure>
+
+  <h2 id="licensed">With a licence</h2>
+  <ul>
+    <li><strong>Any size.</strong> Arrays beyond 64 KB open whole. The tab reads only the rows on screen plus 64 rows above and below. The status line shows which rows are on screen and how far into the array they are. A read that fails, or takes longer than the limit in Settings (10 s by default), shows its reason in the tab; the IDE stays responsive.</li>
+    <li><strong>Go to</strong> takes an offset in hex (<code>0x1F000000</code>, or zero-padded as in the offset column, <code>00013790</code>) or decimal (<code>520093696</code>). A plain number is read as decimal, and the tab says which offset that is.</li>
+    <li><strong>Find:</strong> choose Hex (<code>49 44 41 54</code>, spaces anywhere) or Text (ASCII or UTF-8), then <strong>Next</strong> or <strong>Previous</strong>. The whole array is searched; arrays up to 1 Mi elements show "Match 2 of 5". <strong>Stop</strong>, or Escape in the Find field, ends a search.</li>
+    <li><strong>Copy As:</strong> hex string, Base64, or a Java, Kotlin or C# array literal.</li>
+    <li><strong>Save:</strong> the selection or the whole array to a <code>.bin</code> file through the IDE's save dialog; the tab shows the number of bytes written. Every byte comes from the same pause. The file is written next to the target and moved into place at the end, so a failed or stopped save leaves an existing file as it was.</li>
+    <li><strong>Data inspector:</strong> select 1 to 8 bytes to see int8, int16, int32 and int64, signed and unsigned, float32 and float64, big- and little-endian, and the bits; any selection also shows its UTF-8 and UTF-16 text. Right-click a value or press Ctrl+C to copy it.</li>
+    <li><strong>More types:</strong> <code>java.nio.ByteBuffer</code> (heap and direct; the bytes between position and limit, with <strong>Whole capacity</strong> to see all of it), <code>short[]</code>, <code>int[]</code>, <code>long[]</code> and <code>char[]</code>, one element per cell at its own width, with 4, 8, 16 or 32 columns.</li>
+  </ul>
+  <figure><a href="img/data-inspector-sof0-width-window.png"><img src="img/data-inspector.png" alt="Two bytes, 08 00, selected in a JPEG's frame header at 0x6D33; the data inspector shows 2048 big-endian and 8 little-endian for int16 and uint16" width="958" height="522" loading="lazy"></a><figcaption>Go to 0x6D33 in a camera JPEG, two bytes selected: 2048 big-endian, the image's width.</figcaption></figure>
+
+  <h2 id="licence">Licence and trial</h2>
+  <p>Without a licence, each licensed control shows one line with the price and <strong>Get a licence or trial</strong>, which opens the IDE's own licence dialog with Hexgrain selected, only when you click it. The trial is 30 days of every feature. The licence is a JetBrains Marketplace perpetual licence: $9 once, the same for personal and commercial use, every update included, nothing renews. When a trial ends there is no pop-up, banner or notification, and the free hex dump keeps working.</p>
+
+  <h2 id="settings">Settings</h2>
+  <p><strong>Settings | Tools | Hexgrain</strong>: default bytes per row, columns for integer arrays, the characters column, the read time limit, your licence state, and a link to rate or review Hexgrain on JetBrains Marketplace.</p>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li>The program must be paused. Hexgrain never changes the values in your program. To read a direct <code>ByteBuffer</code>, which has no Java array behind it, it copies the requested bytes into a new array in the program's heap; the buffer itself is untouched. Arrays and heap buffers are read directly, with no program code run.</li>
+    <li>Re-reads at each pause follow variables, field chains (also through a cast) and array elements with a number. An expression with method calls is not run again: the tab keeps the array it first showed and says so.</li>
+    <li>While a Save of an array or heap buffer runs, Resume and Step wait until it is done (about 5 seconds per 128 MiB).</li>
+    <li>Find through a very large array is slow: 38 to 53 seconds for a whole 1 GiB array with no match in our runs.</li>
+    <li>Not covered: Rider and C#, Python, Go, JavaScript and TypeScript debuggers; C, C++ and Rust (use the IDE's Memory View); raw memory at an address; Remote Development and Code With Me clients; Android Studio. Arrays larger than 1 GiB have not been measured.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Hexgrain reads values of the program you are debugging only when you open a Hex tab, keeps them in memory, and writes them to disk only when you choose Save. It makes no network calls and collects and sends nothing. The licence check is done by the IDE through JetBrains Marketplace licensing. See also the <a href="../privacy.html">privacy policy</a>.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE version (Help &gt; About), the array's type and length, and what the tab showed. Bug reports and feature requests are welcome at the same address.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

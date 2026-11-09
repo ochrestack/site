@@ -24,6 +24,8 @@ Allow: /linkhither/
 Allow: /linkhither/quick-start.html
 Allow: /xsdtrail/
 Allow: /xsdtrail/quick-start.html
+Allow: /hexgrain/
+Allow: /hexgrain/quick-start.html
 Allow: /guides/
 Allow: /guides/bake-constraints-before-export/
 Allow: /guides/control-rig-no-animations/

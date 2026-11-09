@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hexgrain: Debugger Hex View for IntelliJ IDEA (Java and Kotlin byte arrays)</title>
+<meta name="description" content="Hexgrain shows a Java or Kotlin byte array in the IntelliJ IDEA debugger as a hex dump: offsets, 8, 16 or 32 bytes per row, the characters beside them, and the bytes that changed since the last pause marked. Free up to 64 KB; $9 once for more.">
+<link rel="canonical" href="https://ochrestack.com/hexgrain/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Hexgrain: Debugger Hex View for IntelliJ IDEA">
+<meta property="og:description" content="A byte[] in the debugger is a column of signed decimals, 100 at a time. Hexgrain opens it as a hex dump with the characters beside each row, and marks what changed at every pause. Free up to 64 KB; $9 once for more.">
+<meta property="og:url" content="https://ochrestack.com/hexgrain/">
+<meta property="og:image" content="https://ochrestack.com/hexgrain/img/og-hexgrain-2x1.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="600">
+<meta property="og:image:alt" content="Hexgrain's Hex tab in IntelliJ IDEA on a PNG's XMP packet after Step Over: the two dates the program just rewrote are marked, and the status line reads 24 changed since the last pause">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hexgrain: Debugger Hex View for IntelliJ IDEA">
+<meta name="twitter:description" content="A Java or Kotlin byte[] in the IntelliJ IDEA debugger as a hex dump, changed bytes marked at every pause. Free up to 64 KB; $9 once for more.">
+<meta name="twitter:image" content="https://ochrestack.com/hexgrain/img/og-hexgrain-2x1.png">
+<meta name="twitter:image:alt" content="The Hex tab after Step Over, the rewritten dates marked, 24 changed since the last pause">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  code { font-size: 15px; }
+  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .note { font-size: 15px; color: var(--muted); }
+  .benefits { padding-left: 20px; margin: 16px 0; }
+  .benefits li { margin: 6px 0; }
+  .hero { margin-bottom: 8px; }
+  .pair figure { flex: 0 1 auto; }
+  /* The IDE captures are 958 px wide: on wide screens they are shown at their real size, centred on the column. */
+  @media (min-width: 1010px) {
+    .real-size { width: 958px; margin-left: -123px; margin-right: -123px; }
+  }
+  header { max-width: 1200px; }
+  .top { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .top h1 { margin-top: 24px; }
+  .top .sub { font-size: 18px; line-height: 1.5; margin-bottom: 8px; }
+  .top .benefits { margin: 8px 0; }
+  .top .benefits li { margin: 2px 0; }
+  .top .buy { margin-top: 10px; }
+  .top .note, .top .fine { margin: 0 0 6px; line-height: 1.45; }
+  .top-image { margin: 16px 0; }
+  @media (min-width: 1000px) {
+    .top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 640px); column-gap: 36px; align-items: start; }
+    .top > * { grid-column: 1; }
+    .top > .top-image { grid-column: 2; grid-row: 1 / span 4; margin: 28px 0 0; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<section class="top">
+  <h1>Hexgrain: Debugger Hex View</h1>
+  <p class="sub">In the IntelliJ IDEA debugger, a <code>byte[]</code> is a column of signed decimals, 100 at a time. Reading a header means scrolling, converting and counting. Hexgrain shows it as a hex dump.</p>
+  <figure class="top-image">
+    <a href="img/step-over-marks-the-stamped-dates-window.png"><img class="hero" src="img/step-over-marks.png" alt="Hexgrain's Hex tab in IntelliJ IDEA on a 1,262-byte PNG, 16 bytes per row: offsets on the left, hex in the middle, and the XMP text on the right, readable as 'xmp:ModifyDate=&quot;2026-11-09T10:42:07&quot;' and 'xmp:MetadataDate=&quot;2026-11-09T10:42:07&quot;'. After Step Over the digits the program just rewrote are marked in orange in both columns; the status line reads '24 changed since the last pause' and 'Rows 0x230–0x35F of 1,262 bytes'. Above the rows, one line says what a licence adds and its price; the data inspector panel says it comes with a licence" width="958" height="522"></a>
+    <figcaption>Free tier, one Step Over after the program rewrote two dates in a PNG: the changed digits are marked (the checksum, further down, makes 24).</figcaption>
+  </figure>
+  <ul class="benefits">
+    <li><strong>Read it like a hex editor:</strong> 8, 16 or 32 bytes a row, the characters beside them.</li>
+    <li><strong>See what the last step changed:</strong> changed bytes are marked at every pause.</li>
+    <li><strong>Big arrays, no drilling into indices:</strong> Go to offset, Find, a data inspector, Save (licence).</li>
+  </ul>
+  <div class="buy">
+    <p class="price"><strong>Free up to 64 KB. $9 once</strong> for the rest, personal or commercial; nothing renews. 30-day trial.</p>
+    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
+    <p class="note" id="buy-note">Listing in review: it cannot be installed or tried until it is live.</p>
+    <p class="fine">Java and Kotlin, IntelliJ IDEA 2025.3 and later. Tested on Linux in 2025.3; Windows and macOS not tested yet; not for Rider. Source code not included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
+  </div>
+</section>
+<main>
+  <div class="box">
+    <strong>What the IDE already does.</strong> The IDEs already do part of this, and the listing says so. IntelliJ IDEA's View as &gt; Hex shows each element in hex, still one element per row, 100 at a time; View as &gt; String decodes the whole array as one line of text, hiding bytes that are not text; a Java Type Renderer you write yourself can print it as one line of hex. For C, C++ and Rust the IDE's Memory View already shows hex with characters, and a free plugin already offers a binary view of some debugger values, including Java byte arrays.
+  </div>
+
+  <h2 id="tiers">Free, and what the licence adds</h2>
+  <table>
+    <tr><th scope="col">What you get</th><th scope="col">Free</th><th scope="col" style="white-space:nowrap">$9 once</th></tr>
+    <tr><td>Hex dump of a <code>byte[]</code>: 8/16/32 per row, ASCII, Latin-1 or UTF-8, selection, copy as hex, changed bytes marked</td><td>First 64 KB</td><td>Any size</td></tr>
+    <tr><td>Go to offset, Find (hex or text), Copy As (Base64, Java, Kotlin, C# literals), Save to a .bin file</td><td>No</td><td>Yes</td></tr>
+    <tr><td><code>ByteBuffer</code>, <code>short[]</code>, <code>int[]</code>, <code>long[]</code>, <code>char[]</code>; the data inspector (int8 to int64, floats, both byte orders)</td><td>No</td><td>Yes</td></tr>
+  </table>
+  <p class="fine">Without a licence, a locked control shows one line with the price. Nothing pops up, and the free tier will not shrink in a later version.</p>
+
+  <h2 id="real">In the IDE, for real</h2>
+  <p>Captures of IntelliJ IDEA 2025.3 with Hexgrain 1.0.1, debugging a small program in a clone of the open-source metadata-extractor library, on its own test images. Tap an image for the whole window.</p>
+
+  <div class="pair">
+    <figure>
+      <a href="img/variables-signed-decimals-window.png"><img class="ui" src="img/variables-signed-decimals.png" alt="IntelliJ IDEA's Variables view with png = {byte[1262]} expanded: one row per element, 0 = -119, 1 = 80, 2 = 78, 3 = 71, 4 = 13, 5 = 10 and so on, down the panel" width="358" height="522" loading="lazy"></a>
+      <figcaption>Without Hexgrain: signed decimals, one per row.</figcaption>
+    </figure>
+    <figure>
+      <a href="img/context-menu-window.png"><img class="ui" src="img/context-menu.png" alt="The Variables context menu on png, with 'View as Hex Dump  Ctrl+Alt+Shift+Q' under Inspect" width="330" height="680" loading="lazy"></a>
+      <figcaption>Right-click, <strong>View as Hex Dump</strong>. Also in Watches and Evaluate Expression.</figcaption>
+    </figure>
+  </div>
+
+  <figure class="real-size">
+    <a href="img/free-tier-64kb-window.png"><img src="img/free-tier-64kb.png" alt="Without a licence, the Hex tab on a 781,204-byte camera JPEG: the Exif header from offset 0, 'Exif..II*.' and further down 'NIKON', 'E995v1.6' and '2002:08:29 17:31:40' in the characters; under the rows one line: 'Showing the first 65,536 bytes (64 KB) of 781,204. A Hexgrain licence opens the whole array with Go to offset, and adds find, copy as, save and the data inspector: $9 once, the same for personal and commercial use, with a 30-day free trial.' and Get a licence or trial" width="958" height="522" loading="lazy"></a>
+    <figcaption>Free on a 781,204-byte JPEG: the first 64 KB and one line saying what a licence adds.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/find-hex-backward-past-64kb-window.png"><img src="img/find-past-64kb.png" alt="With a licence, the same JPEG: Find, Hex 'FF D9', Previous from the last byte, 'Match 5 of 5'. The match at 0xBE643 is selected; the rows after it hold readable text such as 'Dateiname : DSCN1767.JPG', '2048 x 1536 Pixel' and '300 x 300 dpi'. Status line: 'Rows 0xBE610–0xBE72F of 781,204 bytes (99.9%)'" width="958" height="522" loading="lazy"></a>
+    <figcaption>Licensed: the whole file. Find <code>FF D9</code> backward lands on match 5 of 5, 99.9% of the way in.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/data-inspector-sof0-width-window.png"><img src="img/data-inspector.png" alt="Go to 0x6D33 in the JPEG: two bytes, 08 00, selected in the image's frame header; the data inspector shows int16 and uint16 2048 big-endian and 8 little-endian, with int8, uint8, bits, UTF-8 and UTF-16 rows" width="958" height="522" loading="lazy"></a>
+    <figcaption>The data inspector: two bytes of the frame header read 2048 big-endian, the image's width.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/find-and-copy-as-window.png"><img src="img/find-and-copy-as.png" alt="Find, Text 'NIKON': Match 1 of 1 at offset 0xAA; ten bytes 'NIKON.E995' selected in both columns, and the Copy As menu open with Hex (spaced), Hex String, Base64, Java Array Literal, Kotlin Array Literal and C# Array Literal" width="958" height="522" loading="lazy"></a>
+    <figcaption>Find text, then Copy As an array literal for your test.</figcaption>
+  </figure>
+  <details>
+    <summary>How these images were made</summary>
+    <p>IntelliJ IDEA 2025.3 (IU-253.28294.334), started with <code>./gradlew runIde</code> from Hexgrain 1.0.1 under a virtual display at 1280×800, dark theme, driven with real clicks and keys. The project is metadata-extractor (Apache-2.0) at commit 4d5cd469. The PNG is its test file <code>photoshop-8x12-rgb24-all-metadata.png</code>, the JPEG its test file <code>nikonMakernoteType2b.jpg</code>. The added program overwrites <code>xmp:ModifyDate</code> and <code>xmp:MetadataDate</code> and recomputes the chunk's CRC; an independent check of the same edit counts the same 24 changed bytes. The listing does not exist yet, so the images with licensed features were taken with a stand-in for JetBrains Marketplace licensing in that sandbox IDE, and the free-tier images with the same stand-in set to "no licence".</p>
+  </details>
+
+  <h2 id="measured">Measured</h2>
+  <p>A 1 GiB <code>byte[]</code> (Linux, 4 CPUs), every recorded run: first rows within 85 ms, Go to in 1 to 2 ms (median), the IDE never held for more than 27 ms. Find through all 1 GiB with no match: 38 to 53 seconds.</p>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li>Java and Kotlin in IntelliJ IDEA only. Not Rider, Python, Go, JavaScript, C, C++ or Rust; not Remote Development clients or Android Studio.</li>
+    <li>Change marks cover the whole array up to 1 MiB; above that, the rows read at both pauses.</li>
+    <li>Read-only: it never changes your program's values. Reading a direct <code>ByteBuffer</code> copies the bytes into a new array in the program's heap.</li>
+    <li>Arrays larger than 1 GiB have not been measured.</li>
+  </ul>
+
+  <details>
+    <summary>More questions: slowdowns, same-name variables, trial end, Rider</summary>
+    <p><strong>Does it slow down debugging?</strong> It reads only while a Hex tab is open and the program is paused, and after Resume it reads nothing until the next pause. Arrays and heap buffers are read directly, without running program code. A Save of a large array holds the pause until it is written (about 5 seconds per 128 MiB).</p>
+    <p><strong>A called method has its own variable with the same name.</strong> The tab keeps showing the array you opened, read at this pause, with a line naming the other method. If your variable is given a new array, the tab shows the new one, says so, and marks nothing. Re-reads follow variables, fields, casts and numeric indexes; an expression with method calls is not run again, and the tab says so.</p>
+    <p><strong>When the trial ends</strong> each licensed control shows one line with the price and a link to the IDE's licence dialog. No pop-up, banner or notification; the free hex dump keeps working.</p>
+    <p><strong>Rider and C#?</strong> Not yet. Hexgrain has not been run in a real Rider debug session, so it declares itself incompatible with Rider, and Rider will not install it. Other JetBrains IDEs can install it but have nothing for it to show. Attaching to a JVM on another machine has not been tested.</p>
+    <p><strong>Tested:</strong> 92 automated tests in IntelliJ IDEA 2025.3 on Linux, including real debug sessions of Java and Kotlin programs; JetBrains' Plugin Verifier against IntelliJ IDEA 2025.3 and 2026.3. Not tested yet: Windows and macOS.</p>
+  </details>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li>Sold, billed and refunded by JetBrains Marketplace under its terms; <a href="eula.html">licence agreement</a>.</li>
+    <li>Privacy: no network calls, no telemetry; bytes go to disk only when you choose Save (<a href="../privacy.html">privacy policy</a>).</li>
+    <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">quick start</a>.</li>
+  </ul>
+  <p style="font-size:14px;color:var(--muted)">Images: metadata-extractor by Drew Noakes and contributors (Apache-2.0). IntelliJ IDEA is a trademark of JetBrains s.r.o.; Ochrestack is not affiliated with JetBrains.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
