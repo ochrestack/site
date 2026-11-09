@@ -65,7 +65,7 @@
   <h2 id="controls">When the pick lands on a tweak or master control</h2>
   <p>When the bone with the most weight under the cursor is hidden (Rigify's <code>DEF-</code> bones are), Skintap selects the nearest visible bone that drives it: it follows the rig's constraints, then the parents, and reads the IK/FK switch as it is set.</p>
   <ul>
-    <li><strong>Rigify:</strong> Skintap skips Rigify's tweak controls, so a click selects the IK or FK control (<code>upper_arm_ik.L</code> or <code>upper_arm_fk.L</code>, as the IK/FK switch is set), even while the tweak controls are shown. To pick the tweak controls (<code>upper_arm_tweak.L</code>), untick <strong>Skip Rigify Tweak Controls</strong> in <strong>Preferences &gt; Add-ons &gt; Skintap</strong>. The setting is kept when Blender restarts.</li>
+    <li><strong>Rigify:</strong> Skintap skips Rigify's tweak controls, so a click selects the IK or FK control (<code>upper_arm_ik.L</code> or <code>upper_arm_fk.L</code>, as the IK/FK switch is set), even while the tweak controls are shown. To pick the tweak controls (<code>upper_arm_tweak.L</code>), untick <strong>Skip Rigify Tweak Controls</strong> in <strong>Preferences &gt; Add-ons &gt; Skintap</strong>. The setting is saved with Blender's preferences.</li>
     <li><strong>Other rigs:</strong> the nearest visible driver can be a master control that moves most of the body. Switch the limb to FK, or tick <strong>Pick Deform Bones</strong>.</li>
     <li><strong>Pick Deform Bones</strong> selects the deform bone itself, even when it is hidden; the label says when it is. On Rigify that bone follows its controls, so it is for checking which bone carries the weight, not for posing.</li>
   </ul>
