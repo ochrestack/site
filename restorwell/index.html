@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restorwell for WordPress: restore a .wpress backup free, past your upload limit</title>
+<meta name="description" content="Restorwell restores a .wpress backup made with All-in-One WP Migration, free, past your host's upload limit, with or without a password, and checks the whole file and your server's limits before anything changes. Restorwell Pro adds Restore from a link for $19 once.">
+<link rel="canonical" href="https://ochrestack.com/restorwell/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Restorwell for WordPress: restore a .wpress backup free, past your upload limit">
+<meta property="og:description" content="Asked to pay to restore your own .wpress backup? Restorwell restores it free, past your host's upload limit, with or without a password, and checks everything before anything changes.">
+<meta property="og:url" content="https://ochrestack.com/restorwell/">
+<meta property="og:image" content="https://ochrestack.com/restorwell/img/hero-limits.png">
+<meta property="og:image:width" content="1644">
+<meta property="og:image:height" content="497">
+<meta property="og:image:alt" content="Restorwell's Check on a 2.29 GB password-protected backup: seven limits on this server, each marked OK">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Restorwell for WordPress: restore a .wpress backup free, past your upload limit">
+<meta name="twitter:description" content="Restores a .wpress backup free, past your host's upload limit, with or without a password. Checks the whole file and your server's limits first.">
+<meta name="twitter:image" content="https://ochrestack.com/restorwell/img/hero-limits.png">
+<meta name="twitter:image:alt" content="Restorwell's Check on a 2.29 GB password-protected backup: seven limits on this server, each marked OK">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Restorwell for WordPress</h1>
+  <p class="sub">Asked to pay to restore your own .wpress backup? Restorwell restores it free, past your host's upload limit, with or without a password.</p>
+
+  <a href="img/check-report.png"><img class="hero" src="img/hero-limits.png" alt="Restorwell's Check of a 2.29 GB password-protected backup, limits on this server, each with a green tick: structure and checksums of the whole file and of every file inside match; password accepted, used only while restoring and never saved; single site; free disk space about 2.39 GB needed, 18.94 GB available; database statement size 31.8 KB, and this database server accepts up to 16.0 MB" width="822" height="249"></a>
+
+  <ul>
+    <li><strong>Restore your own backup, free, at any size</strong>, past your host's upload limit.</li>
+    <li><strong>Password-protected too.</strong> Type it; it is never saved.</li>
+    <li><strong>Know before anything changes:</strong> the whole file and your server's limits are checked first.</li>
+  </ul>
+
+  <div class="buy">
+    <p class="price"><strong>Restorwell is free:</strong> <a href="download/restorwell-1.1.0.zip">download restorwell-1.1.0.zip</a> (69 KB).<br><strong>Restorwell Pro, $19 once, unlimited sites:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_UIWbTLwhrdfdwbV2g5dLi3SPrzI3I4GgUMBKB0aCriG">Buy for $19</a></p>
+    <p class="fine">Pro adds <a href="#pro">Restore from a link</a>; restoring never needs it. Tested on WordPress 7.1.4, PHP 8.3.6, MariaDB 10.11, Linux, Chrome; Windows, macOS and other browsers untested (<a href="#tested">more</a>) · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+  </div>
+
+  <p class="fine">Above: a 2.29 GB password-protected backup, 8 MB upload limit (<a href="img/check-report.png">whole report</a>). Not affiliated with or endorsed by All-in-One WP Migration or ServMask.</p>
+
+  <div class="box warn">
+    <strong>When you do not need Restorwell.</strong> If your backup is smaller than the upload limit your host shows, All-in-One WP Migration's own Import screen restores it for free. If you can raise the limit (.htaccess, .user.ini, or a request to your host), the same applies. Restorwell is for the rest: a backup over the limit, a password, the command line, or a full check before anything is touched.
+    <details>
+      <summary>Other free plugins that read .wpress files</summary>
+      <p>Shiftbox restores large ones, but not password-protected ones, and Poly Bright Quick Restore restores them up to 512 MB (their WordPress.org listings, read November 9, 2026). Restorwell does not make backups; for new backups, use a backup plugin whose restore is free.</p>
+    </details>
+  </div>
+
+  <h2>How it works</h2>
+  <p><strong>1. Choose the backup.</strong> It goes up in pieces smaller than your host's limit and resumes after a drop. Or copy it in by FTP.</p>
+  <figure>
+    <img src="img/upload.png" alt="The Upload a backup box: 'The file is sent in pieces of 6 MB, below this server's upload limit of 8 MB, so the size of the backup does not matter', and the progress line 'Uploading fieldnotes-2026-11-09.wpress: 384.0 MB of 2.29 GB (16%)'. Below it, Backups already on this server lists fieldnotes-2026-11-09 (1).wpress, 1.38 GB, with a Check button" width="822" height="549" loading="lazy">
+    <figcaption>2.29 GB in 6 MB pieces on an 8 MB host.</figcaption>
+  </figure>
+
+  <p><strong>2. Check.</strong> Every byte is read and checksummed, and each limit is named with its numbers. Restore stays off while anything blocks it.</p>
+  <figure>
+    <img src="img/blocked-disk.png" alt="Limits on this server with one red cross: 'Not enough free disk space: about 2.39 GB is needed and only 1.46 GB is available. Free some space (for example delete old backups) or ask your host for more, then check again.' The other six limits are ticked, and below: 'Restore stays off until every limit marked ✕ is solved. Nothing on your site has changed.'" width="822" height="433" loading="lazy">
+    <figcaption>Not enough disk space: both numbers.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/incomplete.png" alt="Check: fieldnotes-2026-11-09 (1).wpress, backup size 1.38 GB, most details 'not recorded', and one red cross: 'The backup file is incomplete: it ends before its last part. This usually means the download or upload stopped early. Copy the backup again and choose the new copy.' Restore stays off" width="822" height="655" loading="lazy">
+    <figcaption>"Corrupted File" explained: this copy stops at 60 %.</figcaption>
+  </figure>
+
+  <p><strong>3. Restore.</strong> Everything is prepared beside your live site and switched in at the end. If it fails or you cancel first, your site is as it was.</p>
+  <figure>
+    <img src="img/restoring.png" alt="The Restoring card: a progress bar and 'Unpacking files beside the live site: 71 of 820 files (20%)', the note that the live site keeps running until the final switch, and a Cancel restore button" width="822" height="230" loading="lazy">
+    <img src="img/finished.png" alt="Restore finished: 'fieldnotes-2026-11-09.wpress, restored on November 9, 2026 9:55 pm from https://fieldnotes.example.org: 820 files and 12 database tables. Permalinks were refreshed.', then 'The backup file (2.29 GB) is still on the server. Delete it now to free the space?' with Delete backup file and Keep it, a one-line review request with Dismiss, and Close" width="822" height="265" loading="lazy" style="margin-top:12px">
+    <figcaption>Then log in with an account from the backup.</figcaption>
+  </figure>
+  <p>Also free from the command line: <code>wp restorwell check</code> and <code>wp restorwell restore</code> (<a href="quick-start.html#cli">quick start</a>).</p>
+
+  <h2 id="pro">Restorwell Pro: Restore from a link</h2>
+  <p>Paste a direct download link: your server fetches the backup itself, resuming where the remote server allows, then runs the same Check and Restore. A huge file never passes through your own connection.</p>
+  <figure>
+    <img src="img/pro-downloading.png" alt="The Restore from a link box: the address http://backups.oldhost.example/files/fieldnotes-2… in the field, a progress bar and 'Downloading fieldnotes-2026-11-09.wpress from backups.oldhost.example: 490.0 MB of 2.29 GB (20%) – resumable', and a Cancel download button" width="807" height="353" loading="lazy">
+    <figcaption>From a second server standing in for an old host (<a href="#images">how</a>).</figcaption>
+  </figure>
+  <div class="buy">
+    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_UIWbTLwhrdfdwbV2g5dLi3SPrzI3I4GgUMBKB0aCriG">Buy for $19</a></p>
+    <p class="fine">$19 once, unlimited sites, Pro updates included · no renewal, no licence check · both zips in the download (Restorwell 1.1.0, Pro 1.0.1) · Polar checkout · <a href="../terms.html">14-day refund</a></p>
+  </div>
+
+  <h2 id="limits">What it does not do</h2>
+  <ul>
+    <li>Make backups, or restore multisite networks or other backup formats.</li>
+    <li>Restore into a site on SQLite; it needs MySQL or MariaDB (below).</li>
+  </ul>
+  <details>
+    <summary>More limits</summary>
+    <ul>
+      <li>A single database row larger than the database's <code>max_allowed_packet</code> cannot be restored until your host raises that setting. The Check names the size to ask for, before anything changes.</li>
+      <li>If the host kills a request in the middle of the final switch, the site stays half switched until someone opens Tools &gt; Restorwell again, which says what happened and offers Continue or Cancel.</li>
+      <li>If the web server refuses even 64 KB pieces, copy the backup by FTP instead.</li>
+      <li>On nginx, the backup folder's web-access block (.htaccess, web.config) does not apply: ask your host to deny <code>wp-content/restorwell-backups</code>, or delete the backup after restoring (Restorwell offers to).</li>
+      <li>Pro needs a direct download link; a share page such as a Google Drive viewer page is reported as a web page. Addresses on private or local networks are refused.</li>
+    </ul>
+  </details>
+  <figure>
+    <img src="img/sqlite.png" alt="Limits on this server on a WordPress that runs on the SQLite Database Integration plugin: a red cross, 'This site does not use a MySQL or MariaDB database (for example it runs on SQLite). Restorwell restores into MySQL and MariaDB only.', six ticked limits, and 'Restore stays off until every limit marked ✕ is solved. Nothing on your site has changed.'" width="822" height="415" loading="lazy">
+    <figcaption>The Check on a WordPress that runs on SQLite.</figcaption>
+  </figure>
+
+  <h2 id="tested">How we tested</h2>
+  <table>
+    <tr><th>Test</th><th>Result</th></tr>
+    <tr><td>1.1.0 on 8 MB uploads, 30 s, 128 MB: 2.29 GB password backup</td><td>820 files, 12 tables (450 rows) match; longest request 4.0 s; peak memory 10 MiB</td></tr>
+    <tr><td>1.0.0, same limits, nginx: 4.3 GB password backup</td><td>Restored; SHA-256 matches</td></tr>
+    <tr><td>Backup versions read</td><td>7.113 (all kinds), 7.101 (password), 7.0, 7.40, 7.62, 7.80, 7.100 (plain)</td></tr>
+  </table>
+  <details>
+    <summary>Versions and what is untested</summary>
+    <p>On 1.1.0, behind nginx refusing bodies over 1 MB, the pieces got smaller after HTTP 413 and the upload completed. The test suite (131 tests) passed on 1.1.0 with WordPress 7.1.4, PHP 8.3.6 and MariaDB 10.11.14 on Linux; uploads were driven in Chrome. Version 1.0.0 also passed on WordPress 6.5.14, PHP 7.4.33 and MySQL 8.0; that matrix has not been re-run on 1.1.0. Requires WordPress 6.5 or later and PHP 7.4 or later (64-bit for backups over 2 GB), with OpenSSL for password-protected backups and bz2 for bzip2 ones. Not tested: servers on Windows or macOS; Apache, LiteSpeed and IIS; browsers other than Chrome; password-protected backups from versions 7.0 to 7.100. Timings come from a fast test machine: they show each request stays short, not how fast your host is.</p>
+  </details>
+  <details id="images">
+    <summary>How the images on this page were made</summary>
+    <p>Every image is a capture from Google Chrome 157 under a virtual display, of a real WordPress 7.1.4 served by PHP 8.3.6's built-in server (8 MB upload limit, 30-second requests, 128 MB memory) on MariaDB 10.11, with Restorwell 1.1.0 and Pro 1.0.1. The backup is our demo blog, Hollin Marsh Field Notes (16 posts, 2 pages, the 36 CC0 photographs that ship with Twenty Twenty-Five and 10 videos made from them), exported with All-in-One WP Migration 7.113 with a password and gzip: 2.29 GB. The incomplete file is that backup cut off at 60 %. Settings from our test suite: the free disk space was reported as 1.46 GB for the disk-space image; restore steps and Pro's download pieces were made smaller so the progress could be caught on a fast machine; and Pro was allowed to reach the second web server, which runs on the same machine (it normally refuses local addresses). The SQLite image is from a second WordPress on the SQLite Database Integration plugin 3.1.3.</p>
+  </details>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li>Privacy: the free plugin makes no network request; Pro contacts only the address you type. Nothing is sent to us.</li>
+    <li>Install and first restore: the <a href="quick-start.html">quick start</a>.</li>
+    <li>GPL-2.0-or-later, full source in both zips. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+  </ul>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
