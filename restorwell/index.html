@@ -13,13 +13,13 @@
 <meta property="og:url" content="https://ochrestack.com/restorwell/">
 <meta property="og:image" content="https://ochrestack.com/restorwell/img/hero-limits.png">
 <meta property="og:image:width" content="1644">
-<meta property="og:image:height" content="497">
-<meta property="og:image:alt" content="Restorwell's Check on a 2.29 GB password-protected backup: seven limits on this server, each marked OK">
+<meta property="og:image:height" content="490">
+<meta property="og:image:alt" content="Restorwell's Check on a 2.29 GB password-protected backup: five limits on this server, each marked OK">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Restorwell for WordPress: restore a .wpress backup free, past your upload limit">
 <meta name="twitter:description" content="Restores a .wpress backup free, past your host's upload limit, with or without a password. Checks the whole file and your server's limits first.">
 <meta name="twitter:image" content="https://ochrestack.com/restorwell/img/hero-limits.png">
-<meta name="twitter:image:alt" content="Restorwell's Check on a 2.29 GB password-protected backup: seven limits on this server, each marked OK">
+<meta name="twitter:image:alt" content="Restorwell's Check on a 2.29 GB password-protected backup: five limits on this server, each marked OK">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <style>
   :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
@@ -83,7 +83,7 @@
   <h1>Restorwell for WordPress</h1>
   <p class="sub">Asked to pay to restore your own .wpress backup? Restorwell restores it free, past your host's upload limit, with or without a password.</p>
 
-  <a href="img/check-report.png"><img class="hero" src="img/hero-limits.png" alt="Restorwell's Check of a 2.29 GB password-protected backup, limits on this server, each with a green tick: structure and checksums of the whole file and of every file inside match; password accepted, used only while restoring and never saved; single site; free disk space about 2.39 GB needed, 18.94 GB available; database statement size 31.8 KB, and this database server accepts up to 16.0 MB" width="822" height="249"></a>
+  <a href="img/check-report.png"><img class="hero" src="img/hero-limits.png" alt="Restorwell's Check of a 2.29 GB password-protected backup, limits on this server, each with a green tick: structure and checksums of the whole file and of every file inside match; password accepted, used only while restoring and never saved; single site; free disk space about 2.39 GB needed, 18.94 GB available; database statement size 31.8 KB, and this database server accepts up to 16.0 MB" width="822" height="245"></a>
 
   <ul>
     <li><strong>Restore your own backup, free, at any size</strong>, past your host's upload limit.</li>
@@ -109,7 +109,7 @@
   <h2>How it works</h2>
   <p><strong>1. Choose the backup.</strong> Upload it in pieces, or copy it in by FTP.</p>
   <figure>
-    <img src="img/upload.png" alt="The Upload a backup box: 'The file is sent in pieces of 6 MB, below this server's upload limit of 8 MB, so the size of the backup does not matter', and the progress line 'Uploading fieldnotes-2026-11-09.wpress: 384.0 MB of 2.29 GB (16%)'. Below it, Backups already on this server lists fieldnotes-2026-11-09 (1).wpress, 1.38 GB, with a Check button" width="822" height="549" loading="lazy">
+    <img src="img/upload.png" alt="The Upload a backup box: 'The file is sent in pieces of 6 MB, below this server's upload limit of 8 MB, so the size of the backup does not matter', and the progress line 'Uploading fieldnotes-2026-11-09.wpress: 372.0 MB of 2.29 GB (15%)'. Below it, Backups already on this server lists fieldnotes-2026-11-09 (1).wpress, 1.38 GB, with a Check button" width="822" height="549" loading="lazy">
     <figcaption>6 MB pieces on an 8 MB host.</figcaption>
   </figure>
 
@@ -126,7 +126,7 @@
   <p><strong>3. Restore.</strong> Prepared beside your live site, switched in at the end. Fail or cancel before that, and your site is as it was.</p>
   <figure>
     <img src="img/restoring.png" alt="The Restoring card: a progress bar and 'Unpacking files beside the live site: 71 of 820 files (20%)', the note that the live site keeps running until the final switch, and a Cancel restore button" width="822" height="230" loading="lazy">
-    <img src="img/finished.png" alt="Restore finished: 'fieldnotes-2026-11-09.wpress, restored on November 9, 2026 9:55 pm from https://fieldnotes.example.org: 820 files and 12 database tables. Permalinks were refreshed.', then 'The backup file (2.29 GB) is still on the server. Delete it now to free the space?' with Delete backup file and Keep it, a one-line review request with Dismiss, and Close" width="822" height="265" loading="lazy" style="margin-top:12px">
+    <img src="img/finished.png" alt="Restore finished: 'fieldnotes-2026-11-09.wpress, restored on November 9, 2026 10:10 pm from https://fieldnotes.example.org: 820 files and 12 database tables. Permalinks were refreshed.', then 'The backup file (2.29 GB) is still on the server. Delete it now to free the space?' with Delete backup file and Keep it, a one-line review request with Dismiss, and Close" width="822" height="265" loading="lazy" style="margin-top:12px">
     <figcaption>Then log in with an account from the backup.</figcaption>
   </figure>
   <p>Also free from the command line: <code>wp restorwell check</code> and <code>wp restorwell restore</code> (<a href="quick-start.html#cli">quick start</a>).</p>
@@ -134,7 +134,7 @@
   <h2 id="pro">Restorwell Pro: Restore from a link</h2>
   <p>Paste a direct download link: your server fetches the backup itself, resuming where it can, then runs the same Check and Restore.</p>
   <figure>
-    <img src="img/pro-downloading.png" alt="The Restore from a link box: the address http://backups.oldhost.example/files/fieldnotes-2… in the field, a progress bar and 'Downloading fieldnotes-2026-11-09.wpress from backups.oldhost.example: 490.0 MB of 2.29 GB (20%) – resumable', and a Cancel download button" width="807" height="353" loading="lazy">
+    <img src="img/pro-downloading.png" alt="The Restore from a link box: the address http://backups.oldhost.example/files/fieldnotes-2… in the field, a progress bar and 'Downloading fieldnotes-2026-11-09.wpress from backups.oldhost.example: 486.0 MB of 2.29 GB (20%) – resumable', and a Cancel download button" width="807" height="353" loading="lazy">
     <figcaption>From a second server standing in for an old host (<a href="#images">how</a>).</figcaption>
   </figure>
   <div class="buy">
@@ -171,7 +171,7 @@
   </table>
   <details>
     <summary>Versions and what is untested</summary>
-    <p>On 1.1.0, behind nginx refusing bodies over 1 MB, the pieces got smaller after HTTP 413 and the upload completed. The test suite (131 tests) passed on 1.1.0 with WordPress 7.1.4, PHP 8.3.6 and MariaDB 10.11.14 on Linux; uploads were driven in Chrome. Version 1.0.0 also passed on WordPress 6.5.14, PHP 7.4.33 and MySQL 8.0; that matrix has not been re-run on 1.1.0. Requires WordPress 6.5 or later and PHP 7.4 or later (64-bit for backups over 2 GB), with OpenSSL for password-protected backups and bz2 for bzip2 ones. Not tested: servers on Windows or macOS; Apache, LiteSpeed and IIS; browsers other than Chrome; password-protected backups from versions 7.0 to 7.100. Timings come from a fast test machine: they show each request stays short, not how fast your host is.</p>
+    <p>On 1.1.0, behind nginx refusing bodies over 1 MB, the pieces got smaller after HTTP 413 and the upload completed. The test suite (131 tests) passed on 1.1.0 with WordPress 7.1.4, PHP 8.3.6 and MariaDB 10.11.14 on Linux; uploads were driven in Chrome. Version 1.0.0 was also installed and run on WordPress 6.5.14 and PHP 7.4.33; that has not been re-run on 1.1.0. Requires WordPress 6.5 or later and PHP 7.4 or later (64-bit for backups over 2 GB), with OpenSSL for password-protected backups and bz2 for bzip2 ones. Not tested: MySQL (only MariaDB was run); servers on Windows or macOS; Apache, LiteSpeed and IIS; browsers other than Chrome; password-protected backups from versions 7.0 to 7.100. Timings come from a fast test machine: they show each request stays short, not how fast your host is.</p>
   </details>
   <details id="images">
     <summary>How the images on this page were made</summary>
