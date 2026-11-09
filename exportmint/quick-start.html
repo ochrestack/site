@@ -36,9 +36,9 @@
   <h1>Exportmint quick start</h1>
   <p>Installing Exportmint and your first Export Changed. The full manual, <code>README.md</code>, is inside the download. Back to the <a href="index.html">Exportmint product page</a>.</p>
 
-  <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2.23 LTS and 5.2.3 LTS)</h2>
+  <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2.23 LTS and 5.2.3 LTS, on Linux)</h2>
   <ol>
-    <li>Download <code>exportmint-1.1.1.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>Download <code>exportmint-1.1.2.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access. Exportmint needs none, so <strong>Continue Offline is fine</strong>.</li>
@@ -48,9 +48,10 @@
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Exportmint is installed and enabled.</li>
     <li>In the 3D Viewport, press <strong>N</strong> to open the sidebar and click the <strong>Exportmint</strong> tab.</li>
   </ol>
+  <p><strong>Using the command line on the same computer?</strong> After installing from Preferences, quit Blender once, or choose <strong>Save Preferences</strong> in the menu at the bottom left of the Preferences window, before using the command line. Until then the command line reports <code>Unrecognized command: "exportmint"</code>, because Blender records installed extensions only when it saves its preferences.</p>
   <p><strong>On a build machine, or any machine without a screen:</strong> install the same zip from a terminal with Blender's own extension command, as the user that runs your builds. It prints <code>Installed "exportmint"</code>; running it again with a newer zip upgrades it.</p>
   <div class="box">
-    <p><code>blender --command extension install-file -r user_default -e exportmint-1.1.1.zip</code></p>
+    <p><code>blender --command extension install-file -r user_default -e exportmint-1.1.2.zip</code></p>
   </div>
   <p>To remove Exportmint, remove it in <strong>Preferences &gt; Get Extensions</strong>. Your Collection Exporters are Blender's own and stay in your files: <strong>File &gt; Export All Collections</strong> keeps working.</p>
 
@@ -64,7 +65,7 @@
   </ol>
 
   <h2 id="list">2. Read the list</h2>
-  <p>The tab lists every Collection Exporter in the file, in every scene: collection, format and path, status with its reason, and the time of the last export. The first time, every row reads <em>Never exported</em>.</p>
+  <p>The tab lists every Collection Exporter in the file, in every scene: collection, format and path, status with its reason, and the time of the last export. When the file has more than one scene, each row names its scene on a line of its own, and a long path wraps so the file name stays visible. The first time, every row reads <em>Never exported</em>.</p>
   <figure><img src="img/panel-two-changed.png" alt="The Exportmint tab at real size: Export Changed (2), Export All, Check Now, Open Manifest, Add exporter to selected collections, '11 exporters: 9 up to date, 2 changed', rows AntiqueCamera, Avocado and BarramundiFish up to date, BoomBox reading 'Changed: BoomBox: transform changed' and CH-rain reading 'Changed: GEO-rain-scarf: material MAT-rain.scarf changed'" width="383" height="640" loading="lazy"><figcaption>The tab after two edits (Blender 5.2, real size): each stale row says why.</figcaption></figure>
   <ul>
     <li><strong>Up to date</strong>: nothing Exportmint checks has changed since the last export, and the file on disk is the one it wrote.</li>
@@ -105,7 +106,7 @@ exportmint-manifest-history/
   </ul>
 
   <h2 id="command-line">6. Command line and build scripts</h2>
-  <p>Exportmint must be installed and enabled in the Blender that runs the command (do not add <code>--factory-startup</code>). On a build machine, install it with <code>blender --command extension install-file -r user_default -e exportmint-1.1.1.zip</code> (see <a href="#install">Install</a>). For what to commit, see <a href="#git">Using with git</a>.</p>
+  <p>Exportmint must be installed and enabled in the Blender that runs the command (do not add <code>--factory-startup</code>). After installing from Preferences, quit Blender once, or click <strong>Save Preferences</strong>, before using the command line; until then the command line reports <code>Unrecognized command: "exportmint"</code>. On a build machine, install it with <code>blender --command extension install-file -r user_default -e exportmint-1.1.2.zip</code> (see <a href="#install">Install</a>). For what to commit, see <a href="#git">Using with git</a>.</p>
   <div class="box">
     <p><code>blender --background --command exportmint [--all] [--manifest DIR] FILE.blend [FILE.blend ...]</code></p>
   </div>
