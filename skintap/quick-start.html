@@ -33,11 +33,21 @@
 </header>
 <main>
   <h1>Skintap quick start</h1>
-  <p>Installing Skintap and using its four tools. Back to the <a href="index.html">Skintap product page</a>.</p>
+  <p>Back to the <a href="index.html">Skintap product page</a>.</p>
+  <div class="box">
+    <strong>In four steps</strong>
+    <ol>
+      <li><strong>Install:</strong> Blender 4.2 or newer, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the <strong>&#8964;</strong> menu at the top right, <strong>Install from Disk...</strong>, pick <code>skintap-1.0.5.zip</code> (<a href="#install">details</a>).</li>
+      <li><strong>Pose Mode:</strong> click your character's armature and press <strong>Ctrl+Tab</strong>.</li>
+      <li><strong>Start the picker:</strong> mouse over the 3D Viewport, press <strong>Shift+Alt+Q</strong>.</li>
+      <li><strong>Click</strong> the body or the clothes: the bone that moves that spot is selected. Shift-click adds, <strong>Esc</strong> ends.</li>
+    </ol>
+    <p style="margin:0">The chain tools are in the sidebar's <strong>Skintap</strong> tab (press <strong>N</strong>) in Edit Mode: <a href="#duplicate">Duplicate Chain</a>, <a href="#mirror">Mirror Chain</a>, <a href="#rename">Rename Chain</a>, <a href="#fix">Fix .001 Names</a>.</p>
+  </div>
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2 LTS and 5.2 LTS)</h2>
   <ol>
-    <li>After checkout, download <code>skintap-1.0.4.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
+    <li>After checkout, download <code>skintap-1.0.5.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Skintap needs no internet, so <strong>Continue Offline is fine</strong>.</li>
@@ -48,19 +58,19 @@
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Skintap</strong> tab. It is added at the end of the sidebar's tabs, below the others.</li>
   </ol>
   <p>To update, install the newer zip the same way; it replaces the old version. If the picker was running while you updated, restart Blender. To remove Skintap, go to <strong>Preferences &gt; Get Extensions</strong>, open the <strong>&#8964;</strong> menu on Skintap's row and choose <strong>Uninstall</strong>. (Preferences &gt; Add-ons only turns it on and off.)</p>
-  <p>Help inside Blender: <strong>Visit Website</strong> in that same menu, or the <strong>Website</strong> button in Preferences &gt; Add-ons &gt; Skintap, opens this page; the Add-ons entry also shows the support address.</p>
+  <p>Help inside Blender: <strong>Visit Website</strong> in that same menu, or <strong>Open Quick Start</strong> in Preferences &gt; Add-ons &gt; Skintap, opens this page; <strong>Email Support</strong> there opens your mail app with our address.</p>
 
   <h2 id="pick">Pick Bones on Mesh</h2>
   <ol>
     <li>Select your character's armature and enter <strong>Pose Mode</strong> (Ctrl+Tab).</li>
     <li>With the mouse over the 3D Viewport, press <strong>Shift+Alt+Q</strong>, or click <strong>Pick Bones on Mesh</strong> in the Skintap tab, or use <strong>Pose &gt; Skintap &gt; Pick Bones on Mesh</strong>.
-      <figure><img src="img/panel-pose-mode.png" alt="The Skintap tab in Pose Mode at Blender UI scale 1.4: Pick on Mesh with the Pick Bones on Mesh button, the Pick Deform Bones checkbox and 'Shortcut: Shift+Alt+Q, Esc to finish'; Chains with Duplicate Chain, Mirror Chain and Sides .L / .R, noted 'Edit Mode only (Tab)'; Rename with Base, Start, Padding, Side, Number Each Chain, Rename Chain and Fix .001 Names" width="360" height="600" loading="lazy"><figcaption>The Skintap tab in Pose Mode (Blender 5.2, UI scale 1.4).</figcaption></figure>
+      <figure><img src="img/panel-pose-mode.png" alt="The Skintap tab in Pose Mode at Blender UI scale 1.4: Pick on Mesh with the Pick Bones on Mesh button, the Pick Deform Bones checkbox and the hint 'Shift+Alt+Q, Esc to finish'; Rename with Base, Start, Padding, Side, Side Markers, Number Each Chain, Rename Chain and Fix .001 Names; Chains with Duplicate Chain and Mirror Chain greyed out and the hint 'Edit Mode only (Tab)'" width="360" height="700" loading="lazy"><figcaption>The Skintap tab in Pose Mode (Blender 5.2, UI scale 1.4). The tools for the current mode come first; tools that need another mode are greyed out.</figcaption></figure>
     </li>
     <li>Move the mouse over the body or the clothes. The label next to the cursor shows the bone that will be selected and, under it, which deform bone moves that spot, on which mesh.</li>
-    <li><strong>Click</strong> selects that bone and makes it active. <strong>Shift-click</strong> adds it to the selection. Orbit, pan and zoom work as usual while the picker runs.</li>
+    <li><strong>Click</strong> selects that bone and makes it active. <strong>Shift-click</strong> adds it to the selection. A click on empty space deselects all. Orbit, pan and zoom work as usual while the picker runs.</li>
     <li><strong>Esc</strong> or <strong>right-click</strong> ends the picker. The status bar reports what was selected. One Ctrl+Z undoes the whole picking session.</li>
   </ol>
-  <p>The first surface under the cursor wins, so a jacket wins over the shirt under it. Skintap reads the weights of the mesh as it is posed now, after its modifiers, Subdivision Surface included. Nothing is set up first and nothing is added to your .blend.</p>
+  <p>The first surface under the cursor wins, so a jacket wins over the shirt under it. Skintap reads the weights of the mesh as it is posed now, after its modifiers, Subdivision Surface included. Nothing is set up first and nothing is added to your .blend. If the label reads "<em>Body</em>: no weights here", that mesh has no weights at that spot (for example after Automatic Weights failed): paint weights there, or parent the mesh again with Automatic Weights.</p>
 
   <h2 id="controls">When the pick lands on a tweak or master control</h2>
   <p>When the bone with the most weight under the cursor is hidden (Rigify's <code>DEF-</code> bones are), Skintap selects the nearest visible bone that drives it: it follows the rig's constraints, then the parents, and reads the IK/FK switch as it is set.</p>
@@ -82,14 +92,14 @@
   <ol>
     <li>In <strong>Edit Mode</strong> (Tab), select one or more chains: click the root, then Shift-click the other bones, or press <strong>Shift+]</strong> once per bone to add the next child (Blender's <strong>Select &gt; Extend Child</strong>).</li>
     <li>Click <strong>Duplicate Chain</strong> (or <strong>Armature &gt; Skintap &gt; Duplicate Chain</strong>).</li>
-    <li>The copy appears in the same place, selected, ready to move with G. The status bar lists the old and new names.</li>
+    <li>The copy follows the mouse, as with Blender's Shift+D: move it and click to place it (X, Y or Z locks an axis; right-click leaves it on top of the original). The status bar lists the old and new names.</li>
   </ol>
-  <p>The copy takes the next free chain number: <code>hair_01_01..03</code> becomes <code>hair_02_01..03</code> (or <code>hair_03</code> if <code>hair_02</code> exists); <code>Bone_12_0099.L</code> becomes <code>Bone_12_0100.L</code>. A chain without a number gets one: <code>spine_01..03</code> becomes <code>spine_02_01..03</code>. Parenting, roll, deform flag, bone collections, B-Bone settings, custom shapes and constraints are carried over; constraint targets inside the chain point to the copy.</p>
+  <p>The copy takes the next free chain number: <code>hair_01_01..03</code> becomes <code>hair_02_01..03</code> (or <code>hair_03</code> if <code>hair_02</code> exists). The chain's number is the last one its bones share, so one bone <code>Bone_12_0099.L</code> becomes <code>Bone_12_0100.L</code>, while a two-bone chain <code>Bone_12_0099.L</code>, <code>Bone_12_0100.L</code> becomes <code>Bone_13_0099.L</code>, <code>Bone_13_0100.L</code>. A chain without a number gets one: <code>spine_01..03</code> becomes <code>spine_02_01..03</code>. Parenting, roll, deform flag, bone collections, B-Bone settings, custom shapes and constraints are carried over; constraint targets inside the chain point to the copy.</p>
 
   <h2 id="mirror">Mirror Chain</h2>
   <ol>
     <li>In <strong>Edit Mode</strong>, select the chain(s) on one side.</li>
-    <li>Pick the convention under <strong>Sides</strong>: <code>.L / .R</code>, <code>_L / _R</code>, <code>_l / _r</code> or <code>Left / Right</code>.</li>
+    <li>Pick the convention under <strong>Side Markers</strong>: <code>.L / .R</code>, <code>_L / _R</code>, <code>_l / _r</code> or <code>Left / Right</code>.</li>
     <li>Click <strong>Mirror Chain</strong>.</li>
   </ol>
   <p>The copy is mirrored across the armature's X axis. Bones with a side get it flipped (<code>ear.L</code> to <code>ear.R</code>, <code>ear_left_tip</code> to <code>ear_right_tip</code>). Bones with no side get one by where the chain sits (+X is Left): <code>strand_01</code> becomes <code>strand_01.L</code> and its copy <code>strand_01.R</code>, and the vertex groups of the renamed source follow. A chain on the center line, or a mirror whose names already exist, is refused (use Symmetrize to update an existing mirror). The armature's X-Axis Mirror option can stay on.</p>
@@ -97,7 +107,7 @@
   <h2 id="rename">Rename Chain</h2>
   <ol>
     <li>Select the chain(s) in <strong>Pose Mode</strong> or <strong>Edit Mode</strong>.</li>
-    <li>In the tab, set <strong>Base</strong> (for example <code>hair</code>), <strong>Start</strong>, <strong>Padding</strong> (2 gives 01, 02, ...), <strong>Side</strong> (Keep, By Position, Left, Right, None) and, for several chains, <strong>Number Each Chain</strong>.</li>
+    <li>In the tab, set <strong>Base</strong> (for example <code>hair</code>), <strong>Start</strong>, <strong>Padding</strong> (2 gives 01, 02, ...), <strong>Side</strong> (Keep, By Position, Left, Right, None), how a side is written under <strong>Side Markers</strong> (the same setting Mirror Chain uses) and, for several chains, <strong>Number Each Chain</strong>.</li>
     <li>Click <strong>Rename Chain</strong>.</li>
   </ol>
   <p>Bones are numbered root to tip. One chain: <code>hair_01, hair_02, ...</code>; several chains with Number Each Chain on: <code>hair_01_01, ..., hair_02_01, ...</code>. A name already used outside the selection is refused, so nothing is overwritten. The bones of a generated Rigify rig are refused, because Rigify finds its bones by name: rename in the metarig and generate again.</p>
@@ -109,12 +119,12 @@
     <li>bones extruded from a numbered bone continue its count: <code>hair_02.001, hair_02.002</code> become <code>hair_03, hair_04</code>;</li>
     <li>an extruded chain without a number gets one: <code>Finger.L, Finger.L.001, Finger.L.002</code> become <code>Finger_01.L .. Finger_03.L</code>.</li>
   </ul>
-  <figure><img src="img/panel-edit-mode.png" alt="The Skintap tab in Edit Mode: Pick on Mesh noted 'Pose Mode only (Ctrl+Tab)', Chains with Duplicate Chain, Mirror Chain and Sides .L / .R, and Rename with Base, Start, Padding, Side, Number Each Chain, Rename Chain and Fix .001 Names" width="360" height="572" loading="lazy"><figcaption>The Skintap tab in Edit Mode.</figcaption></figure>
+  <figure><img src="img/panel-edit-mode.png" alt="The Skintap tab in Edit Mode: Chains first with Duplicate Chain, Mirror Chain, Side Markers .L / .R and the hint 'Select the chain(s) first'; Rename with Base, Start, Padding, Side, Side Markers, Number Each Chain, Rename Chain and Fix .001 Names; Pick on Mesh last, greyed out, with the hint 'Pose Mode only (Ctrl+Tab)'" width="360" height="700" loading="lazy"><figcaption>The Skintap tab in Edit Mode: the chain tools come first.</figcaption></figure>
   <p>Vertex groups that carry a renamed bone's name are renamed with it, so weights stay attached. The chain tools work only on the selected bones you can see. A tool that cannot finish refuses before it changes anything, and each run is one undo step.</p>
 
   <h2 id="where">Where to find the tools</h2>
   <ul>
-    <li><strong>3D Viewport &gt; Sidebar (N) &gt; Skintap</strong>, in Pose and Edit Mode.</li>
+    <li><strong>3D Viewport &gt; Sidebar (N) &gt; Skintap</strong>, in Pose and Edit Mode. A greyed-out tool needs another mode; hover over it to see which.</li>
     <li><strong>Pose &gt; Skintap</strong> (Pose Mode) and <strong>Armature &gt; Skintap</strong> (Edit Mode).</li>
     <li><strong>Shift+Alt+Q</strong> starts Pick Bones on Mesh in Pose Mode. Change it in <strong>Preferences &gt; Add-ons &gt; Skintap</strong> or <strong>Preferences &gt; Keymap &gt; Pose &gt; Pick Bones on Mesh</strong>.</li>
   </ul>
