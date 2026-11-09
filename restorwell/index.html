@@ -98,6 +98,20 @@
 
   <p class="fine">Above: a 2.29 GB password-protected backup on an 8 MB host (<a href="img/check-report.png">whole report</a>).</p>
 
+  <section id="watch">
+    <h2>Watch it restore</h2>
+    <figure>
+      <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
+        <source src="video/restorwell-demo-720p.mp4" type="video/mp4">
+      </video>
+      <figcaption>The demo, 56 s, captions only, no sound. Restorwell 1.1.0 restores our 2.29 GB password-protected demo backup into a fresh WordPress whose upload limit is 8 MB, in Chrome. The upload is reloaded at 31 % and continues from where it stopped. Parts shown faster than real time say "sped up" on screen. The Check and restore steps were set to 0.3 s with Restorwell's own setting, so the progress line moves on our fast test machine (<a href="#images">how the images were made</a>).</figcaption>
+    </figure>
+    <figure>
+      <img src="video/restorwell-resume.gif" alt="An 11-second loop from the demo: the 2.29 GB backup uploads in 6 MB pieces, the page is reloaded at 31 %, 'Unfinished upload: fieldnotes-2026-11-09.wpress, 720.0 MB of 2.29 GB' appears, the same file is chosen again and the upload continues from 720.0 MB" width="960" height="540" loading="lazy">
+      <figcaption>The reload and resume alone (11 s GIF, 3.1 MB).</figcaption>
+    </figure>
+  </section>
+
   <div class="box warn">
     <strong>When you do not need Restorwell.</strong> If your backup is smaller than the upload limit your host shows, All-in-One WP Migration's own Import screen restores it for free. If you can raise the limit (.htaccess, .user.ini, or a request to your host), the same applies. Restorwell is for the rest: a backup over the limit, a password, the command line, or a full check before anything is touched. Not affiliated with or endorsed by All-in-One WP Migration or ServMask.
     <details>
