@@ -128,7 +128,7 @@
 </section>
 <main>
   <div class="box">
-    <strong>What the IDE already does.</strong> The IDE already does part of this, and the listing says so. Git | Merge offers <code>--ff-only</code> and <code>--no-ff</code> under Modify options, and Git's <code>merge.ff</code> setting sets one rule for every merge. Amend in the Commit tool window shows the commit with its files, message and author, and amends without file changes in single-repository projects; F2 in the Log rewords a commit. Git stops a rebase at each conflict; Histsight shows beforehand where.
+    <strong>What the IDE already does.</strong> The IDE already does part of this, and the listing says so. Git | Merge offers <code>--ff-only</code> and <code>--no-ff</code> under Modify options, and Git's <code>merge.ff</code> setting sets one rule for every merge. Amend in the Commit tool window shows the commit with its files, message and author; F2 in the Log rewords a commit. Git stops a rebase at each conflict; Histsight shows beforehand where.
   </div>
 
   <h2 id="real">In the IDE, for real</h2>
@@ -140,7 +140,7 @@
 
   <figure class="real-size">
     <a href="img/ide-rebase-stops-at-commit-5-window.png"><img src="img/ide-rebase-stops-at-commit-5.png" alt="After Rebase Now, the IDE's own Conflicts dialog: rebasing adjust-default-themes onto master, current commit 95697b96 'Doc', three unresolved files: CHANGELOG.md, fzf.1 and options.go" width="876" height="503" loading="lazy"></a>
-    <figcaption>Rebase Now: the IDE's own rebase stopped at commits 1 and 5, on those files.</figcaption>
+    <figcaption>Rebase Now: the IDE's rebase stopped at commits 1 and 5, on those files.</figcaption>
   </figure>
 
   <figure class="real-size">
@@ -164,13 +164,13 @@
   </figure>
 
   <h2 id="proof">Checked against real rebases</h2>
-  <p>On 119 pairs of real topic branches from the Git project's history (14,853 replayed commits), it predicted all 752 conflict stops, commit for commit and file for file, assuming each conflict keeps the replayed commit's version.</p>
+  <p>On 119 pairs of real topic branches from the Git project's history (14,853 replayed commits), it predicted all 752 conflict stops, with the same files, assuming each conflict keeps the replayed commit's version.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
     <li>Rebase preview: Git 2.40+; plain rebase only, not <code>--rebase-merges</code>, <code>--onto</code> or autosquash.</li>
-    <li>No Jujutsu, <code>--squash</code>, amending older commits or push. WSL Git: not for the preview and amend view.</li>
-    <li>For JetBrains IDEs 2025.1+ with the bundled Git plugin; only IntelliJ IDEA has been run. Remote Development untested.</li>
+    <li>No Jujutsu, <code>--squash</code>, older commits or push; no WSL Git for the preview and amend view.</li>
+    <li>JetBrains IDEs 2025.1+; only IntelliJ IDEA has been run. Remote Development untested.</li>
   </ul>
 
   <h2 id="details">Details</h2>
@@ -178,7 +178,7 @@
     <li>Sold through JetBrains Marketplace; GPL-3.0-or-later, <a href="license.html">licence text</a>.</li>
     <li>Runs only your local <code>git</code>; no network calls, no telemetry (<a href="../privacy.html">privacy</a>).</li>
   </ul>
-  <p style="font-size:14px;color:var(--muted)">Screenshots: IntelliJ IDEA 2026.3 on clones of fzf (MIT) and fd (Apache-2.0); "Sam Rivera" commits are demo commits. Git is a trademark of Software Freedom Conservancy, IntelliJ IDEA of JetBrains s.r.o.; Histsight is affiliated with neither.</p>
+  <p style="font-size:14px;color:var(--muted)">Screenshots: IntelliJ IDEA 2026.3, clones of fzf (MIT) and fd (Apache-2.0), demo commits by "Sam Rivera". Git is a trademark of Software Freedom Conservancy, IntelliJ IDEA of JetBrains s.r.o.; Histsight is affiliated with neither.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>
