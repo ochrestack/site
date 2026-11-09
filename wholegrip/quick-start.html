@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wholegrip quick start: mark a collection, add a collection modifier, set every view layer</title>
+<meta name="description" content="Install Wholegrip for Blender 4.2 LTS to 5.2 LTS, mark a collection Treat as One, give it one modifier stack, and include or exclude it in every view layer from the Outliner.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Wholegrip quick start</h1>
+  <p>Installing Wholegrip and using each of its four parts. The same quick start is inside the download, as <code>README.md</code>. Back to the <a href="index.html">Wholegrip product page</a>.</p>
+  <p>Wholegrip works only on the collections you mark. Every other click stays plain Blender.</p>
+
+  <h2 id="install">Install (Blender 4.2 LTS to 5.2 LTS)</h2>
+  <ol>
+    <li>After checkout, download <code>wholegrip-1.0.2.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
+    <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
+      <ul>
+        <li>Blender may first ask about internet access. Wholegrip needs none, so <strong>Continue Offline</strong> is fine.</li>
+      </ul>
+    </li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip.</li>
+    <li>In Object Mode, the <strong>Wholegrip</strong> button appears at the right end of the 3D Viewport header.</li>
+  </ol>
+  <p>To upgrade, install the newer zip the same way: your marked collections and collection modifiers live in your .blend files, so nothing is lost. To remove Wholegrip, go to <strong>Preferences &gt; Add-ons</strong>, find <em>Wholegrip</em> and choose <strong>Uninstall</strong> from its drop-down menu. Your files still open and render the same.</p>
+
+  <h2 id="mark">1. Mark a collection</h2>
+  <p>Do either of these:</p>
+  <ul>
+    <li>In the Outliner, right-click a collection &gt; <strong>Treat as One</strong>. With several collections selected, all of them are marked.</li>
+    <li>Go to <strong>Properties &gt; Collection</strong> tab &gt; <strong>Wholegrip</strong> and tick <strong>Treat as One</strong>.</li>
+  </ul>
+  <figure><img src="img/outliner-treat-as-one.png" alt="The Outliner right-click menu for a collection, with Treat as One at the bottom and its tooltip" width="759" height="640" loading="lazy"><figcaption>Outliner right-click &gt; Treat as One (Blender 5.2.3, real size).</figcaption></figure>
+  <p>Then, in Object Mode in the 3D Viewport:</p>
+  <ul>
+    <li><strong>Click</strong> any part: the whole collection is selected, child collections included, and the part you clicked becomes active.</li>
+    <li><strong>Box drag</strong> (Select Box tool, or B): every marked collection the box touches is taken whole. The tool's header mode applies; Shift adds, Ctrl subtracts.</li>
+    <li><strong>Shift+click</strong> adds or removes the whole collection.</li>
+    <li><strong>Ctrl+click</strong> picks one object, exactly as Blender's own Ctrl+click does (the object whose origin is nearest the cursor).</li>
+    <li><strong>Alt+U</strong> or the header button turns all of this off and on. Both keys can be changed in the add-on preferences.</li>
+  </ul>
+  <p>When an object is in several marked collections, the deepest one wins and the status bar names the other. Hidden, disabled and unselectable objects are left alone, as in Blender.</p>
+
+  <h2 id="modifiers">2. Collection Modifiers</h2>
+  <p>On a marked collection, go to <strong>Properties &gt; Collection &gt; Wholegrip &gt; Collection Modifiers &gt; Add Modifier</strong>.</p>
+  <figure><img src="img/collection-modifiers-panel.png" alt="Collection Properties of a marked collection: Treat as One, the member count, Collection Modifiers with Add Modifier, On 19 of 19 members, one Geometry Nodes modifier with its node group and Thickness input, Apply to All and Remove from All" width="537" height="584" loading="lazy"><figcaption>The panel on Rain's rain-geometry collection, with one Geometry Nodes modifier on all 19 members.</figcaption></figure>
+  <ul>
+    <li>Each modifier added there goes to the bottom of every member's stack, named after the collection, such as <em>Bevel ‹Chair›</em>. Lights, cameras and empties are skipped and counted.</li>
+    <li>Change a value in the panel and every member follows. Renaming, moving, toggling or removing does the same everywhere.</li>
+    <li>For Geometry Nodes, pick the node group in the box; the node group and its inputs stay in step.</li>
+    <li>Objects you move into the collection get the stack. Objects you move out lose it. An object's own modifiers stay where they are, and vertex-group fields stay per object.</li>
+    <li>A copy you edit directly on one object keeps your edit through undo and reopening. The next change you make to that modifier in the panel writes the panel's value over it.</li>
+    <li><strong>Apply to All</strong> applies what you see in the viewport. Modifiers that are off in the viewport are kept on the object, and the report names them. <strong>Remove from All</strong> takes the collection's modifiers off every member. Both ask first; Ctrl+Z undoes them.</li>
+  </ul>
+
+  <h2 id="view-layers">3. View layers</h2>
+  <p>In the Outliner, right-click one or more collections &gt; <strong>View Layer</strong>. Under Blender's own entries you get three more:</p>
+  <ul>
+    <li><strong>Include in All View Layers</strong>;</li>
+    <li><strong>Exclude from All View Layers</strong>;</li>
+    <li><strong>Only in This View Layer</strong>: included in the active view layer, excluded in the others.</li>
+  </ul>
+  <figure><img src="img/view-layer-menu.png" alt="The Outliner's View Layer submenu with Blender's own four entries and Wholegrip's Include in All View Layers, Exclude from All View Layers and Only in This View Layer" width="513" height="473" loading="lazy"><figcaption>The View Layer menu with Wholegrip's three entries.</figcaption></figure>
+  <p>If a parent collection is excluded in some view layer, Wholegrip leaves the parent alone and names that layer in the status bar. An option, off by default, in the sidebar or the add-on preferences, makes new collections start in the active view layer only; collections you append keep the state they arrive with.</p>
+
+  <h2 id="sidebar">4. Sidebar</h2>
+  <p>Press <strong>N</strong> in the 3D Viewport and open the <strong>Wholegrip</strong> tab. It holds:</p>
+  <ul>
+    <li>the switch and the new-collection option;</li>
+    <li>your marked collections, each with its object count, its number of collection modifiers, a Treat as One checkbox and a Select button;</li>
+    <li>a grid of every collection against every view layer: a ticked cell means included in that view layer. The three buttons at the end of each row are the same actions as in the Outliner.</li>
+  </ul>
+  <figure><img src="img/sidebar-tab.png" alt="The Wholegrip sidebar tab: the switch, the new-collection option, the marked collections CH-ellie and CH-rain with counts and Select buttons, and the view-layer grid with Rain, Ellie and Set columns" width="464" height="898" loading="lazy"><figcaption>The Wholegrip tab, widened to show the collection names in full.</figcaption></figure>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>No single properties of objects inside a linked or instanced collection; linked and library-overridden data is never edited.</li>
+    <li>No Edit Mode across members and no group pivot.</li>
+    <li>Only modifiers are kept in step. Across view layers, only include and exclude. One scene at a time.</li>
+    <li>Circle and Lasso selection stay plain Blender. If you switch between left- and right-click select, disable and re-enable Wholegrip so the click keys follow.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Wholegrip makes no network calls and sends nothing anywhere. It changes only the collections, modifiers and view-layer settings you act on, plus its own flags saved in the .blend file.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version, your operating system and, if you can, a small .blend file that shows the problem.</p>
+  <p class="fine" style="font-size:14px;color:var(--muted)">Pictures: Blender 5.2.3 with Wholegrip 1.0.2. Characters: Rain Rig (CC) Blender Foundation | studio.blender.org, and Ellie (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; not included with Wholegrip.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wholegrip for Blender: treat a collection as one object</title>
+<meta name="description" content="Wholegrip makes a Blender collection you already have work like one object: one click selects all of it, one modifier stack stays in step on every part, and one Outliner entry includes or excludes it in every view layer. Blender 4.2 LTS to 5.2 LTS. $12 once, source included.">
+<link rel="canonical" href="https://ochrestack.com/wholegrip/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Wholegrip for Blender: treat a collection as one object">
+<meta property="og:description" content="Stop selecting every piece individually. One click selects a whole collection, one modifier stack stays in step on every part, one Outliner entry sets every view layer. $12 once, source included.">
+<meta property="og:url" content="https://ochrestack.com/wholegrip/">
+<meta property="og:image" content="https://ochrestack.com/wholegrip/img/plain-vs-wholegrip-2x1.png">
+<meta property="og:image:width" content="1440">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Blender Studio's Rain and Ellie in Blender 5.2, the same click on Rain's shoe twice: in plain Blender only the shoe is outlined; with Wholegrip all of Rain is outlined">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wholegrip for Blender: treat a collection as one object">
+<meta name="twitter:description" content="One click selects a whole collection, one modifier stack stays in step on every part, one Outliner entry sets every view layer. Blender 4.2 LTS to 5.2 LTS.">
+<meta name="twitter:image" content="https://ochrestack.com/wholegrip/img/plain-vs-wholegrip-2x1.png">
+<meta name="twitter:image:alt" content="The same click on Rain's shoe: plain Blender selects the shoe; Wholegrip selects all of Rain">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Wholegrip for Blender</h1>
+  <p class="sub">Stop selecting every piece individually, adding the same modifier to dozens of objects and going into every view layer by hand: Wholegrip makes a collection you already have work like one object.</p>
+
+  <figure class="wide-only" style="float:right;width:340px;margin:6px 0 12px 22px">
+    <a href="img/hero-select.gif"><img src="img/hero-select.gif" alt="A real Blender 5.2 viewport with Blender Studio's Rain and Ellie on a grey studio backdrop. The pointer clicks Rain's shoe and all of Rain is outlined in orange; Shift+click on Ellie's boot adds all of Ellie; a click on the floor clears the selection; a box dragged across both characters' knees selects both whole" width="720" height="600"></a>
+    <figcaption>Real clicks in Blender 5.2.3: one click takes all of Rain (18 objects), Shift+click adds Ellie, a box takes both.</figcaption>
+  </figure>
+  <figure class="narrow-only" style="margin:12px 0">
+    <img src="img/hero-select.gif" alt="Rain and Ellie in a Blender 5.2 viewport: one click on Rain's shoe outlines all of Rain, Shift+click adds Ellie, a box across their knees selects both" width="720" height="600">
+    <figcaption>Real clicks in Blender 5.2.3: one click takes all of Rain (18 objects), Shift+click adds Ellie, a box takes both.</figcaption>
+  </figure>
+
+  <ul style="padding-left:20px">
+    <li><strong>Click any part, get the whole thing</strong>, child collections included.</li>
+    <li><strong>Add a modifier once</strong>, and every part keeps it in step, even parts added later.</li>
+    <li><strong>Every view layer in one click</strong>, from the Outliner's own menu.</li>
+  </ul>
+
+  <div class="buy">
+    <p class="price"><strong>$12 once</strong>, every future version included. No subscription, no licence key, no account.</p>
+    <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_Gbd60aAzrvrkcuDtIjq9UtmlBNZ5YQj1TUCqt0ft74o">Buy for $12</a></p>
+    <p class="fine">Tested on Blender 4.2.23, 4.5.15, 5.0.1, 5.1.2 and 5.2.3 (Linux); Windows and macOS not tested yet · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="../terms.html">14-day refund</a> · <a href="#details">details</a></p>
+  </div>
+  <div style="clear:both"></div>
+
+  <div class="box">
+    <strong>Do you need it?</strong> Every part of this has a native path or a cheaper tool, and the listing says so. Shift+G &gt; Collection skips child collections (on Rain's shoe: 4 objects, not 18). Copy Modifiers copies once. The free View Layer Plus copies exclude settings. If one of those does your job, you don't need Wholegrip.
+    <details style="margin:10px 0 0">
+      <summary>The scope in full</summary>
+      <p>Blender's Select Grouped &gt; Collection (Shift+G) selects the active object's collection; group-select add-ons exist too, built on Empties, instances or their own group data. Copy Modifiers (Ctrl+L) and right-click &gt; Copy to Selected copy a modifier or a value once to the selected parts; they don't keep the parts in step, and a part added later gets nothing. Blender's Outliner excludes a collection in the active view layer only. With Wholegrip you pay for four things: it works on the collections already in your file, with no Empties, instances or group objects, and only on the collections you mark; the modifier stack follows the collection's membership, Geometry Nodes inputs included; the view-layer entries sit in the Outliner's own View Layer menu, with a default for new collections; and it is one tool for Blender 4.2 LTS to 5.2 LTS.</p>
+    </details>
+  </div>
+
+  <h2>Click selection</h2>
+  <figure>
+    <a href="img/wholegrip-click-window.jpg"><img src="img/plain-vs-wholegrip-2x1.png" alt="Two crops of the same Blender viewport, labelled. Left, Plain Blender: one click, one shoe: only Rain's shoe is outlined. Right, Wholegrip: one click, all of Rain: every part of Rain, hair, eyes, scarf, top, jeans and shoes, is outlined" width="1440" height="720" loading="lazy"></a>
+    <figcaption>The same click on Rain's shoe: plain Blender takes the shoe, Wholegrip her 17 meshes and rig from six nested collections. Labels added.</figcaption>
+  </figure>
+  <details>
+    <summary>How selection works</summary>
+    <ul>
+      <li>Mark a collection in the Outliner (right-click &gt; <strong>Treat as One</strong>) or with the checkbox in Collection Properties. Collections you don't mark behave as in plain Blender.</li>
+      <li>Click, box drag (Select Box tool or B) and Shift+click take whole collections; the clicked part stays active.</li>
+      <li>Ctrl+click picks one object, as Blender's own Ctrl+click does (the object whose origin is nearest the cursor). Alt+U or the <strong>Wholegrip</strong> header button turns it all off and on.</li>
+      <li>When a part is in two marked collections, the deepest one wins and the status bar names the other.</li>
+    </ul>
+    <figure>
+      <img class="ui" src="img/outliner-treat-as-one.png" alt="Blender's Outliner right-click menu for the collection CH-rain, with Wholegrip's Treat as One entry at the bottom under the pointer and its tooltip: Treat the selected collections as one object in the 3D Viewport" width="759" height="640" loading="lazy">
+      <figcaption>Outliner right-click &gt; Treat as One, real size. The whole Blender windows: <a href="img/wholegrip-click-window.jpg">with Wholegrip</a>, <a href="img/plain-click-window.jpg">plain</a>.</figcaption>
+    </figure>
+  </details>
+
+  <h2>One modifier stack per collection</h2>
+  <figure>
+    <img src="img/collection-modifiers.gif" alt="Rain in the viewport beside Collection Properties of her rain-geometry collection, marked Treat as One. Add Modifier opens Blender's modifier list; Geometry Nodes is chosen; the node group Toon Outline is picked; Thickness is typed as 12; a black outline appears around every part of Rain: hair, face, scarf, top, arms and jeans" width="880" height="605" loading="lazy">
+    <figcaption>One Geometry Nodes outline added to Rain's 19-object collection, set once: every part gets it. (Our outline node group.)</figcaption>
+  </figure>
+  <details>
+    <summary>How the stack works</summary>
+    <ul>
+      <li>Change a value, rename, reorder, or toggle viewport and render in the panel, and every member follows. Remove it and it goes from every member.</li>
+      <li>Parts moved into the collection get the stack; parts moved out lose it. Each part's own modifiers stay, and vertex-group fields stay per object.</li>
+      <li>Geometry Nodes: the node group and its input values stay in step.</li>
+      <li><strong>Apply to All</strong> and <strong>Remove from All</strong> ask first, and Ctrl+Z undoes them.</li>
+      <li>The copies are ordinary modifiers, so the file opens and renders the same without the add-on. A collection with collection modifiers also gets one hidden helper object, <code>.Wholegrip stack &lt;name&gt;</code>, linked to no scene. No Empties, instances or group objects.</li>
+    </ul>
+    <figure>
+      <a href="img/collection-modifiers-window.jpg"><img class="ui" src="img/collection-modifiers-panel.png" alt="Collection Properties of rain-geometry: the Wholegrip panel with Treat as One ticked, 19 objects in this collection and its children, Collection Modifiers with Add Modifier, On 19 of 19 members, and a GeometryNodes box with Node Group Toon Outline and Thickness (mm) 12.000, then Apply to All and Remove from All" width="537" height="584" loading="lazy"></a>
+      <figcaption>The panel, real size: "On 19 of 19 members".</figcaption>
+    </figure>
+    <figure>
+      <img class="ui" src="img/member-stack.png" alt="Modifier Properties of GEO-rain-jeans: her own mask_legs, Armature, CorrectiveSmooth, Mask and Subdivision modifiers, folded, then GeometryNodes ‹rain-geometry› at the bottom with Toon Outline and Thickness (mm) 12.000" width="537" height="584" loading="lazy">
+      <figcaption>Her jeans keep their own five modifiers; the collection's copy sits at the bottom. The outline shows in the Solid viewport with backface culling on.</figcaption>
+    </figure>
+  </details>
+
+  <h2>Every view layer at once</h2>
+  <figure>
+    <img src="img/view-layers.gif" alt="The Blender window with the Outliner and the view-layer selector. In the Rain view layer, right-click CH-rain, View Layer, Only in This View Layer; the selector switches to Ellie and Rain disappears from the viewport; right-click CH-ellie, View Layer, Only in This View Layer; switching to Set leaves the empty backdrop; switching back to Rain shows Rain alone" width="990" height="555" loading="lazy">
+    <figcaption>Only in This View Layer on each character: two menu picks give each her own view layer.</figcaption>
+  </figure>
+  <details>
+    <summary>The menu, the sidebar tab and the options</summary>
+    <ul>
+      <li>Include in All View Layers, Exclude from All View Layers and Only in This View Layer act on every selected collection.</li>
+      <li>If a parent collection is excluded in some layer, Wholegrip leaves the parent alone and names that layer in the status bar.</li>
+      <li>An option, off by default, makes new collections start in the active view layer only.</li>
+    </ul>
+    <figure>
+      <img class="ui" src="img/view-layer-menu.png" alt="The Outliner's View Layer submenu: Blender's own Disable from View Layer, Enable in View Layer, Set Holdout and Clear Holdout, then Wholegrip's Include in All View Layers, Exclude from All View Layers and Only in This View Layer, under the pointer" width="513" height="473" loading="lazy">
+      <figcaption>Wholegrip's three entries under Blender's own.</figcaption>
+    </figure>
+    <figure>
+      <img class="ui" src="img/sidebar-tab.png" alt="The Wholegrip tab in the 3D Viewport sidebar: the Treat as One Clicks switch with its Alt U shortcut, the New Collections Only in This View Layer option, the Marked Collections list with CH-ellie and CH-rain, their object and modifier counts and Select buttons, and the View Layers grid with a row per collection and Rain, Ellie and Set columns, CH-rain ticked in Rain only, CH-ellie in Ellie only and Studio Set in all three" width="464" height="898" loading="lazy">
+      <figcaption>The sidebar tab (N): marked collections with a Select button, and every collection against every view layer.</figcaption>
+    </figure>
+  </details>
+
+  <h2>Limits</h2>
+  <p>No group pivot or shared Edit Mode; modifiers only; include and exclude only; one scene at a time.</p>
+  <details>
+    <summary>Every limit</summary>
+    <ul>
+      <li>It doesn't expose single properties of objects inside a linked or instanced collection, and it never edits linked or library-overridden data.</li>
+      <li>Moving a selected collection uses Blender's own multi-object transform. Nested groups follow one rule: the deepest marked collection wins.</li>
+      <li>No constraints or materials are kept in step. Lights, cameras and empties get no modifiers.</li>
+      <li>Not holdout, indirect only or viewport hide across view layers.</li>
+      <li>Circle and Lasso selection stay plain Blender. No export. English only.</li>
+      <li>A copy edited directly on one part keeps that edit until the next change made in the panel.</li>
+    </ul>
+  </details>
+
+  <h2 id="tested">How we tested</h2>
+  <table>
+    <tr><th>Blender (official Linux builds)</th><th>Automated tests (headless)</th><th>Window tests</th><th>Review findings re-checked with real input</th></tr>
+    <tr><td>4.2.23 LTS</td><td>112 passed, 0 failed</td><td>8 passed</td><td>3 of 3</td></tr>
+    <tr><td>4.5.15 LTS</td><td>112 passed, 0 failed</td><td>8 passed</td><td>3 of 3</td></tr>
+    <tr><td>5.0.1</td><td>112 passed, 0 failed</td><td>8 passed</td><td>3 of 3</td></tr>
+    <tr><td>5.1.2</td><td>112 passed, 0 failed</td><td>8 passed</td><td>3 of 3</td></tr>
+    <tr><td>5.2.3 LTS</td><td>112 passed, 0 failed</td><td>8 passed</td><td>3 of 3</td></tr>
+  </table>
+  <details>
+    <summary>More on testing, and on these pictures</summary>
+    <p>Wholegrip 1.0.2, 9 November 2026. Every panel, button, menu entry, checkbox and shortcut is also driven with real mouse and keyboard input in a full Blender window, with a screenshot of each step: 53 of 53 steps passed on Blender 5.2.3 and on 4.2.23 with 1.0.2, five typed Geometry Nodes edits in a row among them. On 2,000 objects in 200 marked collections, a click selection took 0.048 s and one value change on a 50-member stack 0.018 s (Blender 5.2.3, measured on 1.0.1). Version 1.0.2 fixes a crash on repeated Geometry Nodes edits in the Collection Modifiers panel, found while capturing the pictures on this page; the fix has its own tests. Windows and macOS have not been tested yet.</p>
+    <p>The pictures are real captures of the full Blender 5.2.3 window on a virtual display, driven by real mouse and keyboard input, with Wholegrip installed from the same zip you download. We put the two characters side by side, lowered their arms, switched on Rain's own viewport eyes, and built the studio backdrop and the outline node group.</p>
+  </details>
+  <p style="font-size:14px;color:var(--muted)">Rain Rig (CC) Blender Foundation | studio.blender.org; Ellie (CC) Blender Foundation | studio.blender.org; <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Not included with Wholegrip.</p>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li><strong>Buying:</strong> download by email after checkout; <a href="../terms.html">14-day refund</a> if it doesn't work as described. Studio, up to 10 people: $48, email us.</li>
+    <li><strong>Privacy:</strong> no network calls, no telemetry, no licence check.</li>
+    <li><strong>Install:</strong> Install from Disk in Blender's Get Extensions; see the <a href="quick-start.html">quick start</a>.</li>
+    <li><strong>Support:</strong> <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></li>
+  </ul>
+
+  <div class="buy">
+    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_Gbd60aAzrvrkcuDtIjq9UtmlBNZ5YQj1TUCqt0ft74o">Buy for $12</a></p>
+    <p class="fine">$12 once · source included · tested on Linux; Windows and macOS not yet</p>
+  </div>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

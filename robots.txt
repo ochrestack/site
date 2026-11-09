@@ -30,6 +30,8 @@ Allow: /histsight/
 Allow: /histsight/quick-start.html
 Allow: /restorwell/
 Allow: /restorwell/quick-start.html
+Allow: /wholegrip/
+Allow: /wholegrip/quick-start.html
 Allow: /guides/
 Allow: /guides/bake-constraints-before-export/
 Allow: /guides/control-rig-no-animations/
