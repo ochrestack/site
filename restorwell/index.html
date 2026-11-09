@@ -96,10 +96,10 @@
     <p class="fine">Pro adds <a href="#pro">Restore from a link</a>; restoring never needs it. Tested on WordPress 7.1.4, PHP 8.3.6, MariaDB 10.11, Linux, Chrome; Windows, macOS and other browsers untested (<a href="#tested">more</a>) · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 
-  <p class="fine">Above: a 2.29 GB password-protected backup, 8 MB upload limit (<a href="img/check-report.png">whole report</a>). Not affiliated with or endorsed by All-in-One WP Migration or ServMask.</p>
+  <p class="fine">Above: a 2.29 GB password-protected backup on an 8 MB host (<a href="img/check-report.png">whole report</a>).</p>
 
   <div class="box warn">
-    <strong>When you do not need Restorwell.</strong> If your backup is smaller than the upload limit your host shows, All-in-One WP Migration's own Import screen restores it for free. If you can raise the limit (.htaccess, .user.ini, or a request to your host), the same applies. Restorwell is for the rest: a backup over the limit, a password, the command line, or a full check before anything is touched.
+    <strong>When you do not need Restorwell.</strong> If your backup is smaller than the upload limit your host shows, All-in-One WP Migration's own Import screen restores it for free. If you can raise the limit (.htaccess, .user.ini, or a request to your host), the same applies. Restorwell is for the rest: a backup over the limit, a password, the command line, or a full check before anything is touched. Not affiliated with or endorsed by All-in-One WP Migration or ServMask.
     <details>
       <summary>Other free plugins that read .wpress files</summary>
       <p>Shiftbox restores large ones, but not password-protected ones, and Poly Bright Quick Restore restores them up to 512 MB (their WordPress.org listings, read November 9, 2026). Restorwell does not make backups; for new backups, use a backup plugin whose restore is free.</p>
@@ -107,23 +107,23 @@
   </div>
 
   <h2>How it works</h2>
-  <p><strong>1. Choose the backup.</strong> It goes up in pieces smaller than your host's limit and resumes after a drop. Or copy it in by FTP.</p>
+  <p><strong>1. Choose the backup.</strong> Upload it in pieces, or copy it in by FTP.</p>
   <figure>
     <img src="img/upload.png" alt="The Upload a backup box: 'The file is sent in pieces of 6 MB, below this server's upload limit of 8 MB, so the size of the backup does not matter', and the progress line 'Uploading fieldnotes-2026-11-09.wpress: 384.0 MB of 2.29 GB (16%)'. Below it, Backups already on this server lists fieldnotes-2026-11-09 (1).wpress, 1.38 GB, with a Check button" width="822" height="549" loading="lazy">
-    <figcaption>2.29 GB in 6 MB pieces on an 8 MB host.</figcaption>
+    <figcaption>6 MB pieces on an 8 MB host.</figcaption>
   </figure>
 
-  <p><strong>2. Check.</strong> Every byte is read and checksummed, and each limit is named with its numbers. Restore stays off while anything blocks it.</p>
+  <p><strong>2. Check.</strong> Every byte is checksummed and each limit named. Restore stays off while anything blocks it.</p>
   <figure>
     <img src="img/blocked-disk.png" alt="Limits on this server with one red cross: 'Not enough free disk space: about 2.39 GB is needed and only 1.46 GB is available. Free some space (for example delete old backups) or ask your host for more, then check again.' The other six limits are ticked, and below: 'Restore stays off until every limit marked ✕ is solved. Nothing on your site has changed.'" width="822" height="433" loading="lazy">
     <figcaption>Not enough disk space: both numbers.</figcaption>
   </figure>
   <figure>
     <img src="img/incomplete.png" alt="Check: fieldnotes-2026-11-09 (1).wpress, backup size 1.38 GB, most details 'not recorded', and one red cross: 'The backup file is incomplete: it ends before its last part. This usually means the download or upload stopped early. Copy the backup again and choose the new copy.' Restore stays off" width="822" height="655" loading="lazy">
-    <figcaption>"Corrupted File" explained: this copy stops at 60 %.</figcaption>
+    <figcaption>"Corrupted File" explained.</figcaption>
   </figure>
 
-  <p><strong>3. Restore.</strong> Everything is prepared beside your live site and switched in at the end. If it fails or you cancel first, your site is as it was.</p>
+  <p><strong>3. Restore.</strong> Prepared beside your live site, switched in at the end. Fail or cancel before that, and your site is as it was.</p>
   <figure>
     <img src="img/restoring.png" alt="The Restoring card: a progress bar and 'Unpacking files beside the live site: 71 of 820 files (20%)', the note that the live site keeps running until the final switch, and a Cancel restore button" width="822" height="230" loading="lazy">
     <img src="img/finished.png" alt="Restore finished: 'fieldnotes-2026-11-09.wpress, restored on November 9, 2026 9:55 pm from https://fieldnotes.example.org: 820 files and 12 database tables. Permalinks were refreshed.', then 'The backup file (2.29 GB) is still on the server. Delete it now to free the space?' with Delete backup file and Keep it, a one-line review request with Dismiss, and Close" width="822" height="265" loading="lazy" style="margin-top:12px">
@@ -132,7 +132,7 @@
   <p>Also free from the command line: <code>wp restorwell check</code> and <code>wp restorwell restore</code> (<a href="quick-start.html#cli">quick start</a>).</p>
 
   <h2 id="pro">Restorwell Pro: Restore from a link</h2>
-  <p>Paste a direct download link: your server fetches the backup itself, resuming where the remote server allows, then runs the same Check and Restore. A huge file never passes through your own connection.</p>
+  <p>Paste a direct download link: your server fetches the backup itself, resuming where it can, then runs the same Check and Restore.</p>
   <figure>
     <img src="img/pro-downloading.png" alt="The Restore from a link box: the address http://backups.oldhost.example/files/fieldnotes-2… in the field, a progress bar and 'Downloading fieldnotes-2026-11-09.wpress from backups.oldhost.example: 490.0 MB of 2.29 GB (20%) – resumable', and a Cancel download button" width="807" height="353" loading="lazy">
     <figcaption>From a second server standing in for an old host (<a href="#images">how</a>).</figcaption>
@@ -165,7 +165,7 @@
   <h2 id="tested">How we tested</h2>
   <table>
     <tr><th>Test</th><th>Result</th></tr>
-    <tr><td>1.1.0 on 8 MB uploads, 30 s, 128 MB: 2.29 GB password backup</td><td>820 files, 12 tables (450 rows) match; longest request 4.0 s; peak memory 10 MiB</td></tr>
+    <tr><td>1.1.0, 8 MB / 30 s / 128 MB host: 2.29 GB password backup</td><td>820 files, 12 tables (450 rows) match; longest request 4.0 s; peak memory 10 MiB</td></tr>
     <tr><td>1.0.0, same limits, nginx: 4.3 GB password backup</td><td>Restored; SHA-256 matches</td></tr>
     <tr><td>Backup versions read</td><td>7.113 (all kinds), 7.101 (password), 7.0, 7.40, 7.62, 7.80, 7.100 (plain)</td></tr>
   </table>
@@ -180,9 +180,8 @@
 
   <h2 id="details">Details</h2>
   <ul>
-    <li>Privacy: the free plugin makes no network request; Pro contacts only the address you type. Nothing is sent to us.</li>
-    <li>Install and first restore: the <a href="quick-start.html">quick start</a>.</li>
-    <li>GPL-2.0-or-later, full source in both zips. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li>Privacy: the free plugin makes no network request; Pro contacts only the address you type.</li>
+    <li>Install: the <a href="quick-start.html">quick start</a>. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
   </ul>
 </main>
 <footer>
