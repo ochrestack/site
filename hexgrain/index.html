@@ -92,7 +92,7 @@
   .top .note, .top .fine { margin: 0 0 6px; line-height: 1.45; }
   .top-image { margin: 16px 0; }
   @media (min-width: 1000px) {
-    .top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 640px); column-gap: 36px; align-items: start; }
+    .top { display: grid; grid-template-columns: minmax(420px, 1fr) minmax(0, 640px); column-gap: 36px; align-items: start; }
     .top > * { grid-column: 1; }
     .top > .top-image { grid-column: 2; grid-row: 1 / span 4; margin: 28px 0 0; }
   }
@@ -107,7 +107,7 @@
 </header>
 <section class="top">
   <h1>Hexgrain: Debugger Hex View</h1>
-  <p class="sub">In the IntelliJ IDEA debugger, a <code>byte[]</code> is a column of signed decimals, 100 at a time. Reading a header means scrolling, converting and counting. Hexgrain shows it as a hex dump.</p>
+  <p class="sub">In the IntelliJ IDEA debugger a <code>byte[]</code> is a column of signed decimals, 100 at a time, so Hexgrain shows it as a hex dump.</p>
   <figure class="top-image">
     <a href="img/step-over-marks-the-stamped-dates-window.png"><img class="hero" src="img/step-over-marks.png" alt="Hexgrain's Hex tab in IntelliJ IDEA on a 1,262-byte PNG, 16 bytes per row: offsets on the left, hex in the middle, and the XMP text on the right, readable as 'xmp:ModifyDate=&quot;2026-11-09T10:42:07&quot;' and 'xmp:MetadataDate=&quot;2026-11-09T10:42:07&quot;'. After Step Over the digits the program just rewrote are marked in orange in both columns; the status line reads '24 changed since the last pause' and 'Rows 0x230–0x35F of 1,262 bytes'. Above the rows, one line says what a licence adds and its price; the data inspector panel says it comes with a licence" width="958" height="522"></a>
     <figcaption>Free tier, one Step Over later: the bytes the program just rewrote are marked.</figcaption>
@@ -120,8 +120,8 @@
   <div class="buy">
     <p class="price"><strong>Free up to 64 KB. $9 once</strong> for the rest, personal or commercial; nothing renews. 30-day trial.</p>
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
-    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet, so it cannot be installed or tried today.</p>
-    <p class="fine">Java and Kotlin, IntelliJ IDEA 2025.3 and later. Tested on Linux in 2025.3; Windows and macOS not tested yet; not for Rider. Source code included in the download. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
+    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet.</p>
+    <p class="fine">Tested: IntelliJ IDEA 2025.3 on Linux; Windows and macOS untested; no Rider. Source code included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
   </div>
 </section>
 <main>
@@ -169,28 +169,15 @@
     <a href="img/find-and-copy-as-window.png"><img src="img/find-and-copy-as.png" alt="Find, Text 'NIKON': Match 1 of 1 at offset 0xAA; ten bytes 'NIKON.E995' selected in both columns, and the Copy As menu open with Hex (spaced), Hex String, Base64, Java Array Literal, Kotlin Array Literal and C# Array Literal" width="958" height="522" loading="lazy"></a>
     <figcaption>Find, then Copy As.</figcaption>
   </figure>
-  <details>
-    <summary>How these images were made</summary>
-    <p>IntelliJ IDEA 2025.3 (IU-253.28294.334), started with <code>./gradlew runIde</code> from Hexgrain 1.0.1 under a virtual display at 1280×800, dark theme, driven with real clicks and keys. The project is metadata-extractor (Apache-2.0) at commit 4d5cd469. The PNG is its test file <code>photoshop-8x12-rgb24-all-metadata.png</code>, the JPEG its test file <code>nikonMakernoteType2b.jpg</code>. The added program overwrites <code>xmp:ModifyDate</code> and <code>xmp:MetadataDate</code> and recomputes the chunk's CRC; an independent check of the same edit counts the same 24 changed bytes. The listing does not exist yet, so the images with licensed features were taken with a stand-in for JetBrains Marketplace licensing in that sandbox IDE, and the free-tier images with the same stand-in set to "no licence".</p>
-  </details>
 
 
   <h2 id="limits">Known limits</h2>
   <ul>
-    <li>Java and Kotlin in IntelliJ IDEA only: not Rider, Python, Go, JavaScript, C, C++ or Rust.</li>
-    <li>Arrays larger than 1 GiB have not been measured.</li>
+    <li>Java and Kotlin in IntelliJ IDEA 2025.3 and later only: not Rider, Python, Go, JavaScript, C, C++, Rust, Remote Development or Android Studio.</li>
+    <li>Changes are marked anywhere in arrays up to 1 MiB; in larger ones, in the rows read at both pauses.</li>
+    <li>Read-only. A direct <code>ByteBuffer</code> is read through a copy in the program's heap.</li>
+    <li>Measured up to 1 GiB: first rows within 85 ms; a Find through all of it takes 38 to 53 seconds.</li>
   </ul>
-
-  <details>
-    <summary>Speed, more limits, questions</summary>
-    <p><strong>More limits.</strong> Not Remote Development clients or Android Studio. Change marks cover the whole array up to 1 MiB; above that, the rows read at both pauses. Read-only: a direct <code>ByteBuffer</code> is read through a copy in the program's heap.</p>
-    <p><strong>Measured.</strong> On a 1 GiB <code>byte[]</code>, every recorded run: first rows within 85 ms, Go to in 1 to 2 ms (median). A Find through all of it with no match: 38 to 53 seconds.</p>
-    <p><strong>Does it slow down debugging?</strong> It reads only while a Hex tab is open and the program is paused, and after Resume it reads nothing until the next pause. Arrays and heap buffers are read directly, without running program code. A Save of a large array holds the pause until it is written (about 5 seconds per 128 MiB).</p>
-    <p><strong>A called method has its own variable with the same name.</strong> The tab keeps showing the array you opened, read at this pause, with a line naming the other method. If your variable is given a new array, the tab shows the new one, says so, and marks nothing. Re-reads follow variables, fields, casts and numeric indexes; an expression with method calls is not run again, and the tab says so.</p>
-    <p><strong>When the trial ends</strong> each licensed control shows one line with the price and a link to the IDE's licence dialog. No pop-up, banner or notification; the free hex dump keeps working.</p>
-    <p><strong>Rider and C#?</strong> Not yet. Hexgrain has not been run in a real Rider debug session, so it declares itself incompatible with Rider, and Rider will not install it. Other JetBrains IDEs can install it but have nothing for it to show. Attaching to a JVM on another machine has not been tested.</p>
-    <p><strong>Tested:</strong> 92 automated tests in IntelliJ IDEA 2025.3 on Linux, including real debug sessions of Java and Kotlin programs; JetBrains' Plugin Verifier against IntelliJ IDEA 2025.3 and 2026.3. Not tested yet: Windows and macOS.</p>
-  </details>
 
   <h2 id="details">Details</h2>
   <ul>
