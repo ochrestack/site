@@ -37,9 +37,9 @@
   <p>Wholegrip works only on the collections you mark. Every other click stays plain Blender.</p>
 
   <h2 id="install">Install (Blender 4.2 LTS to 5.2 LTS)</h2>
-  <p>Tested on Blender 4.2.23, 4.5.15, 5.0.1, 5.1.2 and 5.2.3 on Linux. Windows and macOS have not been tested yet; if Wholegrip does not work on yours, email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
+  <p>Tested on Blender 4.2.23, 4.5.15, 5.0.1, 5.1.2 and 5.2.3 on Linux. Not yet tested on a Windows PC or a Mac: if Wholegrip does not work on yours, email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>, and the 14-day refund applies.</p>
   <ol>
-    <li>After checkout, download <code>wholegrip-1.1.1.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
+    <li>After checkout, download <code>wholegrip-1.2.0.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access. Wholegrip needs none, so <strong>Continue Offline</strong> is fine.</li>
@@ -47,7 +47,7 @@
       </ul>
     </li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the far right of the Get Extensions header, choose <strong>Install from Disk...</strong> and pick the zip. (Blender 5.2 shows two chevrons there: the filter, then this menu, the right-most one.)</li>
-    <li>In Object Mode, the <strong>Wholegrip</strong> button appears at the right end of the 3D Viewport header.</li>
+    <li>In Object Mode, the <strong>Treat as One</strong> button appears at the right end of the 3D Viewport header. It is Wholegrip's switch: the sidebar and the preferences show the same switch under the same name.</li>
   </ol>
   <p>To upgrade, install the newer zip the same way: your marked collections and collection modifiers live in your .blend files, so nothing is lost. To remove Wholegrip: <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, open the <strong>&#8964;</strong> menu on the <em>Wholegrip</em> entry under <strong>Installed</strong>, choose <strong>Uninstall</strong>. (Preferences &gt; Add-ons only lets you disable it.) Your files still open and render the same.</p>
 
@@ -57,7 +57,7 @@
     <li>In the Outliner, right-click a collection &gt; <strong>Treat as One</strong>. With several collections selected, all of them are marked.</li>
     <li>Go to <strong>Properties &gt; Collection</strong> tab &gt; <strong>Wholegrip</strong> and tick <strong>Treat as One</strong>.</li>
   </ul>
-  <p>A marked collection turns blue in the Outliner, so you can see which ones are marked; unmarking takes the colour off. A colour you gave a collection yourself is never changed. Change the colour, or turn it off, in Edit &gt; Preferences &gt; Add-ons &gt; Wholegrip &gt; <strong>Outliner Colour for Marked Collections</strong>.</p>
+  <p>A marked collection turns blue in the Outliner, so you can see which ones are marked; unmarking takes the colour off. A colour you gave a collection yourself is never changed. Change the colour, or turn it off, in Edit &gt; Preferences &gt; Add-ons &gt; Wholegrip &gt; <strong>Marked Collection Color</strong>.</p>
   <figure><img src="img/outliner-treat-as-one.png" alt="The Outliner right-click menu for a collection, with Treat as One at the bottom and its tooltip" width="759" height="640" loading="lazy"><figcaption>Outliner right-click &gt; Treat as One (Blender 5.2.3, real size).</figcaption></figure>
   <p>Then, in Object Mode in the 3D Viewport:</p>
   <ul>
@@ -67,42 +67,43 @@
     <li><strong>Shift+click</strong> adds or removes the whole collection.</li>
     <li><strong>Ctrl+click</strong> on a part of a marked collection picks just the part under the cursor; Ctrl+Shift+click adds or removes just that part. Elsewhere Ctrl+click is Blender's own.</li>
     <li><strong>Shift+D</strong> on a whole marked collection puts the copy in a new collection of its own: same name plus a number, marked Treat as One, with its own copy of the collection's modifiers and the same view-layer settings. The copy follows the pointer, as with Blender's Shift+D. Alt+D does the same with shared mesh data. On a single part, Shift+D is Blender's own and the copy stays in the part's collection.</li>
-    <li><strong>Alt+U</strong> or the header button turns all of this off and on. The keys can be changed in the add-on preferences.</li>
+    <li><strong>Alt+U</strong> or the <strong>Treat as One</strong> header button turns all of this off and on. The keys can be changed in the add-on preferences, where each row says what it does (&ldquo;Click: whole collection&rdquo;, &ldquo;Ctrl+click: one part&rdquo;), grouped by tool.</li>
   </ul>
   <p>When an object is in several marked collections, the deepest one wins and the status bar names the other. A part that sits directly in a marked parent (a table in a marked &ldquo;Dining&rdquo;) selects the whole parent; mark its own collection to click it alone. Hidden, disabled and unselectable objects are left alone, as in Blender.</p>
-  <p>Clicking the very same spot twice goes on to the object behind the one you clicked, as Blender's own click does: a second Shift+click on exactly the same pixel can add the floor rather than remove the chair. Move the pointer a few pixels, or click another part.</p>
+  <p>A click on a part of a collection that is not wholly selected always takes that collection, even on the very spot you just Ctrl+clicked. Once the whole collection is selected, clicking the very same spot again goes on to the object behind, as Blender's own click does: a second Shift+click on exactly the same pixel can add the floor rather than remove the chair. Move the pointer a few pixels, or click another part.</p>
 
   <h2 id="modifiers">2. Collection Modifiers</h2>
-  <p>On a marked collection, go to <strong>Properties &gt; Collection</strong> and scroll to the <strong>Wholegrip</strong> panel, which sits above Line Art and Custom Properties, then <strong>Collection Modifiers &gt; Add Modifier</strong>.</p>
-  <figure><img src="img/rocket-modifiers-panel.png" alt="Collection Properties of a marked collection, Rocket: Visibility, Instancing and Exporters folded, then the Wholegrip panel with Treat as One ticked, 5 objects in this collection and its children, Collection Modifiers with Add Modifier, On 5 of 5 members, one GeometryNodes modifier with Node Group Panel Inset, Inset 0.150 and Depth 0.030, Apply to All and Remove from All; Line Art and Custom Properties below it" width="339" height="837" loading="lazy"><figcaption>The panel on a five-part rocket, with one Geometry Nodes modifier on all five members (Wholegrip 1.1.1, Blender 5.2.3).</figcaption></figure>
+  <p>On a marked collection, go to <strong>Properties &gt; Collection</strong> and scroll to the <strong>Wholegrip</strong> panel, which sits below Blender's Restrictions, Instancing and Exporters and above Line Art and Custom Properties, then <strong>Collection Modifiers &gt; Add Modifier</strong>. Blender puts an add-on's panels after its own there; to keep Wholegrip at the top, drag its header by the grip at its right end (::::) to the top of the tab, and Blender keeps that order in the file. On a collection that is not marked yet, a grey line under the checkbox says what ticking it does.</p>
+  <figure><img src="img/rocket-modifiers-panel.png" alt="Collection Properties of a marked collection, Rocket: Visibility, Instancing and Exporters folded, then the Wholegrip panel with Treat as One ticked, 5 objects, children included, Collection Modifiers with Add Modifier, On 5 of 5 members, one GeometryNodes box with Blender's modifier header (name, Edit Mode, viewport and render toggles, menu), Node Group Panel Inset, Inset 0.150 and Depth 0.030, Apply to All and Remove from All; Line Art and Custom Properties below it" width="339" height="837" loading="lazy"><figcaption>The panel on a five-part rocket, with one Geometry Nodes modifier on all five members (Wholegrip 1.2.0, Blender 5.2.3).</figcaption></figure>
   <p>Blender's Bevel starts at a width of 0.1 m, as it does on any object, which is a lot on thin furniture parts: type the width you want (0.005 to 0.02 m suits most furniture) right after adding it.</p>
   <ul>
-    <li>Each modifier added there goes to the bottom of every member's stack, named after the collection, such as <em>Bevel ‹Chair›</em>. Lights, cameras and empties are skipped and counted.</li>
+    <li>Each modifier added there goes to the bottom of every member's stack, named after the collection, such as <em>Bevel ‹Chair›</em>. Lights, cameras and empties are skipped: one line says how many (&ldquo;1 light skipped&rdquo;), and hovering it names them.</li>
+    <li>Each box has the header of Blender's own modifier panel: the name, the Edit Mode, viewport and render toggles, and a <strong>&#8964;</strong> menu with Apply (this modifier on every member), Duplicate, Move to First, Move Up, Move Down, Move to Last and Remove. The settings use Blender's own labels (a Bevel's width is <em>Amount</em>).</li>
     <li>Change a value in the panel and every member follows. Renaming, moving, toggling or removing does the same everywhere.</li>
-    <li>For Geometry Nodes, pick the node group in the box; the node group and its inputs stay in step.</li>
+    <li>For Geometry Nodes, pick the node group in the box, or press <strong>New</strong> for a new one; the node group and its inputs stay in step.</li>
     <li>Objects you move into the collection get the stack. Objects you move out lose it. An object's own modifiers stay where they are, and vertex-group fields stay per object.</li>
     <li>A copy you edit directly on one object keeps your edit through undo and reopening. The next change you make to that modifier in the panel writes the panel's value over it.</li>
     <li><strong>Apply to All</strong> applies what you see in the viewport. Modifiers that are off in the viewport are kept on the object, and the report names them. <strong>Remove from All</strong> takes the collection's modifiers off every member. Both ask first, saying how many modifiers and members they will change; Ctrl+Z undoes them.</li>
   </ul>
 
   <h2 id="view-layers">3. View layers</h2>
-  <p>In the Outliner, right-click one or more collections &gt; <strong>View Layer</strong>. Under Blender's own entries you get three more:</p>
+  <p>In the Outliner, right-click one or more collections &gt; <strong>View Layer</strong>. Under Blender's own entries (Disable and Enable act on the active view layer only), three more sit under the label <em>All view layers:</em></p>
   <ul>
     <li><strong>Include in All View Layers</strong>;</li>
     <li><strong>Exclude from All View Layers</strong>;</li>
     <li><strong>Only in This View Layer</strong>: included in the active view layer, excluded in the others.</li>
   </ul>
-  <figure><img src="img/view-layer-menu.png" alt="The Outliner's View Layer submenu with Blender's own four entries and Wholegrip's Include in All View Layers, Exclude from All View Layers and Only in This View Layer" width="513" height="473" loading="lazy"><figcaption>The View Layer menu with Wholegrip's three entries.</figcaption></figure>
+  <figure><img src="img/view-layer-menu.png" alt="The Outliner's View Layer submenu with Blender's own four entries, the label All view layers:, and Wholegrip's Include in All View Layers, Exclude from All View Layers and Only in This View Layer" width="513" height="493" loading="lazy"><figcaption>The View Layer menu with Wholegrip's three entries.</figcaption></figure>
   <p>If a parent collection is excluded in some view layer, Wholegrip leaves the parent alone and leaves the collection out of that layer too, as Blender does when you exclude a parent; the status bar says where it was included and where it was left out. To include it there, select the parent as well. An option, off by default, in the sidebar or the add-on preferences, makes new collections start in the active view layer only; collections you append keep the state they arrive with.</p>
 
   <h2 id="sidebar">4. Sidebar</h2>
   <p>Press <strong>N</strong> in the 3D Viewport and open the <strong>Wholegrip</strong> tab. It holds:</p>
   <ul>
     <li>the switch and the new-collection option;</li>
-    <li>your marked collections, each with its object count, its number of collection modifiers (when it has any), a Treat as One checkbox and a Select button;</li>
-    <li>a grid of every collection against every view layer. The columns are numbered, and the key above the grid gives each number its view-layer name, the active one marked. A ticked cell means included in that view layer; a greyed cell means the collection's parent is excluded there. When the sidebar is narrow, each name gets a line of its own above its checkboxes. The three buttons at the end of each row are the same actions as in the Outliner.</li>
+    <li>your marked collections, each with its object count, its number of collection modifiers (when it has any), a Treat as One checkbox and a Select button; a click on a name selects that collection too, and each icon has the collection's Outliner colour;</li>
+    <li>a grid of every collection against every view layer. The columns are numbered, and the key above the grid gives each number its view-layer name, the active one marked. A ticked cell means included in that view layer; a dash instead of a checkbox means the collection's parent is excluded there. When the sidebar is narrow, each name gets a line of its own above its checkboxes. The three buttons at the end of each row, headed <em>+all</em>, <em>&minus;all</em> and <em>only</em>, are the same actions as in the Outliner.</li>
   </ul>
-  <figure><img src="img/sidebar-tab.png" alt="The Wholegrip sidebar tab at Blender's default width: the switch, the new-collection option, the marked collections CH-ellie and CH-rain with object counts and Select buttons, a key reading 1 Rain (active), 2 Ellie, 3 Set, and the view-layer grid with numbered columns, each collection name on its own line above its checkboxes" width="292" height="898" loading="lazy"><figcaption>The Wholegrip tab at Blender's default sidebar width (Wholegrip 1.0.3). The object count includes hidden objects: CH-rain's 60 include her hidden rig parts, while a click selects the 18 visible ones.</figcaption></figure>
+  <figure><img src="img/sidebar-tab.png" alt="The Wholegrip sidebar tab at Blender's default width: the Treat as One switch, the new-collection option, the marked collections CH-ellie and CH-rain with blue icons, object counts and Select buttons, a key reading 1 Rain (active), 2 Ellie, 3 Set, and the view-layer grid with numbered columns and +all, −all and only buttons, each collection name on its own line above its checkboxes, dashes where a parent is excluded" width="292" height="898" loading="lazy"><figcaption>The Wholegrip tab at Blender's default sidebar width (Wholegrip 1.2.0). The object count includes hidden objects: CH-rain's 60 include her hidden rig parts, while a click selects the 18 visible ones.</figcaption></figure>
 
   <h2 id="limits">Limits</h2>
   <ul>
@@ -117,7 +118,7 @@
 
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version, your operating system and, if you can, a small .blend file that shows the problem.</p>
-  <p class="fine" style="font-size:14px;color:var(--muted)">Pictures: Blender 5.2.3 with Wholegrip 1.0.2 (the sidebar tab with 1.0.3). Characters: Rain Rig (CC) Blender Foundation | studio.blender.org, and Ellie (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; not included with Wholegrip.</p>
+  <p class="fine" style="font-size:14px;color:var(--muted)">Pictures: Blender 5.2.3 with Wholegrip 1.2.0. Characters: Rain Rig (CC) Blender Foundation | studio.blender.org, and Ellie (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; not included with Wholegrip.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>

@@ -49,6 +49,10 @@
   figure video { background: #2B2118; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
   figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0 8px; }
+  .ba figure { margin: 0; }
+  .ba .label { font-size: 16px; font-weight: 600; margin: 0 0 6px; color: var(--ink); }
+  .ba + p.fine { margin-top: 4px; }
   .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
   .pair figure { flex: 0 1 256px; margin: 0; }
   .narrow-only { display: none; }
@@ -63,6 +67,7 @@
     .wide-only { display: none; }
     .narrow-only { display: block; }
     .scroll-x img.ui { max-width: none; width: 764px; }
+    .ba { grid-template-columns: 1fr; }
     .swipe-wrap { position: relative; }
     .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
     .swipe-wrap.at-end::after { display: none; }
@@ -84,11 +89,11 @@
   <p class="sub">Stop selecting every piece individually, adding the same modifier to dozens of objects and going into every view layer by hand: Wholegrip makes a collection you already have work like one object.</p>
 
   <figure class="wide-only" style="float:right;width:380px;margin:6px 0 12px 22px">
-    <a href="img/classroom-select.gif"><img src="img/classroom-select.gif" alt="A real Blender 5.2 viewport of a classroom full of school desks. The pointer clicks one desktop and the whole desk, frame, seat and back, is outlined in orange; Shift+click on the next desk adds all of it; then, after Alt+U, a click on the same desktop outlines only the desktop" width="880" height="496"></a>
-    <figcaption>Real clicks in Blender 5.2.3: one click takes a whole desk (23 parts), Shift+click adds the next.</figcaption>
+    <a href="img/classroom-select.gif"><img src="img/classroom-select.gif" alt="A real Blender 5.2 viewport, close on two school desks in a classroom. The pointer clicks one desktop and the whole desk, frame, seat and back, is outlined in orange; Shift+click on the next desk adds all of it; then a label reads Alt+U Treat as One off: one part, and a click on the same desktop outlines only the desktop; a last label reads Alt+U Treat as One on" width="880" height="497"></a>
+    <figcaption>Real clicks in Blender 5.2.3: one click takes a whole desk (23 parts), Shift+click adds the next; with Alt+U a click takes one part.</figcaption>
   </figure>
   <figure class="narrow-only" style="margin:12px 0">
-    <img src="img/classroom-select.gif" alt="A classroom in a Blender 5.2 viewport: one click on a desktop outlines the whole desk, Shift+click adds the next desk, and after Alt+U a click outlines only the desktop" width="880" height="496">
+    <img src="img/classroom-select.gif" alt="Close on two school desks in a Blender 5.2 viewport: one click on a desktop outlines the whole desk, Shift+click adds the next desk, and after Alt+U (shown in a label) a click outlines only the desktop" width="880" height="497">
     <figcaption>One click takes a whole desk (23 parts), Shift+click adds the next.</figcaption>
   </figure>
 
@@ -101,21 +106,27 @@
   <div class="buy">
     <p class="price"><strong>$12 once</strong>, every future version included. No subscription, no licence key, no account.</p>
     <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_Gbd60aAzrvrkcuDtIjq9UtmlBNZ5YQj1TUCqt0ft74o">Buy for $12</a></p>
-    <p class="fine">Tested on Blender 4.2.23, 4.5.15, 5.0.1, 5.1.2 and 5.2.3 (Linux); Windows and macOS not tested yet · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="../terms.html">14-day refund</a> · <a href="#details">details</a></p>
+    <p class="fine">Blender 4.2 LTS to 5.2 LTS · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · Not yet tested on a Windows PC or a Mac: if it doesn't work on yours, the <a href="../terms.html">14-day refund</a> applies · <a href="#tested">how we tested</a></p>
   </div>
   <div style="clear:both"></div>
 
   <section id="watch">
     <h2>Watch it work</h2>
-    <figure>
+    <figure class="wide-only">
       <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
         <source src="video/wholegrip-demo-720p.mp4" type="video/mp4">
       </video>
-      <figcaption>The 42-second demo, captions only: real clicks and keys in Blender 5.2.3 with Wholegrip 1.0.2, captured frame by frame.</figcaption>
+      <figcaption>52 seconds, captions only, no sound: real clicks and keys in Blender 5.2.3 with Wholegrip 1.2.0, captured frame by frame. Characters: Rain Rig and Ellie (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
+    </figure>
+    <figure class="narrow-only">
+      <video controls preload="none" playsinline poster="video/poster-vertical.jpg" width="720" height="1280">
+        <source src="video/wholegrip-demo-vertical.mp4" type="video/mp4">
+      </video>
+      <figcaption>52 seconds, captions only, no sound, cut for a phone: real clicks and keys in Blender 5.2.3 with Wholegrip 1.2.0.</figcaption>
     </figure>
     <figure>
-      <img src="video/wholegrip-demo-select.gif" alt="A 12-second loop from the demo: in Blender's Outliner, CH-rain and CH-ellie are selected and right-click, Treat as One is chosen; one click on Rain's shoe outlines all of Rain; Shift+click on Ellie's boot adds all of Ellie; a click on the floor clears; a box across both characters' knees selects both whole; Alt+U, and a click on Rain's jeans selects the jeans alone" width="1280" height="720" loading="lazy">
-      <figcaption>Treat as One and the clicks alone (12 s GIF, 2.7 MB).</figcaption>
+      <img src="video/wholegrip-demo-select.gif" alt="A loop from the demo: in Blender's Outliner, CH-rain and CH-ellie are selected and right-click, Treat as One is chosen; one click on Rain's shoe outlines all of Rain; Shift+click on Ellie's boot adds all of Ellie; a click on the floor clears; a box across both characters' knees selects both whole; Ctrl+click on Rain's scarf takes the scarf alone and a click on the same spot takes all of Rain again" width="1280" height="720" loading="lazy">
+      <figcaption>Treat as One and the clicks alone (14 s GIF, 3.3 MB).</figcaption>
     </figure>
   </section>
 
@@ -128,10 +139,17 @@
   </div>
 
   <h2>Click selection</h2>
-  <figure>
-    <a href="img/classroom-wholegrip-window.jpg"><img src="img/classroom-plain-vs-wholegrip.png" alt="Two crops of the same Blender viewport of a classroom full of school desks, labelled. Left, Plain Blender: one click, one part: only the desktop of one desk is outlined. Right, Wholegrip: one click, the whole desk: the desktop, seat, back and metal frame of that desk are outlined" width="1440" height="490" loading="lazy"></a>
-    <figcaption>Each of the 20 desks in Christophe Seux's Classroom (CC0) is a collection of 23 parts. Plain Blender takes one part, Wholegrip the desk. Labels added.</figcaption>
-  </figure>
+  <div class="ba">
+    <figure>
+      <p class="label">Plain Blender: one click, one part</p>
+      <img src="img/classroom-plain.png" alt="A Blender viewport of a classroom full of school desks, after one click on a desktop in plain Blender: only the desktop is outlined in orange" width="720" height="406" loading="lazy">
+    </figure>
+    <figure>
+      <p class="label">Wholegrip: one click, the whole desk</p>
+      <a href="img/classroom-wholegrip-window.jpg"><img src="img/classroom-wholegrip.png" alt="The same view after the same click with Wholegrip: the desktop, seat, back and metal frame of that desk, all 23 parts, are outlined in orange" width="720" height="406" loading="lazy"></a>
+    </figure>
+  </div>
+  <p class="fine">Each of the 20 desks in Christophe Seux's Classroom (CC0) is a collection of 23 parts. The same click, the same view.</p>
   <figure>
     <a href="img/classroom-tweak-window.jpg"><img src="img/classroom-tweak-drag.gif" alt="A classroom in a Blender 5.2 viewport with the Tweak tool active. The pointer presses one desk and drags: the whole desk, outlined in orange, slides across the wooden floor towards the aisle; the floor and the other desks stay where they are" width="880" height="496" loading="lazy"></a>
     <figcaption>Tweak tool: press any part of a desk and drag; all 23 parts slide, the floor stays put.</figcaption>
@@ -143,25 +161,32 @@
       <li>Click, box drag (Select Box tool or B) and Shift+click take whole collections; the clicked part stays active. With the Tweak tool, press any part and drag to move the whole collection.</li>
       <li>Ctrl+click on a part of a marked collection picks just the part under the cursor, even a part with other parts behind it; Ctrl+Shift+click adds or removes just that part. Elsewhere Ctrl+click is Blender's own.</li>
       <li>Shift+D on a whole marked collection puts the copy in a new collection of its own, marked, with its own copy of the collection's modifiers and the same view-layer settings, and the copy follows the pointer. A click then takes the copy alone. Alt+D does the same with shared mesh data; on a single part, Shift+D is Blender's own.</li>
-      <li>Alt+U or the <strong>Wholegrip</strong> header button turns all of it off and on.</li>
+      <li>Alt+U or the <strong>Treat as One</strong> button in the 3D Viewport header turns all of it off and on.</li>
       <li>When a part is in two marked collections, the deepest one wins and the status bar names the other. A part directly in a marked parent selects the parent; mark its own collection to click it alone.</li>
-      <li>A second click on the very same pixel goes on to the object behind, as Blender's own click does; move the pointer a little to click the same collection again.</li>
+      <li>A click on a part of a collection that is not wholly selected always takes that collection, even on the spot you just Ctrl+clicked. With the whole collection selected, a second click on the very same pixel goes on to the object behind, as Blender's own click does.</li>
     </ul>
     <figure>
       <img src="img/classroom-ctrl-shift-d.gif" alt="A classroom in a Blender 5.2 viewport, seen from the front, desks in rows and an aisle along the wall. A click on a desk outlines the whole desk; Ctrl+click on its backrest outlines the backrest alone; a click outlines the desk again; Shift+D moves a copy of the desk into the aisle; a click on the copy outlines the copy alone, the original desk unselected" width="720" height="406" loading="lazy">
-      <figcaption>Wholegrip 1.1.0: Ctrl+click takes one part (the backrest), Shift+D puts a copy of the desk in a new collection of its own, Desk 01.001, and a click on the copy takes the copy alone. <a href="img/classroom-dup-window.jpg">The whole window</a>.</figcaption>
+      <figcaption>Ctrl+click takes one part (the backrest), Shift+D puts a copy of the desk in a new collection of its own, Desk 01.001, and a click on the copy takes the copy alone. <a href="img/classroom-dup-window.jpg">The whole window</a>.</figcaption>
     </figure>
-    <figure>
-      <a href="img/wholegrip-click-window.jpg"><img src="img/plain-vs-wholegrip-2x1.png" alt="Two crops of the same Blender viewport, labelled. Left, Plain Blender: one click, one shoe: only Rain's shoe is outlined. Right, Wholegrip: one click, all of Rain: every part of Rain, hair, eyes, scarf, top, jeans and shoes, is outlined" width="1440" height="720" loading="lazy"></a>
-      <figcaption>On a production character: the same click on Blender Studio's Rain takes her shoe in plain Blender, all 18 of her objects with Wholegrip. Labels added.</figcaption>
-    </figure>
+    <div class="ba">
+      <figure>
+        <p class="label">Plain Blender: one click, one shoe</p>
+        <a href="img/plain-click-window.jpg"><img src="img/plain-click.png" alt="Blender Studio's Rain in a Blender viewport after one click on her shoe in plain Blender: only the shoe is outlined" width="720" height="600" loading="lazy"></a>
+      </figure>
+      <figure>
+        <p class="label">Wholegrip: one click, all of Rain</p>
+        <a href="img/wholegrip-click-window.jpg"><img src="img/wholegrip-click.png" alt="The same click with Wholegrip: every part of Rain, hair, eyes, scarf, top, jeans and shoes, is outlined" width="720" height="600" loading="lazy"></a>
+      </figure>
+    </div>
+    <p class="fine">On a production character: the same click on Blender Studio's Rain takes her shoe in plain Blender, all 18 of her objects with Wholegrip.</p>
     <figure>
       <img src="img/hero-select.gif" alt="A real Blender 5.2 viewport with Blender Studio's Rain and Ellie on a grey studio backdrop. The pointer clicks Rain's shoe and all of Rain is outlined in orange; Shift+click on Ellie's boot adds all of Ellie; a click on the floor clears the selection; a box dragged across both characters' knees selects both whole" width="720" height="600" loading="lazy">
       <figcaption>One click takes all of Rain (18 objects), Shift+click adds Ellie, a box takes both.</figcaption>
     </figure>
     <figure>
       <img class="ui" src="img/classroom-outliner-marked.png" alt="Blender's Outliner after marking the classroom's desks: Desk 01 to Desk 18 visible, each with a blue collection icon; Room, Windows and the other unmarked collections above them with white icons" width="339" height="640" loading="lazy">
-      <figcaption>Marked collections are blue in the Outliner (1.1.1).</figcaption>
+      <figcaption>Marked collections are blue in the Outliner.</figcaption>
     </figure>
     <figure>
       <img class="ui" src="img/outliner-treat-as-one.png" alt="Blender's Outliner right-click menu for the collection CH-rain, with Wholegrip's Treat as One entry at the bottom under the pointer and its tooltip: Treat the selected collections as one object in the 3D Viewport" width="759" height="640" loading="lazy">
@@ -170,29 +195,43 @@
   </details>
 
   <h2>One modifier stack per collection</h2>
-  <figure>
-    <a href="img/corner-modifiers-window.jpg"><img src="img/corner-bevel-before-after.png" alt="Two crops of the same viewport, grey shading, labelled. Left, Before: a low-poly sofa arm, side table and books with sharp edges and flat shading. Right, One Bevel plus Weighted Normal, set once: the same pieces with rounded edges and smooth shading" width="1440" height="545" loading="lazy"></a>
-    <figcaption>Seven Kenney Furniture Kit models (CC0) in one collection: one Bevel and one Weighted Normal, set once. Labels added.</figcaption>
-  </figure>
-  <figure>
-    <a href="img/rocket-modifiers-window.jpg"><img src="img/rocket-panels-before-after.png" alt="Two crops of the same viewport, labelled. Left, Before: a low-poly rocket of five stacked parts, base, fins, fuel tank, boosters and nose, with a small generator beside it. Right, One Geometry Nodes modifier, set once: every face of all five rocket parts has an inset panel line; the generator is unchanged" width="1440" height="644" loading="lazy"></a>
-    <figcaption>Kitbash: a rocket of five Kenney Space Kit parts (CC0). One Geometry Nodes modifier, Inset and Depth typed once: panels on all five parts; the generator, in another collection, is untouched. Our node group; labels added.</figcaption>
-  </figure>
+  <div class="ba">
+    <figure>
+      <p class="label">Before</p>
+      <img src="img/corner-before.png" alt="A low-poly sofa arm, side table and books in grey shading, with sharp edges and flat shading" width="720" height="461" loading="lazy">
+    </figure>
+    <figure>
+      <p class="label">One Bevel + Weighted Normal, set once</p>
+      <a href="img/corner-modifiers-window.jpg"><img src="img/corner-after.png" alt="The same pieces with rounded edges and smooth shading" width="720" height="461" loading="lazy"></a>
+    </figure>
+  </div>
+  <p class="fine">Seven Kenney Furniture Kit models (CC0) in one collection: one Bevel and one Weighted Normal, set once in the collection's panel.</p>
+  <div class="ba">
+    <figure>
+      <p class="label">Before</p>
+      <img src="img/rocket-before.png" alt="Close view of a low-poly rocket kitbashed from Kenney Space Kit parts: fuel tank, boosters and fins with plain flat faces" width="720" height="615" loading="lazy">
+    </figure>
+    <figure>
+      <p class="label">One Geometry Nodes modifier, set once</p>
+      <a href="img/rocket-modifiers-window.jpg"><img src="img/rocket-after.png" alt="The same close view: every face of every rocket part now has an inset panel with a recessed border" width="720" height="615" loading="lazy"></a>
+    </figure>
+  </div>
+  <p class="fine">Kitbash: a rocket of five Kenney Space Kit parts (CC0) in one collection. One Geometry Nodes modifier (our Panel Inset node group), Inset and Depth typed once: panels on all five parts; a generator in another collection is untouched.</p>
   <details>
     <summary>How the stack works</summary>
     <ul>
-      <li>Change a value, rename, reorder, or toggle viewport and render in the panel, and every member follows. Remove it and it goes from every member.</li>
+      <li>Each box has Blender's own modifier header: name, Edit Mode, viewport and render toggles, and a &#8964; menu with Apply (that modifier on every member), Duplicate, the moves and Remove. Change a value, rename, reorder or toggle, and every member follows.</li>
       <li>Parts moved into the collection get the stack; parts moved out lose it. Each part's own modifiers stay, and vertex-group fields stay per object.</li>
-      <li>Geometry Nodes: the node group and its input values stay in step.</li>
+      <li>Geometry Nodes: pick a node group or press New; the node group and its input values stay in step.</li>
       <li><strong>Apply to All</strong> and <strong>Remove from All</strong> ask first, saying how many modifiers and members they will change, and Ctrl+Z undoes them.</li>
       <li>The copies are ordinary modifiers, so the file opens and renders the same without the add-on. A collection with collection modifiers also gets one hidden helper object, <code>.Wholegrip stack &lt;name&gt;</code>, linked to no scene. No Empties, instances or group objects.</li>
     </ul>
     <figure>
-      <img class="ui" src="img/rocket-modifiers-panel.png" alt="Collection Properties of Rocket: the Wholegrip panel with Treat as One ticked, 5 objects in this collection and its children, Collection Modifiers with Add Modifier, On 5 of 5 members, a GeometryNodes box with Node Group Panel Inset, Inset 0.150 and Depth 0.030, then Apply to All and Remove from All, with Line Art and Custom Properties below" width="339" height="837" loading="lazy">
-      <figcaption>The rocket's panel, real size: "On 5 of 5 members".</figcaption>
+      <img class="ui" src="img/rocket-modifiers-panel.png" alt="Collection Properties of Rocket: the Wholegrip panel with Treat as One ticked, 5 objects in this collection and its children, Collection Modifiers with Add Modifier, On 5 of 5 members, a GeometryNodes box whose header has the name, the Edit Mode, viewport and render toggles and a menu button, Node Group Panel Inset, Inset 0.150 and Depth 0.030, then Apply to All and Remove from All one above the other" width="339" height="837" loading="lazy">
+      <figcaption>The rocket's panel, real size: Blender's own modifier header, with Apply, Duplicate, the moves and Remove in its &#8964; menu.</figcaption>
     </figure>
     <figure>
-      <img class="ui" src="img/corner-modifiers-panel.png" alt="Collection Properties of Reading Corner: Treat as One ticked, 7 objects in this collection and its children, On 7 of 7 members, a Bevel box with Width 0.02 m and Segments 3, and a WeightedNormal box, then Apply to All and Remove from All" width="339" height="837" loading="lazy">
+      <img class="ui" src="img/corner-modifiers-panel.png" alt="Collection Properties of Reading Corner: Treat as One ticked, 7 objects in this collection and its children, On 7 of 7 members, a Bevel box with Affect Vertices or Edges, Width Type Offset, Amount 0.02 m and Segments 3, and a WeightedNormal box, then Apply to All and Remove from All" width="339" height="837" loading="lazy">
       <figcaption>The reading corner's panel: "On 7 of 7 members".</figcaption>
     </figure>
     <figure>
@@ -207,13 +246,17 @@
 
   <h2>Every view layer at once</h2>
   <figure>
-    <a href="img/product-window.jpg"><img src="img/product-shot.png" alt="A product shot in a Blender 5.2 viewport: a kitchen blender on a white sweep between a coffee machine and a toaster. The blender's base, jug and lid are outlined in orange. On the right, the Wholegrip sidebar tab: Kitchen Blender marked, 3 obj; a key reading 1 Beauty (active), 2 Product_Only, 3 Props_Pass; and a grid in which Kitchen Blender is unticked in column 3, Props unticked in column 2, and Studio ticked everywhere" width="1314" height="700" loading="lazy"></a>
-    <figcaption>Product shot (Kenney, CC0): one click on the lid takes the whole blender. Two grid clicks keep the props out of Product_Only and the blender out of Props_Pass.</figcaption>
+    <a href="img/product-window.jpg"><img src="img/product-shot.png" alt="A product shot in a Blender 5.2 viewport: a kitchen blender on a white sweep between a coffee machine and a toaster. The blender's base, jug and lid are outlined in orange. On the right, the Wholegrip sidebar tab with Kitchen Blender marked and the view-layer grid" width="1314" height="700" loading="lazy"></a>
+    <figcaption>Product shot (Kenney, CC0): one click on the lid takes the whole blender (3 parts).</figcaption>
+  </figure>
+  <figure>
+    <img class="ui" src="img/product-grid-2x.png" alt="The sidebar's view-layer grid from the same capture, enlarged: a key reading 1 Beauty (active), 2 Product_Only, 3 Props_Pass; Kitchen Blender ticked in 1 and 2, unticked in 3; Props ticked in 1 and 3, unticked in 2; Studio ticked in all three; each row ends with the +all, −all and only buttons" width="540" height="428" loading="lazy">
+    <figcaption>The same capture's grid, enlarged: two clicks keep the props out of Product_Only and the blender out of Props_Pass.</figcaption>
   </figure>
   <div class="pair">
     <figure>
-      <img class="ui" src="img/sidebar-tab.png" alt="The Wholegrip tab in the 3D Viewport sidebar at Blender's default width: the Treat as One Clicks switch, the New Collections option, the marked collections CH-ellie and CH-rain with object counts and Select buttons, then View Layers: a key reading 1 Rain (active), 2 Ellie, 3 Set, and a grid with columns 1, 2, 3 and All. Each collection name sits on its own line above its checkboxes; CH-rain is ticked in column 1 only, and its child collections' cells in columns 2 and 3 are greyed" width="292" height="898" loading="lazy">
-      <figcaption>The sidebar tab at Blender's default width: numbered columns with a key of layer names; grey cells sit under an excluded parent. The count includes hidden objects: CH-rain's 60 include her hidden rig parts; a click takes the 18 visible ones.</figcaption>
+      <img class="ui" src="img/sidebar-tab.png" alt="The Wholegrip tab in the 3D Viewport sidebar at Blender's default width: the Treat as One switch, the New Collections option, the marked collections CH-ellie and CH-rain with blue icons, object counts and Select buttons, then View Layers: a key reading 1 Rain (active), 2 Ellie, 3 Set, and a grid headed 1, 2, 3, +all, −all and only. Each collection name sits on its own line above its checkboxes; CH-rain is ticked in column 1 only, and its child collections show a dash in columns 2 and 3" width="292" height="898" loading="lazy">
+      <figcaption>The sidebar tab at Blender's default width: numbered columns with a key of layer names; a dash marks a collection whose parent is excluded in that layer. The count includes hidden objects: CH-rain's 60 include her hidden rig parts; a click takes the 18 visible ones.</figcaption>
     </figure>
     <figure style="flex:1 1 360px">
       <img src="img/view-layers.gif" alt="The Blender window with the Outliner and the view-layer selector. In the Rain view layer, right-click CH-rain, View Layer, Only in This View Layer; the selector switches to Ellie and Rain disappears from the viewport; right-click CH-ellie, View Layer, Only in This View Layer; switching to Set leaves the empty backdrop; switching back to Rain shows Rain alone" width="990" height="555" loading="lazy">
@@ -228,8 +271,8 @@
       <li>An option, off by default, makes new collections start in the active view layer only.</li>
     </ul>
     <figure>
-      <img class="ui" src="img/view-layer-menu.png" alt="The Outliner's View Layer submenu: Blender's own Disable from View Layer, Enable in View Layer, Set Holdout and Clear Holdout, then Wholegrip's Include in All View Layers, Exclude from All View Layers and Only in This View Layer, under the pointer" width="513" height="473" loading="lazy">
-      <figcaption>Wholegrip's three entries under Blender's own.</figcaption>
+      <img class="ui" src="img/view-layer-menu.png" alt="The Outliner's View Layer submenu: Blender's own Disable from View Layer, Enable in View Layer, Set Holdout and Clear Holdout, then the label All view layers: and Wholegrip's Include in All View Layers, Exclude from All View Layers and Only in This View Layer, under the pointer" width="513" height="493" loading="lazy">
+      <figcaption>Wholegrip's three entries under Blender's own, below the label "All view layers:".</figcaption>
     </figure>
   </details>
 
@@ -248,14 +291,15 @@
   </details>
 
   <h2 id="tested">How we tested</h2>
-  <table>
-    <tr><th>Blender (official Linux builds)</th><th>Automated tests (headless)</th><th>Window tests</th><th>Real-input checks</th></tr>
-    <tr><td>4.2.23 LTS, 4.5.15 LTS, 5.0.1, 5.1.2 and 5.2.3 LTS</td><td>156 passed, 0 failed, on each</td><td>8 passed on each</td><td>26 of 26 on each</td></tr>
-  </table>
+  <p>Tested on five Blender versions, 4.2 LTS to 5.2 LTS, on Linux, with real mouse and keyboard input in a full Blender window. Not yet tested on a Windows PC or a Mac.</p>
   <details>
-    <summary>More on testing, and on these pictures</summary>
-    <p>Wholegrip 1.1.1, 10 November 2026. The real-input checks send real mouse and key events to Blender: Ctrl+click over a plate with bolts under it, Shift+D and Alt+D, and, new in 1.1.1, the Tweak tool and right-click select on a chair standing on a floor (press and drag moves the chair, never the floor). Every panel, button, menu entry, checkbox and shortcut is also driven with real input in a full Blender window, a screenshot per step: 54 of 54 steps on Blender 5.2.3 and on 4.2.23. On 2,000 objects in 200 marked collections, a click selection took 0.048 s and one value change on a 50-member stack 0.018 s (Blender 5.2.3, measured on 1.0.1). Windows and macOS have not been tested yet: we have no Windows or Mac machine to run the tests on. Wholegrip is pure Python on Blender's own API with no system-specific code; if it does not work on yours and we cannot fix it, the 14-day refund applies.</p>
-    <p>The pictures are real captures of the full Blender 5.2.3 window on a virtual display, driven by real mouse and keyboard input, with Wholegrip installed from the zip you download: 1.0.2 for Rain and Ellie, 1.0.3 for the classroom click pictures, the reading corner and the sidebar tab, 1.1.0 for the Ctrl+click and Shift+D GIF, 1.1.1 for the Tweak drag, the blue Outliner, the rocket and the product shot. We posed the two characters and built their backdrop and outline node group; we turned each classroom desk into its own collection of the asset's 23 parts; we merged the vertices the model import splits on the Kenney models, stacked the rocket from its five parts, and built its Panel Inset node group and the product-shot backdrop and lights.</p>
+    <summary>The test runs, and how these pictures were made</summary>
+    <table>
+      <tr><th>Blender (official Linux builds)</th><th>Automated tests</th><th>In a Blender window</th><th>Real mouse and key events</th></tr>
+      <tr><td>4.2.23 LTS, 4.5.15 LTS, 5.0.1, 5.1.2 and 5.2.3 LTS</td><td>176 passed, 0 failed, on each</td><td>8 passed on each</td><td>32 of 32 on each</td></tr>
+    </table>
+    <p>Wholegrip 1.2.0, 10 November 2026. The real-input checks send real mouse and key events to Blender: Ctrl+click over a plate with bolts under it, Shift+D and Alt+D, the Tweak tool and right-click select on a chair standing on a floor (press and drag moves the chair, never the floor), and, new in 1.2.0, a click on the spot just Ctrl+clicked (the chair, not the floor behind it). Every panel, button, menu entry, checkbox and shortcut is also driven with real input in a full Blender window, a screenshot per step: 56 of 56 steps on Blender 5.2.3 and on 4.2.23. On 2,000 objects in 200 marked collections, a click selection took 0.048 s and one value change on a 50-member stack 0.018 s (Blender 5.2.3, measured on 1.0.1). The 176 automated tests also pass with Blender 4.2.23's official Windows build run under Wine, a Windows compatibility layer on Linux; that is not a Windows PC, so Windows is still listed as not tested. Wholegrip is pure Python on Blender's own API with no system-specific code.</p>
+    <p>The pictures are real captures of the full Blender 5.2.3 window on a virtual display, driven by real mouse and keyboard input, with Wholegrip 1.2.0 installed from the zip you download. The labels above the before/after pictures are set on this page; the product shot's enlarged grid is the same capture's sidebar, enlarged and framed; the key labels in the classroom GIF were added to the recording. We posed the two characters and built their backdrop and outline node group; we turned each classroom desk into its own collection of the asset's 23 parts; we merged the vertices the model import splits on the Kenney models, stacked the rocket from its five parts, and built its Panel Inset node group and the product-shot backdrop and lights.</p>
   </details>
   <p style="font-size:14px;color:var(--muted)">Rain Rig (CC) Blender Foundation | studio.blender.org; Ellie (CC) Blender Foundation | studio.blender.org; <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Classroom by Christophe Seux (CC0). Furniture Kit and Space Kit by Kenney (CC0). Not included with Wholegrip.</p>
 
@@ -269,7 +313,7 @@
 
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_Gbd60aAzrvrkcuDtIjq9UtmlBNZ5YQj1TUCqt0ft74o">Buy for $12</a></p>
-    <p class="fine">$12 once · source included · tested on Linux; Windows and macOS not yet</p>
+    <p class="fine">$12 once · source included · <a href="../terms.html">14-day refund</a></p>
   </div>
 </main>
 <footer>
