@@ -54,6 +54,10 @@
   .phone-only { display: none; }
   .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 6px; }
   .scroll-x img { max-width: none; border-radius: 6px; }
+  /* Real-size captures stay at real size at every width and scroll sideways when the column is narrower
+     (the more specific rule beats figure img and figure img.ui). */
+  figure .scroll-x img, figure .scroll-x img.ui { width: auto; max-width: none; }
+  figure .scroll-x img.x2 { width: 610px; }
   .swipe { display: none; }
   /* A short laptop screen (1280x720): a shorter hero, cut from the bottom, keeps the price and Buy in the first screen. */
   @media (min-width: 601px) and (max-height: 820px) {
@@ -76,9 +80,6 @@
     table { font-size: 14px; }
     th, td { padding: 6px; }
     .hero img { height: auto; }
-    /* Real-size captures scroll sideways on a phone instead of shrinking: the more specific rule beats figure img. */
-    figure .scroll-x img, figure .scroll-x img.ui { width: auto; max-width: none; }
-    figure .scroll-x img.x2 { width: 610px; }
     .swipe { display: inline; }
   }
   footer { margin-top: 64px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
@@ -225,7 +226,7 @@
   <details class="more">
   <summary>Install</summary>
   <ol>
-    <li>Download <code>actionyard-1.4.3.zip</code>. Do not unzip it.</li>
+    <li>Download <code>actionyard-1.4.4.zip</code>. Do not unzip it.</li>
     <li>In Blender 4.4 or newer, open <strong>Edit &gt; Preferences &gt; Add-ons</strong>.</li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. It is enabled straight away; its entry reads "Action Stash clean-up and action users, in the NLA sidebar (N)".</li>
     <li>In the NLA editor or the Dope Sheet, press <strong>N</strong> and open the <strong>Actionyard</strong> tab.</li>

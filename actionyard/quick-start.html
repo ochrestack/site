@@ -38,7 +38,7 @@
 
   <h2 id="install">Install (Blender 4.4 or newer; tested on 4.4, 4.5 LTS and 5.2 LTS)</h2>
   <ol>
-    <li>Download <code>actionyard-1.4.3.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>Download <code>actionyard-1.4.4.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Add-ons</strong>.</li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right of the Add-ons page, choose <strong>Install from Disk...</strong> and pick the zip. The status bar says <code>Installed "actionyard"</code>, and Actionyard is enabled straight away. Its entry reads "Action Stash clean-up and action users, in the NLA sidebar (N)".</li>
     <li>Open an NLA editor or a Dope Sheet, press <strong>N</strong> for the sidebar and click the <strong>Actionyard</strong> tab. The sidebar starts narrow, so the list shows Name, Uses and Fake User, and Used by shows the clicked action's frames and users. Drag the sidebar's left edge to widen it for the Frames and Users columns.</li>
@@ -73,7 +73,7 @@
     <ul>
       <li><strong>Old takes on stash tracks</strong>: in the Clear Stashes preview, click <strong>Keep None</strong> and tick <strong>Also delete these N actions from the file</strong>, then confirm. The stash tracks and the takes go in one step; takes with a Fake User you set stay. One Ctrl+Z brings it all back.</li>
       <li><strong>Delete Action Everywhere...</strong>: tick actions in the <strong>Pick</strong> column at the left of the list (or just click one). The preview lists every place that will lose each action, in one list that scrolls, so <strong>Delete Everywhere</strong> and <strong>Cancel</strong> stay on screen however many you pick. If nothing you picked can be deleted (for example, it is on a locked NLA track, or its object is in NLA tweak mode), it says why and offers no Delete button. Otherwise Actionyard removes each action from all of those places and from the file, in one undo step. The active action is cleared, NLA and stash strips are removed (a stash track left empty is removed too), and Action constraints are kept but lose their action.</li>
-      <li><strong>Remove Unused Actions...</strong>: deletes actions with no users. It keeps Fake User actions unless you tick "Also Fake User Actions", and always keeps actions marked as assets (pose library poses). Its preview lists every action it will delete; with nothing to delete, a popup says "Nothing to remove" and offers no Remove button. If nothing is unused but some actions are kept only by their Fake User, it says "No unused actions" and offers a button to remove those.</li>
+      <li><strong>Remove Unused Actions...</strong>: deletes actions with no users. It keeps Fake User actions unless you tick "Also Fake User Actions", and always keeps actions marked as assets (pose library poses). Its preview lists every action it will delete; with nothing to delete, a popup says "Nothing to remove" and offers no Remove button. If nothing is unused but some actions are kept only by their Fake User, one dialog says "No unused actions", lists them and asks; its button reads <strong>Remove N Fake User Actions</strong>, and Cancel keeps them.</li>
     </ul>
   </div>
   <p>Deleting a stashed action as a data-block instead (what the Outliner's Delete does) removes the action but leaves its [Action Stash] track behind, holding a strip with no action. Delete Action Everywhere removes the track too, and Clear Stashes clears such empty tracks if you already have them.</p>
@@ -88,7 +88,7 @@
   <h2 id="limits">Limits</h2>
   <ul>
     <li>Requires Blender 4.4 or newer. Tested on Blender 4.4, 4.5 LTS and 5.2 LTS, on Linux; Windows and macOS have not been tested yet.</li>
-    <li>If the search or a filter hides the action you clicked, Used by says so instead of showing it ("'Walk_v2' hidden by the filter").</li>
+    <li>If the search or the Show filter hides the action you clicked, Used by says which one instead of showing it ("Hidden by the search:", then "'Walk_v2'"); if the list shows nothing at all, it also says how to see it again ("Clear the search to see it.").</li>
     <li>Linked data, and everything a library override takes from its library file, is shown with a lock and never changed. Stash tracks you added on an override in your own file can be cleared.</li>
     <li>Delete Action Everywhere leaves an action alone when one of its strips is on a locked NLA track (not a stash track); unlock the track first.</li>
     <li>A data-block in NLA tweak mode is left alone, and both previews say so; exit tweak mode first. A strip inside a meta strip loses its action but stays in the meta strip.</li>
