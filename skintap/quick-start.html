@@ -37,7 +37,7 @@
   <div class="box">
     <strong>In four steps</strong>
     <ol>
-      <li><strong>Install:</strong> Blender 4.2 or newer, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the <strong>&#8964;</strong> menu at the top right, <strong>Install from Disk...</strong>, pick <code>skintap-1.0.7.zip</code> (<a href="#install">details</a>).</li>
+      <li><strong>Install:</strong> Blender 4.2 or newer, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the <strong>&#8964;</strong> menu at the top right, <strong>Install from Disk...</strong>, pick <code>skintap-1.0.8.zip</code> (<a href="#install">details</a>).</li>
       <li><strong>Pose Mode:</strong> click the armature in the <strong>Outliner</strong> (top right; it is often hidden inside the body), then press <strong>Ctrl+Tab</strong>. If you clicked the body, the Skintap tab names its armature and has a <strong>Select</strong> button for it.</li>
       <li><strong>Start the picker:</strong> mouse over the 3D Viewport, press <strong>Shift+Alt+Q</strong>.</li>
       <li><strong>Click</strong> the body or the clothes: the bone that moves that spot is selected. Shift-click adds, <strong>Esc</strong> ends.</li>
@@ -47,7 +47,7 @@
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2 LTS and 5.2 LTS)</h2>
   <ol>
-    <li>After checkout, download <code>skintap-1.0.7.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
+    <li>After checkout, download <code>skintap-1.0.8.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Skintap needs no internet, so <strong>Continue Offline is fine</strong>.</li>
@@ -90,7 +90,7 @@
 
   <h2 id="duplicate">Duplicate Chain</h2>
   <ol>
-    <li>In <strong>Edit Mode</strong> (Tab), select one or more chains: click the root, then Shift-click the other bones, or press <strong>Shift+]</strong> once per bone to add the next child (Blender's <strong>Select &gt; Extend Child</strong>). The Chains box counts what is selected ("3 bones in 1 chain selected").</li>
+    <li>In <strong>Edit Mode</strong> (Tab), select one or more chains: click the root, then Shift-click the other bones, or press <strong>Shift+]</strong> once per bone to add the next child (Blender's <strong>Select &gt; Extend Child</strong>). The Chains box counts what is selected ("3 bones in 1 chain selected"); with nothing selected it says "Click the root, then Shift+] per bone".</li>
     <li>With the mouse over the bones, press <strong>Shift+Alt+D</strong> (next to Blender's Shift+D). Or click <strong>Duplicate Chain</strong> in the tab, or use <strong>Armature &gt; Skintap &gt; Duplicate Chain</strong>.</li>
     <li>The copy follows the mouse, as with Blender's Shift+D: move it and click to place it (X, Y or Z locks an axis; right-click leaves it on top of the original). With Shift+Alt+D the move starts at the mouse; from the button it starts at the button, so the copy travels as far as the mouse does on its way back to the character. The status bar names the old and new chain: "Duplicated 3 bones: hair_01_01..03 -&gt; hair_02_01..03".</li>
   </ol>
@@ -110,7 +110,7 @@
     <li>In the tab, set <strong>Base</strong> (for example <code>hair</code>), <strong>Start</strong>, <strong>Padding</strong> (2 gives 01, 02, ...), <strong>Side</strong> (Keep, By Position, Left, Right, None), how a side is written under <strong>Side Markers</strong> (the same setting Mirror Chain uses) and, for several chains, <strong>Number Each Chain</strong>.</li>
     <li>Click <strong>Rename Chain</strong>.</li>
   </ol>
-  <p>Bones are numbered root to tip. One chain: <code>hair_01, hair_02, ...</code>; several chains with Number Each Chain on: <code>hair_01_01, ..., hair_02_01, ...</code>. A name already used outside the selection is refused, so nothing is overwritten. The bones of a generated Rigify rig are refused, because Rigify finds its bones by name: rename in the metarig and generate again.</p>
+  <p>Bones are numbered root to tip. One chain: <code>hair_01, hair_02, ...</code>; several chains with Number Each Chain on: <code>hair_01_01, ..., hair_02_01, ...</code>. A name already used outside the selection is refused, so nothing is overwritten. On a generated Rigify rig, Rename Chain and Fix .001 Names are greyed out, because Rigify finds its bones by name: rename in the metarig and generate again (the tooltip says so).</p>
 
   <h2 id="fix">Fix .001 Names</h2>
   <p>Select bones that Blender numbered (after Shift+D, Extrude or a paste) and click <strong>Fix .001 Names</strong>:</p>
@@ -120,7 +120,7 @@
     <li>an extruded chain without a number gets one: <code>Finger.L, Finger.L.001, Finger.L.002</code> become <code>Finger_01.L .. Finger_03.L</code>.</li>
   </ul>
   <figure><img src="img/panel-edit-mode.png" alt="The Skintap tab in Edit Mode: Chains first with Duplicate Chain, Mirror Chain, Side Markers .L / .R and the hint '3 bones in 1 chain selected'; Rename with Base, Start, Padding, Side, Side Markers, Number Each Chain, Rename Chain and Fix .001 Names; Pick on Mesh last, greyed out, with the hint 'Pose Mode only (Ctrl+Tab)'" width="360" height="700" loading="lazy"><figcaption>The Skintap tab in Edit Mode: the chain tools come first.</figcaption></figure>
-  <p>Vertex groups that carry a renamed bone's name are renamed with it, so weights stay attached. The chain tools work only on the selected bones you can see. A tool that cannot finish refuses before it changes anything, and each run is one undo step.</p>
+  <p>Vertex groups that carry a renamed bone's name are renamed with it, so weights stay attached. The chain tools work only on the selected bones you can see. A tool that cannot finish refuses before it changes anything, and each run is one undo step. To change a setting after a run, open <strong>Adjust Last Operation</strong> (the panel at the bottom left of the viewport, or F9): the tool runs again on the bones as they were before it.</p>
 
   <h2 id="where">Where to find the tools</h2>
   <ul>
@@ -137,7 +137,7 @@
     <li>Tested on Blender 4.2 LTS and 5.2 LTS on Linux; Windows and macOS not yet tested. If it doesn't work as described on yours, email us within 14 days of purchase for a full refund.</li>
     <li>One armature at a time; the picker picks only meshes deformed by the active armature. A mesh without vertex groups cannot be picked.</li>
     <li>The control lookup follows constraints and parents, not drivers' targets or rig scripts; it is tested on Rigify.</li>
-    <li>Linked and library-override armatures are refused by the chain tools (their names come from the library file). Generated Rigify rigs are refused by the renaming tools.</li>
+    <li>Linked and library-override armatures are refused by the chain tools (their names come from the library file). On generated Rigify rigs the renaming tools are greyed out.</li>
     <li>Copies get no weights, drivers or keyframes. Names are limited to Blender's 63 bytes.</li>
     <li>The panel settings reset when Blender restarts.</li>
   </ul>
