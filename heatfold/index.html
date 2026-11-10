@@ -133,6 +133,18 @@
     <strong>Where you may not need it.</strong> CLion's profiler (Linux, macOS, WSL) already draws a flame graph for programs run under it, imports collapsed stacks and opens trace JSON in a timeline; RustRover does the same for perf, GoLand reads pprof, PyCharm Pro profiles Python. In those cases Heatfold adds no new chart. You pay for what is missing: gprof reports, which no JetBrains IDE reads; <code>perf script</code> text with threads and srcline jumps; pprof outside GoLand; a hot-functions table for traces; and paths from another machine mapped onto your project. Heatfold does not record or attach to processes.
   </div>
 
+  <h2 id="watch">Watch it work</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster-gprof-table.jpg" width="1280" height="720">
+      <source src="video/heatfold-demo-720p.mp4" type="video/mp4">
+    </video>
+    <figcaption>The demo, 52 s, captions only, no sound. pigz's gprof report goes from raw text to a table of time and calls per function, with callers and callees; a <code>gprof -l</code> row opens <code>zlib/deflate.c</code> at line 1484; the same program under <code>perf</code>: search, one thread, zoom; a Go heap profile's sample types; a clang <code>-ftime-trace</code> of <code>pigz.c</code>. Heatfold 1.1.0 in IntelliJ IDEA 2025.3 on Linux, recorded at 60 fps with a stand-in for Marketplace licensing (the recording machine cannot start a trial).</figcaption>
+  </figure>
+  <figure class="wide">
+    <img src="video/heatfold-gprof-table.gif" alt="Animated: in IntelliJ IDEA, a right-click on pigz.gprof.txt and Open in Heatfold; the raw gprof text gives way to Heatfold's table, longest_match 2.17 s, 74.1%, 18,494,188 calls at the top; then deflate_slow is selected and its caller deflate (100.0%) and callees longest_match (75.3%), _tr_flush_block and fill_window appear" width="1200" height="562" loading="lazy">
+    <figcaption>Open in Heatfold, from the demo (10 s GIF, 0.35 MB).</figcaption>
+  </figure>
+
   <h2 id="real">In the IDE, for real</h2>
   <figure class="wide">
     <a href="img/jump-to-source-window.png"><img src="img/jump-to-source-window.png" alt="IntelliJ IDEA: Heatfold's tab for pigz-lines.gprof.txt, the gprof -l report, with its top row selected: longest_match, 1.24 s, 42.3%, location deflate.c:1484. Above it the editor has opened zlib/deflate.c with line 1484, '} while ((cur_match = prev[cur_match &amp; wmask]) &gt; limit', highlighted; the status bar reads 1484:59" width="1280" height="800" loading="lazy"></a>
