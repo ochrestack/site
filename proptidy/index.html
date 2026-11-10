@@ -92,7 +92,7 @@
   <p class="sub">Custom properties stuck in alphabetical order, with a pop-up for every tweak: Proptidy keeps them in your order and puts their settings below the list, for rigs, cameras and lamps.</p>
   <figure>
     <a href="img/order.gif"><img class="hero" src="img/order.gif" alt="Blender 5.2 with Blender Studio's Rain in Pose Mode on the left and the Bone tab of her properties bone, Properties_IKFK, on the right. Proptidy's list starts in Blender's order (cloudrig_component, fk_hinge_arm_left, ...). Four clicks on Move to Top put ik_arm_left, ik_arm_right, ik_leg_left and ik_leg_right first; Add Heading puts a heading above them, typed as 'Arms and legs'; typing 'leg' in the filter leaves only the properties with leg in their name, then the filter is cleared" width="757" height="787"></a>
-    <figcaption>Rain's 23 properties, Blender 5.2, 1.5&times; speed. <a href="#watch">Watch the 44-second demo</a>. Rain Rig (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
+    <figcaption>1.5&times; speed; panel dragged to the top by its grip. Not a rigger? <a href="#not-only-rigs">Camera rigs, lamps, materials</a> too. <a href="#watch">44-second demo</a>. Rain Rig (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
   </figure>
   <ul class="benefits">
     <li><strong>Most-used switch on top, nothing renamed:</strong> drivers keep working (0 of Rain's 772 changed).</li>
@@ -110,12 +110,25 @@
   </div>
 </section>
 <main>
+  <h2 id="not-only-rigs">Camera rigs and lamps too</h2>
+  <figure>
+    <a href="img/product-camera.png"><img src="img/product-camera.png" alt="Blender 5.2: on the left the camera view of a product shot, a blue bottle on a grey backdrop rendered with EEVEE; on the right the Object tab of the camera rig, CAM-rig, with Proptidy's list: the heading Lens over lens_mm (85.000), focus_distance, fstop and use_dof, the heading Motion over dolly, shake_amount and shake_speed, then clip_end, clip_start and sensor_mm switched off for the Sidebar. Below the list, lens_mm's settings: Description 'Focal length of CAM in mm', Min 8.00, Max 300.00, Soft Limits on, Soft Min 18.00, Max 135.00" width="1394" height="954" loading="lazy"></a>
+    <figcaption>Camera rig: lens settings below the list; the camera follows.</figcaption>
+  </figure>
+  <details>
+    <summary>Copy Layout on three lamps</summary>
+  <figure>
+    <a href="img/product-lamps.png"><img src="img/product-lamps.png" alt="Two Properties editors and the 3D Viewport. Left, the Key lamp's Object tab: Proptidy's list with the heading Light over intensity_mult, then cast_shadow, flicker_amt (switched off for the Sidebar), size_m and spread_deg. Middle, a second Properties editor pinned to the Fill lamp shows the same layout. Right, the three lamps selected around the bottle. The status bar reads: Copied the layout of “Key” to 2 objects: 10 properties matched, 0 not matched" width="1916" height="692" loading="lazy"></a>
+    <figcaption>Copy Layout to Selected: the Key lamp's layout on Fill and Rim in one click.</figcaption>
+  </figure>
+  </details>
+
   <h2 id="watch">Watch it work</h2>
   <figure>
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/proptidy-demo-720p60.mp4" type="video/mp4">
     </video>
-    <figcaption>44 s, captions only: Proptidy 1.0.1 in Blender 5.2.3. Rain Rig (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
+    <figcaption>44 s, captions only: Proptidy 1.0.1 in Blender 5.2.3.</figcaption>
   </figure>
 
   <h2 id="compare">Blender's order, and yours</h2>
@@ -124,8 +137,8 @@
     <figcaption>Same bone; captions ours.</figcaption>
   </figure>
   <figure>
-    <a href="img/default-width.png"><img src="img/default-width.png" alt="Blender 5.2 with the Properties editor at its default width for a 1920 by 1080 screen, 336 pixels, next to Rain in Pose Mode. Proptidy's list on the Bone tab of Properties_IKFK shows the heading Arms and legs over ik_arm_left, ik_arm_right, ik_leg_left and ik_leg_right, a spacer, the heading Stretch over ik_stretch_arms, ik_stretch_legs and ik_stretch_spine, then cloudrig_component and fk_hinge_arm_left, every name whole; below, the settings of ik_stretch_arms" width="896" height="760" loading="lazy"></a>
-    <figcaption>Default Properties width at 1920&times;1080: every name whole.</figcaption>
+    <a href="img/default-width.png"><img src="img/default-width.png" alt="Blender 5.2 with the Properties editor at its default width for a 1920 by 1080 screen, 336 pixels, next to Rain in Pose Mode. Proptidy's list on the Bone tab of Properties_IKFK is grown to show all 26 rows: the heading Arms and legs over ik_arm_left, ik_arm_right, ik_leg_left and ik_leg_right at 1.000, a spacer, the heading Stretch over ik_stretch_arms, ik_stretch_legs and ik_stretch_spine, then cloudrig_component, the fk_hinge, grab_parent, ik_fingers, ik_parents and ik_pole_follow switches and ik_spine. Every value is whole, 1.000, 0.000, 1 or 0; the long names are shortened in the middle with their ends kept, such as ik_parent…rm_right and ik_parent…eg_right; ik_pole_follow_hands is selected and its settings start below the list" width="896" height="866" loading="lazy"></a>
+    <figcaption>Default width: every value whole, long names shortened in the middle.</figcaption>
   </figure>
 
   <details>
@@ -142,7 +155,7 @@
   <h2 id="settings">Settings without the pop-up</h2>
   <figure>
     <a href="img/settings.gif"><img src="img/settings.gif" alt="The same Blender window. ik_stretch_arms is clicked in Proptidy's list; under the list Max is typed as 1.5, Soft Limits is ticked, Soft Max typed as 1, Subtype opened and Factor chosen, and Description typed as 'Stretch the arms when in IK'. Hovering the row's slider shows the new tooltip. Ctrl+Z takes the Description back, Ctrl+Shift+Z brings it again" width="757" height="937" loading="lazy"></a>
-    <figcaption>Each field applies as typed; Ctrl+Z undoes one change (1.5&times; faster).</figcaption>
+    <figcaption>Each field applies as typed; Ctrl+Z undoes one change (1.5&times; speed).</figcaption>
   </figure>
   <details>
     <summary>Same settings as Blender's pop-up</summary>
@@ -152,30 +165,17 @@
   <h2 id="sidebar">The animator's Sidebar</h2>
   <figure>
     <a href="img/sidebar.png"><img src="img/sidebar.png" alt="The 3D Viewport with Rain in Pose Mode and the Sidebar's Item tab open: the Proptidy panel shows the heading Arms and legs over ik_arm_left, ik_arm_right, ik_leg_left and ik_leg_right, an empty row, the heading Stretch over ik_stretch_arms and ik_stretch_legs, then fk_hinge_arm_left and the other switches; ik_stretch_spine and cloudrig_component are not shown. Blender's own Properties panel is above it, closed" width="957" height="700" loading="lazy"></a>
-    <figcaption>Sidebar &gt; Item: your order, two technical switches hidden.</figcaption>
+    <figcaption>Sidebar &gt; Item: your order, two switches hidden.</figcaption>
   </figure>
 
   <h2 id="shots">Set it once in the rig file</h2>
   <figure>
     <a href="img/shot-file.png"><img src="img/shot-file.png" alt="A shot file, shot_010.blend, with Rain linked through a library override, Bone tab of Properties_IKFK: Proptidy's list in the rig file's order, with Arms and legs and Stretch; the New, Remove, Duplicate and move buttons greyed out, and the line 'Library override of rain_demo.blend: change the order in that file'" width="757" height="496" loading="lazy"></a>
-    <figcaption>A shot file with Rain overridden: the rig file's order. Library Overridable on All, in the rig file, unlocks every switch.</figcaption>
+    <figcaption>Shot file, Rain overridden: the rig file's order. Library Overridable on All in the rig file unlocks every switch.</figcaption>
   </figure>
   <details>
     <summary>More on files and tabs</summary>
     <p>The order is saved in the .blend; moving never touches values, keyframes or drivers. <strong>Copy Layout to Selected</strong> copies a layout to other selected bones or objects. On the Object, Bone, Object Data, Material, Scene, World and Collection tabs.</p>
-  </details>
-
-  <h2 id="not-only-rigs">Camera rigs and lamps too</h2>
-  <figure>
-    <a href="img/product-camera.png"><img src="img/product-camera.png" alt="Blender 5.2: on the left the camera view of a product shot, a blue bottle on a grey backdrop rendered with EEVEE; on the right the Object tab of the camera rig, CAM-rig, with Proptidy's list: the heading Lens over lens_mm (85.000), focus_distance, fstop and use_dof, the heading Motion over dolly, shake_amount and shake_speed, then clip_end, clip_start and sensor_mm switched off for the Sidebar. Below the list, lens_mm's settings: Description 'Focal length of CAM in mm', Min 8.00, Max 300.00, Soft Limits on, Soft Min 18.00, Max 135.00" width="1394" height="954" loading="lazy"></a>
-    <figcaption>A product shot's camera rig: lens settings typed below the list; the camera follows.</figcaption>
-  </figure>
-  <details>
-    <summary>Copy Layout on three lamps</summary>
-  <figure>
-    <a href="img/product-lamps.png"><img src="img/product-lamps.png" alt="Two Properties editors and the 3D Viewport. Left, the Key lamp's Object tab: Proptidy's list with the heading Light over intensity_mult, then cast_shadow, flicker_amt (switched off for the Sidebar), size_m and spread_deg. Middle, a second Properties editor pinned to the Fill lamp shows the same layout. Right, the three lamps selected around the bottle. The status bar reads: Copied the layout of “Key” to 2 objects: 10 properties matched, 0 not matched" width="1916" height="692" loading="lazy"></a>
-    <figcaption>Copy Layout to Selected: the Key lamp's layout on Fill and Rim in one click.</figcaption>
-  </figure>
   </details>
 
   <div class="box">
@@ -216,12 +216,12 @@
   <details>
     <summary>Tests and timings</summary>
   <ul>
-    <li>Automated tests under Blender itself: 283 passed on 4.2.23 LTS, 285 on 4.5.15 LTS, 287 on 5.2.3 LTS and 287 on the 5.3.0 stable build, none failing (a few are skipped where a Blender version lacks the feature).</li>
+    <li>Automated tests under Blender itself: 301 passed on 4.2.23 LTS, 303 on 4.5.15 LTS, 305 on 5.2.3 LTS and 305 on the 5.3.0 stable build, none failing (a few are skipped where a Blender version lacks the feature).</li>
     <li>In a real Blender window on 4.2.23 LTS, 4.5.15 LTS, 5.2.3 LTS and the 5.3.0 stable build, driven by mouse and keyboard on Rain, with the zip installed by Blender's own installer: 48 of 48 steps passed, every button, field and menu, with no Python error.</li>
-    <li>Names: a rigger's 24 property names (<code>_L</code>/<code>_R</code> pairs and long ones) in Properties editors 300 to 600 px wide, at two interface sizes, on all four versions, read off the screen next to Blender's own rows at the same width. From 300 px (470 px at Resolution Scale 1.5) every name Blender's rows showed whole was whole in Proptidy's list.</li>
+    <li>Names and values: a rigger's 28 property names (<code>_L</code>/<code>_R</code> pairs, up to 24 characters) in Properties editors 300 to 600 px wide, at two interface sizes, on all four versions, read off the screen next to Blender's own rows at the same width. No value in Proptidy's list was cut at any of those widths (version 1.0.3 cut all 27 at 340 px on 5.2.3). From Blender's default width, 340 px (510 px at Resolution Scale 1.5), every name Blender's rows showed whole was whole in Proptidy's list; narrower, long names are shortened in the middle. In the Sidebar no two names read the same.</li>
     <li>A separate review tried to break it before release; every finding is fixed or listed above. On Rain linked into a shot file (plain link, library override, two-level override, after a resync) the order and the greyed-out buttons were right on all four versions. In a shot file with Rain under a library override, an undo step took 193 to 338 ms with Proptidy on or off, within 6 ms of each other, less than the spread between rounds (medians of seven alternating rounds on each version).</li>
-    <li>On a pose bone with 200 custom properties, Proptidy's own panel draws in 3.6 to 4.8 ms; a full Properties editor redraw takes 26 to 45 ms on 4.2, 4.5, 5.2 and 5.3.</li>
-    <li>Every image on this page is a capture of a real Blender 5.2.3 LTS window with Proptidy 1.0.3 installed from the same zip you download; each click and keystroke on Proptidy was sent as real mouse and keyboard input. The camera rig and lamp images use a product-shot file we built for them, with 26 drivers wiring its properties to the camera, the lamps and the material. The demo video was recorded with 1.0.1.</li>
+    <li>On a pose bone with 200 custom properties, Proptidy's own panel draws in 4.3 to 5.0 ms; a full Properties editor redraw takes 30 to 48 ms on 4.2, 4.5, 5.2 and 5.3.</li>
+    <li>Every image on this page is a capture of a real Blender 5.2.3 LTS window with Proptidy 1.0.4 installed from the same zip you download; each click and keystroke on Proptidy was sent as real mouse and keyboard input. The camera rig and lamp images use a product-shot file we built for them, with 26 drivers wiring its properties to the camera, the lamps and the material. The demo video was recorded with 1.0.1.</li>
   </ul>
   </details>
 

@@ -38,7 +38,7 @@
 
   <h2 id="install">Install (Blender 4.2 LTS to 5.3)</h2>
   <ol>
-    <li>After checkout, download <code>proptidy-1.0.3.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it.</li>
+    <li>After checkout, download <code>proptidy-1.0.4.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first say that internet access is required, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Proptidy needs no internet, and Install from Disk works either way, so <strong>Continue Offline is fine</strong>.</li>
@@ -67,7 +67,7 @@
     <li>In Edit Mode the Bone tab shows a note instead of the list: order bone properties in Object Mode or Pose Mode.</li>
     <li>Outside Pose Mode the Bone tab lists the bone's own properties, as Blender's panel does. If you keep your switches on the pose bone, a line above the list says how many there are; switch to Pose Mode to order them.</li>
     <li>The list shows up to 12 rows; drag the dotted grip under the rows to make it taller.</li>
-    <li>Names get the room they need. A name that Blender's own Custom Properties panel shows whole is whole in the list in any Properties editor 300 pixels wide or wider at Blender's standard interface size (Blender's default layout at 1920&times;1080 gives it about 340; at Resolution Scale 1.5, about 470). In a narrower editor, a name that must be shortened loses its middle, not its end: <code>arm_pol&hellip;llow_L</code> and <code>arm_pol&hellip;llow_R</code> stay apart. The selected property's full name heads its settings below the list.</li>
+    <li>Values come first: each value keeps the room to show the widest number in the list in full (<code>0.500</code>, not <code>0.</code>; checked in Properties editors from 300 pixels wide), and the names get the rest. With values like 0.500, a name that Blender's own Custom Properties panel shows whole is whole in the list from Blender's default Properties width up (about 340 pixels at 1920&times;1080; about 510 at Resolution Scale 1.5). A name that must be shortened loses its middle, not its end: <code>arm_pole&hellip;parent_L</code> and <code>arm_pole&hellip;parent_R</code> stay apart. The selected property's full name heads its settings below the list. The Sidebar shortens long names the same way.</li>
     <li>Where an object, scene, world or other data has no custom properties, the panel is one line, <strong>No custom properties</strong>, with a <strong>New</strong> button.</li>
   </ul>
 
