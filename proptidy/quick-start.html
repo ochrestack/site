@@ -38,15 +38,17 @@
 
   <h2 id="install">Install (Blender 4.2 LTS to 5.3)</h2>
   <ol>
-    <li>After checkout, download <code>proptidy-1.0.1.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it.</li>
+    <li>After checkout, download <code>proptidy-1.0.2.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first say that internet access is required, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Proptidy needs no internet, and Install from Disk works either way, so <strong>Continue Offline is fine</strong>.</li>
+        <li>After Continue Offline, Blender may show a <strong>Repository Alert</strong> saying the remote data of extensions.blender.org is unavailable. That is Blender's message about its online catalogue; it does not affect Install from Disk.</li>
       </ul>
     </li>
-    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Proptidy is enabled at once.</li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Proptidy is enabled at once. Its entry in Blender's extension list links back to this page.</li>
     <li>Open the Properties editor on a tab with custom properties, for example the <strong>Bone</strong> tab of your rig's properties bone in Pose Mode. The <strong>Proptidy</strong> panel sits directly above Blender's Custom Properties panel.</li>
   </ol>
+  <p>One purchase is one seat: one artist, on all of their own computers. A team buys one seat per artist.</p>
   <p>To update, install the newer zip the same way; your orders live in your .blend files and stay as they are. To remove Proptidy, go to <strong>Edit &gt; Preferences &gt; Add-ons</strong>, find Proptidy, and choose <strong>Uninstall</strong> from its menu: your files keep every property, value, keyframe and driver, and Blender's panel shows them sorted by name again.</p>
 
   <h2 id="order">Put your properties in order</h2>
@@ -63,6 +65,8 @@
     <li>A property set you have not touched shows Blender's order. From your first action on, Proptidy keeps yours; properties added any other way (Blender's own New button, a script, Rigify) appear at the bottom.</li>
     <li><strong>Menu &gt; Sort by Name</strong> returns to Blender's order (headings and spacers go, after a confirmation). Ctrl+Z brings your order back.</li>
     <li>In Edit Mode the Bone tab shows a note instead of the list: order bone properties in Object Mode or Pose Mode.</li>
+    <li>Outside Pose Mode the Bone tab lists the bone's own properties, as Blender's panel does. If you keep your switches on the pose bone, a line above the list says how many there are; switch to Pose Mode to order them.</li>
+    <li>The list shows up to 12 rows; drag the dotted grip under the rows to make it taller. In a narrow Properties editor the names take more of each row so they are not cut off.</li>
   </ul>
 
   <h2 id="settings">Edit settings below the list</h2>
@@ -78,15 +82,16 @@
   </ul>
 
   <h2 id="shots">Linked rigs and shot files</h2>
-  <figure><img src="img/shot-file.png" alt="A shot file with Rain linked through a library override, Bone tab: the list in the rig file's order, the New, Remove, Duplicate and move buttons greyed out, and the line 'Library override of rain_demo.blend: change the order in that file'" width="757" height="495" loading="lazy"><figcaption>A shot file linking the rig through a library override.</figcaption></figure>
+  <figure><img src="img/shot-file.png" alt="A shot file with Rain linked through a library override, Bone tab: the list in the rig file's order, the New, Remove, Duplicate and move buttons greyed out, the line 'Library override of rain_demo.blend: change the order in that file', and under it '1 property is not Library Overridable: tick it in that file'" width="757" height="496" loading="lazy"><figcaption>A shot file linking the rig through a library override.</figcaption></figure>
   <ol>
-    <li>Set the order in the rig's own file and save it.</li>
+    <li>Set the order in the rig's own file. Select each property animators key in shots and tick <strong>Library Overridable</strong> below the list: Blender creates custom properties with it off, and in a shot file a property that is not overridable is greyed out. Save the rig file.</li>
     <li>Every shot file that links the rig, with or without a library override, shows that order in the Properties editor and the Sidebar, and picks up a new order when it reloads.</li>
-    <li>In the shot file the buttons that would change the order are greyed out with a one-line reason.</li>
+    <li>In the shot file the buttons that would change the order are greyed out with a one-line reason. Under it, Proptidy says how many properties are not Library Overridable, so you know which ones to tick in the rig file.</li>
   </ol>
 
   <h2 id="copy-layout">Copy Layout to Selected</h2>
   <p>In Pose Mode, select the pose bones to change, then the one whose layout you want, so it is active. On its Bone tab choose <strong>Menu &gt; Copy Layout to Selected</strong> (for objects, do the same on the Object tab). Properties with the same name take its order, headings, spacers and Sidebar switches; properties only a target has keep their order after them. The report says how many matched and how many did not.</p>
+  <figure><img src="img/product-lamps.png" alt="Two Properties editors and the 3D Viewport. Left, the Key lamp's Object tab: Proptidy's list with the heading Light over intensity_mult, then cast_shadow, flicker_amt (switched off for the Sidebar), size_m and spread_deg. Middle, a second Properties editor pinned to the Fill lamp shows the same layout. Right, the lamps selected around a bottle. The status bar reads: Copied the layout of “Key” to 2 objects: 10 properties matched, 0 not matched" width="1916" height="692" loading="lazy"><figcaption>Three lamps selected, Key active: its layout copied to Fill and Rim.</figcaption></figure>
 
   <h2 id="files">What stays in your files</h2>
   <p>Proptidy stores one short text, <code>proptidy_layout</code>, on each object, bone or data-block you order. With Proptidy installed you never see it. On Blender 4.2 to 4.5 without Proptidy, Blender's panel shows it as a text property you can delete; on Blender 5.0 and later it does not show. Sort by Name removes it when only Blender's order is left.</p>
@@ -99,7 +104,7 @@
 
   <h2 id="limits">Limits</h2>
   <ul>
-    <li>Tested on Blender 4.2.23 LTS, 4.5.15 LTS, 5.2.3 LTS and the 5.3.0 release candidate, on Linux. Windows and macOS have not been tested yet.</li>
+    <li>Tested on Blender 4.2.23 LTS, 4.5.15 LTS, 5.2.3 LTS, the 5.3.0 release candidate and the 5.3.0 stable build from builder.blender.org, on Linux. Windows and macOS have not been tested yet.</li>
     <li>Move buttons only, no drag-and-drop. Headings and spacers, no collapsible groups.</li>
     <li>Blender's own Custom Properties panels are not hidden or replaced. Enum (drop-down) properties: Proptidy edits their Description and Library Overridable only.</li>
     <li>Not covered: custom properties on bone collections, sequencer strips, textures, particle settings and node trees.</li>

@@ -102,10 +102,10 @@
   <div class="buy">
     <p class="price"><strong>$6 once</strong>, every future update included.</p>
     <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_iUCMSui2aaRGBz2WZVLD1tDAF0j2BwxpSLZes2zIb97">Buy for $6</a></p>
-    <p class="fine">Polar checkout · no license key · <a href="../terms.html">14-day refund</a></p>
+    <p class="fine">Polar checkout · no license key · <a href="../terms.html">14-day refund</a> · one seat per artist (<a href="#details">teams</a>)</p>
   </div>
   <div class="trust">
-    <p class="fine"><strong>Tested on</strong> Blender 4.2.23 LTS, 4.5.15 LTS, 5.2.3 LTS and the 5.3.0 release candidate, on Linux; Windows and macOS not yet tested.</p>
+    <p class="fine"><strong>Tested on</strong> Blender 4.2.23 LTS, 4.5.15 LTS, 5.2.3 LTS and 5.3.0 (release candidate and stable build), on Linux; Windows and macOS not yet tested.</p>
     <p class="fine">Source included (GPL-3.0-or-later) · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
   </div>
 </section>
@@ -115,11 +115,7 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/proptidy-demo-720p60.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 44 s, captions only, no sound: Blender's own panel and the number-prefix workaround on Rain, then Proptidy 1.0.1 in Blender 5.2.3 LTS: Move to Top, a heading, the settings fields, the Sidebar and a shot file. Rain Rig (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
-  </figure>
-  <figure>
-    <img loading="lazy" src="video/proptidy-order.gif" alt="Looping clip from the demo: Proptidy's list on Rain's properties bone in Blender's order. ik_leg_right, ik_leg_left, ik_arm_right and ik_arm_left are each selected and moved to the top with Move to Top; Rain's arms stay as they were. The list menu's Add Heading puts a heading above them, typed as Arms and legs. Captions: Proptidy keeps them in the order you set. Nothing is renamed, so no driver breaks. Add headings to group them" width="1280" height="720">
-    <figcaption>Four clicks on Move to Top and a heading, at normal speed. A loop from the demo.</figcaption>
+    <figcaption>44 s, captions only, no sound: Proptidy 1.0.1 in Blender 5.2.3 LTS. Rain Rig (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
   </figure>
 
   <h2 id="compare">Blender's order, and yours</h2>
@@ -157,12 +153,25 @@
 
   <h2 id="shots">Set it once in the rig file</h2>
   <figure>
-    <a href="img/shot-file.png"><img src="img/shot-file.png" alt="A shot file, shot_010.blend, with Rain linked through a library override, Bone tab of Properties_IKFK: Proptidy's list in the rig file's order, with Arms and legs and Stretch; the New, Remove, Duplicate and move buttons greyed out, and the line 'Library override of rain_demo.blend: change the order in that file'" width="757" height="495" loading="lazy"></a>
-    <figcaption>A shot file with Rain overridden: the rig file's order.</figcaption>
+    <a href="img/shot-file.png"><img src="img/shot-file.png" alt="A shot file, shot_010.blend, with Rain linked through a library override, Bone tab of Properties_IKFK: Proptidy's list in the rig file's order, with Arms and legs and Stretch; the New, Remove, Duplicate and move buttons greyed out, and the line 'Library override of rain_demo.blend: change the order in that file'" width="757" height="496" loading="lazy"></a>
+    <figcaption>A shot file with Rain overridden: the rig file's order. Tick Library Overridable in the rig file on what animators key.</figcaption>
   </figure>
   <details>
     <summary>More on files and tabs</summary>
     <p>The order is saved in the .blend; moving never touches values, keyframes or drivers. <strong>Copy Layout to Selected</strong> copies a layout to other selected bones or objects. On the Object, Bone, Object Data, Material, Scene, World and Collection tabs.</p>
+  </details>
+
+  <h2 id="not-only-rigs">Camera rigs and lamps too</h2>
+  <figure>
+    <a href="img/product-camera.png"><img src="img/product-camera.png" alt="Blender 5.2: on the left the camera view of a product shot, a blue bottle on a grey backdrop rendered with EEVEE; on the right the Object tab of the camera rig, CAM-rig, with Proptidy's list: the heading Lens over lens_mm (85.000), focus_distance, fstop and use_dof, the heading Motion over dolly, shake_amount and shake_speed, then clip_end, clip_start and sensor_mm switched off for the Sidebar. Below the list, lens_mm's settings: Description 'Focal length of CAM in mm', Min 8.00, Max 300.00, Soft Limits on, Soft Min 18.00, Max 135.00" width="1394" height="954" loading="lazy"></a>
+    <figcaption>A product shot's camera rig: lens settings typed below the list; the camera follows.</figcaption>
+  </figure>
+  <details>
+    <summary>Copy Layout on three lamps</summary>
+  <figure>
+    <a href="img/product-lamps.png"><img src="img/product-lamps.png" alt="Two Properties editors and the 3D Viewport. Left, the Key lamp's Object tab: Proptidy's list with the heading Light over intensity_mult, then cast_shadow, flicker_amt (switched off for the Sidebar), size_m and spread_deg. Middle, a second Properties editor pinned to the Fill lamp shows the same layout. Right, the three lamps selected around the bottle. The status bar reads: Copied the layout of “Key” to 2 objects: 10 properties matched, 0 not matched" width="1916" height="692" loading="lazy"></a>
+    <figcaption>Copy Layout to Selected: the Key lamp's layout on Fill and Rim in one click.</figcaption>
+  </figure>
   </details>
 
   <div class="box">
@@ -175,24 +184,25 @@
     <summary>All limits</summary>
     <ul>
       <li>Headings and spacers, no collapsible groups. Rename and type changes stay in Blender's pop-up and do not rewrite drivers.</li>
-      <li>Proptidy is pure Python on Blender's own API, but Windows and macOS have not been tested; if it doesn't work as described on your system, the 14-day refund covers it.</li>
+      <li>Windows and macOS have not been tested. Proptidy is pure Python on Blender's own API and touches no files, paths, processes or network, so nothing in it depends on the system, but that is not a test; if it doesn't work as described on your system, the 14-day refund covers it.</li>
       <li>Blender's own Custom Properties panel stays, sorted by name. Enum (drop-down) properties: Description and Library Overridable only.</li>
       <li><code>proptidy_layout</code>: on Blender 4.2 to 4.5 without the add-on it shows as a text property you can delete. USD and Alembic on 4.2 to 4.5 export it: untick their Custom Properties option, or use Sort by Name first. glTF leaves it out while Proptidy is enabled; FBX never exports it.</li>
       <li>A rig ordered on 4.x and linked into a 5.x shot shows that text until the rig's own file is saved once on 5.x with Proptidy.</li>
       <li>Not covered: custom properties on bone collections, sequencer strips, textures, particle settings and node trees.</li>
       <li>It does not build a rig UI (icons, conditions, operator buttons, exported scripts) and does not add or delete one property across many objects.</li>
       <li>A property renamed through Proptidy's Edit Property button keeps its row; renamed through Blender's own panel or a script, it moves to the bottom. Properties added by Blender's New button, a script or Rigify appear at the bottom.</li>
-      <li>In Edit Mode the Bone tab shows a note instead of the list. English only.</li>
+      <li>In Edit Mode the Bone tab shows a note instead of the list; outside Pose Mode it lists the bone's own properties, with a line counting the pose bone's. English only.</li>
       <li>Uninstalled, your files keep every property, value, keyframe and driver; Blender's panel shows them sorted by name again.</li>
     </ul>
   </details>
 
   <h2 id="details">Details</h2>
   <details>
-    <summary>Buying, install, privacy</summary>
+    <summary>Buying, teams, install, privacy</summary>
   <ul>
     <li>Buying: secure checkout by Polar; the download arrives by email right after payment. The zip is the extension itself, with the full source and license inside. $6 once, every future update included. If it doesn't work as described and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>).</li>
-    <li>Install: <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the drop-down at the top right, <strong>Install from Disk...</strong>, pick the zip. If Blender asks about internet access, Continue Offline is fine. Step by step: <a href="quick-start.html">quick start</a>.</li>
+    <li>Teams: $6 is one seat, one artist on all of their own computers. A team buys one seat per artist (12 animators: 12 seats, $72). There is no studio licence.</li>
+    <li>Install: <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the drop-down at the top right, <strong>Install from Disk...</strong>, pick the zip. If Blender asks about internet access, Continue Offline is fine; a "Repository Alert" about extensions.blender.org after that is Blender's own message and does not affect Install from Disk. Step by step: <a href="quick-start.html">quick start</a>.</li>
     <li>Privacy: no network calls, no telemetry, no license check, no account. Proptidy changes only the custom properties and order data you act on, saved in your .blend.</li>
     <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>, with your Blender version, your system and, if you can, a small .blend.</li>
   </ul>
@@ -202,11 +212,11 @@
   <details>
     <summary>Tests and timings</summary>
   <ul>
-    <li>Automated tests under Blender itself: 259 passed on 4.2.23 LTS, 261 on 4.5.15 LTS, 263 on 5.2.3 LTS and 263 on the 5.3.0 release candidate, none failing (a few are skipped where a Blender version lacks the feature).</li>
-    <li>In a real Blender window on 4.2.23 LTS, 5.2.3 LTS and the 5.3.0 release candidate, driven by mouse and keyboard on Rain, with the zip installed by Blender's own installer: 47 of 47 steps passed, every button, field and menu, with no Python error.</li>
-    <li>A separate review tried to break it before release; every finding is fixed or listed above. On Rain linked into a shot file (plain link, library override, two-level override, after a resync) the order and the greyed-out buttons were right on all four versions. In a shot file with Rain under a library override, an undo step took 166 to 264 ms with Proptidy on or off, within 6 ms of each other.</li>
-    <li>On a pose bone with 200 custom properties, Proptidy's own panel draws in 2.6 to 3.1 ms; a full Properties editor redraw takes 20.9 to 35.4 ms on 4.2, 5.2 and 5.3.</li>
-    <li>Every image on this page is a capture of a real Blender 5.2.3 LTS window with Proptidy 1.0.1 installed from the same zip you download; each click and keystroke on Proptidy was sent as real mouse and keyboard input.</li>
+    <li>Automated tests under Blender itself: 267 passed on 4.2.23 LTS, 269 on 4.5.15 LTS, 271 on 5.2.3 LTS, 271 on the 5.3.0 release candidate and 271 on the 5.3.0 stable build, none failing (a few are skipped where a Blender version lacks the feature).</li>
+    <li>In a real Blender window on 4.2.23 LTS, 5.2.3 LTS and the 5.3.0 stable build, driven by mouse and keyboard on Rain, with the zip installed by Blender's own installer: 47 of 47 steps passed, every button, field and menu, with no Python error.</li>
+    <li>A separate review tried to break it before release; every finding is fixed or listed above. On Rain linked into a shot file (plain link, library override, two-level override, after a resync) the order and the greyed-out buttons were right on all four versions. In a shot file with Rain under a library override, an undo step took 134 to 256 ms with Proptidy on or off, within 5 ms of each other (medians of seven alternating rounds on each version).</li>
+    <li>On a pose bone with 200 custom properties, Proptidy's own panel draws in 2.6 to 3.3 ms; a full Properties editor redraw takes 21.2 to 35.7 ms on 4.2, 5.2 and 5.3.</li>
+    <li>Every image on this page is a capture of a real Blender 5.2.3 LTS window with Proptidy 1.0.2 installed from the same zip you download; each click and keystroke on Proptidy was sent as real mouse and keyboard input. The camera rig and lamp images use a product-shot file we built for them, with 26 drivers wiring its properties to the camera, the lamps and the material. The demo video was recorded with 1.0.1.</li>
   </ul>
   </details>
 
