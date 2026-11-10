@@ -39,7 +39,7 @@
 
   <h2 id="install">Install (Blender 4.5 LTS to 5.2 LTS)</h2>
   <ol>
-    <li>Download <code>knapwell-1.4.1.zip</code> from the link in your checkout email. Install the zip itself; do not unzip it.</li>
+    <li>Download the Knapwell zip (<code>knapwell-1.4.3.zip</code>) from the link in your checkout email. Install the zip itself; do not unzip it.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>. If Blender asks about internet access, <strong>Continue Offline</strong> is fine: Knapwell needs none.</li>
     <li>Open the menu at the top right (the rightmost <strong>&#8964;</strong>), choose <strong>Install from Disk...</strong> and pick the zip.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Knapwell</strong> tab. The main buttons are also in <strong>Object &gt; Knapwell</strong>, so F3 search finds them.</li>
@@ -48,20 +48,21 @@
 
   <h2 id="first-damage">First damage</h2>
   <ol>
-    <li><strong>Check Model</strong> (recommended for an imported model). Select the meshes and click it. The <strong>Check Model</strong> sub-panel, below the sliders, gives one line per object, with the fix under any problem: <strong>Weld Seams</strong> for a mesh split at UV seams, <strong>Fill Holes</strong> for holes, <strong>Add Solidify</strong> for a plane, <strong>Fix Normals</strong>, <strong>Remove Zero-Area Faces</strong>. Click a line to see every finding for that object.</li>
+    <li><strong>Check Model</strong> (recommended for an imported model). Select the meshes and click it. The <strong>Check Model</strong> sub-panel, below the sliders, gives one line per object, with the fix under any problem: <strong>Weld Seams</strong> for a mesh split at UV seams, <strong>Fill Holes</strong> for holes, <strong>Add Solidify</strong> for a plane, <strong>Fix Normals</strong>, <strong>Remove Zero-Area Faces</strong>, and <strong>Convert to Mesh</strong> for a text or curve object. Objects that need nothing fold into one line ("6 ready"). Click a line to see every finding for that object.</li>
     <li>Click <strong>Damage</strong>. Each mesh gets a "Knapwell" modifier; its own mesh is not changed until Apply. Cameras and lights in the selection are left alone.</li>
     <li>Under <strong>Set sliders to:</strong>, pick <strong>Worn</strong>, <strong>Chipped</strong> or <strong>Ruined</strong>, then adjust Amount, Chip size (in metres, whatever the object's scale), Depth, Edge angle, Seed and Mode. With several objects selected, a slider change goes to all of them; Seed changes only the active one.</li>
-    <li>On thin parts, such as real-size bricks, chips are sized to fit each part. The panel says so in one line, with a <strong>Use</strong> button that sets that size.</li>
+    <li>On thin parts, such as real-size bricks, chips are capped to fit each part. The line under the sliders says so ("Chips capped at 0.019 m"); its <strong>Use</strong> button writes that size into Chip size. The chips do not change and the look stays set; the slider just shows their real size.</li>
+    <li><strong>Preview &amp; Final Detail</strong> (closed by default): 1 to 4, higher is finer chips and slower. The viewport uses Preview detail; F12 renders and Apply use Final detail.</li>
   </ol>
   <div class="pair">
-    <figure><img src="img/panel-check-model.png" alt="The Knapwell tab after Check Model on seven objects: the status line, Check Model, Damage and Remove, the looks row and the sliders at the top; below them the Check Model sub-panel with '5 of 7 ready for Damage', one line per object, 'Imported Urn: 60 open edges' in red with a Weld Seams button and 'Floor Tile: no thickness' in red with an Add Solidify button" width="300" height="830" loading="lazy"><figcaption>After Check Model on seven objects: the sliders stay where they are; one line per object below them.</figcaption></figure>
-    <figure><img src="img/panel-step-protected.png" alt="The Knapwell tab on a stone step with one face protected: 'Step: damaged, live', the sliders, and in Mask &amp; Material the line '1 face protected: no chip reaches it.'; the Apply section below" width="300" height="830" loading="lazy"><figcaption>A step with its top face protected: the other edges keep their chips.</figcaption></figure>
+    <figure><img src="img/panel-check-model.png" alt="The Knapwell tab after Check Model on ten objects: the status line, Check Model, Damage and Remove, the looks row, the sliders and the line 'Chips capped at 0.019 m' with a Use button; below them the Check Model sub-panel with '7 of 10 ready · 3 to fix', then 'Imported Urn: 60 open edges' with a Weld Seams button, 'Floor Tile: no thickness' with Add Solidify, 'Sign Text: text, convert first' with Convert to Mesh, 'Crates: ready; parts touch' and one line '6 ready'" width="291" height="696" loading="lazy"><figcaption>After Check Model on ten objects: the sliders stay where they are; what needs a fix comes first, with its button.</figcaption></figure>
+    <figure><img src="img/panel-step-protected.png" alt="The Knapwell tab on a stone step with one face protected: 'Step: damaged, live', the sliders, and in Mask &amp; Material the line '1 face protected: it and the edges around it stay clean.' above a Select Protected button" width="291" height="624" loading="lazy"><figcaption>A step with its top face protected: that face and the edges around it stay clean.</figcaption></figure>
   </div>
 
   <h2 id="mask">Protect faces, pick a break material</h2>
   <ul>
-    <li><strong>Protect Selected Faces</strong>: in Edit Mode, select faces (a doorway, a carving) and click it. No chip reaches those faces or their edges; the faces around them are still chipped.</li>
-    <li><strong>Paint Mask</strong>: Weight Paint on the vertex group "Knapwell Mask". A face is protected when all its corners are painted.</li>
+    <li><strong>Protect Selected Faces</strong>: in Edit Mode, select faces (a doorway, a carving) and click it. No chip reaches those faces or the edges around them, so protecting a step's tread keeps its nosing clean too; the faces further away are still chipped.</li>
+    <li><strong>Paint Mask</strong>: Weight Paint on the vertex group "Knapwell Mask". A face is protected when all its corners are painted. On an object whose damage is applied, it asks to Revert to Original first, so the mask is painted on the original mesh and is not lost.</li>
     <li><strong>Clear Mask</strong> removes both.</li>
     <li><strong>Break material</strong>: the faces the damage creates get it; every other face keeps its own material and UVs.</li>
   </ul>
@@ -70,7 +71,7 @@
   <ul>
     <li><strong>Target faces</strong> (0 = off): for game assets, Apply reduces the result to about this many faces, keeping every part closed. Twice the model's own face count gives a light scatter of chips; four times gives chips along most edges.</li>
     <li><strong>Apply</strong> turns the damage into ordinary mesh data with outward normals, ready to export.</li>
-    <li><strong>Revert to Original</strong> brings back the exact mesh from before Apply, even after you save, close and reopen the file.</li>
+    <li><strong>Revert to Original</strong> brings back the exact mesh from before Apply, even after you save, close and reopen the file, until you choose Forget Original. After Apply the sliders are greyed: Revert to Original to edit them again.</li>
     <li><strong>Forget Original</strong> asks first, then deletes the stored copy.</li>
   </ul>
   <p>Every button reports what it did in one short line in the status bar; the Info editor keeps the details for each object.</p>

@@ -14,12 +14,12 @@
 <meta property="og:image" content="https://ochrestack.com/knapwell/img/og-knapwell-2x1.jpg">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="800">
-<meta property="og:image:alt" content="Granite steps and a plinth beside a brick wall, every step edge broken into small chips by Knapwell">
+<meta property="og:image:alt" content="Granite steps and a plinth beside a brick wall, their edges chipped by Knapwell, fresh pale stone inside each break">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Knapwell for Blender: chipped edges that keep separate bricks separate">
 <meta name="twitter:description" content="Remesh and Displace melt your bricks into one blob? Knapwell chips the edges of closed meshes, keeps every separate brick separate, sizes chips in metres, and lets you Revert even after Apply. $15, source included.">
 <meta name="twitter:image" content="https://ochrestack.com/knapwell/img/og-knapwell-2x1.jpg">
-<meta name="twitter:image:alt" content="Granite steps and a plinth beside a brick wall, every step edge broken into small chips by Knapwell">
+<meta name="twitter:image:alt" content="Granite steps and a plinth beside a brick wall, their edges chipped by Knapwell, fresh pale stone inside each break">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <style>
   :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
@@ -42,6 +42,8 @@
   .buy p { margin: 0; }
   .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 11px 20px; border-radius: 8px; font-size: 18px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
+  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .note { font-size: 15px; margin: 0; max-width: 64ch; }
   .fine { font-size: 15px; color: var(--muted); }
   figure { margin: 24px 0; }
   figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; display: block; background: #FAF7F2; }
@@ -51,9 +53,6 @@
   .uses > div { flex: 1 1 220px; background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 12px 14px; }
   .uses img { display: block; width: 100%; height: 130px; object-fit: cover; border-radius: 6px; margin-bottom: 8px; }
   .uses p { margin: 0; font-size: 15px; }
-  .panels { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
-  .panels figure { flex: 0 1 300px; margin: 0; }
-  .panels figure img { border-radius: 6px; }
   details { margin: 10px 0; background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 10px 16px; }
   details[open] { padding-bottom: 14px; }
   summary { cursor: pointer; font-weight: 600; }
@@ -80,12 +79,17 @@
   <p class="sub">Chipped edges that keep separate bricks separate.</p>
   <p class="lead">Select your meshes, press Damage: real chipped geometry, at a chip size in metres. Every brick or block stays its own part, and Revert brings the original back, even after Apply.</p>
   <div class="buy">
-    <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_XOYxPe9aOGOmQEuXD3MPneeNoR92XubuzuZf60B2xgq">Buy for $15</a></p>
+    <!-- Checkout is held until the Polar product carries knapwell-1.4.3.zip under the name Knapwell
+         (it still delivered the old Spallwork 1.4.0 zip). To reopen it: href back to
+         https://buy.polar.sh/polar_cl_XOYxPe9aOGOmQEuXD3MPneeNoR92XubuzuZf60B2xgq, label "Buy for $15",
+         drop "pending", onclick and the note, here and at the foot of the page. -->
+    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">$15 · checkout opens soon</a></p>
     <p class="fine">One payment, source included, updates at no charge.<br>Blender 4.5 LTS to 5.2 LTS · <a href="../terms.html">14-day refund</a></p>
+    <p class="note" id="buy-note">Checkout is paused while the download is updated to Knapwell 1.4.3, so nobody receives an older file. For a note on the day it opens, email <a href="mailto:support@ochrestack.com?subject=Knapwell%20checkout">support@ochrestack.com</a>.</p>
   </div>
 
-  <a href="img/hero-steps-closeup-full.jpg"><img src="img/hero-steps-closeup.jpg" alt="A Cycles render close up in low sun: three granite steps and a granite plinth beside a red-brick wall. Every step edge and the plinth's top edge is broken into many small faceted chips along its whole length, dark with shadow inside; the bricks show small pale chips at their edges" width="1600" height="800" style="width:100%;height:auto;border:1px solid #E6DED3;border-radius:10px;display:block"></a>
-  <p class="fine">A render of our own granite steps and brick wall, chipped by Knapwell: the steps at the Worn look with a smaller Chip size and more Amount, the bricks at Ruined with a smaller Chip size.</p>
+  <a href="img/hero-steps-closeup-full.jpg"><img src="img/hero-steps-closeup.jpg" alt="A Cycles render close up in low sun: three granite steps and a granite plinth beside a red-brick wall and a sandstone door surround. The step and plinth edges carry scattered faceted chips of different sizes, pale where fresh stone shows inside each break; the bricks and the surround have small pale chips at their edges" width="1600" height="800" style="width:100%;height:auto;border:1px solid #E6DED3;border-radius:10px;display:block"></a>
+  <p class="fine">A render of our own granite steps and brick wall, chipped by Knapwell: the steps and plinth at the Chipped look as it comes, with a paler Break material so the fresh stone shows; the door surround at Chipped; the bricks at Ruined with Chip size 0.045 m.</p>
 
   <section id="watch">
   <h2>Watch it work</h2>
@@ -100,28 +104,29 @@
 
   <h2>Remesh melts your bricks. Knapwell chips them.</h2>
   <figure>
-    <a href="img/wall-compare.jpg"><img src="img/wall-compare.jpg" alt="Two copies of the same brick wall side by side in low sun. Left: Blender's Remesh and Displace modifiers have fused the bricks into one lumpy slab with the joints filled in. Right: Knapwell's Damage has chipped each brick on its own, with pale chips at their corners and edges and the joints still open" width="1600" height="700" loading="lazy"></a>
-    <figcaption>The same 119-brick wall. Left: Blender's Remesh and Displace, one fused piece. Right: Knapwell at its default look, 119 bricks, each chipped on its own.</figcaption>
+    <a href="img/wall-compare.jpg"><picture>
+      <source media="(max-width: 600px)" srcset="img/wall-compare-phone.jpg" width="600" height="760">
+      <img src="img/wall-compare.jpg" alt="Two copies of the same brick wall in low sun. First: Blender's Remesh and Displace modifiers have fused the bricks into one lumpy slab with the joints filled in. Second: Knapwell's Damage has chipped each brick on its own, with pale chips at their corners and edges and the joints still open" width="1600" height="700" loading="lazy">
+    </picture></a>
+    <figcaption>The same 119-brick wall. Blender's Remesh and Displace (left; on a phone, on top): one fused piece. Knapwell at its default look (right; on a phone, below): 119 bricks, each chipped on its own.</figcaption>
   </figure>
   <ul>
     <li><strong>Many objects at once.</strong> Select them all and press Damage. Worn, Chipped and Ruined set the sliders; the damage stays live and editable until Apply.</li>
-    <li><strong>Chip size in metres.</strong> The same physical size on every object, whether or not its scale is applied. On thin parts, such as real-size bricks, chips are sized to fit the part.</li>
-    <li><strong>Imported models too.</strong> Check Model finds split seams, holes and sheets, and fixes them in one click each: Weld Seams, Fill Holes, Add Solidify.</li>
-    <li><strong>Keep a doorway clean.</strong> Protect the faces you select; give the broken faces a material of their own. Every other face keeps its material and UVs.</li>
-    <li><strong>Apply for export, Revert any time.</strong> Apply makes it plain mesh with outward normals; Target faces reduces it for a game. Revert brings the original back even after you reopen the file.</li>
+    <li><strong>Chip size in metres.</strong> The same physical size on every object, whether or not its scale is applied. On thin parts, such as real-size bricks, chips are capped to fit the part, and the panel says so ("Chips capped at 0.019 m"); there the three looks differ in how many chips and how deep, not in chip size.</li>
+    <li><strong>Imported models too.</strong> Check Model finds split seams, holes and sheets, and text or curves that are not meshes yet, and fixes each in one click: Weld Seams, Fill Holes, Add Solidify, Convert to Mesh.</li>
+    <li><strong>Keep a doorway clean.</strong> Protect the faces you select: they and the edges around them stay clean. Give the broken faces a material of their own; every other face keeps its material and UVs.</li>
+    <li><strong>Apply for export, Revert later.</strong> Apply makes it plain mesh with outward normals; Target faces reduces it for a game. Revert to Original brings the original back, even after you save and reopen the file, until you choose Forget Original (which asks first).</li>
   </ul>
 
   <h2>In the panel</h2>
-  <div class="panels">
-    <figure>
-      <img src="img/panel-check-model.png" alt="The Knapwell tab after Check Model on seven objects: the status line, Check Model, Damage and Remove, the 'Set sliders to' row with Chipped pressed, the sliders, then the Check Model sub-panel: '5 of 7 ready for Damage', one line per object, 'Imported Urn: 60 open edges' in red with a Weld Seams button under it, and 'Floor Tile: no thickness' in red with an Add Solidify button" width="300" height="830" loading="lazy">
-      <figcaption>Check Model on seven objects: one line each, the fix under each problem, the sliders where they were.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/step-top-protected.jpg" alt="A long stone step in the viewport: its top face, protected, has no chips; its bottom edges and lower corners are chipped. In the sidebar, Mask &amp; Material reads '1 face protected: no chip reaches it.'" width="600" height="420" loading="lazy">
-      <figcaption>One face protected on a stone step: that face stays clean, the other edges keep their chips.</figcaption>
-    </figure>
-  </div>
+  <figure>
+    <a href="img/inpanel-check-model.jpg"><img src="img/inpanel-check-model.jpg" alt="A real Blender window: ten selected objects in the viewport beside the Knapwell tab. Under the sliders, the line 'Chips capped at 0.019 m' with a Use button; below it the Check Model sub-panel: '7 of 10 ready · 3 to fix', then 'Imported Urn: 60 open edges' with Weld Seams, 'Floor Tile: no thickness' with Add Solidify, 'Sign Text: text, convert first' with Convert to Mesh, 'Crates: ready; parts touch' and one line '6 ready'" width="1160" height="580" loading="lazy"></a>
+    <figcaption>Check Model on ten objects: what needs a fix comes first, each with its button; the six that need nothing fold into one line.</figcaption>
+  </figure>
+  <figure>
+    <a href="img/inpanel-step-protected.jpg"><img src="img/inpanel-step-protected.jpg" alt="A long stone step in the viewport beside the Knapwell tab: its top face, protected, and the edges around it have no chips; the bottom edges are chipped. In Mask &amp; Material the line reads '1 face protected: it and the edges around it stay clean.' above a Select Protected button" width="1180" height="590" loading="lazy"></a>
+    <figcaption>One face protected on a stone step: that face and the edges around it stay clean; the bottom edges keep their chips.</figcaption>
+  </figure>
 
   <h2>Made for</h2>
   <div class="uses">
@@ -141,7 +146,7 @@
 
   <h2 id="install">Install</h2>
   <ol>
-    <li>Download <code>knapwell-1.4.1.zip</code> from the link in your checkout email. Do not unzip it.</li>
+    <li>Download the Knapwell zip (<code>knapwell-1.4.3.zip</code>) from the link in your checkout email. Do not unzip it.</li>
     <li>In Blender, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the menu at the top right (<strong>&#8964;</strong>), <strong>Install from Disk...</strong>, and pick the zip.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Knapwell</strong> tab.</li>
   </ol>
@@ -182,11 +187,11 @@
   <details id="limits">
     <summary>Known limits</summary>
     <ul>
-      <li>Closed meshes only. Check Model fixes split seams, holes and sheets; curves and text must be converted to a mesh first.</li>
+      <li>Closed meshes only. Check Model fixes split seams, holes and sheets, and converts text and curves to a mesh with Blender's own Convert.</li>
       <li>Loose parts that overlap are chipped as one where they overlap. Parts that touch give an STL that is not watertight where they touch.</li>
       <li>Chips can knock a small fragment loose where two chips meet at a corner; compare Check Model's loose-part count before and after Apply if that matters for a print.</li>
       <li>A collection instance at another scale shows chips at that scale; Check Model's Make Instances Real button fixes it.</li>
-      <li>Masks protect whole faces, with no soft falloff. Fill Holes caps every hole, including a window that should stay open.</li>
+      <li>Masks protect whole faces and the edges around them, with no soft falloff: protect a step's tread and its nosing stays clean too. Fill Holes caps every hole, including a window that should stay open.</li>
       <li>Thin parts get smaller chips, and models with many thin parts update more slowly. Large models (over 100,000 faces) take one to two seconds per change.</li>
       <li>No cracks, fracture, rebar, debris, grime shaders or wood splinters. English only.</li>
       <li>Tested on the official Linux builds of Blender. Windows and macOS have not been tested yet; Knapwell uses only Blender's own Python API, but that is not a test. Tell us if anything behaves differently.</li>
@@ -201,7 +206,7 @@
       <li>GPL-3.0-or-later; the full source is in the zip.</li>
       <li>Privacy: Knapwell makes no network calls. It reads and writes only the open .blend file and collects nothing.</li>
       <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>, with your Blender version, your operating system and, if you can, the .blend file or a screenshot of the Knapwell tab.</li>
-      <li>Knapwell was called Spallwork until version 1.4.0.</li>
+      <li>Knapwell was called Spallwork until version 1.4.0. If you bought Spallwork, the Knapwell zip is yours too: write to us.</li>
     </ul>
   </details>
 
@@ -213,7 +218,7 @@
   </details>
 
   <div class="buy" style="margin-top:32px">
-    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_XOYxPe9aOGOmQEuXD3MPneeNoR92XubuzuZf60B2xgq">Buy for $15</a></p>
+    <p><a class="button pending" id="buy-2" href="#" aria-describedby="buy-note" onclick="return false;">$15 · checkout opens soon</a></p>
     <p class="fine">One payment, source included · Blender 4.5 LTS to 5.2 LTS</p>
   </div>
 </main>
