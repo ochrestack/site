@@ -91,7 +91,7 @@
     <p class="fine">Polar checkout · download by email · <a href="../terms.html">14-day refund if it doesn't work on your rig</a> · no license check · <a href="#details">details</a></p>
   </div>
 
-  <p class="fine">Above: same .blend, Godot 4.7. Blender's default glTF export has 0 animations; Rigbake's has Idle, Run and Walk, every deform bone within 0.00001 m.</p>
+  <p class="fine">Above: same .blend, Godot 4.7. Blender's default glTF export has 0 animations; Rigbake's has Idle, Run and Walk, every deform bone within 0.00001 m. Only need one clip? Blender's glTF export can do that for free; <a href="#free-route">when you don't need Rigbake</a>.</p>
   <details>
     <summary>How this image was made</summary>
     <p>The character is Blender Studio's Ellie (CC BY 4.0). Her production rig is the control rig: it holds the Idle, Walk and Run keys on its NLA. A separate deform rig made of her 312 deform bones follows it through Copy Transforms. Both files come from the same .blend in Blender 4.2. Left: File &gt; Export &gt; glTF 2.0 with its defaults (deform rig and meshes selected); the file has no animation, so she stands in her bind pose. The default FBX export also has 0. Right: Rigbake 1.2.5 with its Godot preset, shown 0.21 s into Run, at full stride (feet 0.33 m apart); each of the 312 deform bones is within 0.00001 m of the live rig at the frames we checked. Both sides use the same flat colours, because her procedural shaders don't export to glTF. Her teeth and fanny-pack zipper are parented to bones on both sides, because the Surface Deform they use doesn't export. In this picture both characters are turned 35&deg; from the camera, the same on both sides, so the stride shows; the larger image behind it is the same scene seen from the front, 0.46 s into Run.</p>
@@ -103,7 +103,7 @@
 
   <figure>
     <a href="#rain"><img src="img/rain-plain-vs-rigbake-2x1.png" alt="Blender Studio's Rain twice in Godot 4.7 at the same frame, both playing Idle. Left, labelled Plain .fbx, Idle: Run's legs, Blender's defaults: her knee is raised mid-stride. Right, labelled Rigbake .glb, Idle, as in Blender, Godot preset: she stands" width="1600" height="800" loading="lazy"></a>
-    <figcaption>The NLA case: Rain, three clips on unmuted NLA tracks, same frame in Godot 4.7. Left: Blender's default FBX export, 23 takes for 3 clips, Run's legs in Idle (0.33 m off). Right: Rigbake's Godot preset (.glb), 3 takes; <a href="#rain">setup below</a>.</figcaption>
+    <figcaption>The NLA case: Rain, three clips on unmuted NLA tracks, same frame in Godot 4.7. Left: Blender's default FBX export, 23 takes for 3 clips (each clip twice, plus 17 face-pose actions; <a href="#takes">why</a>), Run's legs in Idle (0.33 m off). Right: Rigbake's Godot preset (.glb), 3 takes; <a href="#rain">setup below</a>.</figcaption>
   </figure>
 
   <figure>
@@ -113,8 +113,8 @@
     <figcaption>The demo, 63 s, captions only, no sound. First Rain's NLA clips: Blender's default FBX export (.fbx) against Rigbake 1.2.5's Godot preset (.glb), Blender 4.2 LTS, both files played in Godot 4.7.2. Apply Modifiers is set to Always so her Mask modifiers work in Godot; Rigbake warns, before you click, that this drops some shape keys. Then the control-rig case: Ellie's deform rig following a separate control rig, Blender's default glTF export (0 animations, she holds her bind pose) against Rigbake's (Idle, Run, Walk; Run playing). The side by side alone: <a href="video/rigbake-plain-vs-rigbake.gif">10-second GIF</a> (7.5 MB). Rain Rig (CC) Blender Foundation | studio.blender.org; Ellie, Sprite Fright (c) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
   </figure>
 
-  <div class="box">
-    <strong>Where it is a convenience.</strong> For one armature with IK and drivers, one action in the file and nothing on the NLA, Blender's own exporters already bake constraints and get it right. There, what you are buying is the rig validator, repeatable per-engine presets saved in your .blend file, and editable baked actions. One clip from a control rig? glTF's Animation mode Scene exports the clip active on the control rig, exactly, for free, one clip per export (<a href="../guides/control-rig-no-animations/">the free way, step by step</a>); Rigbake writes every clip of the control rig into one file. We say this on the box because you should know it before you pay.
+  <div class="box" id="free-route">
+    <strong>Where it is a convenience.</strong> For one armature with IK and drivers, one action in the file and nothing on the NLA, Blender's own exporters already bake constraints and get it right. There, what you are buying is the rig validator, repeatable per-engine presets saved in your .blend file, and editable baked actions. One clip from a control rig? glTF's Animation mode Scene exports the clip active on the control rig, exactly, for free, one clip per export (<a href="../guides/control-rig-no-animations/#workaround">the free way, step by step</a>); Rigbake writes every clip of the control rig into one file. We say this on the box because you should know it before you pay.
   </div>
 
   <figure class="wide-only">
