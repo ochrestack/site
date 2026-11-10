@@ -39,7 +39,7 @@
   <h2 id="install">Install (Blender 4.2 LTS to 5.2 LTS)</h2>
   <p>Tested on Blender 4.2.23, 4.5.15, 5.0.1, 5.1.2 and 5.2.3 on Linux. Windows and macOS have not been tested yet; if Wholegrip does not work on yours, email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
   <ol>
-    <li>After checkout, download <code>wholegrip-1.1.0.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
+    <li>After checkout, download <code>wholegrip-1.1.1.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access. Wholegrip needs none, so <strong>Continue Offline</strong> is fine.</li>
@@ -57,10 +57,12 @@
     <li>In the Outliner, right-click a collection &gt; <strong>Treat as One</strong>. With several collections selected, all of them are marked.</li>
     <li>Go to <strong>Properties &gt; Collection</strong> tab &gt; <strong>Wholegrip</strong> and tick <strong>Treat as One</strong>.</li>
   </ul>
+  <p>A marked collection turns blue in the Outliner, so you can see which ones are marked; unmarking takes the colour off. A colour you gave a collection yourself is never changed. Change the colour, or turn it off, in Edit &gt; Preferences &gt; Add-ons &gt; Wholegrip &gt; <strong>Outliner Colour for Marked Collections</strong>.</p>
   <figure><img src="img/outliner-treat-as-one.png" alt="The Outliner right-click menu for a collection, with Treat as One at the bottom and its tooltip" width="759" height="640" loading="lazy"><figcaption>Outliner right-click &gt; Treat as One (Blender 5.2.3, real size).</figcaption></figure>
   <p>Then, in Object Mode in the 3D Viewport:</p>
   <ul>
     <li><strong>Click</strong> any part: the whole collection is selected, child collections included, and the part you clicked becomes active.</li>
+    <li><strong>Tweak tool:</strong> press any part and drag. The whole collection moves; whatever is behind the part, such as the floor, stays where it is.</li>
     <li><strong>Box drag</strong> (Select Box tool, or B): every marked collection the box touches is taken whole. The tool's header mode applies; Shift adds, Ctrl subtracts.</li>
     <li><strong>Shift+click</strong> adds or removes the whole collection.</li>
     <li><strong>Ctrl+click</strong> on a part of a marked collection picks just the part under the cursor; Ctrl+Shift+click adds or removes just that part. Elsewhere Ctrl+click is Blender's own.</li>
@@ -68,10 +70,12 @@
     <li><strong>Alt+U</strong> or the header button turns all of this off and on. The keys can be changed in the add-on preferences.</li>
   </ul>
   <p>When an object is in several marked collections, the deepest one wins and the status bar names the other. A part that sits directly in a marked parent (a table in a marked &ldquo;Dining&rdquo;) selects the whole parent; mark its own collection to click it alone. Hidden, disabled and unselectable objects are left alone, as in Blender.</p>
+  <p>Clicking the very same spot twice goes on to the object behind the one you clicked, as Blender's own click does: a second Shift+click on exactly the same pixel can add the floor rather than remove the chair. Move the pointer a few pixels, or click another part.</p>
 
   <h2 id="modifiers">2. Collection Modifiers</h2>
-  <p>On a marked collection, go to <strong>Properties &gt; Collection</strong> and scroll to the <strong>Wholegrip</strong> panel at the bottom of the tab, then <strong>Collection Modifiers &gt; Add Modifier</strong>.</p>
-  <figure><img src="img/collection-modifiers-panel.png" alt="Collection Properties of a marked collection: Treat as One, the member count, Collection Modifiers with Add Modifier, On 19 of 19 members, one Geometry Nodes modifier with its node group and Thickness input, Apply to All and Remove from All" width="537" height="584" loading="lazy"><figcaption>The panel on Rain's rain-geometry collection, with one Geometry Nodes modifier on all 19 members.</figcaption></figure>
+  <p>On a marked collection, go to <strong>Properties &gt; Collection</strong> and scroll to the <strong>Wholegrip</strong> panel, which sits above Line Art and Custom Properties, then <strong>Collection Modifiers &gt; Add Modifier</strong>.</p>
+  <figure><img src="img/rocket-modifiers-panel.png" alt="Collection Properties of a marked collection, Rocket: Visibility, Instancing and Exporters folded, then the Wholegrip panel with Treat as One ticked, 5 objects in this collection and its children, Collection Modifiers with Add Modifier, On 5 of 5 members, one GeometryNodes modifier with Node Group Panel Inset, Inset 0.150 and Depth 0.030, Apply to All and Remove from All; Line Art and Custom Properties below it" width="339" height="837" loading="lazy"><figcaption>The panel on a five-part rocket, with one Geometry Nodes modifier on all five members (Wholegrip 1.1.1, Blender 5.2.3).</figcaption></figure>
+  <p>Blender's Bevel starts at a width of 0.1 m, as it does on any object, which is a lot on thin furniture parts: type the width you want (0.005 to 0.02 m suits most furniture) right after adding it.</p>
   <ul>
     <li>Each modifier added there goes to the bottom of every member's stack, named after the collection, such as <em>Bevel ‹Chair›</em>. Lights, cameras and empties are skipped and counted.</li>
     <li>Change a value in the panel and every member follows. Renaming, moving, toggling or removing does the same everywhere.</li>
