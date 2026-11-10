@@ -191,18 +191,17 @@
   </div>
 
   <h2 id="measured">Measured</h2>
-  <p>Time to the first level, from the plugin's own benchmark (how it was measured is below).</p>
   <table>
     <tr><th>Schema set</th><th>Files</th><th>Components</th><th>First level</th></tr>
     <tr><td>OASIS UBL 2.1 Invoice</td><td>14</td><td>2,843</td><td>198–247 ms</td></tr>
     <tr><td>Generated multi-file set</td><td>26</td><td>5,001</td><td>228–305 ms</td></tr>
     <tr><td>A 5.6 MB WSDL (one file, over the IDE's code-insight limit)</td><td>1</td><td>1,546</td><td>397–521 ms</td></tr>
   </table>
-  <p>In a running IDE the first open is slower: 0.6 to 0.9 s for UBL Invoice in the captures on this page, and 1 to 1.6 s while the IDE is still indexing after startup. The status line shows the build time on your machine. Also checked: all 65 UBL 2.1 document schemas (the first 3,000 boxes of each), and a 7-file SOAP WSDL with 491 operations. None showed an unresolved reference.</p>
+  <p>In a running IDE the first open is slower: 0.6 to 0.9 s for UBL Invoice in these captures, 1 to 1.6 s while the IDE still indexes after startup; the status line shows yours. Also checked without an unresolved reference: all 65 UBL 2.1 documents and a 7-file WSDL with 491 operations.</p>
   <details>
     <summary>How the images, the video and the numbers were made</summary>
     <p>Benchmark: a headless test in IntelliJ IDEA 2025.1.7 on 4 CPUs, five cold runs per set; the table gives the range.</p>
-    <p>Images: IntelliJ IDEA Community 2025.1.7 started from the plugin's build (Xsdtrail 1.0.5) under a virtual display at 1280×800, light theme, each image cut at real size from the full window it links to. The listing does not exist yet, so the images with licensed features were taken with a stand-in for JetBrains Marketplace licensing in that sandbox IDE; the free-tier images were taken with the same stand-in set to "no licence". The status lines read 754 ms (licensed) and 600 ms (free tier) for the first open of UBL-Invoice-2.1.xsd, about 45 seconds after the IDE started.</p>
+    <p>Images: IntelliJ IDEA Community 2025.1.7 started from the plugin's build (Xsdtrail 1.0.5) under a virtual display at 1280×800, light theme, each image cut at real size from the full window it links to. The listing does not exist yet, so the images with licensed features were taken with a stand-in for JetBrains Marketplace licensing in that sandbox IDE; the free-tier images were taken with the same stand-in set to "no licence". The status lines read 754 ms (licensed) and 691 ms (free tier) for the first open of UBL-Invoice-2.1.xsd, about 45 seconds after the IDE started.</p>
     <p>Video: recorded with the Xsdtrail 1.0.5 zip installed in IntelliJ IDEA Community 2025.1.7 at 1920×1080, interface at 60 fps with a scripted pointer; the licensed shots use the same licensing stand-in. Its first-open status lines read 607 ms (licensed) and 873 ms (free tier) on our test machine; the split-editor shot shows a 13 ms rebuild of a file that was already open.</p>
   </details>
 
@@ -210,36 +209,25 @@
   <h3>Is it really pay once?</h3>
   <p>Yes. It is a JetBrains Marketplace perpetual licence: $12 once, personal or commercial alike, every update included, nothing renews. The single-file features are free with no time limit.</p>
   <h3>How do I start the 30-day trial?</h3>
-  <p>Click <strong>Get a licence or trial</strong> under any Design tab with locked boxes (or use <strong>Help &gt; Manage Licenses…</strong> in IntelliJ IDEA Community, <strong>Help &gt; Register…</strong> in paid IDEs). The IDE's own licence dialog opens on Xsdtrail; choose <strong>Start trial</strong>. It asks you to log in to a JetBrains Account, which is free. Open Design tabs unlock by themselves. The dialog is the IDE's own: it lists every Marketplace licence under <strong>Subscription</strong> and suggests upgrading to "the premium version", but Xsdtrail's licence is bought once and activates when you log in.</p>
+  <p>Click <strong>Get a licence or trial</strong> under any Design tab with locked boxes and choose <strong>Start trial</strong>; it asks you to log in to a free JetBrains Account, and open Design tabs unlock by themselves. The dialog is the IDE's own: it lists every Marketplace licence under <strong>Subscription</strong> and suggests "the premium version", but Xsdtrail's licence is bought once and activates when you log in.</p>
   <h3>My import has only a namespace. Will it find the file?</h3>
-  <p>With a licence, yes, if a schema with that <code>targetNamespace</code> is in the same folder, the project, or the project's libraries. If two files declare the same component, the import box warns and names the file it used. While the IDE is still indexing, it says so and rebuilds when indexing ends.</p>
-  <h3>What happens without a licence, or when the trial ends?</h3>
-  <p>Boxes from other files and each WSDL operation's messages show as locked, with the file named; one line under the diagram says what is locked. Nothing pops up, and the single-file Design tab keeps working, a WSDL's services, bindings and operation names included.</p>
+  <p>With a licence, yes, if a schema with that <code>targetNamespace</code> is in the same folder, the project, or its libraries. If two files declare the same component, the import box warns and names the file it used.</p>
   <h3>Can I edit the schema, generate sample XML or export the diagram?</h3>
   <p>Not in version one. Xsdtrail reads schemas; you edit them in the Text tab and the diagram refreshes. If you need export, tell us at support@ochrestack.com.</p>
 
   <h2 id="details">Details</h2>
   <ul>
-    <li>Buying: through JetBrains Marketplace, which sells, bills and refunds the licence under its own terms.</li>
-    <li>Compatibility: as at the top; also checked with JetBrains' Plugin Verifier against IntelliJ IDEA 2025.1.7 and 2026.3. English only.</li>
-    <li>Privacy: no network calls, no telemetry, no analytics, no data collection; a <code>schemaLocation</code> URL is never downloaded. Xsdtrail reads only the files of the open project. Licence status comes from your IDE's JetBrains Marketplace licensing; the plugin itself sends nothing. See also the <a href="../privacy.html">privacy policy</a>.</li>
-    <li>Licence terms: the <a href="eula.html">Xsdtrail End User License Agreement</a>.</li>
-    <li>Support, bugs and requests: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>, with the IDE version (Help &gt; About).</li>
+    <li id="documentation">Install: once the listing is live: in the IDE, <strong>Settings &gt; Plugins &gt; Marketplace</strong>, search <em>Xsdtrail</em>, <strong>Install</strong>, and restart when asked. The <a href="quick-start.html">quick start</a> covers the rest.</li>
+    <li>Buying: through JetBrains Marketplace, which sells, bills and refunds the licence. English only.</li>
+    <li>Privacy: no network calls, no telemetry, no analytics, no data collection; a <code>schemaLocation</code> URL is never downloaded. Licence status comes from your IDE's Marketplace licensing; the plugin sends nothing. <a href="../privacy.html">Privacy policy</a>.</li>
+    <li>Terms: the <a href="eula.html">End User License Agreement</a>. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
   </ul>
-
-  <h2 id="documentation">Install</h2>
-  <ol>
-    <li>Once the listing is live: in the IDE, open <strong>Settings &gt; Plugins &gt; Marketplace</strong>, search for <em>Xsdtrail</em> and click <strong>Install</strong>. Restart the IDE when it asks (it does for every paid or freemium plugin).</li>
-    <li>Open any file whose root element is <code>xs:schema</code> or <code>wsdl:definitions</code> and click <strong>Design</strong> under the editor. Click ⊕ on a box, or press Space or →, to unfold it; double-click a box to open its source line.</li>
-  </ol>
-  <p>The one-page <a href="quick-start.html">quick start</a> covers the legend, navigation, multi-file schemas, the WSDL view and the licence.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
-    <li>Version one reads schemas: no editing from the diagram, no sample XML or SOAP envelopes, no image, SVG or JSON export, no remote schemas or XML catalogs, no WSDL 2.0, XSD 1.1 assertions, DTD or RELAX NG, no validation of XML documents.</li>
-    <li>The root element must start within the first 1 MB of a file. Namespace lookup outside the file's folder considers <code>.xsd</code> files only.</li>
-    <li>When one namespace matches several files that declare the same component, the diagram uses the first (folder before project, then by path) and the import box warns.</li>
-    <li><strong>Expand All</strong> unfolds up to 4,000 boxes and says when it stops; unfold the rest one branch at a time.</li>
+    <li>Reads schemas only: no editing from the diagram, sample XML, image export, remote schemas, XML catalogs, WSDL 2.0, XSD 1.1 assertions, DTD or RELAX NG.</li>
+    <li>The root element must start within the first 1 MB; lookup outside the folder considers <code>.xsd</code> files only.</li>
+    <li><strong>Expand All</strong> stops at 4,000 boxes and says so.</li>
   </ul>
   <p style="font-size:14px;color:var(--muted)">UBL is an OASIS standard; the UBL 2.1 schemas shown are © OASIS Open 2013, shown unmodified. The VIES <code>checkVatService.wsdl</code> is published by the European Commission. Xsdtrail is not affiliated with or endorsed by OASIS, the European Commission or JetBrains.</p>
 </main>
