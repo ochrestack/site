@@ -127,6 +127,14 @@
   </div>
 </section>
 <main>
+  <h2 id="watch">Watch it work</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
+      <source src="video/scrollgrep-demo-720p60.mp4" type="video/mp4">
+    </video>
+    <figcaption>The demo, 50 s, captions only, no sound, recorded at 60 fps with Scrollgrep 1.1.0 in IntelliJ IDEA 2025.3 on the jsoup clone (one assertion changed so one test fails). Free until 0:19; after that the licensed features, shown with a test licence because the listing is not live yet. The live filter alone: <a href="video/scrollgrep-live-filter.gif">11-second GIF</a> (0.2 MB).</figcaption>
+  </figure>
+
   <div class="box">
     <strong>What the IDE already does.</strong> The IDE already does part of this, and the listing says so. Ctrl+F in the Terminal highlights matches but hides nothing. Since 2026.1 the Reworked terminal links file paths itself; Scrollgrep links only inside its results. <code>cmd | grep FAIL</code> works if you know the pattern before you run. Scrollgrep does not touch the Run and Debug consoles.
   </div>
