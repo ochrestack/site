@@ -39,11 +39,11 @@
 
   <h2 id="install">Install (IntelliJ IDEA 2025.3 or later)</h2>
   <ol>
-    <li>Download <a href="download/hexgrain-1.0.4.zip"><code>hexgrain-1.0.4.zip</code></a>. Do not unzip it.</li>
+    <li>Download <a href="download/hexgrain-1.0.5.zip"><code>hexgrain-1.0.5.zip</code></a>. Do not unzip it.</li>
     <li>In IntelliJ IDEA, open <strong>Settings | Plugins</strong>, click <strong>⚙</strong>, choose <strong>Install Plugin from Disk…</strong>, pick the zip, and accept the IDE's third-party plugin notice.</li>
     <li>Click <strong>Restart IDE</strong>. The IDE asks for one restart when it installs a paid or freemium plugin from disk; then Hexgrain is ready. <strong>What's New</strong> on the plugin's page lists this version's changes.</li>
   </ol>
-  <p>Once the JetBrains Marketplace listing is live (it is in review), you can also install from <strong>Settings | Plugins | Marketplace</strong> by searching for <em>Hexgrain</em>, and updates arrive through the IDE.</p>
+  <p>Hexgrain is not on JetBrains Marketplace yet. When it is, you can also install from <strong>Settings | Plugins | Marketplace</strong> by searching for <em>Hexgrain</em>, and updates arrive through the IDE.</p>
   <p>Hexgrain works with Java and Kotlin programs debugged in IntelliJ IDEA. Tested in IntelliJ IDEA 2025.3 on Linux and checked against 2026.3 with JetBrains' Plugin Verifier; Windows and macOS are not tested yet. Rider will not install it in this version. Other JetBrains IDEs can install it, but have nothing for it to show.</p>
 
   <h2 id="open">Open a Hex tab</h2>
@@ -79,9 +79,8 @@
   <figure><a href="img/data-inspector-sof0-width-window.png"><img src="img/data-inspector.png" alt="Two bytes, 08 00, selected in a JPEG's frame header at 0x6D33; the data inspector shows 2048 big-endian and 8 little-endian for int16 and uint16" width="958" height="522" loading="lazy"></a><figcaption>Go to 0x6D33 in a camera JPEG, two bytes selected: 2048 big-endian, the image's width.</figcaption></figure>
 
   <h2 id="licence">Licence and trial</h2>
-  <p>Licences and the trial are sold and started by JetBrains Marketplace, so they start when the Hexgrain listing is live; it is in review. Until then the free tier works in full, and in the 1.0.4 download <strong>Get a licence or trial</strong> says so in the line instead of opening a licence dialog where no trial can start yet.</p>
-  <p>Once the listing is live, each licensed control shows one line with the price and <strong>Get a licence or trial</strong>, which opens the IDE's own licence dialog with Hexgrain selected, only when you click it. The trial is 30 days of every feature. The licence is a JetBrains Marketplace perpetual licence: $9 once, the same for personal and commercial use, every update included, nothing renews. When a trial ends there is no pop-up, banner or notification, and the free hex dump keeps working.</p>
-
+  <p>Each licensed control shows one line with the price and <strong>Get a licence or trial</strong>, which opens the IDE's own licence dialog with Hexgrain selected, only when you click it. JetBrains Marketplace sells the licence and starts the trial there. <strong>Hexgrain is not on JetBrains Marketplace yet</strong>: until it is, that dialog cannot start Hexgrain's trial, and the free tier works in full. The 1.0.5 download is the same build that goes to JetBrains Marketplace.</p>
+  <p>The trial is 30 days of every feature. The licence is a JetBrains Marketplace perpetual licence: $9 once, the same for personal and commercial use, every update included, nothing renews. When a trial ends there is no pop-up, banner or notification, and the free hex dump keeps working.</p>
   <h2 id="settings">Settings</h2>
   <p><strong>Settings | Tools | Hexgrain</strong>: default bytes per row, columns for integer arrays, the characters column, the read time limit, your licence state, and a link to rate or review Hexgrain on JetBrains Marketplace.</p>
 
@@ -98,7 +97,7 @@
   <p>Hexgrain reads values of the program you are debugging only when you open a Hex tab, keeps them in memory, and writes them to disk only when you choose Save. It makes no network calls and collects and sends nothing. The licence check is done by the IDE through JetBrains Marketplace licensing. See also the <a href="../privacy.html">privacy policy</a>.</p>
 
   <h2 id="source">Source code</h2>
-  <p>The plugin's source code ships inside the plugin zip, as <code>hexgrain/src/hexgrain-1.0.4-sources.zip</code>, under the <a href="eula.html">licence agreement</a>; the same agreement is the <code>LICENSE</code> file in the zip.</p>
+  <p>The plugin's source code ships inside the plugin zip, as <code>hexgrain/src/hexgrain-1.0.5-sources.zip</code>, under the <a href="eula.html">licence agreement</a>; the same agreement is the <code>LICENSE</code> file in the zip.</p>
 
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE version (Help &gt; About), the array's type and length, and what the tab showed. Bug reports and feature requests are welcome at the same address.</p>
