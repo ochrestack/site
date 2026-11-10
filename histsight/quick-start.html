@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Histsight quick start: merge modes, amend warning and rebase preview in JetBrains IDEs</title>
-<meta name="description" content="Install Histsight in a JetBrains IDE 2025.1 or later, merge fast-forward only or always with a merge commit from the Branches popup, get asked before amending a pushed commit, and with a licence preview a rebase and amend just the message or author.">
+<meta name="description" content="Install Histsight in a JetBrains IDE 2025.1 or later, merge fast-forward only or always with a merge commit from the Branches popup, get asked before amending a pushed commit, and see how many commits a rebase will stop on. All free.">
 <link rel="canonical" href="https://ochrestack.com/histsight/quick-start.html">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <style>
@@ -35,7 +35,7 @@
 </header>
 <main>
   <h1>Histsight quick start</h1>
-  <p>Installing Histsight, the two free features, and what the licence adds. Back to the <a href="index.html">Histsight product page</a>.</p>
+  <p>Installing Histsight and using its three features, all free. Back to the <a href="index.html">Histsight product page</a>.</p>
 
   <h2 id="install">Install (JetBrains IDEs 2025.1 or later)</h2>
   <ol>
@@ -64,38 +64,29 @@
   <p>Amend as usual: tick <strong>Amend</strong> in the Commit tool window. If a remote-tracking branch already contains the commit, one confirmation names the branch (for example <code>origin/vim-async</code>; with many, your upstream and two more, and the rest counted). <strong>Cancel</strong> is the default button; <strong>Amend anyway</strong> goes on; <strong>Don't ask again for this repository</strong> turns it off for that repository only. A commit that is only local asks nothing. Turn a silenced warning back on in <strong>Settings &gt; Tools &gt; Histsight</strong>.</p>
   <figure><a href="img/pushed-commit-warning-window.png"><img src="img/pushed-commit-warning.png" alt="The Commit tool window with Amend ticked; the dialog Amend a Pushed Commit? names origin/vim-async, with Amend anyway and Cancel as the default" width="885" height="730" loading="lazy"></a><figcaption>The confirmation over the Commit tool window.</figcaption></figure>
 
-  <h2 id="preview">Rebase preview (count free, list licensed)</h2>
+  <h2 id="preview">Rebase preview (free)</h2>
   <ol>
     <li>Check out the branch you want to rebase. In the Branches popup or pane, open the submenu of the branch to rebase onto and choose <strong>Preview Rebase onto '&lt;branch&gt;'…</strong>.</li>
-    <li>Without a licence it runs all the same and shows the first line, for example "Rebasing 'adjust-default-themes' onto 'master' replays 7 commits: 2 stop with conflicts.", then the price and <strong>Get a licence or trial</strong>. With a licence or trial, the dialog lists, in order, every commit the rebase would replay, each marked <strong>applies cleanly</strong> or <strong>conflicts</strong>, with the conflicting files. If untracked files would be overwritten by the target branch, the first line says Git will not start the rebase and names them.</li>
-    <li><strong>Rebase Now</strong> hands over to the IDE's own rebase; <strong>Close</strong> leaves everything as it was. The preview never touches your working tree, index, branches or reflog.</li>
+    <li>It says how many commits the rebase would replay and how many would stop with conflicts, for example "Rebasing 'adjust-default-themes' onto 'master' replays 7 commits: 2 stop with conflicts." If untracked files would be overwritten by the target branch, it says Git will not start the rebase and names them.</li>
+    <li><strong>Close</strong> leaves everything as it was. The preview never touches your working tree, index, branches or reflog. To rebase, use the IDE's own Rebase entry in the same submenu.</li>
   </ol>
-  <figure><a href="img/rebase-preview-window.png"><img src="img/rebase-preview.png" alt="Preview Rebase onto master: 7 commits, commit 1 conflicts in src/tui/tui.go, commit 5 in CHANGELOG.md, man/man1/fzf.1 and src/options.go, the rest apply cleanly" width="1026" height="503" loading="lazy"></a><figcaption>Seven commits to replay; commits 1 and 5 will stop the rebase (captured with a test licence).</figcaption></figure>
-  <p>The preview assumes each conflict is resolved with the replayed commit's own version of the files, which is what <strong>Accept</strong> in the <em>Yours</em> column of the IDE's Conflicts dialog does during a rebase. A different resolution can change what happens to later commits. Long previews run in the background with progress and Cancel.</p>
+  <figure><a href="img/free-rebase-count-window.png"><img src="img/free-rebase-count.png" alt="Preview Rebase onto master: 'Rebasing adjust-default-themes onto master replays 7 commits: 2 stop with conflicts.', 'Nothing has been changed.' and Close" width="595" height="143" loading="lazy"></a><figcaption>Seven commits to replay; two will stop the rebase.</figcaption></figure>
+  <p>The count assumes each conflict is resolved with the replayed commit's own version of the files, which is what <strong>Accept</strong> in the <em>Yours</em> column of the IDE's Conflicts dialog does during a rebase. A different resolution can change what happens to later commits. Long previews run in the background with progress and Cancel.</p>
 
-  <h2 id="amend">Message-only and author amends (licensed)</h2>
-  <ol>
-    <li>Open <strong>Git &gt; Amend Last Commit…</strong>, the pencil button in the Commit tool window toolbar, or Find Action ("Amend Last Commit").</li>
-    <li>In a project with several repositories, pick one in <strong>Repository</strong>; only that root is amended.</li>
-    <li>With no local change selected, <strong>Amend</strong> rewrites only the message, the author, or both. Staged changes you did not pick stay staged and out of the commit. The author can be typed (<code>Name &lt;email&gt;</code>) or reset to your configured user.</li>
-    <li>To add changes, tick them in <strong>Local changes to add to the commit</strong>. The list below marks each file <em>from commit</em>, <em>from local changes</em> or <em>both</em>; double-click a file for a three-pane diff: before the commit, the commit, after the amend.</li>
-  </ol>
-  <figure><a href="img/message-only-amend-multi-repo-window.png"><img src="img/message-only-amend-multi-repo.png" alt="Amend Last Commit in a two-repository project: repository fd selected, 'Only this root is amended.', no local changes, a new message typed, Keep author selected" width="986" height="722" loading="lazy"></a><figcaption>A message-only amend of one repository in a two-repository project (captured with a test licence).</figcaption></figure>
-
-  <h2 id="licence">Licence and trial</h2>
-  <p>The merge modes, the warning and the rebase preview's count are free and never lock. Without a licence, each licensed feature shows one line with the price and <strong>Get a licence or trial</strong>, which opens the IDE's own licence dialog, only when you click it. In the rebase preview and the amend view, the click closes that window and the IDE's licence dialog opens in its place; in Settings it opens on top, and the link shows "Opening the IDE's licence dialog…" until it is there. More clicks open nothing more while it is open. After you start the trial or buy, open the feature again. The trial and purchase themselves go through the IDE's dialog and a JetBrains Account, and have not been tried yet, because the listing is not live. Nothing appears at startup. The licence is planned as a JetBrains Marketplace perpetual licence: $9 once, the same for personal and commercial use, every update included, nothing renews, with a 30-day trial of every feature. Nothing is for sale until the listing is live, and buying and the trial will be tried on the live listing before they are announced. <strong>Settings &gt; Tools &gt; Histsight</strong> shows your licence state.</p>
+  <h2 id="free">Free</h2>
+  <p>Everything above is free, with no time limit, no licence and no trial. Nothing appears at startup, and there are no ads in the IDE.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
     <li>Rebase preview: Git 2.40 or later; 2.42 or later to read <code>.gitattributes</code> merge settings exactly as the rebase will; 2.44 or later in a partial clone. Plain <code>git rebase &lt;branch&gt;</code> only: <code>--rebase-merges</code>, <code>--onto</code>, autosquash and <code>rebase.*</code> settings that change which commits are picked are not modelled.</li>
     <li>The preview checks untracked files against the target branch only; with <code>rerere</code> on, a conflict Git resolves from a recorded resolution is still listed.</li>
-    <li>The pushed-commit warning checks the last commit of each repository being amended. In the Commit tool window it reads Amend mode through an IDE API marked experimental; if a future IDE removes it, the warning there stops and stays in the amend view.</li>
-    <li>Git executables on WSL are not supported for the rebase preview and the amend view.</li>
-    <li>Not included: Jujutsu, a rebase that defers conflicts to the end, a commit graph, <code>--squash</code>, a global default merge mode (Git's <code>merge.ff</code> does that), amending older commits, push. English only.</li>
+    <li>The pushed-commit warning checks the last commit of each repository being amended. In the Commit tool window it reads Amend mode through an IDE API marked experimental; if a future IDE removes it, the warning there stops.</li>
+    <li>Git executables on WSL are not supported for the rebase preview.</li>
+    <li>Not included: Jujutsu, a rebase that defers conflicts to the end, a commit graph, <code>--squash</code>, a global default merge mode (Git's <code>merge.ff</code> does that), an amend view, push. English only.</li>
   </ul>
 
   <h2 id="privacy">Privacy</h2>
-  <p>Histsight runs only the local <code>git</code> executable on your project's own repositories. None of the commands it runs is a fetch, pull or push, and it sends nothing anywhere: no telemetry, no analytics. In a partial clone, Git itself downloads missing file contents when a merge or amend needs them, as it does for the IDE's own merge; the rebase preview turns that off and never downloads. The licence check is done by the IDE through JetBrains Marketplace licensing. See also the <a href="../privacy.html">privacy policy</a>.</p>
+  <p>Histsight runs only the local <code>git</code> executable on your project's own repositories. None of the commands it runs is a fetch, pull or push, and it sends nothing anywhere: no telemetry, no analytics. In a partial clone, Git itself downloads missing file contents when a merge or amend needs them, as it does for the IDE's own merge; the rebase preview turns that off and never downloads. See also the <a href="../privacy.html">privacy policy</a>.</p>
 
   <h2 id="source">Source code</h2>
   <p>Histsight is GPL-3.0-or-later (<a href="license.html">licence text</a>). The complete source ships inside the plugin zip, as <code>histsight/source/histsight-1.1.2-source.zip</code>.</p>
