@@ -25,7 +25,7 @@
   :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
   * { box-sizing: border-box; }
   body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
-  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header, main, footer { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
   header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
   header img { width: 36px; height: 36px; }
   header a { color: var(--ink); text-decoration: none; font-weight: 600; }
@@ -44,7 +44,8 @@
   .buy .price { font-size: 19px; }
   .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
-  figure { margin: 28px 0; }
+  figure { margin: 28px 0; max-width: 860px; }
+  main > table, main > .box, main > details { max-width: 860px; }
   figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
   figure video { background: #2B2118; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
@@ -93,12 +94,12 @@
 <section class="top">
 <div class="top-text">
   <h1>Xsdtrail for XSD and WSDL</h1>
-  <p class="sub">Large XSDs split across multiple files in the same folder? Open a Design tab that shows them as one diagram, then double-click any box to land on its source line. Free for one file; pay once for all of them.</p>
+  <p class="sub">Large XSDs split across multiple files in the same folder? Open a Design tab that shows them as one diagram, then double-click any box to land on its source line. Free within one file; pay once for all of them.</p>
   <table id="tiers">
     <tr><th scope="col">What you get</th><th scope="col">Free, no time limit</th><th scope="col" style="white-space:nowrap">$12 once</th></tr>
-    <tr><td>A single XSD file: the Design tab, diagram, search, zoom, navigation both ways</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>A single XSD file: the Design tab, diagram, search, zoom, navigation both ways within the file</td><td>Yes</td><td>Yes</td></tr>
     <tr><td>A WSDL's services, ports with addresses, bindings and operation names</td><td>Yes</td><td>Yes</td></tr>
-    <tr><td>Schemas split across files, as one diagram; each WSDL operation's messages, parts and XSD fields</td><td>Shown as locked boxes that name their file</td><td>Yes</td></tr>
+    <tr><td>Schemas split across files, as one diagram, with double-click into each file; each WSDL operation's messages, parts and XSD fields</td><td>Shown as locked boxes that name their file</td><td>Yes</td></tr>
   </table>
   <div class="buy">
     <p class="fine">30-day trial. A perpetual licence: personal or commercial, every update included, nothing to renew.</p>
@@ -126,17 +127,14 @@
   <h2 id="soap">For SOAP contracts</h2>
   <p>Services, ports with addresses, bindings (SOAP 1.1 or 1.2, document or rpc) and operations; each operation unfolds to its messages, parts and the XSD fields behind them, inline or imported from the folder. Anything missing is a red box that says what.</p>
   <div class="pair">
-    <figure style="width:384px">
-      <a href="img/wsdl-operation.png"><picture>
-        <source media="(max-width: 600px)" srcset="img/wsdl-operation-messages-narrow.png" width="194" height="126">
-        <img class="ui" src="img/wsdl-operation-messages.png" alt="The Design tab of the EU's VIES checkVatService.wsdl at real size: operation checkVat (document) unfolded to input, message impl:checkVatRequest, and output, message impl:checkVatResponse" width="384" height="126" loading="lazy">
-      </picture></a>
+    <figure style="width:237px">
+      <a href="img/wsdl-operation.png"><img class="ui" src="img/wsdl-operation-messages.png" alt="The Design tab of the EU's VIES checkVatService.wsdl at real size: operation checkVat's input, message impl:checkVatRequest, and output, message impl:checkVatResponse" width="237" height="160" loading="lazy"></a>
       <figcaption>The EU's VIES <code>checkVatService.wsdl</code>: operation <code>checkVat</code>'s input and output messages…</figcaption>
     </figure>
-    <figure style="width:360px">
+    <figure style="width:458px">
       <a href="img/wsdl-operation.png"><picture>
-        <source media="(max-width: 600px)" srcset="img/wsdl-operation-fields-narrow.png" width="212" height="248">
-        <img class="ui" src="img/wsdl-operation-fields.png" alt="Further right in the same diagram: checkVatResponse, its sequence, and the fields countryCode, vatNumber, requestDate and valid, and name and address marked [0..1] with dashed borders" width="360" height="248" loading="lazy">
+        <source media="(max-width: 600px)" srcset="img/wsdl-operation-fields-narrow.png" width="264" height="304">
+        <img class="ui" src="img/wsdl-operation-fields.png" alt="Further right in the same diagram, at real size: checkVatResponse, its sequence, and the fields countryCode, vatNumber, requestDate and valid, and name and address marked [0..1] with dashed borders" width="458" height="304" loading="lazy">
       </picture></a>
       <figcaption>…and, after the part, the XSD fields of <code>checkVatResponse</code>. These levels need the licence.</figcaption>
     </figure>
@@ -158,7 +156,7 @@
     <li><strong>A Design tab</strong> for any file whose root is <code>xs:schema</code> or <code>wsdl:definitions</code>, whatever its extension; no file type is registered, so your file associations stay as they are.</li>
     <li><strong>The content model:</strong> elements, compositors, cardinalities, attributes, base types, enumerations, <code>xs:documentation</code> on hover; a <strong>Legend</strong> button for the colours and borders.</li>
     <li><strong>Large schemas stay usable:</strong> background build, first level only, unfold on demand, ↻ on recursion, files over 2.5 MB.</li>
-    <li><strong>Navigation both ways:</strong> double-click or Enter opens the declaration; <strong>Show in Design</strong> (Ctrl+Alt+Shift+G) selects the box under the caret.</li>
+    <li><strong>Navigation both ways:</strong> double-click or Enter opens the declaration (in another file with the licence); <strong>Show in Design</strong> (Ctrl+Alt+Shift+G) selects the box under the caret.</li>
     <li><strong>Multi-file schemas</strong> (licence): include, import, redefine, and imports by namespace only, found in the folder, the project or its libraries.</li>
   </ul>
 
@@ -182,11 +180,11 @@
         <source media="(max-width: 600px)" srcset="img/caret-source-line-narrow.png" width="312" height="66">
         <img class="ui" src="img/caret-source-line.png" alt="The Text tab of UBL-CommonAggregateComponents-2.1.xsd at line 22479, with the caret on xsd:element ref=&quot;cac:PostalAddress&quot; minOccurs=&quot;0&quot;" width="480" height="66" loading="lazy">
       </picture></a>
-      <figcaption>Split the editor: the caret on the <code>cac:PostalAddress</code> reference at line 22,479…</figcaption>
+      <figcaption>In a split editor, the caret on the <code>cac:PostalAddress</code> reference at line 22,479 of the Text tab…</figcaption>
     </figure>
-    <figure style="width:228px">
-      <a href="img/caret-follows.png"><img class="ui" src="img/caret-selected-box.png" alt="The Design tab beside it: cac:PostalAddress [0..1] : AddressType selected, among cac:PartyIdentification, cac:PartyName, cac:Language and cac:PhysicalLocation" width="228" height="198" loading="lazy"></a>
-      <figcaption>…and the Design tab beside it has selected that box.</figcaption>
+    <figure style="width:292px">
+      <a href="img/caret-follows.png"><img class="ui" src="img/caret-selected-box.png" alt="The Design tab of the same file, at real size: cac:PostalAddress [0..1] : AddressType selected, among cac:PartyIdentification, cac:PartyName, cac:Language and cac:PhysicalLocation" width="292" height="248" loading="lazy"></a>
+      <figcaption>…and the Design tab of the same file, in the other half of the split, has selected that box.</figcaption>
     </figure>
   </div>
 
@@ -201,7 +199,7 @@
   <details>
     <summary>How the images, the video and the numbers were made</summary>
     <p>Benchmark: a headless test in IntelliJ IDEA 2025.1.7 on 4 CPUs, five cold runs per set; the table gives the range.</p>
-    <p>Images: IntelliJ IDEA Community 2025.1.7 started from the plugin's build (Xsdtrail 1.0.5) under a virtual display at 1280×800, light theme, each image cut at real size from the full window it links to. The listing does not exist yet, so the images with licensed features were taken with a stand-in for JetBrains Marketplace licensing in that sandbox IDE; the free-tier images were taken with the same stand-in set to "no licence". The status lines read 754 ms (licensed) and 691 ms (free tier) for the first open of UBL-Invoice-2.1.xsd, about 45 seconds after the IDE started.</p>
+    <p>Images: IntelliJ IDEA Community 2025.1.7 started from the plugin's build (Xsdtrail 1.0.6) under a virtual display at 1280×800, light theme, diagram at 100 % zoom except the top image and the free-tier boxes (90 %), each image cut at real size from the full window it links to. The listing does not exist yet, so the images with licensed features were taken with a stand-in for JetBrains Marketplace licensing in that sandbox IDE; the free-tier images were taken with the same stand-in set to "no licence". The status lines read 673 ms (licensed) and 800 ms (free tier) for the first open of UBL-Invoice-2.1.xsd, about 45 seconds after the IDE started.</p>
     <p>Video: recorded with the Xsdtrail 1.0.5 zip installed in IntelliJ IDEA Community 2025.1.7 at 1920×1080, interface at 60 fps with a scripted pointer; the licensed shots use the same licensing stand-in. Its first-open status lines read 607 ms (licensed) and 873 ms (free tier) on our test machine; the split-editor shot shows a 13 ms rebuild of a file that was already open.</p>
   </details>
 
