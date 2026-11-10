@@ -228,7 +228,7 @@
   <details id="how-tested">
     <summary>How we tested, and how these images were made</summary>
     <p>Every release runs one command that downloads the official Linux build of each Blender in the table, installs the zip with Install from Disk into a fresh user folder, and runs the full test suite and a separate set of acceptance tests written by an independent reviewer. The zip also passes Blender's own <code>extension validate</code>.</p>
-    <p>Render cost: Sunreckon 1.2.2 in Blender 5.2.3, one 1920x1080 frame of the reference scene; Cycles on the CPU at 128 samples with adaptive sampling and denoising, EEVEE at 64 samples. The machine has 4 CPU threads and no graphics card, so EEVEE ran in software; EEVEE's differences under 10% are run-to-run noise. EEVEE rows measured on 1.2.2, Cycles rows on 1.2.1 (Cycles renders the cloud volume, which did not change). The seconds:</p>
+    <p>Render cost: Sunreckon 1.2.2 in Blender 5.2.3, one 1920x1080 frame of the reference scene; Cycles on the CPU at 128 samples with adaptive sampling and denoising, EEVEE at 64 samples. The machine has 4 CPU threads and no graphics card, so EEVEE ran in software; EEVEE's differences under 10% are run-to-run noise. EEVEE rows measured on 1.2.2, Cycles rows on 1.2.1 (Cycles renders the cloud volume, which did not change). A second EEVEE run on the final 1.2.2 code gave Volumetric &times;1.9, &times;2.2, &times;2.9 and &times;3.0 (Few, Scattered, Broken, Overcast). The seconds:</p>
     <table>
       <tr><th>Clouds</th><th>EEVEE</th><th>Cycles</th></tr>
       <tr><td>Clear sky</td><td>58 s</td><td>117 s</td></tr>
@@ -264,7 +264,7 @@
 
   <h2 id="limits">Known limits</h2>
   <ul>
-    <li>Fast clouds cast no shadows; Volumetric ones do. EEVEE's cloud shadows cover 2.4 km around the camera and fade out at the edge; their soft outlines in a render cost EEVEE 1.8 to 2.8 times a clear sky's render time on our machine.</li>
+    <li>Fast clouds cast no shadows; Volumetric ones do. EEVEE's cloud shadows cover 2.4 km around the camera and fade out at the edge; their soft outlines in a render cost EEVEE 1.8 to 3.0 times a clear sky's render time on our machine.</li>
     <li>No night sky, stars, moon, aurora, fog, rain or snow, and no clouds the camera can enter.</li>
     <li>The exposure is a fixed -4.5: golden-hour shots come out about a stop darker than midday; raise the exposure for them.</li>
     <li>Time zones come from the city list (2026 daylight-saving rules). A pasted place gets an estimate from the nearest listed city or the longitude: check it near a zone border.</li>
