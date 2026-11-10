@@ -119,15 +119,12 @@
   </ul>
   <div class="buy">
     <p class="price"><strong>Free up to 64 KB. $9 once</strong> for the rest, personal or commercial; nothing renews. 30-day trial.</p>
-    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
-    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet.</p>
+    <p><a class="button" id="buy" href="download/hexgrain-1.0.3.zip" aria-describedby="buy-note">Download Hexgrain 1.0.3 (free)</a></p>
+    <p class="note" id="buy-note">Install: Settings | Plugins | ⚙ | Install Plugin from Disk. Licence and trial start with the JetBrains Marketplace listing (in review).</p>
     <p class="fine">Tested: IntelliJ IDEA 2025.3 on Linux; Windows and macOS untested; no Rider. Source code included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
   </div>
 </section>
 <main>
-  <div class="box">
-    <strong>What the IDE already does.</strong> The IDEs already do part of this, and the listing says so. View as &gt; Hex shows each element in hex, one per row; View as &gt; String shows one line of text; a Type Renderer you write can print hex. Memory View covers C, C++ and Rust, and a free plugin offers a binary view of some debugger values, including Java byte arrays.
-  </div>
 
   <h2 id="watch">Watch it work</h2>
   <figure>
@@ -178,14 +175,27 @@
   </figure>
 
   <figure class="real-size">
+    <a href="img/kotlin-goto-inspector-window.png"><img src="img/kotlin-goto-inspector.png" alt="Kotlin: the Hex tab on bytes, a ByteArray of 1,761,444 bytes read from the jar kotlin-stdlib-2.2.20.jar. Go to 0x1AE08E jumped to the jar's End of Central Directory record near the end of the array; four bytes, 20 7C 19 00, are selected and the data inspector shows uint32 1670176 little-endian, the offset of the central directory. The characters column shows the jar's file names, such as META-INF/versions/9/module-info.class" width="958" height="522" loading="lazy"></a>
+    <figcaption>Kotlin, a 1,761,444-byte jar: Go to, then little-endian.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/direct-bytebuffer-window.png"><img src="img/direct-bytebuffer.png" alt="A direct ByteBuffer: record, a memory-mapped view of the same jar between position and limit, 22 bytes at the file's own offsets 001AE08E and 001AE09E, starting PK 05 06; Whole capacity unticked; the same four bytes selected and the inspector shows 1670176 little-endian; status line 'Rows 0x1AE08E–0x1AE0A3 of 22 bytes'" width="958" height="372" loading="lazy"></a>
+    <figcaption>A direct <code>ByteBuffer</code>, position to limit.</figcaption>
+  </figure>
+
+  <figure class="real-size">
     <a href="img/find-and-copy-as-window.png"><img src="img/find-and-copy-as.png" alt="Find, Text 'NIKON': Match 1 of 1 at offset 0xAA; ten bytes 'NIKON.E995' selected in both columns, and the Copy As menu open with Hex (spaced), Hex String, Base64, Java Array Literal, Kotlin Array Literal and C# Array Literal" width="958" height="522" loading="lazy"></a>
     <figcaption>Find, then Copy As.</figcaption>
   </figure>
 
+  <div class="box">
+    <strong>For a quick look, the IDE may be enough.</strong> View as &gt; Hex shows each element in hex, one per row; View as &gt; String shows one line of text; a Type Renderer you write can print hex. Memory View covers C, C++ and Rust; a free plugin shows some debugger values, including Java byte arrays, as binary.
+  </div>
 
   <h2 id="limits">Known limits</h2>
   <ul>
-    <li>Java and Kotlin in IntelliJ IDEA 2025.3 and later only: not Rider, Python, Go, JavaScript, C, C++, Rust, Remote Development or Android Studio.</li>
+    <li>Not for Rider, Python, Go, JavaScript, C, C++, Rust, Remote Development or Android Studio.</li>
     <li>Changes are marked anywhere in arrays up to 1 MiB; in larger ones, in the rows read at both pauses.</li>
     <li>Read-only. A direct <code>ByteBuffer</code> is read through a copy in the program's heap.</li>
     <li>Measured up to 1 GiB: first rows within 85 ms; a Find through all of it takes 38 to 53 seconds.</li>
@@ -195,7 +205,6 @@
   <ul>
     <li>Sold through JetBrains Marketplace; <a href="eula.html">licence agreement</a>.</li>
     <li>No network calls, no telemetry (<a href="../privacy.html">privacy</a>).</li>
-    <li><a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">quick start</a></li>
   </ul>
   <p style="font-size:14px;color:var(--muted)">Images: metadata-extractor by Drew Noakes and contributors (Apache-2.0). IntelliJ IDEA is a trademark of JetBrains s.r.o.; Ochrestack is not affiliated with JetBrains.</p>
 </main>
