@@ -100,6 +100,7 @@
     <li>A site that serves 404 to anything but a browser ends up Broken although readers see the page. Open the link; if it works, Ignore it.</li>
     <li>A missing file in your uploads folder is checked on disk, so a redirect for an old upload address is not seen. Point the links at the new file with Edit address, or Ignore them.</li>
     <li>No network-wide view on multisite; it works per site.</li>
+    <li>"Maximum execution time of 30 seconds exceeded in …/Requests/src/Transport/Curl.php" in your debug log after publishing or importing many posts comes from WordPress's own pingbacks, not Linkrounds. Untick "Attempt to notify any blogs linked to from the post" under Settings &gt; Discussion before a bulk import to avoid it.</li>
   </ul>
 
   <h2 id="privacy">Privacy</h2>

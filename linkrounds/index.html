@@ -182,7 +182,7 @@
     <li>The scan runs in small background batches through WP-Cron, with a live count and Pause and Resume.</li>
     <li>Links to your own posts, pages and uploads are checked against your own database and files, with no request to your site.</li>
     <li>Each address is requested once per scan. At most six requests run at once, and at most two go to the same site.</li>
-    <li>A batch starts no new request after 10 seconds and ends within about 25. While it waits for answers it barely uses the processor: on our 300-post archive, a 10-second batch used 1.4 to 2.2 seconds of processor time.</li>
+    <li>A batch starts no new request after 10 seconds and ends within about 25. While it waits for answers it barely uses the processor: on our 300-post archive, a 10-second batch used 1.6 to 2.2 seconds of processor time.</li>
     <li>Addresses in private or local networks (10.x, 192.168.x, 127.0.0.1) are never requested, except your own site's address. On a local or staging install your site itself is on such an address, so links to your own site that Linkrounds cannot match to a post, page or upload (an archive, a feed, <code>/wp-admin/</code>) are requested from it.</li>
   </ul>
 
