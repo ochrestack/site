@@ -36,13 +36,14 @@
   <p>Installing Heatfold, making a profile it can open, and reading it next to your code. Back to the <a href="index.html">Heatfold product page</a>.</p>
 
   <h2 id="install">Install (IDEs on the 2025.3 platform or later)</h2>
+  <p><strong>Before you start:</strong> after the install the IDE restarts and asks you to start the trial, which means logging in to a JetBrains Account in your browser. Have one ready (it is free), and choose <strong>Start trial</strong> rather than Close in that dialog.</p>
   <ol>
     <li>In the IDE, open <strong>Settings | Plugins | Marketplace</strong>, search for <em>Heatfold</em> and click <strong>Install</strong>. The listing is in review and not on JetBrains Marketplace yet; until it is live, the search finds nothing.</li>
-    <li>Or, with the plugin zip on disk: <strong>Settings | Plugins | ⚙ | Install Plugin from Disk…</strong>, choose the zip, and accept the Third-Party Plugins notice.</li>
+    <li>Or, with the plugin zip on disk: <strong>Settings | Plugins | ⚙ | Install Plugin from Disk…</strong>, choose the zip, and accept the Third-Party Plugins notice. Until the restart, the Plugins list shows Heatfold as <strong>Paid</strong> with "⚠ No license."; that is expected.</li>
     <li>Restart the IDE when it asks.</li>
     <li>After the restart the IDE opens its own licence dialog with Heatfold under <strong>Paid Plugins</strong>. It opens on the <strong>Paid license</strong> tab; click the <strong>Start trial</strong> tab next to it for the 30-day trial, or activate your licence there. Starting the trial means logging in to a JetBrains Account; it is free, and the dialog's <strong>Register…</strong> link creates one. <strong>Help | Manage Subscriptions…</strong> opens the same dialog later.</li>
   </ol>
-  <p id="closed"><strong>If you closed the licence dialog:</strong> the IDE restarts "to disable features requiring license" and Heatfold is gone, with no tool window and no message. To bring it back, open <strong>Help | Manage Subscriptions…</strong>, choose <strong>Disabled Paid Plugins</strong>, tick Heatfold and click <strong>Enable selected plugins and restart</strong>. After the restart the licence dialog opens again.</p>
+  <p id="closed"><strong>If you closed the licence dialog:</strong> the IDE restarts "to disable features requiring license" and comes back on the Welcome screen with Heatfold gone, with no tool window and no message. To bring it back, open <strong>Manage Subscriptions…</strong>: on the Welcome screen it is under the <strong>⚙</strong> at the bottom left (the Welcome screen has no Help menu); in a project window it is <strong>Help | Manage Subscriptions…</strong>. Choose <strong>Disabled Paid Plugins</strong>, tick Heatfold and click <strong>Enable selected plugins and restart</strong>. After the restart the licence dialog opens again.</p>
   <p>Heatfold has been used in IntelliJ IDEA and PyCharm on Linux. In CLion and RustRover it was tested headless, not yet in a window. Windows, macOS and Remote Development have not been tested yet. JetBrains' Plugin Verifier reports it compatible with CLion, RustRover, PyCharm and IntelliJ IDEA 2025.3 and 2026.3.</p>
 
   <h2 id="profile">1. Make a profile</h2>
@@ -66,7 +67,8 @@
   <h2 id="read">3. Read the graph and the table</h2>
   <ul>
     <li>The table on the right lists every function with self and total time (or samples) and both percentages; for gprof, also how many times each was called. Click a column header to sort, or type in <strong>Filter functions by name</strong>.</li>
-    <li>Select a row to see its callers and callees, each with its share. Double-click a caller or callee to move to it.</li>
+    <li>Select a row to see its callers and callees, each with its share. Double-click a caller or callee to move to it. For gprof, a caller or callee in the same call cycle shows "in cycle": gprof records only the calls on such an arc, not time.</li>
+    <li>A name too long for its column loses its middle, not its end, so two functions of one package stay apart; hover for the whole name.</li>
     <li>The flame graph on the left: click a frame to zoom, press Esc or click the root to zoom out. <strong>Icicle</strong> puts the root at the top. Type in <strong>Search frames</strong> to highlight a function and see its share of the total.</li>
     <li>perf script and trace files with several threads get a thread and process selector; pprof files with several sample types get a sample-type selector.</li>
     <li>For gprof the graph is <strong>estimated</strong>, and the tab says so: gprof records no call stacks, so each function's time is split among its callers using gprof's own call-graph estimates. The table shows gprof's numbers unchanged: seconds, calls, and its own <code>% time</code> columns as Self % (flat profile) and Total % (call graph).</li>
@@ -79,7 +81,7 @@
     <li>When the profile records a file and line (pprof, <code>gprof -l</code>, perf script with srcline, trace events that carry them), the editor opens at that line.</li>
     <li>Paths recorded on another machine, such as <code>/home/ci/build/zlib/deflate.c</code>, are matched to the project file with the longest common path suffix. When two files tie, Heatfold asks you to choose.</li>
     <li>When the profile records only a name (a plain gprof report, perf script without srcline), Heatfold asks the IDE's <strong>Navigate | Symbol</strong>. So C and C++ names resolve in CLion; IntelliJ IDEA and PyCharm have no C support, so there use <code>gprof -l</code> or <code>perf script -F +srcline</code>. When a name does not resolve, the message line names that command.</li>
-    <li>When nothing matches, one line in the tool window says why.</li>
+    <li>When nothing matches, one line in the tool window says why; it clears on your next click, search or zoom.</li>
   </ul>
   <figure><a href="img/jump-to-source-window.png"><img src="img/jump-to-source-window.png" alt="IntelliJ IDEA: the gprof -l report of pigz in Heatfold with its top row, longest_match at deflate.c:1484, selected, and zlib/deflate.c open in the editor at line 1484" width="1280" height="800" loading="lazy"></a><figcaption>Double-click the top row of a <code>gprof -l</code> report: <code>zlib/deflate.c</code> opens at line 1484.</figcaption></figure>
 
@@ -101,7 +103,7 @@
   <p>Heatfold makes no network calls and collects nothing: no telemetry, no analytics, no crash reports. It reads only the files you open and, for jump to source, the files of the open project. See also the <a href="../privacy.html">privacy policy</a>.</p>
 
   <h2 id="source">Source code</h2>
-  <p>The plugin's source code ships inside the plugin zip, as <code>heatfold/src/heatfold-1.1.1-sources.zip</code>, under the licence agreement.</p>
+  <p>The plugin's source code ships inside the plugin zip, as <code>heatfold/src/heatfold-1.1.2-sources.zip</code>, under the licence agreement, which is at the top of the zip as <code>heatfold/LICENSE</code>.</p>
 
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE and its version (Help | About), the profiler and command that wrote the file, and what the tab showed.</p>

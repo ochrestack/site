@@ -111,22 +111,22 @@
 </header>
 <section class="top">
   <h1>Heatfold: Flame Graph &amp; gprof</h1>
-  <p class="sub">CLion and IntelliJ IDEA 2025.3 don't open a gprof report, <code>perf script</code> text or a pprof file. Heatfold opens them, and trace JSON, as a flame graph and a hot-functions table, next to your code.</p>
+  <p class="sub">CLion and IntelliJ IDEA 2025.3 don't open gprof, <code>perf script</code> or Go pprof files; PyCharm's profiler is Pro only. Heatfold opens them, and Python py-spy traces, as a flame graph and a table next to your code.</p>
   <figure class="top-image">
     <a href="img/gprof-report-window.png"><img class="hero" src="img/gprof-report-window.png" alt="IntelliJ IDEA with the pigz-profiling project open: zlib/deflate.c in the editor, and below it Heatfold's tab for pigz.gprof.txt. The table lists every function with self and total time, percentages and calls: longest_match 2.17 s, 74.1%, 18,494,188 calls; deflate_slow 440 ms, 15.0%, 1,151 calls. deflate_slow is selected: its caller deflate at 100.0%, its callees longest_match at 75.3%, _tr_flush_block at 7.29% and fill_window at 2.08%. On the left the estimated flame graph in icicle view, all, main, process, deflate, deflate_slow, longest_match, with deflate_slow outlined" width="1280" height="800"></a>
     <figcaption class="fine">pigz's gprof report in IntelliJ IDEA: time and calls per function, and what calls <code>deflate_slow</code> and what it calls.</figcaption>
   </figure>
   <ul class="benefits">
     <li><strong>Your gprof output as a table,</strong> not raw text: time and calls per function.</li>
-    <li><strong>Open the perf file you already recorded</strong> on a server or in CI. No need to profile again.</li>
-    <li><strong>Double-click a function to open its line,</strong> even with paths from another machine.</li>
+    <li><strong>Open the <code>perf script</code> text you already made</strong> on a server or in CI. No need to profile again.</li>
+    <li><strong>Double-click a function to open its line in your checkout,</strong> even with paths from a server or CI.</li>
   </ul>
   <div class="buy">
     <p class="price"><strong>$15 once</strong>, personal or commercial. 30-day trial of every feature. No subscription, nothing renews.</p>
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
     <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet. The trial needs a free JetBrains Account (<a href="quick-start.html#install">how it starts</a>).</p>
   </div>
-  <p class="fine">Tested: used in IntelliJ IDEA and PyCharm on Linux; CLion and RustRover headless only; Windows, macOS and Remote Development untested. Source code included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
+  <p class="fine">Used in IntelliJ IDEA and PyCharm on Linux; CLion and RustRover tested headless only; Windows, macOS and Remote Development untested. Source code included. <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
 </section>
 <main>
 
@@ -139,7 +139,7 @@
     <video controls preload="none" playsinline poster="video/poster-gprof-table.jpg" width="1280" height="720">
       <source src="video/heatfold-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 52 s, captions only, no sound: gprof, <code>gprof -l</code>, perf, a Go heap profile and a clang trace of the same programs. Heatfold 1.1.1 in IntelliJ IDEA 2025.3 on Linux; the recording machine has no JetBrains Account, so the licence check was set to "trial".</figcaption>
+    <figcaption>The demo, 52 s, captions only, no sound: gprof, <code>gprof -l</code>, perf, a Go heap profile and a clang trace. Heatfold 1.1.1 in IntelliJ IDEA 2025.3 on Linux, licence check set to "trial" (no JetBrains Account on the recording machine).</figcaption>
   </figure>
   <figure class="wide">
     <img src="video/heatfold-gprof-table.gif" alt="Animated: in IntelliJ IDEA, a right-click on pigz.gprof.txt and Open in Heatfold; the raw gprof text gives way to Heatfold's table, longest_match 2.17 s, 74.1%, 18,494,188 calls at the top; then deflate_slow is selected and its caller deflate (100.0%) and callees longest_match (75.3%), _tr_flush_block and fill_window appear" width="1200" height="562" loading="lazy">
@@ -147,6 +147,10 @@
   </figure>
 
   <h2 id="real">In the IDE, for real</h2>
+  <figure>
+    <a href="img/py-spy-window.png"><img src="img/py-spy-jump.png" alt="The editor at pyjob/wordfreq.py line 20, inside def count_words(text, counter). Below it Heatfold's tab for wordfreq.pyspy.json: count_words selected, 3.55 s, 87.5%, location …b/wordfreq.py:20 (recorded as /home/ci/build/pyjob/wordfreq.py); decode 4.37%, read_text 2.64%; count_words's caller is main at 100.0%" width="784" height="730" loading="lazy"></a>
+    <figcaption>A py-spy trace recorded under <code>/home/ci/build</code> opens your copy of <code>wordfreq.py</code>.</figcaption>
+  </figure>
   <figure class="wide">
     <a href="img/jump-to-source-window.png"><img src="img/jump-to-source-window.png" alt="IntelliJ IDEA: Heatfold's tab for pigz-lines.gprof.txt, the gprof -l report, with its top row selected: longest_match, 1.24 s, 42.0%, location deflate.c:1484. Above it the editor has opened zlib/deflate.c with line 1484, '} while ((cur_match = prev[cur_match &amp; wmask]) &gt; limit', highlighted; the status bar reads 1484:59" width="1280" height="800" loading="lazy"></a>
     <figcaption>Double-click a row of a <code>gprof -l</code> report: <code>zlib/deflate.c</code> opens at line 1484.</figcaption>
@@ -154,10 +158,6 @@
   <figure class="wide">
     <a href="img/perf-threads-window.png"><img src="img/perf-threads-search.png" alt="Heatfold's tab for pigz-threads.perf.txt: perf script text, 2,040 samples, 6 threads, 84 distinct frames. The thread selector is open with All threads, Process: pigz (pid 1335) and six threads. The search field holds 'deflate' and reads '4 frames match &quot;deflate&quot;: 1,976 samples, 96.9% of the total'; the matching frames deflate_slow, deflate and deflate_engine are highlighted in the flame graph" width="1200" height="600" loading="lazy"></a>
     <figcaption>pigz under <code>perf</code>, six threads: pick one, or search. "deflate": 1,976 samples, 96.9% of the total.</figcaption>
-  </figure>
-  <figure>
-    <a href="img/py-spy-window.png"><img src="img/py-spy-jump.png" alt="The editor at pyjob/wordfreq.py line 20, inside def count_words(text, counter). Below it Heatfold's tab for wordfreq.pyspy.json: count_words selected, 3.55 s, 87.5%, location /home/ci/build/py…; decode 4.37%, read_text 2.64%; count_words's caller is main at 100.0%" width="784" height="730" loading="lazy"></a>
-    <figcaption>A py-spy trace recorded under <code>/home/ci/build</code> opens your copy of <code>wordfreq.py</code>.</figcaption>
   </figure>
   <div class="pair">
     <figure>
@@ -170,18 +170,23 @@
     </figure>
   </div>
   <figure>
+    <a href="img/pprof-long-names-window.png"><img src="img/pprof-long-names.png" alt="A Go CPU profile, logstats-cpu.pprof, filtered to huffmanBitWriter: six rows whose names share the prefix compress/flate.(*huffmanBitWriter), shown with their middle cut so each keeps its end: indexTokens, writeCode, writeTokens, write, writeBits, writeBlock; locations end in _bit_writer.go:536, :329, :593, :136, :159, :490. writeTokens is selected: its caller writeBlock at 100.0%, its callees writeCode 41.7% and writeBits 33.3%" width="600" height="340" loading="lazy"></a>
+    <figcaption>Long Go names keep their ends, so <code>writeTokens</code> and <code>writeBlock</code> stay apart. Hover for the whole name.</figcaption>
+  </figure>
+  <figure>
     <a href="img/not-a-profile-window.png"><img src="img/not-a-profile.png" alt="Heatfold's tab for pigz/README: 'Heatfold does not recognise the content of README.' followed by the four formats it reads and the command that produces each, and an Open Profile… button" width="820" height="225" loading="lazy"></a>
     <figcaption>The four formats, recognised by content (any name, gzipped too), and the command for each.</figcaption>
   </figure>
 
   <div class="box">
     <strong>Where you may not need it.</strong> CLion's profiler (Linux, macOS, WSL) already draws a flame graph for programs run under it, imports collapsed stacks and opens trace JSON in a timeline; RustRover does the same for perf, GoLand reads pprof, PyCharm Pro profiles Python. In those cases Heatfold adds no new chart. You pay for what is missing: gprof reports, which no JetBrains IDE reads; <code>perf script</code> text with threads and srcline jumps; pprof outside GoLand; a hot-functions table for traces; and paths from another machine mapped onto your project. Heatfold does not record or attach to processes.
+    <p><strong>Next to <code>go tool pprof -http</code>:</strong> for pprof alone, pprof's free web UI has views Heatfold lacks (call graph, disassembly, comparing two profiles). Heatfold adds a double-click into the line in your checkout, with <code>/build</code> or CI paths matched without flags, the other three formats in the same tabs, and no browser or local server.</p>
   </div>
 
   <h2 id="tested">How we tested</h2>
   <table>
     <tr><th scope="col">Where (Linux)</th><th scope="col">What ran</th></tr>
-    <tr><td>IntelliJ IDEA, PyCharm 2025.3 and 2026.3</td><td>Used in the IDE window, every panel and message (1.0.0 and 1.1.0); these images and the demo: 1.1.1 in IntelliJ IDEA 2025.3</td></tr>
+    <tr><td>IntelliJ IDEA, PyCharm 2025.3 and 2026.3</td><td>Used in the IDE window, every panel and message (1.0.0 and 1.1.0); in 2025.3 by three test buyers on their own C, Go and Python profiles (1.1.1); these images: 1.1.2 in IntelliJ IDEA 2025.3; the demo: 1.1.1</td></tr>
     <tr><td>CLion, RustRover 2025.3</td><td>Headless: all four formats open, C and Rust names resolve. Not yet in a window</td></tr>
     <tr><td>All four, 2025.3 and 2026.3</td><td>Plugin Verifier: compatible</td></tr>
     <tr><td>Windows, macOS, Remote Development</td><td>Not yet tested</td></tr>
