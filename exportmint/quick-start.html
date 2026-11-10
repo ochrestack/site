@@ -137,7 +137,7 @@ exit code: 0</pre>
 
   <h2 id="limits">Limits</h2>
   <ul>
-    <li>Tested on Blender 4.2.23 LTS and 5.2.3 LTS on Linux; not on 4.3 to 5.1, Windows or macOS. Formats tested: glTF 2.0, FBX and USD.</li>
+    <li>Tested on Blender 4.2.23 LTS and 5.2.3 LTS on Linux; the test suite also passes with the Windows build of 4.2.23 under Wine, not yet on a Windows PC; not tested on 4.3 to 5.1 or macOS. Formats tested: glTF 2.0, FBX and USD.</li>
     <li>Exportmint never alters what an exporter writes. Files come from Blender's own exporters with the settings in the Collection Exporters panel.</li>
     <li>Not checked: world settings, render visibility, driver expressions (only their current result counts), changes inside linked libraries other than through their result. When in doubt, Export All is one click away.</li>
     <li>Objects are checked at the scene's current frame: on an animated object, changing the frame shows a change until you go back to the exported frame.</li>
