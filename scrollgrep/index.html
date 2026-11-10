@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrollgrep: Terminal Filter for JetBrains IDEs (live grep of the Terminal tool window)</title>
+<meta name="description" content="Scrollgrep shows only the lines you want from any Terminal tab in IntelliJ IDEA and other JetBrains IDEs 2025.3 and later, live, in a panel beside it, and leaves the terminal untouched. Free to filter; $12 once for clickable stack frames, one-command scope, patterns and alerts.">
+<link rel="canonical" href="https://ochrestack.com/scrollgrep/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Scrollgrep: Terminal Filter for JetBrains IDEs">
+<meta property="og:description" content="Grep the Terminal as it scrolls: only the lines that match, from any Terminal tab, in a panel beside it. Free to filter; the rest is $12 once.">
+<meta property="og:url" content="https://ochrestack.com/scrollgrep/">
+<meta property="og:image" content="https://ochrestack.com/scrollgrep/img/og-scrollgrep-2x1.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="600">
+<meta property="og:image:alt" content="The Scrollgrep panel in IntelliJ IDEA 2025.3 filtering a Maven test run to 6 lines with FAIL|Exception, above the Terminal tool window">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Scrollgrep: Terminal Filter for JetBrains IDEs">
+<meta name="twitter:description" content="Grep the Terminal as it scrolls: only the lines that match, in a panel beside it. Free to filter; the rest is $12 once.">
+<meta name="twitter:image" content="https://ochrestack.com/scrollgrep/img/og-scrollgrep-2x1.png">
+<meta name="twitter:image:alt" content="Scrollgrep filtering a Maven test run in the Terminal of IntelliJ IDEA to 6 lines">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  code { font-size: 15px; }
+  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .note { font-size: 15px; color: var(--muted); }
+  .benefits { padding-left: 20px; margin: 16px 0; }
+  .benefits li { margin: 6px 0; }
+  .pair figure { flex: 0 1 auto; }
+  /* The IDE captures are 1200 px wide: on wide screens they get up to that width, centred on the column. */
+  @media (min-width: 1000px) {
+    .real-size { width: min(1200px, calc(100vw - 48px)); margin-left: calc((712px - min(1200px, calc(100vw - 48px))) / 2); }
+    .real-size figcaption { max-width: 712px; margin-left: auto; margin-right: auto; }
+  }
+  header { max-width: 1200px; }
+  .top { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .top h1 { margin-top: 24px; }
+  .top .sub { font-size: 18px; line-height: 1.5; margin-bottom: 8px; }
+  .top .benefits { margin: 8px 0; }
+  .top .benefits li { margin: 2px 0; }
+  .top .buy { margin-top: 10px; }
+  .top .note, .top .fine { margin: 0 0 6px; line-height: 1.45; }
+  .top-image { margin: 16px 0; }
+  .top-image .hero { margin: 0 0 6px; }
+  @media (min-width: 1000px) {
+    .top { display: grid; grid-template-columns: minmax(380px, 1fr) minmax(0, 700px); column-gap: 36px; align-items: start; }
+    .top > * { grid-column: 1; }
+    .top > .top-image { grid-column: 2; grid-row: 1 / span 4; margin: 28px 0 0; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<section class="top">
+  <h1>Scrollgrep: Terminal Filter</h1>
+  <p class="sub">The failing line is somewhere in thousands of lines of Terminal output; Ctrl+F hides nothing, and <code>| grep</code> means running the command again.</p>
+  <figure class="top-image">
+    <a href="img/live-filter-window.png"><img class="hero" src="img/live-filter.png" alt="IntelliJ IDEA 2025.3 with the jsoup project. The Scrollgrep panel filters FAIL|Exception with Match case and Regex on and shows 6 matching lines, among them the failing ElementTest.testGetChildText test and BUILD FAILURE. Below it, the Terminal tool window still shows the end of the full Maven output. A line in the panel reads: Links, scopes, patterns, alerts: $12 once. Try or buy" width="960" height="728"></a>
+    <figcaption>Free: jsoup's 2,648-test Maven run, filtered to 6 lines.</figcaption>
+  </figure>
+  <ul class="benefits">
+    <li><strong>Filter/grep the Terminal output, live.</strong> Type, and new lines show up only if they match.</li>
+    <li><strong>No re-running through <code>| grep</code>.</strong> Change the pattern after the run.</li>
+    <li><strong>Click a stack frame, land on the line</strong> (licence).</li>
+  </ul>
+  <div class="buy">
+    <p class="price"><strong>Free:</strong> the live filter, no time limit. <strong>$12 once:</strong> links, one-command scope, patterns and alerts, personal or commercial. Nothing renews; 30-day trial.</p>
+    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
+    <p class="note" id="buy-note">Not on JetBrains Marketplace yet: listing in review.</p>
+    <p class="fine">Tested on Linux: IntelliJ IDEA 2025.3 (full test suite, Bash and Zsh), 2026.3 (install and filter check); Windows, macOS, PowerShell untested. Source not included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
+  </div>
+</section>
+<main>
+  <div class="box">
+    <strong>What the IDE already does.</strong> The IDE already does part of this, and the listing says so. Ctrl+F in the Terminal highlights matches but hides nothing. Since 2026.1 the Reworked terminal links file paths itself; Scrollgrep links only inside its results. <code>cmd | grep FAIL</code> works if you know the pattern before you run. Scrollgrep does not touch the Run and Debug consoles.
+  </div>
+
+  <h2 id="real">In the IDE, for real</h2>
+
+  <figure class="real-size">
+    <a href="img/kept-after-trim-window.png"><img src="img/kept-after-trim.png" alt="The Scrollgrep panel filtering '<<< FAILURE' shows 10 matching lines, two from each of five runs of the jsoup test suite. Below, the Terminal's own search for the same text counts 4/4, because the Terminal has trimmed the first three runs from its history" width="1200" height="728" loading="lazy"></a>
+    <figcaption>Free: five runs of the suite with Maven's debug log, about 2.6 MB. The Terminal kept the last two, so its search finds 4; Scrollgrep, open before the runs, lists all 10 failure lines.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/link-opened-at-line-window.png"><img src="img/link-opened-at-line.png" alt="The panel filtering ElementTest: the stack frame 'at org.jsoup.nodes.ElementTest.testGetChildText(ElementTest.java:138)' is selected, with ElementTest.java:138 as a link; the editor on the left has ElementTest.java open with the caret on line 138, the failing assertion" width="1200" height="558" loading="lazy"></a>
+    <figcaption>Licence: the stack frame clicked, ElementTest.java open at line 138.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/one-command-context-window.png"><img src="img/one-command-context.png" alt="Scope set to 'mvn -B test -DtrimStackTrace=false · /opt/sample/jsoup · exit 1', Context 3: the two FAILURE lines with three grey context lines before and after, and '2 matching lines · exit 1'. The Terminal below shows two later commands, git status and ls" width="1200" height="728" loading="lazy"></a>
+    <figcaption>Licence: one earlier command, three lines of context, exit code 1.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/watch-alert-terminal-hidden-window.png"><img src="img/watch-alert-terminal-hidden.png" alt="The lower half of the IDE window: ElementTest.java fills it down to the status bar, with the Terminal and the Scrollgrep panel hidden. A notification reads: Scrollgrep: 'BUILD (SUCCESS|FAILURE)' in Local, [INFO] BUILD FAILURE, Show in Scrollgrep" width="1200" height="430" loading="lazy"></a>
+    <figcaption>Licence: an alert while the Terminal was hidden.</figcaption>
+  </figure>
+
+  <h2 id="measured">Measured</h2>
+  <p>200,000 lines at full speed in a real bash tab, five runs: 2,061 matching lines each time, the same as <code>grep -c</code>; matches shown a median of 0.52 to 0.66 s after printing; the UI thread never blocked longer than 65.7 ms while they were added (IntelliJ IDEA 2025.3, headless, Linux, 4 CPUs).</p>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li>Results show in Scrollgrep's own panel, as plain text; the terminal itself hides nothing.</li>
+    <li>IDE 2025.3 or later with the Reworked terminal engine (the default). No SSH sessions, no vim, less or htop.</li>
+    <li>Matches outlast the Terminal's history only for output that arrived while the panel showed the tab (up to 32 MB and 200,000 lines per tab).</li>
+    <li>Only IntelliJ IDEA has been run; other JetBrains IDEs and Remote Development untested.</li>
+  </ul>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li>Sold through JetBrains Marketplace as a perpetual licence: every update included.</li>
+    <li>Keeps a copy of Terminal output in memory, within the limits above; no network calls, no telemetry (<a href="../privacy.html">privacy</a>).</li>
+  </ul>
+  <p style="font-size:14px;color:var(--muted)">Screenshots: IntelliJ IDEA 2025.3, a jsoup clone (MIT) with one assertion changed. IntelliJ IDEA is a trademark of JetBrains s.r.o.; Scrollgrep is not affiliated with JetBrains.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

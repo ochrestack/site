@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrollgrep quick start: live filter for the Terminal in JetBrains IDEs</title>
+<meta name="description" content="Install Scrollgrep in a JetBrains IDE 2025.3 or later, filter any Terminal tab live with text or grep -E patterns, and with a licence click stack frames, filter one command with context, keep patterns per project and get alerts.">
+<link rel="canonical" href="https://ochrestack.com/scrollgrep/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  code { font-size: 15px; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Scrollgrep quick start</h1>
+  <p>Installing Scrollgrep, the free live filter, and what the licence adds. Back to the <a href="index.html">Scrollgrep product page</a>.</p>
+
+  <h2 id="install">Install (JetBrains IDEs 2025.3 or later)</h2>
+  <ol>
+    <li>In the IDE, open <strong>Settings | Plugins</strong>, type <em>Scrollgrep</em> in the search field and click <strong>Install</strong>. The listing is in review and not on JetBrains Marketplace yet; until it is live, the search finds nothing.</li>
+    <li>Click <strong>Restart IDE</strong> when the IDE offers it: it loads plugins with paid features only after a restart. A <strong>Scrollgrep</strong> tool window then appears on the right.</li>
+    <li>Check that <strong>Settings | Tools | Terminal | Engine</strong> is <strong>Reworked</strong>, the default since 2025.2. Scrollgrep does not see Classic terminal tabs.</li>
+  </ol>
+  <p>Tested in IntelliJ IDEA 2025.3 (the full test suite, with real Bash, Zsh and sh terminals) and 2026.3 (install and filter check), on Linux. Windows, macOS, PowerShell, the other JetBrains IDEs and Remote Development have not been tested yet.</p>
+
+  <h2 id="filter">Live filter (free)</h2>
+  <ol>
+    <li>Open a Terminal tab and run something that prints a lot, such as your test suite.</li>
+    <li>Press <strong>Ctrl+Shift+G</strong> while the terminal has focus. Or right-click the tab's title (or inside the output) and choose <strong>Filter with Scrollgrep</strong>, or use Find Action (Ctrl+Shift+A): <strong>Filter Terminal Output</strong>.</li>
+    <li>The filter field has focus. Type text, or tick <strong>Regex</strong> for a pattern such as <code>FAIL|Exception</code>. The panel lists the matching lines the tab still holds and keeps adding new matches while the command runs.</li>
+    <li>Press <strong>Escape</strong> to go back to the terminal. The panel keeps filtering.</li>
+  </ol>
+  <figure><a href="img/live-filter-window.png"><img src="img/live-filter.png" alt="The Scrollgrep panel filtering FAIL|Exception with Match case and Regex on: 6 matching lines from jsoup's Maven test run, above the Terminal tool window" width="960" height="728" loading="lazy"></a><figcaption>The free filter on a finished Maven run. The line with the lock is all you see of the licensed features without a licence.</figcaption></figure>
+  <ul>
+    <li><strong>Match case</strong>, <strong>Words</strong>, <strong>Regex</strong> and <strong>Invert</strong> mean what grep's <code>-i</code> (off), <code>-w</code>, <code>-E</code> and <code>-v</code> mean. Regex uses <code>grep -E</code> syntax: <code>[[:digit:]]+</code> and <code>\&lt;word\&gt;</code> work as in grep, and as in grep <code>\d</code> means the letter "d"; the panel says so and suggests <code>[0-9]</code>.</li>
+    <li>A progress bar or spinner redrawn in place appears once, with its final text.</li>
+    <li>An invalid pattern is outlined in red with grep's reason, and the results stay as they were. Clearing the field clears the results.</li>
+    <li>The panel follows the Terminal tab you select.</li>
+    <li>Matches stay in the panel after the Terminal trims its own history, for output that arrived while the panel showed the tab (or the tab had a filter). A panel opened after a run sees only what the Terminal still holds.</li>
+    <li>The panel keeps up to 32 MB and 200,000 lines per tab (<strong>Settings | Tools | Scrollgrep</strong>, 4 to 1,024 MB). Past the limit the oldest lines that do not match go first. A tab you leave with an empty filter is not kept.</li>
+    <li>Changing the pattern on a long session does not freeze the IDE: long re-filters finish in the background, and the next keystroke cancels them.</li>
+  </ul>
+
+  <h2 id="links">Links in the results (licensed)</h2>
+  <p>Paths and stack-trace lines in the results open the file at the line, and at the column when one is printed: absolute paths; paths relative to the directory the command ran in, then to the project, then the one project file whose path ends with the printed path (when that is unique); <code>path:line</code> and <code>path:line:column</code>; JVM frames (matched by package), Python tracebacks, Node.js frames and Go panics. A path that matches several files opens a chooser; a path that matches nothing, or contains spaces, stays plain text.</p>
+  <figure><a href="img/link-opened-at-line-window.png"><img src="img/link-opened-at-line.png" alt="The stack frame ElementTest.java:138 selected in the panel; the editor shows ElementTest.java with the caret on line 138" width="1200" height="558" loading="lazy"></a><figcaption>One click on <code>ElementTest.java:138</code> in a JVM frame.</figcaption></figure>
+
+  <h2 id="scope">One command, with context (licensed)</h2>
+  <p>With the IDE's shell integration (tested with Bash and Zsh), <strong>Scope</strong> limits the filter to all output, the last command, or a command picked from a list that shows each command line, its directory and its exit code, also for a command that printed more than the Terminal keeps. <strong>Context</strong> shows that many lines before and after each match, like <code>grep -C</code>, with <code>--</code> between groups. In a shell without integration, such as <code>sh</code>, the panel says why the scope is unavailable and filters all output.</p>
+  <figure><a href="img/command-list-window.png"><img src="img/command-list.png" alt="The Scope list open: All output, Last command, 'ls --color=auto docs · /opt/sample/jsoup · exit 2', 'git status --short · /opt/sample/jsoup · exit 0' and 'mvn -B test -DtrimStackTrace=false · /opt/sample/jsoup · exit 1'" width="1200" height="558" loading="lazy"></a><figcaption>Three earlier commands, each with its directory and exit code.</figcaption></figure>
+
+  <h2 id="patterns">Several patterns, kept per project (licensed)</h2>
+  <p><strong>Add pattern</strong> adds a row with its own Include or Exclude choice, toggles, highlight colour and <strong>Watch</strong> box. Up to eight patterns work at once, the filter field counting as one; a ninth is refused with a message. A line is shown when it matches an include pattern and no exclude pattern. <strong>Save…</strong> keeps the set as a named preset in this project; the <strong>Preset</strong> list brings it back.</p>
+  <figure><a href="img/patterns-preset-window.png"><img src="img/patterns-preset.png" alt="Three pattern rows: Include 'Tests run: [0-9]+, Failures: [1-9]' in red, Include 'BUILD (SUCCESS|FAILURE)' in blue with Watch ticked, Exclude 'Time elapsed'; the preset 'maven failures' saved for this project; two result lines highlighted red and blue" width="1200" height="636" loading="lazy"></a><figcaption>Two include patterns in two colours, one exclude, saved as "maven failures".</figcaption></figure>
+
+  <h2 id="watch">Watch alerts (licensed)</h2>
+  <p>A pattern with <strong>Watch</strong> on raises one IDE notification with the matching line when it appears in any Terminal tab of the project, even with the Terminal hidden. Matches within 2 seconds (Settings, 1 to 60) are grouped into one notification with a count. <strong>Show in Scrollgrep</strong> opens the panel on that tab with the line selected; if the tab was closed meanwhile, a note says so.</p>
+  <figure><a href="img/watch-click-through-window.png"><img src="img/watch-click-through.png" alt="After Show in Scrollgrep: the panel with the preset 'maven failures' and the last BUILD FAILURE line selected" width="1200" height="728" loading="lazy"></a><figcaption>After <strong>Show in Scrollgrep</strong>: the line that raised the alert, selected.</figcaption></figure>
+
+  <h2 id="licence">Licence and trial</h2>
+  <p>The live filter is free and never locks. Everything else needs a JetBrains Marketplace licence: a perpetual licence, $12 once, the same for personal and commercial use, every update included, nothing renews. The 30-day trial starts from the IDE's licence dialog, through <strong>Try or buy</strong> in the panel. Without a licence the panel shows one line with the price instead of the licensed controls; nothing pops up at project open or when a trial ends.</p>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li>Results show in Scrollgrep's own panel; lines are not hidden inside the terminal. Results are plain text, without the terminal's colours, and show tabs as spaces.</li>
+    <li>Reworked terminal engine on IDE 2025.3 or later only. SSH sessions (Classic engine) and full-screen programs such as vim, less and htop are not filtered.</li>
+    <li>With Bash, the IDE reports only the first part of a compound command line in the Scope list.</li>
+    <li>Clearing the terminal (<code>clear</code>, Clear Buffer) clears that tab's results too.</li>
+    <li>Not covered: the Run, Debug, Build and Services consoles, Run configurations that use a terminal console, Remote Development and Code With Me clients. English only.</li>
+    <li>The Terminal API Scrollgrep uses is marked experimental by JetBrains, so a new IDE version can need a compatibility update.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Scrollgrep reads the output of the Terminal tabs in the open project and keeps a copy of it in memory, not only the matching lines, within the limits above, for the tab its panel shows and tabs left with a filter. Patterns and presets are stored in the project's workspace settings. It writes no output to disk, makes no network calls, and collects and sends nothing. The licence check is done by the IDE through JetBrains Marketplace licensing. See also the <a href="../privacy.html">privacy policy</a>.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE version (Help | About), the shell you use, and what you saw. Bug reports and feature requests are welcome at the same address.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
