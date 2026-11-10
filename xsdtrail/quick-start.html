@@ -24,7 +24,7 @@
   figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
   .legend { border-collapse: collapse; font-size: 15px; margin: 8px 0 16px; }
   .legend td { padding: 3px 10px 3px 0; vertical-align: middle; }
-  .sw { display: inline-block; width: 40px; height: 16px; border: 1.5px solid; border-radius: 4px; vertical-align: middle; }
+  .sw { display: inline-block; width: 48px; height: 20px; border: 1.5px solid; border-radius: 4px; vertical-align: middle; font-size: 12px; line-height: 17px; text-align: center; color: #1F2328; }
   .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
   code { font-size: 15px; }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
@@ -60,29 +60,29 @@
   <ul>
     <li>Click the ⊕ at the right edge of a box, or select it and press Space or →, to unfold it. The view scrolls so the box and its first children are in sight. When the Design tab opens, the keyboard is on the diagram: the arrow keys move the selection, ← folds, Enter opens the declaration.</li>
     <li>Elements show their name and type. Optional ones have a dashed border, repeating ones a stacked shadow, and the cardinality is in the box: <code>[0..1]</code>, <code>[1..*]</code>.</li>
-    <li><code>sequence</code>, <code>choice</code> and <code>all</code> appear as their own boxes between a parent and its children. Attributes appear as <code>@name</code> with required or optional, default and fixed values. <code>extension of …</code> and <code>restriction of …</code> boxes unfold to the base type. Enumeration values appear as <code>= value</code>.</li>
+    <li><code>sequence</code>, <code>choice</code> and <code>all</code> appear as their own boxes between a parent and its children. Attributes appear as <code>@name</code> with required or optional, default and fixed values. <code>extension of …</code> and <code>restriction of …</code> boxes (yellow, solid border) unfold to the base type. A dashed border always means optional. Enumeration values appear as <code>= value</code>.</li>
     <li>↻ marks a type that already appears above it, instead of unfolding forever.</li>
     <li>A red box is something that cannot be resolved; it names the missing namespace, file or declaration. A long reason wraps over up to three lines, and the tooltip has all of it.</li>
     <li>Hover a box for its tooltip: the <code>xs:documentation</code> text and the details of the declaration.</li>
   </ul>
   <p><strong>Legend</strong> (the ? button in the toolbar), the same key as here:</p>
   <table class="legend">
-    <tr><td><span class="sw" style="background:#EAF2FB;border-color:#5B8BC9"></span></td><td>Element: name, then its type</td></tr>
-    <tr><td><span class="sw" style="background:#F5F0FB;border-color:#8E6CC4"></span></td><td>Attribute (<code>@name</code>), with use and default or fixed value</td></tr>
-    <tr><td><span class="sw" style="background:#EAF6EE;border-color:#4C9A68"></span></td><td>Global type: complexType, simpleType, list, union</td></tr>
-    <tr><td><span class="sw" style="background:#FFF8E1;border-color:#C79A2E;border-style:dashed"></span></td><td>Base type: <code>extension of</code>, <code>restriction of</code></td></tr>
-    <tr><td><span class="sw" style="background:#F3F4F6;border-color:#8B949E;border-radius:9px"></span></td><td>Compositor: sequence, choice, all; group, any</td></tr>
-    <tr><td><span class="sw" style="background:#FAFAFA;border-color:#B0B7BF"></span></td><td>Enumeration value (<code>= value</code>)</td></tr>
-    <tr><td><span class="sw" style="background:#E6F5F7;border-color:#3A9AA8"></span></td><td>WSDL: service, port, binding, operation, message, part</td></tr>
-    <tr><td><span class="sw" style="background:#E9ECF5;border-color:#5C6BC0"></span></td><td>The open file, an import or include, a section</td></tr>
+    <tr><td><span class="sw" style="background:#EAF2FB;border-color:#5B8BC9"><b>Name</b></span></td><td>Element: name, then its type</td></tr>
+    <tr><td><span class="sw" style="background:#F5F0FB;border-color:#8E6CC4">@id</span></td><td>Attribute (<code>@name</code>), with use and default or fixed value</td></tr>
+    <tr><td><span class="sw" style="background:#EAF6EE;border-color:#4C9A68">type</span></td><td>Global type: complexType, simpleType, list, union</td></tr>
+    <tr><td><span class="sw" style="background:#FFF8E1;border-color:#C79A2E">base</span></td><td>Base type: <code>extension of</code>, <code>restriction of</code></td></tr>
+    <tr><td><span class="sw" style="background:#F3F4F6;border-color:#8B949E;border-radius:9px">seq</span></td><td>Compositor: sequence, choice, all; group, any</td></tr>
+    <tr><td><span class="sw" style="background:#FAFAFA;border-color:#B0B7BF">= v</span></td><td>Enumeration value (<code>= value</code>)</td></tr>
+    <tr><td><span class="sw" style="background:#E6F5F7;border-color:#3A9AA8">op</span></td><td>WSDL: service, port, binding, operation, message, part</td></tr>
+    <tr><td><span class="sw" style="background:#E9ECF5;border-color:#5C6BC0">file</span></td><td>The open file, an import or include, a section</td></tr>
     <tr><td><span class="sw" style="background:#F1F1F1;border-color:#A8A8A8"></span> 🔒</td><td>Locked: from another file, or a WSDL operation's messages, without a licence</td></tr>
-    <tr><td><span class="sw" style="background:#FDECEC;border-color:#D9534F"></span></td><td>Unresolved or missing: the box says what and why</td></tr>
-    <tr><td><span class="sw" style="background:#EAF2FB;border-color:#5B8BC9;border-style:dashed"></span></td><td>Dashed border: optional (minOccurs 0)</td></tr>
-    <tr><td><span class="sw" style="background:#EAF2FB;border-color:#5B8BC9;box-shadow:3px 3px 0 -1px #EAF2FB,3px 3px 0 0 #5B8BC9"></span></td><td>Stacked: repeats (maxOccurs above 1); [0..1], [1..*] give the count</td></tr>
+    <tr><td><span class="sw" style="background:#FDECEC;border-color:#D9534F"><span style="color:#B3261E">⚠</span></span></td><td>Unresolved or missing: the box says what and why</td></tr>
+    <tr><td><span class="sw" style="background:#EAF2FB;border-color:#5B8BC9;border-style:dashed"><b>Name</b></span></td><td>Dashed border: optional (minOccurs 0)</td></tr>
+    <tr><td><span class="sw" style="background:#EAF2FB;border-color:#5B8BC9;box-shadow:3px 3px 0 -1px #EAF2FB,3px 3px 0 0 #5B8BC9"><b>Name</b></span></td><td>Stacked: repeats (maxOccurs above 1); [0..1], [1..*] give the count</td></tr>
     <tr><td style="color:#2F6F9F">in File.xsd</td><td>Declared in another file</td></tr>
     <tr><td>↻</td><td>Recursive: the type already appears above, so it does not unfold again</td></tr>
   </table>
-  <p><strong>Toolbar:</strong> Expand All (unfolds up to 4,000 boxes, counting those already shown; when the next unfold would pass that, it stops and says so), Collapse All, Zoom In, Zoom Out, Actual Size, Fit to Window, Rebuild Diagram, Legend. Ctrl+mouse wheel zooms around the pointer. The search box on the right finds a global element or type by name; when several match equally well, the status line says "Match 1 of 2" with the file name, and Enter steps to the next. Without a licence, a name declared only in another file is named with its file and marked locked, for example "PartyType is in Party.xsd, a locked file (needs an Xsdtrail licence)." Messages have their own row under the build summary. Unfolding or folding a box by hand clears the Expand All and Collapse All messages. What you unfolded, the selection and the zoom are kept per file, also after the IDE restarts.</p>
+  <p><strong>Toolbar:</strong> Expand All (unfolds up to 4,000 boxes, counting those already shown; when the next unfold would pass that, it stops and says so), Collapse All, Zoom In, Zoom Out, Actual Size, Fit to Window, Rebuild Diagram, Legend. Ctrl+mouse wheel zooms around the pointer. The search box on the right finds a global element or type by name; when several match equally well, the status line says "Match 1 of 2" with the file name, and Enter steps to the next. Without a licence, a name declared only in another file is named with its file and marked locked, for example "PartyType is in Party.xsd, a locked file (needs an Xsdtrail licence).", or, with two, "PartyType: 2 matches, both in locked files: …". Messages have their own row under the build summary. Unfolding or folding a box by hand clears the Expand All and Collapse All messages. What you unfolded, the selection and the zoom are kept per file, also after the IDE restarts.</p>
 
   <h2 id="navigate">Navigate both ways</h2>
   <ul>
@@ -109,7 +109,7 @@
 
   <h2 id="licence">Licence and trial</h2>
   <p>Without a licence, every box from another file is shown with its name, its file label and a lock; its tooltip says why. In a WSDL, each operation's messages are locked. Nothing pops up. Whenever something in the diagram is locked, one line under the status line says what ("Boxes from other files are locked.", or for a WSDL "Operation messages are locked.") followed by <strong>Get a licence or trial</strong>, which opens the IDE's own licence dialog only when you click it. In IntelliJ IDEA Community the licence dialog is also under <strong>Help &gt; Manage Licenses…</strong>.</p>
-  <p>To start the 30-day trial, choose <strong>Start trial</strong> in that dialog; the IDE asks you to log in to a JetBrains Account, which is free. When the trial or licence becomes active, open Design tabs unlock by themselves; nothing needs reopening. The licence is a JetBrains Marketplace perpetual licence: $12 once, personal or commercial, every update included, nothing to renew. The free features never lock.</p>
+  <p>To start the 30-day trial, choose <strong>Start trial</strong> in that dialog; the IDE asks you to log in to a JetBrains Account, which is free. The dialog is the IDE's own: it lists every Marketplace licence under <strong>Subscription</strong> and suggests "the premium version", but Xsdtrail's licence is bought once and activates when you log in. When the trial or licence becomes active, open Design tabs unlock by themselves; nothing needs reopening. The licence is a JetBrains Marketplace perpetual licence: $12 once, personal or commercial, every update included, nothing to renew. The free features never lock.</p>
   <figure><a href="img/free-tier.png"><img src="img/free-tier-locked-boxes.png" alt="UBL Invoice without a licence, at real size: ext:UBLExtensions, cbc:UBLVersionID, cbc:CustomizationID, cbc:ProfileID and cbc:ProfileExecutionID grey with a lock, each labelled with its file" width="286" height="296" loading="lazy"></a><figcaption>Without a licence: boxes from other files are locked and name their file (tap for the whole window, with the search for PartyType naming the locked files and the licence line).</figcaption></figure>
 
   <h2 id="limits">Known limits</h2>
