@@ -51,7 +51,7 @@
   figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
   .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
   .pair figure { flex: 0 1 256px; margin: 0; }
-  .narrow-only, img.hero.narrow-only { display: none; }
+  .narrow-only, img.hero.narrow-only, video.hero.narrow-only { display: none; }
   .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .scroll-x a, .scroll-x picture { display: block; }
   .hero { display: block; width: 100%; max-width: 640px; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
@@ -63,8 +63,8 @@
   @media (max-width: 600px) {
     h1 { margin-top: 28px; }
     .wide-only { display: none; }
-    .narrow-only, img.hero.narrow-only { display: block; }
-    .fold-gif { width: 72%; margin: 0 auto 10px; }
+    .narrow-only, img.hero.narrow-only, video.hero.narrow-only { display: block; }
+    .fold-gif { width: 100%; margin: 0 0 10px; }
     .scroll-x img.ui { max-width: none; width: 764px; }
     .swipe-wrap { position: relative; }
     .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
@@ -85,7 +85,7 @@
 <main>
   <h1>Skintap for Blender</h1>
   <p class="sub">Bones that disappear inside the mesh? Click the posed mesh and Skintap selects the bone that moves it, with no setup. Copy or mirror a bone chain without renaming every .001 copy by hand.</p>
-  <img class="hero narrow-only fold-gif" loading="lazy" src="img/pick-hover.gif" alt="Skintap's picker on Blender Studio's Rain: the label next to the cursor names the control that moves the spot under it, on her arm, jeans and shoe; clicks select the forearm and thigh controls" width="880" height="740">
+  <video class="hero narrow-only fold-gif" autoplay muted loop playsinline preload="metadata" poster="video/pick-phone-poster.jpg" width="780" height="312" aria-label="Skintap's picker on Blender Studio's Rain, close up: the cursor on her left forearm, the label next to it reads FK-Forearm.L, moves DEF-Forearm1.L on GEO-rain-body, and a click selects that control"><source src="video/pick-phone.mp4" type="video/mp4"></video>
   <ul class="benefits">
     <li><strong>Click through clothes:</strong> click jacket, jeans or hair; get the bone that moves it.</li>
     <li><strong>Chains without .001:</strong> copies count up (<code>hair_02</code>, <code>hair_03</code>); mirrors add sides.</li>
@@ -98,10 +98,8 @@
     <p class="fine">Blender 4.2 LTS and later. Tested on 4.2 LTS and 5.2 LTS on Linux; not yet tested on Windows or macOS (<a href="#limits">limits</a>).</p>
   </div>
 
-  <a href="img/rain-pick-jeans.png"><img class="hero" src="img/rain-pick-jeans-2x1.png" alt="Blender 5.2 in Pose Mode with Blender Studio's Rain in a walking pose. The cursor is on her jeans at the left thigh, and Skintap's label next to it, on a dark plate, reads 'FK-Thigh_Parent.L' and, below, 'moves DEF-Thigh1.L on GEO-rain-jeans'. The thigh control just selected is highlighted. On the right, the Skintap tab: Pick on Mesh, then Rename, then Chains" width="1100" height="550"></a>
-
   <figure class="wide-only">
-    <img loading="lazy" src="video/skintap-pick.gif" alt="Looping clip from the demo: Skintap's picker on Rain. The label next to the cursor reads FK-Thigh_Parent.L on her jeans, then FK-Upperarm_Parent.L and FK-Forearm.L on her arm; a click selects FK-Forearm.L. The picker starts again, a Shift-click on her jeans adds FK-Thigh_Parent.L, and the cursor moves to her shoe, where the label reads FK-Foot.L, moves DEF-Foot.L on GEO-rain-shoes" width="960" height="540">
+    <img src="video/skintap-pick.gif" alt="Looping clip from the demo: Skintap's picker on Rain. The label next to the cursor reads FK-Thigh_Parent.L on her jeans, then FK-Upperarm_Parent.L and FK-Forearm.L on her arm; a click selects FK-Forearm.L. The picker starts again, a Shift-click on her jeans adds FK-Thigh_Parent.L, and the cursor moves to her shoe, where the label reads FK-Foot.L, moves DEF-Foot.L on GEO-rain-shoes" width="960" height="540">
     <figcaption>Hover: the label names the control that moves the spot under the cursor. Click selects it; Shift-click on her jeans adds the thigh control. A loop from the <a href="#watch">demo video</a>.</figcaption>
   </figure>
 
@@ -110,7 +108,7 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/skintap-demo-720p60.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 50 s, captions only, no sound: Skintap on Blender Studio's Rain, from Blender's own click to picking, Pick Deform Bones and the three chain tools.</figcaption>
+    <figcaption>The demo, 49 s, captions only, no sound: Skintap on Blender Studio's Rain, from Blender's own click to picking, Pick Deform Bones and the three chain tools.</figcaption>
   </figure>
 
   <div class="box warn">
@@ -124,16 +122,16 @@
 
   <h2 id="chains">Copy and mirror chains</h2>
   <figure>
-    <a href="img/duplicate-chain.gif"><img src="img/duplicate-chain.gif" alt="Edit Mode, the side of Rain's head with a three-bone hair strand named hair_01_01, hair_01_02, hair_01_03 selected. Duplicate Chain is clicked in the Skintap tab; the copy follows the mouse to the right and a click places it. Duplicate Chain is clicked again and the second copy placed the same way. The bone names on screen read hair_01_01..03, hair_02_01..03 and hair_03_01..03" width="1000" height="630" loading="lazy"></a>
-    <figcaption>Duplicate Chain, twice, on a hair strand added to Rain's rig. The copy follows the mouse, like Blender's Shift+D, and a click places it. The status bar said "Duplicated 3 bones in 1 chain: hair_01_01 .. hair_01_03 -&gt; hair_02_01 .. hair_02_03", then the same for <code>hair_03</code>.</figcaption>
+    <a href="img/duplicate-chain.gif"><img src="img/duplicate-chain.gif" alt="Edit Mode, the side of Rain's head with a three-bone hair strand named hair_01_01, hair_01_02, hair_01_03 selected. The Chains box says 3 bones in 1 chain selected. With the pointer over the strand, Shift+Alt+D is pressed; the copy follows the mouse to the right and a click places it. The same again on the copy, and the second copy is placed the same way. The bone names on screen read hair_01_01..03, hair_02_01..03 and hair_03_01..03" width="1000" height="630" loading="lazy"></a>
+    <figcaption>Duplicate Chain, twice, on a hair strand added to Rain's rig, started with Shift+Alt+D over the strand. The copy follows the mouse from there, like Blender's Shift+D, and a click places it. The status bar said "Duplicated 3 bones: hair_01_01..03 -&gt; hair_02_01..03", then the same for <code>hair_03</code>.</figcaption>
   </figure>
   <figure>
     <a href="img/fix-names.gif"><img src="img/fix-names.gif" alt="The same hair strands. hair_03 is copied with Blender's own Shift+D and moved: the copy's names read hair_03_01.001, hair_03_02.001, hair_03_03.001. Fix .001 Names is clicked in the Skintap tab and the names become hair_04_01, hair_04_02, hair_04_03" width="1000" height="630" loading="lazy"></a>
-    <figcaption>Copied with Blender's own Shift+D, the strand is named <code>hair_03_01.001</code> to <code>hair_03_03.001</code>. Fix .001 Names: "Fixed 3 names: hair_03_01.001 -&gt; hair_04_01; hair_03_02.001 -&gt; hair_04_02; hair_03_03.001 -&gt; hair_04_03".</figcaption>
+    <figcaption>Copied with Blender's own Shift+D, the strand is named <code>hair_03_01.001</code> to <code>hair_03_03.001</code>. Fix .001 Names: "Fixed 3 names: hair_03_01.001..03.001 -&gt; hair_04_01..03".</figcaption>
   </figure>
   <figure>
     <a href="img/mirror-chain.gif"><img src="img/mirror-chain.gif" alt="Edit Mode, Rain's hips with a three-bone ribbon named ribbon_01, ribbon_02, ribbon_03 on her left hip, selected. The Side Markers menu in the Skintap tab is opened, showing .L / .R, _L / _R, _l / _r and Left / Right, and .L / .R is chosen. Mirror Chain is clicked: a mirrored ribbon appears on her right hip, and the names read ribbon_01.L..03.L on the left and ribbon_01.R..03.R on the right" width="1060" height="610" loading="lazy"></a>
-    <figcaption>A ribbon with no side in its names, mirrored with <code>.L / .R</code>: "Mirrored 3 bones in 1 chain: ribbon_01.L .. ribbon_03.L -&gt; ribbon_01.R .. ribbon_03.R. Source renamed to carry its side". Rain's file has the armature's X-Axis Mirror option on, as many production files do; the mirror is correct with it on.</figcaption>
+    <figcaption>A ribbon with no side in its names, mirrored with <code>.L / .R</code>: "Mirrored 3 bones; source renamed to ribbon_01.L..03.L, copy is ribbon_01.R..03.R". Rain's file has the armature's X-Axis Mirror option on, as many production files do; the mirror is correct with it on.</figcaption>
   </figure>
 
   <h2 id="imported">Imported game characters</h2>
@@ -150,23 +148,28 @@
   </figure>
   <figure>
     <a href="img/menu-pose-skintap.png"><img src="img/menu-pose-skintap.png" alt="The Pose menu open over Rain, with the Skintap submenu showing Pick Bones on Mesh (Shift Alt Q), Duplicate Chain, Mirror Chain, Rename Chain and Fix .001 Names; the Skintap tab is open in the sidebar on the right" width="1205" height="800" loading="lazy"></a>
-    <figcaption>Where it lives: the Skintap tab in the 3D Viewport sidebar (N), the Pose &gt; Skintap and Armature &gt; Skintap menus, and Shift+Alt+Q in Pose Mode (changeable in Preferences). Tools that cannot run in the current mode are greyed out, and their tooltip says which mode they need.</figcaption>
+    <figcaption>Where it lives: the Skintap tab in the 3D Viewport sidebar (N), the Pose &gt; Skintap and Armature &gt; Skintap menus, Shift+Alt+Q in Pose Mode and Shift+Alt+D for Duplicate Chain in Edit Mode (both changeable in Preferences). Tools that cannot run in the current mode are greyed out, and their tooltip says which mode they need.</figcaption>
   </figure>
   <p style="font-size:14px;color:var(--muted)">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We posed her, switched her limbs to FK, and added the hair strand and ribbon bones for the chain images. Rain is not included with Skintap, and Blender Studio does not endorse it.</p>
 
   <div class="box">
-    <strong>Who doesn't need it.</strong> Several of these jobs already work in Blender. Weight Paint mode lets you click bones while painting. Symmetrize mirrors a chain, with its constraints and bone collections, when the names already carry a side such as .L/.R or _l/_r. Auto-Name Left/Right adds sides. Batch Rename does find and replace. A rig whose controls sit outside the body is easy to click without help. In those cases the buyer is paying for four things: picking in Pose Mode on the deformed mesh with no setup; a copy of a chain that takes the next number instead of .001 in one step; a mirror of bones that have no side yet in one step; and renaming in chain order. If you don't need those, keep your money.
+    <strong>Who doesn't need it.</strong> Several of these jobs already work in Blender. Weight Paint mode lets you click bones while painting. Symmetrize mirrors a chain, with its constraints and bone collections, when the names already carry a side such as .L/.R or _l/_r. Auto-Name Left/Right adds sides. Batch Rename does find and replace. A rig whose controls sit outside the body is easy to click without help. In those cases you'd be paying for four things: picking in Pose Mode on the deformed mesh with no setup; a copy of a chain that takes the next number instead of .001 in one step; a mirror of bones that have no side yet in one step; and renaming in chain order. If you don't need those, keep your money.
   </div>
 
   <h2>What it does</h2>
   <ul>
     <li><strong>Pick Bones on Mesh</strong> (Pose Mode, <strong>Shift+Alt+Q</strong>). Hover over the posed character: a label next to the cursor names the bone that will be selected, and which deform bone it moves on which mesh. Click selects it, Shift-click adds, a click on empty space deselects, Esc or right-click ends. One Ctrl+Z undoes a whole picking session. It reads the weights your character already has, on the mesh as it is posed right now: every separate clothing piece (the piece in front wins), accessories parented to a bone, Subdivision Surface on. No vertex groups to paint, no presets, nothing added to your .blend.</li>
     <li><strong>Finds the control behind a hidden bone.</strong> When the bone under the cursor is a hidden deform bone (Rigify's <code>DEF-</code> bones are), Skintap follows the rig's constraints, then the parents, to the nearest visible control, as the IK/FK switch is set. On a generated Rigify rig it skips the tweak controls, so you get the IK or FK control. Tick <strong>Pick Deform Bones</strong> to select the deform bone itself.</li>
-    <li><strong>Duplicate Chain</strong> (Edit Mode). The copy follows the mouse like Shift+D and takes the next chain number instead of <code>.001</code>: <code>hair_01_01..03</code> becomes <code>hair_02_01..03</code>. One bone: <code>Bone_12_0099.L</code> becomes <code>Bone_12_0100.L</code>. A two-bone chain <code>Bone_12_0099.L</code>, <code>Bone_12_0100.L</code> becomes <code>Bone_13_0099.L</code>, <code>Bone_13_0100.L</code>: the chain's number is the one its bones share. Parenting, roll, deform flag, bone collections, B-Bone segments, custom shapes and constraints are kept.</li>
+    <li><strong>Duplicate Chain</strong> (Edit Mode, <strong>Shift+Alt+D</strong> over the bones). The copy follows the mouse like Shift+D and takes the next chain number instead of <code>.001</code>: <code>hair_01_01..03</code> becomes <code>hair_02_01..03</code>. One bone: <code>Bone_12_0099.L</code> becomes <code>Bone_12_0100.L</code>. A two-bone chain <code>Bone_12_0099.L</code>, <code>Bone_12_0100.L</code> becomes <code>Bone_13_0099.L</code>, <code>Bone_13_0100.L</code>: the chain's number is the one its bones share. Parenting, roll, deform flag, bone collections, B-Bone segments, custom shapes and constraints are kept.</li>
     <li><strong>Mirror Chain</strong> (Edit Mode). Creates the X-mirrored copy. Bones with no side get one in your convention (<code>.L/.R</code>, <code>_L/_R</code>, <code>_l/_r</code> or <code>Left/Right</code>), the source and the copy both; bones that already have a side get it flipped.</li>
     <li><strong>Rename Chain</strong> and <strong>Fix .001 Names</strong> (Pose or Edit Mode). Rename root to tip with a base name, start number, padding and side; or turn Blender's <code>.001</code>, <code>.002</code> into the chain's own numbers. Vertex groups follow, so weights stay attached. A generated Rigify rig is refused (rename in its metarig instead).</li>
   </ul>
-  <p>Every tool says what it did in the status bar; each run is one undo step.</p>
+  <p>Every tool says what it did in one short status-bar line (the full list of names goes to the Info editor); each run is one undo step.</p>
+
+  <div class="buy">
+    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_0ErzmMI66XIOzneZ6ESnGRImsVJbeKGEGab5801xS0x">Buy for $14</a></p>
+    <p class="fine">$14 once, source included, 12 months of updates and support · Polar checkout · <a href="../terms.html">14-day refund if it doesn't work as described</a> · tested on Blender 4.2 LTS and 5.2 LTS on Linux · a team of up to 10: <a href="#teams">$70</a></p>
+  </div>
 
   <h2 id="limits">Known limits</h2>
   <ul>
@@ -209,11 +212,6 @@
     <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Send your Blender version, what you did and what you expected; a small .blend helps most. The <a href="quick-start.html">quick start</a> has every step.</li>
   </ul>
 
-  <div class="buy">
-    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_0ErzmMI66XIOzneZ6ESnGRImsVJbeKGEGab5801xS0x">Buy for $14</a></p>
-    <p class="fine">$14 once, source included, 12 months of updates and support · Polar checkout · <a href="../terms.html">14-day refund if it doesn't work as described</a> · tested on Blender 4.2 LTS and 5.2 LTS on Linux · a team of up to 10: <a href="#teams">$70</a></p>
-  </div>
-
   <h2 id="more">For the detail-minded</h2>
   <details id="rigs">
     <summary>Which control a click selects (Rigify table)</summary>
@@ -250,7 +248,7 @@
   </details>
   <details id="how">
     <summary>How these images were made</summary>
-    <p>Every image and the video are real Blender 5.2.3 windows on Linux with Skintap 1.0.5 installed from its zip. Michelle is three.js's Michelle.glb, imported with Blender's glTF importer (Bone Dir: Temperance, bone shapes off), with In Front on for that image so the bones show. Rain v3.3 is Blender Studio's file as downloaded (CC BY 4.0); by script we switched her limbs to FK, set Subdivision Surface level 2, posed her, set the view and added the hair strand and ribbon bones. Every hover, click and key press is a real input event, and every label, selection, name and report is Skintap's own. The animations were recorded one frame at a time (Blender draws in software on this machine), so they play smoother than it ran live; the arrow and the orange click rings are drawn in at the pointer's real positions.</p>
+    <p>Every image and the video are real Blender 5.2.3 windows on Linux with Skintap 1.0.6 installed from its zip. Michelle is three.js's Michelle.glb, imported with Blender's glTF importer (Bone Dir: Temperance, bone shapes off), with In Front on for that image so the bones show. Rain v3.3 is Blender Studio's file as downloaded (CC BY 4.0); by script we switched her limbs to FK, set Subdivision Surface level 2, posed her, set the view and added the hair strand and ribbon bones. Every hover, click and key press is a real input event, and every label, selection, name and report is Skintap's own. The animations were recorded one frame at a time (Blender draws in software on this machine), so they play smoother than it ran live; the arrow and the orange click rings are drawn in at the pointer's real positions.</p>
   </details>
 </main>
 <footer>

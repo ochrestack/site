@@ -37,7 +37,7 @@
   <div class="box">
     <strong>In four steps</strong>
     <ol>
-      <li><strong>Install:</strong> Blender 4.2 or newer, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the <strong>&#8964;</strong> menu at the top right, <strong>Install from Disk...</strong>, pick <code>skintap-1.0.5.zip</code> (<a href="#install">details</a>).</li>
+      <li><strong>Install:</strong> Blender 4.2 or newer, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the <strong>&#8964;</strong> menu at the top right, <strong>Install from Disk...</strong>, pick <code>skintap-1.0.6.zip</code> (<a href="#install">details</a>).</li>
       <li><strong>Pose Mode:</strong> click your character's armature and press <strong>Ctrl+Tab</strong>.</li>
       <li><strong>Start the picker:</strong> mouse over the 3D Viewport, press <strong>Shift+Alt+Q</strong>.</li>
       <li><strong>Click</strong> the body or the clothes: the bone that moves that spot is selected. Shift-click adds, <strong>Esc</strong> ends.</li>
@@ -47,7 +47,7 @@
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2 LTS and 5.2 LTS)</h2>
   <ol>
-    <li>After checkout, download <code>skintap-1.0.5.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
+    <li>After checkout, download <code>skintap-1.0.6.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Skintap needs no internet, so <strong>Continue Offline is fine</strong>.</li>
@@ -90,9 +90,9 @@
 
   <h2 id="duplicate">Duplicate Chain</h2>
   <ol>
-    <li>In <strong>Edit Mode</strong> (Tab), select one or more chains: click the root, then Shift-click the other bones, or press <strong>Shift+]</strong> once per bone to add the next child (Blender's <strong>Select &gt; Extend Child</strong>).</li>
-    <li>Click <strong>Duplicate Chain</strong> (or <strong>Armature &gt; Skintap &gt; Duplicate Chain</strong>).</li>
-    <li>The copy follows the mouse, as with Blender's Shift+D: move it and click to place it (X, Y or Z locks an axis; right-click leaves it on top of the original). The status bar lists the old and new names.</li>
+    <li>In <strong>Edit Mode</strong> (Tab), select one or more chains: click the root, then Shift-click the other bones, or press <strong>Shift+]</strong> once per bone to add the next child (Blender's <strong>Select &gt; Extend Child</strong>). The Chains box counts what is selected ("3 bones in 1 chain selected").</li>
+    <li>With the mouse over the bones, press <strong>Shift+Alt+D</strong> (next to Blender's Shift+D). Or click <strong>Duplicate Chain</strong> in the tab, or use <strong>Armature &gt; Skintap &gt; Duplicate Chain</strong>.</li>
+    <li>The copy follows the mouse, as with Blender's Shift+D: move it and click to place it (X, Y or Z locks an axis; right-click leaves it on top of the original). With Shift+Alt+D the move starts at the mouse; from the button it starts at the button, so the copy travels as far as the mouse does on its way back to the character. The status bar names the old and new chain: "Duplicated 3 bones: hair_01_01..03 -&gt; hair_02_01..03".</li>
   </ol>
   <p>The copy takes the next free chain number: <code>hair_01_01..03</code> becomes <code>hair_02_01..03</code> (or <code>hair_03</code> if <code>hair_02</code> exists). The chain's number is the last one its bones share, so one bone <code>Bone_12_0099.L</code> becomes <code>Bone_12_0100.L</code>, while a two-bone chain <code>Bone_12_0099.L</code>, <code>Bone_12_0100.L</code> becomes <code>Bone_13_0099.L</code>, <code>Bone_13_0100.L</code>. A chain without a number gets one: <code>spine_01..03</code> becomes <code>spine_02_01..03</code>. Parenting, roll, deform flag, bone collections, B-Bone settings, custom shapes and constraints are carried over; constraint targets inside the chain point to the copy.</p>
 
@@ -119,14 +119,15 @@
     <li>bones extruded from a numbered bone continue its count: <code>hair_02.001, hair_02.002</code> become <code>hair_03, hair_04</code>;</li>
     <li>an extruded chain without a number gets one: <code>Finger.L, Finger.L.001, Finger.L.002</code> become <code>Finger_01.L .. Finger_03.L</code>.</li>
   </ul>
-  <figure><img src="img/panel-edit-mode.png" alt="The Skintap tab in Edit Mode: Chains first with Duplicate Chain, Mirror Chain, Side Markers .L / .R and the hint 'Select the chain(s) first'; Rename with Base, Start, Padding, Side, Side Markers, Number Each Chain, Rename Chain and Fix .001 Names; Pick on Mesh last, greyed out, with the hint 'Pose Mode only (Ctrl+Tab)'" width="360" height="700" loading="lazy"><figcaption>The Skintap tab in Edit Mode: the chain tools come first.</figcaption></figure>
+  <figure><img src="img/panel-edit-mode.png" alt="The Skintap tab in Edit Mode: Chains first with Duplicate Chain, Mirror Chain, Side Markers .L / .R and the hint '3 bones in 1 chain selected'; Rename with Base, Start, Padding, Side, Side Markers, Number Each Chain, Rename Chain and Fix .001 Names; Pick on Mesh last, greyed out, with the hint 'Pose Mode only (Ctrl+Tab)'" width="360" height="700" loading="lazy"><figcaption>The Skintap tab in Edit Mode: the chain tools come first.</figcaption></figure>
   <p>Vertex groups that carry a renamed bone's name are renamed with it, so weights stay attached. The chain tools work only on the selected bones you can see. A tool that cannot finish refuses before it changes anything, and each run is one undo step.</p>
 
   <h2 id="where">Where to find the tools</h2>
   <ul>
     <li><strong>3D Viewport &gt; Sidebar (N) &gt; Skintap</strong>, in Pose and Edit Mode. A greyed-out tool needs another mode; hover over it to see which.</li>
     <li><strong>Pose &gt; Skintap</strong> (Pose Mode) and <strong>Armature &gt; Skintap</strong> (Edit Mode).</li>
-    <li><strong>Shift+Alt+Q</strong> starts Pick Bones on Mesh in Pose Mode. Change it in <strong>Preferences &gt; Add-ons &gt; Skintap</strong> or <strong>Preferences &gt; Keymap &gt; Pose &gt; Pick Bones on Mesh</strong>.</li>
+    <li><strong>Shift+Alt+Q</strong> starts Pick Bones on Mesh in Pose Mode; <strong>Shift+Alt+D</strong> runs Duplicate Chain in Edit Mode. Change them in <strong>Preferences &gt; Add-ons &gt; Skintap</strong> (both are listed) or under <strong>Preferences &gt; Keymap &gt; Pose</strong> and <strong>Keymap &gt; Armature</strong>.</li>
+    <li>Every tool reports in the status bar in one short line; when the full list of names is longer, it is in the Info editor just before that line.</li>
   </ul>
   <figure><img src="img/menu-pose-skintap.png" alt="The Pose menu with the Skintap submenu open: Pick Bones on Mesh (Shift Alt Q), Duplicate Chain, Mirror Chain, Rename Chain, Fix .001 Names" width="1205" height="800" loading="lazy"><figcaption>Pose &gt; Skintap, over Blender Studio's Rain.</figcaption></figure>
   <p style="font-size:14px;color:var(--muted)">Character in the images: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, posed by us. Rain is not included with Skintap.</p>
