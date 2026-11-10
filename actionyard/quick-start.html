@@ -38,9 +38,9 @@
 
   <h2 id="install">Install (Blender 4.4 or newer; tested on 4.4, 4.5 LTS and 5.2 LTS)</h2>
   <ol>
-    <li>Download <code>actionyard-1.4.0.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>Download <code>actionyard-1.5.0.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Add-ons</strong>.</li>
-    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right of the Add-ons page, choose <strong>Install from Disk...</strong> and pick the zip. The status bar says <code>Installed "actionyard"</code>, and Actionyard is enabled straight away.</li>
+    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right of the Add-ons page, choose <strong>Install from Disk...</strong> and pick the zip. The status bar says <code>Installed "actionyard"</code>, and Actionyard is enabled straight away. Its entry reads "Action Stash clean-up and action users, in the NLA sidebar (N)".</li>
     <li>Open an NLA editor or a Dope Sheet, press <strong>N</strong> for the sidebar and click the <strong>Actionyard</strong> tab. The sidebar starts narrow, so the list shows Name, Uses and Fake User, and Used by shows the clicked action's frames and users. Drag the sidebar's left edge to widen it for the Frames and Users columns.</li>
   </ol>
   <p>On the Add-ons page Blender asks nothing about internet access and shows no Repository Alert. <strong>Get Extensions</strong> has the same Install from Disk. If you use it, Blender may first ask about internet access (<strong>Continue Offline is fine</strong>; Actionyard needs no internet) and then show a red <strong>Repository Alert</strong> saying the extensions.blender.org data is unavailable. That is Blender's note about its online catalogue, not an error in Actionyard.</p>
@@ -48,32 +48,32 @@
 
   <h2 id="clean-up">A first clean-up</h2>
   <ol>
-    <li><strong>Set the list to Stashed</strong> to see which actions live in stashes. The line above the list counts the actions in the file, the stashed ones and the ones with no users.</li>
-    <li><strong>Click an action</strong> to see its <strong>Used by</strong> places: is it still the active action somewhere, on an NLA track, or in an Action constraint? Each row names the object, its role and the slot; shape keys and materials are named by their object, as in "Kit_Head (shape keys)". Click a row to select that object and make it active.
-      <figure><img src="img/used-by-panel.png" alt="The Actionyard tab at real size, searched for 'lips_roll': Rain_Lips_Roll_Lower selected with 16 uses and 16 users, and its Used by list: one Action Stash on RIG-rain, then Action constraints on bones P-GRP-Lip_Bot.M and GRP-Lip_Bot.M of Rain's face rig, each with constraint and slot" width="494" height="884" loading="lazy"><figcaption>Used by on one of Rain's face actions: one Action Stash and 15 Action constraints (Blender 4.5, real size).</figcaption></figure>
+    <li><strong>Set the list to Stashed</strong> (the Show menu under the list, next to the search field) to see which actions live in stashes. The line above the list counts the actions in the file, the stashed ones and the ones with no users.</li>
+    <li><strong>Click an action</strong> to see its <strong>Used by</strong> places: is it still the active action somewhere, on an NLA track, or in an Action constraint? Each place is a button naming the object, then a line with its role and a line with its slot when it has one; hover the button for the track, strip, bone and constraint. Shape keys and materials are named by their object, as in "Kit_Head (shape keys)". Click the button to select that object and make it active.
+      <figure><img src="img/used-by-panel.png" alt="The Actionyard tab at real size, searched for 'lips_roll': Rain_Lips_Roll_Lower selected, and its Used by list: one Action Stash on RIG-rain, then Action constraints on bones of Rain's face rig, each with its constraint, bone and slot" width="494" height="884" loading="lazy"><figcaption>Used by on one of Rain's face actions: one Action Stash and 15 Action constraints (Blender 4.5, real size).</figcaption></figure>
     </li>
     <li><strong>In Action Stashes, choose Active Object or Whole File and click Clear Stashes...</strong> Nothing changes until you confirm. The preview shows:
       <ul>
         <li>how many stash tracks go, from how many objects or other data-blocks, and how many are empty. An empty stash track is what Blender leaves behind when a stashed action is deleted the plain way; it is listed as "empty, from a deleted action" and cleared with the rest;</li>
-        <li>each action on them. An action that something else still uses says so and is left alone. An action you already gave a Fake User says "already kept by its Fake User; stays". Every other action has a tick: keep it in the file with Fake User, or untick it to let it go. The ticks start on "keep" every time the dialog opens, also after Ctrl+Z. <strong>Let All Go</strong> unticks them all at once; click it again to keep them all;</li>
-        <li>under the actions, <strong>Delete the actions let go from the file now</strong>: tick it to delete the takes you let go in the same step. It starts unticked;</li>
-        <li>each track, with its own tick. A stash track you have unmuted plays in your animation, so it is marked and starts unticked. An object in NLA tweak mode keeps its stash tracks: they are listed as "left alone (NLA tweak mode is on; exit it first)" and not counted. Exit tweak mode with Tab in the NLA editor.</li>
+        <li>each action on them, with what will happen to it on the right. An action that something else still uses reads "still used by N other places; no change". An action you already gave a Fake User reads "already has a Fake User; stays". Every other action has a tick: ticked, it "will be kept (Fake User)"; unticked, it is "left with no users". The ticks start ticked every time the dialog opens, also after Ctrl+Z. <strong>Keep None</strong> unticks them all at once; the button then reads <strong>Keep All</strong>;</li>
+        <li>under the actions, <strong>Also delete these N actions from the file</strong>: tick it, and the unticked actions "will be deleted" in the same step. It starts unticked;</li>
+        <li>the tracks, grouped under their object, action name first and the track's suffix after it, each with its own tick: "will be removed" or "stays". A stash track you have unmuted plays in your animation, so it reads "unmuted, plays; stays" and starts unticked. An object in NLA tweak mode keeps its stash tracks: they are listed as "left alone (NLA tweak mode is on; exit it first)" and not counted. Exit tweak mode with Tab in the NLA editor.</li>
         <li>With many stashes, both lists scroll (8 rows each), so <strong>Clear Stashes</strong> and <strong>Cancel</strong> stay on screen. Return confirms.</li>
       </ul>
-      <figure><img src="img/clear-stashes-preview.png" alt="The Clear Stashes dialog at real size: 'Removes 16 Action Stash tracks from 1 data-block (3 empty)', the action list scrolled to show the two face actions still used elsewhere and the takes with their keep-with-Fake-User ticks (Walk_blockout unticked, becomes unused), the Let All Go button and the delete tick, the track list with Rain's three empty stash tracks, and the Cancel and Clear Stashes buttons" width="552" height="648" loading="lazy"><figcaption>The preview on Rain's file, with one take let go.</figcaption></figure>
+      <figure><img src="img/clear-stashes-preview.png" alt="The Clear Stashes dialog at real size: 'Removes 16 Action Stash tracks from 1 data-block (3 empty)', the action list scrolled to show the two face actions still used elsewhere and the takes with their ticks, each reading 'will be kept (Fake User)' except Walk_blockout, unticked, 'left with no users'; the Keep None button and the delete option; the track list with Rain's three empty stash tracks; and the Cancel and Clear Stashes buttons" width="552" height="648" loading="lazy"><figcaption>The preview on Rain's file, with one take unticked.</figcaption></figure>
     </li>
-    <li><strong>Confirm.</strong> The status bar says what changed, and the details go to a text block named <strong>Actionyard Report</strong> (open it in the Text Editor). Only Action Stash tracks are removed; your other NLA tracks stay as they are.</li>
+    <li><strong>Confirm.</strong> The status bar says what changed, and the details go to a text block named <strong>Actionyard Report.txt</strong> (open it in the Text Editor; it opens on the newest section). Only Action Stash tracks are removed; your other NLA tracks stay as they are.</li>
     <li><strong>Changed your mind?</strong> One <strong>Ctrl+Z</strong> undoes the whole operation. If you opened the Actionyard Report in a Text Editor afterwards, Blender counts that as an undo step of its own: press Ctrl+Z once more, or pick the operation in <strong>Edit &gt; Undo History</strong>.</li>
-    <li>If you let actions go without the delete tick, they stay in the file with no users: run <strong>Remove Unused Actions...</strong>, or save and reopen the file (Blender drops data with no users when it saves).</li>
+    <li>If you untick actions without the delete option, they stay in the file with no users: run <strong>Remove Unused Actions...</strong>, or save and reopen the file (Blender drops data with no users when it saves).</li>
   </ol>
   <p style="font-size:14px;color:var(--muted)">Character in the images: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, with game actions and stashed takes we added. Rain is not included with Actionyard.</p>
 
   <h2 id="delete">Deleting actions for good</h2>
   <div class="box">
     <ul>
-      <li><strong>Old takes on stash tracks</strong>: in the Clear Stashes preview, click <strong>Let All Go</strong> and tick <strong>Delete the actions let go from the file now</strong>, then confirm. The stash tracks and the takes go in one step; takes with a Fake User you set stay. One Ctrl+Z brings it all back.</li>
-      <li><strong>Delete Action Everywhere...</strong>: tick actions with the check box at the left of each row (or just click one). The preview lists every place that will lose each action, in one list that scrolls, so <strong>Delete Everywhere</strong> and <strong>Cancel</strong> stay on screen however many you pick. If nothing you picked can be deleted (for example, it is on a locked NLA track, or its object is in NLA tweak mode), it says why and offers no Delete button. Otherwise Actionyard removes each action from all of those places and from the file, in one undo step. The active action is cleared, NLA and stash strips are removed (a stash track left empty is removed too), and Action constraints are kept but lose their action.</li>
-      <li><strong>Remove Unused Actions...</strong>: deletes actions with no users. It keeps Fake User actions unless you tick "Also Fake User Actions", and always keeps actions marked as assets (pose library poses). Its preview lists every action it will delete.</li>
+      <li><strong>Old takes on stash tracks</strong>: in the Clear Stashes preview, click <strong>Keep None</strong> and tick <strong>Also delete these N actions from the file</strong>, then confirm. The stash tracks and the takes go in one step; takes with a Fake User you set stay. One Ctrl+Z brings it all back.</li>
+      <li><strong>Delete Action Everywhere...</strong>: tick actions in the <strong>Pick</strong> column at the left of the list (or just click one). The preview lists every place that will lose each action, in one list that scrolls, so <strong>Delete Everywhere</strong> and <strong>Cancel</strong> stay on screen however many you pick. If nothing you picked can be deleted (for example, it is on a locked NLA track, or its object is in NLA tweak mode), it says why and offers no Delete button. Otherwise Actionyard removes each action from all of those places and from the file, in one undo step. The active action is cleared, NLA and stash strips are removed (a stash track left empty is removed too), and Action constraints are kept but lose their action.</li>
+      <li><strong>Remove Unused Actions...</strong>: deletes actions with no users. It keeps Fake User actions unless you tick "Also Fake User Actions", and always keeps actions marked as assets (pose library poses). Its preview lists every action it will delete; with nothing to delete, a popup says "Nothing to remove" and offers no Remove button.</li>
     </ul>
   </div>
   <p>Deleting a stashed action as a data-block instead (what the Outliner's Delete does) removes the action but leaves its [Action Stash] track behind, holding a strip with no action. Delete Action Everywhere removes the track too, and Clear Stashes clears such empty tracks if you already have them.</p>
@@ -92,7 +92,7 @@
     <li>Linked data, and everything a library override takes from its library file, is shown with a lock and never changed. Stash tracks you added on an override in your own file can be cleared.</li>
     <li>Delete Action Everywhere leaves an action alone when one of its strips is on a locked NLA track (not a stash track); unlock the track first.</li>
     <li>A data-block in NLA tweak mode is left alone, and both previews say so; exit tweak mode first. A strip inside a meta strip loses its action but stays in the meta strip.</li>
-    <li>The Actionyard Report text block grows with every change, including each click on a Used by row. Delete it whenever you like; it is made again on the next change.</li>
+    <li>The Actionyard Report.txt text block grows with every change (selecting from Used by is not logged). Delete it whenever you like; it is made again on the next change.</li>
     <li>No onion skins, no channel locking. English only.</li>
   </ul>
 
@@ -100,7 +100,7 @@
   <p>Actionyard makes no network calls and collects nothing. It changes only the open .blend file, and only when you run one of its operators.</p>
 
   <h2 id="support">Support</h2>
-  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version, your system, the lines from the Actionyard Report text block and, if you can, a small .blend file that shows the problem.</p>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version, your system, the lines from the Actionyard Report.txt text block and, if you can, a small .blend file that shows the problem.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>
