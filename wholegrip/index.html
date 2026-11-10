@@ -116,17 +116,17 @@
       <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
         <source src="video/wholegrip-demo-720p.mp4" type="video/mp4">
       </video>
-      <figcaption>52 seconds, captions only, no sound: real clicks and keys in Blender 5.2.3 with Wholegrip 1.2.0, captured frame by frame. Characters: Rain Rig and Ellie (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
+      <figcaption>53 seconds, captions only, no sound: real clicks and keys in Blender 5.2.3 with Wholegrip 1.1.2, captured frame by frame. Characters: Rain Rig and Ellie (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
     </figure>
     <figure class="narrow-only">
       <video controls preload="none" playsinline poster="video/poster-vertical.jpg" width="720" height="1280">
         <source src="video/wholegrip-demo-vertical.mp4" type="video/mp4">
       </video>
-      <figcaption>52 seconds, captions only, no sound, cut for a phone: real clicks and keys in Blender 5.2.3 with Wholegrip 1.2.0.</figcaption>
+      <figcaption>53 seconds, captions only, no sound, cut for a phone: real clicks and keys in Blender 5.2.3 with Wholegrip 1.1.2.</figcaption>
     </figure>
     <figure>
       <img src="video/wholegrip-demo-select.gif" alt="A loop from the demo: in Blender's Outliner, CH-rain and CH-ellie are selected and right-click, Treat as One is chosen; one click on Rain's shoe outlines all of Rain; Shift+click on Ellie's boot adds all of Ellie; a click on the floor clears; a box across both characters' knees selects both whole; Ctrl+click on Rain's scarf takes the scarf alone and a click on the same spot takes all of Rain again" width="1280" height="720" loading="lazy">
-      <figcaption>Treat as One and the clicks alone (14 s GIF, 3.3 MB).</figcaption>
+      <figcaption>Treat as One and the clicks alone (14 s GIF, 2.7 MB).</figcaption>
     </figure>
   </section>
 
@@ -142,11 +142,11 @@
   <div class="ba">
     <figure>
       <p class="label">Plain Blender: one click, one part</p>
-      <img src="img/classroom-plain.png" alt="A Blender viewport of a classroom full of school desks, after one click on a desktop in plain Blender: only the desktop is outlined in orange" width="720" height="406" loading="lazy">
+      <img src="img/classroom-plain.png" alt="Close on two school desks in a Blender viewport, after one click on a desktop in plain Blender: only the desktop is outlined in orange" width="720" height="406" loading="lazy">
     </figure>
     <figure>
       <p class="label">Wholegrip: one click, the whole desk</p>
-      <a href="img/classroom-wholegrip-window.jpg"><img src="img/classroom-wholegrip.png" alt="The same view after the same click with Wholegrip: the desktop, seat, back and metal frame of that desk, all 23 parts, are outlined in orange" width="720" height="406" loading="lazy"></a>
+      <a href="img/classroom-wholegrip-window.jpg"><img src="img/classroom-wholegrip.png" alt="The same close view after the same click with Wholegrip: the desktop, seat, back and metal frame of that desk, all 23 parts, are outlined in orange" width="720" height="406" loading="lazy"></a>
     </figure>
   </div>
   <p class="fine">Each of the 20 desks in Christophe Seux's Classroom (CC0) is a collection of 23 parts. The same click, the same view.</p>
@@ -298,8 +298,8 @@
       <tr><th>Blender (official Linux builds)</th><th>Automated tests</th><th>In a Blender window</th><th>Real mouse and key events</th></tr>
       <tr><td>4.2.23 LTS, 4.5.15 LTS, 5.0.1, 5.1.2 and 5.2.3 LTS</td><td>176 passed, 0 failed, on each</td><td>8 passed on each</td><td>32 of 32 on each</td></tr>
     </table>
-    <p>Wholegrip 1.2.0, 10 November 2026. The real-input checks send real mouse and key events to Blender: Ctrl+click over a plate with bolts under it, Shift+D and Alt+D, the Tweak tool and right-click select on a chair standing on a floor (press and drag moves the chair, never the floor), and, new in 1.2.0, a click on the spot just Ctrl+clicked (the chair, not the floor behind it). Every panel, button, menu entry, checkbox and shortcut is also driven with real input in a full Blender window, a screenshot per step: 56 of 56 steps on Blender 5.2.3 and on 4.2.23. On 2,000 objects in 200 marked collections, a click selection took 0.048 s and one value change on a 50-member stack 0.018 s (Blender 5.2.3, measured on 1.0.1). The 176 automated tests also pass with Blender 4.2.23's official Windows build run under Wine, a Windows compatibility layer on Linux; that is not a Windows PC, so Windows is still listed as not tested. Wholegrip is pure Python on Blender's own API with no system-specific code.</p>
-    <p>The pictures are real captures of the full Blender 5.2.3 window on a virtual display, driven by real mouse and keyboard input, with Wholegrip 1.2.0 installed from the zip you download. The labels above the before/after pictures are set on this page; the product shot's enlarged grid is the same capture's sidebar, enlarged and framed; the key labels in the classroom GIF were added to the recording. We posed the two characters and built their backdrop and outline node group; we turned each classroom desk into its own collection of the asset's 23 parts; we merged the vertices the model import splits on the Kenney models, stacked the rocket from its five parts, and built its Panel Inset node group and the product-shot backdrop and lights.</p>
+    <p>Wholegrip 1.1.2, 10 November 2026. The real-input checks send real mouse and key events to Blender: Ctrl+click over a plate with bolts under it, Shift+D and Alt+D, the Tweak tool and right-click select on a chair standing on a floor (press and drag moves the chair, never the floor), and, new in 1.1.2, a click on the spot just Ctrl+clicked (the chair, not the floor behind it). Every panel, button, menu entry, checkbox and shortcut is also driven with real input in a full Blender window, a screenshot per step: 56 of 56 steps on Blender 5.2.3 and on 4.2.23. On 2,000 objects in 200 marked collections, a click selection took 0.048 s and one value change on a 50-member stack 0.018 s (Blender 5.2.3, measured on 1.0.1). The 176 automated tests also pass with Blender 4.2.23's official Windows build run under Wine, a Windows compatibility layer on Linux; that is not a Windows PC, so Windows is still listed as not tested. Wholegrip is pure Python on Blender's own API with no system-specific code.</p>
+    <p>The pictures are real captures of the full Blender 5.2.3 window on a virtual display, driven by real mouse and keyboard input, with Wholegrip 1.1.2 installed from the zip you download. The labels above the before/after pictures are set on this page; the product shot's enlarged grid is the same capture's sidebar, enlarged and framed; the key labels in the classroom GIF were added to the recording. We posed the two characters and built their backdrop and outline node group; we turned each classroom desk into its own collection of the asset's 23 parts; we merged the vertices the model import splits on the Kenney models, stacked the rocket from its five parts, and built its Panel Inset node group and the product-shot backdrop and lights.</p>
   </details>
   <p style="font-size:14px;color:var(--muted)">Rain Rig (CC) Blender Foundation | studio.blender.org; Ellie (CC) Blender Foundation | studio.blender.org; <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Classroom by Christophe Seux (CC0). Furniture Kit and Space Kit by Kenney (CC0). Not included with Wholegrip.</p>
 
