@@ -42,8 +42,9 @@
     <li>In the IDE, open <strong>Settings &gt; Plugins</strong>, type <em>Histsight</em> in the search box and click <strong>Install</strong>. The listing is in review and not on JetBrains Marketplace yet; until it is live, the search finds nothing.</li>
     <li>The IDE's bundled Git plugin must be enabled (it is by default). Restart if the IDE asks.</li>
   </ol>
-  <p><strong>From a zip</strong> (for example one you were sent before the listing is live): <strong>Settings &gt; Plugins</strong>, the gear icon next to the search box (2026.x) or next to the Marketplace/Installed tabs (2025.x), <strong>Install Plugin from Disk</strong> (shown with "…" in 2025.x), choose <code>histsight-1.1.2.zip</code>, accept the third-party plugin notice, and restart.</p>
-  <p>After the restart, 2026.x may show the IDE's own balloon "Cannot update plugin. Unable to identify where Histsight: Merge &amp; Amend was installed from." It is harmless: the IDE does not update plugins installed from a zip, and says so. Install a newer zip the same way, or install from the Marketplace, which does not show it and keeps Histsight updated.</p>
+  <p><strong>From a zip</strong> (for example one you were sent before the listing is live): <strong>Settings &gt; Plugins</strong>, the gear icon next to the search box (2026.x) or next to the Marketplace/Installed tabs (2025.x), <strong>Install Plugin from Disk</strong> (shown with "…" in 2025.x), choose <code>histsight-1.1.3.zip</code>, accept the third-party plugin notice, and click <strong>OK</strong>. IntelliJ IDEA and PyCharm 2026.3 load it at once, with no restart; restart only if the IDE offers <strong>Restart IDE</strong>. PyCharm may not list Histsight while it installs: an active <strong>Apply</strong> button is the sign it worked, so click OK.</p>
+  <p><strong>The "Cannot update plugin" balloon (2026.x, zip installs only).</strong> After a zip install, 2026.x shows the IDE's own balloon "Cannot update plugin. Unable to identify where Histsight: Merge &amp; Amend was installed from." at every project open, restart or not, until you tell the IDE where updates come from. It is harmless, and one choice ends it: click <strong>Choose where to get updates from</strong> in the balloon (or find Histsight in <strong>Settings &gt; Plugins</strong>), pick <strong>JetBrains Marketplace</strong> and click <strong>OK</strong>. The balloon does not come back, and once the listing is live the IDE takes Histsight's updates from there. 2025.x does not show it.</p>
+  <p><strong>Right after a project opens</strong>, the IDE first imports and indexes it (progress in the status bar). Until then a branch's submenu may show only a few entries, such as Checkout and Update; the IDE's own Merge and Rebase entries and Histsight's appear together once it is done.</p>
   <p>Histsight works with the bundled Git integration of IntelliJ IDEA, PyCharm, WebStorm, PhpStorm, GoLand, Rider and the other JetBrains IDEs, version 2025.1 and later. Tested in IntelliJ IDEA 2025.1.7 and 2026.3 and PyCharm 2026.3 on Linux, with Git 2.43 and 2.51; Windows, macOS, the other IDEs and Remote Development have not been tested yet. The rebase preview needs Git 2.40 or later; everything else works with any Git the IDE supports.</p>
 
   <h2 id="merge">Merge modes (free)</h2>
@@ -74,7 +75,7 @@
   <p>The count assumes each conflict is resolved with the replayed commit's own version of the files, which is what <strong>Accept</strong> in the <em>Yours</em> column of the IDE's Conflicts dialog does during a rebase. A different resolution can change what happens to later commits. Long previews run in the background with progress and Cancel.</p>
 
   <h2 id="free">Free</h2>
-  <p>Everything above is free, with no time limit, no licence and no trial. Nothing appears at startup, and there are no ads in the IDE.</p>
+  <p>Everything above is free, with no time limit, no licence and no trial, and it stays free in later versions, including if a paid tier is added. Nothing appears at startup, and there are no ads in the IDE.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
@@ -82,14 +83,14 @@
     <li>The preview checks untracked files against the target branch only; with <code>rerere</code> on, a conflict Git resolves from a recorded resolution is still listed.</li>
     <li>The pushed-commit warning checks the last commit of each repository being amended. In the Commit tool window it reads Amend mode through an IDE API marked experimental; if a future IDE removes it, the warning there stops.</li>
     <li>Git executables on WSL are not supported for the rebase preview.</li>
-    <li>Not included: Jujutsu, a rebase that defers conflicts to the end, a commit graph, <code>--squash</code>, a global default merge mode (Git's <code>merge.ff</code> does that), an amend view, push. English only.</li>
+    <li>Not included: Jujutsu, a rebase that defers conflicts to the end, a commit graph, <code>--squash</code>, a global default merge mode (Git's <code>merge.ff</code> does that), an amend editor (the amend is the IDE's; Histsight asks before it), the names of the commits a rebase will stop on (the preview counts them), push. English only.</li>
   </ul>
 
   <h2 id="privacy">Privacy</h2>
   <p>Histsight runs only the local <code>git</code> executable on your project's own repositories. None of the commands it runs is a fetch, pull or push, and it sends nothing anywhere: no telemetry, no analytics. In a partial clone, Git itself downloads missing file contents when a merge or amend needs them, as it does for the IDE's own merge; the rebase preview turns that off and never downloads. See also the <a href="../privacy.html">privacy policy</a>.</p>
 
   <h2 id="source">Source code</h2>
-  <p>Histsight is GPL-3.0-or-later (<a href="license.html">licence text</a>). The complete source ships inside the plugin zip, as <code>histsight/source/histsight-1.1.2-source.zip</code>.</p>
+  <p>Histsight is GPL-3.0-or-later (<a href="license.html">licence text</a>). The complete source ships inside the plugin zip, as <code>histsight/source/histsight-1.1.3-source.zip</code>.</p>
 
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE version (Help &gt; About), the output of <code>git --version</code>, and what you saw. Bug reports and feature requests are welcome at the same address.</p>

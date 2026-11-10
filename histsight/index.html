@@ -105,6 +105,9 @@
   .preview-narrow { margin: 20px 0 0; }
   @media (min-width: 1000px) { .preview-narrow { display: none; } }
   @media (max-width: 999px) { .top-images .top-image.preview-wide { display: none; } }
+  figcaption.lead { font-size: 17px; font-weight: 600; color: var(--ink); margin: 0 0 8px; }
+  .top-images .preview-wide img, .preview-narrow img { max-width: 567px; }
+  @media (min-width: 1000px) { .top > .top-images { margin-top: 14px; } .top-images .top-image { margin-bottom: 10px; } }
   .compare th:first-child, .compare td:first-child { width: 30%; }
   .compare code { white-space: nowrap; }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
@@ -118,31 +121,31 @@
 </header>
 <section class="top">
   <h1>Histsight: Merge &amp; Amend</h1>
-  <p class="sub">Merging <code>--ff-only</code> or <code>--no-ff</code> shouldn't take the Git | Merge dialog: Histsight puts both in the Branches popup, and asks before you amend a pushed commit.</p>
+  <p class="sub">A merge commit nobody wanted, or a force-push after amending a commit your team already pulled: Histsight puts <code>--ff-only</code> and <code>--no-ff</code> in the Branches popup, and asks before you amend a pushed commit.</p>
   <div class="top-images">
     <figure class="top-image">
       <a href="img/branches-popup-merge-modes-window.png"><img class="hero" src="img/branches-popup-merge-modes.png" alt="IntelliJ IDEA 2026.3, Branches popup on the current branch master, with the submenu of origin/master open. Below the IDE's own entries, three Histsight entries: 'Merge into current, fast-forward only (fast-forward)', highlighted, 'Merge into current, always create a merge commit (fast-forward possible)' and 'Preview Rebase onto origin/master…'. A Go source file is open behind the popup" width="880" height="560"></a>
       <figcaption>Both merge modes, each saying what it will do.</figcaption>
     </figure>
     <figure class="top-image preview-wide">
-      <a href="img/free-rebase-count-window.png"><img src="img/free-rebase-count.png" alt="The Preview Rebase onto master window: 'Rebasing adjust-default-themes onto master replays 7 commits: 2 stop with conflicts.', 'Nothing has been changed.' and Close" width="595" height="143"></a>
-      <figcaption>Before you rebase: 7 commits, 2 will stop.</figcaption>
+      <figcaption class="lead">Stops you before you rewrite a commit your team already pulled.</figcaption>
+      <a href="img/pushed-commit-warning-window.png"><img src="img/amend-warning-dialog.png" alt="The dialog 'Amend a Pushed Commit?': the commit you are amending, aaf3c1b0 'Document asynchronous loading in README-VIM', is already in origin/vim-async; amending replaces it, anyone who already pulled it will have to reconcile, and pushing it needs a force push. 'Don't ask again for this repository', Amend anyway, and Cancel as the default button" width="567" height="208"></a>
     </figure>
   </div>
   <ul class="benefits">
     <li><strong>Merge <code>--ff-only</code> or <code>--no-ff</code> from the popup,</strong> with a hint before you click.</li>
-    <li><strong>A warning before you amend a pushed commit,</strong> naming the remote branch.</li>
+    <li><strong>A warning before you amend a pushed commit,</strong> naming the remote branch, so no surprise force-push.</li>
     <li><strong>Know how often a rebase will stop,</strong> before it starts.</li>
   </ul>
   <div class="buy">
-    <p class="price"><strong>Free</strong>, with no time limit: all of it. A paid tier ($9 once) comes later; it is not in this release.</p>
+    <p class="price"><strong>Free</strong>, with no time limit: all of it, and it stays free. A paid tier ($9 once) may come later for extras; nothing here moves behind it.</p>
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
     <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet.</p>
     <p class="fine">Tested: IntelliJ IDEA 2025.1.7 and 2026.3 and PyCharm 2026.3 on Linux; Windows and macOS untested. Source included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
   </div>
   <figure class="preview-narrow">
-    <a href="img/free-rebase-count-window.png"><img class="hero" src="img/free-rebase-count.png" alt="The Preview Rebase onto master window: 'Rebasing adjust-default-themes onto master replays 7 commits: 2 stop with conflicts.', 'Nothing has been changed.' and Close" width="595" height="143" loading="lazy"></a>
-    <figcaption>Before you rebase: 7 commits, 2 will stop.</figcaption>
+    <figcaption class="lead">Stops you before you rewrite a commit your team already pulled.</figcaption>
+    <a href="img/pushed-commit-warning-window.png"><img class="hero" src="img/amend-warning-dialog.png" alt="The dialog 'Amend a Pushed Commit?' naming origin/vim-async, with Amend anyway and Cancel as the default button" width="567" height="208" loading="lazy"></a>
   </figure>
 </section>
 <main>
@@ -151,7 +154,7 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/histsight-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>44 s, captions only, no sound. IntelliJ IDEA 2026.3, Histsight 1.1.2. <a href="video/histsight-demo-1080p.mp4">1080p, 60 fps</a>.</figcaption>
+    <figcaption>44 s, captions only, no audio track. IntelliJ IDEA 2026.3, recorded with Histsight 1.1.2 (the same screens in 1.1.3). <a href="video/histsight-demo-1080p.mp4">1080p, 60 fps</a>.</figcaption>
   </figure>
   <figure>
     <img src="video/histsight-rebase-count.gif" alt="Animated: in the Branches popup, Preview Rebase onto master; the window says Rebasing adjust-default-themes onto master replays 7 commits: 2 stop with conflicts, and Nothing has been changed" width="1280" height="720" loading="lazy">
@@ -180,6 +183,11 @@
   </figure>
 
   <figure class="real-size">
+    <a href="img/free-rebase-count-window.png"><img src="img/free-rebase-count.png" alt="The Preview Rebase onto master window: 'Rebasing adjust-default-themes onto master replays 7 commits: 2 stop with conflicts.', 'Nothing has been changed.' and Close" width="595" height="143" loading="lazy"></a>
+    <figcaption>Before you rebase: 7 commits, 2 will stop. The count only; it does not name the commits.</figcaption>
+  </figure>
+
+  <figure class="real-size">
     <a href="img/diverged-refused-window.png"><img src="img/diverged-refused.png" alt="The Git Log with a notification: 'Not merged: the branches have diverged. master and winget-msi have diverged. Nothing was changed.' with the links Rebase instead and Merge normally" width="812" height="262" loading="lazy"></a>
     <figcaption>Diverged? Nothing changes; you choose.</figcaption>
   </figure>
@@ -195,7 +203,8 @@
   <h2 id="limits">Known limits</h2>
   <ul>
     <li>Rebase preview: Git 2.40+; plain rebase only, not <code>--rebase-merges</code>, <code>--onto</code> or autosquash; no WSL Git.</li>
-    <li>No Jujutsu, <code>--squash</code>, amending or push.</li>
+    <li>No Jujutsu, <code>--squash</code>, push, or amend editor: the amend is the IDE's, Histsight asks before it.</li>
+    <li>The rebase preview gives a count, not the names of the commits that will stop.</li>
     <li>JetBrains IDEs 2025.1+; run in IntelliJ IDEA and PyCharm only; other IDEs and Remote Development untested.</li>
   </ul>
 
