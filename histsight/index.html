@@ -118,7 +118,7 @@
 </header>
 <section class="top">
   <h1>Histsight: Merge &amp; Amend</h1>
-  <p class="sub">The Branches popup's merge takes no options and gives no hint of what it will do, and the IDE lets you amend a pushed commit without a warning.</p>
+  <p class="sub">Merging <code>--ff-only</code> or <code>--no-ff</code> shouldn't take the Git | Merge dialog: Histsight puts both in the Branches popup, and asks before you amend a pushed commit.</p>
   <div class="top-images">
     <figure class="top-image">
       <a href="img/branches-popup-merge-modes-window.png"><img class="hero" src="img/branches-popup-merge-modes.png" alt="IntelliJ IDEA 2026.3, Branches popup on the current branch master, with the submenu of origin/master open. Below the IDE's own entries, three Histsight entries: 'Merge into current, fast-forward only (fast-forward)', highlighted, 'Merge into current, always create a merge commit (fast-forward possible)' and 'Preview Rebase onto origin/master…'. A Go source file is open behind the popup" width="880" height="560"></a>
@@ -126,7 +126,7 @@
     </figure>
     <figure class="top-image preview-wide">
       <a href="img/rebase-preview-window.png"><img src="img/rebase-preview.png" alt="The Preview Rebase onto master dialog: 'Rebasing adjust-default-themes onto master replays 7 commits: 2 stop with conflicts.' Commit 1 conflicts in src/tui/tui.go; commit 5 conflicts in CHANGELOG.md, man/man1/fzf.1 and src/options.go; the other five apply cleanly. Buttons Rebase Now and Close" width="1026" height="503"></a>
-      <figcaption>$9 once: 7 commits, 2 will stop, with their files, before anything changes.</figcaption>
+      <figcaption>Free: 7 commits, 2 will stop. $9 once: which, and their files.</figcaption>
     </figure>
   </div>
   <ul class="benefits">
@@ -135,14 +135,14 @@
     <li><strong>See where a rebase will stop before it starts,</strong> commit by commit, with the files.</li>
   </ul>
   <div class="buy">
-    <p class="price"><strong>Free:</strong> merge modes and the warning. <strong>$9 once:</strong> rebase preview and amend tools, personal or commercial. Nothing renews; 30-day trial.</p>
+    <p class="price"><strong>Free:</strong> merge modes, the warning, a rebase's stop count. <strong>$9 once:</strong> the full preview and amend tools, personal or commercial. Nothing renews; 30-day trial.</p>
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
     <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet.</p>
-    <p class="fine">Tested: IntelliJ IDEA 2025.1.7 and 2026.3 on Linux; Windows and macOS untested. Source included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
+    <p class="fine">Tested: IntelliJ IDEA 2025.1.7 and 2026.3 and PyCharm 2026.3 on Linux; Windows and macOS untested. Source included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
   </div>
   <figure class="preview-narrow">
     <a href="img/rebase-preview-window.png"><img class="hero" src="img/rebase-preview.png" alt="The Preview Rebase onto master dialog: 'Rebasing adjust-default-themes onto master replays 7 commits: 2 stop with conflicts.' Commit 1 conflicts in src/tui/tui.go; commit 5 conflicts in CHANGELOG.md, man/man1/fzf.1 and src/options.go; the other five apply cleanly. Buttons Rebase Now and Close" width="1026" height="503" loading="lazy"></a>
-    <figcaption>$9 once: 7 commits, 2 will stop, with their files, before anything changes.</figcaption>
+    <figcaption>Free: 7 commits, 2 will stop. $9 once: which, and their files.</figcaption>
   </figure>
 </section>
 <main>
@@ -165,7 +165,7 @@
     <thead><tr><th></th><th>Choose <code>--ff-only</code> or <code>--no-ff</code></th><th>Hint before you click</th><th>Where</th></tr></thead>
     <tbody>
       <tr><td>The IDE's popup merge ("Merge 'x' into 'y'")</td><td>No: Git's default or your <code>merge.ff</code></td><td>No</td><td>Branches popup and Branches pane, one click</td></tr>
-      <tr><td>The IDE's Git | Merge dialog</td><td>Yes, under Modify options</td><td>No</td><td>Git menu, a dialog: branch, Modify options, flag, Merge</td></tr>
+      <tr><td>The IDE's Git | Merge dialog</td><td>Yes, under Modify options</td><td>No</td><td>Git menu, then a dialog</td></tr>
       <tr><td><strong>Histsight</strong> (free)</td><td>Yes: one entry for each</td><td>Yes: <em>fast-forward</em>, <em>already up to date</em> or <em>diverged</em></td><td>Branches popup and Branches pane, one click</td></tr>
     </tbody>
   </table>
@@ -194,8 +194,8 @@
   </figure>
 
   <figure class="real-size">
-    <a href="img/no-licence-one-line-window.png"><img src="img/no-licence-one-line.png" alt="Without a licence, the rebase preview shows one line: 'The rebase preview needs a Histsight licence: $9 once, the same for personal and commercial use, with a 30-day free trial.' and the link Get a licence or trial" width="820" height="149" loading="lazy"></a>
-    <figcaption>No licence: one line, only on paid features.</figcaption>
+    <a href="img/no-licence-free-count-window.png"><img src="img/no-licence-free-count.png" alt="Without a licence, the Preview Rebase onto master window: 'Rebasing adjust-default-themes onto master replays 7 commits: 2 stop with conflicts.', then 'The list of commits and files needs a Histsight licence: $9 once, the same for personal and commercial use, with a 30-day free trial.', the link Get a licence or trial, and Close" width="877" height="183" loading="lazy"></a>
+    <figcaption>No licence: the count is free; the list is $9.</figcaption>
   </figure>
 
   <h2 id="proof">Checked against real rebases</h2>
@@ -205,7 +205,7 @@
   <ul>
     <li>Rebase preview: Git 2.40+; plain rebase only, not <code>--rebase-merges</code>, <code>--onto</code> or autosquash.</li>
     <li>No Jujutsu, <code>--squash</code>, older commits or push; no WSL Git for the preview and amend view.</li>
-    <li>JetBrains IDEs 2025.1+; only IntelliJ IDEA has been run. Remote Development untested.</li>
+    <li>JetBrains IDEs 2025.1+; IntelliJ IDEA and PyCharm have been run, the other IDEs and Remote Development not.</li>
   </ul>
 
   <h2 id="details">Details</h2>
