@@ -121,7 +121,7 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/xsdtrail-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 44 s, captions only, no sound, recorded at 60 fps in IntelliJ IDEA Community 2025.1.7 on the same project as the images, with Xsdtrail 1.0.5 (the WSDL and free-tier shots with 1.0.6). <a href="video/xsdtrail-multi-file.gif">The multi-file moment as a looping GIF</a> (0.4 MB).</figcaption>
+    <figcaption>The demo, 44 s, captions only, no sound, recorded at 60 fps in IntelliJ IDEA Community 2025.1.7 on the same project as the images, with Xsdtrail 1.0.5 (the free-tier shot with 1.0.6, the WSDL shot with 1.0.7). <a href="video/xsdtrail-multi-file.gif">The multi-file moment as a looping GIF</a> (0.4 MB).</figcaption>
   </figure>
 
   <h2 id="soap">For SOAP contracts</h2>
@@ -142,9 +142,9 @@
   <figure>
     <a href="img/wsdl-free.png"><picture>
       <source media="(max-width: 600px)" srcset="img/wsdl-free-operations-narrow.png" width="240" height="102">
-      <img class="ui" src="img/wsdl-free-operations.png" alt="The same WSDL without a licence, at real size: binding checkVatBinding (SOAP 1.1 · document) and the operations checkVat and checkVatApprox, each grey with a lock" width="452" height="102" loading="lazy">
+      <img class="ui" src="img/wsdl-free-operations.png" alt="The same WSDL without a licence, at real size: the operations checkVat and checkVatApprox, each grey with a lock (on wider screens with binding checkVatBinding, SOAP 1.1 · document, before them)" width="452" height="102" loading="lazy">
     </picture></a>
-    <figcaption>Free, on the same WSDL: the binding and the operation names (tap for the service and port).</figcaption>
+    <figcaption>Free, on the same WSDL: the operation names, each with a lock on its messages (tap for the service, port and binding).</figcaption>
   </figure>
 
   <div class="box">
@@ -165,7 +165,10 @@
 
   <div class="pair">
     <figure style="width:360px">
-      <a href="img/recursion-tooltip.png"><img class="ui" src="img/recursion-tooltip-detail.png" alt="cac:Contact, cac:Person and cac:AgentParty, each labelled 'in UBL-CommonAggregateComponents-2.1.xsd'. cac:AgentParty, of type PartyType, carries the ↻ mark, and its tooltip reads 'Recursive: this type already appears above, so it is not unfolded again', followed by the UBL definition: 'A party who acts as an agent for this party', cardinality 0..1, example Customs Broker" width="360" height="445" loading="lazy"></a>
+      <a href="img/recursion-tooltip.png"><picture>
+        <source media="(max-width: 600px)" srcset="img/recursion-tooltip-narrow.png" width="289" height="264">
+        <img class="ui" src="img/recursion-tooltip-detail.png" alt="The tooltip of cac:AgentParty, of type PartyType, in UBL-CommonAggregateComponents-2.1.xsd, marked ↻: 'Recursive: this type already appears above, so it is not unfolded again', followed by the UBL definition: 'A party who acts as an agent for this party', cardinality 0..1, example Customs Broker (on wider screens with the boxes cac:Contact, cac:Person and cac:AgentParty beside it)" width="360" height="445" loading="lazy">
+      </picture></a>
       <figcaption>Hover a box for its <code>xs:documentation</code>. <code>cac:AgentParty</code> is a PartyType inside a PartyType, so it is marked ↻ instead of unfolding forever.</figcaption>
     </figure>
     <figure style="width:304px">
@@ -195,12 +198,12 @@
     <tr><td>Generated multi-file set</td><td>26</td><td>5,001</td><td>228–305 ms</td></tr>
     <tr><td>A 5.6 MB WSDL (one file, over the IDE's code-insight limit)</td><td>1</td><td>1,546</td><td>397–521 ms</td></tr>
   </table>
-  <p>In a running IDE the first open is slower: 0.6 to 0.9 s for UBL Invoice in these captures, 1 to 1.6 s while the IDE still indexes after startup; the status line shows yours. Also checked without an unresolved reference: all 65 UBL 2.1 documents and a 7-file WSDL with 491 operations.</p>
+  <p>In a running IDE the first open is slower: 0.6 to 1.0 s for UBL Invoice in these captures, 1 to 1.6 s while the IDE still indexes after startup; the status line shows yours. Also checked without an unresolved reference: all 65 UBL 2.1 documents and a 7-file WSDL with 491 operations.</p>
   <details>
     <summary>How the images, the video and the numbers were made</summary>
     <p>Benchmark: a headless test in IntelliJ IDEA 2025.1.7 on 4 CPUs, five cold runs per set; the table gives the range.</p>
-    <p>Images: IntelliJ IDEA Community 2025.1.7 started from the plugin's build (Xsdtrail 1.0.6) under a virtual display at 1280×800, light theme, diagram at 100 % zoom except the top image and the free-tier boxes (90 %), each image cut at real size from the full window it links to. The listing does not exist yet, so the images with licensed features were taken with a stand-in for JetBrains Marketplace licensing in that sandbox IDE; the free-tier images were taken with the same stand-in set to "no licence". The status lines read 673 ms (licensed) and 800 ms (free tier) for the first open of UBL-Invoice-2.1.xsd, about 45 seconds after the IDE started.</p>
-    <p>Video: recorded with the Xsdtrail 1.0.5 zip installed in IntelliJ IDEA Community 2025.1.7 at 1920×1080, interface at 60 fps with a scripted pointer; the WSDL and free-tier shots were recorded again with the 1.0.6 zip in the same setup. The licensed shots use the same licensing stand-in. Its first-open status lines read 607 ms (licensed) and 768 ms (free tier) on our test machine; the split-editor shot shows a 13 ms rebuild of a file that was already open.</p>
+    <p>Images: IntelliJ IDEA Community 2025.1.7 started from the plugin's build (Xsdtrail 1.0.7) under a virtual display at 1280×800, light theme, diagram at 100 % zoom except the top image and the free-tier boxes (90 %), each image cut at real size from the full window it links to. The listing does not exist yet, so the images with licensed features were taken with a stand-in for JetBrains Marketplace licensing in that sandbox IDE; the free-tier images were taken with the same stand-in set to "no licence". The status lines read 980 ms (licensed) and 1,029 ms (free tier) for the first open of UBL-Invoice-2.1.xsd after the IDE started.</p>
+    <p>Video: recorded with the Xsdtrail 1.0.5 zip installed in IntelliJ IDEA Community 2025.1.7 at 1920×1080, interface at 60 fps with a scripted pointer; the free-tier shot was recorded again with the 1.0.6 zip and the WSDL shot with the 1.0.7 zip, in the same setup. The licensed shots use the same licensing stand-in. Its first-open status lines read 607 ms (licensed) and 768 ms (free tier) on our test machine; the split-editor shot shows a 13 ms rebuild of a file that was already open.</p>
   </details>
 
   <h2 id="faq">Questions</h2>
