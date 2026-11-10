@@ -40,7 +40,7 @@
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2.23 LTS and 5.2.3 LTS, on Linux)</h2>
   <ol>
-    <li>Download <code>exportmint-1.1.3.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>Download <code>exportmint-1.1.4.zip</code>. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access. Exportmint needs none, so <strong>Continue Offline is fine</strong>.</li>
@@ -53,7 +53,7 @@
   <p><strong>Using the command line on the same computer?</strong> After installing from Preferences, quit Blender once, or choose <strong>Save Preferences</strong> in the menu at the bottom left of the Preferences window, before using the command line. Until then the command line reports <code>Unrecognized command: "exportmint"</code>, because Blender records installed extensions only when it saves its preferences.</p>
   <p><strong>On a build machine, or any machine without a screen:</strong> install the same zip from a terminal with Blender's own extension command, as the user that runs your builds. It prints <code>Installed "exportmint"</code>; running it again with a newer zip upgrades it.</p>
   <div class="box">
-    <p><code>blender --command extension install-file -r user_default -e exportmint-1.1.3.zip</code></p>
+    <p><code>blender --command extension install-file -r user_default -e exportmint-1.1.4.zip</code></p>
   </div>
   <p>To remove Exportmint, remove it in <strong>Preferences &gt; Get Extensions</strong>. Your Collection Exporters are Blender's own and stay in your files: <strong>File &gt; Export All Collections</strong> keeps working.</p>
 
@@ -62,35 +62,35 @@
   <ol>
     <li>Save your .blend file first: new exporters write next to it.</li>
     <li>Select one or more collections in the Outliner. With none selected, the active collection is used.</li>
-    <li>In the Exportmint tab, open <strong>Setup</strong> (in a file with no exporters yet, the button is right under the empty list), click <strong>Add Exporters</strong> and choose <strong>glTF 2.0</strong>, <strong>FBX</strong> or <strong>USD</strong>. Each collection gets a Collection Exporter writing <code>//export/&lt;collection name&gt;.glb</code> (<code>.fbx</code>, <code>.usd</code>). A collection that already has an exporter of that format is skipped.</li>
+    <li>In the Exportmint tab, open <strong>Setup</strong> (in a file with no exporters yet, the button is at the top of the tab), click <strong>Add Exporters</strong> and choose <strong>glTF 2.0</strong>, <strong>FBX</strong> or <strong>USD</strong>. Each collection gets a Collection Exporter writing <code>//export/&lt;collection name&gt;.glb</code> (<code>.fbx</code>, <code>.usd</code>); the status bar names each path it set. A collection that already has an exporter of that format is skipped.</li>
     <li>Change the format's settings in Blender's own panel, <strong>Properties &gt; Collection &gt; Exporters</strong>. Exportmint uses exactly those settings.</li>
   </ol>
 
   <h2 id="list">2. Read the list</h2>
-  <p>From top to bottom, the tab holds the run buttons, the <strong>Last run</strong> box ("No run yet" before the first run), and the list of every Collection Exporter in the file, in every scene, in three groups: <strong>Needs export</strong>, <strong>Blocked</strong> and <strong>Up to date</strong>. Click "Up to date (n)" to fold those rows away. When the file has more than one scene, each group names the scene once, as a heading. <strong>Setup</strong>, folded at the bottom, holds Add Exporters and the Manifest Folder.</p>
-  <figure><img src="img/panel-two-changed.png" alt="The Exportmint tab at Blender's default sidebar width after two edits: Export Changed (2), the Last run box, 'Needs export (2)' with BoomBox, 'BoomBox: transform changed', and CH-rain, 'RIG-rain: transform changed', then 'Up to date (10)'" width="511" height="760" loading="lazy"><figcaption>The tab after two edits (Blender 5.2, default sidebar width): the two stale rows on top, each with its reason.</figcaption></figure>
+  <p>From top to bottom, the tab holds the run buttons, the <strong>Last run</strong> box ("No run yet" before the first run), <strong>Setup</strong> (folded; Add Exporters and the Manifest Folder), and the list of every Collection Exporter in the file, in every scene, in three groups with Blender's own fold-out headers: <strong>Needs export</strong>, <strong>Blocked</strong> and <strong>Up to date</strong>. Click a header to fold its rows away. "Last export" on the right of a header names the column of times: "14:05" today, "9 Nov 14:05" on an earlier day. When the file has more than one scene, each group names the scene once, as a heading.</p>
+  <figure><img src="img/panel-two-changed.png" alt="The Exportmint tab at Blender's default sidebar width after two edits: Export Changed (2) in blue, the Last run box, the folded Setup, then 'Needs export (2)' with 'Last export' on the right: BoomBox, 'BoomBox: transform changed', and CH-rain, 'RIG-rain: transform changed', each with its export time, format and path" width="462" height="760" loading="lazy"><figcaption>The tab after two edits (Blender 5.2, default sidebar width): the two stale rows on top, each with its reason.</figcaption></figure>
   <p>Each row shows the collection with its status icon and the time of its last export, then (if it needs attention) the reason, then the format and file path. A long path breaks only after a folder, so the file name stays whole.</p>
   <ul>
     <li><strong>Up to date</strong> (check mark): nothing Exportmint checks has changed since the last export, and the file on disk is the one it wrote.</li>
     <li><strong>Changed</strong> (circular arrows): the row names the first change found, for example "BoomBox: transform changed". When you move a parent, such as a rig, the parent is named.</li>
     <li><strong>Never exported</strong> (clock): Exportmint has no record of exporting it.</li>
-    <li><strong>Failed last run</strong> (warning): the row shows the exporter's own error message.</li>
+    <li><strong>Failed last run</strong> (warning): the row says what went wrong in words, for example "cannot write Cart.glb: a folder has that name"; the exporter's own message is kept in the manifest.</li>
     <li><strong>Blocked</strong> (cross): it cannot run, and the row says why: the collection is empty, two exporters would write the same file, the path has no file name, or the .blend is not saved yet and the path is relative.</li>
   </ul>
   <p>The list updates by itself a moment after an edit while the tab is on screen. <strong>Check Now</strong> reads every object again. The Outliner icon on a row (<strong>Select in Outliner</strong>) makes that collection active and selects its objects; its tooltip says when it will switch the window to another scene.</p>
 
   <h2 id="export">3. Export Changed</h2>
   <ol>
-    <li>Click <strong>Export Changed (n)</strong> (greyed out when nothing needs exporting). It runs every exporter that is changed, never exported or failed last time, through Blender's own exporter, and leaves every other file untouched on disk. It always reads every object first, so it never relies on the list's last refresh.</li>
-    <li>The <strong>Last run</strong> box and Blender's status bar give the counts; a failed row shows the exporter's own message in red.</li>
+    <li>Click <strong>Export Changed (n)</strong> (blue when the list shows something to export). It runs every exporter that is changed, never exported or failed last time, through Blender's own exporter, and leaves every other file untouched on disk. It always reads every object first, so it can be clicked at (0) too: an edit the list has not seen yet (one made by a script in another scene, say) is still exported, and otherwise it reports "nothing changed".</li>
+    <li>The <strong>Last run</strong> box and Blender's status bar give the counts; a failed row says in red what went wrong.</li>
     <li>Save your .blend as usual.</li>
   </ol>
-  <figure><img src="img/panel-after-export.png" alt="The Exportmint tab after Export Changed: the Last run box reads 'Last run: Export Changed' with the time and '2 written, 10 unchanged' above Open Manifest; 'Up to date (12)'" width="511" height="760" loading="lazy"><figcaption>After Export Changed: 2 written, 10 unchanged.</figcaption></figure>
+  <figure><img src="img/panel-after-export.png" alt="The Exportmint tab after Export Changed: the Last run box reads 'Last run: Export Changed' with the time and '2 written, 10 unchanged' above Open Manifest; under 'Up to date (12)', BoomBox and CH-rain show the new export time, the other rows the earlier one" width="462" height="1010" loading="lazy"><figcaption>After Export Changed: 2 written, 10 unchanged.</figcaption></figure>
   <p><strong>Export All</strong> runs every exporter that is not blocked, changed or not. Missing output folders are created either way, and a failing exporter does not stop the others.</p>
 
   <h2 id="manifest">4. Read the manifest</h2>
   <p>Every run writes <code>exportmint-manifest.json</code> (for scripts) and <code>exportmint-manifest.txt</code> (plain words) next to the .blend file, and keeps a copy of each run in <code>exportmint-manifest-history/&lt;blend name&gt;/</code>. <strong>Open Manifest</strong> opens this .blend file's latest one in your text viewer. To write manifests somewhere else, set <strong>Manifest Folder</strong> under <strong>Setup</strong> (<code>//</code> paths are relative to the .blend; empty means next to it).</p>
-  <p>For each exporter the manifest gives collection, scene, format, output path, result, reason, file size, SHA-256 and export time; for the run, the .blend path, the Blender version, and the start and end time.</p>
+  <p>For each exporter the manifest gives collection, scene, format, output path, result, reason, file size, SHA-256 and export time (and, for a failure, the exporter's own message as "Error detail"); for the run, the .blend path, the Blender version, and the start and end time.</p>
 
   <h2 id="git">5. Using with git</h2>
   <p>Besides your exported files, Exportmint writes files of its own next to the .blend: the two manifests and a new history file on every run, and its record file after every run that wrote or failed something. To keep <code>git status</code> to real asset changes, add these lines to your <code>.gitignore</code>:</p>
@@ -109,7 +109,7 @@ exportmint-manifest-history/
   </ul>
 
   <h2 id="command-line">6. Command line and build scripts</h2>
-  <p>Exportmint must be installed and enabled in the Blender that runs the command (do not add <code>--factory-startup</code>). After installing from Preferences, quit Blender once, or click <strong>Save Preferences</strong>, before using the command line; until then the command line reports <code>Unrecognized command: "exportmint"</code>. On a build machine, install it with <code>blender --command extension install-file -r user_default -e exportmint-1.1.3.zip</code> (see <a href="#install">Install</a>). For what to commit, see <a href="#git">Using with git</a>.</p>
+  <p>Exportmint must be installed and enabled in the Blender that runs the command (do not add <code>--factory-startup</code>). After installing from Preferences, quit Blender once, or click <strong>Save Preferences</strong>, before using the command line; until then the command line reports <code>Unrecognized command: "exportmint"</code>. On a build machine, install it with <code>blender --command extension install-file -r user_default -e exportmint-1.1.4.zip</code> (see <a href="#install">Install</a>). For what to commit, see <a href="#git">Using with git</a>.</p>
   <div class="box">
     <p><code>blender --background --command exportmint [--all] [--strict] [--manifest DIR] FILE.blend [FILE.blend ...]</code></p>
   </div>
