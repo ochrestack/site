@@ -85,7 +85,7 @@
   <div class="buy">
     <p class="price"><strong>$12 once: every update, GPL source included.</strong></p>
     <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_UwYRmrQYnCNWU2jmizGjvJXZdxBcJFw1rF9LD4S5ENV">Buy for $12</a><a class="button" id="buy-studio" href="https://buy.polar.sh/polar_cl_YAvkAlMKabhxEzcfoxqjD6UykptJyQy8yEbWU1ByNvZ">Studio, up to 10 artists: $48</a></p>
-    <p class="fine">Blender 4.2 LTS and later; tested on 4.2.23 LTS and 5.2.3 LTS, on Linux (Windows: the test suite passes with the Windows build of 4.2.23 under Wine, not yet on a Windows PC; macOS not yet tested). Polar checkout · <a href="../terms.html">14-day refund</a> · no license check, no account · build machines need no seat (<a href="#teams">details</a>)</p>
+    <p class="fine">Blender 4.2 LTS and later; tested on 4.2.23 and 5.2.3 LTS on Linux (Windows: tests pass under Wine; not yet tested on a Windows PC or a Mac). Polar checkout · <a href="../terms.html">14-day refund</a> · no license check, no account · build machines need no seat (<a href="#teams">details</a>)</p>
   </div>
 
   <a class="hero-link" href="img/session-two-changed.png"><picture>
@@ -105,8 +105,8 @@
     <li><strong>Shows which exports are stale, and why.</strong> The Exportmint tab in the 3D Viewport sidebar lists every Collection Exporter in every scene of the file. What needs exporting comes first, each row with its reason ("BoomBox: transform changed", "export settings changed", or what failed, in words: "cannot write Cart.glb: a folder has that name"); blocked rows say why they cannot run; up-to-date rows fold away.</li>
     <li><strong>Writes only those.</strong> <strong>Export Changed</strong> runs Blender's own exporter for the changed, never-exported and failed collections, in every scene, and leaves every other file with its bytes and its date. That matters most with FBX: Blender writes new bytes on every FBX export, so after Export All Collections, untouched FBX files show as modified in git (below) and re-import in your engine.</li>
     <li><strong>Keeps a manifest of every run</strong>: what was written, what was left alone, what failed and why, with each file's size and SHA-256, in JSON for scripts and plain text for people. A history per .blend keeps every earlier run.</li>
-    <li><strong>Runs from the command line</strong> across many .blend files, with an exit code a build script can check, and never modifies the .blend files.</li>
-    <li><strong>Changes nothing you'd lose.</strong> The exporters and their settings stay Blender's own; remove Exportmint and File &gt; Export All Collections works as before.</li>
+    <li><strong>Runs from the command line</strong> across many .blend files, with an exit code for build scripts, never modifying the .blend files.</li>
+    <li><strong>Changes nothing you'd lose:</strong> remove Exportmint and Blender's own exporters and File &gt; Export All Collections work as before.</li>
   </ul>
 
   <p>Nothing edited, two ways to export, in a git repository of 12 props (real output, as text):</p>
@@ -201,7 +201,7 @@ exit code: 0</pre>
   <ul>
     <li>Buying: checkout by Polar, which delivers the zip with the full source. If it doesn't work as described on your file and we can't fix it, email us within 14 days for a full refund (<a href="../terms.html">terms</a>).</li>
     <li>Every future version of Exportmint is included: no subscription, no renewal, no paid version 2.</li>
-    <li>Requires Blender 4.2 LTS or newer. Tested on 4.2.23 LTS and 5.2.3 LTS, on Linux; versions 4.3 to 5.1 were not tested. Windows: the full test suite passes with Blender 4.2.23's Windows build run under Wine on Linux (it found three Windows path problems, now fixed); not yet tested on a Windows PC. macOS has not been tested yet.</li>
+    <li>Requires Blender 4.2 LTS or newer. Tested on 4.2.23 LTS and 5.2.3 LTS, on Linux; versions 4.3 to 5.1 were not tested. Windows: see How we tested (Wine); not yet tested on a Windows PC. macOS has not been tested yet.</li>
     <li>Formats: the Add Exporters menu offers glTF 2.0, FBX and USD, and these are the formats tested. Exporters of other formats you add in Blender's own panel (Alembic, OBJ, PLY, STL) are listed and run the same way, but are not part of the tests.</li>
     <li>GPL-3.0-or-later. Full source code included with your purchase.</li>
     <li>Privacy: Exportmint makes no network calls and collects nothing: no telemetry, no analytics, no update checks, no account. It writes only your exported files, the manifests and their history folder, and its own record: a hidden text block inside the .blend and <code>&lt;blend name&gt;.exportmint-record.json</code> next to it.</li>
@@ -234,7 +234,7 @@ exit code: 0</pre>
     <li>Exportmint never alters what an exporter writes: no axis or scale fixes, no triangulation, no texture conversion, no LODs.</li>
     <li>It does not save time on every kit: on a large glTF kit, Export Changed took about twice as long as Export All (<a href="#tested">table below</a>). With FBX it was faster.</li>
     <li>Not checked: world settings, render visibility, driver expressions (only their current result counts), and anything else outside the list under <a href="#tested">How we tested</a>. Changes inside linked .blend libraries are seen only through their result in your file.</li>
-    <li>Computed values (world transforms, the mesh after modifiers) are compared within a small tolerance: 0.00001 units plus 5 parts in 10 million of the coordinate, which is 0.0025 units at 5,000 units from the origin. A sub-millimetre change that exists only in a modifier's result on a very dense mesh may not show.</li>
+    <li>Computed values (world transforms, the mesh after modifiers) are compared within a tolerance (0.0025 units at 5,000 units from the origin); a sub-millimetre change only in a modifier's result on a very dense mesh may not show.</li>
     <li>Objects are checked at the scene's current frame. Changing the frame of an animated scene marks its animated objects as moved, and the row says which frame was exported.</li>
     <li>Only each exporter's main file is tracked: extra files (glTF Separate's .bin and textures) are not listed or hashed, and switching an exporter's format leaves the old file in place.</li>
     <li>If you also export with Blender's own buttons, FBX rows read "output file changed on disk" and are written once more on the next Export Changed.</li>
@@ -248,9 +248,9 @@ exit code: 0</pre>
     <li><strong>155 automated tests</strong>, all passing on Blender 4.2.23 LTS and 5.2.3 LTS, run headless on every change: one for each kind of edit below, the manifest checked against the files on disk, the command line on several .blend files with its exit codes, and the scenarios of a separate review that tried to make Exportmint call a stale export up to date.</li>
     <li><details><summary><strong>What counts as changed</strong> (each has its own test)</summary>objects added to or removed from the collection, its child collections or the collections it instances; an object's position, rotation or scale; the mesh after modifiers and geometry nodes (vertices, faces, UV maps); vertex groups and weights, shape keys, bones, light and camera settings; object, mesh, material and image names; a material slot or a value in a material's node tree; a keyframe; a texture file's content; custom properties, when the exporter writes them; the exporter's settings or file path; the scene's frame range, frame rate or units; an output file that is missing or that something else rewrote. Saving, reopening, a fresh checkout, selecting and hiding things in the viewport do not count.</details></li>
     <li><strong>The real interface, clicked through</strong> on Blender 4.2 and 5.2 under a virtual display: 10 of 10 interface checks pass on each, including a real click on Export Changed that wrote 2 files and left 10 unchanged. A second session on a three-scene kit of 13 exporters (an empty collection, two exporters on one file, a long name four folders deep, a rig, an object moved by a script in another scene, a failed run) passes 13 of 13 checks at 1920x1080 on both versions and at 1366x768, at Blender's default sidebar width. The session on this page passed its own 15 checks, including that the 10 files left alone kept their SHA-256 and modification time.</li>
-    <li><strong>Windows build under Wine:</strong> the same tests with Blender 4.2.23's official Windows build, run under Wine on Linux: 153 passed, 2 skipped (a POSIX-only Ctrl+C test, and a symlink test Wine cannot run). That run found three Windows path problems, fixed in 1.1.4. It is not a Windows PC, so Windows stays "not yet tested" there.</li>
+    <li><strong>Windows build under Wine</strong> (Blender 4.2.23): 153 passed, 2 skipped (POSIX Ctrl+C, symlinks). It found three Windows path problems, fixed in 1.1.4. Wine is not a Windows PC.</li>
     <li><strong>In git</strong>, with the manual's .gitignore lines, <code>git status</code> after Export Changed lists only the files it wrote, and nothing after a run that wrote nothing (two of the tests above, in a real repository).</li>
-    <li><strong>On a heavy file</strong> (40 collections, 3.6 million vertices) with the tab open, the list updated 0.05 to 0.08 s after each edit to one object. A full check takes about 3.3 s on 4.2 and 3.7 s on 5.2.</li>
+    <li><strong>On a heavy file</strong> (40 collections, 3.6 million vertices), the list updated 0.05 to 0.08 s after each one-object edit; a full check takes 3.3 to 3.7 s.</li>
   </ul>
   <p><strong>Time, measured both ways.</strong> Exportmint saves rewrites, not time: the change check reads every mesh.</p>
   <table>
