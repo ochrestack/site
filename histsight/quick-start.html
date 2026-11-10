@@ -42,11 +42,12 @@
     <li>In the IDE, open <strong>Settings &gt; Plugins</strong>, type <em>Histsight</em> in the search box and click <strong>Install</strong>. The listing is in review and not on JetBrains Marketplace yet; until it is live, the search finds nothing.</li>
     <li>The IDE's bundled Git plugin must be enabled (it is by default). Restart if the IDE asks.</li>
   </ol>
+  <p><strong>From a zip</strong> (for example one you were sent before the listing is live): <strong>Settings &gt; Plugins</strong>, the gear icon next to the tabs, <strong>Install Plugin from Disk…</strong>, choose <code>histsight-1.1.1.zip</code>, accept the third-party plugin notice, and restart. The IDE does not update a plugin installed from a zip, and says "Cannot update plugin" after the restart; install from the Marketplace to get updates.</p>
   <p>Histsight works with the bundled Git integration of IntelliJ IDEA, PyCharm, WebStorm, PhpStorm, GoLand, Rider and the other JetBrains IDEs, version 2025.1 and later. Tested in IntelliJ IDEA 2025.1.7 and 2026.3 on Linux, with Git 2.43 and 2.51; Windows, macOS, the other IDEs and Remote Development have not been tested yet. The rebase preview needs Git 2.40 or later; everything else works with any Git the IDE supports.</p>
 
   <h2 id="merge">Merge modes (free)</h2>
   <ol>
-    <li>Open the <strong>Branches popup</strong> (the branch name in the toolbar, or Ctrl+Shift+`), pick any branch other than the current one and open its submenu. The same entries are in the context menu of a branch in the <strong>Branches pane</strong> of the Git tool window's Log tab.</li>
+    <li>Open the <strong>Branches popup</strong> (the branch name in the toolbar, or Ctrl+Shift+`), pick any branch other than the current one and open its submenu. The same entries are in the context menu of a branch in the <strong>Branches pane</strong> of the Git tool window's Log tab.<br>With several repositories in the project, the popup lists them first: open the repository, then <em>Remote Branches</em> or <em>Local Branches</em>, then the branch; or use <em>Common Remote Branches</em> to merge a branch that every repository has, in all of them at once.</li>
     <li>At the bottom: <strong>Merge into current, fast-forward only</strong> and <strong>Merge into current, always create a merge commit</strong>. The word in brackets says what will happen: <em>fast-forward</em>, <em>already up to date</em> or <em>diverged</em>.</li>
   </ol>
   <figure><a href="img/branches-popup-merge-modes-window.png"><img src="img/branches-popup-merge-modes.png" alt="The Branches popup with the submenu of origin/master: the IDE's entries, then Merge into current, fast-forward only (fast-forward), Merge into current, always create a merge commit (fast-forward possible), and Preview Rebase onto origin/master" width="880" height="560" loading="lazy"></a><figcaption>The submenu of a remote branch, with Histsight's three entries at the bottom.</figcaption></figure>
@@ -81,7 +82,7 @@
   <figure><a href="img/message-only-amend-multi-repo-window.png"><img src="img/message-only-amend-multi-repo.png" alt="Amend Last Commit in a two-repository project: repository fd selected, 'Only this root is amended.', no local changes, a new message typed, Keep author selected" width="986" height="722" loading="lazy"></a><figcaption>A message-only amend of one repository in a two-repository project.</figcaption></figure>
 
   <h2 id="licence">Licence and trial</h2>
-  <p>The merge modes and the warning are free and never lock. Without a licence, each licensed feature shows one line with the price and <strong>Get a licence or trial</strong>, which opens the IDE's own licence dialog, only when you click it. Nothing appears at startup. The licence is a JetBrains Marketplace perpetual licence: $9 once, the same for personal and commercial use, every update included, nothing renews. The trial is 30 days of every feature. <strong>Settings &gt; Tools &gt; Histsight</strong> shows your licence state.</p>
+  <p>The merge modes and the warning are free and never lock. Without a licence, each licensed feature shows one line with the price and <strong>Get a licence or trial</strong>, which opens the IDE's own licence dialog, only when you click it. In the rebase preview and the amend view, the click closes that window and the IDE's licence dialog opens in its place; in Settings it opens on top, and the link shows "Opening the IDE's licence dialog…" until it is there. More clicks open nothing more while it is open. After you start the trial or buy, open the feature again. The trial and purchase themselves go through the IDE's dialog and a JetBrains Account, and have not been tried yet, because the listing is not live. Nothing appears at startup. The licence is a JetBrains Marketplace perpetual licence: $9 once, the same for personal and commercial use, every update included, nothing renews. The trial is 30 days of every feature. <strong>Settings &gt; Tools &gt; Histsight</strong> shows your licence state.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
@@ -96,7 +97,7 @@
   <p>Histsight runs only the local <code>git</code> executable on your project's own repositories. None of the commands it runs is a fetch, pull or push, and it sends nothing anywhere: no telemetry, no analytics. In a partial clone, Git itself downloads missing file contents when a merge or amend needs them, as it does for the IDE's own merge; the rebase preview turns that off and never downloads. The licence check is done by the IDE through JetBrains Marketplace licensing. See also the <a href="../privacy.html">privacy policy</a>.</p>
 
   <h2 id="source">Source code</h2>
-  <p>Histsight is GPL-3.0-or-later (<a href="license.html">licence text</a>). The complete source ships inside the plugin zip, as <code>histsight/source/histsight-1.1.0-source.zip</code>.</p>
+  <p>Histsight is GPL-3.0-or-later (<a href="license.html">licence text</a>). The complete source ships inside the plugin zip, as <code>histsight/source/histsight-1.1.1-source.zip</code>.</p>
 
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE version (Help &gt; About), the output of <code>git --version</code>, and what you saw. Bug reports and feature requests are welcome at the same address.</p>
