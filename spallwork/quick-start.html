@@ -37,9 +37,9 @@
 
   <h2 id="install">Install (Blender 4.5 LTS or newer; tested on 4.5.15, 5.0.1, 5.1.2 and 5.2.3)</h2>
   <ol>
-    <li>After checkout, download <code>spallwork-1.3.0.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
+    <li>After checkout, download <code>spallwork-1.4.0.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. (To read the manual, open the zip; it is <code>README.md</code> inside.)</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>. If Blender asks about internet access, <strong>Continue Offline is fine</strong>: Spallwork needs none. Blender may then show its own yellow "Repository Alert" about extensions.blender.org; it is about Blender's online catalogue, not Spallwork, and you can ignore it.</li>
-    <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. Spallwork is enabled straight away.</li>
+    <li>Open the drop-down menu at the top right (the rightmost <strong>&#8964;</strong>; the arrow beside it belongs to the filter), choose <strong>Install from Disk...</strong> and pick the zip. Spallwork is enabled straight away.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Spallwork</strong> tab.</li>
   </ol>
   <p>To update, install the newer zip the same way; your settings, masks and stored originals live in your .blend files and carry over. To remove Spallwork, find it in <strong>Get Extensions</strong> and choose <strong>Uninstall</strong>; Apply or Revert your damaged objects first if you need those buttons.</p>
@@ -53,11 +53,12 @@
         <li><strong>Faces pointing inward</strong>: <strong>Fix Normals</strong>.</li>
         <li><strong>Zero-area faces</strong>: <strong>Remove Zero-Area Faces</strong>.</li>
         <li>Scale and loose parts are for information: chip sizes stay in metres whatever the scale, and each loose part is chipped on its own.</li>
+        <li><strong>Parts that touch</strong> (crates stacked face to face in one object): fine for Damage, a render or a game, but after Apply an STL of them is not watertight where they touch. For a print, leave a gap of about 0.2 mm between the parts, or join them into one part before Damage (Edit Mode, <strong>Face &gt; Intersect (Boolean)</strong>, Union, Self Intersection).</li>
       </ul>
-      With several objects selected, only the objects with problems are listed, under a line such as "11 of 12 objects ready for Damage." The findings stay until you check again. If you change the mesh or its modifiers, its findings are replaced by "Changed since Check Model"; Damage clears the findings of the objects it damaged, and the X beside "Check model" hides them all.
+      With several objects selected, only the objects with problems (or parts that touch) are listed, under a line such as "11 of 12 objects ready for Damage." The findings stay until you check again. If you change the mesh or its modifiers, its findings are replaced by "Changed since Check Model"; Damage clears the findings of the objects it damaged, and the X beside "Check model" hides them all.
       <figure><img src="img/check-model-rain.png" alt="Check Model's findings at real size for a statue made from Blender Studio's Rain: 2,040 open edges, with the advice to Weld Seams first (72 split seams), then Fill Holes (1,968 holes), or give a thin sheet thickness, and a Weld Seams button; then no edge with more than two faces, normals consistent and outward, scale applied, 58 loose parts, no zero-area faces" width="254" height="560" loading="lazy"><figcaption>Check model on a character converted to one mesh: Weld Seams first, then Fill Holes (Blender 5.2.3, real size).</figcaption></figure>
     </li>
-    <li><strong>Select one or many meshes in Object Mode and click Damage.</strong> Each gets a geometry-nodes modifier named "Spallwork"; its own mesh is not changed. An object Damage cannot work on is skipped, and the status bar says why.</li>
+    <li><strong>Select one or many meshes in Object Mode and click Damage.</strong> Each gets a geometry-nodes modifier named "Spallwork"; its own mesh is not changed. A mesh Damage cannot work on is skipped, and the status bar says why; cameras and lights that Select All also takes are left alone. After Select All nothing is active: the panel then shows the first selected mesh's settings and says so.</li>
     <li><strong>Pick a starting look.</strong> Each one only sets the sliders:
       <ul>
         <li><strong>Worn</strong>: Amount 0.45, Chip size 0.03 m, Depth 0.40, Edge angle 35°, Edges only.</li>
@@ -81,19 +82,20 @@
 
   <h2 id="apply">Apply and Revert</h2>
   <ul>
-    <li><strong>Target faces</strong> (0 = off): for game assets, Apply reduces the result to about this many faces, and keeps every part closed. Each low-poly chip costs about 14 faces on top of the model's own, so <strong>start at twice the model's face count</strong>; a lower target leaves few chips, and the Apply section warns you with the number to type.</li>
-    <li><strong>Apply</strong> turns the damage into ordinary mesh data at Final detail, with outward normals, no zero-area faces and triangles that close up, so an exported STL is watertight. An object with no material gets no empty slot. Modifiers above Spallwork are applied with it (the report names them); particle systems and collision stay.</li>
+    <li><strong>Target faces</strong> (0 = off): for game assets, Apply reduces the result to about this many faces, and keeps every part closed. These are Blender faces (a quad or an n-gon is one face); a game engine counts triangles, 2 to 3 per face on a chipped result, and the Apply report gives both counts. Each low-poly chip costs about 14 faces on top of the model's own. Below twice the model's face count the Apply section warns that few chips fit; twice gives a light scatter of chips, and <strong>four times</strong> gives chips along most block edges (on our 2,484-face castle wall: 218 and 622 chips, 12,580 and 27,098 triangles).</li>
+    <li><strong>Apply</strong> turns the damage into ordinary mesh data at Final detail, with outward normals, no zero-area faces and triangles that close up, so an exported STL of parts that do not touch each other is watertight. An object with no material gets no empty slot. Modifiers above Spallwork are applied with it (the report names them); particle systems and collision stay.</li>
     <li><strong>Revert to Original</strong> restores the exact mesh from before Apply, with the modifiers Apply baked, even after you save, close and reopen the file. It gives back the clean mesh; press <strong>Damage</strong> to chip it again with the same settings.</li>
     <li><strong>Forget Original</strong> deletes the stored copy, so the file holds only the applied mesh. Another object that uses the same mesh keeps it.</li>
   </ul>
-  <p>Every button says what it did in the status bar, for example "Applied 1 object. Stone Arch: applied at Final detail, 38,308 faces. Revert to original brings the old mesh back."</p>
+  <p>Every button says what it did in the status bar, for example "Applied 1 object. Stone Arch: applied at Final detail, 38,260 faces (115,326 triangles); 34 sliver faces with no area removed. Revert to original brings the old mesh back."</p>
 
   <h2 id="limits">Limits</h2>
   <ul>
     <li>Closed meshes only. Curves, text and Grease Pencil must be converted to a mesh first. Loose parts that overlap are chipped as one where they overlap.</li>
     <li>A collection instance at another scale shows chips at that scale. Check model flags it; its <strong>Make Instances Real</strong> button gives each instance an object of its own, chipped at the set size.</li>
     <li>Fill Holes caps every hole, including one that should stay open, such as a window. Look before you press Damage.</li>
-    <li>Chips can knock a small fragment loose where two chips meet at a corner. For a 3D print, compare Check model's loose-part count before and after Apply.</li>
+    <li>Loose parts that touch each other give an STL that is not watertight where they touch; Check model and the Apply report say so (see Check model above for the two ways round it).</li>
+    <li>Chips can knock a small fragment loose where two chips meet at a corner (on our six 10 mm crates at 1 mm chips, 1 to 7 crumbs). For a 3D print, compare Check model's loose-part count before and after Apply.</li>
     <li>Don't press Shift+N on a heavily chipped small part after Apply: normals are already outward, and Blender's Recalculate Outside can guess wrong there.</li>
     <li>No cracks, fracture, rebar, debris or grime shaders in version 1. English only. Tested on Linux builds of Blender 4.5.15, 5.0.1, 5.1.2 and 5.2.3; Windows and macOS not yet tested. The full list is on the <a href="index.html#limits">product page</a>.</li>
   </ul>
