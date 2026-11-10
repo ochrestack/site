@@ -60,6 +60,8 @@
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
   summary { cursor: pointer; }
   @media (max-width: 600px) {
+    /* phones: the demo comes straight after Buy; the panel close-ups follow under "In Blender" */
+    .hero-link { display: none; }
     h1 { margin-top: 28px; }
     table { font-size: 14px; }
     th, td { padding: 6px; }
@@ -86,7 +88,7 @@
     <p class="fine">Blender 4.2 LTS and later; tested on 4.2.23 LTS and 5.2.3 LTS, on Linux (Windows and macOS not yet tested). Polar checkout · <a href="../terms.html">14-day refund</a> · no license check, no account · build machines need no seat (<a href="#teams">details</a>)</p>
   </div>
 
-  <a href="img/session-two-changed.png"><picture>
+  <a class="hero-link" href="img/session-two-changed.png"><picture>
     <source media="(max-width: 600px)" srcset="img/hero-panel-two-changed.png" width="462" height="730">
     <img class="hero" src="img/hero-two-changed.png" alt="Blender 5.2, the BoomBox just moved and still selected; on the right, the Exportmint sidebar tab at Blender's default width, from its header down: Export Changed (2) in blue, the Last run box, the folded Setup, then 'Needs export (2)' with the BoomBox row, 'BoomBox: transform changed', and the CH-rain row, 'RIG-rain: transform changed' (Rain was turned)" width="1400" height="900">
   </picture></a>
