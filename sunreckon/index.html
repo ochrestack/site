@@ -47,11 +47,12 @@
   figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
   .grid figure { margin: 0; }
+  .grid > div figure { margin: 0 0 14px; }
+  .study { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .study figcaption { font-size: 13px; font-weight: 400; color: var(--muted); }
+  .study figcaption b { color: var(--ink); }
   .grid figcaption { font-size: 16px; color: var(--ink); font-weight: 600; margin-top: 4px; }
   .grid figcaption span { font-weight: 400; color: var(--muted); }
-  .panels { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; }
-  .panels figure { margin: 0; flex: 0 1 380px; min-width: 0; }
-  .panels img { width: 100%; border-radius: 6px; }
   .hero { display: block; width: 100%; height: auto; border-radius: 10px; }
   .fine { font-size: 15px; color: var(--muted); }
   ul.points { padding-left: 20px; }
@@ -70,6 +71,10 @@
     .grid { grid-template-columns: 1fr; }
     .grid.small { grid-template-columns: 1fr 1fr; gap: 10px; }
     .grid.small figcaption { font-size: 14px; }
+    .grid.small.clouds { grid-template-columns: 1fr; }
+    .study { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .study figcaption { font-size: 12px; }
+    .two { grid-template-columns: 1fr; }
     table { font-size: 14px; }
     th, td { padding: 6px; }
   }
@@ -84,7 +89,11 @@
 </header>
 <main>
   <h1>Sunreckon for Blender</h1>
-  <a href="img/hero-courtyard-2x1.jpg"><img class="hero" src="img/hero-courtyard-2x1.jpg" alt="An EEVEE render: Blender Studio's Rain in a paved courtyard in Lisbon on 21 June in the late afternoon, warm sun on the plastered facade, a cloud's shadow crossing the paving, scattered clouds in a blue sky. Top right, an inset of the Sunreckon panel: Sky on, City Lisbon, Portugal, the date 21 June, Time 17:30, the sun's elevation and azimuth" width="1600" height="800"></a>
+  <a href="img/hero-courtyard-2x1.jpg"><picture>
+    <source media="(max-width: 600px)" srcset="img/hero-courtyard-plain.jpg" width="1200" height="600">
+    <img class="hero" src="img/hero-courtyard-2x1.jpg" alt="An EEVEE render: Blender Studio's Rain in a paved courtyard in Lisbon on 21 June at 17:30, the soft-edged shadow of a cloud across the plastered facade and the paving, a tree and a terracotta building behind, scattered clouds in a blue sky. Top right, an inset of the Sunreckon panel: Sky on, City Lisbon, Portugal, the date 21 June, Time 17:30, the sun's elevation and azimuth" width="1600" height="800">
+  </picture></a>
+  <figure class="narrow-only"><img src="img/panel-inset.png" alt="The top of the Sunreckon panel for that render: Sky on · Multiple Scattering, City Lisbon, Portugal, Y 2026 M 6 D 21, Time 17:30, UTC 0 with DST, the sun 39.0&deg; up at azimuth 270.4&deg;, sunrise 06:12, sunset 21:05" width="570" height="520" loading="lazy"><figcaption>The panel for the picture above.</figcaption></figure>
   <p class="sub"><strong>The real sun for any place, date and clock time, in one click.</strong> Pick a city, type a time, click Add Sky: Blender's own physical sky, a Sun light that matches it, and an exposure that is not blown out.</p>
 
   <div class="buy">
@@ -97,13 +106,13 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/sunreckon-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>57 seconds, captions only, no sound. Sunreckon 1.2.1 in Blender 5.2.3: the interface with real clicks and typing, and EEVEE renders. The day in Krakow alone: <a href="video/sunreckon-day-krakow.gif">12-second GIF</a> (7 MB). Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
+    <figcaption>54 seconds, captions only, no sound. Sunreckon 1.2.2 in Blender 5.2.3: the interface with real clicks and typing, and EEVEE renders. The day in Krakow alone: <a href="video/sunreckon-day-krakow.gif">12-second GIF</a> (7 MB). Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
   </figure>
   <figure class="narrow-only">
     <video controls preload="none" playsinline poster="video/poster-vertical.jpg" width="720" height="1280">
       <source src="video/sunreckon-demo-vertical.mp4" type="video/mp4">
     </video>
-    <figcaption>57 seconds, captions only, no sound. Sunreckon 1.2.1 in Blender 5.2.3. The day in Krakow alone: <a href="video/sunreckon-day-krakow.gif">12-second GIF</a> (7 MB).</figcaption>
+    <figcaption>54 seconds, captions only, no sound. Sunreckon 1.2.2 in Blender 5.2.3. The day in Krakow alone: <a href="video/sunreckon-day-krakow.gif">12-second GIF</a> (7 MB).</figcaption>
   </figure>
 
   <h2>What you get</h2>
@@ -111,58 +120,72 @@
     <li><strong>The sun where it really is.</strong> 1,251 cities, each on its own clock (UTC offset and daylight saving). Or paste coordinates or a Google Maps link; the clock is estimated for you and the panel says so. Within 0.014° of NREL's reference algorithm.</li>
     <li><strong>One click to daylight.</strong> Blender's own Sky Texture (Multiple Scattering on 5.x, Nishita on 4.2 to 4.5), a Sun light that points where the sky's sun is and takes its strength and colour from it, and the exposure set to -4.5.</li>
     <li><strong>A whole day, keyed.</strong> Animate Day runs from sunrise to sunset across your frame range. Plain keyframes: the file renders without Sunreckon.</li>
-    <li><strong>Clouds that cast shadows.</strong> Four presets, Fast or Volumetric, with the render cost shown in the panel. Shadow in View puts a cloud's shadow in your shot.</li>
+    <li><strong>Clouds that cast shadows.</strong> Four presets, Fast or Volumetric, with the render cost shown in the panel. Shadow in View moves the clouds so a cloud's shadow edge falls in your shot.</li>
     <li><strong>Your HDRIs in the same tab.</strong> One click on, Align Sun to HDRI, one click back to the sky.</li>
     <li><strong>One tab, a clean way out.</strong> Four sections in the sidebar, nothing in any menu. Remove puts your World and exposure back.</li>
   </ul>
 
   <h2>Before and after one click</h2>
   <div class="grid">
-    <figure><a href="img/before-plain.jpg"><img src="img/before-plain.jpg" alt="The courtyard in EEVEE with Blender's Sky Texture alone at exposure 0: washed out, nearly white sky, no shadow under Rain" width="960" height="540" loading="lazy"></a><figcaption>Blender's Sky Texture alone <span>exposure 0</span></figcaption></figure>
-    <figure><a href="img/before-sunreckon.jpg"><img src="img/before-sunreckon.jpg" alt="The same view after Add Sky: blue sky, sunlit facade and paving, a sharp shadow beside Rain" width="960" height="540" loading="lazy"></a><figcaption>After Add Sky <span>same sun, same view</span></figcaption></figure>
+    <figure><a href="img/before-plain.jpg"><img src="img/before-plain.jpg" alt="The courtyard in EEVEE with Blender's Sky Texture alone at exposure 0: washed out, nearly white sky and facade, almost no shadow under Rain" width="960" height="540" loading="lazy"></a><figcaption>Blender's Sky Texture alone <span>exposure 0</span></figcaption></figure>
+    <figure><a href="img/before-sunreckon.jpg"><img src="img/before-sunreckon.jpg" alt="The same view after Add Sky: blue sky, a sunlit facade and paving, Rain's sharp shadow on the paving" width="960" height="540" loading="lazy"></a><figcaption>After Add Sky <span>same sun, same view</span></figcaption></figure>
   </div>
   <p class="fine">EEVEE, Lisbon, 21 June, 16:00. Left: a new World with Blender's Sky Texture at its defaults, its sun put where Sunreckon puts it, no Sun light. EEVEE does not draw the sky's sun disc, so without a matched Sun light there is almost no sun shadow.</p>
 
   <h2>A day, keyed</h2>
   <div class="grid small">
-    <figure><img src="img/day-0800.jpg" alt="The courtyard at 08:00: the building shades most of the courtyard, low light on the lawn" width="960" height="540" loading="lazy"><figcaption>08:00 <span>sun 18&deg; up, 07:59 on the frame</span></figcaption></figure>
-    <figure><img src="img/day-1300.jpg" alt="The courtyard at 13:00: high sun, short shadows" width="960" height="540" loading="lazy"><figcaption>13:00 <span>sun 73&deg; up, 13:01 on the frame</span></figcaption></figure>
-    <figure><img src="img/day-1800.jpg" alt="The courtyard at 18:00: warm light on the facade, long shadows" width="960" height="540" loading="lazy"><figcaption>18:00 <span>sun 33&deg; up, 18:00 on the frame</span></figcaption></figure>
-    <figure><img src="img/day-2030.jpg" alt="The courtyard at 20:30: the sun near the horizon, orange light on the facade" width="960" height="540" loading="lazy"><figcaption>20:30 <span>sun 5&deg; up, 20:29 on the frame</span></figcaption></figure>
+    <figure><img src="img/day-0800.jpg" alt="The courtyard from above at 08:00: the low sun from the east, the building's shadow across the courtyard, long tree shadows" width="960" height="540" loading="lazy"><figcaption>08:00 <span>sun 18&deg; up, azimuth 74&deg;</span></figcaption></figure>
+    <figure><img src="img/day-1300.jpg" alt="The courtyard from above at 13:00: high sun, short shadows under the trees" width="960" height="540" loading="lazy"><figcaption>13:00 <span>sun 73&deg; up, azimuth 149&deg;</span></figcaption></figure>
+    <figure><img src="img/day-1800.jpg" alt="The courtyard from above at 18:00: warm light on the facade, long shadows of the trees and bollards" width="960" height="540" loading="lazy"><figcaption>18:00 <span>sun 33&deg; up, azimuth 275&deg;</span></figcaption></figure>
+    <figure><img src="img/day-2030.jpg" alt="The courtyard from above at 20:30: the sun near the horizon, orange light, very long shadows" width="960" height="540" loading="lazy"><figcaption>20:30 <span>sun 5&deg; up, azimuth 296&deg;</span></figcaption></figure>
   </div>
-  <p class="fine">Lisbon, 21 June, EEVEE, frames of one Animate Day. The sky, the Sun light and every shadow move together.</p>
+  <p class="fine">Lisbon, 21 June, EEVEE: the panel's time set to each clock. Animate Day keys the same sky, Sun light and shadows across your frame range.</p>
 
   <h2>Clouds</h2>
-  <div class="grid small">
-    <figure><img src="img/clouds-few.jpg" alt="Few clouds: a few small clouds, the courtyard in sun" width="960" height="540" loading="lazy"><figcaption>Few <span>EEVEE &times;1.0 &middot; Cycles &times;4.2</span></figcaption></figure>
-    <figure><img src="img/clouds-scattered.jpg" alt="Scattered clouds: a cloud's shadow on part of the courtyard" width="960" height="540" loading="lazy"><figcaption>Scattered <span>EEVEE &times;1.0 &middot; Cycles &times;4.6</span></figcaption></figure>
-    <figure><img src="img/clouds-broken.jpg" alt="Broken clouds: most of the sky cloudy, large cloud shadows" width="960" height="540" loading="lazy"><figcaption>Broken <span>EEVEE &times;0.9 &middot; Cycles &times;5.2</span></figcaption></figure>
-    <figure><img src="img/clouds-overcast.jpg" alt="Overcast: a grey sky and no direct sunlight, no sharp shadows" width="960" height="540" loading="lazy"><figcaption>Overcast <span>EEVEE &times;0.9 &middot; Cycles &times;6.0</span></figcaption></figure>
+  <div class="grid small clouds">
+    <figure><img src="img/clouds-few.jpg" alt="Few clouds over the courtyard from above: a few small clouds in the sky, the courtyard in sun" width="960" height="540" loading="lazy"><figcaption>Few <span>EEVEE &times;1.8 &middot; Cycles &times;4.2</span></figcaption></figure>
+    <figure><img src="img/clouds-scattered.jpg" alt="Scattered clouds: the soft-edged shadow of a cloud across part of the courtyard, the rest in sun" width="960" height="540" loading="lazy"><figcaption>Scattered <span>EEVEE &times;2.1 &middot; Cycles &times;4.6</span></figcaption></figure>
+    <figure><img src="img/clouds-broken.jpg" alt="Broken clouds: most of the sky cloudy, large cloud shadows over the courtyard and lawn" width="960" height="540" loading="lazy"><figcaption>Broken <span>EEVEE &times;2.6 &middot; Cycles &times;5.2</span></figcaption></figure>
+    <figure><img src="img/clouds-overcast.jpg" alt="Overcast: a grey sky, no direct sunlight and no sharp shadows" width="960" height="540" loading="lazy"><figcaption>Overcast <span>EEVEE &times;2.8 &middot; Cycles &times;6.0</span></figcaption></figure>
   </div>
-  <p class="fine">Volumetric quality in EEVEE, Lisbon, 21 June, 15:00, presets at their defaults (Shadow in View for the first three). Render cost is the time of a frame against a clear sky, measured on our reference scene.</p>
+  <p class="fine">Volumetric quality, EEVEE renders, Lisbon, 21 June, 15:00, presets at their defaults: Few at its own pattern, Scattered and Broken after Shadow in View. Render cost is the time of a frame against a clear sky on our reference scene. Scattered, Broken and Overcast also dim the Sun light (to 85%, 45% and 12%).</p>
   <div class="grid">
-    <figure><img src="img/fast-scattered.jpg" alt="EEVEE, Scattered clouds in Fast quality: clouds in the sky, the whole building and courtyard in sun" width="960" height="540" loading="lazy"><figcaption>Fast <span>a layer in the sky, no shadows</span></figcaption></figure>
-    <figure><img src="img/clouds-scattered.jpg" alt="The same clouds in Volumetric quality: a cloud's shadow on the left end of the building" width="960" height="540" loading="lazy"><figcaption>Volumetric <span>the same clouds cast shadows</span></figcaption></figure>
+    <figure><img src="img/fast-hero.jpg" alt="EEVEE, Scattered clouds in Fast quality: clouds in the sky, Rain, the facade and the paving all in sun" width="960" height="540" loading="lazy"><figcaption>Fast <span>a layer in the sky, no shadows</span></figcaption></figure>
+    <figure><img src="img/hero.jpg" alt="The same clouds in Volumetric quality: the soft-edged shadow of a cloud across the facade and the paving" width="960" height="540" loading="lazy"><figcaption>Volumetric <span>the same clouds cast shadows</span></figcaption></figure>
   </div>
-  <p class="fine">EEVEE, Scattered, the same clouds and sun. Performance Mode keeps the viewport quick: with Volumetric clouds it shows the Fast layer and the cloud shadows while you work; in Cycles, F12 renders the cloud volume.</p>
+  <p class="fine">EEVEE, Lisbon, 21 June, 17:30, Scattered, the same clouds and sun. In the viewport (Performance Mode) the cloud shadows have crisp outlines and cost nothing extra; renders soften them, as under a real cloud. In Cycles, F12 renders the cloud volume.</p>
 
   <h2 id="shadow-study">Shadow studies at a real address</h2>
-  <figure>
-    <a href="img/shadow-study-krakow.jpg"><img src="img/shadow-study-krakow.jpg" alt="A 3 by 3 sheet: a house in Krakow on 21 March, 21 June and 21 December at 09:00, 12:00 and 15:00, each tile labelled with the sun's elevation and azimuth; short shadows in June, long low shadows in December" width="1600" height="1161" loading="lazy"></a>
-    <figcaption>Krakow, 21 March, June and December at 09:00, 12:00 and 15:00. Nine EEVEE renders; each label is the panel's own read-out.</figcaption>
-  </figure>
+  <div class="grid study">
+    <figure><img src="img/study-krakow-03-21-0900.jpg" alt="The Krakow house on 21 March at 09:00: the sun 28.9&deg; up at azimuth 130.4&deg;" width="600" height="400" loading="lazy"><figcaption><b>21 March, 09:00</b><br>sun 28.9&deg; up, az 130.4&deg;</figcaption></figure>
+    <figure><img src="img/study-krakow-03-21-1200.jpg" alt="The Krakow house on 21 March at 12:00: the sun 40.2&deg; up at azimuth 184.2&deg;" width="600" height="400" loading="lazy"><figcaption><b>21 March, 12:00</b><br>sun 40.2&deg; up, az 184.2&deg;</figcaption></figure>
+    <figure><img src="img/study-krakow-03-21-1500.jpg" alt="The Krakow house on 21 March at 15:00: the sun 25.7&deg; up at azimuth 235.8&deg;" width="600" height="400" loading="lazy"><figcaption><b>21 March, 15:00</b><br>sun 25.7&deg; up, az 235.8&deg;</figcaption></figure>
+    <figure><img src="img/study-krakow-06-21-0900.jpg" alt="The Krakow house on 21 June at 09:00: the sun 39.7&deg; up at azimuth 100.7&deg;" width="600" height="400" loading="lazy"><figcaption><b>21 June, 09:00</b><br>sun 39.7&deg; up, az 100.7&deg;</figcaption></figure>
+    <figure><img src="img/study-krakow-06-21-1200.jpg" alt="The Krakow house on 21 June at 12:00: the sun 62.2&deg; up at azimuth 159.0&deg;" width="600" height="400" loading="lazy"><figcaption><b>21 June, 12:00</b><br>sun 62.2&deg; up, az 159.0&deg;</figcaption></figure>
+    <figure><img src="img/study-krakow-06-21-1500.jpg" alt="The Krakow house on 21 June at 15:00: the sun 52.2&deg; up at azimuth 238.0&deg;" width="600" height="400" loading="lazy"><figcaption><b>21 June, 15:00</b><br>sun 52.2&deg; up, az 238.0&deg;</figcaption></figure>
+    <figure><img src="img/study-krakow-12-21-0900.jpg" alt="The Krakow house on 21 December at 09:00: the sun 8.7&deg; up at azimuth 143.8&deg;" width="600" height="400" loading="lazy"><figcaption><b>21 December, 09:00</b><br>sun 8.7&deg; up, az 143.8&deg;</figcaption></figure>
+    <figure><img src="img/study-krakow-12-21-1200.jpg" alt="The Krakow house on 21 December at 12:00: the sun 16.4&deg; up at azimuth 185.2&deg;" width="600" height="400" loading="lazy"><figcaption><b>21 December, 12:00</b><br>sun 16.4&deg; up, az 185.2&deg;</figcaption></figure>
+    <figure><img src="img/study-krakow-12-21-1500.jpg" alt="The Krakow house on 21 December at 15:00: the sun 4.2&deg; up at azimuth 225.2&deg;" width="600" height="400" loading="lazy"><figcaption><b>21 December, 15:00</b><br>sun 4.2&deg; up, az 225.2&deg;</figcaption></figure>
+  </div>
+  <p class="fine">Krakow, picked from the list. Nine EEVEE renders on 21 March, June and December at 09:00, 12:00 and 15:00, local clock time; each label is the panel's own read-out. North is up the plot (North Offset 0).</p>
 
   <h2>Your HDRIs, and back</h2>
-  <figure>
-    <a href="img/hdri-window.jpg"><img src="img/hdri-window.jpg" alt="The Blender window: Blender's bundled sunset HDRI on the World behind the courtyard, the Sun light aligned to the map's sun, and the HDRI section of the Sunreckon tab with the thumbnail, On the World: sunset.exr and Sun aligned" width="1600" height="900" loading="lazy"></a>
-    <figcaption>Blender's own sunset.exr on the World, turned 120&deg;, the Sun light aligned to its low sun. Back to Sky brings the sky back as it was, exposure included.</figcaption>
-  </figure>
+  <div class="grid two">
+    <figure><a href="img/hdri-view.jpg"><img src="img/hdri-view.jpg" alt="The Rendered viewport: Blender's bundled sunrise.exr on the World behind the courtyard, turned 120&deg;, Rain lit by the Sun light aligned to the map's low sun" width="740" height="940" loading="lazy"></a><figcaption>The viewport <span>Blender's sunrise.exr, turned 120&deg;</span></figcaption></figure>
+    <figure><a href="img/panel-hdri.png"><img src="img/panel-hdri.png" alt="The HDRI section at real size: Folder, the sunrise thumbnail, On the World: sunrise.exr, Strength 1.00, Rotation 120&deg;, Align Sun to HDRI, Back to Sky, Sun aligned, 8&deg; up" width="570" height="470" loading="lazy"></a><figcaption>The HDRI section <span>after Align Sun to HDRI</span></figcaption></figure>
+  </div>
+  <p class="fine">Pick a map from the grid; it goes on the World at your scene's own exposure. Align Sun to HDRI points the Sun light at the map's sun; Back to Sky brings the sky back as it was, exposure included.</p>
 
   <h2>The tab</h2>
-  <div class="panels">
-    <figure><a href="img/panel-place-time-sun.png"><img src="img/panel-place-time-sun.png" alt="The Place &amp; Time and Sun sections at real size: Sky on, City Lisbon, Portugal, Y 2026 M 6 D 21, Time 17:30 with arrows, UTC and DST, North Offset, Altitude 0 m, Air Clear Hazy Urban, the sun's elevation, azimuth, sunrise and sunset; then Sun light in W/m² and kelvin, Strength ×, Angle, and the day animation with From and To at sunrise and sunset" width="488" height="842" loading="lazy"></a><figcaption>Place &amp; Time, Sun</figcaption></figure>
-    <figure><a href="img/panel-clouds.png"><img src="img/panel-clouds.png" alt="The Clouds section at real size: Scattered and Volumetric, Performance Mode, Coverage, Cloud Base 1800 m, Wind From 250°, Wind Speed 8 m/s, Pattern with Shadow in View, and the folded render cost line" width="488" height="445" loading="lazy"></a><figcaption>Clouds</figcaption></figure>
-    <figure><a href="img/panel-hdri.png"><img src="img/panel-hdri.png" alt="The HDRI section at real size: folder, thumbnail, On the World, Strength, Rotation, Align Sun to HDRI, Back to Sky, Sun aligned" width="488" height="400" loading="lazy"></a><figcaption>HDRI</figcaption></figure>
+  <div class="grid two">
+    <div>
+      <figure><a href="img/panel-place-time.png"><img src="img/panel-place-time.png" alt="The Place &amp; Time section at real size: Sky on · Multiple Scattering, City Lisbon, Portugal, Coords, Lat and Lon, Y 2026 M 6 D 21, Time 17:30 with arrows, UTC and DST, North Offset, Altitude 0 m, Air Clear Hazy Urban, the sun's elevation, azimuth, sunrise and sunset, Set Exposure and Remove" width="570" height="570" loading="lazy"></a><figcaption>Place &amp; Time</figcaption></figure>
+      <figure><a href="img/panel-sun.png"><img src="img/panel-sun.png" alt="The Sun section at real size: Sunreckon Sun, Sun light 114.3 W/m² · 4925 K, Strength ×, Angle, Sun Disc in Sky, the day animation with From and To and the Follow sunrise and sunset checkbox, Key Every, Animate Day" width="570" height="430" loading="lazy"></a><figcaption>Sun</figcaption></figure>
+    </div>
+    <div>
+      <figure><a href="img/panel-clouds.png"><img src="img/panel-clouds.png" alt="The Clouds section at real size: Scattered and Volumetric, Performance Mode, Coverage, Cloud Base 1800 m, Wind From 250°, Wind Speed 8 m/s, Pattern with Shadow in View, Sun dimmed to 85% by the clouds, Clouds drift (wind keys), and the folded render cost line" width="570" height="520" loading="lazy"></a><figcaption>Clouds</figcaption></figure>
+      <figure class="wide-only"><a href="img/panel-hdri.png"><img src="img/panel-hdri.png" alt="The HDRI section at real size, with sunrise.exr on the World and the Sun aligned" width="570" height="470" loading="lazy"></a><figcaption>HDRI (shown above on phones)</figcaption></figure>
+    </div>
   </div>
 
   <div class="box">
@@ -174,53 +197,53 @@
   <div class="scroll-x">
   <table id="matrix">
     <tr><th>Blender</th><th>Installs from the zip</th><th>Tests passed</th><th>Acceptance tests passed</th><th>Failed</th></tr>
-    <tr><td>4.2.23 LTS</td><td>yes</td><td>196</td><td>22</td><td>0</td></tr>
-    <tr><td>4.3.2</td><td>yes</td><td>195</td><td>22</td><td>0</td></tr>
-    <tr><td>4.4.3</td><td>yes</td><td>195</td><td>22</td><td>0</td></tr>
-    <tr><td>4.5.15 LTS</td><td>yes</td><td>195</td><td>21</td><td>0</td></tr>
-    <tr><td>5.0.1</td><td>yes</td><td>195</td><td>21</td><td>0</td></tr>
-    <tr><td>5.1.2</td><td>yes</td><td>195</td><td>21</td><td>0</td></tr>
-    <tr><td>5.2.3 LTS</td><td>yes</td><td>195</td><td>21</td><td>0</td></tr>
+    <tr><td>4.2.23 LTS</td><td>yes</td><td>209</td><td>22</td><td>0</td></tr>
+    <tr><td>4.3.2</td><td>yes</td><td>208</td><td>22</td><td>0</td></tr>
+    <tr><td>4.4.3</td><td>yes</td><td>208</td><td>22</td><td>0</td></tr>
+    <tr><td>4.5.15 LTS</td><td>yes</td><td>208</td><td>21</td><td>0</td></tr>
+    <tr><td>5.0.1</td><td>yes</td><td>208</td><td>21</td><td>0</td></tr>
+    <tr><td>5.1.2</td><td>yes</td><td>208</td><td>21</td><td>0</td></tr>
+    <tr><td>5.2.3 LTS</td><td>yes</td><td>208</td><td>21</td><td>0</td></tr>
   </table>
   </div>
-  <p class="fine">Sunreckon 1.2.1, official Linux builds. Windows and macOS are not tested yet.</p>
+  <p class="fine">Sunreckon 1.2.2, official Linux builds. Windows and macOS are not tested yet. Why the counts differ: one test runs on 4.2 only (it saves the file the later versions open), and one acceptance test checks the RGB light colour that only 4.2 to 4.4 use; later versions skip them.</p>
 
   <h2 id="cost">Render cost of the clouds</h2>
   <div class="scroll-x">
   <table>
     <tr><th>Clouds</th><th>EEVEE vs clear sky</th><th>Cycles vs clear sky</th></tr>
     <tr><td>Clear sky</td><td>&times;1.0</td><td>&times;1.0</td></tr>
-    <tr><td>Few, Fast</td><td>&times;1.0</td><td>&times;1.2</td></tr>
-    <tr><td>Few, Volumetric</td><td>&times;1.0</td><td>&times;4.2</td></tr>
+    <tr><td>Few, Fast</td><td>&times;0.9</td><td>&times;1.2</td></tr>
+    <tr><td>Few, Volumetric</td><td>&times;1.8</td><td>&times;4.2</td></tr>
     <tr><td>Scattered, Fast</td><td>&times;0.9</td><td>&times;1.2</td></tr>
-    <tr><td>Scattered, Volumetric</td><td>&times;1.0</td><td>&times;4.6</td></tr>
+    <tr><td>Scattered, Volumetric</td><td>&times;2.1</td><td>&times;4.6</td></tr>
     <tr><td>Broken, Fast</td><td>&times;0.9</td><td>&times;1.3</td></tr>
-    <tr><td>Broken, Volumetric</td><td>&times;0.9</td><td>&times;5.2</td></tr>
+    <tr><td>Broken, Volumetric</td><td>&times;2.6</td><td>&times;5.2</td></tr>
     <tr><td>Overcast, Fast</td><td>&times;0.9</td><td>&times;1.5</td></tr>
-    <tr><td>Overcast, Volumetric</td><td>&times;0.9</td><td>&times;6.0</td></tr>
+    <tr><td>Overcast, Volumetric</td><td>&times;2.8</td><td>&times;6.0</td></tr>
   </table>
   </div>
-  <p class="fine">The time of one 1920x1080 frame against the same frame with a clear sky, on our reference scene (a house on a lawn with trees).</p>
+  <p class="fine">The time of one 1920x1080 frame against the same frame with a clear sky, on our reference scene (a house on a lawn with trees). EEVEE's Volumetric renders soften the cloud shadows' outlines with transparent shadows, which EEVEE redraws on every sample; we measured on a machine without a graphics card, where that costs the most. The viewport in Performance Mode costs nothing extra.</p>
 
   <details id="how-tested">
     <summary>How we tested, and how these images were made</summary>
     <p>Every release runs one command that downloads the official Linux build of each Blender in the table, installs the zip with Install from Disk into a fresh user folder, and runs the full test suite and a separate set of acceptance tests written by an independent reviewer. The zip also passes Blender's own <code>extension validate</code>.</p>
-    <p>Render cost: Sunreckon 1.2.1 in Blender 5.2.3, one 1920x1080 frame of the reference scene; Cycles on the CPU at 128 samples with adaptive sampling and denoising, EEVEE at 64 samples. The machine has 4 CPU threads and no graphics card, so EEVEE ran in software; EEVEE's differences under 10% are run-to-run noise. The seconds:</p>
+    <p>Render cost: Sunreckon 1.2.2 in Blender 5.2.3, one 1920x1080 frame of the reference scene; Cycles on the CPU at 128 samples with adaptive sampling and denoising, EEVEE at 64 samples. The machine has 4 CPU threads and no graphics card, so EEVEE ran in software; EEVEE's differences under 10% are run-to-run noise. EEVEE rows measured on 1.2.2, Cycles rows on 1.2.1 (Cycles renders the cloud volume, which did not change). The seconds:</p>
     <table>
       <tr><th>Clouds</th><th>EEVEE</th><th>Cycles</th></tr>
-      <tr><td>Clear sky</td><td>64 s</td><td>117 s</td></tr>
-      <tr><td>Few, Fast</td><td>61 s</td><td>145 s</td></tr>
-      <tr><td>Few, Volumetric</td><td>64 s</td><td>495 s</td></tr>
-      <tr><td>Scattered, Fast</td><td>60 s</td><td>142 s</td></tr>
-      <tr><td>Scattered, Volumetric</td><td>63 s</td><td>537 s</td></tr>
-      <tr><td>Broken, Fast</td><td>60 s</td><td>152 s</td></tr>
-      <tr><td>Broken, Volumetric</td><td>60 s</td><td>612 s</td></tr>
-      <tr><td>Overcast, Fast</td><td>58 s</td><td>170 s</td></tr>
-      <tr><td>Overcast, Volumetric</td><td>59 s</td><td>703 s</td></tr>
+      <tr><td>Clear sky</td><td>58 s</td><td>117 s</td></tr>
+      <tr><td>Few, Fast</td><td>52 s</td><td>145 s</td></tr>
+      <tr><td>Few, Volumetric</td><td>102 s</td><td>495 s</td></tr>
+      <tr><td>Scattered, Fast</td><td>52 s</td><td>142 s</td></tr>
+      <tr><td>Scattered, Volumetric</td><td>124 s</td><td>537 s</td></tr>
+      <tr><td>Broken, Fast</td><td>52 s</td><td>152 s</td></tr>
+      <tr><td>Broken, Volumetric</td><td>148 s</td><td>612 s</td></tr>
+      <tr><td>Overcast, Fast</td><td>52 s</td><td>170 s</td></tr>
+      <tr><td>Overcast, Volumetric</td><td>162 s</td><td>703 s</td></tr>
     </table>
     <p>Sun position: against NREL's Solar Position Algorithm, the largest error is 0.010&deg; over 14 reference cases, and 0.014&deg; in an independent check of 2,000 random places and dates from 1900 to 2100.</p>
-    <p>Images: Sunreckon 1.2.1 installed from its zip in the official Blender 5.2.3 build. The courtyard images are EEVEE renders at Sunreckon's settings (the exposure raised a third of a stop on the top image); the four day tiles are frames of the video's crane sequence, rendered at 1600x900 with 8 samples; the panel images and the HDRI image are captures of the real window. Rain v3.3 is from studio.blender.org (CC BY 4.0), with her arms lowered; the courtyard and the Krakow house are ours.</p>
-    <p>Video: the interface is recorded at 60 frames a second with real clicks and typing; the pointer is drawn where it was, and the waits while Blender redraws in software are cut. The day in Krakow and the drifting clouds are EEVEE renders stepped one frame per video frame; the clouds move at 3.1 times real time.</p>
+    <p>Images: Sunreckon 1.2.2 installed from its zip in the official Blender 5.2.3 build. The courtyard images are EEVEE renders at 64 samples at Sunreckon's settings (the exposure raised a third of a stop on the top image, half a stop at 08:00 and a stop at 20:30); the eye-level cameras are level, framed with lens shift. The panel images and the HDRI viewport are captures of the real window at interface scale 1.5. Rain v3.3 is from studio.blender.org (CC BY 4.0), with her arms lowered; the courtyard, its buildings and trees, and the Krakow house are ours.</p>
+    <p>Video: the interface is recorded at 60 frames a second with real clicks and typing; the pointer is drawn where it was, and the waits while Blender redraws in software are cut, the picture resuming once the viewport has finished refining. The courtyard shots are EEVEE stills with a slow push-in. The day in Krakow is an EEVEE render stepped one frame per video frame, kept from the previous video (rendered with 1.2.1; Animate Day did not change in 1.2.2).</p>
   </details>
 
   <h2 id="details">Details</h2>
@@ -233,7 +256,7 @@
 
   <h2 id="documentation">Install</h2>
   <ol>
-    <li>Download <code>sunreckon-1.2.1.zip</code> from the link in Polar's email. Do not unzip it.</li>
+    <li>Download <code>sunreckon-1.2.2.zip</code> from the link in Polar's email. Do not unzip it.</li>
     <li>In Blender, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, open the menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Sunreckon</strong> tab.</li>
   </ol>
@@ -241,7 +264,7 @@
 
   <h2 id="limits">Known limits</h2>
   <ul>
-    <li>Fast clouds cast no shadows; Volumetric ones do. EEVEE's cloud shadows cover 2.4 km around the camera and fade out at the edge.</li>
+    <li>Fast clouds cast no shadows; Volumetric ones do. EEVEE's cloud shadows cover 2.4 km around the camera and fade out at the edge; their soft outlines in a render cost EEVEE 1.8 to 2.8 times a clear sky's render time on our machine.</li>
     <li>No night sky, stars, moon, aurora, fog, rain or snow, and no clouds the camera can enter.</li>
     <li>The exposure is a fixed -4.5: golden-hour shots come out about a stop darker than midday; raise the exposure for them.</li>
     <li>Time zones come from the city list (2026 daylight-saving rules). A pasted place gets an estimate from the nearest listed city or the longitude: check it near a zone border.</li>
