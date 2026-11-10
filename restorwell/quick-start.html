@@ -38,7 +38,7 @@
   <h2 id="install">Install</h2>
   <p>Requires WordPress 6.5 or later and PHP 7.4 or later (64-bit PHP for backups over 2 GB), on MySQL or MariaDB. Password-protected backups need PHP's OpenSSL extension, and bzip2-compressed backups need bz2.</p>
   <ol>
-    <li>Get the free plugin: <a href="download/restorwell-1.1.1.zip">restorwell-1.1.1.zip</a>, or <code>restorwell.zip</code> from the Pro download. Do not unzip it.</li>
+    <li>Get the free plugin: <a href="download/restorwell-1.1.1.zip">restorwell-1.1.1.zip</a> (Pro buyers too: the Pro download holds <code>restorwell-pro.zip</code>). Do not unzip it.</li>
     <li>In WordPress, go to <strong>Plugins &gt; Add New Plugin</strong>, click <strong>Upload Plugin</strong>, choose the zip, then <strong>Install Now</strong> and <strong>Activate</strong>.</li>
     <li>Pro only: do the same with <code>restorwell-pro.zip</code>, after the free plugin. WordPress refuses to activate Pro without it, and if the free plugin is removed later, Pro shows a notice that says how to fix it.</li>
     <li>Go to <strong>Tools &gt; Restorwell</strong>. Only administrators see it.</li>
@@ -80,7 +80,7 @@ wp restorwell restore site.wpress --password-stdin --yes</pre>
 
   <h2 id="pro">Restorwell Pro: Restore from a link</h2>
   <p>With Pro active, Tools &gt; Restorwell has a <strong>Restore from a link</strong> box. Paste the direct download address of a .wpress file and click <strong>Download to this server</strong>. The server downloads it into <code>wp-content/restorwell-backups</code> with progress, resuming where the remote server allows, and then the same Check starts. A share page that shows a preview (for example a Google Drive viewer page) is not a direct link, and Pro says so. Addresses on private or local networks are refused. If the remote server cannot resume, an interrupted download starts again from the beginning. If an address is refused, the reason appears under the address field.</p>
-  <p id="updates"><strong>Updating Pro.</strong> Pro never checks for updates by itself. Each new version is added to your purchase on Polar at no charge, and the current version numbers are on the <a href="index.html#updates">product page</a>. Sign in to Polar's customer portal with the e-mail you bought with (Polar sends a one-time code), download the new <code>restorwell-pro.zip</code>, then go to <strong>Plugins &gt; Add New Plugin &gt; Upload Plugin</strong>, choose it, click <strong>Install Now</strong> and then <strong>Replace current with uploaded</strong>. Pro stays active and your backups are not touched. Update the free plugin the same way with <code>restorwell.zip</code>.</p>
+  <p id="updates"><strong>Updating Pro.</strong> Pro never checks for updates by itself. Each new version is added to your purchase on Polar at no charge, and the current version numbers are on the <a href="index.html#updates">product page</a>. Sign in to <a href="https://polar.sh/ochrestack/portal">Polar's customer portal</a> with the e-mail you bought with (Polar sends a one-time code), download the new <code>restorwell-pro.zip</code>, then go to <strong>Plugins &gt; Add New Plugin &gt; Upload Plugin</strong>, choose it, click <strong>Install Now</strong> and then <strong>Replace current with uploaded</strong>. Pro stays active and your backups are not touched. Update the free plugin the same way with <code>restorwell.zip</code>.</p>
 
   <h2 id="limits">Limits</h2>
   <ul>
