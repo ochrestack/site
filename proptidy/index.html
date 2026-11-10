@@ -46,6 +46,7 @@
   .button:hover, .button:focus { background: var(--ochre-text); }
   figure { margin: 28px 0; }
   figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
   figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
   .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 8px; }
@@ -91,7 +92,7 @@
   <p class="sub">Custom properties stuck in alphabetical order, with a pop-up for every tweak: Proptidy keeps them in your order and puts their settings below the list.</p>
   <figure>
     <a href="img/order.gif"><img class="hero" src="img/order.gif" alt="Blender 5.2 with Blender Studio's Rain in Pose Mode on the left and the Bone tab of her properties bone, Properties_IKFK, on the right. Proptidy's list starts in Blender's order (cloudrig_component, fk_hinge_arm_left, ...). Four clicks on Move to Top put ik_arm_left, ik_arm_right, ik_leg_left and ik_leg_right first; Add Heading puts a heading above them, typed as 'Arms and legs'; typing 'leg' in the filter leaves only the properties with leg in their name, then the filter is cleared" width="757" height="787"></a>
-    <figcaption>Rain's 23 properties, Blender 5.2, 1.5&times; speed. Rain Rig (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
+    <figcaption>Rain's 23 properties, Blender 5.2, 1.5&times; speed. <a href="#watch">Watch the 44-second demo</a>. Rain Rig (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
   </figure>
   <ul class="benefits">
     <li><strong>Most-used switch on top, nothing renamed:</strong> drivers keep working (0 of Rain's 772 changed).</li>
@@ -109,6 +110,18 @@
   </div>
 </section>
 <main>
+  <h2 id="watch">Watch it work</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
+      <source src="video/proptidy-demo-720p60.mp4" type="video/mp4">
+    </video>
+    <figcaption>The demo, 44 s, captions only, no sound: Blender's own panel and the number-prefix workaround on Rain, then Proptidy 1.0.1 in Blender 5.2.3 LTS: Move to Top, a heading, the settings fields, the Sidebar and a shot file. Rain Rig (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
+  </figure>
+  <figure>
+    <img loading="lazy" src="video/proptidy-order.gif" alt="Looping clip from the demo: Proptidy's list on Rain's properties bone in Blender's order. ik_leg_right, ik_leg_left, ik_arm_right and ik_arm_left are each selected and moved to the top with Move to Top; Rain's arms stay as they were. The list menu's Add Heading puts a heading above them, typed as Arms and legs. Captions: Proptidy keeps them in the order you set. Nothing is renamed, so no driver breaks. Add headings to group them" width="1280" height="720">
+    <figcaption>Four clicks on Move to Top and a heading, at normal speed. A loop from the demo.</figcaption>
+  </figure>
+
   <h2 id="compare">Blender's order, and yours</h2>
   <figure>
     <a href="img/compare.png"><img src="img/compare.png" alt="Two Properties editors side by side on the Bone tab of Rain's Properties_IKFK. Left, labelled 'Blender's Custom Properties: by name': cloudrig_component, fk_hinge_arm_left, fk_hinge_arm_right, fk_hinge_leg_left, fk_hinge_leg_right, grab_parent_left, grab_parent_right, then ik_arm_left and ik_arm_right in the middle of the list. Right, labelled 'Proptidy: your order': the heading Arms and legs over ik_arm_left, ik_arm_right, ik_leg_left and ik_leg_right, a spacer, the heading Stretch over ik_stretch_arms, ik_stretch_legs and ik_stretch_spine; ik_stretch_arms is selected and its settings are below the list: Description 'Stretch the arms when in IK', Default Value 1.000, Min 0.00, Max 1.50, Soft Limits on, Soft Min 0.00, Max 1.00" width="880" height="618" loading="lazy"></a>
