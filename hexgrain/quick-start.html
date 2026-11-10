@@ -39,7 +39,7 @@
 
   <h2 id="install">Install (IntelliJ IDEA 2025.3 or later)</h2>
   <ol>
-    <li>Download <a href="download/hexgrain-1.0.3.zip"><code>hexgrain-1.0.3.zip</code></a>. Do not unzip it.</li>
+    <li>Download <a href="download/hexgrain-1.0.4.zip"><code>hexgrain-1.0.4.zip</code></a>. Do not unzip it.</li>
     <li>In IntelliJ IDEA, open <strong>Settings | Plugins</strong>, click <strong>⚙</strong>, choose <strong>Install Plugin from Disk…</strong>, pick the zip, and accept the IDE's third-party plugin notice.</li>
     <li>Click <strong>Restart IDE</strong>. The IDE asks for one restart when it installs a paid or freemium plugin from disk; then Hexgrain is ready. <strong>What's New</strong> on the plugin's page lists this version's changes.</li>
   </ol>
@@ -72,14 +72,14 @@
     <li><strong>Find:</strong> choose Hex (<code>49 44 41 54</code>, spaces anywhere) or Text (ASCII or UTF-8), then <strong>Next</strong> or <strong>Previous</strong>. The whole array is searched; arrays up to 1 Mi elements show "Match 2 of 5". <strong>Stop</strong>, or Escape in the Find field, ends a search.</li>
     <li><strong>Copy As:</strong> hex string, Base64, or a Java, Kotlin or C# array literal.</li>
     <li><strong>Save:</strong> the selection or the whole array to a <code>.bin</code> file through the IDE's save dialog; the tab shows the number of bytes written. Every byte comes from the same pause. The file is written next to the target and moved into place at the end, so a failed or stopped save leaves an existing file as it was.</li>
-    <li><strong>Data inspector:</strong> select 1 to 8 bytes to see int8, int16, int32 and int64, signed and unsigned, float32 and float64, big- and little-endian, and the bits; any selection also shows its UTF-8 and UTF-16 text. Right-click a value or press Ctrl+C to copy it.</li>
+    <li><strong>Data inspector:</strong> a panel beside the dump (without a licence there is no panel, so the rows have the tab's full width). Select 1 to 8 bytes to see int8, int16, int32 and int64, signed and unsigned, float32 and float64, big- and little-endian, and the bits; any selection also shows its UTF-8 and UTF-16 text. Right-click a value or press Ctrl+C to copy it.</li>
     <li><strong>More types:</strong> <code>java.nio.ByteBuffer</code> (heap and direct; the bytes between position and limit, with <strong>Whole capacity</strong> to see all of it), <code>short[]</code>, <code>int[]</code>, <code>long[]</code> and <code>char[]</code>, one element per cell at its own width, with 4, 8, 16 or 32 columns. Without a licence, such a value opens a tab whose one locked line sits at the top.</li>
   </ul>
   <figure><a href="img/direct-bytebuffer-window.png"><img src="img/direct-bytebuffer.png" alt="A direct ByteBuffer in a Kotlin program: a memory-mapped view of a jar between position and limit, 22 bytes at the file's own offsets 001AE08E and 001AE09E, four bytes selected, and the inspector showing 1670176 little-endian" width="958" height="372" loading="lazy"></a><figcaption>A memory-mapped (direct) <code>ByteBuffer</code> in Kotlin: the 22 bytes between position and limit, at the file's own offsets.</figcaption></figure>
   <figure><a href="img/data-inspector-sof0-width-window.png"><img src="img/data-inspector.png" alt="Two bytes, 08 00, selected in a JPEG's frame header at 0x6D33; the data inspector shows 2048 big-endian and 8 little-endian for int16 and uint16" width="958" height="522" loading="lazy"></a><figcaption>Go to 0x6D33 in a camera JPEG, two bytes selected: 2048 big-endian, the image's width.</figcaption></figure>
 
   <h2 id="licence">Licence and trial</h2>
-  <p>Licences and the trial are sold and started by JetBrains Marketplace, so they start when the Hexgrain listing is live; it is in review. Until then the free tier works in full, and in the 1.0.3 download <strong>Get a licence or trial</strong> says so in the line instead of opening a licence dialog where no trial can start yet.</p>
+  <p>Licences and the trial are sold and started by JetBrains Marketplace, so they start when the Hexgrain listing is live; it is in review. Until then the free tier works in full, and in the 1.0.4 download <strong>Get a licence or trial</strong> says so in the line instead of opening a licence dialog where no trial can start yet.</p>
   <p>Once the listing is live, each licensed control shows one line with the price and <strong>Get a licence or trial</strong>, which opens the IDE's own licence dialog with Hexgrain selected, only when you click it. The trial is 30 days of every feature. The licence is a JetBrains Marketplace perpetual licence: $9 once, the same for personal and commercial use, every update included, nothing renews. When a trial ends there is no pop-up, banner or notification, and the free hex dump keeps working.</p>
 
   <h2 id="settings">Settings</h2>
@@ -98,7 +98,7 @@
   <p>Hexgrain reads values of the program you are debugging only when you open a Hex tab, keeps them in memory, and writes them to disk only when you choose Save. It makes no network calls and collects and sends nothing. The licence check is done by the IDE through JetBrains Marketplace licensing. See also the <a href="../privacy.html">privacy policy</a>.</p>
 
   <h2 id="source">Source code</h2>
-  <p>The plugin's source code ships inside the plugin zip, as <code>hexgrain/src/hexgrain-1.0.3-sources.zip</code>, under the <a href="eula.html">licence agreement</a>; the same agreement is the <code>LICENSE</code> file in the zip.</p>
+  <p>The plugin's source code ships inside the plugin zip, as <code>hexgrain/src/hexgrain-1.0.4-sources.zip</code>, under the <a href="eula.html">licence agreement</a>; the same agreement is the <code>LICENSE</code> file in the zip.</p>
 
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE version (Help &gt; About), the array's type and length, and what the tab showed. Bug reports and feature requests are welcome at the same address.</p>
