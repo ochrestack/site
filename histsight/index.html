@@ -122,27 +122,27 @@
   <div class="top-images">
     <figure class="top-image">
       <a href="img/branches-popup-merge-modes-window.png"><img class="hero" src="img/branches-popup-merge-modes.png" alt="IntelliJ IDEA 2026.3, Branches popup on the current branch master, with the submenu of origin/master open. Below the IDE's own entries, three Histsight entries: 'Merge into current, fast-forward only (fast-forward)', highlighted, 'Merge into current, always create a merge commit (fast-forward possible)' and 'Preview Rebase onto origin/master…'. A Go source file is open behind the popup" width="880" height="560"></a>
-      <figcaption>Free: both merge modes in the Branches popup, with what each will do.</figcaption>
+      <figcaption>Free: both merge modes, each saying what it will do.</figcaption>
     </figure>
     <figure class="top-image preview-wide">
       <a href="img/rebase-preview-window.png"><img src="img/rebase-preview.png" alt="The Preview Rebase onto master dialog: 'Rebasing adjust-default-themes onto master replays 7 commits: 2 stop with conflicts.' Commit 1 conflicts in src/tui/tui.go; commit 5 conflicts in CHANGELOG.md, man/man1/fzf.1 and src/options.go; the other five apply cleanly. Buttons Rebase Now and Close" width="1026" height="503"></a>
-      <figcaption>Free: 7 commits, 2 will stop. $9 once: which, and their files.</figcaption>
+      <figcaption>Free: 7 commits, 2 will stop. Licensed (test licence; not on sale yet): which, and their files.</figcaption>
     </figure>
   </div>
   <ul class="benefits">
     <li><strong>Merge <code>--ff-only</code> or <code>--no-ff</code> from the popup,</strong> with a hint before you click.</li>
     <li><strong>A warning before you amend a pushed commit,</strong> naming the remote branch.</li>
-    <li><strong>See where a rebase will stop before it starts,</strong> commit by commit, with the files.</li>
+    <li><strong>See where a rebase will stop before it starts:</strong> how many, free; which, with a licence.</li>
   </ul>
   <div class="buy">
-    <p class="price"><strong>Free:</strong> merge modes, the warning, a rebase's stop count. <strong>$9 once:</strong> the full preview and amend tools, personal or commercial. Nothing renews; 30-day trial.</p>
+    <p class="price"><strong>Free:</strong> merge modes, the warning, a rebase's stop count. <strong>Licence, planned at $9 once</strong> (personal or commercial, 30-day trial): the full preview and amend tools.</p>
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
-    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet.</p>
+    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet. Trial and purchase untested until then.</p>
     <p class="fine">Tested: IntelliJ IDEA 2025.1.7 and 2026.3 and PyCharm 2026.3 on Linux; Windows and macOS untested. Source included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
   </div>
   <figure class="preview-narrow">
     <a href="img/rebase-preview-window.png"><img class="hero" src="img/rebase-preview.png" alt="The Preview Rebase onto master dialog: 'Rebasing adjust-default-themes onto master replays 7 commits: 2 stop with conflicts.' Commit 1 conflicts in src/tui/tui.go; commit 5 conflicts in CHANGELOG.md, man/man1/fzf.1 and src/options.go; the other five apply cleanly. Buttons Rebase Now and Close" width="1026" height="503" loading="lazy"></a>
-    <figcaption>Free: 7 commits, 2 will stop. $9 once: which, and their files.</figcaption>
+    <figcaption>Free: 7 commits, 2 will stop. Licensed (test licence; not on sale yet): which, and their files.</figcaption>
   </figure>
 </section>
 <main>
@@ -151,15 +151,15 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/histsight-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>59 s, captions only, no sound. IntelliJ IDEA 2026.3, Histsight 1.1.0, waits cut. <a href="video/histsight-demo-1080p.mp4">1080p, 60 fps</a>.</figcaption>
+    <figcaption>59 s, captions only. IntelliJ IDEA 2026.3, Histsight 1.1.0; licensed views use a test licence. <a href="video/histsight-demo-1080p.mp4">1080p, 60 fps</a>.</figcaption>
   </figure>
   <figure>
     <img src="video/histsight-rebase-preview.gif" alt="Animated: the Preview Rebase onto master dialog lists 7 commits, commits 1 and 5 marked conflicts with their files; Rebase Now; the IDE's Conflicts dialog stops at commit 1 on tui.go, then at commit 5 on CHANGELOG.md, fzf.1 and options.go" width="1280" height="720" loading="lazy">
-    <figcaption>The rebase preview, then the real rebase stopping where it said (14 s GIF).</figcaption>
+    <figcaption>The preview, then the real rebase stopping there (14 s GIF).</figcaption>
   </figure>
 
   <h2 id="ide">What the IDE already does</h2>
-  <p>The IDE already does part of this, and the listing says so. For a merge with a rule:</p>
+  <p>The IDE already does part of this, and the listing says so.</p>
   <div class="scroll-x">
   <table class="compare">
     <thead><tr><th></th><th>Choose <code>--ff-only</code> or <code>--no-ff</code></th><th>Hint before you click</th><th>Where</th></tr></thead>
@@ -175,12 +175,12 @@
 
   <figure class="real-size">
     <a href="img/ide-rebase-stops-at-commit-5-window.png"><img src="img/ide-rebase-stops-at-commit-5.png" alt="After Rebase Now, the IDE's own Conflicts dialog: rebasing adjust-default-themes onto master, current commit 95697b96 'Doc', three unresolved files: CHANGELOG.md, fzf.1 and options.go" width="876" height="503" loading="lazy"></a>
-    <figcaption>Rebase Now: the IDE's rebase stopped at commits 1 and 5, on those files.</figcaption>
+    <figcaption>The IDE's rebase then stopped at commits 1 and 5, on those files.</figcaption>
   </figure>
 
   <figure class="real-size">
     <a href="img/pushed-commit-warning-window.png"><img src="img/pushed-commit-warning.png" alt="The Commit tool window with Amend ticked and a local change selected; the dialog 'Amend a Pushed Commit?' says the commit aaf3c1b0 'Document asynchronous loading in README-VIM' is already in origin/vim-async, with 'Don't ask again for this repository', Amend anyway, and Cancel as the default button" width="885" height="730" loading="lazy"></a>
-    <figcaption>Free: it asks first and names the branch.</figcaption>
+    <figcaption>Free: it asks first, naming the branch.</figcaption>
   </figure>
 
   <figure class="real-size">
@@ -190,12 +190,12 @@
 
   <figure class="real-size">
     <a href="img/message-only-amend-multi-repo-window.png"><img src="img/message-only-amend-multi-repo.png" alt="The Amend Last Commit dialog in a project with two repositories: Repository fd selected, 'Only this root is amended.', the commit being amended with its date and file, 'No local changes. Amend rewrites the message or author only.', and a new message typed" width="986" height="722" loading="lazy"></a>
-    <figcaption>Licensed: just the message, with two repositories.</figcaption>
+    <figcaption>Licensed (test licence): just the message, with two repositories.</figcaption>
   </figure>
 
   <figure class="real-size">
     <a href="img/no-licence-free-count-window.png"><img src="img/no-licence-free-count.png" alt="Without a licence, the Preview Rebase onto master window: 'Rebasing adjust-default-themes onto master replays 7 commits: 2 stop with conflicts.', then 'The list of commits and files needs a Histsight licence: $9 once, the same for personal and commercial use, with a 30-day free trial.', the link Get a licence or trial, and Close" width="877" height="183" loading="lazy"></a>
-    <figcaption>No licence: the count is free; the list is $9.</figcaption>
+    <figcaption>No licence: the count is free; the list needs the licence.</figcaption>
   </figure>
 
   <h2 id="proof">Checked against real rebases</h2>
@@ -205,15 +205,15 @@
   <ul>
     <li>Rebase preview: Git 2.40+; plain rebase only, not <code>--rebase-merges</code>, <code>--onto</code> or autosquash.</li>
     <li>No Jujutsu, <code>--squash</code>, older commits or push; no WSL Git for the preview and amend view.</li>
-    <li>JetBrains IDEs 2025.1+; IntelliJ IDEA and PyCharm have been run, the other IDEs and Remote Development not.</li>
+    <li>JetBrains IDEs 2025.1+; run in IntelliJ IDEA and PyCharm only; other IDEs and Remote Development untested.</li>
   </ul>
 
   <h2 id="details">Details</h2>
   <ul>
-    <li>Sold through JetBrains Marketplace; GPL-3.0-or-later, <a href="license.html">licence text</a>.</li>
+    <li>To be sold through JetBrains Marketplace; GPL-3.0-or-later, <a href="license.html">licence text</a>.</li>
     <li>Runs only your local <code>git</code>; no network calls, no telemetry (<a href="../privacy.html">privacy</a>).</li>
   </ul>
-  <p style="font-size:14px;color:var(--muted)">Screenshots: IntelliJ IDEA 2026.3, clones of fzf (MIT) and fd (Apache-2.0), demo commits by "Sam Rivera". Git is a trademark of Software Freedom Conservancy, IntelliJ IDEA of JetBrains s.r.o.; Histsight is affiliated with neither.</p>
+  <p style="font-size:14px;color:var(--muted)">Screenshots: IntelliJ IDEA 2026.3 on fzf (MIT) and fd (Apache-2.0), demo commits. Git is a trademark of Software Freedom Conservancy, IntelliJ IDEA of JetBrains s.r.o.; Histsight is affiliated with neither.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>
