@@ -116,16 +116,16 @@
   </figure>
   <ul class="benefits">
     <li><strong>Filter/grep the Terminal output, live.</strong> Change the pattern after the run; no re-running through <code>| grep</code>.</li>
-    <li><strong>Keep what the Terminal forgets.</strong> After five long test runs its own search found 4 failure lines; Scrollgrep kept all 10.</li>
+    <li><strong>Keep what the Terminal forgets.</strong> Five Gradle test runs in IntelliJ IDEA 2026.3: its own search found 35 failure lines; Scrollgrep kept all 70.</li>
     <li><strong>Click a stack frame, land on the line:</strong> JVM, Python, Node.js or Go (licence).</li>
   </ul>
   <div class="buy">
-    <p class="price"><strong>Free:</strong> the live filter, no time limit. <strong>$12 once</strong> when the Marketplace listing is live: links, one-command scope, patterns and alerts, personal or commercial. Nothing renews; 30-day trial.</p>
+    <p class="price"><strong>Free:</strong> the live filter, no time limit. <strong>$12 once</strong> for links, one-command scope, patterns and alerts (perpetual, 30-day trial): on sale once the JetBrains Marketplace listing is approved.</p>
     <!-- Colin, when the JetBrains Marketplace listing is live: add a second button, "Get it on JetBrains Marketplace",
-         linking to the listing's URL, and drop "(in review)" from the note below. -->
-    <p class="buttons"><a class="button" id="download" href="download/scrollgrep-1.1.2.zip" aria-describedby="download-note">Download Scrollgrep 1.1.2 (free)</a></p>
-    <p class="note" id="download-note">Install: Settings | Plugins | ⚙ | Install Plugin from Disk, then restart the IDE (its "cannot update" notice for a plugin installed from a file is expected). Licence and 30-day trial start with the JetBrains Marketplace listing (in review). The IDE's licence dialog says "Subscription"; this licence is perpetual.</p>
-    <p class="fine">Tested on Linux: IntelliJ IDEA 2025.3 (full test suite, Bash and Zsh) and 2026.3; PyCharm 2025.3 (install and filter) and 2026.3 (filter, and the licensed features with a test licence). Untested: WebStorm, GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell. Source code included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a> · <a href="eula.html">EULA</a></p>
+         linking to the listing's URL, and change "on sale once the JetBrains Marketplace listing is approved" in the price line to "on JetBrains Marketplace". -->
+    <p class="buttons"><a class="button" id="download" href="download/scrollgrep-1.1.3.zip" aria-describedby="download-note">Download Scrollgrep 1.1.3 (free filter)</a></p>
+    <p class="note" id="download-note">Install: Settings | Plugins | ⚙ | Install Plugin from Disk, then restart the IDE (File | Exit if it does not offer a restart).</p>
+    <p class="fine">Works with IntelliJ IDEA and PyCharm 2025.3 and 2026.3 (tested on Linux); not yet tested on WebStorm, Windows or macOS. Source included. <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a> · <a href="eula.html">EULA</a></p>
   </div>
 </section>
 <main>
@@ -134,7 +134,7 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/scrollgrep-demo-720p60.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 50 s, captions only, no sound track, recorded at 60 fps in IntelliJ IDEA 2025.3 (with 1.1.0; 1.1.1 and 1.1.2 change only a menu label, texts and a hint) on the jsoup clone (one assertion changed so one test fails). Free until 0:19; after that the licensed features, shown with a test licence because the listing is not live yet. The live filter alone: <a href="video/scrollgrep-live-filter.gif">11-second GIF</a> (0.2 MB).</figcaption>
+    <figcaption>The demo, 50 s, captions only, no sound track, recorded at 60 fps in IntelliJ IDEA 2025.3 (with 1.1.0; later versions add a menu label, texts, a Regex hint and the 2026.3 skipped-output notice, not in the video) on the jsoup clone (one assertion changed so one test fails). Free until 0:19; after that the licensed features, shown with a test licence because the listing is not live yet. The live filter alone: <a href="video/scrollgrep-live-filter.gif">11-second GIF</a> (0.2 MB).</figcaption>
   </figure>
 
   <div class="box">
@@ -144,8 +144,13 @@
   <h2 id="real">In the IDE, for real</h2>
 
   <figure class="real-size">
-    <a href="img/kept-after-trim-window.png"><img src="img/kept-after-trim.png" alt="The Scrollgrep panel filtering '<<< FAILURE' shows 10 matching lines, two from each of five runs of the jsoup test suite. Below, the Terminal's own search for the same text counts 4/4, because the Terminal has trimmed the first three runs from its history" width="1200" height="728" loading="lazy"></a>
-    <figcaption>Free: five runs of the suite with Maven's debug log, about 2.6 MB. The Terminal kept the last two, so its search finds 4; Scrollgrep, open before the runs, lists all 10 failure lines.</figcaption>
+    <a href="img/kept-after-trim-263-window.png"><img src="img/kept-after-trim-263.png" alt="IntelliJ IDEA 2026.3 after five Gradle test runs of a 164-test project with 2 failing tests: the Scrollgrep panel filtering FAILED shows 70 matching lines, starting with the first run's LedgerTest and MoneyTest failures; below, the Terminal's own search for 'failed' counts 35/35, because the Terminal has trimmed the earlier runs" width="1200" height="728" loading="lazy"></a>
+    <figcaption>Free, in IntelliJ IDEA 2026.3: five Gradle test runs with the debug log, about 11,000 lines. The Terminal kept the last part, so its search finds 35; Scrollgrep, open before the runs, lists all 70 lines with "failed", from the first run on.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/skipped-output-window.png"><img src="img/skipped-output.png" alt="IntelliJ IDEA 2026.3, cat of a 97,317-line sync log in a Terminal tab on the Ghostty emulator. The Scrollgrep panel filtering 'skipped row' shows 918 matching lines and 'some lines missing', rows reading '⋯ the Terminal skipped lines here ⋯' between matching lines, and the notice: The Terminal skipped output that printed too fast. Keep every line: use JediTerm for new tabs" width="1200" height="728" loading="lazy"></a>
+    <figcaption>Free, in IntelliJ IDEA 2026.3: <code>cat</code> of a 97,317-line log at full speed. The 2026.3 Terminal's Ghostty emulator skipped most of it; Scrollgrep kept the 918 matching lines that arrived (the Terminal itself held 859) and says where lines are missing. After one click on "use JediTerm for new tabs", the same <code>cat</code> in a new tab: all 10,470.</figcaption>
   </figure>
 
   <figure class="real-size">
@@ -175,13 +180,16 @@
 
   <h2 id="measured">Measured</h2>
   <p>200,000 lines at full speed in a real bash tab, five runs: 2,061 matching lines each time, the same as <code>grep -c</code>; matches shown a median of 0.52 to 0.66 s after printing; the UI thread never blocked longer than 65.7 ms while they were added (IntelliJ IDEA 2025.3, headless, Linux, 4 CPUs).</p>
+  <p>IntelliJ IDEA 2026.3 (with its windows, Linux), each command in a new tab with the filter set first: five Gradle test runs, 70 of 70 lines with "failed"; <code>tail -f</code> of a sync log written at about 4,000 lines a second, 10,470 of 10,470. On the Ghostty emulator, output printed at full speed is partly skipped by the Terminal: <code>cat</code> of that log kept 988 of 10,470, of the Gradle log 35 of 70, the 200,000-line generator 85 of 2,062, each marked "some lines missing". In new tabs on JediTerm: 10,470, 70 and 2,062 of 10,470, 70 and 2,062.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
     <li>Results show in Scrollgrep's own panel, as plain text; the terminal itself hides nothing.</li>
     <li>IDE 2025.3 or later with the Reworked terminal engine (the default). No SSH sessions, no vim, less or htop.</li>
-    <li>Matches outlast the Terminal's history only for output that arrived while the panel showed the tab (up to 32 MB and 200,000 lines per tab).</li>
-    <li>Run so far in IntelliJ IDEA and PyCharm on Linux; WebStorm, GoLand, the other JetBrains IDEs, Windows, macOS and Remote Development untested.</li>
+    <li>Matches outlast the Terminal's history for output that reached the Terminal while the panel showed the tab (up to 32 MB and 200,000 lines per tab).</li>
+    <li>IDE 2026.3 starts Terminal tabs on the Ghostty emulator, which skips output that prints faster than it shows it; no plugin can read those lines. Scrollgrep marks where (not how many) and offers the JediTerm emulator for new tabs, which keeps every line.</li>
+    <li>Tested on Linux in IntelliJ IDEA and PyCharm 2025.3 and 2026.3. Untested: WebStorm, GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell, Remote Development, and a real Marketplace trial or purchase.</li>
+    <li>The IDE's licence dialog says "Subscription"; Scrollgrep's licence is perpetual (you pay once). A plugin installed from the zip makes the IDE say it "cannot update" it; that is expected.</li>
   </ul>
 
   <h2 id="details">Details</h2>

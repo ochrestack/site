@@ -74,12 +74,12 @@
 
   <h2 id="install">Install (JetBrains IDEs 2025.3 or later)</h2>
   <ol>
-    <li><a href="download/scrollgrep-1.1.2.zip">Download scrollgrep-1.1.2.zip</a> (free; keep it zipped). In the IDE, open <strong>Settings | Plugins</strong>, click <strong>⚙</strong>, choose <strong>Install Plugin from Disk…</strong>, pick the zip and click <strong>OK</strong>, then <strong>Accept</strong> the third-party plugin notice.</li>
-    <li>Click <strong>Restart IDE</strong> when the IDE offers it: it loads plugins with paid features only after a restart. A <strong>Scrollgrep</strong> tool window then appears on the right. The IDE may later show "Cannot update plugin": it cannot look for updates of a plugin installed from a file.</li>
+    <li><a href="download/scrollgrep-1.1.3.zip">Download scrollgrep-1.1.3.zip</a> (free; keep it zipped). In the IDE, open <strong>Settings | Plugins</strong>, click <strong>⚙</strong>, choose <strong>Install Plugin from Disk…</strong>, pick the zip and click <strong>OK</strong>, then <strong>Accept</strong> the third-party plugin notice.</li>
+    <li>Restart the IDE: it loads plugins with paid features only after a restart. PyCharm shows a <strong>Restart IDE</strong> button; IntelliJ IDEA may close Settings without offering one, so choose <strong>File | Exit</strong> and start it again, or use Find Action (Ctrl+Shift+A): <strong>Restart IDE</strong>. A <strong>Scrollgrep</strong> tool window then appears on the right. The IDE may then show "Cannot update plugin": it cannot look for updates of a plugin installed from a file.</li>
     <li>Check that <strong>Settings | Tools | Terminal | Engine</strong> is <strong>Reworked</strong>, the default since 2025.2. Scrollgrep does not see Classic terminal tabs.</li>
   </ol>
   <p>The JetBrains Marketplace listing is in review. Once it is live you can also type <em>Scrollgrep</em> in the Plugins search field and click <strong>Install</strong>, and get updates from there.</p>
-  <p>Tested in IntelliJ IDEA 2025.3 (the full test suite, with real Bash, Zsh and sh terminals) and 2026.3, PyCharm 2025.3 (install and filter check) and PyCharm 2026.3 (filter, Regex hint, and the licensed features with a test licence: Python frame, last command with context, preset, watch alert), on Linux. WebStorm, GoLand, the other JetBrains IDEs, Windows, macOS, PowerShell and Remote Development have not been tested yet.</p>
+  <p>Tested in IntelliJ IDEA 2025.3 (the full test suite, with real Bash, Zsh and sh terminals) and 2026.3 (the free filter on fast output, with both of its terminal emulators), PyCharm 2025.3 (install and filter check) and PyCharm 2026.3 (filter, Regex hint, and the licensed features with a test licence: Python frame, last command with context, preset, watch alert), on Linux. WebStorm, GoLand, the other JetBrains IDEs, Windows, macOS, PowerShell and Remote Development have not been tested yet.</p>
 
   <h2 id="filter">Live filter (free)</h2>
   <ol>
@@ -95,9 +95,22 @@
     <li>A progress bar or spinner redrawn in place appears once, with its final text.</li>
     <li>An invalid pattern is outlined in red with grep's reason, and the results stay as they were. Clearing the field clears the results.</li>
     <li>The panel follows the Terminal tab you select.</li>
-    <li>Matches stay in the panel after the Terminal trims its own history, for output that arrived while the panel showed the tab (or the tab had a filter). A panel opened after a run sees only what the Terminal still holds.</li>
+    <li>Matches stay in the panel after the Terminal trims its own history, for output that reached the Terminal while the panel showed the tab (or the tab had a filter). A panel opened after a run sees only what the Terminal still holds. On IDE 2026.3, see <a href="#fast">fast output</a>.</li>
     <li>The panel keeps up to 32 MB and 200,000 lines per tab (<strong>Settings | Tools | Scrollgrep</strong>, 4 to 1,024 MB). Past the limit the oldest lines that do not match go first. A tab you leave with an empty filter is not kept.</li>
     <li>Changing the pattern on a long session does not freeze the IDE: long re-filters finish in the background, and the next keystroke cancels them.</li>
+  </ul>
+
+  <h2 id="fast">Fast output on IDE 2026.3</h2>
+  <p>The 2026.3 IDEs start new Terminal tabs on the Ghostty emulator. When output prints faster than it can show it (a <code>cat</code> of a large file, a generator at full speed), the Terminal shows only its screen until the output pauses, then the last few thousand lines: what scrolled past in between never reaches the Terminal's text, so no plugin can read it. Scrollgrep keeps every line that does arrive, in order, and lines up what the Terminal sends after a pause with what it already holds, so a build with pauses between bursts loses nothing. Where lines are missing, the results show <em>⋯ the Terminal skipped lines here ⋯</em>, the status line says "some lines missing", and the panel offers <strong>use JediTerm for new tabs</strong>.</p>
+  <p>That link switches the IDE's own setting (Registry: <code>terminal.use.ghostty.emulator</code>) off, and only when you click it. New tabs then run on the JediTerm emulator, as in 2025.3, which passes every line on; no restart is needed. Open a new tab and run the command again. To switch back: Find Action (Ctrl+Shift+A), <strong>Registry…</strong>, untick or tick <code>terminal.use.ghostty.emulator</code>.</p>
+  <figure><a href="img/skipped-output-window.png"><img src="img/skipped-output.png" alt="IntelliJ IDEA 2026.3: cat of a 97,317-line sync log in a Terminal tab on the Ghostty emulator. The Scrollgrep panel filters 'skipped row' and shows rows '⋯ the Terminal skipped lines here ⋯' between matching lines, the status line ends with 'some lines missing', and a notice reads: The Terminal skipped output that printed too fast. Keep every line: use JediTerm for new tabs" width="1200" height="728" loading="lazy"></a><figcaption>Where the Terminal skipped lines, the results say so; the link starts new tabs on JediTerm.</figcaption></figure>
+
+  <h3 id="fewer">Fewer matches than grep?</h3>
+  <ul>
+    <li>A "⋯ the Terminal skipped lines here ⋯" row or "some lines missing": the Terminal skipped output (above). Use JediTerm for new tabs and run the command again.</li>
+    <li>The panel was opened after the run: it sees only what the Terminal still holds (about 1 MB of output by default). Open it before the run, or leave the tab with a filter.</li>
+    <li>More than 32 MB or 200,000 lines in the tab: the oldest lines go first; the status line says how many matches were dropped. Raise the limits in <strong>Settings | Tools | Scrollgrep</strong>.</li>
+    <li>Regex off: <code>a|b</code> is matched as typed (the panel offers <strong>Turn on Regex</strong>). Match case off finds upper and lower case, as <code>grep -i</code>.</li>
   </ul>
 
   <h2 id="links">Links in the results (licensed)</h2>
@@ -125,6 +138,8 @@
     <li>Reworked terminal engine on IDE 2025.3 or later only. SSH sessions (Classic engine) and full-screen programs such as vim, less and htop are not filtered.</li>
     <li>With Bash, the IDE reports only the first part of a compound command line in the Scope list.</li>
     <li>Clearing the terminal (<code>clear</code>, Clear Buffer) clears that tab's results too.</li>
+    <li>IDE 2026.3 with the Ghostty emulator (its default): output that prints faster than the Terminal shows it is partly skipped by the Terminal itself; Scrollgrep marks where (it cannot know how many lines) and offers JediTerm, which keeps every line (<a href="#fast">fast output</a>).</li>
+    <li>Tested on Linux in IntelliJ IDEA and PyCharm 2025.3 and 2026.3. Not tested yet: WebStorm, GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell, Remote Development, and a real Marketplace trial or purchase.</li>
     <li>Not covered: the Run, Debug, Build and Services consoles, Run configurations that use a terminal console, Remote Development and Code With Me clients. English only.</li>
     <li>The Terminal API Scrollgrep uses is marked experimental by JetBrains, so a new IDE version can need a compatibility update.</li>
   </ul>
@@ -133,7 +148,7 @@
   <p>Scrollgrep reads the output of the Terminal tabs in the open project and keeps a copy of it in memory, not only the matching lines, within the limits above, for the tab its panel shows and tabs left with a filter. Patterns and presets are stored in the project's workspace settings. It writes no output to disk, makes no network calls, and collects and sends nothing. The licence check is done by the IDE through JetBrains Marketplace licensing. See also the <a href="../privacy.html">privacy policy</a>.</p>
 
   <h2 id="support">Support</h2>
-  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE version (Help | About), the shell you use, and what you saw. Bug reports and feature requests are welcome at the same address.</p>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE version (Help | About), the shell you use, and what you saw. We answer every message, usually within one business day. Bug reports and feature requests are welcome at the same address.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>
