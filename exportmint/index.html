@@ -99,7 +99,7 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/exportmint-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>34 s, captions only, a real Blender 5.2.3 LTS session (the wait while files are written is cut): Rain turned and the BoomBox moved, one click on Export Changed writes those 2 files and leaves the other 10 alone, then the run's manifest. <a href="video/exportmint-demo-1080p.mp4">1080p, 60 fps</a> · <a href="video/exportmint-export-changed.gif">12 s GIF loop</a>.</figcaption>
+    <figcaption>36 s, captions only, a real Blender 5.2.3 LTS session (the wait while files are written is cut): Rain turned and the BoomBox moved, one click on Export Changed writes those 2 files and leaves the other 10 alone, then the run's manifest. <a href="video/exportmint-demo-1080p.mp4">1080p, 60 fps</a> · <a href="video/exportmint-export-changed.gif">12 s GIF loop</a>.</figcaption>
   </figure>
 
   <h2 id="what">What it does</h2>
@@ -133,8 +133,8 @@ nothing to commit, working tree clean</pre>
       <figcaption>Before: 12 exporters, all up to date.</figcaption>
     </figure>
     <figure>
-      <a href="img/session-after-export.png"><img class="ui" src="img/panel-after-export.png" alt="The tab after Export Changed: the Last run box reads 'Last run: Export Changed, 10:22' and '2 written, 10 unchanged' above Open Manifest; under 'Up to date (12)', BoomBox.glb and CH-rain.glb at 10:22, the other rows at 09:34 or 09:35" width="462" height="1010" loading="lazy"></a>
-      <figcaption>After Export Changed: 2 written, 10 unchanged. BoomBox and CH-rain show the new export time (10:22); the other rows keep the earlier one (09:34 or 09:35).</figcaption>
+      <a href="img/session-after-export.png"><img class="ui" src="img/panel-after-export.png" alt="The tab after Export Changed: the Last run box reads 'Last run: Export Changed, 11:59' and '2 written, 10 unchanged' above Open Manifest; under 'Up to date (12)', BoomBox.glb and CH-rain.glb at 11:59, the other rows at 11:11" width="462" height="1010" loading="lazy"></a>
+      <figcaption>After Export Changed: 2 written, 10 unchanged. BoomBox and CH-rain show the new export time (11:59); the other rows keep the earlier one (11:11).</figcaption>
     </figure>
   </div>
   <p>The manifest that run wrote, <code>exportmint-manifest.txt</code> (real file, as text; the JSON twin holds the same):</p>
@@ -143,8 +143,8 @@ nothing to commit, working tree clean</pre>
 Blend file: /home/artist/market-kit/rain_market.blend
 Blender version: 5.2.3 LTS
 Run: Export Changed
-Started: 2026-11-10T10:22:41+0000
-Finished: 2026-11-10T10:22:55+0000
+Started: 2026-11-10T11:58:59+0000
+Finished: 2026-11-10T11:59:10+0000
 Result: 2 written, 10 unchanged, 0 failed, 0 blocked
 
 Written (2)
@@ -154,14 +154,14 @@ Written (2)
   Reason: BoomBox: transform changed
   Size: 10557912 bytes
   SHA-256: a81d06221cee2195571d4812e22354b5287f5234a9ee9f5a8d99dbac4a89f253
-  Export time: 2026-11-10T10:22:42+0000
+  Export time: 2026-11-10T11:59:01+0000
 - CH-rain (scene Market, glTF 2.0)
   File: /home/artist/market-kit/export/CH-rain.glb
   Result: written
   Reason: RIG-rain: transform changed
   Size: 72951400 bytes
   SHA-256: 8b875efa7dc940fe0b25b4f352dd3e173317aedef1d3d4e482dc5094ab6b57ee
-  Export time: 2026-11-10T10:22:43+0000
+  Export time: 2026-11-10T11:59:01+0000
 
 Unchanged (10)
 <span class="cmd">[10 entries in the same form: AntiqueCamera, Avocado, BarramundiFish, Corset, Fox, Lantern, SheenChair, SheenWoodLeatherSofa, ToyCar, WaterBottle, each "Result: unchanged", "Reason: up to date"]</span></pre>
@@ -275,7 +275,7 @@ exit code: 0</pre>
 
   <details>
     <summary>How these images were made</summary>
-    <p>Every image, the video and the Select in Outliner loop on this page come from one recording session: Blender 5.2.3 LTS on Linux, with Exportmint 1.1.5 installed from the zip on sale through Blender's extension installer, at 2560x1174 with the interface scaled 1.75 times and the sidebar at Blender's default width. The character is Rain, Blender Studio's free production rig (CC BY 4.0, credit above), in her own file as downloaded from studio.blender.org; we posed her arms down with her rig's own controls, and her character collection, CH-rain, got a glTF 2.0 Collection Exporter. Around her are eleven props from the Khronos glTF Sample Assets, one collection and one exporter each: 12 exporters, exported once before the session. The set (a curved studio backdrop, a rug and a light) is plain geometry we added; it has no exporter. Every pointer move, click and key is real input sent to Blender: Rain is clicked, her rig selected and turned 25 degrees with R Z; the BoomBox is clicked and moved 0.45 m with G X; Export Changed and Select in Outliner are real clicks. Each frame was captured once Blender had drawn it, 60 frames a second, because a software-rendered viewport cannot be filmed smoothly in real time; the pointer is the X server's own cursor, captured with each frame, and the 13.9 s while the two files were written is cut. In the video, the sidebar and the manifest are shown enlarged in the middle of the frame (cut from the same frame, over the dimmed shot) whenever a caption is about them. After every step the session compared Exportmint's own state with what the screen shows: 15 checks, all passed. The stills are single frames of that session, cropped; nothing is drawn on them. The manifest above is the file that run wrote, as text, with its ten Unchanged entries summarised in one line. The two terminal blocks are the real output of the commands shown, run in a shell on the same machine and pasted as text: the git example on the 12-prop demo kit from How we tested, in a repository with the manual's .gitignore lines (plus one line keeping the downloaded source models out of it), and the command line on Rain's file after the session and on a copy of that kit with its WaterBottle moved and saved.</p>
+    <p>Every image, the video and the Select in Outliner loop on this page come from one recording session: Blender 5.2.3 LTS on Linux, with Exportmint 1.1.5 installed from the zip on sale through Blender's extension installer, at 2560x1174 with the interface scaled 1.75 times and the sidebar at Blender's default width. The character is Rain, Blender Studio's free production rig (CC BY 4.0, credit above), in her own file as downloaded from studio.blender.org; we posed her arms down with her rig's own controls, and her character collection, CH-rain, got a glTF 2.0 Collection Exporter. Around her are eleven props from the Khronos glTF Sample Assets, one collection and one exporter each: 12 exporters, exported once before the session. The set (a curved studio backdrop, a rug and a light) is plain geometry we added; it has no exporter. Every pointer move, click and key is real input sent to Blender: Rain is clicked, her rig selected and turned 25 degrees with R Z; the BoomBox is clicked and moved 0.45 m with G X; Export Changed and Select in Outliner are real clicks. Each frame was captured once Blender had drawn it, 60 frames a second, because a software-rendered viewport cannot be filmed smoothly in real time; the pointer is the X server's own cursor, captured with each frame, and the 11.2 s while the two files were written is cut. In the video, the sidebar and the manifest are shown enlarged in the middle of the frame (cut from the same frame, over the dimmed shot) whenever a caption is about them. After every step the session compared Exportmint's own state with what the screen shows: 15 checks, all passed. The stills are single frames of that session, cropped; nothing is drawn on them. The manifest above is the file that run wrote, as text, with its ten Unchanged entries summarised in one line. The two terminal blocks are the real output of the commands shown, run in a shell on the same machine and pasted as text: the git example on the 12-prop demo kit from How we tested, in a repository with the manual's .gitignore lines (plus one line keeping the downloaded source models out of it), and the command line on Rain's file after the session and on a copy of that kit with its WaterBottle moved and saved.</p>
   </details>
 </main>
 <footer>
