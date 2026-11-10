@@ -111,20 +111,20 @@
 </header>
 <section class="top">
   <h1>Heatfold: Flame Graph &amp; gprof</h1>
-  <p class="sub">CLion and IntelliJ IDEA 2025.3 don't open gprof, <code>perf script</code> or Go pprof files; PyCharm's profiler is Pro only. Heatfold opens them, and Python py-spy traces, as a flame graph and a table next to your code.</p>
+  <p class="sub">Profiles from CI don't open next to your code: CLion and IntelliJ IDEA 2025.3 don't read gprof, <code>perf script</code> or Go pprof; PyCharm's profiler is Pro only. Heatfold opens them, and py-spy traces.</p>
   <figure class="top-image">
     <a href="img/gprof-report-window.png"><img class="hero" src="img/gprof-report-window.png" alt="IntelliJ IDEA with the pigz-profiling project open: zlib/deflate.c in the editor, and below it Heatfold's tab for pigz.gprof.txt. The table lists every function with self and total time, percentages and calls: longest_match 2.17 s, 74.1%, 18,494,188 calls; deflate_slow 440 ms, 15.0%, 1,151 calls. deflate_slow is selected: its caller deflate at 100.0%, its callees longest_match at 75.3%, _tr_flush_block at 7.29% and fill_window at 2.08%. On the left the estimated flame graph in icicle view, all, main, process, deflate, deflate_slow, longest_match, with deflate_slow outlined" width="1280" height="800"></a>
     <figcaption class="fine">pigz's gprof report in IntelliJ IDEA: time and calls per function, and what calls <code>deflate_slow</code> and what it calls.</figcaption>
   </figure>
   <ul class="benefits">
+    <li><strong>Double-click to the line in your checkout,</strong> with CI paths matched.</li>
     <li><strong>Your gprof output as a table,</strong> not raw text: time and calls per function.</li>
-    <li><strong>Open the <code>perf script</code> text you already made</strong> on a server or in CI. No need to profile again.</li>
-    <li><strong>Double-click a function to open its line in your checkout,</strong> even with paths from a server or CI.</li>
+    <li><strong>py-spy or <code>perf script</code> output from CI</strong> opens as it is.</li>
   </ul>
   <div class="buy">
     <p class="price"><strong>$15 once</strong>, personal or commercial. 30-day trial of every feature. No subscription, nothing renews.</p>
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
-    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet. The trial needs a free JetBrains Account (<a href="quick-start.html#install">how it starts</a>).</p>
+    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet. Trial: free JetBrains Account; <a href="quick-start.html#install">Start trial, not Close</a>.</p>
   </div>
   <p class="fine">Used in IntelliJ IDEA and PyCharm on Linux; CLion and RustRover tested headless only; Windows, macOS and Remote Development untested. Source code included. <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
 </section>
@@ -147,13 +147,13 @@
   </figure>
 
   <h2 id="real">In the IDE, for real</h2>
-  <figure>
-    <a href="img/py-spy-window.png"><img src="img/py-spy-jump.png" alt="The editor at pyjob/wordfreq.py line 20, inside def count_words(text, counter). Below it Heatfold's tab for wordfreq.pyspy.json: count_words selected, 3.55 s, 87.5%, location …b/wordfreq.py:20 (recorded as /home/ci/build/pyjob/wordfreq.py); decode 4.37%, read_text 2.64%; count_words's caller is main at 100.0%" width="784" height="730" loading="lazy"></a>
-    <figcaption>A py-spy trace recorded under <code>/home/ci/build</code> opens your copy of <code>wordfreq.py</code>.</figcaption>
-  </figure>
   <figure class="wide">
     <a href="img/jump-to-source-window.png"><img src="img/jump-to-source-window.png" alt="IntelliJ IDEA: Heatfold's tab for pigz-lines.gprof.txt, the gprof -l report, with its top row selected: longest_match, 1.24 s, 42.0%, location deflate.c:1484. Above it the editor has opened zlib/deflate.c with line 1484, '} while ((cur_match = prev[cur_match &amp; wmask]) &gt; limit', highlighted; the status bar reads 1484:59" width="1280" height="800" loading="lazy"></a>
     <figcaption>Double-click a row of a <code>gprof -l</code> report: <code>zlib/deflate.c</code> opens at line 1484.</figcaption>
+  </figure>
+  <figure class="wide">
+    <a href="img/gprof-name-jump-window.png"><img src="img/gprof-name-jump-window.png" alt="IntelliJ IDEA: Heatfold's tab for pigz.gprof.txt, a plain gprof report whose Location column is empty because gprof recorded only names. deflate_slow is selected, 440 ms, 15.0%, 1,151 calls. Above it the editor has opened zlib/deflate.c at line 1910, 'local block_state deflate_slow(deflate_state *s, int flush) {'; the status bar reads 1910:62" width="1280" height="800" loading="lazy"></a>
+    <figcaption>A plain gprof report records only names. In IntelliJ IDEA, which has no C support, a double-click on <code>deflate_slow</code> still opens its definition, <code>zlib/deflate.c:1910</code> (new in 1.1.3).</figcaption>
   </figure>
   <figure class="wide">
     <a href="img/perf-threads-window.png"><img src="img/perf-threads-search.png" alt="Heatfold's tab for pigz-threads.perf.txt: perf script text, 2,040 samples, 6 threads, 84 distinct frames. The thread selector is open with All threads, Process: pigz (pid 1335) and six threads. The search field holds 'deflate' and reads '4 frames match &quot;deflate&quot;: 1,976 samples, 96.9% of the total'; the matching frames deflate_slow, deflate and deflate_engine are highlighted in the flame graph" width="1200" height="600" loading="lazy"></a>
@@ -178,6 +178,13 @@
     <figcaption>The four formats, recognised by content (any name, gzipped too), and the command for each.</figcaption>
   </figure>
 
+  <h2 id="python">For Python: py-spy traces</h2>
+  <figure>
+    <a href="img/py-spy-window.png"><img src="img/py-spy-jump.png" alt="The editor at pyjob/wordfreq.py line 20, inside def count_words(text, counter). Below it Heatfold's tab for wordfreq.pyspy.json: count_words selected, 3.55 s, 87.5%, location …b/wordfreq.py:20 (recorded as /home/ci/build/pyjob/wordfreq.py); decode 4.37%, read_text 2.64%; count_words's caller is main at 100.0%" width="784" height="730" loading="lazy"></a>
+    <figcaption>A py-spy trace recorded under <code>/home/ci/build</code> opens your copy of <code>wordfreq.py</code>.</figcaption>
+  </figure>
+  <p>Record on the runner with <code>py-spy record -f chrometrace -o job.json -- python -m yourjob</code> and open the file in PyCharm, free edition included: self and total time per function (matching a replay of the trace), callers and callees, and a double-click into your checkout. py-spy's own SVG and speedscope output are free and fine for a look. cProfile files are not read.</p>
+
   <div class="box">
     <strong>Where you may not need it.</strong> CLion's profiler (Linux, macOS, WSL) already draws a flame graph for programs run under it, imports collapsed stacks and opens trace JSON in a timeline; RustRover does the same for perf, GoLand reads pprof, PyCharm Pro profiles Python. In those cases Heatfold adds no new chart. You pay for what is missing: gprof reports, which no JetBrains IDE reads; <code>perf script</code> text with threads and srcline jumps; pprof outside GoLand; a hot-functions table for traces; and paths from another machine mapped onto your project. Heatfold does not record or attach to processes.
     <p><strong>Next to <code>go tool pprof -http</code>:</strong> for pprof alone, pprof's free web UI has views Heatfold lacks (call graph, disassembly, comparing two profiles). Heatfold adds a double-click into the line in your checkout, with <code>/build</code> or CI paths matched without flags, the other three formats in the same tabs, and no browser or local server.</p>
@@ -186,7 +193,7 @@
   <h2 id="tested">How we tested</h2>
   <table>
     <tr><th scope="col">Where (Linux)</th><th scope="col">What ran</th></tr>
-    <tr><td>IntelliJ IDEA, PyCharm 2025.3 and 2026.3</td><td>Used in the IDE window, every panel and message (1.0.0 and 1.1.0); in 2025.3 by three test buyers on their own C, Go and Python profiles (1.1.1); these images: 1.1.2 in IntelliJ IDEA 2025.3; the demo: 1.1.1</td></tr>
+    <tr><td>IntelliJ IDEA, PyCharm 2025.3 and 2026.3</td><td>Used in the IDE window, every panel and message (1.0.0 and 1.1.0); in 2025.3 by three test buyers on their own C, Go and Python profiles (1.1.1), and by three more (1.1.2); these images: 1.1.2 in IntelliJ IDEA 2025.3, the name-only C jump 1.1.3; the demo: 1.1.1</td></tr>
     <tr><td>CLion, RustRover 2025.3</td><td>Headless: all four formats open, C and Rust names resolve. Not yet in a window</td></tr>
     <tr><td>All four, 2025.3 and 2026.3</td><td>Plugin Verifier: compatible</td></tr>
     <tr><td>Windows, macOS, Remote Development</td><td>Not yet tested</td></tr>
@@ -196,7 +203,7 @@
   <h2 id="limits">Known limits</h2>
   <ul>
     <li>No <code>perf.data</code> or <code>gmon.out</code> (run <code>perf script</code> or <code>gprof</code> first), folded stacks, cProfile, JFR or V8; no timeline, comparison or export.</li>
-    <li>gprof's flame graph is an estimate, and says so. In IntelliJ IDEA and PyCharm, C functions open from <code>gprof -l</code> or srcline, not from names.</li>
+    <li>gprof's flame graph is an estimate, and says so. In IntelliJ IDEA and PyCharm, a C or C++ name opens by reading your project's sources for its definition, not through a compiler: a function defined by a macro is not found.</li>
     <li>What fits depends on a profile's distinct call paths, not only its size. A profile that would not fit in the memory the IDE can spare is refused with a message.</li>
   </ul>
 
