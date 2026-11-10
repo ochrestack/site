@@ -89,7 +89,7 @@
 </header>
 <section class="top">
   <h1>Proptidy for Blender</h1>
-  <p class="sub">Custom properties stuck in alphabetical order, with a pop-up for every tweak: Proptidy keeps them in your order and puts their settings below the list.</p>
+  <p class="sub">Custom properties stuck in alphabetical order, with a pop-up for every tweak: Proptidy keeps them in your order and puts their settings below the list, for rigs, cameras and lamps.</p>
   <figure>
     <a href="img/order.gif"><img class="hero" src="img/order.gif" alt="Blender 5.2 with Blender Studio's Rain in Pose Mode on the left and the Bone tab of her properties bone, Properties_IKFK, on the right. Proptidy's list starts in Blender's order (cloudrig_component, fk_hinge_arm_left, ...). Four clicks on Move to Top put ik_arm_left, ik_arm_right, ik_leg_left and ik_leg_right first; Add Heading puts a heading above them, typed as 'Arms and legs'; typing 'leg' in the filter leaves only the properties with leg in their name, then the filter is cleared" width="757" height="787"></a>
     <figcaption>Rain's 23 properties, Blender 5.2, 1.5&times; speed. <a href="#watch">Watch the 44-second demo</a>. Rain Rig (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
@@ -105,7 +105,7 @@
     <p class="fine">Polar checkout · no license key · <a href="../terms.html">14-day refund</a> · one seat per artist (<a href="#details">teams</a>)</p>
   </div>
   <div class="trust">
-    <p class="fine"><strong>Tested on</strong> Blender 4.2.23 LTS, 4.5.15 LTS, 5.2.3 LTS and 5.3.0 (release candidate and stable build), on Linux; Windows and macOS not yet tested.</p>
+    <p class="fine"><strong>Tested on</strong> Blender 4.2.23 LTS, 4.5.15 LTS, 5.2.3 LTS and 5.3.0 (stable build), on Linux; Windows and macOS not yet tested.</p>
     <p class="fine">Source included (GPL-3.0-or-later) · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
   </div>
 </section>
@@ -115,13 +115,17 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/proptidy-demo-720p60.mp4" type="video/mp4">
     </video>
-    <figcaption>44 s, captions only, no sound: Proptidy 1.0.1 in Blender 5.2.3 LTS. Rain Rig (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
+    <figcaption>44 s, captions only: Proptidy 1.0.1 in Blender 5.2.3. Rain Rig (CC) Blender Foundation | studio.blender.org, CC BY 4.0.</figcaption>
   </figure>
 
   <h2 id="compare">Blender's order, and yours</h2>
   <figure>
     <a href="img/compare.png"><img src="img/compare.png" alt="Two Properties editors side by side on the Bone tab of Rain's Properties_IKFK. Left, labelled 'Blender's Custom Properties: by name': cloudrig_component, fk_hinge_arm_left, fk_hinge_arm_right, fk_hinge_leg_left, fk_hinge_leg_right, grab_parent_left, grab_parent_right, then ik_arm_left and ik_arm_right in the middle of the list. Right, labelled 'Proptidy: your order': the heading Arms and legs over ik_arm_left, ik_arm_right, ik_leg_left and ik_leg_right, a spacer, the heading Stretch over ik_stretch_arms, ik_stretch_legs and ik_stretch_spine; ik_stretch_arms is selected and its settings are below the list: Description 'Stretch the arms when in IK', Default Value 1.000, Min 0.00, Max 1.50, Soft Limits on, Soft Min 0.00, Max 1.00" width="880" height="618" loading="lazy"></a>
-    <figcaption>Same bone; captions ours, the rest Blender's window.</figcaption>
+    <figcaption>Same bone; only the captions are ours.</figcaption>
+  </figure>
+  <figure>
+    <a href="img/default-width.png"><img src="img/default-width.png" alt="Blender 5.2 with the Properties editor at its default width for a 1920 by 1080 screen, 336 pixels, next to Rain in Pose Mode. Proptidy's list on the Bone tab of Properties_IKFK shows the heading Arms and legs over ik_arm_left, ik_arm_right, ik_leg_left and ik_leg_right, a spacer, the heading Stretch over ik_stretch_arms, ik_stretch_legs and ik_stretch_spine, then cloudrig_component and fk_hinge_arm_left, every name whole; below, the settings of ik_stretch_arms" width="896" height="760" loading="lazy"></a>
+    <figcaption>Default Properties width at 1920&times;1080: every name whole.</figcaption>
   </figure>
 
   <details>
@@ -154,7 +158,7 @@
   <h2 id="shots">Set it once in the rig file</h2>
   <figure>
     <a href="img/shot-file.png"><img src="img/shot-file.png" alt="A shot file, shot_010.blend, with Rain linked through a library override, Bone tab of Properties_IKFK: Proptidy's list in the rig file's order, with Arms and legs and Stretch; the New, Remove, Duplicate and move buttons greyed out, and the line 'Library override of rain_demo.blend: change the order in that file'" width="757" height="496" loading="lazy"></a>
-    <figcaption>A shot file with Rain overridden: the rig file's order. Tick Library Overridable in the rig file on what animators key.</figcaption>
+    <figcaption>A shot file with Rain overridden: the rig file's order. Library Overridable on All, in the rig file, unlocks every switch.</figcaption>
   </figure>
   <details>
     <summary>More on files and tabs</summary>
@@ -192,7 +196,7 @@
       <li>It does not build a rig UI (icons, conditions, operator buttons, exported scripts) and does not add or delete one property across many objects.</li>
       <li>A property renamed through Proptidy's Edit Property button keeps its row; renamed through Blender's own panel or a script, it moves to the bottom. Properties added by Blender's New button, a script or Rigify appear at the bottom.</li>
       <li>In Edit Mode the Bone tab shows a note instead of the list; outside Pose Mode it lists the bone's own properties, with a line counting the pose bone's. English only.</li>
-      <li>Uninstalled, your files keep every property, value, keyframe and driver; Blender's panel shows them sorted by name again.</li>
+      <li>Uninstall from Edit &gt; Preferences &gt; Get Extensions, the drop-down arrow next to Proptidy. Your files keep every property, value, keyframe and driver; Blender's panel shows them sorted by name again.</li>
     </ul>
   </details>
 
@@ -212,11 +216,12 @@
   <details>
     <summary>Tests and timings</summary>
   <ul>
-    <li>Automated tests under Blender itself: 267 passed on 4.2.23 LTS, 269 on 4.5.15 LTS, 271 on 5.2.3 LTS, 271 on the 5.3.0 release candidate and 271 on the 5.3.0 stable build, none failing (a few are skipped where a Blender version lacks the feature).</li>
-    <li>In a real Blender window on 4.2.23 LTS, 5.2.3 LTS and the 5.3.0 stable build, driven by mouse and keyboard on Rain, with the zip installed by Blender's own installer: 47 of 47 steps passed, every button, field and menu, with no Python error.</li>
-    <li>A separate review tried to break it before release; every finding is fixed or listed above. On Rain linked into a shot file (plain link, library override, two-level override, after a resync) the order and the greyed-out buttons were right on all four versions. In a shot file with Rain under a library override, an undo step took 134 to 256 ms with Proptidy on or off, within 5 ms of each other (medians of seven alternating rounds on each version).</li>
-    <li>On a pose bone with 200 custom properties, Proptidy's own panel draws in 2.6 to 3.3 ms; a full Properties editor redraw takes 21.2 to 35.7 ms on 4.2, 5.2 and 5.3.</li>
-    <li>Every image on this page is a capture of a real Blender 5.2.3 LTS window with Proptidy 1.0.2 installed from the same zip you download; each click and keystroke on Proptidy was sent as real mouse and keyboard input. The camera rig and lamp images use a product-shot file we built for them, with 26 drivers wiring its properties to the camera, the lamps and the material. The demo video was recorded with 1.0.1.</li>
+    <li>Automated tests under Blender itself: 283 passed on 4.2.23 LTS, 285 on 4.5.15 LTS, 287 on 5.2.3 LTS and 287 on the 5.3.0 stable build, none failing (a few are skipped where a Blender version lacks the feature).</li>
+    <li>In a real Blender window on 4.2.23 LTS, 4.5.15 LTS, 5.2.3 LTS and the 5.3.0 stable build, driven by mouse and keyboard on Rain, with the zip installed by Blender's own installer: 48 of 48 steps passed, every button, field and menu, with no Python error.</li>
+    <li>Names: a rigger's 24 property names (<code>_L</code>/<code>_R</code> pairs and long ones) in Properties editors 300 to 600 px wide, at two interface sizes, on all four versions, read off the screen next to Blender's own rows at the same width. From 300 px (470 px at Resolution Scale 1.5) every name Blender's rows showed whole was whole in Proptidy's list.</li>
+    <li>A separate review tried to break it before release; every finding is fixed or listed above. On Rain linked into a shot file (plain link, library override, two-level override, after a resync) the order and the greyed-out buttons were right on all four versions. In a shot file with Rain under a library override, an undo step took 184 to 336 ms with Proptidy on or off, within 9 ms of each other, less than the spread between rounds (medians of seven alternating rounds on each version).</li>
+    <li>On a pose bone with 200 custom properties, Proptidy's own panel draws in 3.6 to 4.8 ms; a full Properties editor redraw takes 26 to 45 ms on 4.2, 4.5, 5.2 and 5.3.</li>
+    <li>Every image on this page is a capture of a real Blender 5.2.3 LTS window with Proptidy 1.0.3 installed from the same zip you download; each click and keystroke on Proptidy was sent as real mouse and keyboard input. The camera rig and lamp images use a product-shot file we built for them, with 26 drivers wiring its properties to the camera, the lamps and the material. The demo video was recorded with 1.0.1.</li>
   </ul>
   </details>
 
