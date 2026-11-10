@@ -38,7 +38,7 @@
 
   <h2 id="install">Install (WordPress 6.5 or newer, PHP 7.4 or newer)</h2>
   <ol>
-    <li>Download <a href="download/linkrounds-1.2.1.zip"><code>linkrounds-1.2.1.zip</code></a>. Do not unzip it.</li>
+    <li>Download <a href="download/linkrounds-1.2.2.zip"><code>linkrounds-1.2.2.zip</code></a>. Do not unzip it.</li>
     <li>In WordPress, open <strong>Plugins &gt; Add New Plugin</strong>, click <strong>Upload Plugin</strong>, choose the zip, then <strong>Install Now</strong> and <strong>Activate</strong>.</li>
     <li>Open <strong>Tools &gt; Linkrounds</strong>.</li>
   </ol>
@@ -47,17 +47,17 @@
   <h2 id="scan">First scan</h2>
   <ol>
     <li>Click <strong>Scan now</strong>. Linkrounds reads your published posts, pages, public custom post types, synced patterns, the custom links in classic menus, and block-theme Navigation menus, and checks every link and image in them.</li>
-    <li>The count climbs as links are checked ("15 of 63 links checked"). <strong>Pause</strong> and <strong>Resume</strong> are next to it. You can leave the page; the scan carries on in the background.</li>
+    <li>The count climbs as links are checked ("102 of 708 links checked"). <strong>Pause</strong> and <strong>Resume</strong> are next to it.</li>
   </ol>
-  <figure><img src="img/scan-progress.png" alt="Tools > Linkrounds during a scan: the Pause button, '15 of 63 links checked' with a progress bar, and the note 'The scan runs in the background in small batches. You can leave this page; it carries on.'" width="704" height="92" loading="lazy"><figcaption>A scan running on the demo blog.</figcaption></figure>
+  <figure><img src="img/scan-progress.png" alt="Tools > Linkrounds during a scan: the Pause button, '102 of 708 links checked' with a progress bar, and the note 'The scan runs in small background batches, which WordPress starts when someone visits your site. On a site with few visitors, such as a staging or local copy, keep this page open until the scan finishes: the open page keeps it moving.'" width="963" height="119" loading="lazy"><figcaption>A scan running on our 300-post test archive (Linkrounds 1.2.2).</figcaption></figure>
   <div class="box">
-    <strong>On a quiet site.</strong> WordPress runs background work (WP-Cron) when someone visits the site. If your site has few visitors, keep the Linkrounds screen open while it scans: the screen keeps the scan moving. Or ask your host to set up a real cron job for <code>wp-cron.php</code>.
+    <strong>Can I leave the page?</strong> WordPress runs background work (WP-Cron) when someone visits the site. On a site with visitors you can leave; the scan carries on. On a quiet site, such as a staging or local copy, keep the Linkrounds screen open until the scan finishes: the open screen keeps the scan moving. Or ask your host to set up a real cron job for <code>wp-cron.php</code>. The same goes for the second checks an hour later: on a quiet site, leave the Linkrounds screen open and it runs them when they are due, then reloads to show the result.
   </div>
 
   <h2 id="answers">The four answers</h2>
   <ul>
     <li><strong>Broken</strong>: not found (404), gone (410), or the domain does not exist, and the same thing happened again on a second check at least an hour later.</li>
-    <li><strong>Redirected</strong>: the address forwards to one that works. The final address is shown.</li>
+    <li><strong>Redirected</strong>: the address forwards to one that works. The final address is shown. If it lands on the site's home page or on a search or "not found" page, the reason says so, because sites often do that when a page was removed.</li>
     <li><strong>Inconclusive</strong>: the other site blocked the check (403, 999), wanted a login (401), asked us to slow down (429), had a server error or did not answer in time. The reason is given. A link that failed once and is waiting for its second check is here too, with the time of that check. Inconclusive is never counted as broken.</li>
     <li><strong>OK</strong>: the link works.</li>
   </ul>
@@ -89,7 +89,7 @@
     <li>Install <code>linkrounds-pro.zip</code> the same way: <strong>Plugins &gt; Add New Plugin &gt; Upload Plugin</strong>, <strong>Install Now</strong>, <strong>Activate</strong>. WordPress will not activate Pro without the free plugin.</li>
     <li>Open <strong>Tools &gt; Linkrounds &gt; Schedule &amp; email</strong>. Choose daily, weekly or monthly and the hour (in the time zone set under Settings &gt; General), add the addresses that should get the report, one per line, and save.</li>
     <li>Click <strong>Send a test email</strong>. The message at the top says straight away whether WordPress could send it, and if not, WordPress's own reason (for example "Could not instantiate mail function."). If WordPress sent it but it does not arrive, look in spam, then ask your host about outgoing mail.</li>
-    <li>On the Results tab, <strong>Export CSV of these results</strong> downloads the rows of the current filter, all pages.</li>
+    <li>On the Results tab, <strong>Export CSV of these results</strong> downloads the rows of the current filter, all pages. Menu links are listed as "Menu: <em>name</em>", with the menu editor as the edit link.</li>
   </ol>
   <p>The email report is sent after each scheduled scan, once the links that failed have had their second check, through your site's own mail setup. Many hosts need an SMTP plugin before WordPress can send mail; the test email tells you. If your site's mail setup ever refuses a report, the Schedule &amp; email tab shows when and WordPress's reason, a line above the results points to it, and the links it would have listed go into the next report.</p>
   <figure><img src="img/pro-report-failed.png" alt="The Schedule &amp; email tab on a site that cannot send mail: 'The last report could not be sent (November 9, 2026 7:14 pm). Your site’s mail setup refused it. WordPress said: “Could not instantiate mail function.” No email went out; the links it would have listed will be in the next report. Many hosts need an SMTP plugin before WordPress can send mail. Fix that, then use Send a test email below.' Below it, 'Can this site send email?' and the Send a test email button" width="835" height="805" loading="lazy"><figcaption>Linkrounds Pro 1.1.0 on the demo blog with no mail server. We ran the report event by hand, the site's mail setup refused it, and the tab says why.</figcaption></figure>
