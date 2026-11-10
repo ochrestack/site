@@ -148,12 +148,12 @@
       <source src="video/actionyard-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/actionyard-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 50 s, captions only, no sound (1080p, 720p on phones; <a href="video/actionyard-demo-1080p.mp4">open full size</a>). Rain's file in Blender 4.5 LTS with Actionyard 1.4.2, a real window at interface scale 2: her animation captured frame by frame, the clicks recorded at 60 fps. Purge leaves the 16 stash tracks; the list and Used by; the Clear Stashes preview, Keep None and the delete option; all 16 tracks and 11 old takes gone, Locomotion kept; one Ctrl+Z brings it all back. The Clear Stashes moment alone: <a href="video/actionyard-clear-stashes.gif">14-second GIF</a> (1.1 MB). Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
+    <figcaption>The demo, 50 s, captions only, no sound (1080p, 720p on phones; <a href="video/actionyard-demo-1080p.mp4">open full size</a>). Rain's file in Blender 4.5 LTS with Actionyard 1.4.3, a real window at interface scale 2: her animation captured frame by frame, the clicks recorded at 60 fps. Purge leaves the 16 stash tracks; the list and Used by; the Clear Stashes preview, Keep None and the delete option; all 16 tracks and 11 old takes gone, Locomotion kept; one Ctrl+Z brings it all back. The Clear Stashes moment alone: <a href="video/actionyard-clear-stashes.gif">14-second GIF</a> (1.1 MB). Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
   </figure>
   </section>
 
   <h2 id="purge">Why Purge doesn't help</h2>
-  <p>A stashed action still has a user, so Purge leaves it. Deleting the stashed actions themselves is no better: Blender removes the actions and leaves every [Action Stash] track behind, holding a strip with no action. Measured on Rain's file in Blender 4.5.15, each row on a fresh copy:</p>
+  <p>A stashed action still has a user, so Purge leaves it. Deleting the stashed actions themselves is no better: Blender removes the actions and leaves every [Action Stash] track behind, holding a strip with no action. Measured on Rain's file in Blender 4.5.16, each row on a fresh copy:</p>
   <table>
     <tr><th>What you do</th><th>Actions left</th><th>Stash tracks left</th><th>Stash tracks with no action</th></tr>
     <tr><td>Blender's Purge</td><td>47</td><td>16</td><td>3</td></tr>
@@ -182,7 +182,7 @@
   <ul>
     <li><strong>One list of every action.</strong> Frame range, how many places use it, Blender's user count and a Fake User toggle. Under the list: search by name, show <em>Stashed</em>, <em>No users</em>, <em>Fake User only</em> or <em>Used</em>, and sort by name or by number of uses. A line above it counts the actions, the stashed ones and the ones with no users.</li>
     <li><strong>Used by</strong>, as above, with shape keys and materials named by their object ("Kit_Head (shape keys)") and "(muted)" on a muted constraint.</li>
-    <li><strong>Clear Stashes, previewed.</strong> For the active object or the whole file. The tracks are grouped by object, each with its action first and the track's suffix after it. A take you already gave a Fake User reads "already has a Fake User; stays". A stash track you have unmuted, so it plays, reads "unmuted, plays; stays" and starts unticked. Every tick starts ticked each time the preview opens, also after Ctrl+Z. The action you clicked in the list stays clicked.</li>
+    <li><strong>Clear Stashes, previewed.</strong> For the active object or the whole file. The tracks are grouped by object, each with its action first and the track's suffix after it. A take you already gave a Fake User reads "already has a Fake User; stays". A stash track you have unmuted, so it plays, reads "unmuted, plays; stays" and starts unticked. Every tick starts ticked each time the preview opens, also after Ctrl+Z. The action you clicked in the list stays clicked, also after Ctrl+Z.</li>
     <li><strong>Empty stash tracks.</strong> The tracks Blender leaves when a stashed action is deleted the plain way are listed as "empty, from a deleted action" and cleared with the rest.</li>
     <li><strong>Delete Action Everywhere</strong> and <strong>Remove Unused Actions</strong>, as above. Pose-library assets are always kept. When nothing can be deleted, a popup says why, with no Delete or Remove button.</li>
     <li><strong>Linked and overridden rigs.</strong> Everything a library override takes from its library file is locked. Stash tracks you added on the override in your own file are yours to clear, as in Blender's NLA editor.</li>
@@ -225,7 +225,7 @@
   <details class="more">
   <summary>Install</summary>
   <ol>
-    <li>Download <code>actionyard-1.4.2.zip</code>. Do not unzip it.</li>
+    <li>Download <code>actionyard-1.4.3.zip</code>. Do not unzip it.</li>
     <li>In Blender 4.4 or newer, open <strong>Edit &gt; Preferences &gt; Add-ons</strong>.</li>
     <li>Open the drop-down menu (<strong>&#8964;</strong>) at the top right, choose <strong>Install from Disk...</strong> and pick the zip. It is enabled straight away; its entry reads "Action Stash clean-up and action users, in the NLA sidebar (N)".</li>
     <li>In the NLA editor or the Dope Sheet, press <strong>N</strong> and open the <strong>Actionyard</strong> tab.</li>
@@ -247,7 +247,7 @@
 
   <details class="more">
   <summary>How these images were made</summary>
-  <p>The character is Rain, Blender Studio's free production rig (CC BY 4.0), in her own file as downloaded from studio.blender.org, with its 19 face actions and their Action constraints. Her file already holds 5 [Action Stash] tracks, 3 of them empty. We added a game move set keyed on her controls: 17 final actions, each kept with Fake User, and 11 older takes, each stashed with Blender's own Stash operator, as New Action does: 47 actions and 16 [Action Stash] tracks in all. For the override image, a new shot file links Rain from her downloaded file, makes her a library override and stashes four takes. Every image and GIF here is a capture of a real Blender 4.5.16 LTS window on Linux at 1920x960, with Actionyard 1.4.2 installed from its zip through Blender's extension installer; the phone close-up is the same dialog at UI scale 2. The mouse and keyboard input is scripted, and a check after every step compared the file's data with what the screen shows. 39 checks for the main captures and 11 for Used by and the Delete preview, all passed.</p>
+  <p>The character is Rain, Blender Studio's free production rig (CC BY 4.0), in her own file as downloaded from studio.blender.org, with its 19 face actions and their Action constraints. Her file already holds 5 [Action Stash] tracks, 3 of them empty. We added a game move set keyed on her controls: 17 final actions, each kept with Fake User, and 11 older takes, each stashed with Blender's own Stash operator, as New Action does: 47 actions and 16 [Action Stash] tracks in all. For the override image, a new shot file links Rain from her downloaded file, makes her a library override and stashes four takes. Every image and GIF here is a capture of a real Blender 4.5.16 LTS window on Linux at 1920x960, with Actionyard 1.4.3 installed from its zip through Blender's extension installer; the phone close-up is the same dialog at UI scale 2. The mouse and keyboard input is scripted, and a check after every step compared the file's data with what the screen shows. 39 checks for the main captures and 11 for Used by and the Delete preview, all passed.</p>
   </details>
 
   <details class="more" id="words">
