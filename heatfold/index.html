@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heatfold: Flame Graph &amp; gprof for CLion, PyCharm and IntelliJ IDEA</title>
+<meta name="description" content="Heatfold opens gprof reports, perf script text, pprof profiles and trace JSON in JetBrains IDEs as a flame graph and a hot-functions table, with jump to source. $15 once, the same for personal and commercial use; 30-day trial.">
+<link rel="canonical" href="https://ochrestack.com/heatfold/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Heatfold: Flame Graph &amp; gprof for JetBrains IDEs">
+<meta property="og:description" content="CLion and IntelliJ IDEA don't open a gprof report, perf script text or a pprof file. Heatfold opens them, and trace JSON, as a flame graph and a table of the functions that cost the most, next to your code. $15 once.">
+<meta property="og:url" content="https://ochrestack.com/heatfold/">
+<meta property="og:image" content="https://ochrestack.com/heatfold/img/og-heatfold-2x1.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Heatfold in IntelliJ IDEA on the gprof report of pigz: a table of every function with self and total time and call counts, deflate_slow's callers and callees, and the estimated flame graph">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Heatfold: Flame Graph &amp; gprof for JetBrains IDEs">
+<meta name="twitter:description" content="gprof, perf script, pprof and trace JSON as a flame graph and a hot-functions table in CLion, RustRover, PyCharm and IntelliJ IDEA. $15 once.">
+<meta name="twitter:image" content="https://ochrestack.com/heatfold/img/og-heatfold-2x1.png">
+<meta name="twitter:image:alt" content="pigz's gprof report in Heatfold: time and calls per function, callers and callees, flame graph">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+<style>
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  code { font-size: 15px; }
+  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .note { font-size: 15px; color: var(--muted); }
+  .benefits { padding-left: 20px; margin: 16px 0; }
+  .benefits li { margin: 6px 0; }
+  .hero { margin-bottom: 8px; }
+  .pair figure { flex: 1 1 300px; }
+  header { max-width: 1280px; }
+  .top { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .top h1 { margin-top: 24px; }
+  .top .sub { font-size: 18px; line-height: 1.5; margin-bottom: 8px; }
+  .top .benefits { margin: 8px 0; }
+  .top .benefits li { margin: 2px 0; font-size: 16px; line-height: 1.5; }
+  .top .buy .price { font-size: 17px; line-height: 1.5; }
+  .top .buy { margin-top: 10px; }
+  .top .note, .top .fine { margin: 0 0 6px; line-height: 1.45; }
+  .top-image { margin: 16px 0; }
+  .top-image figcaption { margin-top: 4px; }
+  /* Full IDE windows and wide captures: shown wider than the text column on large screens. */
+  @media (min-width: 1010px) {
+    .wide { width: 958px; margin-left: -123px; margin-right: -123px; }
+  }
+  @media (min-width: 1000px) {
+    .top { display: grid; grid-template-columns: minmax(360px, 1fr) minmax(0, 800px); column-gap: 32px; align-items: start; }
+    .top > * { grid-column: 1; }
+    .top > .top-image { grid-column: 2; grid-row: 1 / span 5; margin: 28px 0 0; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<section class="top">
+  <h1>Heatfold: Flame Graph &amp; gprof</h1>
+  <p class="sub">CLion and IntelliJ IDEA 2025.3 don't open a gprof report, <code>perf script</code> text or a pprof file. Heatfold opens them, and trace JSON, as a flame graph and a hot-functions table, next to your code.</p>
+  <figure class="top-image">
+    <a href="img/gprof-report-window.png"><img class="hero" src="img/gprof-report-window.png" alt="IntelliJ IDEA with the pigz-profiling project open: zlib/deflate.c in the editor, and below it Heatfold's tab for pigz.gprof.txt. The table lists every function with self and total time, percentages and calls: longest_match 2.17 s, 74.1%, 18,494,188 calls; deflate_slow 440 ms, 15.0%, 1,151 calls. deflate_slow is selected: its caller deflate at 100.0%, its callees longest_match at 75.3%, _tr_flush_block at 7.29% and fill_window at 2.08%. On the left the estimated flame graph in icicle view, all, main, process, deflate, deflate_slow, longest_match, with deflate_slow outlined" width="1280" height="800"></a>
+    <figcaption class="fine">pigz's gprof report in IntelliJ IDEA: time and calls per function, and what calls <code>deflate_slow</code> and what it calls.</figcaption>
+  </figure>
+  <ul class="benefits">
+    <li><strong>Your gprof output as a table,</strong> not raw text: time and calls per function.</li>
+    <li><strong>Open the perf file you already recorded</strong> on a server or in CI. No need to profile again.</li>
+    <li><strong>Double-click a function to open its line,</strong> even with paths from another machine.</li>
+  </ul>
+  <div class="buy">
+    <p class="price"><strong>$15 once</strong>, personal or commercial. 30-day trial of every feature. No subscription, nothing renews.</p>
+    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
+    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet.</p>
+  </div>
+  <p class="fine">Tested: used in IntelliJ IDEA and PyCharm on Linux; CLion and RustRover headless, not yet in a window; Windows, macOS and Remote Development not yet tested. Source code not included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
+</section>
+<main>
+  <div class="box">
+    <strong>Where you may not need it.</strong> A program run under CLion's profiler (Linux, macOS, WSL) already gets a flame graph and Jump to Source; CLion also imports collapsed stacks and opens trace JSON in a timeline. RustRover does the same for perf on Linux and macOS, GoLand reads pprof, PyCharm Pro profiles Python. In those cases Heatfold adds no new chart. You pay $15 once for what is missing there: gprof reports, which no JetBrains IDE reads; <code>perf script</code> text opened directly, with threads and srcline jumps; pprof outside GoLand; a hot-functions table for traces; IDEs without a profiler (PyCharm without Pro; CLion and RustRover on Windows, not yet tested there); and paths from another machine mapped onto your project. Heatfold does not record or attach to processes.
+  </div>
+
+  <h2 id="real">In the IDE, for real</h2>
+  <p>IntelliJ IDEA 2025.3 with Heatfold 1.1.0 and real profiles of public programs: pigz 2.8 and zlib 1.3.1, a Go and a Python program. Tap an image for the whole window.</p>
+  <figure class="wide">
+    <a href="img/jump-to-source-window.png"><img src="img/jump-to-source-window.png" alt="IntelliJ IDEA: Heatfold's tab for pigz-lines.gprof.txt, the gprof -l report, with its top row selected: longest_match, 1.24 s, 42.3%, location deflate.c:1484. Above it the editor has opened zlib/deflate.c with line 1484, '} while ((cur_match = prev[cur_match &amp; wmask]) &gt; limit', highlighted; the status bar reads 1484:59" width="1280" height="800" loading="lazy"></a>
+    <figcaption>Double-click the top row of pigz's <code>gprof -l</code> report: <code>zlib/deflate.c</code> opens at line 1484.</figcaption>
+  </figure>
+  <figure class="wide">
+    <a href="img/perf-threads-window.png"><img src="img/perf-threads-search.png" alt="Heatfold's tab for pigz-threads.perf.txt: perf script text, 2,040 samples, 6 threads, 84 distinct frames. The thread selector is open with All threads, Process: pigz (pid 1335) and six threads. The search field holds 'deflate' and reads '4 frames match &quot;deflate&quot;: 1,976 samples, 96.9% of the total'; the matching frames deflate_slow, deflate and deflate_engine are highlighted in the flame graph. The table lists longest_match 1,460 self samples, 71.6%" width="1200" height="600" loading="lazy"></a>
+    <figcaption>pigz under <code>perf</code>, six threads: pick one, or search. "deflate": 1,976 samples, 96.9% of the total.</figcaption>
+  </figure>
+  <figure>
+    <a href="img/py-spy-window.png"><img src="img/py-spy-jump.png" alt="The editor at pyjob/wordfreq.py line 20, inside def count_words(text, counter). Below it Heatfold's tab for wordfreq.pyspy.json: count_words selected, 3.55 s, 87.5%, location /home/ci/build/py…; decode 4.37%, read_text 2.64%; count_words's caller is main at 100.0%" width="784" height="730" loading="lazy"></a>
+    <figcaption>A py-spy trace recorded under <code>/home/ci/build</code>: double-click <code>count_words</code> and your copy of <code>wordfreq.py</code> opens.</figcaption>
+  </figure>
+  <div class="pair">
+    <figure>
+      <a href="img/pprof-heap-window.png"><img src="img/pprof-sample-types.png" alt="A Go heap profile, logstats-heap.pprof, in Heatfold: the sample-type selector is open with alloc_objects (count), alloc_space (bytes), inuse_objects (count) and inuse_space (bytes)" width="600" height="350" loading="lazy"></a>
+      <figcaption>A Go heap profile: every pprof sample type.</figcaption>
+    </figure>
+    <figure>
+      <a href="img/clang-ftime-trace-window.png"><img src="img/clang-ftime-trace-table.png" alt="The hot-functions table for pigz.ftime-trace.json: ExecuteCompiler 170 ms self, 1.63 s total; RunPass X86 DAG-&gt;DAG Instruction Selection 169 ms; Source /usr/lib/llvm-18/lib/… 63.0 ms; OptModule ../pigz/pigz.c 608 ms total" width="600" height="300" loading="lazy"></a>
+      <figcaption><code>clang -ftime-trace</code> of <code>pigz.c</code>: where the build time goes.</figcaption>
+    </figure>
+  </div>
+  <figure>
+    <a href="img/not-a-profile-window.png"><img src="img/not-a-profile.png" alt="Heatfold's tab for pigz/README: 'Heatfold does not recognise the content of README.' followed by the four formats it reads and the command that produces each, and an Open Profile… button" width="820" height="225" loading="lazy"></a>
+    <figcaption>The four formats, recognised from the content (any file name, gzipped or not), and the command that makes each.</figcaption>
+  </figure>
+
+  
+  <h2 id="checked">Checked against the profilers' own numbers</h2>
+  <p>On real profiles of Lua 5.4.7, pigz, a Go program and a py-spy trace, the table matches gprof's report, <code>perf report</code>, <code>go tool pprof -top</code> and an independent replay of the trace. gprof records no call stacks, so its flame graph is an estimate, and labelled as one.</p>
+  <p>Large files load in the background with Cancel: a 500 MB perf script in 8.8–9.3 s, a 200 MB trace in 3.5–3.8 s (default 2 GB heap, 4-CPU Linux machine, three runs). A file too large for the IDE's free memory is refused with a message.</p>
+
+  <h2 id="tested">Where it runs</h2>
+  <table>
+    <tr><th scope="col">IDE (Linux)</th><th scope="col">What ran</th></tr>
+    <tr><td>IntelliJ IDEA, PyCharm 2025.3 and 2026.3</td><td>Used in the IDE window, every panel and message (1.0.0, whose interface 1.1.0 keeps); 1.1.0 installed from disk in IntelliJ IDEA 2025.3, and the images above</td></tr>
+    <tr><td>CLion, RustRover 2025.3</td><td>Headless: all four formats open; C names resolve in CLion (Nova and Classic engines), Rust names in RustRover. Not yet used in a window</td></tr>
+    <tr><td>All four, 2025.3 and 2026.3</td><td>JetBrains' Plugin Verifier: compatible</td></tr>
+    <tr><td>Windows, macOS, Remote Development</td><td>Not yet tested</td></tr>
+  </table>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li>No <code>perf.data</code> or <code>gmon.out</code>: run <code>perf script</code> or <code>gprof</code> first. No folded stacks, cProfile, JFR or V8; no timeline, comparison, demangling or export.</li>
+    <li>A plain gprof report has only names: C functions open by name only in CLion. Elsewhere use <code>gprof -l</code> or <code>-F +srcline</code>.</li>
+    <li>At the default 2 GB heap, one 500 MB perf script fits.</li>
+  </ul>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li>Sold through JetBrains Marketplace; trial and purchase go through the IDE's own licence dialog. No popups of Heatfold's own; it asks once for a review, after your fifth profile.</li>
+    <li>No network calls, no telemetry (<a href="../privacy.html">privacy</a>).</li>
+    <li><a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">quick start</a></li>
+  </ul>
+  <details>
+    <summary>How the images were made</summary>
+    <p><code>./gradlew runIde</code> (IntelliJ IDEA 2025.3) under a virtual display at 1280×800, real mouse and keyboard input. The sandbox cannot reach JetBrains' account server to start a trial, so a stand-in for Marketplace licensing was used.</p>
+  </details>
+  <p style="font-size:14px;color:var(--muted)">Not affiliated with JetBrains, Google, the Linux perf project, GNU, LLVM or py-spy; their names identify the IDEs and file formats.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

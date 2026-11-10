@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heatfold quick start: install, open a profile, jump to source</title>
+<meta name="description" content="Install Heatfold in a JetBrains IDE (2025.3 or later), make a gprof, perf script, pprof or trace JSON file, open it as a flame graph and a hot-functions table, and jump to the source line.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Heatfold quick start</h1>
+  <p>Installing Heatfold, making a profile it can open, and reading it next to your code. Back to the <a href="index.html">Heatfold product page</a>.</p>
+
+  <h2 id="install">Install (IDEs on the 2025.3 platform or later)</h2>
+  <ol>
+    <li>In the IDE, open <strong>Settings | Plugins | Marketplace</strong>, search for <em>Heatfold</em> and click <strong>Install</strong>. The listing is in review and not on JetBrains Marketplace yet; until it is live, the search finds nothing.</li>
+    <li>Restart the IDE if it asks.</li>
+    <li>After the restart the IDE opens its own licence dialog with Heatfold under <strong>Paid Plugins</strong>. It opens on the <strong>Paid license</strong> tab; click the <strong>Start trial</strong> tab next to it for the 30-day trial, or activate your licence there. <strong>Help | Register…</strong> opens the same dialog later.</li>
+  </ol>
+  <p>Heatfold has been used in IntelliJ IDEA and PyCharm on Linux. In CLion and RustRover it was tested headless, not yet in a window. Windows, macOS and Remote Development have not been tested yet. JetBrains' Plugin Verifier reports it compatible with CLion, RustRover, PyCharm and IntelliJ IDEA 2025.3 and 2026.3.</p>
+
+  <h2 id="profile">1. Make a profile</h2>
+  <p>Heatfold reads the file your profiler already writes. Run one of these on the machine that has the program:</p>
+  <ul>
+    <li><strong>gprof:</strong> <code>gprof ./program gmon.out &gt; report.txt</code>, or <code>gprof -l</code> for line entries.</li>
+    <li><strong>perf:</strong> <code>perf script -i perf.data &gt; profile.perf.txt</code>; add <code>-F +srcline</code> for file and line.</li>
+    <li><strong>pprof:</strong> a file from <code>go test -cpuprofile cpu.pprof</code>, <code>runtime/pprof</code> or pprof-rs.</li>
+    <li><strong>Trace JSON:</strong> <code>clang -ftime-trace</code>, or <code>py-spy record -f chrometrace -o trace.json -- python app.py</code>.</li>
+  </ul>
+  <p><code>perf.data</code> and <code>gmon.out</code> themselves are not read: they need the profiled binary and its symbols. The text file that <code>perf script</code> or <code>gprof</code> writes opens anywhere.</p>
+
+  <h2 id="open">2. Open it</h2>
+  <ul>
+    <li>Open the <strong>Heatfold</strong> tool window from the bottom tool window bar and click <strong>Open Profile…</strong>, or right-click the file in the Project view and choose <strong>Open in Heatfold</strong>.</li>
+    <li>The file name does not matter, and gzipped files open the same way. Each profile opens in its own tab.</li>
+    <li>A file Heatfold cannot read shows the four formats and the command for each.</li>
+  </ul>
+  <figure><a href="img/not-a-profile-window.png"><img src="img/not-a-profile.png" alt="Heatfold's tab for pigz/README: 'Heatfold does not recognise the content of README.' followed by the four formats it reads and the command that produces each, and an Open Profile… button" width="820" height="225" loading="lazy"></a><figcaption>What a file that is not a profile shows.</figcaption></figure>
+
+  <h2 id="read">3. Read the graph and the table</h2>
+  <ul>
+    <li>The table on the right lists every function with self and total time (or samples) and both percentages; for gprof, also how many times each was called. Click a column header to sort, or type in <strong>Filter functions by name</strong>.</li>
+    <li>Select a row to see its callers and callees, each with its share. Double-click a caller or callee to move to it.</li>
+    <li>The flame graph on the left: click a frame to zoom, press Esc or click the root to zoom out. <strong>Icicle</strong> puts the root at the top. Type in <strong>Search frames</strong> to highlight a function and see its share of the total.</li>
+    <li>perf script and trace files with several threads get a thread and process selector; pprof files with several sample types get a sample-type selector.</li>
+    <li>For gprof the graph is <strong>estimated</strong>, and the tab says so: gprof records no call stacks, so each function's time is split among its callers using gprof's own call-graph estimates. The table shows gprof's numbers unchanged.</li>
+  </ul>
+  <figure><a href="img/perf-threads-window.png"><img src="img/perf-threads-search.png" alt="Heatfold's tab for pigz-threads.perf.txt with the thread selector open and 'deflate' in the search field: 4 frames match, 1,976 samples, 96.9% of the total" width="1200" height="600" loading="lazy"></a><figcaption>A perf script of pigz with six threads: the thread selector, and a search.</figcaption></figure>
+
+  <h2 id="jump">4. Jump to source</h2>
+  <p>Double-click, or press Enter on, a row or a frame.</p>
+  <ul>
+    <li>When the profile records a file and line (pprof, <code>gprof -l</code>, perf script with srcline, trace events that carry them), the editor opens at that line.</li>
+    <li>Paths recorded on another machine, such as <code>/home/ci/build/zlib/deflate.c</code>, are matched to the project file with the longest common path suffix. When two files tie, Heatfold asks you to choose.</li>
+    <li>When the profile records only a name (a plain gprof report, perf script without srcline), Heatfold asks the IDE's <strong>Navigate | Symbol</strong>. So C and C++ names resolve in CLion; IntelliJ IDEA and PyCharm have no C support, so there use <code>gprof -l</code> or <code>perf script -F +srcline</code>.</li>
+    <li>When nothing matches, one line in the tool window says why.</li>
+  </ul>
+  <figure><a href="img/jump-to-source-window.png"><img src="img/jump-to-source-window.png" alt="IntelliJ IDEA: the gprof -l report of pigz in Heatfold with its top row, longest_match at deflate.c:1484, selected, and zlib/deflate.c open in the editor at line 1484" width="1280" height="800" loading="lazy"></a><figcaption>Double-click the top row of a <code>gprof -l</code> report: <code>zlib/deflate.c</code> opens at line 1484.</figcaption></figure>
+
+  <h2 id="large">Large files</h2>
+  <p>Files are read in the background, with a progress bar and <strong>Cancel</strong> in the tab and in the status bar. At the IDE's default 2 GB heap, one 500 MB perf script fits. A profile too large for the memory the IDE can spare is refused with a message; raise the heap with <strong>Help | Change Memory Settings</strong> for larger files or more large tabs.</p>
+
+  <h2 id="licence">Licence and trial</h2>
+  <p>$15 once, the same for personal and commercial use, with a 30-day trial of every feature. No free version, no subscription, nothing renews; updates are included. Like every paid plugin, Heatfold is licensed through the IDE's own dialog. If a trial ends while the IDE is running, the Heatfold tool window shows one line with a link to that dialog; there is no popup and no repeated notification. After your fifth profile Heatfold asks once for a review, and never again.</p>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li>Heatfold does not record, run or attach to a profiler.</li>
+    <li>Not read: folded or collapsed stacks, cProfile, JFR, V8 profiles.</li>
+    <li>No timeline view of trace events, no comparison of two profiles, no demangling (names are shown as the file writes them), no image or table export. English only.</li>
+    <li>Call paths deeper than 1,024 frames are cut there, and the tab says so.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Heatfold makes no network calls and collects nothing: no telemetry, no analytics, no crash reports. It reads only the files you open and, for jump to source, the files of the open project. See also the <a href="../privacy.html">privacy policy</a>.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE and its version (Help | About), the profiler and command that wrote the file, and what the tab showed.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
