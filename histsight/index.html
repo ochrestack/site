@@ -127,6 +127,18 @@
   </div>
 </section>
 <main>
+  <h2 id="watch">Watch it work</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
+      <source src="video/histsight-demo-720p.mp4" type="video/mp4">
+    </video>
+    <figcaption>59 s, captions only, no sound. IntelliJ IDEA 2026.3 with Histsight 1.1.0 on clones of fzf and fd: both merge modes from the Branches popup, the refusal on a diverged branch, the pushed-commit warning, the rebase preview and the IDE's rebase stopping at the commits it listed, then a message-only amend in a two-repository project. Waits are cut. <a href="video/histsight-demo-1080p.mp4">1080p, 60 fps</a>.</figcaption>
+  </figure>
+  <figure>
+    <img src="video/histsight-rebase-preview.gif" alt="Animated: the Preview Rebase onto master dialog lists 7 commits, commits 1 and 5 marked conflicts with their files; Rebase Now; the IDE's Conflicts dialog stops at commit 1 on tui.go, then at commit 5 on CHANGELOG.md, fzf.1 and options.go" width="1280" height="720" loading="lazy">
+    <figcaption>The rebase preview, then the real rebase stopping where it said (14 s GIF).</figcaption>
+  </figure>
+
   <div class="box">
     <strong>What the IDE already does.</strong> The IDE already does part of this, and the listing says so. Git | Merge offers <code>--ff-only</code> and <code>--no-ff</code> under Modify options, and Git's <code>merge.ff</code> setting sets one rule for every merge. Amend in the Commit tool window shows the commit with its files, message and author; F2 in the Log rewords a commit. Git stops a rebase at each conflict; Histsight shows beforehand where.
   </div>
