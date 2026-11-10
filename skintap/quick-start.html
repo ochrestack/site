@@ -37,8 +37,8 @@
   <div class="box">
     <strong>In four steps</strong>
     <ol>
-      <li><strong>Install:</strong> Blender 4.2 or newer, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the <strong>&#8964;</strong> menu at the top right, <strong>Install from Disk...</strong>, pick <code>skintap-1.0.6.zip</code> (<a href="#install">details</a>).</li>
-      <li><strong>Pose Mode:</strong> click your character's armature and press <strong>Ctrl+Tab</strong>.</li>
+      <li><strong>Install:</strong> Blender 4.2 or newer, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the <strong>&#8964;</strong> menu at the top right, <strong>Install from Disk...</strong>, pick <code>skintap-1.0.7.zip</code> (<a href="#install">details</a>).</li>
+      <li><strong>Pose Mode:</strong> click the armature in the <strong>Outliner</strong> (top right; it is often hidden inside the body), then press <strong>Ctrl+Tab</strong>. If you clicked the body, the Skintap tab names its armature and has a <strong>Select</strong> button for it.</li>
       <li><strong>Start the picker:</strong> mouse over the 3D Viewport, press <strong>Shift+Alt+Q</strong>.</li>
       <li><strong>Click</strong> the body or the clothes: the bone that moves that spot is selected. Shift-click adds, <strong>Esc</strong> ends.</li>
     </ol>
@@ -47,7 +47,7 @@
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2 LTS and 5.2 LTS)</h2>
   <ol>
-    <li>After checkout, download <code>skintap-1.0.6.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
+    <li>After checkout, download <code>skintap-1.0.7.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first. If your browser unzips downloads by itself (Safari can), turn that off and download again.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
       <ul>
         <li>Blender may first ask about internet access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Skintap needs no internet, so <strong>Continue Offline is fine</strong>.</li>
@@ -62,7 +62,7 @@
 
   <h2 id="pick">Pick Bones on Mesh</h2>
   <ol>
-    <li>Select your character's armature and enter <strong>Pose Mode</strong> (Ctrl+Tab).</li>
+    <li>Select your character's armature (click it in the Outliner, or click the body and use <strong>Select '<em>armature</em>'</strong> in the Skintap tab) and enter <strong>Pose Mode</strong> (Ctrl+Tab).</li>
     <li>With the mouse over the 3D Viewport, press <strong>Shift+Alt+Q</strong>, or click <strong>Pick Bones on Mesh</strong> in the Skintap tab, or use <strong>Pose &gt; Skintap &gt; Pick Bones on Mesh</strong>.
       <figure><img src="img/panel-pose-mode.png" alt="The Skintap tab in Pose Mode at Blender UI scale 1.4: Pick on Mesh with the Pick Bones on Mesh button, the Pick Deform Bones checkbox and the hint 'Shift+Alt+Q, Esc to finish'; Rename with Base, Start, Padding, Side, Side Markers, Number Each Chain, Rename Chain and Fix .001 Names; Chains with Duplicate Chain and Mirror Chain greyed out and the hint 'Edit Mode only (Tab)'" width="360" height="700" loading="lazy"><figcaption>The Skintap tab in Pose Mode (Blender 5.2, UI scale 1.4). The tools for the current mode come first; tools that need another mode are greyed out.</figcaption></figure>
     </li>
@@ -125,7 +125,7 @@
   <h2 id="where">Where to find the tools</h2>
   <ul>
     <li><strong>3D Viewport &gt; Sidebar (N) &gt; Skintap</strong>, in Pose and Edit Mode. A greyed-out tool needs another mode; hover over it to see which.</li>
-    <li><strong>Pose &gt; Skintap</strong> (Pose Mode) and <strong>Armature &gt; Skintap</strong> (Edit Mode).</li>
+    <li><strong>Pose &gt; Skintap</strong> (Pose Mode, every tool) and <strong>Armature &gt; Skintap</strong> (Edit Mode, the chain and rename tools).</li>
     <li><strong>Shift+Alt+Q</strong> starts Pick Bones on Mesh in Pose Mode; <strong>Shift+Alt+D</strong> runs Duplicate Chain in Edit Mode. Change them in <strong>Preferences &gt; Add-ons &gt; Skintap</strong> (both are listed) or under <strong>Preferences &gt; Keymap &gt; Pose</strong> and <strong>Keymap &gt; Armature</strong>.</li>
     <li>Every tool reports in the status bar in one short line; when the full list of names is longer, it is in the Info editor just before that line.</li>
   </ul>
