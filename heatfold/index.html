@@ -124,21 +124,22 @@
   <div class="buy">
     <p class="price"><strong>$15 once</strong>, personal or commercial. 30-day trial of every feature. No subscription, nothing renews.</p>
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
-    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet.</p>
+    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet. The trial needs a free JetBrains Account (<a href="quick-start.html#install">how it starts</a>).</p>
   </div>
-  <p class="fine">Tested: used in IntelliJ IDEA and PyCharm on Linux; CLion and RustRover headless, not yet in a window; Windows, macOS and Remote Development not yet tested. Source code included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
+  <p class="fine">Tested: used in IntelliJ IDEA and PyCharm on Linux; CLion and RustRover headless only; Windows, macOS and Remote Development untested. Source code included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
 </section>
 <main>
-  <div class="box">
-    <strong>Where you may not need it.</strong> CLion's profiler (Linux, macOS, WSL) already draws a flame graph for programs run under it, imports collapsed stacks and opens trace JSON in a timeline; RustRover does the same for perf, GoLand reads pprof, PyCharm Pro profiles Python. In those cases Heatfold adds no new chart. You pay for what is missing: gprof reports, which no JetBrains IDE reads; <code>perf script</code> text with threads and srcline jumps; pprof outside GoLand; a hot-functions table for traces; and paths from another machine mapped onto your project. Heatfold does not record or attach to processes.
-  </div>
 
   <h2 id="watch">Watch it work</h2>
+  <figure class="wide">
+    <img src="video/heatfold-perf-srcline-jump.gif" alt="Animated: pigz's perf script with source lines, recorded under /home/ci/build, open in Heatfold. The cursor rests on the deflate_slow frame and the tooltip shows /home/ci/build/rel/../zlib/deflate.c:1951; a double-click opens the project's zlib/deflate.c at line 1951, 'if (s-&gt;match_length &lt;= 5 &amp;&amp; (s-&gt;strategy == Z_FILTERED', and the table shows deflate_slow, 270 samples, 14.8%, with its caller deflate at 100.0%" width="1200" height="562">
+    <figcaption>A perf script recorded under <code>/home/ci/build</code>: double-click a frame, and your <code>zlib/deflate.c</code> opens at the line.</figcaption>
+  </figure>
   <figure>
     <video controls preload="none" playsinline poster="video/poster-gprof-table.jpg" width="1280" height="720">
       <source src="video/heatfold-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 52 s, captions only, no sound. pigz's gprof report goes from raw text to a table of time and calls per function, with callers and callees; a <code>gprof -l</code> row opens <code>zlib/deflate.c</code> at line 1484; the same program under <code>perf</code>: search, one thread, zoom; a Go heap profile's sample types; a clang <code>-ftime-trace</code> of <code>pigz.c</code>. Heatfold 1.1.0 in IntelliJ IDEA 2025.3 on Linux, recorded at 60 fps with a stand-in for Marketplace licensing (the recording machine cannot start a trial).</figcaption>
+    <figcaption>The demo, 52 s, captions only, no sound: gprof, <code>gprof -l</code>, perf, a Go heap profile and a clang trace of the same programs. Heatfold 1.1.1 in IntelliJ IDEA 2025.3 on Linux; the recording machine has no JetBrains Account, so the licence check was set to "trial".</figcaption>
   </figure>
   <figure class="wide">
     <img src="video/heatfold-gprof-table.gif" alt="Animated: in IntelliJ IDEA, a right-click on pigz.gprof.txt and Open in Heatfold; the raw gprof text gives way to Heatfold's table, longest_match 2.17 s, 74.1%, 18,494,188 calls at the top; then deflate_slow is selected and its caller deflate (100.0%) and callees longest_match (75.3%), _tr_flush_block and fill_window appear" width="1200" height="562" loading="lazy">
@@ -147,7 +148,7 @@
 
   <h2 id="real">In the IDE, for real</h2>
   <figure class="wide">
-    <a href="img/jump-to-source-window.png"><img src="img/jump-to-source-window.png" alt="IntelliJ IDEA: Heatfold's tab for pigz-lines.gprof.txt, the gprof -l report, with its top row selected: longest_match, 1.24 s, 42.3%, location deflate.c:1484. Above it the editor has opened zlib/deflate.c with line 1484, '} while ((cur_match = prev[cur_match &amp; wmask]) &gt; limit', highlighted; the status bar reads 1484:59" width="1280" height="800" loading="lazy"></a>
+    <a href="img/jump-to-source-window.png"><img src="img/jump-to-source-window.png" alt="IntelliJ IDEA: Heatfold's tab for pigz-lines.gprof.txt, the gprof -l report, with its top row selected: longest_match, 1.24 s, 42.0%, location deflate.c:1484. Above it the editor has opened zlib/deflate.c with line 1484, '} while ((cur_match = prev[cur_match &amp; wmask]) &gt; limit', highlighted; the status bar reads 1484:59" width="1280" height="800" loading="lazy"></a>
     <figcaption>Double-click a row of a <code>gprof -l</code> report: <code>zlib/deflate.c</code> opens at line 1484.</figcaption>
   </figure>
   <figure class="wide">
@@ -173,28 +174,32 @@
     <figcaption>The four formats, recognised by content (any name, gzipped too), and the command for each.</figcaption>
   </figure>
 
+  <div class="box">
+    <strong>Where you may not need it.</strong> CLion's profiler (Linux, macOS, WSL) already draws a flame graph for programs run under it, imports collapsed stacks and opens trace JSON in a timeline; RustRover does the same for perf, GoLand reads pprof, PyCharm Pro profiles Python. In those cases Heatfold adds no new chart. You pay for what is missing: gprof reports, which no JetBrains IDE reads; <code>perf script</code> text with threads and srcline jumps; pprof outside GoLand; a hot-functions table for traces; and paths from another machine mapped onto your project. Heatfold does not record or attach to processes.
+  </div>
+
   <h2 id="tested">How we tested</h2>
   <table>
     <tr><th scope="col">Where (Linux)</th><th scope="col">What ran</th></tr>
-    <tr><td>IntelliJ IDEA, PyCharm 2025.3 and 2026.3</td><td>Used in the IDE window, every panel and message (1.0.0, same interface as 1.1.0); 1.1.0 in IntelliJ IDEA 2025.3 for these images</td></tr>
+    <tr><td>IntelliJ IDEA, PyCharm 2025.3 and 2026.3</td><td>Used in the IDE window, every panel and message (1.0.0 and 1.1.0); these images and the demo: 1.1.1 in IntelliJ IDEA 2025.3</td></tr>
     <tr><td>CLion, RustRover 2025.3</td><td>Headless: all four formats open, C and Rust names resolve. Not yet in a window</td></tr>
     <tr><td>All four, 2025.3 and 2026.3</td><td>Plugin Verifier: compatible</td></tr>
     <tr><td>Windows, macOS, Remote Development</td><td>Not yet tested</td></tr>
   </table>
-  <p>On real profiles of Lua 5.4.7, pigz, a Go program and a py-spy trace, the table matches gprof, <code>perf report</code>, <code>go tool pprof -top</code> and a replay of the trace. A 500 MB perf script opens in 8.8–9.3 s, a 200 MB trace in 3.5–3.8 s (default 2 GB heap, 4-CPU machine, three runs).</p>
+  <p>On real profiles of Lua 5.4.7, pigz, a Go program, a py-spy trace and a C program whose gprof report splits samples between functions, the table matches gprof (seconds, calls and its own <code>% time</code> columns), <code>perf report</code>, <code>go tool pprof -top</code> and a replay of the trace. A 500 MB perf script opens in 8.8–9.3 s, a 200 MB trace in 3.5–3.8 s (default 2 GB heap, 4-CPU machine, three runs).</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
     <li>No <code>perf.data</code> or <code>gmon.out</code> (run <code>perf script</code> or <code>gprof</code> first), folded stacks, cProfile, JFR or V8; no timeline, comparison or export.</li>
     <li>gprof's flame graph is an estimate, and says so. In IntelliJ IDEA and PyCharm, C functions open from <code>gprof -l</code> or srcline, not from names.</li>
-    <li>One 500 MB perf script fits the default heap; larger files are refused with a message.</li>
+    <li>What fits depends on a profile's distinct call paths, not only its size. A profile that would not fit in the memory the IDE can spare is refused with a message.</li>
   </ul>
 
   <h2 id="details">Details</h2>
-  <p>Sold through JetBrains Marketplace; trial and purchase use the IDE's licence dialog, with no popups of Heatfold's own. Source code included in the plugin zip. No network calls, no telemetry (<a href="../privacy.html">privacy</a>). <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">quick start</a></p>
+  <p>Sold through JetBrains Marketplace; trial and purchase use the IDE's licence dialog. Heatfold's own messages: one line if a trial ends, and one review request after your fifth profile. Source code included in the plugin zip; <a href="eula.html">licence agreement</a>. No network calls, no telemetry (<a href="../privacy.html">privacy</a>). <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">quick start</a></p>
   <details>
     <summary>How the images were made</summary>
-    <p><code>./gradlew runIde</code> (IntelliJ IDEA 2025.3) under a virtual display, real mouse and keyboard, with a project of pigz 2.8, zlib 1.3.1, a Go and a Python program. The sandbox cannot start a trial, so a stand-in for Marketplace licensing was used.</p>
+    <p><code>./gradlew runIde</code> (IntelliJ IDEA 2025.3) under a virtual display, real mouse and keyboard, with a project of pigz 2.8, zlib 1.3.1, a Go and a Python program. The capture machine has no JetBrains Account to start a trial, so Heatfold's licence check was set to "trial" there.</p>
   </details>
   <p style="font-size:14px;color:var(--muted)">Not affiliated with JetBrains, Google, the Linux perf project, GNU, LLVM or py-spy.</p>
 </main>
