@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knapwell quick start: install and first damage</title>
+<meta name="description" content="Install Knapwell for Blender 4.5 LTS and later, check and fix a model, damage it, protect faces, and Apply or Revert.">
+<link rel="canonical" href="https://ochrestack.com/knapwell/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+  .pair figure { flex: 0 1 300px; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Knapwell quick start</h1>
+  <p>Install Knapwell and make your first damage. The full manual, <code>README.md</code>, is inside the download. Back to the <a href="index.html">Knapwell product page</a>.</p>
+
+  <h2 id="install">Install (Blender 4.5 LTS to 5.2 LTS)</h2>
+  <ol>
+    <li>Download <code>knapwell-1.5.0.zip</code> from the link in your checkout email. Install the zip itself; do not unzip it.</li>
+    <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>. If Blender asks about internet access, <strong>Continue Offline</strong> is fine: Knapwell needs none.</li>
+    <li>Open the menu at the top right (the rightmost <strong>&#8964;</strong>), choose <strong>Install from Disk...</strong> and pick the zip.</li>
+    <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Knapwell</strong> tab. The main buttons are also in <strong>Object &gt; Knapwell</strong>, so F3 search finds them.</li>
+  </ol>
+  <p>To update, install the newer zip the same way. Knapwell was called Spallwork until version 1.4.0: if you had Spallwork, uninstall it first.</p>
+
+  <h2 id="first-damage">First damage</h2>
+  <ol>
+    <li><strong>Check Model</strong> (recommended for an imported model). Select the meshes and click it. The <strong>Check Model</strong> sub-panel, below the sliders, gives one line per object, with the fix under any problem: <strong>Weld Seams</strong> for a mesh split at UV seams, <strong>Fill Holes</strong> for holes, <strong>Add Solidify</strong> for a plane, <strong>Fix Normals</strong>, <strong>Remove Zero-Area Faces</strong>. Click a line to see every finding for that object.</li>
+    <li>Click <strong>Damage</strong>. Each mesh gets a "Knapwell" modifier; its own mesh is not changed until Apply. Cameras and lights in the selection are left alone.</li>
+    <li>Under <strong>Set sliders to:</strong>, pick <strong>Worn</strong>, <strong>Chipped</strong> or <strong>Ruined</strong>, then adjust Amount, Chip size (in metres, whatever the object's scale), Depth, Edge angle, Seed and Mode. With several objects selected, a slider change goes to all of them; Seed changes only the active one.</li>
+    <li>On thin parts, such as real-size bricks, chips are sized to fit each part. The panel says so in one line, with a <strong>Use</strong> button that sets that size.</li>
+  </ol>
+  <div class="pair">
+    <figure><img src="img/panel-check-model.png" alt="The Knapwell tab after Check Model on seven objects: the status line, Check Model, Damage and Remove, the looks row and the sliders at the top; below them the Check Model sub-panel with '5 of 7 ready for Damage', one line per object, 'Imported Urn: 60 open edges' in red with a Weld Seams button and 'Floor Tile: no thickness' in red with an Add Solidify button" width="300" height="830" loading="lazy"><figcaption>After Check Model on seven objects: the sliders stay where they are; one line per object below them.</figcaption></figure>
+    <figure><img src="img/panel-step-protected.png" alt="The Knapwell tab on a stone step with one face protected: 'Step: damaged, live', the sliders, and in Mask &amp; Material the line '1 face protected: no chip reaches it.'; the Apply section below" width="300" height="830" loading="lazy"><figcaption>A step with its top face protected: the other edges keep their chips.</figcaption></figure>
+  </div>
+
+  <h2 id="mask">Protect faces, pick a break material</h2>
+  <ul>
+    <li><strong>Protect Selected Faces</strong>: in Edit Mode, select faces (a doorway, a carving) and click it. No chip reaches those faces or their edges; the faces around them are still chipped.</li>
+    <li><strong>Paint Mask</strong>: Weight Paint on the vertex group "Knapwell Mask". A face is protected when all its corners are painted.</li>
+    <li><strong>Clear Mask</strong> removes both.</li>
+    <li><strong>Break material</strong>: the faces the damage creates get it; every other face keeps its own material and UVs.</li>
+  </ul>
+
+  <h2 id="apply">Apply and Revert</h2>
+  <ul>
+    <li><strong>Target faces</strong> (0 = off): for game assets, Apply reduces the result to about this many faces, keeping every part closed. Twice the model's own face count gives a light scatter of chips; four times gives chips along most edges.</li>
+    <li><strong>Apply</strong> turns the damage into ordinary mesh data with outward normals, ready to export.</li>
+    <li><strong>Revert to Original</strong> brings back the exact mesh from before Apply, even after you save, close and reopen the file.</li>
+    <li><strong>Forget Original</strong> asks first, then deletes the stored copy.</li>
+  </ul>
+  <p>Every button reports what it did in one short line in the status bar; the Info editor keeps the details for each object.</p>
+
+  <h2 id="limits">Limits in brief</h2>
+  <p>Closed meshes only (Check Model fixes most imports). Loose parts that touch each other give an STL that is not watertight where they touch; leave a 0.2 mm gap for a print. No cracks, fracture, rebar or debris. Tested on the official Linux builds of Blender 4.5 LTS to 5.2 LTS; Windows and macOS not yet tested. The full list is on the <a href="index.html#limits">product page</a>.</p>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Knapwell makes no network calls. It reads and writes only the open .blend file, and it collects nothing.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version, your operating system and, if you can, the .blend file or a screenshot of the Knapwell tab.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a><a href="../support.html">Support</a>
+  <p>&copy; 2026 Ochrestack</p>
+</footer>
+</body>
+</html>
