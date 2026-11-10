@@ -111,7 +111,7 @@
       <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
         <source src="video/wholegrip-demo-720p.mp4" type="video/mp4">
       </video>
-      <figcaption>The demo, 42 s, captions only, no sound. Wholegrip 1.0.2 in Blender 5.2.3, every click and key real: in plain Blender a click takes one piece of Rain; Treat as One from the Outliner, then one click takes all 18 of her objects, Shift+click adds Ellie, a box takes both, Alt+U gives single parts back; one Geometry Nodes outline set once on Rain's 19-object collection; Only in This View Layer; the sidebar grid. Captured one frame at a time, so the waits while Blender works are not shown; the picture moves in on the panels, and the pointer is drawn where it really was.</figcaption>
+      <figcaption>The 42-second demo, captions only: real clicks and keys in Blender 5.2.3 with Wholegrip 1.0.2. Captured frame by frame, so the pointer is drawn in where each click happened.</figcaption>
     </figure>
     <figure>
       <img src="video/wholegrip-demo-select.gif" alt="A 12-second loop from the demo: in Blender's Outliner, CH-rain and CH-ellie are selected and right-click, Treat as One is chosen; one click on Rain's shoe outlines all of Rain; Shift+click on Ellie's boot adds all of Ellie; a click on the floor clears; a box across both characters' knees selects both whole; Alt+U, and a click on Rain's jeans selects the jeans alone" width="1280" height="720" loading="lazy">
@@ -130,14 +130,22 @@
   <h2>Click selection</h2>
   <figure>
     <a href="img/wholegrip-click-window.jpg"><img src="img/plain-vs-wholegrip-2x1.png" alt="Two crops of the same Blender viewport, labelled. Left, Plain Blender: one click, one shoe: only Rain's shoe is outlined. Right, Wholegrip: one click, all of Rain: every part of Rain, hair, eyes, scarf, top, jeans and shoes, is outlined" width="1440" height="720" loading="lazy"></a>
-    <figcaption>The same click on Rain's shoe: plain Blender takes the shoe, Wholegrip her 17 meshes and rig from six nested collections. Labels added.</figcaption>
+    <figcaption>The same click on Rain's shoe: plain Blender takes the shoe, Wholegrip all 18 of her objects. Labels added.</figcaption>
+  </figure>
+  <figure>
+    <a href="img/classroom-wholegrip-window.jpg"><img src="img/classroom-plain-vs-wholegrip.png" alt="Two crops of the same Blender viewport of a classroom full of school desks, labelled. Left, Plain Blender: one click, one part: only the desktop of one desk is outlined. Right, Wholegrip: one click, the whole desk: the desktop, seat, back and metal frame of that desk are outlined" width="1440" height="490" loading="lazy"></a>
+    <figcaption>Furniture: each of the 20 desks in Christophe Seux's Classroom (CC0) is a collection of 23 parts. Plain Blender takes one part, Wholegrip the desk. Labels added.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/classroom-select.gif" alt="The classroom in a Blender 5.2 viewport. A click on a desktop outlines that whole desk; Shift+click on the next desk adds all of it; then, after Alt+U, a click on the same desktop outlines only the desktop" width="880" height="496" loading="lazy">
+    <figcaption>Click: one desk. Shift+click: a second. Alt+U and a click: exactly the part under the pointer.</figcaption>
   </figure>
   <details>
     <summary>How selection works</summary>
     <ul>
       <li>Mark a collection in the Outliner (right-click &gt; <strong>Treat as One</strong>) or with the checkbox in Collection Properties. Collections you don't mark behave as in plain Blender.</li>
       <li>Click, box drag (Select Box tool or B) and Shift+click take whole collections; the clicked part stays active.</li>
-      <li>Ctrl+click picks one object, as Blender's own Ctrl+click does (the object whose origin is nearest the cursor). Alt+U or the <strong>Wholegrip</strong> header button turns it all off and on.</li>
+      <li>Ctrl+click picks one object the way Blender's own Ctrl+click does: the object whose origin is nearest the cursor, which on overlapping parts (screws, kitbash greebles, a rig) is often not the part under it. For exactly the part under the cursor, press Alt+U and click. Alt+U or the <strong>Wholegrip</strong> header button turns it all off and on.</li>
       <li>When a part is in two marked collections, the deepest one wins and the status bar names the other.</li>
     </ul>
     <figure>
@@ -149,7 +157,11 @@
   <h2>One modifier stack per collection</h2>
   <figure>
     <img src="img/collection-modifiers.gif" alt="Rain in the viewport beside Collection Properties of her rain-geometry collection, marked Treat as One. Add Modifier opens Blender's modifier list; Geometry Nodes is chosen; the node group Toon Outline is picked; Thickness is typed as 12; a black outline appears around every part of Rain: hair, face, scarf, top, arms and jeans" width="880" height="605" loading="lazy">
-    <figcaption>One Geometry Nodes outline added to Rain's 19-object collection, set once: every part gets it. (Our outline node group.)</figcaption>
+    <figcaption>One Geometry Nodes outline set once on Rain's 19-object collection: every part gets it. (Our outline node group.)</figcaption>
+  </figure>
+  <figure>
+    <a href="img/corner-modifiers-window.jpg"><img src="img/corner-bevel-before-after.png" alt="Two crops of the same viewport, grey shading, labelled. Left, Before: a low-poly sofa arm, side table and books with sharp edges and flat shading. Right, One Bevel plus Weighted Normal, set once: the same pieces with rounded edges and smooth shading" width="1440" height="545" loading="lazy"></a>
+    <figcaption>Seven Kenney Furniture Kit models (CC0) in one collection: one Bevel and one Weighted Normal, set once, on every piece. Labels added.</figcaption>
   </figure>
   <details>
     <summary>How the stack works</summary>
@@ -157,12 +169,16 @@
       <li>Change a value, rename, reorder, or toggle viewport and render in the panel, and every member follows. Remove it and it goes from every member.</li>
       <li>Parts moved into the collection get the stack; parts moved out lose it. Each part's own modifiers stay, and vertex-group fields stay per object.</li>
       <li>Geometry Nodes: the node group and its input values stay in step.</li>
-      <li><strong>Apply to All</strong> and <strong>Remove from All</strong> ask first, and Ctrl+Z undoes them.</li>
+      <li><strong>Apply to All</strong> and <strong>Remove from All</strong> ask first, saying how many modifiers and members they will change, and Ctrl+Z undoes them.</li>
       <li>The copies are ordinary modifiers, so the file opens and renders the same without the add-on. A collection with collection modifiers also gets one hidden helper object, <code>.Wholegrip stack &lt;name&gt;</code>, linked to no scene. No Empties, instances or group objects.</li>
     </ul>
     <figure>
       <a href="img/collection-modifiers-window.jpg"><img class="ui" src="img/collection-modifiers-panel.png" alt="Collection Properties of rain-geometry: the Wholegrip panel with Treat as One ticked, 19 objects in this collection and its children, Collection Modifiers with Add Modifier, On 19 of 19 members, and a GeometryNodes box with Node Group Toon Outline and Thickness (mm) 12.000, then Apply to All and Remove from All" width="537" height="584" loading="lazy"></a>
       <figcaption>The panel, real size: "On 19 of 19 members".</figcaption>
+    </figure>
+    <figure>
+      <img class="ui" src="img/corner-modifiers-panel.png" alt="Collection Properties of Reading Corner: Treat as One ticked, 7 objects in this collection and its children, On 7 of 7 members, a Bevel box with Width 0.02 m and Segments 3, and a WeightedNormal box, then Apply to All and Remove from All" width="339" height="837" loading="lazy">
+      <figcaption>The reading corner's panel: "On 7 of 7 members".</figcaption>
     </figure>
     <figure>
       <img class="ui" src="img/member-stack.png" alt="Modifier Properties of GEO-rain-jeans: her own mask_legs, Armature, CorrectiveSmooth, Mask and Subdivision modifiers, folded, then GeometryNodes ‹rain-geometry› at the bottom with Toon Outline and Thickness (mm) 12.000" width="537" height="584" loading="lazy">
@@ -171,24 +187,26 @@
   </details>
 
   <h2>Every view layer at once</h2>
-  <figure>
-    <img src="img/view-layers.gif" alt="The Blender window with the Outliner and the view-layer selector. In the Rain view layer, right-click CH-rain, View Layer, Only in This View Layer; the selector switches to Ellie and Rain disappears from the viewport; right-click CH-ellie, View Layer, Only in This View Layer; switching to Set leaves the empty backdrop; switching back to Rain shows Rain alone" width="990" height="555" loading="lazy">
-    <figcaption>Only in This View Layer on each character: two menu picks give each her own view layer.</figcaption>
-  </figure>
+  <div class="pair">
+    <figure>
+      <img class="ui" src="img/sidebar-tab.png" alt="The Wholegrip tab in the 3D Viewport sidebar at Blender's default width: the Treat as One Clicks switch, the New Collections option, the marked collections CH-ellie and CH-rain with object counts and Select buttons, then View Layers: a key reading 1 Rain (active), 2 Ellie, 3 Set, and a grid with columns 1, 2, 3 and All. Each collection name sits on its own line above its checkboxes; CH-rain is ticked in column 1 only, and its child collections' cells in columns 2 and 3 are greyed" width="292" height="898" loading="lazy">
+      <figcaption>The sidebar tab at Blender's default width: numbered columns with a key of layer names; grey cells sit under an excluded parent.</figcaption>
+    </figure>
+    <figure style="flex:1 1 360px">
+      <img src="img/view-layers.gif" alt="The Blender window with the Outliner and the view-layer selector. In the Rain view layer, right-click CH-rain, View Layer, Only in This View Layer; the selector switches to Ellie and Rain disappears from the viewport; right-click CH-ellie, View Layer, Only in This View Layer; switching to Set leaves the empty backdrop; switching back to Rain shows Rain alone" width="990" height="555" loading="lazy">
+      <figcaption>Only in This View Layer on each character: two menu picks give each her own view layer.</figcaption>
+    </figure>
+  </div>
   <details>
-    <summary>The menu, the sidebar tab and the options</summary>
+    <summary>The menu and the options</summary>
     <ul>
-      <li>Include in All View Layers, Exclude from All View Layers and Only in This View Layer act on every selected collection.</li>
-      <li>If a parent collection is excluded in some layer, Wholegrip leaves the parent alone and names that layer in the status bar.</li>
+      <li>Include in All View Layers, Exclude from All View Layers and Only in This View Layer act on every selected collection, from the Outliner or from each grid row.</li>
+      <li>If a parent collection is excluded in some layer, Wholegrip leaves the parent alone and leaves the collection out of that layer too, as Blender does when you exclude a parent; the status bar says where it was included and where it was left out.</li>
       <li>An option, off by default, makes new collections start in the active view layer only.</li>
     </ul>
     <figure>
       <img class="ui" src="img/view-layer-menu.png" alt="The Outliner's View Layer submenu: Blender's own Disable from View Layer, Enable in View Layer, Set Holdout and Clear Holdout, then Wholegrip's Include in All View Layers, Exclude from All View Layers and Only in This View Layer, under the pointer" width="513" height="473" loading="lazy">
       <figcaption>Wholegrip's three entries under Blender's own.</figcaption>
-    </figure>
-    <figure>
-      <img class="ui" src="img/sidebar-tab.png" alt="The Wholegrip tab in the 3D Viewport sidebar: the Treat as One Clicks switch with its Alt U shortcut, the New Collections Only in This View Layer option, the Marked Collections list with CH-ellie and CH-rain, their object and modifier counts and Select buttons, and the View Layers grid with a row per collection and Rain, Ellie and Set columns, CH-rain ticked in Rain only, CH-ellie in Ellie only and Studio Set in all three" width="464" height="898" loading="lazy">
-      <figcaption>The sidebar tab (N): marked collections with a Select button, and every collection against every view layer.</figcaption>
     </figure>
   </details>
 
@@ -209,18 +227,14 @@
   <h2 id="tested">How we tested</h2>
   <table>
     <tr><th>Blender (official Linux builds)</th><th>Automated tests (headless)</th><th>Window tests</th><th>Review findings re-checked with real input</th></tr>
-    <tr><td>4.2.23 LTS</td><td>112 passed, 0 failed</td><td>8 passed</td><td>3 of 3</td></tr>
-    <tr><td>4.5.15 LTS</td><td>112 passed, 0 failed</td><td>8 passed</td><td>3 of 3</td></tr>
-    <tr><td>5.0.1</td><td>112 passed, 0 failed</td><td>8 passed</td><td>3 of 3</td></tr>
-    <tr><td>5.1.2</td><td>112 passed, 0 failed</td><td>8 passed</td><td>3 of 3</td></tr>
-    <tr><td>5.2.3 LTS</td><td>112 passed, 0 failed</td><td>8 passed</td><td>3 of 3</td></tr>
+    <tr><td>4.2.23 LTS, 4.5.15 LTS, 5.0.1, 5.1.2 and 5.2.3 LTS</td><td>132 passed, 0 failed, on each</td><td>8 passed on each</td><td>3 of 3 on each</td></tr>
   </table>
   <details>
     <summary>More on testing, and on these pictures</summary>
-    <p>Wholegrip 1.0.2, 9 November 2026. Every panel, button, menu entry, checkbox and shortcut is also driven with real mouse and keyboard input in a full Blender window, with a screenshot of each step: 53 of 53 steps passed on Blender 5.2.3 and on 4.2.23 with 1.0.2, five typed Geometry Nodes edits in a row among them. On 2,000 objects in 200 marked collections, a click selection took 0.048 s and one value change on a 50-member stack 0.018 s (Blender 5.2.3, measured on 1.0.1). Version 1.0.2 fixes a crash on repeated Geometry Nodes edits in the Collection Modifiers panel, found while capturing the pictures on this page; the fix has its own tests. Windows and macOS have not been tested yet.</p>
-    <p>The pictures are real captures of the full Blender 5.2.3 window on a virtual display, driven by real mouse and keyboard input, with Wholegrip installed from the same zip you download. We put the two characters side by side, lowered their arms, switched on Rain's own viewport eyes, and built the studio backdrop and the outline node group.</p>
+    <p>Wholegrip 1.0.3, 10 November 2026. Every panel, button, menu entry, checkbox and shortcut is also driven with real mouse and keyboard input in a full Blender window, with a screenshot of each step: 53 of 53 steps passed on Blender 5.2.3 and on 4.2.23 with 1.0.3. On 2,000 objects in 200 marked collections, a click selection took 0.048 s and one value change on a 50-member stack 0.018 s (Blender 5.2.3, measured on 1.0.1). Version 1.0.3 keeps a collection out of a view layer where its parent is excluded, and says so; 1.0.2 fixed a crash on repeated Geometry Nodes edits. Both fixes have their own tests. Windows and macOS have not been tested yet.</p>
+    <p>The pictures are real captures of the full Blender 5.2.3 window on a virtual display, driven by real mouse and keyboard input, with Wholegrip installed from the same zip you download (1.0.2 for the Rain and Ellie pictures, 1.0.3 for the classroom, the reading corner and the sidebar tab). We put the two characters side by side, lowered their arms, switched on Rain's own viewport eyes, and built the studio backdrop and the outline node group. In the classroom we turned each placed desk into its own collection of the asset's 23 parts; in the reading corner we merged the vertices the model import splits, so a Bevel finds the edges.</p>
   </details>
-  <p style="font-size:14px;color:var(--muted)">Rain Rig (CC) Blender Foundation | studio.blender.org; Ellie (CC) Blender Foundation | studio.blender.org; <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Not included with Wholegrip.</p>
+  <p style="font-size:14px;color:var(--muted)">Rain Rig (CC) Blender Foundation | studio.blender.org; Ellie (CC) Blender Foundation | studio.blender.org; <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Classroom by Christophe Seux (CC0). Furniture Kit by Kenney (CC0). Not included with Wholegrip.</p>
 
   <h2 id="details">Details</h2>
   <ul>
