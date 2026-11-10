@@ -72,7 +72,8 @@
   }
   h3 { font-size: 17px; margin: 24px 0 4px; }
   code { font-size: 15px; }
-  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .button.pending, .button.pending:hover, .button.pending:focus { background: transparent; color: var(--muted); border: 1px dashed var(--muted); padding: 9px 17px; cursor: not-allowed; font-weight: 500; }
+  .buttons .button { margin: 0 8px 8px 0; }
   .note { font-size: 15px; color: var(--muted); }
   .benefits { padding-left: 20px; margin: 16px 0; }
   .benefits li { margin: 6px 0; }
@@ -115,15 +116,15 @@
     <figcaption>Free: jsoup's 2,648-test Maven run, filtered to 6 lines.</figcaption>
   </figure>
   <ul class="benefits">
-    <li><strong>Filter/grep the Terminal output, live.</strong> Type, and new lines show up only if they match.</li>
-    <li><strong>No re-running through <code>| grep</code>.</strong> Change the pattern after the run.</li>
-    <li><strong>Click a stack frame, land on the line</strong> (licence).</li>
+    <li><strong>Filter/grep the Terminal output, live.</strong> Change the pattern after the run; no re-running through <code>| grep</code>.</li>
+    <li><strong>Keep what the Terminal forgets.</strong> After five long test runs its own search found 4 failure lines; Scrollgrep kept all 10.</li>
+    <li><strong>Click a stack frame, land on the line:</strong> JVM, Python, Node.js or Go (licence).</li>
   </ul>
   <div class="buy">
     <p class="price"><strong>Free:</strong> the live filter, no time limit. <strong>$12 once:</strong> links, one-command scope, patterns and alerts, personal or commercial. Nothing renews; 30-day trial.</p>
-    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
-    <p class="note" id="buy-note">Not on JetBrains Marketplace yet: listing in review.</p>
-    <p class="fine">Tested on Linux: IntelliJ IDEA 2025.3 (full test suite, Bash and Zsh), 2026.3 (install and filter check); Windows, macOS, PowerShell untested. Source not included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
+    <p class="buttons"><a class="button" id="download" href="download/scrollgrep-1.1.1.zip" aria-describedby="download-note">Download Scrollgrep 1.1.1 (free)</a> <a class="button pending" id="buy" href="#" aria-disabled="true" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
+    <p class="note" id="download-note">Install: Settings | Plugins | ⚙ | Install Plugin from Disk, then restart the IDE. <span id="buy-note">JetBrains Marketplace: listing in review; the licence and the 30-day trial start there.</span></p>
+    <p class="fine">Tested on Linux: IntelliJ IDEA 2025.3 (full test suite, Bash and Zsh) and 2026.3, PyCharm 2025.3 (install and filter check). Untested: WebStorm, GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell. Source code included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a> · <a href="eula.html">EULA</a></p>
   </div>
 </section>
 <main>
@@ -132,11 +133,11 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
       <source src="video/scrollgrep-demo-720p60.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 50 s, captions only, no sound, recorded at 60 fps with Scrollgrep 1.1.0 in IntelliJ IDEA 2025.3 on the jsoup clone (one assertion changed so one test fails). Free until 0:19; after that the licensed features, shown with a test licence because the listing is not live yet. The live filter alone: <a href="video/scrollgrep-live-filter.gif">11-second GIF</a> (0.2 MB).</figcaption>
+    <figcaption>The demo, 50 s, captions only, no sound track, recorded at 60 fps with Scrollgrep 1.1.0 in IntelliJ IDEA 2025.3 on the jsoup clone (one assertion changed so one test fails). Free until 0:19; after that the licensed features, shown with a test licence because the listing is not live yet. The live filter alone: <a href="video/scrollgrep-live-filter.gif">11-second GIF</a> (0.2 MB).</figcaption>
   </figure>
 
   <div class="box">
-    <strong>What the IDE already does.</strong> The IDE already does part of this, and the listing says so. Ctrl+F in the Terminal highlights matches but hides nothing. Since 2026.1 the Reworked terminal links file paths itself; Scrollgrep links only inside its results. <code>cmd | grep FAIL</code> works if you know the pattern before you run. Scrollgrep does not touch the Run and Debug consoles.
+    <strong>What the IDE already does.</strong> The IDE already does part of this, so here is where Scrollgrep fits. Ctrl+F in the Terminal highlights matches but hides nothing. Since 2026.1 the Reworked terminal links file paths itself; Scrollgrep links only inside its results. <code>cmd | grep FAIL</code> works if you know the pattern before you run. Scrollgrep does not touch the Run and Debug consoles.
   </div>
 
   <h2 id="real">In the IDE, for real</h2>
@@ -147,8 +148,18 @@
   </figure>
 
   <figure class="real-size">
+    <a href="img/pycharm-etl-log-window.png"><img src="img/pycharm-etl-log.png" alt="PyCharm 2025.3 with worker.py open. The Scrollgrep panel filters 'failed row' and shows 59 matching lines, ERROR lines with row ids. Below, the Terminal's own search for 'failed row' counts 16/16 above a Python traceback" width="1200" height="728" loading="lazy"></a>
+    <figcaption>Free, in PyCharm 2025.3: <code>tail -f</code> on a 60,000-row sync log. Scrollgrep lists 59 failed rows, as many as <code>grep -c</code> counts in the file; the Terminal's own search finds 16.</figcaption>
+  </figure>
+
+  <figure class="real-size">
     <a href="img/link-opened-at-line-window.png"><img src="img/link-opened-at-line.png" alt="The panel filtering ElementTest: the stack frame 'at org.jsoup.nodes.ElementTest.testGetChildText(ElementTest.java:138)' is selected, with ElementTest.java:138 as a link; the editor on the left has ElementTest.java open with the caret on line 138, the failing assertion" width="1200" height="558" loading="lazy"></a>
     <figcaption>Licence: the stack frame clicked, ElementTest.java open at line 138.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/node-frame-opened-window.png"><img src="img/node-frame-opened.png" alt="A Node.js dev server's output filtered with TypeError|orders\.js: 45 matching lines, each TypeError 'Cannot read properties of undefined (reading amount)' followed by its frames 'at formatTotal (/opt/sample/orders-api/src/orders.js:10:23)' and 'at parseOrder (…orders.js:15:59)' as links. The last formatTotal frame is selected, and the editor on the left shows orders.js with the caret on line 10, column 23, at order.price.amount" width="1200" height="558" loading="lazy"></a>
+    <figcaption>Licence, Node.js: a dev server answered 1,500 requests and 15 failed. The <code>formatTotal</code> frame clicked, orders.js open at line 10, column 23.</figcaption>
   </figure>
 
   <figure class="real-size">
@@ -169,7 +180,7 @@
     <li>Results show in Scrollgrep's own panel, as plain text; the terminal itself hides nothing.</li>
     <li>IDE 2025.3 or later with the Reworked terminal engine (the default). No SSH sessions, no vim, less or htop.</li>
     <li>Matches outlast the Terminal's history only for output that arrived while the panel showed the tab (up to 32 MB and 200,000 lines per tab).</li>
-    <li>Only IntelliJ IDEA has been run; other JetBrains IDEs and Remote Development untested.</li>
+    <li>Run so far in IntelliJ IDEA and PyCharm on Linux; WebStorm, GoLand, the other JetBrains IDEs, Windows, macOS and Remote Development untested.</li>
   </ul>
 
   <h2 id="details">Details</h2>
