@@ -58,6 +58,13 @@
   summary { cursor: pointer; font-weight: 600; }
   details p, details li { font-size: 15px; }
   .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .pair { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pair > a { flex: 1 1 300px; }
+  .pair img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; display: block; }
+  .inpanel { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
+  .inpanel .panel { flex: 0 1 auto; max-width: 100%; }
+  .inpanel .panel img { width: auto; max-width: 100%; border-radius: 6px; image-rendering: auto; }
+  .inpanel .view { flex: 1 1 240px; }
   @media (max-width: 600px) {
     header { padding-top: 18px; }
     h1 { margin-top: 16px; font-size: 27px; }
@@ -98,17 +105,17 @@
       <source src="video/knapwell-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/knapwell-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 52 s, captions only, no sound (1080p, 720p on phones; <a href="video/knapwell-demo-1080p.mp4">open full size</a>). A real Blender window, every click a real input: the brick wall against Remesh and Displace, Damage on 14 objects, the three looks up close on the same steps, Chip size dragged, Check Model and Ruined on a statue, a protected pier beside a chipped one, a Break material, Apply and Revert to Original, and a render. The wall and the three looks alone: <a href="video/knapwell-wall-and-looks.gif">13-second GIF</a> (7.1 MB). Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
+    <figcaption>The demo in a real Blender window with real clicks, captions only, no sound (<a href="video/knapwell-demo-1080p.mp4">open full size</a>; the wall and the three looks as a <a href="video/knapwell-wall-and-looks.gif">13-second GIF</a>). Rain Rig (CC) Blender Foundation | studio.blender.org.</figcaption>
   </figure>
   </section>
 
-  <h2>Remesh melts your bricks. Knapwell chips them.</h2>
+  <h2>119 bricks in, 119 bricks out</h2>
   <figure>
-    <a href="img/wall-compare.jpg"><picture>
-      <source media="(max-width: 600px)" srcset="img/wall-compare-phone.jpg" width="600" height="760">
-      <img src="img/wall-compare.jpg" alt="Two copies of the same brick wall in low sun. First: Blender's Remesh and Displace modifiers have fused the bricks into one lumpy slab with the joints filled in. Second: Knapwell's Damage has chipped each brick on its own, with pale chips at their corners and edges and the joints still open" width="1600" height="700" loading="lazy">
-    </picture></a>
-    <figcaption>The same 119-brick wall. Blender's Remesh and Displace (left; on a phone, on top): one fused piece. Knapwell at its default look (right; on a phone, below): 119 bricks, each chipped on its own.</figcaption>
+    <div class="pair">
+      <a href="img/wall-whole.jpg"><img src="img/wall-whole.jpg" alt="A wall of 119 separate red bricks in low sun, damaged by Knapwell at its default look: pale chips at brick corners and edges, the joints still open" width="1200" height="800" loading="lazy"></a>
+      <a href="img/wall-corner.jpg"><img src="img/wall-corner.jpg" alt="The top corner of the same wall up close: each brick has its own chipped edges and corners, pale fresh brick inside each chip, and the joints between bricks are still open" width="1200" height="800" loading="lazy"></a>
+    </div>
+    <figcaption>Our 119-brick wall at the default look, whole and a corner up close: still 119 separate bricks, each chipped on its own.</figcaption>
   </figure>
   <ul>
     <li><strong>Many objects at once.</strong> Select them all and press Damage. Worn, Chipped and Ruined set the sliders; the damage stays live and editable until Apply.</li>
@@ -120,11 +127,17 @@
 
   <h2>In the panel</h2>
   <figure>
-    <a href="img/inpanel-check-model.jpg"><img src="img/inpanel-check-model.jpg" alt="A real Blender window: eleven selected objects in the viewport beside the Knapwell tab. Under the sliders, the line 'Capped at 0.019 m' with a Use button; below it the Check Model sub-panel: '8 of 11 ready · 3 to fix', then 'Imported Urn: 60 open edges' with Weld Seams, 'Floor Tile: no thickness' with Add Solidify, 'Sign Text: text, convert first' with Convert to Mesh, 'Crates: ready; parts touch' and one line '7 ready'" width="1160" height="580" loading="lazy"></a>
+    <div class="inpanel">
+      <a class="panel" href="img/inpanel2-check-model-panel.png"><img src="img/inpanel2-check-model-panel.png" alt="The Knapwell panel after Check Model on eleven objects: 'Capped at 0.019 m' with a Use button, then the Check Model sub-panel: '8 of 11 ready · 3 to fix', 'Imported Urn: 60 open edges' with Weld Seams, 'Floor Tile: no thickness' with Add Solidify, 'Sign Text: text, convert first' with Convert to Mesh, 'Crates: ready; parts touch' and one line '7 ready'" width="381" height="543" loading="lazy"></a>
+      <a class="view" href="img/inpanel2-check-model-view.jpg"><img src="img/inpanel2-check-model-view.jpg" alt="The eleven selected objects in the viewport: a brick wall, a pillar, steps, an open urn, a floor tile, the text INN and others" width="840" height="400" loading="lazy"></a>
+    </div>
     <figcaption>Check Model on eleven objects: what needs a fix comes first, each with its button; the seven that need nothing fold into one line.</figcaption>
   </figure>
   <figure>
-    <a href="img/inpanel-step-protected.jpg"><img src="img/inpanel-step-protected.jpg" alt="A long stone step in the viewport beside the Knapwell tab: its top face, protected, and the edges around it have no chips; the bottom edges are chipped. In Mask &amp; Material the line reads '1 face protected: it and the edges around it stay clean.' above a Select Protected button" width="1180" height="590" loading="lazy"></a>
+    <div class="inpanel">
+      <a class="panel" href="img/inpanel2-step-panel.png"><img src="img/inpanel2-step-panel.png" alt="The Mask &amp; Material section: Protect Selected Faces, Paint Mask, Clear Mask, the line '1 face protected: it and the edges around it stay clean.' and a Select Protected button" width="381" height="222" loading="lazy"></a>
+      <a class="view" href="img/inpanel2-step-view.jpg"><img src="img/inpanel2-step-view.jpg" alt="A long stone step: its top face and the edges around it have no chips; the bottom edges are chipped" width="910" height="350" loading="lazy"></a>
+    </div>
     <figcaption>One face protected on a stone step: that face and the edges around it stay clean; the bottom edges keep their chips.</figcaption>
   </figure>
 
@@ -212,7 +225,7 @@
 
   <details id="images">
     <summary>About the images</summary>
-    <p>The renders are Cycles at Final detail (F12) of scenes we built in code, damaged with Knapwell's own buttons; the panel images and the demo are a real Blender window with real clicks (panel images: Blender 4.5.16 with Knapwell 1.4.5, which draws these two views as 1.4.6 does; demo: Blender 5.2.4 with Knapwell 1.4.4). The comparison's left wall is Remesh at 0.01 m with a Voronoi Displace; how the demo was captured is in the README.</p>
+    <p>The renders are Cycles F12 renders of our own scenes, damaged with Knapwell's own buttons. The panel images (Blender 4.5.16) and the demo (Blender 5.2.4) are a real Blender window running Knapwell 1.4.6, with real clicks; how the demo was captured is in the README.</p>
     <p>Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, placed in a scene of our own. Rain is not included with Knapwell, and Blender Studio does not endorse it.</p>
   </details>
 

@@ -63,7 +63,7 @@
   <p>These are in the <strong>Mask &amp; Material</strong> section, which starts folded so Apply fits on a small screen: click its header once to open it (Blender keeps it open).</p>
   <ul>
     <li><strong>Protect Selected Faces</strong>: in Edit Mode, select faces (a doorway, a carving) and click it. No chip reaches those faces or the edges around them, so protecting a step's tread keeps its nosing clean too; the faces further away are still chipped.</li>
-    <li><strong>Paint Mask</strong>: Weight Paint on the vertex group "Knapwell Mask". A face is protected when all its corners are painted. On an object whose damage is applied, it asks to Revert to Original first, so the mask is painted on the original mesh and is not lost.</li>
+    <li><strong>Paint Mask</strong>: Weight Paint on the vertex group "Knapwell Mask". A face is protected when all its corners are painted; on a low-poly mesh, paint right over the corners, and the section counts the faces your paint protects. On an object whose damage is applied, it asks to Revert to Original first, so the mask is painted on the original mesh and is not lost.</li>
     <li><strong>Clear Mask</strong> removes both.</li>
     <li><strong>Break material</strong>: the faces the damage creates get it; every other face keeps its own material and UVs.</li>
   </ul>
@@ -72,8 +72,8 @@
   <ul>
     <li><strong>Target faces</strong> (0 = off): for game assets, Apply reduces the result to about this many faces, keeping every part closed. Twice the model's own face count gives a light scatter of chips; four times gives chips along most edges.</li>
     <li><strong>Apply</strong> turns the damage into ordinary mesh data with outward normals, ready to export.</li>
-    <li><strong>Revert to Original</strong> brings back the exact mesh from before Apply, even after you save, close and reopen the file, until you choose Forget Original. After Apply the sliders are greyed: Revert to Original to edit them again.</li>
-    <li><strong>Forget Original</strong> asks first, then deletes the stored copy.</li>
+    <li><strong>Revert to Original</strong> brings back the exact mesh from before Apply, even after you save, close and reopen the file, until you choose Forget Original. After Apply the sliders are greyed. Damage on an applied object asks first: <strong>Revert, Then Damage</strong> starts again from the original; <strong>Damage Again</strong> chips the applied mesh.</li>
+    <li><strong>Forget Original</strong> asks first, then deletes the stored copy. The panel still says the mesh is chipped ("applied, original forgotten").</li>
   </ul>
   <p>Every button reports what it did in one short line in the status bar; the Info editor keeps the details for each object.</p>
 
