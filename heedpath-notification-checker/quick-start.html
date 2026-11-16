@@ -35,7 +35,7 @@
 </header>
 <main>
   <h1>Heedpath quick start</h1>
-  <p>Your first notification check in Jira Cloud, and how to read the answer. Back to the <a href="index.html">Heedpath product page</a>. The images and the answer text below are real: Heedpath 1.2.1's own screen and its Copy answer text, from the shipped build run outside Jira on the sample company in its test suite. Heedpath has not yet run on a live Jira site, so there are no pictures of it inside Jira yet.</p>
+  <p>Your first notification check in Jira Cloud, and how to read the answer. Back to the <a href="index.html">Heedpath product page</a>. The images and the answer text below are real: Heedpath 1.2.2's own screen and its Copy answer text, from the shipped build, on Larkfield Logistics, our sample site. Heedpath has not yet run on a live Jira site, so there are no pictures of it inside Jira yet; until you can install it, <a href="#by-hand">check it by hand</a>.</p>
 
   <h2 id="install">Install</h2>
   <ol>
@@ -46,15 +46,26 @@
   <p><strong>Before the listing: early access.</strong> Ask for it at <a href="mailto:support@ochrestack.com?subject=Heedpath%20early%20access">support@ochrestack.com</a>; once our first run on a live Jira site has passed, we send a free installation link for “Heedpath Early Access for Jira”. Open it, choose your site and approve the same access. When the listing is live, install the listed app and remove the early-access copy.</p>
   <p>You need the <strong>Administer Jira</strong> global permission. Checking whether another person can browse an issue needs it in Jira, so anyone else gets: “This check needs the Administer Jira global permission, and your account does not have it. Ask a Jira admin to run the check.”</p>
 
+  <h2 id="by-hand">Check it by hand today</h2>
+  <p>Until Heedpath can be installed, this is Jira's own route through the same chain, for one person, one event and one issue in a company-managed project. Heedpath does these steps in one answer.</p>
+  <ol>
+    <li><strong>The scheme row.</strong> In the project, open <strong>Project settings &gt; Notifications</strong> and find the event's row: those are the only lines that can send it.</li>
+    <li><strong>Each line.</strong> Check the person against each entry, for example Reporter, Current Assignee and All Watchers on the issue itself; a project role under <strong>Project settings &gt; People</strong> (members can come in through a group); a group under <strong>Directory &gt; Groups</strong> in admin.atlassian.com; a user or group custom field in that field's value on the issue. Current User is only the person who makes the change.</li>
+    <li><strong>Access.</strong> Jira emails only people who can see the issue: check Browse Projects for the person and the issue with Jira's <strong>Permission helper</strong>, and if the issue has a <strong>Security Level</strong>, check the person is in that level.</li>
+    <li><strong>The account.</strong> In admin.atlassian.com, <strong>Directory &gt; Users</strong>, open the person: is the account active, and does it have Jira access? A Jira Service Management customer gets the service project's Customer notifications, never the notification scheme.</li>
+    <li><strong>Their own settings.</strong> The person's notification settings can turn the email off; Atlassian's route is to log in as them, or ask them, and look.</li>
+    <li><strong>Comments.</strong> A comment restricted to a role or group is emailed only to the people in it.</li>
+  </ol>
+
   <h2 id="check">1. Check one person</h2>
   <ol>
     <li>Type the issue key, for example <code>LOG-215</code>, and press <strong>Load issue</strong>. Heedpath shows the issue's summary, project and notification scheme. Use the key, not the numeric issue ID.</li>
-    <li>Choose the <strong>Person</strong>: type a name. For a deactivated account, paste its account ID, because Jira's people search lists active accounts only.</li>
+    <li>Choose the <strong>Person</strong>: type a name. For a deactivated account, paste its account ID, because Jira's people search lists active accounts only. To find the ID: in admin.atlassian.com, open <strong>Directory &gt; Users</strong> and the person; the ID is the last part of the page's address.</li>
     <li>Choose the <strong>Event</strong> from the scheme's own list, and press <strong>Check</strong>.</li>
   </ol>
   <figure id="answer-screen">
     <img src="img/answer-grace.png" alt="Heedpath's answer screen for LOG-215 Refund for damaged crate, Grace Okafor, Issue Updated: Answer: Not notified by the scheme; the deciding line names All Watchers and issue security level Internal only; then the scheme lines, Access to LOG-215 and Account" width="1440" height="880" loading="lazy">
-    <figcaption>Watching is not enough: issue security level “Internal only” leaves Grace out. Heedpath's own screen, 1.2.1, outside Jira.</figcaption>
+    <figcaption>Watching is not enough: issue security level “Internal only” leaves Grace out. Heedpath's own screen, 1.2.2, sample site.</figcaption>
   </figure>
 
   <h2 id="reading">Reading the answer</h2>
@@ -99,10 +110,10 @@ What Heedpath cannot see
   <p>With an issue and a person chosen, press <strong>All events</strong>. Every event of the project's notification scheme is listed in the scheme's order, each with its answer and deciding line, so you see what the person will and will not hear about on that issue. The table can be copied as text too.</p>
 
   <h2 id="who-gets-this">3. Who gets this</h2>
-  <p>With an issue and an event chosen, press <strong>Who gets this</strong>. Heedpath lists the people first, each once with every line that includes them, then checks each person's account and access to the issue, 40 people per step, and fills in the last column; progress is shown. People are marked as dropped, with the reason, when they cannot browse the issue, their account is deactivated, it is a customer account, or it has no Jira product access. Groups over 1,000 members are shown by count, with a <strong>Show members</strong> button.</p>
+  <p>With an issue and an event chosen, press <strong>Who gets this</strong>. Heedpath lists the people first, each once with every line that includes them, then checks each person's account and access to the issue, 40 people per step, and fills in the last column; progress is shown. People are marked as dropped, with the reason, when they cannot browse the issue, their account is deactivated, it is a customer account, or it has no Jira product access. Groups over 1,000 members are shown by count, with a <strong>Show members</strong> button; until you press it, the headline names them as not checked yet, for example “2 people notified by the scheme, 0 dropped (2 listed). Not checked yet: group all-staff (1,300 members); use "Show members".”</p>
   <figure id="who-screen">
     <img src="img/who-gets-this.png" alt="Heedpath's Who gets this screen for Issue Commented on LOG-214: Tom Field, Ana Ruiz, Lena Brandt, Omar Haddad and Marcus Webb notified by the scheme, each with their lines; Sofia Marin, watching, marked Dropped: account is deactivated" width="1424" height="950" loading="lazy">
-    <figcaption>Everyone one event reaches, each with their lines, and who drops out, and why. Heedpath's own screen, 1.2.1, outside Jira.</figcaption>
+    <figcaption>Everyone one event reaches, each with their lines, and who drops out, and why. Heedpath's own screen, 1.2.2, sample site.</figcaption>
   </figure>
 
   <h2 id="from-the-issue">4. From the issue</h2>

@@ -77,7 +77,7 @@
       <source media="(max-width: 600px)" srcset="img/answer-grace-narrow.png" width="800" height="1216">
       <img class="shot" src="img/answer-grace.png" alt="Heedpath's answer screen: Heedpath check: LOG-215 Refund for damaged crate, Grace Okafor, Issue Updated. Answer: Not notified by the scheme. Deciding line: All Watchers: watching LOG-215, but cannot browse LOG-215: Grace Okafor has Browse Projects in project LOG, but is not allowed by issue security level Internal only. Below it the scheme lines (Current Assignee does not include her, All Watchers includes her), Access to LOG-215 (cannot browse) and Account (active, with Jira product access)." width="1440" height="880">
     </picture>
-    <figcaption>Grace watches LOG-215, but issue security leaves her out. Heedpath's own screen (1.2.1), outside Jira, on the sample company in its tests (<a href="quick-start.html#reading">the answer as text</a>).</figcaption>
+    <figcaption>Grace watches LOG-215, but issue security leaves her out. A capture of Heedpath's own screen from the shipped 1.2.2 build, on Larkfield Logistics, our sample site; not yet inside Jira (<a href="quick-start.html#reading">the answer as text</a>).</figcaption>
   </figure>
 
   <ul class="benefits">
@@ -87,12 +87,12 @@
   </ul>
 
   <div class="buy">
-    <p class="price"><strong>Free for up to 10 users. Then, per user per month: $0.20 for 11–100 users, $0.10 for 101–250, $0.06 for 251–1,000, $0.04 above 1,000.</strong> 15 users, annual: $30; 240 users, monthly: $24. One edition; Atlassian bills it.</p>
+    <p class="price"><strong>Free for up to 10 users. Then, per user per month: $0.20 for 11–100 users, $0.10 for 101–250, $0.06 for 251–1,000, $0.04 above 1,000.</strong> 15 users, annual: $30; 240 users, monthly: $24; 1,800 users, monthly: $72. One edition; Atlassian bills it.</p>
     <!-- Early access (product decisions D38) until the listing URL exists. When Atlassian approves the listing, replace this button with
          <a class="button" id="buy" href="LISTING-URL">Get it on the Atlassian Marketplace</a> and drop the note. -->
     <p><a class="button" id="buy" href="mailto:support@ochrestack.com?subject=Heedpath%20early%20access&amp;body=Jira%20Cloud%20site%3A%20" aria-describedby="buy-note">Ask for early access</a></p>
-    <p class="note" id="buy-note"><strong>Not installable yet.</strong> Early access is a free install link for your Jira Cloud site, sent once our first live-site run passes; then the Atlassian Marketplace.</p>
-    <p class="fine">Jira Cloud, company-managed projects · for agents and internal users, not emails to Jira Service Management portal customers · tested: 185 automated tests pass on version 1.2.1, outside Jira, <strong>not yet on a live Jira site</strong> (<a href="#tested">details</a>) · source not included (commercial) · read-only · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+    <p class="note" id="buy-note"><strong>Not installable yet:</strong> Heedpath has not yet run on a live Jira site. Early access is a free install link for your Jira Cloud site, sent once that first live-site run passes; then the Atlassian Marketplace. Need an answer today? <a href="quick-start.html#by-hand">Check it by hand</a>, step by step.</p>
+    <p class="fine">Jira Cloud, company-managed projects · for agents and internal users, not emails to Jira Service Management portal customers · tested: 190 automated tests pass on version 1.2.2, outside Jira (<a href="#tested">what is and is not tested</a>) · source not included (commercial) · read-only · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 
   <h2 id="how">How it works</h2>
@@ -109,7 +109,7 @@
   <h2 id="who-gets-this">Everyone one event reaches</h2>
   <figure>
     <div class="scroll-x"><img class="shot wide" src="img/who-gets-this.png" alt="Heedpath's Who gets this screen for Issue Commented on LOG-214 Customs hold on pallet 7: 5 people notified by the scheme, 1 dropped (6 listed). Tom Field through Reporter; Ana Ruiz through Current Assignee and Project Role Developers through group dev-team; Lena Brandt through All Watchers; Omar Haddad through All Watchers and Project Role Developers through group dev-team; Marcus Webb as a named member of Developers; Sofia Marin, watching, marked Dropped: account is deactivated." width="1424" height="950" loading="lazy"></div>
-    <figcaption>Who gets Issue Commented on LOG-214, and why Sofia does not. Same build, outside Jira.</figcaption>
+    <figcaption>Who gets Issue Commented on LOG-214, and why Sofia does not. Same build and sample site.</figcaption>
   </figure>
 
   <h2 id="scope">What Jira already does</h2>
@@ -119,7 +119,7 @@
   <p>Reads configuration, not deliveries; every answer lists what it cannot see. Not for emails to Jira Service Management portal customers: those follow the service project's Customer notifications, which Heedpath does not read. Company-managed projects only: team-managed projects get Cannot tell, with the reason. Jira admins, English. <a href="quick-start.html">Quick start</a>.</p>
 
   <h2 id="tested">How we tested</h2>
-  <p>On Linux, outside Jira: 185 automated tests pass on version 1.2.1 against a simulated Jira Cloud site, and every request and response is checked against Atlassian's published Jira Cloud API specification; 15 checks pass with Heedpath's screen in Chromium. On a live Jira Cloud site without a login, its code refused every check, as it should. <strong>Untested so far:</strong> a check on a live Jira site, and Windows or macOS browsers. Screenshots inside Jira come after that first live-site run.</p>
+  <p>On Linux, outside Jira: 190 automated tests pass on version 1.2.2 against a simulated Jira Cloud site, and every request and response is checked against Atlassian's published Jira Cloud API specification; 15 checks pass with Heedpath's screen in Chromium. On a live Jira Cloud site without a login, its code refused every check, as it should. <strong>Untested so far:</strong> a check on a live Jira site, and Windows or macOS browsers. Screenshots inside Jira come after that first live-site run.</p>
 
   <h2 id="privacy">Privacy and support</h2>
   <p>No external hosts, 23 read-only permissions, nothing stored about people or issues, no telemetry (<a href="../privacy.html">privacy policy</a>). Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
