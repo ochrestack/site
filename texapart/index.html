@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Texapart for Blender: one texture per material, for game engines</title>
+<meta name="description" content="Texapart splits a Blender material that mixes several textures into one material per texture, for game shaders that take one. Each face keeps its image or is listed with the reason. $10, source included.">
+<link rel="canonical" href="https://ochrestack.com/texapart/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Texapart for Blender: one texture per material, for game engines">
+<meta property="og:description" content="One material mixes several textures and your game's shader takes one? Texapart splits it into one material per texture, and each face keeps its image or is listed. Blender 4.2 LTS to 5.3. $10, source included.">
+<meta property="og:url" content="https://ochrestack.com/texapart/">
+<meta property="og:image" content="https://ochrestack.com/texapart/img/rain-after-split-2x1.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="A Blender 4.2 window: Blender Studio's Rain in the viewport and, in the Material Properties, six one-image materials (rain_skin.1001, .1002, .1003, rain_jeans, rain_hair, rain_eyes) made from her one four-image material by Texapart">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Texapart for Blender: one texture per material, for game engines">
+<meta name="twitter:description" content="Texapart splits a multi-texture Blender material into one material per texture. Each face keeps its image or is listed. $10, source included.">
+<meta name="twitter:image" content="https://ochrestack.com/texapart/img/rain-after-split-2x1.jpg">
+<meta name="twitter:image:alt" content="Rain in Blender with six one-image materials listed after Texapart's Split by Texture">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 22px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 24px 0 6px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 18px; line-height: 1.5; color: var(--muted); margin: 0 0 12px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 14px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 6px; }
+  .narrow-only { display: none; }
+  .fine { font-size: 15px; color: var(--muted); }
+  ul.benefits { padding-left: 20px; margin: 0; }
+  ul.benefits li { margin: 0 0 12px; }
+  .top { display: grid; grid-template-columns: 400px 1fr; gap: 26px; align-items: start; }
+  .top .hero { margin: 4px 0 6px; }
+  .top .fine { margin: 0; line-height: 1.45; }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 20px; }
+    .wide-only { display: none; }
+    .top { display: block; }
+    .top-side { margin-top: 12px; }
+    .narrow-only { display: block; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Texapart for Blender</h1>
+  <p class="sub wide-only">Your game's shaders only accept one texture per material, and this material has multiple textures in it? Texapart splits it into one material per texture, and each face keeps the image it showed in Blender.</p>
+  <p class="sub narrow-only">Your shader takes one texture per material and yours has several in one? Texapart splits it, and each face keeps its image.</p>
+
+  <div class="top">
+    <div class="top-fig">
+        <img class="hero" src="img/rain-split.gif" alt="A real Blender 4.2 window: Blender Studio's Rain in the viewport, the Texapart panel in the Material Properties. Report lists one material, Rain_Game, with six images and their face counts (her skin in three UDIM tiles, jeans, hair, eyes). Three rows are clicked in Edit Mode and light up her jeans, her hair and her head. Split by Texture is pressed and the material slots list six one-image materials. She looks the same." width="960" height="540">
+      <p class="fine">Real clicks in Blender 4.2.23, 32 s, no sound. Rain, packed as a game port ships her: one material, four images; six one-image materials in 0.3 s. <a href="#credits">Credits</a></p>
+    </div>
+    <div class="top-side">
+      <p class="narrow-only" style="margin:0 0 6px"><strong>$10 once</strong>, source included. <a class="button" id="buy-top" href="https://buy.polar.sh/polar_cl_djnMNDNLYjBj1bZCSOPA2KTQcy3xrYDYtqCX921HcvU">Buy for $10</a></p>
+      <ul class="benefits">
+        <li><strong>One material per texture</strong>, for shaders that take only one.</li>
+        <li><strong>Each face keeps its image</strong>, or is listed with the reason.</li>
+        <li><strong>See it first, undo in one step.</strong> Your original material stays in the file.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="buy">
+    <p class="price"><strong>$10, one-time, source included</strong> (GPL-3.0-or-later). Every update included.</p>
+    <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_djnMNDNLYjBj1bZCSOPA2KTQcy3xrYDYtqCX921HcvU">Buy for $10</a></p>
+    <p class="fine">Blender 4.2 LTS to 5.3, tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux) · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · Polar checkout · <a href="../terms.html">14-day refund</a> · no license check · <a href="#details">details</a></p>
+  </div>
+
+  <div class="box" id="free-route">
+    <strong>Do you need it?</strong> Blender already does this by hand: in Edit Mode select the faces that show one image, add a material slot, give it a copy of the material, delete the other image nodes and press Assign. For a single wall with two images that takes a few minutes and you do not need Texapart. An atlas bake (Auto Bake 2, Quick Baker, Lazy Atlas, Atlas Pro) is the right tool when you want fewer materials and one texture for the whole model; it does not keep tiling textures tiling.
+  </div>
+
+  <h2>In Blender, for real</h2>
+  <p>Every image here is a capture of a real Blender 4.2 window with Texapart 1.0.1 installed from its zip. Rain's skin, jeans, hair and eye images are in one material, as a game port delivers her.</p>
+  <figure>
+    <img src="img/rain-node-group.png" alt="Blender's Shader Editor inside the node group Game Surface: an Attribute node reading tex_slot feeds three Map Range and Clamp pairs that set the factors of three Mix nodes; the Mix nodes choose between four Image Texture nodes labelled Skin (a UDIM image), Jeans, Hair and Eyes" width="910" height="490" loading="lazy">
+    <figcaption>Before: one material. An attribute, <code>tex_slot</code>, picks one of four images for each face; her skin image has three UDIM tiles.</figcaption>
+  </figure>
+  <figure>
+    <img class="ui" src="img/rain-report-panel.png" alt="The Texapart panel in Blender's Material Properties after Report with Whole File: material Rain_Game with six rows, each with its face count: rain_skin tile 1001 2642, tile 1002 3362, tile 1003 6318, rain_jeans 4192, rain_hair 2927, rain_eyes 1410" width="684" height="700" loading="lazy">
+    <figcaption>Report: every image and its face count. Nothing has changed yet.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/rain-edit-mode-jeans-window.jpg" alt="Blender in Edit Mode: Rain's jeans are selected in orange wireframe in the viewport after a click on the rain_jeans row, which the Texapart panel shows as 4192 faces" width="1920" height="960" loading="lazy">
+    <figcaption>Edit Mode: a click on a row selects its faces, here her jeans.</figcaption>
+  </figure>
+  <figure>
+    <img class="ui" src="img/rain-slots-after.png" alt="Blender's material slot list after Split by Texture: six materials, rain_skin.1001, rain_skin.1002, rain_skin.1003, rain_jeans, rain_hair and rain_eyes" width="684" height="272" loading="lazy">
+    <img class="ui" src="img/rain-summary.png" alt="The Texapart summary: Split 1 material(s) on 1 object(s). Materials before: 15, after: 20 (6 new, 0 reused). Faces placed: 20851 (rain_eyes 1410, rain_hair 2927, rain_jeans 4192, rain_skin.1001 2642, rain_skin.1002 3362, rain_skin.1003 6318). Faces listed: 0. UVs rewritten on 9680 faces (old UVs kept in the backup UV map)." width="684" height="100" loading="lazy" style="margin-top:10px">
+    <figcaption>After Split by Texture: six one-image materials, and the summary. <a href="img/rain-after-split-window.jpg">The whole window</a>.</figcaption>
+  </figure>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Report</strong> finds every material whose colour comes from more than one image, also inside node groups, and what decides each: an attribute, a UV map or a UDIM tile.</li>
+    <li><strong>Split by Texture</strong> makes one material per image, shared by every object (an image used two ways, such as at two scales, gets one per way). A second run does nothing and says so.</li>
+    <li><strong>Move Selected Faces</strong> places the faces the report lists, such as a blend or a mask. Then export with Blender's own FBX or glTF exporter.</li>
+  </ul>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li>Buying: secure checkout by Polar; the download arrives by email after payment and includes the full source. If it doesn't work as described and we can't fix it, email us within 14 days for a full refund (<a href="../terms.html">terms</a>). Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li>Windows and macOS have not been tested, and neither has Unity or Unreal; Godot 4.7 was. Requires Blender 4.2 or newer.</li>
+    <li>GPL-3.0-or-later. No telemetry, no analytics, no network calls of any kind.</li>
+    <li>Not covered: images mixed by a painted mask, procedural textures and anything else that varies inside one face are listed, not split. Normal and roughness maps are not carried. No baking or atlases.</li>
+  </ul>
+  <p>Install and first split: <a href="quick-start.html">Texapart quick start</a>. The manual is in the zip.</p>
+
+  <details id="tested">
+    <summary><strong>How we tested</strong> (Rain, a building, scenes built to break it, 77 tests on four Blender versions)</summary>
+    <table>
+      <tr><th>Scene</th><th>Result</th></tr>
+      <tr><td>Rain, packed as above (Blender 4.2.23)</td><td>1 material, 6 images, 20,851 faces: all placed in 6 one-image materials, 0 listed, 0.3 s. A Cycles render (32 samples, 640 x 800) before and after: mean difference 0.0%, no pixel differs. A control that shows her hair image on her jeans measures 0.80%, so the comparison does see a wrong image. Exported with Blender's glTF and FBX exporters and re-imported: 6 materials, each with one image.</td></tr>
+      <tr><td>Barcelona Pavilion, rebuilt as an importer delivers it (Blender 5.2.4)</td><td>3 multi-image materials on 7 objects became 8 one-image materials; 7,480 faces placed in 0.15 s; 1 face listed, not guessed (its UVs sit 0.0024 outside its UDIM tile), placed with Move Selected Faces. Render difference 0.0%. In Godot 4.7: one albedo texture per surface.</td></tr>
+      <tr><td>Scenes built to break it</td><td>The same image at two scales, two UV maps, colour adjustments, unlit shaders, unclamped mixes, a fixed 50% mix, material indices past the last slot, linked duplicates outside the selection, Array modifiers with UV offsets: 25 scenarios; in each, every face either keeps its look or is listed.</td></tr>
+      <tr><td>Automated tests, real Blender, headless</td><td>77 passed and 1 skipped in each of Blender 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux). The skipped one is undo; Ctrl+Z after the split was checked with real key presses on 4.2.23 and 5.2.4.</td></tr>
+      <tr><td>Size</td><td>204,800 faces on 40 objects: Report and Split each under 0.8 s. 2,000,000 faces on 200 objects: Report 3.5 to 4.0 s, Split 5.9 to 7.3 s (4-core Linux VM).</td></tr>
+    </table>
+  </details>
+
+  <p class="fine" id="credits">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We packed her four images into one material and joined her body, head, jeans, hair and eyes into one mesh. Rain is not included with Texapart. Test building: "Barcelona Pavilion" by eMirage (Hamza Cheggour; base model and textures by Claudio Andres), CC-BY, from blender.org's demo files; architecture by Ludwig Mies van der Rohe.</p>
+
+  <div class="buy">
+    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_djnMNDNLYjBj1bZCSOPA2KTQcy3xrYDYtqCX921HcvU">Buy for $10</a></p>
+    <p class="fine">$10 once, source included · Polar checkout · <a href="../terms.html">14-day refund</a> · Blender 4.2 LTS to 5.3, tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux)</p>
+  </div>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
