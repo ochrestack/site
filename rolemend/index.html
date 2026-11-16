@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rolemend for WordPress: a View Only role, and a Media Library role without uploads</title>
-<meta name="description" content="Rolemend adds two roles WordPress lacks: View Only, who can look round wp-admin and save nothing, and Media Library (no uploads), who can fix titles and alt text but cannot upload. Free; Rolemend Pro adds end dates and an undo list for $19 once.">
+<meta name="description" content="Rolemend adds two roles WordPress lacks: View Only, who can look round WordPress's own wp-admin screens and change nothing but their own password, and Media Library (no uploads), who can fix titles and alt text but cannot upload. Free; Rolemend Pro adds end dates and an undo list for $19 once.">
 <link rel="canonical" href="https://ochrestack.com/rolemend/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ochrestack">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="A View Only user's Posts screen in WordPress: drafts, private, pending and scheduled posts listed, and a blue 'View only' marker in the toolbar">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Rolemend for WordPress: View Only, and Media Library without uploads">
-<meta name="twitter:description" content="Two roles WordPress lacks: View Only opens wp-admin and saves nothing; Media Library (no uploads) edits alt text but cannot upload.">
+<meta name="twitter:description" content="Two roles WordPress lacks: View Only opens WordPress's own wp-admin screens and changes nothing but their own password; Media Library (no uploads) edits alt text but cannot upload.">
 <meta name="twitter:image" content="https://ochrestack.com/rolemend/img/view-only-posts.png">
 <meta name="twitter:image:alt" content="A View Only user's Posts screen in WordPress: drafts and private posts listed, 'View only' in the toolbar">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
@@ -86,7 +86,7 @@
   <a href="img/view-only-posts.png"><img class="hero" style="margin-bottom:6px" src="img/view-only-posts-hero.png" alt="WordPress Posts screen signed in as Ravi Patel, who has the View Only role: the blue 'View only' marker in the toolbar; All (13), Published (6), Scheduled (1), Drafts (3), Pending (1), Private (2); no Add Post button; the list starts with a scheduled post. Click for the full screen with drafts and private posts" width="1024" height="310"></a>
 
   <ul style="margin:6px 0">
-    <li><strong>View but not edit:</strong> drafts, Settings, Plugins, Users; every save refused.</li>
+    <li><strong>View but not edit:</strong> drafts listed, Settings, Plugins, Users; changes refused.</li>
     <li><strong>Fix alt text, no uploads:</strong> on any photo in the Media Library.</li>
     <li><strong>Changes nothing else</strong> on your site; delete it and the roles go.</li>
   </ul>
@@ -103,7 +103,7 @@
   </div>
 
   <h2>View Only</h2>
-  <p>Sees every WordPress screen an Administrator sees. Can change their own password, nothing else.</p>
+  <p>Sees the screens an Administrator sees for WordPress itself, except Export, Import and the file editors; drafts are listed, not opened. Can change their own password, nothing else.</p>
   <figure>
     <img src="img/view-only-settings-typed.png" alt="Settings &gt; General for the View Only user, with 'Changed by the accountant' typed into Site Title and the 'View only' marker in the toolbar" width="1024" height="330" loading="lazy">
     <img src="img/view-only-settings-refused.png" alt="After Save Changes: a box headed 'View only' saying 'This account is view only, so nothing was changed. Ask an administrator if this change is needed.' with a Back link" width="824" height="270" loading="lazy" style="margin-top:12px">
@@ -129,7 +129,7 @@
   <h2 id="pro">Rolemend Pro</h2>
   <ul>
     <li><strong>Access ends on:</strong> on that date the person loses the role and is signed out.</li>
-    <li><strong>Media &gt; Text Changes:</strong> every change the media role made, before and after, with Undo and CSV.</li>
+    <li><strong>Media &gt; Text Changes:</strong> every title, alt text, caption and description change by the media role, before and after, with Undo and CSV.</li>
   </ul>
   <figure>
     <a href="img/pro-text-changes.jpg"><img src="img/pro-text-changes.jpg" alt="Media &gt; Text Changes in Rolemend Pro: three Alternative Text changes by Jo Osei, each with the time, a thumbnail, the value before (empty or the old text) and after, and an Undo button; a Download CSV button; and a form to undo everything by one user since a date" width="1024" height="640" loading="lazy"></a>
@@ -141,7 +141,7 @@
   </div>
 
   <div class="box" id="free-route">
-    <strong>When you may not need Rolemend.</strong> For WordPress's own screens alone, Readministrator, another free plugin, also blocks changes, drafts included. Rolemend adds the media role, plain messages, the user's own password, and a stop on other plugins' database writes.
+    <strong>When you may not need Rolemend.</strong> For WordPress's own screens alone, Readministrator, another free plugin, also blocks WordPress's own changes, drafts included. Rolemend adds the media role, plain messages, the user's own password, and a stop on other plugins' database writes.
   </div>
 
   <details id="not-locked">
@@ -164,7 +164,7 @@
       <tr><th>Test</th><th>Result</th></tr>
       <tr><td>View Only user opens wp-admin screens</td><td>54 screens, each complete, with "View only" in the toolbar</td></tr>
       <tr><td>View Only user tries to change something: Settings, posts, pages and drafts, media, comments, users, plugins, themes, menus, widgets, Customizer, REST API, another plugin's own save handlers</td><td>142 attempts, none got through: 141 refused with the plain message, 1 background request's plugin data dropped. A checksum of the site's content, settings and user tables was identical after every one</td></tr>
-      <tr><td>Media role uploads by every route we know (library, drag and drop, REST API, a file fetched from a URL, another plugin's upload handler)</td><td>11 routes refused, and again after a role editor gave the role upload rights (22 refusals); no new file, no new attachment</td></tr>
+      <tr><td>Media role uploads through 11 routes (the library uploader, drag and drop, REST API, a file fetched from a URL, another plugin's upload handler)</td><td>All 11 refused, and again after a role editor gave the role upload rights (22 refusals); no new file, no new attachment</td></tr>
       <tr><td>Media role saves Title, Alternative Text, Caption and Description</td><td>Saved through Attachment details and Edit Media, read back</td></tr>
       <tr><td>Activation</td><td>Every existing role and user identical; home page, a post, a page, an archive and a search byte-identical before and after</td></tr>
       <tr><td>Deactivate, reactivate, delete</td><td>Both roles' users lose wp-admin, then get the same access back; on deletion the roles go and the users keep their accounts with no role</td></tr>
@@ -177,7 +177,7 @@
   <h2 id="details">Details</h2>
   <ul>
     <li><a href="quick-start.html">Quick start</a>: install, give a role, Pro, updates.</li>
-    <li>Privacy: neither plugin contacts any server. A View Only user can read what an administrator reads, including user emails.</li>
+    <li>Privacy: neither plugin contacts any server. A View Only user can read user email addresses and commenter details, so choose who gets the role.</li>
     <li>GPL-2.0-or-later, full source in both zips. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
   </ul>
 </main>
