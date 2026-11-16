@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rolemend for WordPress: a View Only role, and a Media Library role without uploads</title>
-<meta name="description" content="Rolemend adds two roles WordPress lacks: View Only, who can look round WordPress's own wp-admin screens and change nothing but their own password, and Media Library (no uploads), who can fix titles and alt text but cannot upload. Free; Rolemend Pro adds end dates and an undo list for $19 once.">
+<meta name="description" content="Rolemend adds two roles WordPress lacks: View Only, who can look round WordPress's own wp-admin screens and can save only their own password and screen options, and Media Library (no uploads), who can fix titles and alt text but cannot upload. Free; Rolemend Pro adds end dates and an undo list for $19 once.">
 <link rel="canonical" href="https://ochrestack.com/rolemend/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ochrestack">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="A View Only user's Posts screen in WordPress: drafts, private, pending and scheduled posts listed, and a blue 'View only' marker in the toolbar">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Rolemend for WordPress: View Only, and Media Library without uploads">
-<meta name="twitter:description" content="Two roles WordPress lacks: View Only opens WordPress's own wp-admin screens and changes nothing but their own password; Media Library (no uploads) edits alt text but cannot upload.">
+<meta name="twitter:description" content="Two roles WordPress lacks: View Only opens WordPress's own wp-admin screens and can save only their own password and screen options; Media Library (no uploads) edits alt text but cannot upload.">
 <meta name="twitter:image" content="https://ochrestack.com/rolemend/img/view-only-posts.png">
 <meta name="twitter:image:alt" content="A View Only user's Posts screen in WordPress: drafts and private posts listed, 'View only' in the toolbar">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
@@ -86,7 +86,7 @@
   <a href="img/view-only-posts.png"><img class="hero" style="margin-bottom:6px" src="img/view-only-posts-hero.png" alt="WordPress Posts screen signed in as Ravi Patel, who has the View Only role: the blue 'View only' marker in the toolbar; All (13), Published (6), Scheduled (1), Drafts (3), Pending (1), Private (2); no Add Post button; the list starts with a scheduled post. Click for the full screen with drafts and private posts" width="1024" height="310"></a>
 
   <ul style="margin:6px 0">
-    <li><strong>View but not edit:</strong> drafts listed, Settings, Plugins, Users; changes refused.</li>
+    <li><strong>View but not edit:</strong> drafts listed, Settings, Plugins, Users; saving refused (<a href="#not-locked">limits</a>).</li>
     <li><strong>Fix alt text, no uploads:</strong> on any photo in the Media Library.</li>
     <li><strong>Changes nothing else</strong> on your site; delete it and the roles go.</li>
   </ul>
@@ -99,11 +99,11 @@
   <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Rolemend adds both roles and changes nothing else. Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. Single site and multisite tested (<a href="#tested">full list</a>); the free zip is 37 KB.</p>
 
   <div class="box warn">
-    <strong>Why a role editor can't do this.</strong> WordPress opens Settings only to people who may save them, and the Media Library only to people who may upload. Two site owners asked WordPress.org's support forums for exactly these roles. WordPress core cannot do either job, which is why both askers were told "Partly" and "no combination of capabilities".
+    <strong>Why a role editor can't do this.</strong> WordPress lists posts only for people who may edit them, and opens the Media Library only for people who may upload. Two site owners asked WordPress.org's support forums for exactly these roles. WordPress core cannot do either job, which is why both askers were told "Partly" and "no combination of capabilities".
   </div>
 
   <h2>View Only</h2>
-  <p>Sees the screens an Administrator sees for WordPress itself, except Export, Import and the file editors; drafts are listed, not opened. Can change their own password, nothing else.</p>
+  <p>Sees the screens an Administrator sees for WordPress itself, except Export, Import and the file editors; drafts are listed, not opened. Can save only their own password and Screen Options.</p>
   <figure>
     <img src="img/view-only-settings-typed.png" alt="Settings &gt; General for the View Only user, with 'Changed by the accountant' typed into Site Title and the 'View only' marker in the toolbar" width="1024" height="330" loading="lazy">
     <img src="img/view-only-settings-refused.png" alt="After Save Changes: a box headed 'View only' saying 'This account is view only, so nothing was changed. Ask an administrator if this change is needed.' with a Back link" width="824" height="270" loading="lazy" style="margin-top:12px">
