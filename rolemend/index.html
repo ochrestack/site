@@ -102,6 +102,21 @@
     <strong>Why a role editor can't do this.</strong> WordPress lists posts only for people who may edit them, and opens the Media Library only for people who may upload. Two site owners asked WordPress.org's support forums for exactly these roles. WordPress core cannot do either job, which is why both askers were told "Partly" and "no combination of capabilities".
   </div>
 
+  <section id="watch">
+    <h2>Watch both roles</h2>
+    <figure>
+      <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080">
+        <source src="video/rolemend-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
+        <source src="video/rolemend-demo-720p.mp4" type="video/mp4">
+      </video>
+      <figcaption>The demo, 59 s, captions only, no sound (1080p, 720p on phones; <a href="video/rolemend-demo-1080p.mp4">open full size</a>). On a fresh WordPress 7.1.4, Rolemend 1.1.0 is activated and both roles appear in the Role list. Ravi (View Only) sees every post, his Site Title change is refused and the title stays as it was, and Plugins has no Activate or Delete. Jo (Media Library, no uploads) fixes the alt text on a photo Sam uploaded, and a dropped photo is refused. Faster parts say "sped up". The free plugin only; Pro is not shown.</figcaption>
+    </figure>
+    <figure>
+      <img src="video/rolemend-view-only-refused.gif" alt="A 13-second loop from the demo: Ravi Patel, signed in as View Only, sees the Posts list with drafts and private posts and the 'View only' marker; he types 'Changed by the accountant' as the Site Title and clicks Save Changes; the page says 'This account is view only, so nothing was changed. Ask an administrator if this change is needed.'; Settings > General shows the Site Title still 'Northfield Botanic Garden'" width="960" height="540" loading="lazy">
+      <figcaption>The View Only refusal alone (13 s GIF, 1.1 MB).</figcaption>
+    </figure>
+  </section>
+
   <h2>View Only</h2>
   <p>Sees the screens an Administrator sees for WordPress itself, except Export, Import and the file editors; drafts are listed, not opened. Can save only their own password and Screen Options.</p>
   <figure>
@@ -172,6 +187,7 @@
     <p>Tested on Linux with WordPress 7.1.4 and 6.5.14, PHP 8.3.6 and 7.4.33, MariaDB 10.11.14, single site and multisite (subdirectory network), on PHP's built-in web server; both zips also installed through Upload Plugin on each WordPress and PHP pair with WP_DEBUG on and no notices. Plugin Check 2.2.0: 0 errors, 0 warnings. Requires WordPress 6.5 or later and PHP 7.4 or later. Not tested: MySQL 8, Apache or nginx, servers on Windows or macOS, translations; the full test suite has not been run on the SQLite Database Integration plugin.</p>
     <h3 id="images">How the images were made</h3>
     <p>They are captures of a real WordPress 7.1.4 with Rolemend 1.1.0 (and Rolemend Pro 1.0.1 for the Pro image), in Chromium 141, of our demo site Northfield Botanic Garden: 13 posts, 6 pages, 5 comments, 7 people and 20 photographs that ship with the Twenty Twenty-Five theme. The site runs on PHP's built-in server with the SQLite Database Integration plugin 3.1.3, which is why the toolbar says "Database: SQLite". On that site we checked, while capturing, that the Site Title was unchanged after the refused save, that nothing in the content, settings or user tables changed during the View Only session, that the alt text was stored, and that no file or attachment was added after the refused drop. The dropped photo was handed to WordPress's uploader by a script in the page, because the virtual display cannot drag from a file manager.</p>
+    <p>The demo video is one continuous recording of the same demo site on a fresh WordPress 7.1.4 with MariaDB (so its toolbar has no SQLite line), in Chromium 141 drawn at 2.25 times normal size, with Rolemend 1.1.0 installed from the free zip. The pointer moves and clicks and the typing are real input events from a script; the sign-ins between people and the page loads are cut out. The dropped photo was handed over the same way as in the image above. After the recording we read back from the database that the Site Title was unchanged, the alt text was stored and no attachment was added.</p>
   </details>
 
   <h2 id="details">Details</h2>
