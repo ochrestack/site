@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rolemend for WordPress: a View Only role, and a Media Library role without uploads</title>
+<meta name="description" content="Rolemend adds two roles WordPress lacks: View Only, who can look round wp-admin and save nothing, and Media Library (no uploads), who can fix titles and alt text but cannot upload. Free; Rolemend Pro adds end dates and an undo list for $19 once.">
+<link rel="canonical" href="https://ochrestack.com/rolemend/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Rolemend for WordPress: a View Only role, and a Media Library role without uploads">
+<meta property="og:description" content="Want someone to view your WordPress back end but not edit it? Or an SEO person who can fix alt text but not upload files? Rolemend adds both roles, and changes nothing else.">
+<meta property="og:url" content="https://ochrestack.com/rolemend/">
+<meta property="og:image" content="https://ochrestack.com/rolemend/img/view-only-posts.png">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1280">
+<meta property="og:image:alt" content="A View Only user's Posts screen in WordPress: drafts, private, pending and scheduled posts listed, and a blue 'View only' marker in the toolbar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rolemend for WordPress: View Only, and Media Library without uploads">
+<meta name="twitter:description" content="Two roles WordPress lacks: View Only opens wp-admin and saves nothing; Media Library (no uploads) edits alt text but cannot upload.">
+<meta name="twitter:image" content="https://ochrestack.com/rolemend/img/view-only-posts.png">
+<meta name="twitter:image:alt" content="A View Only user's Posts screen in WordPress: drafts and private posts listed, 'View only' in the toolbar">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Rolemend for WordPress</h1>
+  <p class="sub">Want someone to view your WordPress back end but not edit it? Or an SEO person who can fix alt text but not upload files? Rolemend adds both roles, and changes nothing else.</p>
+
+  <a href="img/view-only-posts.png"><img class="hero" src="img/view-only-posts-hero.png" alt="WordPress Posts screen signed in as Ravi Patel, who has the View Only role: the blue 'View only' marker in the toolbar; All (13), Published (6), Scheduled (1), Drafts (3), Pending (1), Private (2); scheduled, pending, private and draft posts listed with author, category and date; no Add Post button and no edit links" width="1024" height="390"></a>
+  <p class="fine" style="margin-top:0">Above: a View Only user's Posts list, drafts included, with no edit links.</p>
+
+  <ul>
+    <li><strong>View, don't edit.</strong> Your accountant, auditor or client sees Posts (drafts too), Settings, Plugins and Users. Every save is refused in plain words.</li>
+    <li><strong>Alt text without uploads.</strong> Your SEO person opens the Media Library and fixes titles and alt text on any photo. Uploading is refused.</li>
+    <li><strong>Installing it changes nothing else.</strong> It adds two roles and nothing more. Delete it and the roles go too.</li>
+  </ul>
+
+  <div class="buy">
+    <p class="price"><strong>Rolemend is free:</strong> <a href="download/rolemend.zip?v=1.1.0">download rolemend.zip</a> (version 1.1.0, 37 KB), both roles.<br><strong>Rolemend Pro, $19 once, unlimited sites:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
+    <p class="fine">Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>). Neither role needs Pro.</p>
+    <p class="fine">Tested on WordPress 7.1.4 and 6.5.14 with PHP 8.3 and 7.4, single site and multisite, on Linux; Windows and macOS servers untested (<a href="#tested">full list</a>) · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+  </div>
+
+  <div class="box warn">
+    <strong>Why a role editor can't do this.</strong> WordPress opens Settings only to people who may save them, and the Media Library only to people who may upload. WordPress core cannot do either job, which is why people who asked for these roles were told "Partly" and "no combination of capabilities".
+  </div>
+
+  <h2>View Only</h2>
+  <p>Sees every WordPress screen an Administrator sees. Can change their own password, nothing else.</p>
+  <figure>
+    <img src="img/view-only-settings-typed.png" alt="Settings &gt; General for the View Only user, with 'Changed by the accountant' typed into Site Title and the 'View only' marker in the toolbar" width="1024" height="330" loading="lazy">
+    <img src="img/view-only-settings-refused.png" alt="After Save Changes: a box headed 'View only' saying 'This account is view only, so nothing was changed. Ask an administrator if this change is needed.' with a Back link" width="824" height="270" loading="lazy" style="margin-top:12px">
+    <figcaption>Save Changes: refused. The Site Title is unchanged.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/view-only-plugins.png" alt="Plugins for the View Only user: Akismet, Hello Dolly, Rolemend and SQLite Database Integration listed with their descriptions, with no Activate, Deactivate or Delete links and no bulk actions" width="1024" height="560" loading="lazy">
+    <figcaption>Plugins: the list is there; Activate, Deactivate and Delete are not.</figcaption>
+  </figure>
+
+  <h2>Media Library (no uploads)</h2>
+  <p>Saves Title, Alternative Text, Caption and Description. Uploading, deleting and Edit Image are refused.</p>
+  <figure>
+    <a href="img/media-alt-text.jpg"><img src="img/media-alt-text.jpg" alt="Attachment details for Jo Osei, who has the Media Library (no uploads) role: a red hibiscus photo uploaded by Sam Carter, Alternative Text 'Red hibiscus flower, close-up, with yellow pollen', and 'Saved.' at the top" width="1024" height="640" loading="lazy"></a>
+    <figcaption>Alt text saved on a photo someone else uploaded.</figcaption>
+  </figure>
+  <figure>
+    <a href="img/media-drop-refused.jpg"><img src="img/media-drop-refused.jpg" alt="Jo Osei's Media Library grid of garden photographs, with the notice 'meadow-in-july.jpg: This account cannot upload files, so nothing was uploaded. Ask an administrator to add the file to the Media Library.' The menu shows only Dashboard, Media and Profile, and there is no Add Media File button" width="1024" height="640" loading="lazy"></a>
+    <figcaption>A photo dropped onto the library: refused, nothing added.</figcaption>
+  </figure>
+  <p class="fine">Images already placed in posts keep the alt text they were inserted with; featured images and galleries show the new text.</p>
+
+  <h2 id="pro">Rolemend Pro</h2>
+  <ul>
+    <li><strong>Access ends on:</strong> on that date the person loses the role and is signed out.</li>
+    <li><strong>Media &gt; Text Changes:</strong> every change the media role made, before and after, with Undo and CSV.</li>
+  </ul>
+  <figure>
+    <a href="img/pro-text-changes.jpg"><img src="img/pro-text-changes.jpg" alt="Media &gt; Text Changes in Rolemend Pro: three Alternative Text changes by Jo Osei, each with the time, a thumbnail, the value before (empty or the old text) and after, and an Undo button; a Download CSV button; and a form to undo everything by one user since a date" width="1024" height="640" loading="lazy"></a>
+    <figcaption>Three changes by the SEO contractor, each with Undo.</figcaption>
+  </figure>
+  <div class="buy">
+    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
+    <p class="fine">$19 once, unlimited sites, updates included · needs the free plugin · Polar checkout · <a href="../terms.html">14-day refund</a></p>
+  </div>
+
+  <div class="box" id="free-route">
+    <strong>When you may not need Rolemend.</strong> For WordPress's own screens alone, Readministrator, another free plugin, also blocks changes, drafts included. Rolemend adds the media role, plain messages, the user's own password, and a stop on other plugins' database writes.
+  </div>
+
+  <details id="not-locked">
+    <summary>What it does not lock</summary>
+    <ul>
+      <li>Anything another plugin does outside the WordPress database when a plain link is clicked or a screen is read, such as sending an email or writing a file. WordPress's own links, such as Trash or Activate, are refused, and database writes from other plugins' code on these users' requests are stopped. A plugin whose save was stopped may still show its own "Saved" message. Give the role to people you trust not to tamper.</li>
+      <li>Code that runs before WordPress knows who is signed in, and plugins that write through their own database connection instead of WordPress's.</li>
+      <li>What the account can read is readable, including user email addresses and commenter details.</li>
+      <li>Drafts are listed by title, author and date, but their text cannot be opened, because WordPress shows a draft only to people who may edit it.</li>
+      <li>Tools &gt; Export and the theme and plugin file editors are not available to the role.</li>
+      <li>Other plugins' screens appear only when they use WordPress's own Settings permission, and some of them may load empty when their reading also goes through a save handler. WooCommerce stays hidden.</li>
+      <li>On other plugins' screens, a link or form whose handler checks WordPress's security token is refused for both roles, even when it only reads (for example a download link).</li>
+      <li>The media role cannot post comments or other front-end forms while signed in.</li>
+    </ul>
+  </details>
+
+  <details id="tested">
+    <summary>How we tested</summary>
+    <table>
+      <tr><th>Test</th><th>Result</th></tr>
+      <tr><td>View Only user opens wp-admin screens</td><td>54 screens, each complete, with "View only" in the toolbar</td></tr>
+      <tr><td>View Only user tries to change something: Settings, posts, pages and drafts, media, comments, users, plugins, themes, menus, widgets, Customizer, REST API, another plugin's own save handlers</td><td>142 attempts, none got through: 141 refused with the plain message, 1 background request's plugin data dropped. A checksum of the site's content, settings and user tables was identical after every one</td></tr>
+      <tr><td>Media role uploads by every route we know (library, drag and drop, REST API, a file fetched from a URL, another plugin's upload handler)</td><td>11 routes refused, and again after a role editor gave the role upload rights (22 refusals); no new file, no new attachment</td></tr>
+      <tr><td>Media role saves Title, Alternative Text, Caption and Description</td><td>Saved through Attachment details and Edit Media, read back</td></tr>
+      <tr><td>Activation</td><td>Every existing role and user identical; home page, a post, a page, an archive and a search byte-identical before and after</td></tr>
+      <tr><td>Deactivate, reactivate, delete</td><td>Both roles' users lose wp-admin, then get the same access back; on deletion the roles go and the users keep their accounts with no role</td></tr>
+    </table>
+    <p>Tested on Linux with WordPress 7.1.4 and 6.5.14, PHP 8.3.6 and 7.4.33, MariaDB 10.11.14, single site and multisite (subdirectory network), on PHP's built-in web server; both zips also installed through Upload Plugin on each WordPress and PHP pair with WP_DEBUG on and no notices. Plugin Check 2.2.0: 0 errors, 0 warnings. Requires WordPress 6.5 or later and PHP 7.4 or later. Not tested: MySQL 8, Apache or nginx, servers on Windows or macOS, translations; the full test suite has not been run on the SQLite Database Integration plugin.</p>
+    <h3 id="images">How the images were made</h3>
+    <p>They are captures of a real WordPress 7.1.4 with Rolemend 1.1.0 (and Rolemend Pro 1.0.1 for the Pro image), in Chromium 141, of our demo site Northfield Botanic Garden: 13 posts, 6 pages, 5 comments, 7 people and 20 photographs that ship with the Twenty Twenty-Five theme. The site runs on PHP's built-in server with the SQLite Database Integration plugin 3.1.3, which is why the toolbar says "Database: SQLite". On that site we checked, while capturing, that the Site Title was unchanged after the refused save, that nothing in the content, settings or user tables changed during the View Only session, that the alt text was stored, and that no file or attachment was added after the refused drop. The dropped photo was handed to WordPress's uploader by a script in the page, because the virtual display cannot drag from a file manager.</p>
+  </details>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li><a href="quick-start.html">Quick start</a>: install, give a role, Pro, updates.</li>
+    <li>Privacy: neither plugin contacts any server. A View Only user can read what an administrator reads, including user emails.</li>
+    <li>GPL-2.0-or-later, full source in both zips. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+  </ul>
+</main>
+<script>
+  // Links to a part of a closed section open it first.
+  function rmOpen() {
+    var t = location.hash && document.getElementById( location.hash.slice( 1 ) );
+    var d = t && t.closest( 'details' );
+    if ( d && ! d.open ) { d.open = true; t.scrollIntoView(); }
+  }
+  window.addEventListener( 'hashchange', rmOpen );
+  rmOpen();
+</script>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

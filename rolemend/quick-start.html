@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rolemend quick start: install, give a role, Rolemend Pro</title>
+<meta name="description" content="Install Rolemend for WordPress, give someone the View Only or Media Library (no uploads) role, and use Rolemend Pro's end dates and Text Changes.">
+<link rel="canonical" href="https://ochrestack.com/rolemend/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Rolemend quick start</h1>
+  <p>Installing Rolemend, giving someone a role, and what Rolemend Pro adds. Each zip also has a <code>readme.txt</code> with answers to common questions. Back to the <a href="index.html">Rolemend product page</a>.</p>
+
+  <h2 id="install">Install</h2>
+  <p>Requires WordPress 6.5 or later and PHP 7.4 or later.</p>
+  <ol>
+    <li>Get the zips. Everyone needs the free plugin, <a href="download/rolemend.zip?v=1.1.0">rolemend.zip</a> (version 1.1.0), from this site. Pro buyers also get <code>rolemend-pro.zip</code> (version 1.0.1) from Polar, through the link in the order email. Do not unzip them.</li>
+    <li>In WordPress, go to <strong>Plugins &gt; Add Plugin</strong>, click <strong>Upload Plugin</strong>, choose <code>rolemend.zip</code>, then <strong>Install Now</strong> and <strong>Activate</strong>. Activation adds the two roles and nothing else: no notice, no wizard, no redirect.</li>
+    <li>Pro only: do the same with <code>rolemend-pro.zip</code>, after the free plugin. WordPress refuses to activate Pro without it; if the free plugin is removed later, Pro stops and says how to fix it on the Plugins screen.</li>
+  </ol>
+
+  <h2 id="give">Give someone a role</h2>
+  <ol>
+    <li>Go to <strong>Users &gt; Rolemend</strong>. It lists who has each role and what each role can do, cannot do and does not lock.</li>
+    <li>Click <strong>Add a user with this role</strong> under <em>View Only</em> or <em>Media Library (no uploads)</em>. Users &gt; Add User opens with the role already chosen; fill in the username and email and click <strong>Add User</strong>.</li>
+    <li>For someone who already has an account, open their profile (<strong>Users &gt; All Users &gt; Edit</strong>), choose the role under <strong>Role</strong> and click <strong>Update User</strong>.</li>
+  </ol>
+  <figure>
+    <a href="img/users-rolemend-top.png"><img src="img/users-rolemend-top.png" alt="Users > Rolemend as the administrator: 'Two roles you can give from Users > Add User or from a user's profile. Nothing else on the site was changed when Rolemend was activated.' The View Only card lists Ravi Patel (ravi, ravi@patel-accounts.example), the 'Add a user with this role' button, and the start of 'What it can do'" width="1024" height="640" loading="lazy"></a>
+    <figcaption>Users &gt; Rolemend: who has each role, and the button that opens Add User with the role chosen.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/add-user-view-only.png" alt="Users > Add User for Ravi Patel: a strong password set, 'Send the new user an email about their account' unticked, Role set to View Only, and the Add User button" width="1024" height="640" loading="lazy">
+    <figcaption>Add User, opened from Users &gt; Rolemend: View Only is already chosen.</figcaption>
+  </figure>
+
+  <h2 id="view-only">What a View Only user sees</h2>
+  <p>A "View only" marker in the toolbar on every screen, and the screens an Administrator sees for WordPress itself: Dashboard, Posts, Pages, Media, Comments, Appearance, Plugins, Users, Tools &gt; Site Health and every Settings screen. Lists show every post and page, drafts and private ones included. Any save is refused with "This account is view only, so nothing was changed. Ask an administrator if this change is needed." On their Profile they can change their own password and nothing else. Drafts are listed but cannot be opened, Tools &gt; Export and the file editors are not available, and other plugins' screens appear only if they use WordPress's own Settings permission.</p>
+
+  <h2 id="media">What a Media Library (no uploads) user sees</h2>
+  <p>Dashboard, <strong>Media &gt; Library</strong> (grid and list, search and filters) and their own Profile. To fix alt text: click a photo, type in <strong>Alternative Text</strong> and click elsewhere; "Saved." appears. Title, Caption and Description save the same way, or on the Edit Media screen with <strong>Update</strong>. There is no Add Media File; a dropped file is refused with a plain message. Images already placed in posts and pages keep the alt text they were inserted with; featured images and galleries that the theme reads from the library show the new text.</p>
+  <figure>
+    <img src="img/media-role-card.png" alt="The Media Library (no uploads) card on Users > Rolemend: Jo Osei holds the role; What it can do (open Dashboard, Media > Library and their own Profile; save Title, Alternative Text, Caption and Description); What it cannot do (upload in any way, delete or trash, Edit Image, change Uploaded to, change media through another plugin's tool, upload even if a role editor later gives upload rights); What it does not lock (alt text already placed in posts and pages)" width="807" height="758" loading="lazy">
+    <figcaption>The media role's card on Users &gt; Rolemend: what it can do, cannot do and does not lock.</figcaption>
+  </figure>
+
+  <h2 id="pro">Rolemend Pro</h2>
+  <ul>
+    <li><strong>Access ends on.</strong> Open the person's profile (Users &gt; All Users &gt; Edit), set the date and click <strong>Update User</strong>. The field appears only for people with one of the two roles. On that date, in the site's time zone, they lose the role and are signed out; their account stays. Users &gt; Rolemend shows the dates.</li>
+    <li><strong>Media &gt; Text Changes.</strong> Every change of Title, Alternative Text, Caption and Description made by the media role: who, when, before and after. <strong>Undo</strong> puts one value back; a change to a field someone else has changed since is skipped and says so. The form under the list undoes everything one person changed since a date. <strong>Download CSV</strong> saves the filtered list. Only administrators can open this screen.</li>
+  </ul>
+  <figure>
+    <img src="img/pro-access-ends-on.png" alt="The Access ends on field on a user's profile, set to 03/31/2027, with the note: 'On this date (in the site's time zone) the user loses the role and is signed out. Their account stays. Leave empty for no end date.'" width="839" height="120" loading="lazy">
+    <figcaption>Access ends on, on the profile of a View Only user.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/pro-users-rolemend-dates.png" alt="Users > Rolemend with Pro active: the View Only card's table now has an 'Access ends on' column showing March 31, 2027 for Ravi Patel" width="1024" height="500" loading="lazy">
+    <figcaption>Users &gt; Rolemend with Pro: each person's end date.</figcaption>
+  </figure>
+  <p id="updates"><strong>Updating.</strong> Neither plugin checks for updates by itself. For Pro, download the new <code>rolemend-pro.zip</code> from your order email or order page, then <strong>Plugins &gt; Add Plugin &gt; Upload Plugin</strong>, <strong>Install Now</strong> and <strong>Replace current with uploaded</strong>. Update the free plugin the same way with <code>rolemend.zip</code> from the <a href="index.html">product page</a>.</p>
+
+  <h2 id="remove">Deactivate or delete</h2>
+  <p>Deactivating stops both roles at once: their users can no longer open wp-admin. Reactivating gives them back the same access. Deleting the plugin removes both roles; the users keep their accounts with no role on the site, and Users &gt; Rolemend says so before you delete. On multisite, each site gets the roles separately, and neither role opens Network Admin.</p>
+
+  <h2 id="limits">Limits</h2>
+  <p>What the roles do not lock is listed on Users &gt; Rolemend and on the <a href="index.html#not-locked">product page</a>. In short: what another plugin does outside the database, such as sending an email; code that runs before WordPress knows who is signed in; and anything the account can read, including user email addresses. Tested on Linux with WordPress 7.1.4 and 6.5.14, PHP 8.3 and 7.4 and MariaDB 10.11; MySQL 8, Apache, nginx and Windows or macOS servers are untested.</p>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Neither plugin contacts any server: no telemetry, no analytics, no licence check, no update check of its own. Rolemend stores only the two roles. Pro stores the end dates and the media text changes in your site's own database; deleting Pro removes both.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your WordPress and PHP versions, the role, the screen, and any other plugin involved.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
