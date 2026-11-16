@@ -60,7 +60,12 @@
   <h2 id="check">1. Check one person</h2>
   <ol>
     <li>Type the issue key, for example <code>LOG-215</code>, and press <strong>Load issue</strong>. Heedpath shows the issue's summary, project and notification scheme. Use the key, not the numeric issue ID.</li>
-    <li>Choose the <strong>Person</strong>: type a name. For a deactivated account, paste its account ID, because Jira's people search lists active accounts only. To find the ID: in admin.atlassian.com, open <strong>Directory &gt; Users</strong> and the person; the ID is the last part of the page's address.</li>
+    <li>Choose the <strong>Person</strong>: type a name. For a deactivated account, paste its account ID, because Jira's people search lists active accounts only. To find the ID: in admin.atlassian.com, open <strong>Directory &gt; Users</strong> and the person; the ID is the last part of the page's address.
+      <figure id="person-screen">
+        <img src="img/person-deactivated.png" alt="Heedpath's Person field after typing Sofia, a deactivated account: the hint says Jira's user search lists active accounts only and that the account ID is in admin.atlassian.com, Directory > Users, the last part of the page's address; below it: No active account found. A deactivated account is not listed: paste its account ID instead." width="1424" height="304" loading="lazy">
+        <figcaption>Searching for Sofia, whose account is deactivated. Heedpath's own screen, 1.2.2, sample site.</figcaption>
+      </figure>
+    </li>
     <li>Choose the <strong>Event</strong> from the scheme's own list, and press <strong>Check</strong>.</li>
   </ol>
   <figure id="answer-screen">
@@ -110,7 +115,11 @@ What Heedpath cannot see
   <p>With an issue and a person chosen, press <strong>All events</strong>. Every event of the project's notification scheme is listed in the scheme's order, each with its answer and deciding line, so you see what the person will and will not hear about on that issue. The table can be copied as text too.</p>
 
   <h2 id="who-gets-this">3. Who gets this</h2>
-  <p>With an issue and an event chosen, press <strong>Who gets this</strong>. Heedpath lists the people first, each once with every line that includes them, then checks each person's account and access to the issue, 40 people per step, and fills in the last column; progress is shown. People are marked as dropped, with the reason, when they cannot browse the issue, their account is deactivated, it is a customer account, or it has no Jira product access. Groups over 1,000 members are shown by count, with a <strong>Show members</strong> button; until you press it, the headline names them as not checked yet, for example “2 people notified by the scheme, 0 dropped (2 listed). Not checked yet: group all-staff (1,300 members); use "Show members".”</p>
+  <p>With an issue and an event chosen, press <strong>Who gets this</strong>. Heedpath lists the people first, each once with every line that includes them, then checks each person's account and access to the issue, 40 people per step, and fills in the last column; progress is shown. People are marked as dropped, with the reason, when they cannot browse the issue, their account is deactivated, it is a customer account, or it has no Jira product access. Groups over 1,000 members are shown by count, with a <strong>Show members</strong> button; until you press it, the headline names them as not checked yet, so the count above is never read as the whole answer.</p>
+  <figure id="large-group-screen">
+    <img src="img/who-gets-large-group.png" alt="Heedpath's Who gets this screen for Issue Created on LOG-214: 5 people notified by the scheme, 0 dropped (5 listed). Not checked yet: group larkfield-staff (1,240 members); use Show members. Five people listed with their lines, then Large groups (listed by count): group larkfield-staff has 1,240 members, with a Show members button." width="1424" height="884" loading="lazy">
+    <figcaption>A group of 1,240 people on the Issue Created line, before Show members: the headline says it is not checked yet. Heedpath's own screen, 1.2.2, sample site.</figcaption>
+  </figure>
   <figure id="who-screen">
     <img src="img/who-gets-this.png" alt="Heedpath's Who gets this screen for Issue Commented on LOG-214: Tom Field, Ana Ruiz, Lena Brandt, Omar Haddad and Marcus Webb notified by the scheme, each with their lines; Sofia Marin, watching, marked Dropped: account is deactivated" width="1424" height="950" loading="lazy">
     <figcaption>Everyone one event reaches, each with their lines, and who drops out, and why. Heedpath's own screen, 1.2.2, sample site.</figcaption>
