@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Linkrounds: a broken link checker for WordPress that runs on your own server</title>
-<meta name="description" content="Linkrounds finds broken links and images from your own WordPress server, and calls a link Broken only after it fails twice, an hour apart. Free, no account, no link limit. Linkrounds Pro adds scheduled scans, email reports and CSV for $19 one-time.">
+<meta name="description" content="Linkrounds finds broken links and images from your own WordPress server, and calls a link Broken only after it fails twice, an hour apart. Free, no account, no link limit. Linkrounds Pro adds scheduled scans, an email of what broke and CSV for $19 one-time.">
 <link rel="canonical" href="https://ochrestack.com/linkrounds/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ochrestack">
@@ -60,6 +60,7 @@
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
   pre.mail { white-space: pre-wrap; font-size: 13px; line-height: 1.5; background: #fff; border: 1px solid #E6DED3; border-radius: 6px; padding: 12px 14px; color: var(--ink); max-height: 420px; overflow-y: auto; margin: 8px 0; }
   summary { cursor: pointer; }
+  pre.mail.crop { max-height: none; overflow-y: visible; margin: 6px 0 8px; }
   @media (max-width: 600px) {
     h1 { margin-top: 28px; }
     .top-wrap .buy { order: 1; }
@@ -90,232 +91,152 @@
   <p class="sub">Finds broken links and images from your own server, and calls a link Broken only after it fails twice, an hour apart. No account, no credit card, no link limit.</p>
   <div class="top-wrap">
   <figure class="top">
-    <a href="img/results-full.png"><img class="hero" src="img/results.png" alt="Tools &gt; Linkrounds on the demo blog with only the free plugin active, after the second checks: 'Last scan finished November 9, 2026 7:13 pm: 63 different addresses checked, used in 70 places', the counts All (70), Broken (7), Redirected (7), Inconclusive (4), OK (52), Ignored (0), the search box and post-type filter, Bulk actions, and the first two rows: docs.blender.org manual addresses in full with their link text, the post they are in with Edit and View, a red Broken badge with 404 and 'Page not found (404).', and the time they were last checked" width="835" height="568"></a>
+    <a href="img/results-full.png"><img class="hero" src="img/results.png" alt="Tools &gt; Linkrounds on the demo blog with only the free plugin active, after the second checks: 'Last scan finished November 16, 2026 7:32 pm: 63 different addresses checked, used in 70 places.', the line '1 address looks broken, used in 3 places. It failed once (not found, gone or no such domain). Linkrounds checks it again by itself after November 16, 2026 9:29 pm (in 53 minutes) and calls it Broken only if it fails again. You do not need to scan again, and you can fix it now. Show all 3 places', the counts All (70), Broken (7), Waiting for second check (3), Redirected (7), Inconclusive (9), OK (47), Ignored (0), the search box and post-type filter, Bulk actions, and the first row: a docs.blender.org manual address in full with its link text, the post it is in with Edit and View, a red Broken badge with 404 and 'Page not found (404).', last checked 8:29 pm" width="835" height="521"></a>
     <figcaption>The free plugin alone, on our demo blog, after the second checks.</figcaption>
   </figure>
 
   <div class="buy">
-    <p class="price"><strong>Linkrounds is free:</strong> <a href="download/linkrounds-1.2.2.zip">download linkrounds-1.2.2.zip</a> (72 KB) and upload it under Plugins &gt; Add New Plugin.</p>
-    <p class="price"><strong>Pro: $19 once, up to 3 sites</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_T6fWxQH1NxBXcEuJZ8mxIgwEQwscVCDttBhdA2tsTf8">Buy for $19</a><br>Pro scans on a schedule and <a href="#report">emails you what broke</a>, with a CSV for a client.</p>
-    <p class="fine">Pro is an add-on: install the free plugin first. Polar checkout · download after payment · no renewal · no licence check · every Pro update included · <a href="../terms.html">14-day refund</a> · <a href="#details">details</a>. More than 3 sites: $79 once, by email only for now (<a href="mailto:support@ochrestack.com">support@ochrestack.com</a>).</p>
+    <p class="price"><strong>Linkrounds is free:</strong> <a href="download/linkrounds-1.2.3.zip">download linkrounds-1.2.3.zip</a> (72 KB) and upload it under Plugins &gt; Add New Plugin.</p>
+    <p class="price"><strong>Pro: $19 once, up to 3 sites</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_T6fWxQH1NxBXcEuJZ8mxIgwEQwscVCDttBhdA2tsTf8">Buy for $19</a><br>Pro checks your site on a schedule and emails you what broke, like this:</p>
+    <pre class="mail crop" aria-label="The start of a real report email from Linkrounds Pro">Subject: [Low Poly Lane] Linkrounds: 5 addresses broke since the last report (used in 7 places)
+
+1. https://docs.godotengine.org/en/stable/getting_started/step_by_step/your_first_game.html
+   Why: Page not found (404).
+   Used in 3 places:
+   - On: “Our first Godot import: a low-poly lighthouse” …
+   - In a navigation menu, item “Godot tutorial”
+   - In the navigation menu “Main”, link “Godot tutorial”
+
+2. http://lowpolylane.test/wp-content/uploads/2025/05/turntable.png
+   …</pre>
+    <p class="fine"><a href="#report">See the whole email</a>. Pro is an add-on: install the free plugin first (if you install Pro first, it waits and shows you where to get the free one). Polar checkout · download after payment · no renewal · no licence check · every Pro update included · <a href="../terms.html">14-day refund</a> · <a href="#details">details</a>. More than 3 sites: $79 once, by email only for now (<a href="mailto:support@ochrestack.com">support@ochrestack.com</a>).</p>
   </div>
   </div>
 
   <h2 id="answers">Four answers, in plain words</h2>
   <ul>
-    <li><strong>Broken</strong>: not found (404), gone (410), or the domain does not exist, and the same thing happened again on a second check at least an hour later (1, 6 or 24 hours, you choose).</li>
-    <li><strong>Redirected</strong>: the address forwards to one that works. The final address is shown. If it lands on the site's home page or on a search page, the reason says so.</li>
-    <li><strong>Inconclusive</strong>: the other site blocked the check (403, 999), wanted a login (401), asked us to slow down (429), had a server error, or did not answer in time. The reason is given. These are never counted as broken.</li>
-    <li>A link that fails once with "not found", "gone" or no such domain is Inconclusive until its second check, and is also counted under <strong>Waiting for second check</strong>, with the time that check is due.</li>
+    <li><strong>Broken</strong>: the page is not found (404) or gone (410), or the domain does not exist, and the same thing happened again when Linkrounds checked a second time, at least an hour later.</li>
+    <li><strong>Redirected</strong>: the address forwards to another one that works, and you see where it ends. If it ends on the site's home page or a search page, which often means the page was removed, it says so.</li>
+    <li><strong>Inconclusive</strong>: the other site refused the check, wanted a login, asked us to slow down, had an error or did not answer. Linkrounds can't tell if such a link works, so it never calls it Broken.</li>
     <li><strong>OK</strong>: the link works.</li>
   </ul>
-  <p>Each row shows the page the link is on (with Edit and View), the full address, the link text, the status code, the reason and when it was last checked. Filter by answer or post type, search by address, and use <strong>Re-check now</strong> on any row.</p>
-
+  <p>Straight after the first scan nothing is Broken yet. The screen says how many addresses look broken, when it checks them again by itself, and that you can fix them now.</p>
   <figure>
-    <a href="img/first-scan.png"><img src="img/first-scan.png" alt="The results screen straight after the first scan, at 7:13 pm, with only the free plugin active: 'Last scan finished November 9, 2026 7:13 pm: 63 different addresses checked, used in 70 places.', then the line '7 links look broken. They failed once (not found, gone or no such domain). Linkrounds checks them again by itself from November 9, 2026 8:12 pm (in 59 minutes) and calls Broken only those that fail again. You do not need to scan again, and you can fix them now. Show the 7 links', the counts All (70), Broken (0), Waiting for second check (7), Redirected (7), Inconclusive (15), OK (48); the two docs.blender.org rows are Inconclusive with 404 and 'Page not found (404). First failure: it is checked again after November 9, 2026 8:12 pm and called Broken only if it fails again.'; the Godot tutorial row is Inconclusive with 429 'Too many requests (429). The site asked us to slow down; it will be checked again later.'; the registry.khronos.org/glTF/ row is Inconclusive with 403" width="835" height="971" loading="lazy"></a>
-    <figcaption>The first scan on our demo blog: nothing is Broken yet, and the screen leads with the 7 links that look broken and when they are checked again.</figcaption>
+    <a href="img/first-scan-archive.png"><img src="img/first-scan-archive.png" alt="Tools &gt; Linkrounds on our 300-post test archive straight after the first scan: 'Last scan finished November 16, 2026 7:39 pm: 708 different addresses checked, used in 2,702 places.', then '71 different addresses look broken, used in 251 places. They failed once (not found, gone or no such domain). Linkrounds checks them again by itself from November 16, 2026 8:36 pm (in 57 minutes) and calls Broken only those that fail again. You do not need to scan again, and you can fix them now. Show all 251 places', the counts All (2,702), Broken (0), Waiting for second check (251), Redirected (49), Inconclusive (251), OK (2,402), and two php.net rows marked Inconclusive 404, 'First failure: it is checked again after November 16, 2026 8:36 pm and called Broken only if it fails again.'" width="823" height="662" loading="lazy"></a>
+    <figcaption>The first scan of our 300-post test archive: 71 different addresses look broken, used in 251 places. All 71 returned 404 when we opened them by hand.</figcaption>
   </figure>
 
   <h2 id="fixes">Fixes you can undo</h2>
   <ul>
-    <li><strong>Bulk actions change only the rows you ticked.</strong> On our 300-post test archive, ticking 2 of the 20 rows on screen and choosing Unlink changed exactly 2 links in 2 posts; every other byte of every post stayed as it was. The message after Apply says what was done, or that nothing was changed.</li>
-    <li><strong>Unlink</strong> removes the link and keeps the words. <strong>Edit address</strong> changes that one link, and the new address is checked straight away.</li>
-    <li>Every fix is saved as a normal post revision, so you can restore the old version from the post's Revisions screen, even on sites that keep only one revision.</li>
-    <li>A fix changes only that link in that post and leaves the rest of the content byte for byte as it was. In Cover, File and Navigation link blocks, Edit address also updates the block's own copy of the address, so the editor still opens the block normally. A File block links to its file twice (the name and the Download button): Edit address on either one changes both. Unlink is not offered where it would break a block (File and Button blocks).</li>
-    <li>Only users who can edit a post can fix its links.</li>
-  </ul>
-
-  <figure>
-    <img src="img/edit-address.png" alt="A Broken row with Edit address open: the old Godot address step_by_step/your_first_game.html, a field holding the new address ending first_2d_game/index.html, and Save and Cancel buttons" width="827" height="194" loading="lazy">
-    <img src="img/edit-done.png" alt="The message after Save: 'Changed https://docs.godotengine.org/en/stable/getting_started/step_by_step/your_first_game.html in “Our first Godot import: a low-poly lighthouse”. Saved as a revision: you can restore the previous version from the post’s Revisions screen. New address https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html checked: OK. The page answered normally (200).'" width="833" height="114" loading="lazy" style="margin-top:12px">
-    <figcaption>Edit address on one row, then the message: what changed, where, and the new address already checked.</figcaption>
-  </figure>
-  <figure>
-    <a href="img/revisions-full.png"><img src="img/revisions.png" alt="WordPress's Compare Revisions screen for “Our first Godot import: a low-poly lighthouse”: under Content, one paragraph changed, with step_by_step/your_first_game highlighted in red on the Removed side and first_2d_game/index highlighted in green on the Added side; the paragraphs above and below are identical on both sides" width="828" height="760" loading="lazy"></a>
-    <figcaption>The post's own Revisions screen: the fix is one revision, and only the address changed. Restoring the earlier version brought the link back.</figcaption>
-  </figure>
-
-  <h2 id="archive">Tested on a 300-post archive</h2>
-  <p>"The Hook Weekly" is a PHP and WordPress link digest we generated for this test: 300 weekly issues from 2014 to 2019 (297 still published), linking to real php.net, developer.wordpress.org, wordpress.org and GitHub pages, some of which are gone. That is <strong>708 different addresses in 2,702 places</strong>. Linkrounds 1.2.2, WordPress 7.1.4, nobody else visiting the site:</p>
-  <ul>
-    <li><strong>Scan now took 2 min 54 s</strong> with the screen open (2 min 47 s on a second run).</li>
-    <li>First scan: nothing Broken yet; 71 addresses (in 251 places) failed once, 18 forwarded somewhere, 619 answered normally, and no site blocked the check. We opened all 71 in a browser: <strong>71 of 71 returned 404</strong>.</li>
-    <li>An hour later we left Tools &gt; Linkrounds open and did nothing. Between 12:47 and 12:50 am the screen ran the second checks itself: all 71 failed again and became Broken (251 places). <strong>False Broken: 0.</strong></li>
-    <li>Six of the forwards were wordpress.org plugin pages that now land on wordpress.org's plugin search, and the reason says so (below).</li>
-    <li>On the Broken view we ticked rows 4 and 12 of 20 and chose Unlink: exactly 2 links changed, in 2 posts. The same addresses in 3 other posts, and every other byte, stayed as they were.</li>
+    <li><strong>Unlink</strong> removes a link and keeps its words. <strong>Edit address</strong> changes one link, and the new address is checked straight away.</li>
+    <li>Tick rows and use <strong>Bulk actions</strong>: only the rows you ticked change. On our 300-post test archive, ticking 2 of the 20 rows on screen changed exactly 2 links; every other byte of every post stayed as it was.</li>
+    <li>Every fix is saved as a normal WordPress revision, so you can put the old version back from the post's Revisions screen.</li>
   </ul>
   <figure>
-    <a href="img/archive-broken.png"><img src="img/archive-broken.png" alt="The Broken view on The Hook Weekly after the second checks: 'Last scan finished November 9, 2026 11:49 pm: 708 different addresses checked, used in 2,702 places.', the counts All (2,702), Broken (251), Redirected (49), Inconclusive (0), OK (2,402), Ignored (0), 251 items on 13 pages, and the first rows: php.net manual pages such as function.intlcal-get-day-of-week-type.php and function.numfmt-set-pattern.php, each with its link text, the issue it is in with Edit and View, a red Broken badge with 404 and 'Page not found (404).', checked November 10, 2026 12:47 am" width="978" height="560" loading="lazy"></a>
-    <figcaption>The 300-post archive after the second checks: 251 Broken places, 0 Inconclusive.</figcaption>
+    <img src="img/edit-done.png" alt="The message after Save: 'Changed https://developer.wordpress.org/plugins/the-basics/ in “Plugins we run on the studio site (and why so few)”. Saved as a revision: you can restore the previous version from the post’s Revisions screen. New address https://developer.wordpress.org/plugins/plugin-basics/ checked: OK. The page answered normally (200).'" width="1078" height="70" loading="lazy">
+    <figcaption>The message after Edit address: what changed, where, and the new address already checked.</figcaption>
   </figure>
   <figure>
-    <img src="img/redirected-search.png" alt="A Redirected row: https://wordpress.org/plugins/wp-easy-gallery-old/, 'Ends at: https://wordpress.org/plugins/search/wp-easy-gallery-old/', with the reason 'The address forwards to what looks like a search or “not found” page on the same site. Sites often do this when a page was removed, so open it and check that it is where readers should go.' Below it, a developer.wordpress.org address that forwards to another function's page, 'The address forwards to another address, which works.'" width="978" height="340" loading="lazy">
-    <figcaption>A removed plugin page that forwards to a search is called out; an ordinary forward is not.</figcaption>
+    <a href="img/revisions-full.png"><img src="img/revisions.png" alt="WordPress's Compare Revisions screen for “Plugins we run on the studio site (and why so few)”, current revision by Studio, 16 Nov 2026 @ 20:37: under Content, the first paragraph is identical on both sides; in the second paragraph the link to developer.wordpress.org/plugins/the-basics/ is highlighted in red on the Removed side and developer.wordpress.org/plugins/plugin-basics/ in green on the Added side; Previous and Restore This Revision above" width="838" height="866" loading="lazy"></a>
+    <figcaption>The post's own Revisions screen: the fix is one revision, and only the address changed.</figcaption>
   </figure>
 
   <div class="box warn">
-    <strong>Do you need Pro?</strong> If you clean up your links once or twice a year, no: the free plugin does everything on this page except the schedule, the email and the CSV, with no link limit. (WordPress itself has no broken-link checker. Other free plugins also check links on your own server without an account: Broken Link Checker's local engine, Dragon Broken Links and DevDome Link Monitor.) Pro is for when you look after a site, or a few, and would rather not remember: it scans on a schedule, emails you what broke since last time, and gives you a CSV for a client or an editor. Neither plugin checks links in page-builder layouts stored outside the post content, custom fields, widgets or comments in version 1; the <a href="#limits">limits</a> list everything.
+    <strong>Do you need Pro?</strong> If you clean up your links once or twice a year, no: the free plugin does everything on this page except the schedule, the email and the CSV, with no link limit. (WordPress itself has no broken-link checker. Other free plugins also check links on your own server without an account: Broken Link Checker's local engine, Dragon Broken Links and DevDome Link Monitor.) Pro is for when you look after a site, or a few, and would rather not remember: it checks on a schedule, emails you what broke since last time, and gives you a CSV for a client or an editor.
   </div>
 
   <h2 id="watch">Watch it work</h2>
   <figure>
-    <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
-      <source src="video/linkrounds-demo-720p.mp4" type="video/mp4">
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080">
+      <source src="video/linkrounds-demo-1080p.mp4" type="video/mp4">
     </video>
-    <figcaption>58 s, captions only, no sound, filmed on the demo blog with version 1.1.0 (1.2.2 adds the "look broken" line after the first scan). <a href="video/linkrounds-edit-address.gif">The fix as a looping GIF</a> (0.9 MB).</figcaption>
+    <figcaption>58 s, captions only, no sound, filmed on our demo blog with Linkrounds 1.2.3 and Pro 1.2.0. <a href="video/linkrounds-edit-address.gif">The fix as a looping GIF</a> (1.1 MB).</figcaption>
   </figure>
-
-  <h2>Exclusions and automatic re-checks</h2>
-  <ul>
-    <li>Exclude domains or address patterns with <code>*</code> wildcards (for example <code>*.example.com</code> or <code>example.com/members/*</code>), whole post types, synced patterns or menu links.</li>
-    <li><strong>Ignore</strong> a single link, and undo that from the Ignored filter.</li>
-    <li>Broken and Inconclusive links are re-checked every day. Saving a post re-checks its links, so fixed links leave the list without a new scan.</li>
-    <li>If the host kills a background batch, the scan picks itself up again.</li>
-  </ul>
-  <figure>
-    <img src="img/settings.png" alt="The Settings tab: Excluded addresses with staging.lowpolylane.test and *.wordpress.org/support/* typed in, and the help text on subdomains and * wildcards; Content to scan with Posts, Pages, Synced patterns and Links in navigation menus ticked; Second check after: 1 hour, with the note that a link is called Broken only when it fails with not found, gone or a missing domain twice, at least this long apart; Save settings" width="837" height="624" loading="lazy">
-    <figcaption>Settings: exclusions with wildcards, what to scan, and the wait before the second check.</figcaption>
-  </figure>
-
-  <h2 id="gentle">Gentle on your server</h2>
-  <ul>
-    <li>The scan runs in small background batches through WP-Cron, with a live count and Pause and Resume.</li>
-    <li>Links to your own posts, pages and uploads are checked against your own database and files, with no request to your site.</li>
-    <li>Each address is requested once per scan. At most six requests run at once, and at most two go to the same site.</li>
-    <li>A batch starts no new request after 10 seconds and ends within about 25. While it waits for answers it barely uses the processor: on our 300-post archive, a 10-second batch used 1.6 to 2.2 seconds of processor time.</li>
-    <li>Addresses in private or local networks (10.x, 192.168.x, 127.0.0.1) are never requested, except your own site's address. On a local or staging install your site itself is on such an address, so links to your own site that Linkrounds cannot match to a post, page or upload (an archive, a feed, <code>/wp-admin/</code>) are requested from it.</li>
-  </ul>
 
   <h2 id="pro">Linkrounds Pro</h2>
-  <p>A separate add-on that needs the free plugin. It adds a <strong>Schedule &amp; email</strong> tab and an <strong>Export CSV</strong> button.</p>
   <ul>
-    <li><strong>Scheduled full scans</strong>: daily, weekly (on a chosen day) or monthly (on a chosen day, 1 to 28), at the hour you choose in your site's time zone. Daylight-saving changes keep the wall-clock hour.</li>
-    <li><strong>Email report</strong>: after each scheduled scan, once the links that failed have had their second check, the addresses you choose get a plain-text email listing the links that broke since the last report, the page each is on, the reason, and a link to the results screen. It is sent through your site's own <code>wp_mail()</code>.</li>
-    <li><strong>Send a test email</strong> checks that your site can send mail, and says straight away if it cannot, with WordPress's own reason. If your site's mail setup ever refuses a report, the Schedule &amp; email tab shows when and why, a line above the results points to it, and the links go into the next report.</li>
-    <li><strong>Export CSV</strong>: the rows of the current filter (all pages), UTF-8, with a header row. Menu links are named by their menu. Cells that start with <code>=</code>, <code>+</code>, <code>-</code> or <code>@</code> are prefixed so spreadsheets do not run them as formulas.</li>
-    <li>No renewal and no licence check. Pro makes no network calls of its own, and nothing stops working.</li>
+    <li><strong>Scheduled scans</strong>: daily, weekly or monthly, at the hour you choose, in your site's time zone.</li>
+    <li><strong>An email report</strong> after each scheduled scan, to the addresses you choose: each address that broke since the last report, once, with every page it is on, why it failed, and a link to fix it.</li>
+    <li><strong>Send a test email</strong> tells you straight away whether your site can send mail. If a report is ever refused, the Schedule &amp; email tab says when and why, and those links go into the next report.</li>
+    <li><strong>Export CSV</strong> of the results you are looking at, for a client or an editor, safe to open in a spreadsheet.</li>
+    <li>One payment. No renewal, no licence check, and nothing stops working.</li>
   </ul>
+  <details id="report">
+    <summary>The whole email from the demo blog</summary>
+    <p>Pro 1.2.0 on our demo blog, whose mail goes to a file because it has no mail server. The daily scan was set for 9:00 pm; it started on the first visit after that (9:01 pm) and finished at 9:03 pm. The email followed by itself at 10:10 pm, once the links that had failed had their second check. The old Godot tutorial is linked from a post and from both menus, so it is listed once, with its 3 places.</p>
+    <pre class="mail" tabindex="0" role="region" aria-label="A whole report email from the demo blog">To: studio@lowpolylane.test
+Subject: [Low Poly Lane] Linkrounds: 5 addresses broke since the last report (used in 7 places)
 
-  <h3 id="report">The email Pro sends</h3>
-  <p>After each scheduled scan, once the links that failed have had their second check, Pro sends this to the addresses you choose. This one came by itself from the demo blog: the daily scan was set for 00:00 and started on the first visit after it, at 12:02 am; the email followed at 1:14 am, after the second checks.</p>
-  <pre class="mail" tabindex="0" role="region" aria-label="The first report email from the demo blog">To: studio@lowpolylane.test, client-editor@lowpolylane.test
-Subject: [Low Poly Lane] Linkrounds: 10 links broke since the last report
+Linkrounds finished a scheduled check of every link on Low Poly Lane (http://lowpolylane.test/) on November 16, 2026 9:03 pm.
 
-Linkrounds finished a scheduled check of every link on Low Poly Lane (http://lowpolylane.test/) on November 10, 2026 12:08 am.
+This is the first report, so it lists every address that is broken now: 5, used in 7 places. Each address is listed once, with every place it is used.
 
-This is the first report, so it lists every link that is broken now: 10.
-
-1. https://docs.blender.org/manual/en/latest/render/blender_render/index.html
-   On: “Why we still keep the 2.79 manual bookmarked” http://lowpolylane.test/why-we-still-keep-the-2-79-manual-bookmarked/
-   Link text: “the Blender Internal chapter of the manual”
+1. https://docs.godotengine.org/en/stable/getting_started/step_by_step/your_first_game.html
    Why: Page not found (404).
+   Used in 3 places:
+   - On: “Our first Godot import: a low-poly lighthouse” http://lowpolylane.test/our-first-godot-import-a-low-poly-lighthouse/
+     Link text: “the “your first game” tutorial”
+   - In a navigation menu, item “Godot tutorial”
+   - In the navigation menu “Main”, link “Godot tutorial”
 
-2. https://docs.blender.org/manual/en/latest/game_engine/index.html
-   On: “Why we still keep the 2.79 manual bookmarked” http://lowpolylane.test/why-we-still-keep-the-2-79-manual-bookmarked/
-   Link text: “the game engine manual”
-   Why: Page not found (404).
-
-3. https://docs.godotengine.org/en/stable/getting_started/step_by_step/your_first_game.html
-   On: “Our first Godot import: a low-poly lighthouse” http://lowpolylane.test/our-first-godot-import-a-low-poly-lighthouse/
-   Link text: “the “your first game” tutorial”
-   Why: Page not found (404).
-
-4. http://lowpolylane.test/wp-content/uploads/2025/05/turntable.png
+2. http://lowpolylane.test/wp-content/uploads/2025/05/turntable.png
    On: “Cycles or EEVEE for product turntables?” http://lowpolylane.test/cycles-or-eevee-for-product-turntables/
    Link text: “Cycles or EEVEE for product turntables?”
    Why: The file is not in this site’s uploads folder.
 
-5. https://github.com/WordPress/twentytwelve
+3. https://github.com/WordPress/twentytwelve
    On: “Moving the studio site to a block theme” http://lowpolylane.test/moving-the-studio-site-to-a-block-theme/
    Link text: “development repository”
    Why: Page not found (404).
 
-6. https://developer.wordpress.org/plugins/the-basics/
-   On: “Plugins we run on the studio site (and why so few)” http://lowpolylane.test/plugins-we-run-on-the-studio-site-and-why-so-few/
-   Link text: “the basics chapter of the plugin handbook”
-   Why: Page not found (404).
-
-7. https://docs.blender.org/manual/en/latest/addons/import_export/scene_gltf2.html
+4. https://docs.blender.org/manual/en/latest/addons/import_export/scene_gltf2.html
    On: “Where to ask when Blender misbehaves” http://lowpolylane.test/where-to-ask-when-blender-misbehaves/
    Link text: “the glTF add-on page in the manual”
    Why: Page not found (404).
 
-8. https://docs.blender.org/manual/en/latest/files/import_export/scene_gltf2.html
+5. https://docs.blender.org/manual/en/latest/files/import_export/scene_gltf2.html
    On: “Resources” http://lowpolylane.test/resources/
    Link text: “glTF import and export”
    Why: Page not found (404).
 
-9. https://docs.godotengine.org/en/stable/getting_started/step_by_step/your_first_game.html
-   In a navigation menu, item “Godot tutorial”
-   Why: Page not found (404).
-
-10. https://docs.godotengine.org/en/stable/getting_started/step_by_step/your_first_game.html
-   In the navigation menu “Main”, link “Godot tutorial”
-   Why: Page not found (404).
-
 See and fix them: http://lowpolylane.test/wp-admin/tools.php?page=linkrounds&amp;category=broken
 
-You get this email because your address is set under Tools &gt; Linkrounds &gt; Schedule &amp; email. Change the addresses or turn the schedule off there.
-</pre>
-  <p class="fine">Pro 1.1.1 on the demo blog, whose mail goes to a file because it has no mail server. Every item is shown; the Godot tutorial appears three times because it is in a post and in both menus.</p>
+You get this email because your address is set under Tools &gt; Linkrounds &gt; Schedule &amp; email. Change the addresses or turn the schedule off there.</pre>
+  </details>
 
-  <figure>
-    <img src="img/pro-test-email.png" alt="Linkrounds Pro's Schedule &amp; email tab after Send a test email: the green message 'Test email handed to your site’s mail setup for studio@lowpolylane.test, client-editor@lowpolylane.test. If it has not arrived within a few minutes, look in the spam folder, then ask your host about outgoing mail or install an SMTP plugin.'; the schedule Weekly, on Monday, at 06:00 in Europe/London with 'Next scheduled scan: November 16, 2026 6:00 am'; the two report addresses; a note 'The last report could not be sent (November 9, 2026 7:14 pm). Your site’s mail setup refused it. WordPress said: “Could not instantiate mail function.” Since then a test email went through (November 9, 2026 7:15 pm), so the next report should go out.'; Save schedule; and the section 'Can this site send email?' with the Send a test email button" width="835" height="895" loading="lazy">
-    <figcaption>Send a test email: with no mail server the report was refused and the tab showed WordPress's reason; once the site could send mail, the test went through.</figcaption>
-  </figure>
-
-  <h2 id="tested">Tested on a demo blog</h2>
-  <p>Every image on this page is a screenshot of a real WordPress 7.1.4 site, running locally on PHP's built-in server with the SQLite Database Integration plugin, taken in Chromium under a virtual display: either the 300-post archive above or "Low Poly Lane". "Low Poly Lane" is a demo blog of a small 3D studio that we built for these tests: 12 posts and 2 pages from 2019 to 2025, a menu, and links to real Blender, Godot and WordPress documentation, some of which has since moved or gone. The table is from a run with Linkrounds 1.2.1 on November 9, 2026 (London time, which is UTC in November); the Edit address, Revisions and Settings screens are from 1.1.0, and those screens have not changed since.</p>
-  <table>
-    <tr><th>Answer</th><th>First scan, 7:13 pm</th><th>After the second checks, 9:15 pm</th></tr>
-    <tr><td>Broken</td><td>0</td><td>7 addresses (7 places)</td></tr>
-    <tr><td>Waiting for second check</td><td>7 places</td><td>0</td></tr>
-    <tr><td>Redirected</td><td>7 places</td><td>5 addresses (7 places)</td></tr>
-    <tr><td>Inconclusive</td><td>15 places: the 7 waiting, 7 where the Godot documentation site answered "slow down" (429), and 1 refused (403)</td><td>2 addresses (4 places): the old Godot tutorial (429, in a post and both menus) and the 403</td></tr>
-    <tr><td>OK</td><td>48 places</td><td>49 addresses (52 places)</td></tr>
-  </table>
-  <p>We opened every Broken address by hand with a browser User-Agent: six returned 404, and the seventh is an image we had deleted from the uploads folder. The old Godot tutorial returned 404 by hand too, but the Godot site kept answering Linkrounds with 429, so it stayed Inconclusive rather than a guess.</p>
-  <p>On November 10 we rebuilt the blog with Linkrounds 1.2.2 and Pro 1.1.1 and let Pro's daily schedule do the scan, with a script opening the home page every 3 minutes as the only visitor. That time the Godot site answered 404, so after the second checks the result was Broken 8 addresses (10 places), Redirected 5 (7), Inconclusive 1 (the 403) and OK 49 (52). The email above is from that run; by hand, all seven web addresses returned 404 and the image is not in the uploads folder.</p>
+  <h2 id="tested">Tested on real WordPress sites</h2>
+  <ul>
+    <li><strong>A 300-post archive</strong> with 708 different addresses in 2,702 places: Scan now took 2 min 47 s to 3 min 30 s over four runs. All 71 addresses that failed once returned 404 when we opened them by hand, and all 71 became Broken at their second check, in both runs we checked by hand. <strong>False Broken: 0.</strong></li>
+    <li><strong>Our demo blog</strong> of a small 3D studio: 63 addresses in 70 places. Every address it called Broken (seven web pages and an image we had deleted) was really gone when we opened it by hand, and the sites that refused the check stayed Inconclusive. Pro's daily scan sent <a href="#report">the email</a> by itself.</li>
+    <li>Every picture on this page and in the film is a screenshot of one of those two sites. <a href="quick-start.html#tested">How we tested, with every number</a>.</li>
+  </ul>
 
   <h2 id="details">Details</h2>
   <ul>
-    <li>Buying Pro: secure checkout by Polar, which delivers <code>linkrounds-pro.zip</code> after payment. Polar's receipt also carries a licence key; keep it as your proof of purchase, because Pro never asks for it. $19 once for up to 3 sites (a launch price; the list price is $29); no renewal. Unlimited sites: $79 once, by email only for now. If it doesn't work as described and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>). Questions first? <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
-    <li>Updates: every future Pro update is included at no charge, with no expiry. Download it from your purchase email or Polar's customer page and upload it the same way.</li>
-    <li>Requires WordPress 6.5 or newer and PHP 7.4 or newer. Linkrounds 1.2.2 and Pro 1.1.1 were tested on WordPress 6.5.14 and 7.1.4, each with PHP 7.4 and 8.3: the full test suite passes, and both plugins install through Upload Plugin and activate with no PHP notices. Not tested: other WordPress or PHP versions (including PHP 8.4), and multisite in a live install (only its uninstall is covered by the automated tests).</li>
+    <li>Buying Pro: secure checkout by Polar, which delivers <code>linkrounds-pro.zip</code> after payment. The receipt also carries a licence key; keep it as proof of purchase, because Pro never asks for it. $19 once for up to 3 sites (a launch price; the list price is $29). Unlimited sites: $79 once, by email only for now. If it doesn't work as described and we can't fix it, email us within 14 days for a full refund (<a href="../terms.html">terms</a>).</li>
+    <li>Updates: every future Pro update is included at no charge. Download it from your purchase email or Polar's customer page.</li>
+    <li>Requires WordPress 6.5 or newer and PHP 7.4 or newer. Linkrounds 1.2.3 and Pro 1.2.0 were tested on WordPress 6.5.14 and 7.1.4, each with PHP 7.4 and 8.3. Not tested: other WordPress or PHP versions (including PHP 8.4), and multisite in a live install.</li>
+    <li>Not checked in version 1: page-builder layouts stored outside the post content, custom fields, widgets, comments and theme options. <a href="quick-start.html#limits">All limits</a>.</li>
     <li>GPL-2.0-or-later. The full, readable source of each plugin is inside its zip.</li>
-    <li>Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Bugs and feature requests welcome at the same address.</li>
   </ul>
 
-  <h2 id="privacy">What it sends over the network</h2>
-  <p>To check a link, Linkrounds sends a HEAD request from your server to the linked address (and a GET when HEAD does not succeed), with the User-Agent <code>Mozilla/5.0 (compatible; Linkrounds/1.0; link check)</code>. This happens during a scan, on Re-check now, in the daily re-check, and when you save a post that contains links (from activation, even before the first scan). Addresses in private or local networks are never requested, except your own site's address (see <a href="#gentle">Gentle on your server</a>). Nothing else is sent: no data about your site, your users or your content goes to Ochrestack or to any other service. There is no account, no telemetry and no update or licence check. Pro's email report and test email go only to the addresses you set, through your site's own mail setup. Results stay in two tables in your own database and are removed when you delete the plugin.</p>
+  <h2 id="privacy">Privacy</h2>
+  <p>Your own server checks each linked address. Nothing about your site, your users or your content goes to us or to anyone else: no account, no tracking, no licence or update check. Pro's emails go only to the addresses you set. <a href="quick-start.html#privacy">Exactly what is sent</a>.</p>
 
-  <h2 id="documentation">Documentation</h2>
-  <p>The one-page <a href="quick-start.html">Linkrounds quick start</a> covers installing, the first scan, the four answers, fixing and undoing, exclusions and Pro.</p>
-  <h3>Install</h3>
+  <h2 id="install">Install</h2>
   <ol>
-    <li>Download <a href="download/linkrounds-1.2.2.zip">linkrounds-1.2.2.zip</a>. Do not unzip it.</li>
+    <li>Download <a href="download/linkrounds-1.2.3.zip">linkrounds-1.2.3.zip</a>. Do not unzip it.</li>
     <li>In WordPress, open <strong>Plugins &gt; Add New Plugin &gt; Upload Plugin</strong>, choose the zip, <strong>Install Now</strong>, <strong>Activate</strong>.</li>
     <li>Open <strong>Tools &gt; Linkrounds</strong> and click <strong>Scan now</strong>.</li>
-    <li>For Pro, install <code>linkrounds-pro.zip</code> the same way after the free plugin, then open <strong>Tools &gt; Linkrounds &gt; Schedule &amp; email</strong>, save your schedule and click <strong>Send a test email</strong>.</li>
+    <li>For Pro, upload <code>linkrounds-pro.zip</code> the same way, then open <strong>Tools &gt; Linkrounds &gt; Schedule &amp; email</strong>.</li>
   </ol>
-
-  <h2 id="limits">Known limits</h2>
-  <ul>
-    <li>Not checked in version 1: custom fields, page-builder data stored outside the post content, widgets, comments, theme options, excerpts, templates and template parts edited in the Site Editor, <code>srcset</code> image sets, and video or embed addresses. If a builder keeps its links in the post content they are found, but editing inside a builder layout is not offered, and an Unlink inside a third-party builder block can leave that block needing repair.</li>
-    <li>WP-Cron runs when someone visits the site. On a quiet site, such as a staging or local copy, keep the Linkrounds screen open while it scans (the screen keeps it moving; closing it there stops the scan until the next visit), or set up a real cron job for <code>wp-cron.php</code>.</li>
-    <li>A site that serves 404 to anything but a browser ends up Broken although readers see the page. Linkrounds says honestly that it is a link checker and does not pretend to be a browser. Open the link; if it works, Ignore it.</li>
-    <li>A deleted page that forwards to its site's home page or to a search page is Redirected, not Broken; the reason says where it lands. A "not found" page at an ordinary address still reads as a working redirect, so look at the address it ends at.</li>
-    <li>A server that never answers HEAD requests leaves its links Inconclusive ("no answer within 15 seconds"); they are never called Broken.</li>
-    <li>A missing file in your uploads folder is Broken from the disk check alone, so a redirect for the old file address is not seen.</li>
-    <li>Menu items have no revisions in WordPress; the message after a menu fix says so.</li>
-    <li>No network-wide view on multisite; it works per site.</li>
-    <li>Linkrounds never highlights or strikes through links on your site and adds no dashboard widget.</li>
-  </ul>
+  <p>The one-page <a href="quick-start.html">quick start</a> covers the first scan, fixing and undoing, exclusions and Pro. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>; bugs and feature requests welcome.</p>
 
   <h2 id="faq">Questions</h2>
   <p><strong>Do I need an account, an API key or a credit card for the free plugin?</strong> No. It runs inside your WordPress site. There is nothing to sign up for and no link limit.</p>
-  <p><strong>Is Pro a subscription?</strong> No. $19 once for up to 3 sites (a launch price; the list price is $29). There is no renewal and no licence check, nothing stops working, and every future Pro update is included. For more than 3 sites, write to us: unlimited sites is $79 once.</p>
-  <p><strong>A link works in my browser. Why is it Inconclusive?</strong> Many sites refuse automated checks (403, 999), ask for a login (401) or slow down busy visitors (429). Linkrounds can't tell whether such a link works, so it says so instead of calling it Broken.</p>
+  <p><strong>Is Pro a subscription?</strong> No. $19 once for up to 3 sites. There is no renewal and no licence check, nothing stops working, and every future Pro update is included.</p>
+  <p><strong>A link works in my browser. Why is it Inconclusive?</strong> Many sites refuse automated checks, ask for a login or slow down busy visitors. Linkrounds can't tell whether such a link works, so it says so instead of calling it Broken.</p>
+  <p><strong>Does it need my site to have visitors?</strong> WordPress runs background work when someone visits. On a quiet site, such as a staging copy, keep the Linkrounds screen open while it scans and it keeps going by itself. Pro's scheduled scans start on the first visit after the hour you chose.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>
