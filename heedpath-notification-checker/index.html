@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Heedpath – Notification Checker for Jira: who gets notified, and why</title>
-<meta name="description" content="Heedpath for Jira Cloud: pick an issue, a person and an event, and see whether the notification scheme and permissions send it to them, with the line that decides it. Free for up to 10 users, then $0.20 per user per month.">
+<meta name="description" content="Heedpath for Jira Cloud: pick an issue, a person and an event, and see whether the notification scheme and permissions send it to them, with the line that decides it. Free for up to 10 users, then $0.04 to $0.20 per user per month by site size.">
 <link rel="canonical" href="https://ochrestack.com/heedpath-notification-checker/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ochrestack">
@@ -47,7 +47,7 @@
   .benefits li { margin: 8px 0; }
   figure img.shot { background: #fff; }
   .scroll-x { overflow-x: auto; }
-  @media (max-width: 600px) { .scroll-x img.wide { width: 640px; max-width: none; } }
+  @media (max-width: 600px) { .scroll-x img.wide { width: 712px; max-width: none; } }
   .narrow-only { display: none; }
   .fine { font-size: 15px; color: var(--muted); }
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
@@ -77,7 +77,7 @@
       <source media="(max-width: 600px)" srcset="img/answer-grace-narrow.png" width="800" height="1216">
       <img class="shot" src="img/answer-grace.png" alt="Heedpath's answer screen: Heedpath check: LOG-215 Refund for damaged crate, Grace Okafor, Issue Updated. Answer: Not notified by the scheme. Deciding line: All Watchers: watching LOG-215, but cannot browse LOG-215: Grace Okafor has Browse Projects in project LOG, but is not allowed by issue security level Internal only. Below it the scheme lines (Current Assignee does not include her, All Watchers includes her), Access to LOG-215 (cannot browse) and Account (active, with Jira product access)." width="1440" height="880">
     </picture>
-    <figcaption>Grace watches LOG-215, but issue security leaves her out. This is Heedpath's own screen from the 1.2.0 build, run in Chromium outside Jira on the sample company in its test suite; in Jira it opens under Jira settings &gt; Apps &gt; Heedpath (<a href="quick-start.html#reading">the whole answer as text</a>).</figcaption>
+    <figcaption>Grace watches LOG-215, but issue security leaves her out. Heedpath's own screen (1.2.1), run outside Jira on the sample company in its tests; in Jira it opens under Jira settings &gt; Apps &gt; Heedpath (<a href="quick-start.html#reading">the answer as text</a>).</figcaption>
   </figure>
 
   <ul class="benefits">
@@ -87,12 +87,12 @@
   </ul>
 
   <div class="buy">
-    <p class="price"><strong>Free for up to 10 users. $0.20 per user per month for 11–100 users</strong> (15 users, annual: $30), and never more than $0.20 per user above 100 users. One edition; Atlassian bills it.</p>
+    <p class="price"><strong>Free for up to 10 users. Then, per user per month: $0.20 for 11–100 users, $0.10 for 101–250, $0.06 for 251–1,000, $0.04 above 1,000.</strong> 15 users, annual: $30; 240 users, monthly: $24. One edition; Atlassian bills it.</p>
     <!-- Until the listing URL exists there is no Marketplace link. When Atlassian approves the listing, replace this button with
          <a class="button" id="buy" href="LISTING-URL">Get it on the Atlassian Marketplace</a> and drop the note. -->
     <p><a class="button" id="buy" href="mailto:support@ochrestack.com?subject=Heedpath%20on%20the%20Atlassian%20Marketplace" aria-describedby="buy-note">Email me when it's on the Marketplace</a></p>
-    <p class="note" id="buy-note"><strong>Coming to the Atlassian Marketplace.</strong> It cannot be installed yet. The button opens an email to us; we write back once when Heedpath is listed.</p>
-    <p class="fine">Jira Cloud, company-managed projects · tested: 170 automated tests pass on version 1.2.0 against a model of Jira Cloud's API, <strong>not yet on a live Jira site</strong> (<a href="#tested">details</a>) · source not included (commercial; installs from the Marketplace) · read-only · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+    <p class="note" id="buy-note"><strong>Coming to the Atlassian Marketplace.</strong> It cannot be installed yet. Email us with the button and we write back once when it is listed.</p>
+    <p class="fine">Jira Cloud, company-managed projects · for agents and internal users, not emails to Jira Service Management portal customers · tested: 173 automated tests pass on version 1.2.1, outside Jira, <strong>not yet on a live Jira site</strong> (<a href="#tested">details</a>) · source not included (commercial; installs from the Marketplace) · read-only · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 
   <h2 id="how">How it works</h2>
@@ -108,21 +108,21 @@
 
   <h2 id="who-gets-this">Everyone one event reaches</h2>
   <figure>
-    <div class="scroll-x"><img class="shot wide" src="img/who-gets-this.png" alt="Heedpath's Who gets this screen for Issue Commented on LOG-214 Customs hold on pallet 7: 5 people notified by the scheme, 1 dropped (6 listed). Tom Field through Reporter; Ana Ruiz through Current Assignee and Project Role Developers through group dev-team; Lena Brandt and Omar Haddad through All Watchers; Marcus Webb as a named member of Developers; Sofia Marin, watching, marked Dropped: account is deactivated." width="1800" height="870" loading="lazy"></div>
-    <figcaption>Who gets Issue Commented on LOG-214, and why Sofia does not. Heedpath's own screen, from the same 1.2.0 build outside Jira.</figcaption>
+    <div class="scroll-x"><img class="shot wide" src="img/who-gets-this.png" alt="Heedpath's Who gets this screen for Issue Commented on LOG-214 Customs hold on pallet 7: 5 people notified by the scheme, 1 dropped (6 listed). Tom Field through Reporter; Ana Ruiz through Current Assignee and Project Role Developers through group dev-team; Lena Brandt through All Watchers; Omar Haddad through All Watchers and Project Role Developers through group dev-team; Marcus Webb as a named member of Developers; Sofia Marin, watching, marked Dropped: account is deactivated." width="1424" height="950" loading="lazy"></div>
+    <figcaption>Who gets Issue Commented on LOG-214, and why Sofia does not. Same build, outside Jira.</figcaption>
   </figure>
 
   <h2 id="scope">What Jira already does</h2>
-  <p>Jira already lets an admin find the answer by hand: open the project's notification scheme, read the event's row, then check the person against each entry (role members on the People page, group members in user management, the issue's watchers, custom field values), then check their access with the Permission helper. Atlassian's own recommendation since the 2024 removal is to log in as the person and look at their notification settings. For one simple case on a small site that is enough. Heedpath does the whole chain in one answer, lists everyone an event reaches, and names customer accounts, deactivated accounts and accounts without Jira access.</p>
+  <p>Jira already lets an admin find the answer by hand: open the project's notification scheme, read the event's row, then check the person against each entry (role members on the People page, group members in user management, the issue's watchers, custom field values), then check their access with the Permission helper. Atlassian's own recommendation since the 2024 removal is to log in as the person and look at their notification settings. For one simple case on a small site that is enough. Heedpath does the whole chain in one answer, and names customer and deactivated accounts and those without Jira access.</p>
 
   <h2 id="limits">Known limits</h2>
-  <p>Reads configuration, not deliveries; every answer lists what it cannot see. Company-managed projects only: team-managed projects get Cannot tell, with the reason. Jira admins, English. <a href="quick-start.html">Quick start</a>.</p>
+  <p>Reads configuration, not deliveries; every answer lists what it cannot see. Not for emails to Jira Service Management portal customers: those follow the service project's Customer notifications, which Heedpath does not read. Company-managed projects only: team-managed projects get Cannot tell, with the reason. Jira admins, English. <a href="quick-start.html">Quick start</a>.</p>
 
   <h2 id="tested">How we tested</h2>
-  <p>170 automated tests pass headless on version 1.2.0 (Node 22, Linux) against a model of Jira Cloud's REST API, and 14 checks pass with Heedpath's screen in Chromium on Linux, outside Jira. <strong>Untested so far:</strong> a live Jira site, and Windows or macOS browsers. The images on this page are Heedpath's own screen outside Jira; screenshots inside Jira will be added after that first live-site run, which has not happened yet.</p>
+  <p>On Linux, outside Jira: 173 automated tests pass on version 1.2.1 against a simulated Jira Cloud site built from Atlassian's API reference, and 15 checks pass with Heedpath's screen in Chromium. <strong>Untested so far:</strong> a live Jira site, and Windows or macOS browsers. Screenshots inside Jira come after that first live-site run, which has not happened yet.</p>
 
   <h2 id="privacy">Privacy and support</h2>
-  <p>No external hosts, 23 read-only permissions, nothing stored, no telemetry (<a href="../privacy.html">privacy policy</a>). Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
+  <p>No external hosts, 23 read-only permissions, nothing stored about people or issues, no telemetry (<a href="../privacy.html">privacy policy</a>). Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>
