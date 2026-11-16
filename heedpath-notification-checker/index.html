@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heedpath – Notification Checker for Jira: who gets notified, and why</title>
+<meta name="description" content="Heedpath for Jira Cloud: pick an issue, a person and an event, and see whether the notification scheme and permissions send it to them, with the line that decides it. Free for up to 10 users, then $0.20 per user per month.">
+<link rel="canonical" href="https://ochrestack.com/heedpath-notification-checker/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Heedpath – Notification Checker for Jira">
+<meta property="og:description" content="&quot;I never got the email.&quot; Pick the issue, the person and the event: Heedpath shows whether Jira's notification scheme and permissions send it to them, and the line that decides it.">
+<meta property="og:url" content="https://ochrestack.com/heedpath-notification-checker/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Heedpath – Notification Checker for Jira">
+<meta name="twitter:description" content="See who gets notified on a Jira issue, and why: the scheme line, issue security and account behind each answer.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .note { font-size: 15px; color: var(--muted); }
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  .answer { margin: 0; padding: 14px 18px; background: #fff; border: 1px solid #E6DED3; border-left: 3px solid var(--ochre); border-radius: 10px; font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .benefits { padding-left: 20px; }
+  .benefits li { margin: 8px 0; }
+  .slot { min-height: 128px; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 14px 18px; border: 2px dashed #D9CBB8; border-radius: 10px; background: #fff; color: var(--muted); font-size: 15px; }
+  .slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0 28px; }
+  .slots figure { margin: 0; }
+  .narrow-only { display: none; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Heedpath – Notification Checker for Jira</h1>
+  <p class="sub">When someone says “I never got the email”, Heedpath shows a Jira Cloud admin whether the notification scheme and permissions send that event to them, and the line that decides it.</p>
+
+  <figure id="answer">
+    <pre class="answer">Heedpath check: LOG-215 "Refund for damaged crate" · Grace Okafor · Issue Updated
+Notification scheme: Larkfield Service Notifications (project LOG)
+
+Answer: Not notified by the scheme
+Deciding line: All Watchers: watching LOG-215, but cannot browse LOG-215: Grace Okafor has Browse Projects in project LOG, but is not allowed by issue security level "Internal only". Jira notifies only people who can see the issue.</pre>
+    <figcaption>The top of a real answer, word for word as <strong>Copy answer</strong> gives it: Grace watches the issue, and issue security still leaves her out. Produced by Heedpath 1.1.0 on the sample site in its test suite (<a href="quick-start.html#reading">the whole answer</a>). Screenshots from a live Jira site follow (<a href="#in-jira">below</a>).</figcaption>
+  </figure>
+
+  <ul class="benefits">
+    <li><strong>“Why didn't they get the email?”</strong> One of three answers, Notified, Not notified or Cannot tell, with the scheme line that decides it, the person's access to the issue (issue security included) and their account.</li>
+    <li><strong>“Some team members are notified and some not.”</strong> Who gets this lists everyone one event reaches on an issue, each with the lines that include them, and who drops out, and why.</li>
+    <li><strong>“We need to confirm it to the client.”</strong> Copy answer puts the whole answer in the ticket as plain text. It says what the configuration sends, never that an email was delivered.</li>
+  </ul>
+
+  <div class="buy">
+    <p class="price"><strong>Free for up to 10 users. $0.20 per user per month for 11–100 users</strong> (15 users, annual: $30). One edition, every feature; Atlassian bills it, with no usage plans and no price change at renewal.</p>
+    <!-- Until the listing URL exists the button stays href="#". "Listing in review" is our own review (red team, customer gate, critics) before
+         submission. When the listing is submitted, say it is in review with Atlassian; when Atlassian approves it, set href to the listing URL
+         and drop "pending" and onclick. -->
+    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on the Atlassian Marketplace</a></p>
+    <p class="note" id="buy-note"><strong>Listing in review.</strong> Not on the Atlassian Marketplace yet, so it can't be installed today; this button will link to the listing once it is live. <a href="mailto:support@ochrestack.com?subject=Heedpath%20listing">Email us</a> for a note when it is.</p>
+    <p class="fine">Jira Cloud, company-managed projects, for Jira admins · tested with 160 automated tests against a model of Jira Cloud's REST API, <strong>not yet on a live Jira site</strong> (<a href="#tested">details</a>) · commercial licence, installed from the Marketplace, no download or source code · read-only, nothing sent outside Atlassian · support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+  </div>
+
+  <h2 id="how">How it works</h2>
+  <figure class="wide-only">
+    <img src="workflow.svg" alt="Diagram: you pick an issue (LOG-215), a person (Grace Okafor) and an event (Issue Updated) and press Check; Heedpath reads Jira, read-only: the event's row in the notification scheme, roles, groups and watchers, issue security and access, and the person's account; you get one answer, Notified by the scheme, Not notified by the scheme or Cannot tell, with the line that decides it, ready to copy. From Jira settings, Apps, Heedpath, or an issue's more-actions menu; every answer ends with what Heedpath cannot see." width="720" height="330" loading="lazy">
+    <figcaption>Pick, check, copy. Heedpath only reads Jira.</figcaption>
+  </figure>
+  <ol class="narrow-only">
+    <li><strong>Pick</strong> an issue, a person and an event.</li>
+    <li><strong>Heedpath reads</strong> the scheme, roles, groups, watchers, issue security and the account. It changes nothing.</li>
+    <li><strong>One answer</strong>, with the line that decides it, ready to copy.</li>
+  </ol>
+
+  <h2 id="in-jira">In Jira</h2>
+  <p>Heedpath's page lives inside Jira, so its screenshots are taken on a live Jira site; they follow from the run on our test site. Each frame names the screen it will hold.</p>
+  <div class="slots">
+  <figure id="shot-1">
+    <!-- Shot 1. Replace the div with:
+    <img src="img/shot-1-check-grace.png" alt="Heedpath in Jira settings, LOG-215 Refund for damaged crate, Grace Okafor, Issue Updated: Answer: Not notified by the scheme; the deciding line names All Watchers and issue security level Internal only; the Access and Account lines; the top of What Heedpath cannot see" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 1 from Jira: the Heedpath page in Jira settings with the answer for Grace Okafor on LOG-215, Issue Updated: Not notified by the scheme, deciding line All Watchers and issue security level Internal only">
+      <strong>Shot 1 · Jira settings &gt; Apps &gt; Heedpath</strong>
+      <span>The answer above, on screen.</span>
+    </div>
+    <figcaption>Watching is not enough: issue security level “Internal only” leaves Grace out. Each reason names a line you can open in Jira.</figcaption>
+  </figure>
+  <figure id="shot-4">
+    <!-- Shot 4. Replace the div with:
+    <img src="img/shot-4-scheme-side-by-side.png" alt="Left: Jira's notification scheme page for Larkfield Service Notifications with the Issue Resolved row. Right: Heedpath for Lena Brandt on LOG-215, Issue Resolved: Notified by the scheme, deciding line All Watchers: watching LOG-215, allowed by issue security level Internal only" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 4 from Jira: Jira's notification scheme page with the Issue Resolved row beside Heedpath's answer for Lena Brandt on LOG-215: Notified by the scheme, through All Watchers">
+      <strong>Shot 4 · the answer beside Jira's own scheme page</strong>
+      <span>Lena Brandt on LOG-215, Issue Resolved, next to that row of the scheme.</span>
+    </div>
+    <figcaption>Every reason points at a line you can open in Jira: here the scheme's Issue Resolved row.</figcaption>
+  </figure>
+  <figure id="shot-2">
+    <!-- Shot 2. Replace the div with:
+    <img src="img/shot-2-who-gets-this.png" alt="Who gets Issue Commented on LOG-214: Tom Field (Reporter), Ana Ruiz (Current Assignee, and Project Role Developers through group dev-team), the watchers, and Sofia Marin marked Dropped: account is deactivated, with the access column filled in" width="1840" height="900" loading="lazy">
+    -->
+    <div class="slot" role="img" aria-label="Screenshot 2 from Jira: Who gets Issue Commented on LOG-214, each person with the lines that include them, and Sofia Marin marked Dropped: account is deactivated">
+      <strong>Shot 2 · Who gets this</strong>
+      <span>Issue Commented on LOG-214, with Sofia Marin dropped.</span>
+    </div>
+    <figcaption>Everyone one event reaches, each with their lines, and who drops out, and why.</figcaption>
+  </figure>
+  </div>
+
+  <h2 id="what">What it does</h2>
+  <ul>
+    <li><strong>Check one person:</strong> every line of the event's row, all twelve recipient types, each with the fact that includes or excludes the person (“in project role Developers through group dev-team”), then their access and account. Customer accounts and accounts without Jira product access are never “Notified”, and the answer says why.</li>
+    <li><strong>All events:</strong> what one person will and will not hear about on one issue.</li>
+    <li><strong>Who gets this:</strong> groups over 1,000 members show as a count until you press Show members.</li>
+    <li><strong>From the issue:</strong> Check notifications in the issue's ••• menu, for Jira admins.</li>
+    <li><strong>Says what it cannot see:</strong> personal notification settings, email delivery, @mention emails, Jira Service Management customer notifications and which event a transition fires, each with the route to check it. Missing data gives Cannot tell, never a guess.</li>
+  </ul>
+
+  <div class="box warn" id="scope">
+    <strong>What Jira already does.</strong> Jira already lets an admin find the answer by hand: open the project's notification scheme, read the event's row, then check the person against each entry (role members on the People page, group members in user management, the issue's watchers, custom field values), then check their access with the Permission helper. Atlassian's own recommendation since the 2024 removal is to log in as the person and look at their notification settings. For one simple case on a small site that is enough. Heedpath does the whole chain in one answer.
+  </div>
+
+  <h2 id="limits">Known limits</h2>
+  <p>Reads configuration, not deliveries: “Notified by the scheme” is not a record of an email. Company-managed projects only (team-managed gets Cannot tell); Jira Cloud and English only; Jira admins only; reads Jira as it is now, not as it was. All limits, and how to read an answer: the <a href="quick-start.html">quick start</a>.</p>
+
+  <h2 id="tested">How we tested</h2>
+  <p>160 automated tests pass headless (Node 22, Linux) against a model of Jira Cloud's REST API built from Atlassian's reference, including 69 expected answers written by hand and a 1,203-member group. The built page passed 14 checks in Chromium outside Jira. <strong>Not yet run on a live Jira site</strong>, inside Jira's own page, or in Windows or macOS browsers; that run and the screenshots come before the Marketplace.</p>
+
+  <h2 id="privacy">Privacy and support</h2>
+  <p>Heedpath runs on Atlassian's Forge platform with no external hosts, uses 23 read-only permissions, and stores nothing about people or issues. No analytics, no telemetry (<a href="../privacy.html">privacy policy</a>). Questions: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. We answer every message.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
