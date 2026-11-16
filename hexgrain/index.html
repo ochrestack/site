@@ -90,11 +90,12 @@
   .top .benefits li { margin: 2px 0; }
   .top .buy { margin-top: 10px; }
   .top .note, .top .fine { margin: 0 0 6px; line-height: 1.45; }
-  .top-image { margin: 16px 0; }
+  .top-image, .top-licensed { margin: 16px 0; }
   @media (min-width: 1000px) {
     .top { display: grid; grid-template-columns: minmax(420px, 1fr) minmax(0, 640px); column-gap: 36px; align-items: start; }
     .top > * { grid-column: 1; }
-    .top > .top-image { grid-column: 2; grid-row: 1 / span 4; margin: 28px 0 0; }
+    .top > .top-image { grid-column: 2; grid-row: 1 / span 3; margin: 28px 0 0; }
+    .top > .top-licensed { grid-column: 2; grid-row: 4 / span 2; margin: 8px 0 0; }
   }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
@@ -109,8 +110,8 @@
   <h1>Hexgrain: Debugger Hex View</h1>
   <p class="sub">In the IntelliJ IDEA debugger a <code>byte[]</code> is a column of signed decimals, 100 at a time, so Hexgrain shows it as a hex dump.</p>
   <figure class="top-image">
-    <a href="img/step-over-marks-the-stamped-dates-window.png"><img class="hero" src="img/step-over-marks.png" alt="Hexgrain's Hex tab in IntelliJ IDEA on a 1,262-byte PNG, 16 bytes per row: offsets on the left, hex in the middle, and the XMP text on the right, readable as 'xmp:ModifyDate=&quot;2026-11-09T10:42:07&quot;' and 'xmp:MetadataDate=&quot;2026-11-09T10:42:07&quot;'. After Step Over the digits the program just rewrote are marked in orange in both columns; the status line reads '24 changed since the last pause' and 'Rows 0x230–0x36F of 1,262 bytes'. Above the rows, one line says what a licence adds and its price: '$9 once, 30-day free trial'; the rows have the tab's full width" width="958" height="522"></a>
-    <figcaption>Free tier, one Step Over later: the bytes the program just rewrote are marked.</figcaption>
+    <a href="img/length-field-selected-window.png"><img class="hero" src="img/length-field-selected.png" alt="Hexgrain's Hex tab in IntelliJ IDEA on frame, a 52-byte telemetry frame, 16 bytes per row, characters in UTF-8. Row 00000000: CA FE D0 0D 00 01 00 00 12 67 00 00 01 A1 77 20. Row 00000010: CA 00, then the two selected bytes 00 1E, then 74 65 6D 70 3D 32 31 2E 35 C2 B0 43, which read 'temp=21.5° C' in the characters. Rows 00000020 and 00000030 end the body with ';hum=40%;loc=Zü' and 'rich'. The status line reads 'Selection: offset 0x12 (18), length 2 bytes' and 'Rows 0x0–0x33 of 52 bytes'. Above the rows, one line says what a licence adds and its price" width="958" height="245"></a>
+    <figcaption>Free: a telemetry frame's length field says <code>00 1E</code> (30), but the UTF-8 body after it runs from 0x14 to 0x33: 32 bytes.</figcaption>
   </figure>
   <ul class="benefits">
     <li><strong>Read it like a hex editor:</strong> 8, 16 or 32 bytes a row, the characters beside them.</li>
@@ -119,10 +120,14 @@
   </ul>
   <div class="buy">
     <p class="price"><strong>Free up to 64 KB, no time limit. $9 once for the rest.</strong></p>
-    <p><a class="button" id="buy" href="download/hexgrain-1.0.5.zip" aria-describedby="buy-note">Download Hexgrain 1.0.5 (free)</a></p>
+    <p><a class="button" id="buy" href="download/hexgrain-1.0.6.zip" aria-describedby="buy-note">Download Hexgrain 1.0.6 (free)</a></p>
     <p class="note" id="buy-note">Install: Settings | Plugins | ⚙ | Install Plugin from Disk. The licence: personal or commercial, nothing renews, 30-day trial, sold by JetBrains Marketplace. Hexgrain is not listed there yet; the licence and trial start when it is.</p>
     <p class="fine">Tested: IntelliJ IDEA 2025.3 on Linux; Windows and macOS untested; no Rider. Source code included. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a></p>
   </div>
+  <figure class="top-licensed">
+    <a href="img/kotlin-goto-inspector-window.png"><img class="hero" src="img/kotlin-goto-inspector.png" alt="Kotlin: the Hex tab on bytes, a ByteArray of 1,761,444 bytes read from the jar kotlin-stdlib-2.2.20.jar. Go to 0x1AE08E jumped to the jar's End of Central Directory record near the end of the array; four bytes, 20 7C 19 00, are selected and the data inspector shows uint32 1670176 little-endian, the offset of the central directory. The characters column shows the jar's file names, such as META-INF/versions/9/module-info.class" width="958" height="522"></a>
+    <figcaption>Where the $9 starts: past 64 KB in a 1,761,444-byte Kotlin <code>ByteArray</code>, Go to, then the data inspector reads little-endian.</figcaption>
+  </figure>
 </section>
 <main>
 
@@ -160,8 +165,8 @@
   </div>
 
   <figure class="real-size">
-    <a href="img/kotlin-goto-inspector-window.png"><img src="img/kotlin-goto-inspector.png" alt="Kotlin: the Hex tab on bytes, a ByteArray of 1,761,444 bytes read from the jar kotlin-stdlib-2.2.20.jar. Go to 0x1AE08E jumped to the jar's End of Central Directory record near the end of the array; four bytes, 20 7C 19 00, are selected and the data inspector shows uint32 1670176 little-endian, the offset of the central directory. The characters column shows the jar's file names, such as META-INF/versions/9/module-info.class" width="958" height="522" loading="lazy"></a>
-    <figcaption>Licensed, Kotlin: a 1,761,444-byte jar, Go to, then the data inspector reads little-endian.</figcaption>
+    <a href="img/step-over-marks-the-stamped-dates-window.png"><img src="img/step-over-marks.png" alt="Hexgrain's Hex tab in IntelliJ IDEA on a 1,262-byte PNG, 16 bytes per row: offsets on the left, hex in the middle, and the XMP text on the right, readable as 'xmp:ModifyDate=&quot;2026-11-09T10:42:07&quot;' and 'xmp:MetadataDate=&quot;2026-11-09T10:42:07&quot;'. After Step Over the digits the program just rewrote are marked in orange in both columns; the status line reads '24 changed since the last pause' and 'Rows 0x230–0x36F of 1,262 bytes'" width="958" height="522" loading="lazy"></a>
+    <figcaption>Free tier, one Step Over later: the bytes the program just rewrote are marked.</figcaption>
   </figure>
 
   <figure class="real-size">
@@ -177,7 +182,7 @@
   <ul>
     <li>Not for Rider, Python, Go, JavaScript, C, C++, Rust, Remote Development or Android Studio.</li>
     <li>Changes are marked anywhere in arrays up to 1 MiB; in larger ones, in the rows read at both pauses.</li>
-    <li>Read-only. A direct <code>ByteBuffer</code> is read through a copy in the program's heap.</li>
+    <li>Read-only. A direct <code>ByteBuffer</code> is read through a copy in the program's heap; one that is only an Evaluate Expression result cannot be shown (assign it to a variable first).</li>
     <li>Measured up to 1 GiB: first rows within 85 ms; a Find through all of it takes 38 to 53 seconds.</li>
   </ul>
 
