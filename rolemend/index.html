@@ -87,16 +87,16 @@
 
   <ul style="margin:6px 0">
     <li><strong>View but not edit:</strong> drafts listed, Settings, Plugins, Users; saving refused (<a href="#not-locked">limits</a>).</li>
-    <li><strong>Fix alt text, no uploads:</strong> on any photo in the Media Library.</li>
+    <li><strong>Fix alt text, no uploads:</strong> on any photo in the Media Library, on a WooCommerce shop too.</li>
     <li><strong>Changes nothing else</strong> on your site; delete it and the roles go.</li>
   </ul>
 
   <div class="buy" style="margin-top:10px">
-    <p class="price" style="margin-bottom:6px"><strong>Free:</strong> <a href="download/rolemend.zip?v=1.1.0">rolemend.zip</a> 1.1.0, both roles · <strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
+    <p class="price" style="margin-bottom:6px"><strong>Free:</strong> <a href="download/rolemend.zip?v=1.2.0">rolemend.zip</a> 1.2.0, both roles · <strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
     <p class="fine" id="trust" style="margin-bottom:0">Tested on WordPress 7.1.4 and 6.5.14, PHP 8.3 and 7.4, on Linux; Windows and macOS untested · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 
-  <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Rolemend adds both roles and changes nothing else. Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. Single site and multisite tested (<a href="#tested">full list</a>); the free zip is 37 KB.</p>
+  <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Rolemend adds both roles and changes nothing else. Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. The free zip is 39 KB. <a href="how-we-tested.html">How we tested</a>.</p>
 
   <div class="box warn">
     <strong>Why a role editor can't do this.</strong> WordPress lists posts only for people who may edit them, and opens the Media Library only for people who may upload. Two site owners asked WordPress.org's support forums for exactly these roles. WordPress core cannot do either job, which is why both askers were told "Partly" and "no combination of capabilities".
@@ -109,7 +109,7 @@
         <source src="video/rolemend-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
         <source src="video/rolemend-demo-720p.mp4" type="video/mp4">
       </video>
-      <figcaption>The demo, 59 s, captions only, no sound (1080p, 720p on phones; <a href="video/rolemend-demo-1080p.mp4">open full size</a>). On a fresh WordPress 7.1.4, Rolemend 1.1.0 is activated and both roles appear in the Role list. Ravi (View Only) sees every post, his Site Title change is refused and the title stays as it was, and Plugins has no Activate or Delete. Jo (Media Library, no uploads) fixes the alt text on a photo Sam uploaded, and a dropped photo is refused. Faster parts say "sped up". The free plugin only; Pro is not shown.</figcaption>
+      <figcaption>The demo, 59 s, captions only, no sound (1080p, 720p on phones; <a href="video/rolemend-demo-1080p.mp4">open full size</a>). On a fresh WordPress 7.1.4, Rolemend 1.2.0 is activated and both roles appear in the Role list. Ravi (View Only) sees every post, his Site Title change is refused and the title stays as it was, and Plugins has no Activate or Delete. Jo (Media Library, no uploads) fixes the alt text on a photo Sam uploaded, and a dropped photo is refused. Faster parts say "sped up". The free plugin only; Pro is not shown.</figcaption>
     </figure>
     <figure>
       <img src="video/rolemend-view-only-refused.gif" alt="A 13-second loop from the demo: Ravi Patel, signed in as View Only, sees the Posts list with drafts and private posts and the 'View only' marker; he types 'Changed by the accountant' as the Site Title and clicks Save Changes; the page says 'This account is view only, so nothing was changed. Ask an administrator if this change is needed.'; Settings > General shows the Site Title still 'Northfield Botanic Garden'" width="960" height="540" loading="lazy">
@@ -125,25 +125,34 @@
     <figcaption>Save Changes: refused. The Site Title is unchanged.</figcaption>
   </figure>
   <figure>
-    <img src="img/view-only-plugins.png" alt="Plugins for the View Only user: Akismet, Hello Dolly, Rolemend and SQLite Database Integration listed with their descriptions, with no Activate, Deactivate or Delete links and no bulk actions" width="1024" height="560" loading="lazy">
+    <img src="img/view-only-plugins.png" alt="Plugins for the View Only user: Akismet, Hello Dolly, Rolemend Pro and Rolemend listed with their descriptions, with no Activate, Deactivate or Delete links and no bulk actions" width="1024" height="640" loading="lazy">
     <figcaption>Plugins: the list is there; Activate, Deactivate and Delete are not.</figcaption>
   </figure>
 
   <h2>Media Library (no uploads)</h2>
-  <p>Saves Title, Alternative Text, Caption and Description. Uploading, deleting and Edit Image are refused.</p>
+  <p>Saves Title, Alternative Text, Caption and Description. Uploading, deleting and Edit Image are refused, and their buttons are not shown.</p>
   <figure>
-    <a href="img/media-alt-text.jpg"><img src="img/media-alt-text.jpg" alt="Attachment details for Jo Osei, who has the Media Library (no uploads) role: a red hibiscus photo uploaded by Sam Carter, Alternative Text 'Red hibiscus flower, close-up, with yellow pollen', and 'Saved.' at the top" width="1024" height="640" loading="lazy"></a>
+    <a href="img/media-alt-text.jpg"><img src="img/media-alt-text.jpg" alt="Attachment details for Jo Osei, who has the Media Library (no uploads) role: a red hibiscus photo uploaded by Sam Carter, Alternative Text 'Red hibiscus in flower, close-up', and 'Saved.' at the top" width="1024" height="640" loading="lazy"></a>
     <figcaption>Alt text saved on a photo someone else uploaded.</figcaption>
   </figure>
   <figure>
     <a href="img/media-drop-refused.jpg"><img src="img/media-drop-refused.jpg" alt="Jo Osei's Media Library grid of garden photographs, with the notice 'meadow-in-july.jpg: This account cannot upload files, so nothing was uploaded. Ask an administrator to add the file to the Media Library.' The menu shows only Dashboard, Media and Profile, and there is no Add Media File button" width="1024" height="640" loading="lazy"></a>
     <figcaption>A photo dropped onto the library: refused, nothing added.</figcaption>
   </figure>
-  <p class="fine">Images already placed in posts keep the alt text they were inserted with; featured images and galleries show the new text.</p>
+  <p class="fine">Images already placed in posts keep the alt text they were inserted with; featured images, galleries and shop product photos show the new text.</p>
+
+  <h2 id="works-with">Does it work with my plugins?</h2>
+  <table>
+    <tr><th>Plugin (version tested)</th><th>Media Library role</th><th>View Only</th></tr>
+    <tr><td>WooCommerce 11.2.2</td><td><strong>Yes.</strong> Signs in to wp-admin, not to the shop's My account page; the product page shows the alt text they save.</td><td>Looks round WordPress's screens; no WooCommerce menu, no orders.</td></tr>
+    <tr><td>Yoast SEO 28.8</td><td>Yes: the media fields are WordPress's own. No Yoast screens.</td><td>No Yoast menu or settings.</td></tr>
+    <tr><td>GiveWP 4.19.2</td><td>Yes. No GiveWP screens.</td><td>No donations or reports. GiveWP has its own Accountant role for that.</td></tr>
+  </table>
+  <p class="fine">Other plugins' menus are left out of both roles' menus unless the plugin uses WordPress's Settings permission. Other plugins that send people without the Edit Posts permission to an account page are not handled.</p>
 
   <h2 id="pro">Rolemend Pro</h2>
   <ul>
-    <li><strong>Access ends on:</strong> on that date the person loses the role and is signed out.</li>
+    <li><strong>Access ends on:</strong> on that date the person loses the role and is signed out, even if nobody remembers.</li>
     <li><strong>Media &gt; Text Changes:</strong> every title, alt text, caption and description change by the media role, before and after, with Undo and CSV.</li>
   </ul>
   <figure>
@@ -152,7 +161,7 @@
   </figure>
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
-    <p class="fine">$19 once, unlimited sites, updates included · needs the free plugin · Polar checkout · <a href="../terms.html">14-day refund</a></p>
+    <p class="fine">$19 once, unlimited sites, updates included · needs the free plugin, installed first · Polar checkout · <a href="../terms.html">14-day refund</a></p>
   </div>
 
   <div class="box" id="free-route">
@@ -162,37 +171,22 @@
   <details id="not-locked">
     <summary>What it does not lock</summary>
     <ul>
-      <li>Anything another plugin does outside the WordPress database when a plain link is clicked or a screen is read, such as sending an email or writing a file. WordPress's own links, such as Trash or Activate, are refused, and database writes from other plugins' code on these users' requests are stopped. A plugin whose save was stopped may still show its own "Saved" message. Give the role to people you trust not to tamper.</li>
+      <li>Anything another plugin does outside the WordPress database when a plain link is clicked or a screen is read, such as sending an email or writing a file. WordPress's own links, such as Trash or Activate, are refused, and database writes from other plugins' code on these users' requests are stopped. A plugin whose save was stopped may still show its own "Saved" message. Choose who gets the role as you would for any account that can read your site.</li>
       <li>Code that runs before WordPress knows who is signed in, and plugins that write through their own database connection instead of WordPress's.</li>
       <li>What the account can read is readable, including user email addresses and commenter details.</li>
       <li>Drafts are listed by title, author and date, but their text cannot be opened, because WordPress shows a draft only to people who may edit it.</li>
       <li>Tools &gt; Export and the theme and plugin file editors are not available to the role.</li>
-      <li>Other plugins' screens appear only when they use WordPress's own Settings permission, and some of them may load empty when their reading also goes through a save handler. WooCommerce stays hidden.</li>
+      <li>Other plugins' screens appear only when they use WordPress's own Settings permission, and some of them may load empty when their reading also goes through a save handler. Other plugins' menu entries, such as WooCommerce's Products, are left out.</li>
+      <li>Appearance &gt; Editor opens, but its previews of posts, pages and navigation are empty, because WordPress lists those only for people who may edit them.</li>
       <li>On other plugins' screens, a link or form whose handler checks WordPress's security token is refused for both roles, even when it only reads (for example a download link).</li>
       <li>The media role cannot post comments or other front-end forms while signed in.</li>
     </ul>
   </details>
 
-  <details id="tested">
-    <summary>How we tested</summary>
-    <table>
-      <tr><th>Test</th><th>Result</th></tr>
-      <tr><td>View Only user opens wp-admin screens</td><td>54 screens, each complete, with "View only" in the toolbar</td></tr>
-      <tr><td>View Only user tries to change something: Settings, posts, pages and drafts, media, comments, users, plugins, themes, menus, widgets, Customizer, REST API, another plugin's own save handlers</td><td>142 attempts, none got through: 141 refused with the plain message, 1 background request's plugin data dropped. A checksum of the site's content, settings and user tables was identical after every one</td></tr>
-      <tr><td>Media role uploads through 11 routes (the library uploader, drag and drop, REST API, a file fetched from a URL, another plugin's upload handler)</td><td>All 11 refused, and again after a role editor gave the role upload rights (22 refusals); no new file, no new attachment</td></tr>
-      <tr><td>Media role saves Title, Alternative Text, Caption and Description</td><td>Saved through Attachment details and Edit Media, read back</td></tr>
-      <tr><td>Activation</td><td>Every existing role and user identical; home page, a post, a page, an archive and a search byte-identical before and after</td></tr>
-      <tr><td>Deactivate, reactivate, delete</td><td>Both roles' users lose wp-admin, then get the same access back; on deletion the roles go and the users keep their accounts with no role</td></tr>
-    </table>
-    <p>Tested on Linux with WordPress 7.1.4 and 6.5.14, PHP 8.3.6 and 7.4.33, MariaDB 10.11.14, single site and multisite (subdirectory network), on PHP's built-in web server; both zips also installed through Upload Plugin on each WordPress and PHP pair with WP_DEBUG on and no notices. Plugin Check 2.2.0: 0 errors, 0 warnings. Requires WordPress 6.5 or later and PHP 7.4 or later. Not tested: MySQL 8, Apache or nginx, servers on Windows or macOS, translations; the full test suite has not been run on the SQLite Database Integration plugin.</p>
-    <h3 id="images">How the images were made</h3>
-    <p>They are captures of a real WordPress 7.1.4 with Rolemend 1.1.0 (and Rolemend Pro 1.0.1 for the Pro image), in Chromium 141, of our demo site Northfield Botanic Garden: 13 posts, 6 pages, 5 comments, 7 people and 20 photographs that ship with the Twenty Twenty-Five theme. The site runs on PHP's built-in server with the SQLite Database Integration plugin 3.1.3, which is why the toolbar says "Database: SQLite". On that site we checked, while capturing, that the Site Title was unchanged after the refused save, that nothing in the content, settings or user tables changed during the View Only session, that the alt text was stored, and that no file or attachment was added after the refused drop. The dropped photo was handed to WordPress's uploader by a script in the page, because the virtual display cannot drag from a file manager.</p>
-    <p>The demo video is one continuous recording of the same demo site on a fresh WordPress 7.1.4 with MariaDB (so its toolbar has no SQLite line), in Chromium 141 drawn at 2.25 times normal size, with Rolemend 1.1.0 installed from the free zip. The pointer moves and clicks and the typing are real input events from a script; the sign-ins between people and the page loads are cut out. The dropped photo was handed over the same way as in the image above. After the recording we read back from the database that the Site Title was unchanged, the alt text was stored and no attachment was added.</p>
-  </details>
-
   <h2 id="details">Details</h2>
   <ul>
     <li><a href="quick-start.html">Quick start</a>: install, give a role, Pro, updates.</li>
+    <li><a href="how-we-tested.html">How we tested</a>: the counts, the versions, how the images and the video were made.</li>
     <li>Privacy: neither plugin contacts any server. A View Only user can read user email addresses and commenter details, so choose who gets the role.</li>
     <li>GPL-2.0-or-later, full source in both zips. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
   </ul>

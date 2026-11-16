@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Rolemend was tested: counts, versions, images and video</title>
+<meta name="description" content="What was run on Rolemend 1.2.0 and Rolemend Pro 1.1.0: screens opened, changes attempted, upload routes tried, the WordPress, PHP and plugin versions, and how the product-page images and the demo video were made.">
+<link rel="canonical" href="https://ochrestack.com/rolemend/how-we-tested.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>How Rolemend was tested</h1>
+  <p>What was run on Rolemend 1.2.0 and Rolemend Pro 1.1.0, and how the pictures and the video were made. Back to the <a href="index.html">Rolemend product page</a>.</p>
+
+  <h2 id="tested">What was run</h2>
+  <table>
+    <tr><th>Test</th><th>Result</th></tr>
+    <tr><td>View Only user opens wp-admin screens</td><td>54 screens, each complete, with "View only" in the toolbar</td></tr>
+    <tr><td>View Only user tries to change something: Settings, posts, pages and drafts, media, comments, users, plugins, themes, menus, widgets, Customizer, REST API, another plugin's own save handlers</td><td>142 attempts, none got through: 141 refused with the plain message, 1 background request's plugin data dropped. A checksum of the site's content, settings and user tables was identical after every one</td></tr>
+    <tr><td>Media role uploads through 11 routes (the library uploader, drag and drop, REST API, a file fetched from a URL, another plugin's upload handler)</td><td>All 11 refused, and again after a role editor gave the role upload rights (22 refusals); no new file, no new attachment</td></tr>
+    <tr><td>Media role saves Title, Alternative Text, Caption and Description</td><td>Saved through Attachment details and Edit Media, read back</td></tr>
+    <tr><td>Both roles on a site with WooCommerce 11.2.2, Yoast SEO 28.8 and GiveWP 4.19.2</td><td>The media role opens the library, not the shop's My account page, and the product page shows the alt text it saved. Every link in both roles' menus opens without a refusal; none belongs to those three plugins</td></tr>
+    <tr><td>Activation</td><td>Every existing role and user identical; home page, a post, a page, an archive and a search byte-identical before and after</td></tr>
+    <tr><td>Deactivate, reactivate, delete</td><td>Both roles' users lose wp-admin, then get the same access back; on deletion the roles go and the users keep their accounts with no role</td></tr>
+    <tr><td>Rolemend Pro activated before the free plugin</td><td>It activates and does nothing; the Plugins screen shows one notice with the download or Activate link, and Pro starts once the free plugin is active</td></tr>
+  </table>
+  <p>Tested on Linux with WordPress 7.1.4 and 6.5.14, PHP 8.3.6 and 7.4.33, MariaDB 10.11.14, single site and multisite (subdirectory network), on PHP's built-in web server; both zips also installed through Upload Plugin on each WordPress and PHP pair with WP_DEBUG on and no notices. Plugin Check 2.2.0: 0 errors, 0 warnings. Requires WordPress 6.5 or later and PHP 7.4 or later. Not tested: MySQL 8, Apache or nginx, servers on Windows or macOS, translations; the full test suite has not been run on the SQLite Database Integration plugin.</p>
+
+  <h2 id="images">How the images were made</h2>
+  <p>They are captures of a real WordPress 7.1.4 with Rolemend 1.2.0 (and Rolemend Pro 1.1.0 for the Pro images), in Chromium 141, of a demo site, Northfield Botanic Garden: 13 posts, 6 pages, 5 comments, 7 people and 20 photographs that ship with the Twenty Twenty-Five theme. On that site we checked, while capturing, that the Site Title was unchanged after the refused save, that nothing in the content, settings or user tables changed during the View Only session, that the alt text was stored, and that no file or attachment was added after the refused drop. The dropped photo was handed to WordPress's uploader by a script in the page, because the virtual display cannot drag from a file manager.</p>
+
+  <h2 id="video">How the video was made</h2>
+  <p>One continuous recording of the same demo site on a fresh WordPress 7.1.4, in Chromium 141 drawn at 2.25 times normal size, with Rolemend 1.2.0 installed from the free zip. The pointer moves and clicks and the typing are real input events from a script; the sign-ins between people and the page loads are cut out. The dropped photo was handed over the same way as in the images. After the recording we read back from the database that the Site Title was unchanged, the alt text was stored and no attachment was added. It plays at 60 frames a second; the only stretches without motion are the title and closing cards.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
