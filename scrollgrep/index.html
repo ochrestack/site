@@ -41,7 +41,7 @@
   a { color: var(--ochre-text); }
   .buy { margin: 18px 0 8px; }
   .buy p { margin: 0 0 10px; }
-  .buy .price { font-size: 19px; }
+  .buy .price { font-size: 17px; }
   .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
   figure { margin: 28px 0; }
@@ -84,7 +84,8 @@
   }
   header { max-width: 1200px; }
   .top { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-  .top h1 { margin-top: 24px; }
+  .top h1 { margin-top: 12px; }
+  header { padding-top: 20px; }
   .top .sub { font-size: 18px; line-height: 1.5; margin-bottom: 8px; }
   .top .benefits { margin: 8px 0; }
   .top .benefits li { margin: 2px 0; }
@@ -120,10 +121,10 @@
     <li><strong>Click a stack frame, land on the line:</strong> JVM, Python, Node.js or Go (licence).</li>
   </ul>
   <div class="buy">
-    <p class="price"><strong>Free:</strong> the live filter, no time limit. <strong>$12 once</strong> for links, one-command scope, patterns and alerts (perpetual, 30-day trial): on sale once the JetBrains Marketplace listing is approved.</p>
+    <p class="price"><strong>Free:</strong> the live filter, no time limit. <strong>$12 once</strong> for links, one-command scope, patterns and alerts (perpetual, 30-day trial), on sale once the JetBrains Marketplace listing is approved; try them now with <strong>Preview</strong> in the panel.</p>
     <!-- Colin, when the JetBrains Marketplace listing is live: add a second button, "Get it on JetBrains Marketplace",
          linking to the listing's URL, and change "on sale once the JetBrains Marketplace listing is approved" in the price line to "on JetBrains Marketplace". -->
-    <p class="buttons"><a class="button" id="download" href="download/scrollgrep-1.1.4.zip" aria-describedby="download-note">Download Scrollgrep 1.1.4 (free filter)</a></p>
+    <p class="buttons"><a class="button" id="download" href="download/scrollgrep-1.1.5.zip" aria-describedby="download-note">Download Scrollgrep 1.1.5 (free filter)</a></p>
     <p class="note" id="download-note">Install: Settings | Plugins | ⚙ | Install Plugin from Disk, then restart the IDE (File | Exit if it does not offer a restart).</p>
     <p class="fine">Works with IntelliJ IDEA and PyCharm 2025.3 and 2026.3 (tested on Linux); not yet tested on WebStorm, Windows or macOS. Source included. <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a> · <a href="eula.html">EULA</a></p>
   </div>
@@ -159,6 +160,11 @@
   </figure>
 
   <figure class="real-size">
+    <a href="img/preview-unlocked-window.png"><img src="img/preview-unlocked.png" alt="IntelliJ IDEA 2026.3 without a licence: the Scrollgrep panel on its Scrollgrep preview tab shows Scope, Context, Preset and Add pattern, the note 'Preview on sample output: the licensed features work in this tab until it runs another command', and 12 matching lines for FAILED|Money from a sample Gradle test run, with the stack frames MoneyTest.java:16, Money.java:15 and MoneyTest.java:22 underlined as links" width="1200" height="728" loading="lazy"></a>
+    <figcaption>Try before you buy, in IntelliJ IDEA 2026.3 without a licence: <strong>Preview</strong> runs a sample test run in a Terminal tab of its own, where links, scope, context, patterns and alerts work. Your own tabs stay free-only.</figcaption>
+  </figure>
+
+  <figure class="real-size">
     <a href="img/link-opened-at-line-window.png"><img src="img/link-opened-at-line.png" alt="The panel filtering ElementTest: the stack frame 'at org.jsoup.nodes.ElementTest.testGetChildText(ElementTest.java:138)' is selected, with ElementTest.java:138 as a link; the editor on the left has ElementTest.java open with the caret on line 138, the failing assertion" width="1200" height="558" loading="lazy"></a>
     <figcaption>Licence: the stack frame clicked, ElementTest.java open at line 138.</figcaption>
   </figure>
@@ -188,6 +194,7 @@
     <li>Matches outlast the Terminal's history for output that reached the Terminal while the panel showed the tab (up to 32 MB and 200,000 lines per tab).</li>
     <li>IDE 2026.3 starts Terminal tabs on the Ghostty emulator, which skips output that prints faster than it shows it; no plugin can read those lines. Scrollgrep marks where (not how many) and offers the JediTerm emulator for new tabs, which keeps every line.</li>
     <li>Tested on Linux in IntelliJ IDEA and PyCharm 2025.3 and 2026.3. Untested: WebStorm (JetBrains' Plugin Verifier finds it compatible with WebStorm 2026.3, but it has not been run there), GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell, Remote Development, and a real Marketplace trial or purchase.</li>
+    <li>Preview runs shell scripts, so it is offered on Linux and macOS; it was run on Linux. It ends at the first command of your own in its tab.</li>
     <li>The IDE's licence dialog says "Subscription"; Scrollgrep's licence is perpetual (you pay once). A plugin installed from the zip makes the IDE say it "cannot update" it; that is expected.</li>
   </ul>
 
