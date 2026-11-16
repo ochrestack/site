@@ -44,6 +44,7 @@
   .buy .price { font-size: 19px; }
   .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
+  .button.pending, .button.pending:hover, .button.pending:focus { background: transparent; color: var(--muted); border: 2px dashed #B9AC9C; padding: 8px 16px; font-weight: 500; cursor: not-allowed; }
   .note-top { font-size: 15px; color: var(--muted); margin: -6px 0 16px; }
   figure { margin: 28px 0; }
   figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
@@ -99,8 +100,8 @@
     <video autoplay muted loop playsinline preload="metadata" poster="img/classroom-select-poster.jpg" width="880" height="496" aria-label="Close on two school desks in a Blender 5.2 viewport: one click on a desktop outlines the whole desk, Shift+click adds the next desk; after Alt+U a click outlines only the desktop, and after Alt+U again a click outlines the whole desk"><source src="img/classroom-select.mp4" type="video/mp4"></video>
     <figcaption>One click takes a whole desk (23 parts), Shift+click adds the next.</figcaption>
   </figure>
-  <p class="narrow-only" style="margin:0 0 14px"><strong>$12 once</strong>, every future version included. <a class="button" id="buy-top" href="https://buy.polar.sh/polar_cl_Gbd60aAzrvrkcuDtIjq9UtmlBNZ5YQj1TUCqt0ft74o">Buy for $12</a></p>
-  <p class="narrow-only note-top" id="buy-note-top">Checkout by Polar; the download link arrives by email. <a href="../terms.html">14-day refund</a>.</p>
+  <p class="narrow-only" style="margin:0 0 14px"><strong>$12 once</strong>, every future version included. <a class="button pending" id="buy-top" href="#" aria-disabled="true" aria-describedby="buy-note-top" onclick="return false;">$12 · checkout opens soon</a></p>
+  <p class="narrow-only note-top" id="buy-note-top">Paused while the download is updated to Wholegrip 1.1.5. <a href="mailto:support@ochrestack.com?subject=Wholegrip%20checkout">Email us</a> for a note when it opens.</p>
 
   <ul style="padding-left:20px">
     <li><strong>Click any part, get the whole thing</strong>, child collections included.</li>
@@ -110,8 +111,13 @@
 
   <div class="buy">
     <p class="price wide-only"><strong>$12 once</strong>, every future version included. No subscription, no licence key, no account.</p>
-    <p class="wide-only"><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_Gbd60aAzrvrkcuDtIjq9UtmlBNZ5YQj1TUCqt0ft74o">Buy for $12</a></p>
-    <p class="note wide-only" id="buy-note">Checkout by Polar; the download link arrives by email. Every later version is included.</p>
+    <!-- Checkout is held until the Polar product carries wholegrip-1.1.5.zip (its last upload is 1.1.1,
+         the build before the fixes this page shows). To reopen it: href back to
+         https://buy.polar.sh/polar_cl_Gbd60aAzrvrkcuDtIjq9UtmlBNZ5YQj1TUCqt0ft74o, label "Buy for $12",
+         drop "pending", onclick, aria-disabled, aria-describedby and both notes (buy-note, buy-note-top),
+         here, under the hero (buy-top) and at the foot (buy-2). -->
+    <p class="wide-only"><a class="button pending" id="buy" href="#" aria-disabled="true" aria-describedby="buy-note" onclick="return false;">$12 · checkout opens soon</a></p>
+    <p class="note wide-only" id="buy-note">Checkout is paused while the download is updated to Wholegrip 1.1.5, so nobody receives an older file. For a note on the day it opens, email <a href="mailto:support@ochrestack.com?subject=Wholegrip%20checkout">support@ochrestack.com</a>.</p>
     <p class="fine">Blender 4.2 LTS to 5.2 LTS · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · Not yet tested on a Windows PC or a Mac: if it doesn't work on yours, the <a href="../terms.html">14-day refund</a> applies · <a href="#tested">how we tested</a></p>
   </div>
   <div style="clear:both"></div>
@@ -323,7 +329,7 @@
   </ul>
 
   <div class="buy">
-    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_Gbd60aAzrvrkcuDtIjq9UtmlBNZ5YQj1TUCqt0ft74o">Buy for $12</a></p>
+    <p><a class="button pending" id="buy-2" href="#" aria-disabled="true" aria-describedby="buy-note" onclick="return false;">$12 · checkout opens soon</a></p>
     <p class="fine">$12 once · source included · <a href="../terms.html">14-day refund</a></p>
   </div>
 </main>
