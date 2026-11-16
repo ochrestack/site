@@ -24,7 +24,6 @@
   figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
   .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
   .answer { margin: 0; padding: 14px 18px; background: #fff; border: 1px solid #E6DED3; border-left: 3px solid var(--ochre); border-radius: 10px; font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .slot { min-height: 128px; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 14px 18px; border: 2px dashed #D9CBB8; border-radius: 10px; background: #fff; color: var(--muted); font-size: 15px; }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
 </style>
@@ -36,27 +35,15 @@
 </header>
 <main>
   <h1>Heedpath quick start</h1>
-  <p>Your first notification check in Jira Cloud, and how to read the answer. Back to the <a href="index.html">Heedpath product page</a>. The screenshots on this page are taken on a live Jira site and follow from the run on our test site; until then each frame names the screen it will hold. The answer text below is real, word for word from Heedpath 1.1.0 on the sample site in its test suite.</p>
-  <!-- Screenshot slots (control offers/o-0043/status.md, "Product page", shot list). To publish one, save the PNG under img/
-       and replace the slot div with the <img> in the comment beside it. -->
+  <p>Your first notification check in Jira Cloud, and how to read the answer. Back to the <a href="index.html">Heedpath product page</a>. The images and the answer text below are real: Heedpath 1.2.0's own screen and its Copy answer text, from the shipped build run outside Jira on the sample company in its test suite. Heedpath has not yet run on a live Jira site, so there are no pictures of it inside Jira yet.</p>
 
   <h2 id="install">Install</h2>
   <ol>
-    <li>Once the listing is live on the Atlassian Marketplace: in Jira, open <strong>Jira settings &gt; Apps &gt; Explore more apps</strong>, search for <em>Heedpath</em>, and choose <strong>Try it free</strong> or <strong>Get it now</strong>.</li>
+    <li>When the listing is live on the Atlassian Marketplace (it is not yet): in Jira, open <strong>Jira settings &gt; Apps &gt; Explore more apps</strong>, search for <em>Heedpath</em>, and choose <strong>Try it free</strong> or <strong>Get it now</strong>.</li>
     <li>A site admin approves Heedpath's access: 23 read-only Jira permissions (notification schemes, issues, watchers, projects, components, project roles, groups, users and permissions), none that write.</li>
     <li>Open <strong>Jira settings &gt; Apps &gt; Heedpath</strong>.</li>
   </ol>
   <p>You need the <strong>Administer Jira</strong> global permission. Checking whether another person can browse an issue needs it in Jira, so anyone else gets: “This check needs the Administer Jira global permission, and your account does not have it. Ask a Jira admin to run the check.”</p>
-  <figure id="shot-10">
-    <!-- Shot 10. Replace the div with:
-    <img src="img/shot-10-refusal.png" alt="A non-admin opening the Heedpath admin page: the refusal This check needs the Administer Jira global permission, and your account does not have it" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 10 from Jira: a non-admin opening the Heedpath page sees the refusal: This check needs the Administer Jira global permission">
-      <strong>Shot 10 · signed in as someone who is not a Jira admin</strong>
-      <span>The Heedpath page showing the refusal above.</span>
-    </div>
-    <figcaption>Admins only: anyone else gets a plain refusal.</figcaption>
-  </figure>
 
   <h2 id="check">1. Check one person</h2>
   <ol>
@@ -64,15 +51,9 @@
     <li>Choose the <strong>Person</strong>: type a name. For a deactivated account, paste its account ID, because Jira's people search lists active accounts only.</li>
     <li>Choose the <strong>Event</strong> from the scheme's own list, and press <strong>Check</strong>.</li>
   </ol>
-  <figure id="shot-1">
-    <!-- Shot 1. Replace the div with:
-    <img src="img/shot-1-check-grace.png" alt="Heedpath in Jira settings, LOG-215 Refund for damaged crate, Grace Okafor, Issue Updated: Answer: Not notified by the scheme; the deciding line names All Watchers and issue security level Internal only; the Access and Account lines; the top of What Heedpath cannot see" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 1 from Jira: the Heedpath page with the answer for Grace Okafor on LOG-215, Issue Updated: Not notified by the scheme, deciding line All Watchers and issue security level Internal only">
-      <strong>Shot 1 · Jira settings &gt; Apps &gt; Heedpath</strong>
-      <span>Grace Okafor, LOG-215, Issue Updated: the answer below, on screen.</span>
-    </div>
-    <figcaption>Watching is not enough: issue security level “Internal only” leaves Grace out.</figcaption>
+  <figure id="answer-screen">
+    <img src="img/answer-grace.png" alt="Heedpath's answer screen for LOG-215 Refund for damaged crate, Grace Okafor, Issue Updated: Answer: Not notified by the scheme; the deciding line names All Watchers and issue security level Internal only; then the scheme lines, Access to LOG-215 and Account" width="1440" height="880" loading="lazy">
+    <figcaption>Watching is not enough: issue security level “Internal only” leaves Grace out. Heedpath's own screen, 1.2.0, outside Jira.</figcaption>
   </figure>
 
   <h2 id="reading">Reading the answer</h2>
@@ -109,90 +90,34 @@ What Heedpath cannot see
     <li>For comment events, the answer adds that a comment restricted to a role or group is emailed only to the people in it.</li>
   </ul>
   <p><strong>Copy answer</strong> copies all of it as plain text for the ticket. If the browser blocks the clipboard, Heedpath shows the text in a box to select and copy.</p>
-  <figure id="shot-6">
-    <!-- Shot 6. Replace the div with:
-    <img src="img/shot-6-copy-answer.png" alt="An answer from Heedpath pasted as plain text into a support ticket reply on the same Jira site" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 6 from Jira: a Heedpath answer pasted as plain text into a support ticket reply">
-      <strong>Shot 6 · Copy answer, pasted into a ticket</strong>
-      <span>The answer as plain text in a reply on the same Jira site.</span>
-    </div>
-    <figcaption>Copy answer: the whole answer as plain text, ready for the ticket.</figcaption>
-  </figure>
 
   <h2 id="change-made-by">Change made by (optional)</h2>
-  <p>Only the <strong>Current User</strong> line needs it: that line includes only the person who makes the change. Fill in <strong>Change made by</strong> to check it. Without it, an answer that depends on that line is Cannot tell.</p>
+  <p>Only the <strong>Current User</strong> line needs it: that line includes only the person who makes the change. Fill in <strong>Change made by</strong> to check it. Without it, an answer that depends on that line is Cannot tell, unless the person cannot browse the issue or has an account Jira never emails: then the answer is Not notified by the scheme, whoever makes the change.</p>
 
   <h2 id="all-events">2. All events</h2>
   <p>With an issue and a person chosen, press <strong>All events</strong>. Every event of the project's notification scheme is listed in the scheme's order, each with its answer and deciding line, so you see what the person will and will not hear about on that issue. The table can be copied as text too.</p>
-  <figure id="shot-7">
-    <!-- Shot 7. Replace the div with:
-    <img src="img/shot-7-all-events.png" alt="All events for Lena Brandt on LOG-214: a table of every event in the scheme with Notified by the scheme, Not notified by the scheme or Cannot tell and the deciding line per row, including Issue Assigned as Cannot tell because Current User needs Change made by" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 7 from Jira: All events for Lena Brandt on LOG-214, every event with its answer and deciding line, Issue Assigned as Cannot tell">
-      <strong>Shot 7 · All events</strong>
-      <span>Lena Brandt on LOG-214, every event with its answer and deciding line.</span>
-    </div>
-    <figcaption>Everything one person will and will not hear about on one issue, each with its line.</figcaption>
-  </figure>
 
   <h2 id="who-gets-this">3. Who gets this</h2>
   <p>With an issue and an event chosen, press <strong>Who gets this</strong>. Heedpath lists the people first, each once with every line that includes them, then checks each person's account and access to the issue, 40 people per step, and fills in the last column; progress is shown. People are marked as dropped, with the reason, when they cannot browse the issue, their account is deactivated, it is a customer account, or it has no Jira product access. Groups over 1,000 members are shown by count, with a <strong>Show members</strong> button.</p>
-  <figure id="shot-2">
-    <!-- Shot 2. Replace the div with:
-    <img src="img/shot-2-who-gets-this.png" alt="Who gets Issue Commented on LOG-214: Tom Field (Reporter), Ana Ruiz (Current Assignee, and Project Role Developers through group dev-team), the watchers, and Sofia Marin marked Dropped: account is deactivated, with the access column filled in" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 2 from Jira: Who gets Issue Commented on LOG-214, each person with the lines that include them, and Sofia Marin marked Dropped: account is deactivated">
-      <strong>Shot 2 · Who gets this</strong>
-      <span>Issue Commented on LOG-214: Tom Field, Ana Ruiz, the watchers, and Sofia Marin “Dropped: account is deactivated”.</span>
-    </div>
-    <figcaption>Everyone one event reaches, each with their lines, and who drops out, and why.</figcaption>
+  <figure id="who-screen">
+    <img src="img/who-gets-this.png" alt="Heedpath's Who gets this screen for Issue Commented on LOG-214: Tom Field, Ana Ruiz, Lena Brandt, Omar Haddad and Marcus Webb notified by the scheme, each with their lines; Sofia Marin, watching, marked Dropped: account is deactivated" width="1800" height="870" loading="lazy">
+    <figcaption>Everyone one event reaches, each with their lines, and who drops out, and why. Heedpath's own screen, 1.2.0, outside Jira.</figcaption>
   </figure>
 
   <h2 id="from-the-issue">4. From the issue</h2>
   <p>Open an issue, open its <strong>•••</strong> menu and choose <strong>Check notifications</strong>. The same check opens with the issue filled in. The menu item is shown to Jira admins only.</p>
-  <figure id="shot-9">
-    <!-- Shot 9. Replace the div with:
-    <img src="img/shot-9-issue-menu.png" alt="LOG-214's more-actions menu open with Check notifications, and the Heedpath dialog it opens with the issue key filled in" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 9 from Jira: an issue's more-actions menu open with Check notifications, and the dialog it opens with the issue key filled in">
-      <strong>Shot 9 · the issue's ••• menu</strong>
-      <span>LOG-214's menu with “Check notifications”, and the dialog with the key filled in.</span>
-    </div>
-    <figcaption>One click from the issue, for Jira admins.</figcaption>
-  </figure>
 
   <h2 id="cannot-tell">When the answer is Cannot tell</h2>
   <p>Heedpath does not guess. When Jira does not return something the answer depends on, the answer is Cannot tell, and it names the reason. The usual ones:</p>
   <ul>
     <li>the project is team-managed, so it has no notification scheme;</li>
     <li>Jira did not return the project's notification scheme, or the person's product access;</li>
-    <li>the only line that could include the person is Current User, and Change made by is empty;</li>
-    <li>your own account cannot see the issue's watchers (View Voters and Watchers), so the All Watchers line cannot be read.</li>
+    <li>the only line that could include the person is Current User, Change made by is empty, and the person can browse the issue;</li>
+    <li>your own account cannot see the issue's watchers (View Voters and Watchers), so the All Watchers line cannot be read, and the person can browse the issue.</li>
   </ul>
-  <figure id="shot-11">
-    <!-- Shot 11. Replace the div with:
-    <img src="img/shot-11-team-managed.png" alt="Heedpath on an issue in a team-managed project: Answer: Cannot tell, with the reason that team-managed projects have no notification scheme" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 11 from Jira: a team-managed issue, Answer: Cannot tell, with the reason">
-      <strong>Shot 11 · a team-managed issue</strong>
-      <span>“Cannot tell”, with the reason.</span>
-    </div>
-    <figcaption>Team-managed projects have no notification scheme. Heedpath says Cannot tell and why.</figcaption>
-  </figure>
 
   <h2 id="cannot-see">What Heedpath cannot see</h2>
   <p>Every answer ends with this block; each item names where to check instead. It is in full in the answer <a href="#reading">above</a>. In short: the person's own notification settings, whether an email was delivered, @mention and share emails, Jira Service Management customer notifications, and which event a workflow transition fires.</p>
-  <figure id="shot-3">
-    <!-- Shot 3. Replace the div with:
-    <img src="img/shot-3-cannot-see.png" alt="The end of a Heedpath answer: the full What Heedpath cannot see block, each item with Atlassian's or Jira's route to check it" width="1840" height="900" loading="lazy">
-    -->
-    <div class="slot" role="img" aria-label="Screenshot 3 from Jira: the end of an answer, the full What Heedpath cannot see block with the route for each item">
-      <strong>Shot 3 · the end of an answer</strong>
-      <span>The full “What Heedpath cannot see” block, with the route for each item.</span>
-    </div>
-    <figcaption>What Heedpath cannot see, and where in Jira or Atlassian Support to look instead.</figcaption>
-  </figure>
 
   <h2 id="limits">Other limits</h2>
   <ul>
