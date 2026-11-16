@@ -74,12 +74,12 @@
 
   <h2 id="install">Install (JetBrains IDEs 2025.3 or later)</h2>
   <ol>
-    <li><a href="download/scrollgrep-1.1.3.zip">Download scrollgrep-1.1.3.zip</a> (free; keep it zipped). In the IDE, open <strong>Settings | Plugins</strong>, click <strong>⚙</strong>, choose <strong>Install Plugin from Disk…</strong>, pick the zip and click <strong>OK</strong>, then <strong>Accept</strong> the third-party plugin notice.</li>
-    <li>Restart the IDE: it loads plugins with paid features only after a restart. PyCharm shows a <strong>Restart IDE</strong> button; IntelliJ IDEA may close Settings without offering one, so choose <strong>File | Exit</strong> and start it again, or use Find Action (Ctrl+Shift+A): <strong>Restart IDE</strong>. A <strong>Scrollgrep</strong> tool window then appears on the right. The IDE may then show "Cannot update plugin": it cannot look for updates of a plugin installed from a file.</li>
+    <li><a href="download/scrollgrep-1.1.4.zip">Download scrollgrep-1.1.4.zip</a> (free; keep it zipped). In the IDE, open <strong>Settings | Plugins</strong>, click <strong>⚙</strong>, choose <strong>Install Plugin from Disk…</strong>, pick the zip and click <strong>OK</strong>, then <strong>Accept</strong> the third-party plugin notice.</li>
+    <li>Restart the IDE: it loads plugins with paid features only after a restart. Settings may close without showing a <strong>Restart IDE</strong> button (IntelliJ IDEA and PyCharm 2026.3 both do). Then use Find Action (Ctrl+Shift+A): <strong>Restart IDE</strong>. Or open <strong>Settings | Plugins</strong> again, type <em>Scrollgrep</em> in the search field, and click <strong>Restart IDE</strong> on its row. Or choose <strong>File | Exit</strong> and start the IDE again. A <strong>Scrollgrep</strong> tool window then appears on the right. The IDE may then show "Cannot update plugin": it cannot look for updates of a plugin installed from a file.</li>
     <li>Check that <strong>Settings | Tools | Terminal | Engine</strong> is <strong>Reworked</strong>, the default since 2025.2. Scrollgrep does not see Classic terminal tabs.</li>
   </ol>
   <p>The JetBrains Marketplace listing is in review. Once it is live you can also type <em>Scrollgrep</em> in the Plugins search field and click <strong>Install</strong>, and get updates from there.</p>
-  <p>Tested in IntelliJ IDEA 2025.3 (the full test suite, with real Bash, Zsh and sh terminals) and 2026.3 (the free filter on fast output, with both of its terminal emulators), PyCharm 2025.3 (install and filter check) and PyCharm 2026.3 (filter, Regex hint, and the licensed features with a test licence: Python frame, last command with context, preset, watch alert), on Linux. WebStorm, GoLand, the other JetBrains IDEs, Windows, macOS, PowerShell and Remote Development have not been tested yet.</p>
+  <p>Tested in IntelliJ IDEA 2025.3 (the full test suite, with real Bash, Zsh and sh terminals) and 2026.3 (the free filter on fast output, with both of its terminal emulators), PyCharm 2025.3 (install and filter check) and PyCharm 2026.3 (filter, Regex hint, and the licensed features with a test licence: Python frame, last command with context, preset, watch alert), on Linux. WebStorm, GoLand, the other JetBrains IDEs, Windows, macOS, PowerShell and Remote Development have not been tested yet (JetBrains' Plugin Verifier finds Scrollgrep compatible with WebStorm 2026.3; it has not been run there).</p>
 
   <h2 id="filter">Live filter (free)</h2>
   <ol>
@@ -94,6 +94,10 @@
     <li><strong>Match case</strong>, <strong>Words</strong>, <strong>Regex</strong> and <strong>Invert</strong> mean what grep's <code>-i</code> (off), <code>-w</code>, <code>-E</code> and <code>-v</code> mean. Regex uses <code>grep -E</code> syntax: <code>[[:digit:]]+</code> and <code>\&lt;word\&gt;</code> work as in grep, and as in grep <code>\d</code> means the letter "d"; the panel says so and suggests <code>[0-9]</code>.</li>
     <li>A progress bar or spinner redrawn in place appears once, with its final text.</li>
     <li>An invalid pattern is outlined in red with grep's reason, and the results stay as they were. Clearing the field clears the results.</li>
+    <li>A line whose first match would sit past the panel's right edge is shown from just before the match, after "…"; hover over it for the whole line.</li>
+  </ul>
+  <figure><a href="img/long-line-from-match-window.png"><img src="img/long-line-from-match.png" alt="IntelliJ IDEA 2026.3 with etl.py open: the Scrollgrep panel filters 'rejected' and shows 31 matching lines; each long timestamped log line starts with '… 2026_11.csv' and shows the highlighted word rejected followed by the reason, such as bad amount 'N/A' or unknown policy id. Below, the Terminal ends with: claims_etl: load finished: 2970 rows loaded, 30 rejected" width="1200" height="728" loading="lazy"></a><figcaption>Free, in IntelliJ IDEA 2026.3: a claims load whose rejected rows give the reason at the end of a long line. Each line starts just before "rejected", so the reason is in view.</figcaption></figure>
+  <ul>
     <li>The panel follows the Terminal tab you select.</li>
     <li>Matches stay in the panel after the Terminal trims its own history, for output that reached the Terminal while the panel showed the tab (or the tab had a filter). A panel opened after a run sees only what the Terminal still holds. On IDE 2026.3, see <a href="#fast">fast output</a>.</li>
     <li>The panel keeps up to 32 MB and 200,000 lines per tab (<strong>Settings | Tools | Scrollgrep</strong>, 4 to 1,024 MB). Past the limit the oldest lines that do not match go first. A tab you leave with an empty filter is not kept.</li>
@@ -111,6 +115,13 @@
     <li>The panel was opened after the run: it sees only what the Terminal still holds (about 1 MB of output by default). Open it before the run, or leave the tab with a filter.</li>
     <li>More than 32 MB or 200,000 lines in the tab: the oldest lines go first; the status line says how many matches were dropped. Raise the limits in <strong>Settings | Tools | Scrollgrep</strong>.</li>
     <li>Regex off: <code>a|b</code> is matched as typed (the panel offers <strong>Turn on Regex</strong>). Match case off finds upper and lower case, as <code>grep -i</code>.</li>
+  </ul>
+
+  <h2 id="measured">Measured</h2>
+  <ul>
+    <li>IntelliJ IDEA 2025.3, headless, Linux, 4 CPUs: 200,000 lines at full speed in a real Bash tab, five runs. Each run: 2,061 matching lines, the same as <code>grep -c</code>. Matches appeared a median of 0.52 to 0.66 s after they were printed, and the UI thread never blocked longer than 65.7 ms while they were added.</li>
+    <li>IntelliJ IDEA 2026.3, with its windows, Linux, each command in a new tab with the filter set first. Five Gradle test runs: 70 of 70 lines with "failed" (the Terminal's own search found 35). <code>tail -f</code> of a sync log written at about 4,000 lines a second: 10,470 of 10,470.</li>
+    <li>The same session, on the Ghostty emulator, output at full speed: <code>cat</code> of that sync log kept 988 of 10,470 (the Terminal itself held 859 at the end), <code>cat</code> of the Gradle log 35 of 70, the 200,000-line generator 85 of 2,062, each marked "some lines missing". How much Ghostty skips changes from run to run: the screenshot above is another run of the same <code>cat</code>, with 918. In new tabs on JediTerm: 10,470, 70 and 2,062, every line.</li>
   </ul>
 
   <h2 id="links">Links in the results (licensed)</h2>
