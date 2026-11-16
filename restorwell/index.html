@@ -98,11 +98,9 @@
 
   <div class="buy">
     <p class="price"><strong>Restorwell is free:</strong> <a href="download/restorwell.zip?v=1.1.4">download restorwell.zip</a> (version 1.1.4, 72 KB).<br><strong>Restorwell Pro, $19 once, unlimited sites:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_UIWbTLwhrdfdwbV2g5dLi3SPrzI3I4GgUMBKB0aCriG">Buy for $19</a></p>
-    <p class="fine"><strong>Old host closing and a slow line at home? With Pro, your new server fetches the backup from the old one by link</strong>, and your home connection carries none of it (at 8 Mbit/s, uploading our 2.29 GB demo backup would take about 41 minutes; <a href="#pro">watch it</a>). Restoring never needs Pro. Updates via Polar (<a href="#updates">how</a>) · 14-day refund if it doesn't work as described and we can't fix it within a reasonable time.</p>
+    <p class="fine"><strong>Old host closing and a slow line at home?</strong> Pro makes your new server fetch the backup from the old one, not through your connection (<a href="#pro">watch it</a>). Restoring never needs Pro. 14-day refund if it doesn't work as described.</p>
     <p class="fine">Tested on WordPress 7.1.4 and PHP 8.3.6 on Linux; Windows and macOS untested (<a href="#tested">full list</a>) · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
-
-  <p class="fine">Above: our 2.29 GB password-protected demo backup, restored by Restorwell 1.1.3 on a host with an 8 MB upload limit (<a href="img/check-report.png">the whole Check report</a>).</p>
 
   <section id="watch">
     <h2>Watch it restore</h2>
@@ -110,19 +108,19 @@
       <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
         <source src="video/restorwell-demo-720p.mp4" type="video/mp4">
       </video>
-      <figcaption>The demo, 56 s, captions only: our 2.29 GB password-protected backup restored on an 8 MB host; the upload is reloaded at 31 % and continues. Recorded on 1.1.0; faster parts say "sped up".</figcaption>
-    </figure>
-    <figure>
-      <img src="video/restorwell-resume.gif" alt="An 11-second loop from the demo: the 2.29 GB backup uploads in 6 MB pieces, the page is reloaded at 31 %, 'Unfinished upload: fieldnotes-2026-11-09.wpress, 720.0 MB of 2.29 GB' appears, the same file is chosen again and the upload continues from 720.0 MB" width="960" height="540" loading="lazy">
-      <figcaption>The reload and resume alone (11 s GIF, 3.1 MB).</figcaption>
+      <figcaption>56 s, recorded on 1.1.0, on an 8 MB host.</figcaption>
     </figure>
   </section>
 
   <div class="box warn">
-    <strong>When you do not need Restorwell.</strong> If your backup is smaller than the upload limit your host shows, All-in-One WP Migration's own Import screen restores it for free. If you can raise the limit (.htaccess, .user.ini, or a request to your host), the same applies. Restorwell is for the rest: a backup over the limit, a password, the command line, or a full check before anything is touched. Not affiliated with or endorsed by All-in-One WP Migration or ServMask.
+    <strong>When you do not need Restorwell.</strong> If your backup is smaller than the upload limit your host shows, All-in-One WP Migration's own Import screen restores it for free. Not affiliated with All-in-One WP Migration or ServMask.
     <details>
-      <summary>Other free plugins that read .wpress files</summary>
-      <p>Shiftbox restores large ones, but not password-protected ones, and Poly Bright Quick Restore restores them up to 512 MB (their WordPress.org listings, read November 9, 2026). Restorwell does not make backups; for new backups, use a backup plugin whose restore is free.</p>
+      <summary>Other options</summary>
+      <p>If you can raise the limit (.htaccess, .user.ini, or a request to your host), the same applies. Restorwell is for the rest: a backup over the limit, a password, the command line, or a full check before anything is touched. Shiftbox restores large .wpress files, but not password-protected ones, and Poly Bright Quick Restore restores them up to 512 MB (their WordPress.org listings, read November 9, 2026). Restorwell does not make backups; for new backups, use a backup plugin whose restore is free.</p>
+      <figure>
+        <img src="video/restorwell-resume.gif" alt="An 11-second loop from the demo: the 2.29 GB backup uploads in 6 MB pieces, the page is reloaded at 31 %, 'Unfinished upload: fieldnotes-2026-11-09.wpress, 720.0 MB of 2.29 GB' appears, the same file is chosen again and the upload continues from 720.0 MB" width="960" height="540" loading="lazy">
+        <figcaption>The reload and resume from the demo (11 s GIF, 3.1 MB).</figcaption>
+      </figure>
     </details>
   </div>
 
@@ -133,45 +131,45 @@
     <figcaption>6 MB pieces on an 8 MB host.</figcaption>
   </figure>
 
-  <p><strong>2. Check.</strong> Every byte is read and checksummed (older backups have per-file checksums only, and the Check says so). Each limit is named; Restore stays off while anything blocks it.</p>
+  <p><strong>2. Check.</strong> Every byte is checksummed and each limit named; Restore stays off while anything blocks it.</p>
   <figure>
     <img src="img/blocked-disk.png" alt="Limits on this server with one red cross: 'Not enough free disk space: about 2.39 GB is needed and only 1.46 GB is available. Free some space (for example delete old backups) or ask your host for more, then check again.' The other six limits are ticked, and below: 'Restore stays off until every limit marked ✕ is solved. Nothing on your site has changed.'" width="822" height="432" loading="lazy">
     <figcaption>Not enough disk space: both numbers.</figcaption>
   </figure>
-  <figure>
-    <img src="img/incomplete.png" alt="Check: fieldnotes-2026-11-09 (1).wpress, backup size 1.38 GB, the other details 'not recorded' or 'not known: the backup could not be read', and one red cross: 'The backup file is incomplete: it ends before its last part. This usually means the download or upload stopped early. Copy the backup again and choose the new copy.' Restore stays off" width="822" height="655" loading="lazy">
-    <figcaption>"Corrupted File" explained.</figcaption>
-  </figure>
 
-  <p><strong>3. Restore.</strong> Prepared beside your live site, switched in at the end. Fail or cancel before that, and your site is as it was. Built with Elementor? Since 1.1.4, Elementor rebuilds its styles on the first visit: in our test, an Elementor 4.4.0 page and a block-theme post looked pixel for pixel like the old site (<a href="#tested">how we tested</a>).</p>
+  <p><strong>3. Restore.</strong> Prepared beside your live site and switched in at the end; cancel before that and nothing changed. Elementor pages keep their look (tested: Elementor 4.4.0).</p>
   <figure>
-    <img src="img/restoring.png" alt="The Restoring card: a progress bar and 'Unpacking files beside the live site: 71 of 820 files (20%)', the note that the live site keeps running until the final switch, and a Cancel restore button" width="822" height="230" loading="lazy">
-    <img src="img/finished.png" alt="Restore finished: 'fieldnotes-2026-11-09.wpress, restored on November 10, 2026 4:34 am from https://fieldnotes.example.org: 820 files and 12 database tables. Permalinks were refreshed.', then 'The backup file (2.29 GB) is still on the server. Delete it now to free the space?' with Delete backup file and Keep it, and Close" width="822" height="232" loading="lazy" style="margin-top:12px">
+    <img src="img/finished.png" alt="Restore finished: 'fieldnotes-2026-11-09.wpress, restored on November 10, 2026 4:34 am from https://fieldnotes.example.org: 820 files and 12 database tables. Permalinks were refreshed.', then 'The backup file (2.29 GB) is still on the server. Delete it now to free the space?' with Delete backup file and Keep it, and Close" width="822" height="232" loading="lazy">
     <figcaption>Then log in with an account from the backup.</figcaption>
   </figure>
-  <p>Also free from the command line: <code>wp restorwell check</code> and <code>wp restorwell restore</code> (<a href="quick-start.html#cli">quick start</a>).</p>
+  <p>Also free: <code>wp restorwell restore</code> (<a href="quick-start.html#cli">quick start</a>).</p>
 
   <h2 id="pro">Restorwell Pro: Restore from a link</h2>
-  <p>For a backup already on another server, such as the old host's backup folder. Paste its direct download link: your server fetches it, then runs the same Check and Restore. Restoring never needs Pro.</p>
-  <p id="which-link"><strong>Which link to paste.</strong> Old site still online? On it, open All-in-One WP Migration &gt; Backups, click the three dots beside the backup, right-click Download and copy the link. It looks like <code>https://old-site.com/wp-content/ai1wm-backups/old-site-com-20261109-101500-a1b2c3d4e5f6.wpress</code>.</p>
+  <p>For a backup on another server: paste its link, and your server fetches it, resuming after a dropped connection, then runs the same Check.</p>
   <figure>
     <video controls preload="none" playsinline poster="video/pro-poster.jpg" width="1280" height="720">
       <source src="video/restorwell-pro-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>Pro, 49 s, captions only: the Download link copied from the old site's Backups page, pasted on the new host, the old host stopped at 45 % of our 2.29 GB backup, Continue, then the Check. Both hosts ran on one machine (the old one on Apache, slowed to about 35 MB/s); faster parts say "sped up".</figcaption>
+    <figcaption>49 s: the old host stops at 45 %; Continue finishes.</figcaption>
   </figure>
-  <ul>
-    <li><strong>Resumes.</strong> If the connection drops, what arrived is kept; Continue picks up from there, even after closing the page.</li>
-    <li><strong>Says when a server cannot resume</strong> (some script-served links): you see the bytes arrive in one long request, and if your host cuts it off, Pro tells you to upload the file or use FTP instead.</li>
-    <li><strong>Which links work:</strong> a direct link to the .wpress file. Tested with the old site's Backups-page link (made by All-in-One WP Migration 7.113), and on our own servers with redirects, query strings (as presigned storage links have), links without a file name and servers that cannot resume; not with Amazon S3, Backblaze, Dropbox or Google Drive themselves. A Google Drive viewer page is reported as a web page.</li>
-  </ul>
+  <details>
+    <summary>Which link to paste, what was tested, updates</summary>
+    <p id="which-link"><strong>Which link to paste.</strong> Old site still online? On it, open All-in-One WP Migration &gt; Backups, click the three dots beside the backup, right-click Download and copy the link. It looks like <code>https://old-site.com/wp-content/ai1wm-backups/old-site-com-20261109-101500-a1b2c3d4e5f6.wpress</code>.</p>
+    <ul>
+      <li><strong>Resumes.</strong> If the connection drops, what arrived is kept; Continue picks up from there, even after closing the page.</li>
+      <li><strong>Says when a server cannot resume</strong> (some script-served links): you see the bytes arrive in one long request, and if your host cuts it off, Pro tells you to upload the file or use FTP instead.</li>
+      <li><strong>Which links work:</strong> a direct link to the .wpress file. Tested with the old site's Backups-page link (made by All-in-One WP Migration 7.113), and on our own servers with redirects, query strings (as presigned storage links have), links without a file name and servers that cannot resume; not with Amazon S3, Backblaze, Dropbox or Google Drive themselves. A Google Drive viewer page is reported as a web page.</li>
+      <li><strong>Why it matters:</strong> at 8 Mbit/s, uploading our 2.29 GB demo backup from home would take about 41 minutes; with Pro your connection carries none of it.</li>
+      <li><strong>The clip:</strong> both hosts ran on one machine (the old one on Apache, slowed to about 35 MB/s); faster parts say "sped up".</li>
+    </ul>
+    <p id="updates"><strong>How updates reach you:</strong> Pro never checks for updates itself. Each new version is added to your Polar purchase at no charge: sign in to <a href="https://polar.sh/ochrestack/portal">Polar's customer portal</a> with your purchase e-mail, download the zip, then Upload Plugin and "Replace current with uploaded". Your backups are not touched. The Pro download, restorwell-pro.zip 1.0.5, carries Restorwell 1.1.4 and installs it in one click.</p>
+  </details>
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_UIWbTLwhrdfdwbV2g5dLi3SPrzI3I4GgUMBKB0aCriG">Buy for $19</a></p>
-    <p class="fine">$19 once, unlimited sites, Pro updates included · no renewal, no licence check · One download: restorwell-pro.zip 1.0.5 carries Restorwell 1.1.4 and installs it in one click · Polar checkout · <a href="../terms.html">14-day refund if it doesn't work as described and we can't fix it within a reasonable time</a></p>
-    <p class="fine" id="updates"><strong>How updates reach you:</strong> Pro never checks for updates itself. Each new version is added to your Polar purchase at no charge: sign in to <a href="https://polar.sh/ochrestack/portal">Polar's customer portal</a> with your purchase e-mail, download the zip, then Upload Plugin and "Replace current with uploaded". Your backups are not touched.</p>
+    <p class="fine">$19 once, unlimited sites, updates included, no renewal · <a href="../terms.html">14-day refund if it doesn't work as described</a></p>
   </div>
 
-  <p id="limits"><strong>It does not</strong> make backups, restore multisite networks or other backup formats, or restore into a site on SQLite.</p>
+  <p id="limits"><strong>It does not</strong> make backups, or restore multisite networks, other backup formats, or into SQLite sites.</p>
 
   <details>
     <summary>More limits</summary>
@@ -211,7 +209,7 @@
   <h2 id="details">Details</h2>
   <ul>
     <li>Privacy: the free plugin makes no network request; Pro contacts only the address you type.</li>
-    <li>Install: the <a href="quick-start.html">quick start</a>. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li>Install: the <a href="quick-start.html">quick start</a>.</li>
   </ul>
 </main>
 <script>
