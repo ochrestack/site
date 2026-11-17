@@ -124,13 +124,13 @@
   <p class="sub">Doxygen comments full of <code>**bold**</code>, backticks and <code>\f$ &hellip; \f$</code> read as raw text in the editor. Docsheen draws them where they are written.</p>
   <div class="top-images">
     <figure class="top-image">
-      <a href="img/window-drawn.png"><img class="hero" src="img/before-after.png" alt="IntelliJ IDEA 2025.3, OpenCV's imgproc.hpp, the warpAffine comment twice. Before: the comment as source, with the formula written as \f[\texttt{dst} (x,y) = ...\f] and the parameters as @param lines. After: the same comment drawn by Docsheen, with the formula typeset as dst(x,y) = src(M11 x + M12 y + M13, M21 x + M22 y + M23), a Parameters list in which M is a typeset 2 by 3 matrix, and See also" width="980" height="722"></a>
+      <a href="img/window-drawn.png"><img class="hero" src="img/before-after.png" alt="IntelliJ IDEA 2025.3, OpenCV's imgproc.hpp, the warpAffine comment twice. Before: the comment as source, with the formula written as \f[\texttt{dst} (x,y) = ...\f] and the parameters as @param lines. After: the same comment drawn by Docsheen, with the formula typeset as dst(x,y) = src(M11 x + M12 y + M13, M21 x + M22 y + M23), a Parameters list in which M is a typeset 2 by 3 matrix, and See also" width="980" height="748"></a>
       <figcaption>The same comment in OpenCV 4.14.0's <code>imgproc.hpp</code>, as source and drawn.</figcaption>
     </figure>
   </div>
   <ul class="benefits">
     <li><strong>Comments you can read.</strong> Parameters, Returns and See also grouped, Markdown formatted, links that open. Free.</li>
-    <li><strong>Formulas that look like formulas.</strong> <code>\f$</code>, <code>\f[</code> and <code>\f{align}{</code> typeset in place with your Doxyfile's macros, no TeX, no network.</li>
+    <li><strong>Formulas that look like formulas.</strong> <code>\f$</code>, <code>\f[</code>, <code>\f{align}{</code> and their <code>@f</code> spellings typeset in place with your Doxyfile's macros, no TeX, no network.</li>
     <li><strong>Tables, images and a live preview</strong> while you type a formula.</li>
   </ul>
   <div class="buy">
@@ -147,22 +147,26 @@
       <source src="video/docsheen-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/docsheen-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo: 48 s, captions only, no sound (<a href="video/docsheen-demo-1080p.mp4">open full size</a>). IntelliJ IDEA 2025.3, OpenCV 4.14.0's own headers, paid features with a test licence. Just the toggle: <a href="video/docsheen-draws-the-comment.gif">12-second GIF</a>.</figcaption>
+    <figcaption>The demo: 48 s, captions only, no sound (<a href="video/docsheen-demo-1080p.mp4">full size</a>). Paid features on a test licence. Just the toggle: <a href="video/docsheen-draws-the-comment.gif">12-second GIF</a>.</figcaption>
   </figure>
 
   <div class="box">
-    <strong>What CLion already does.</strong> CLion already does part of this, and we say so. Its Rendered View (Ctrl+Alt+Q) groups a comment's Doxygen tags, and for comments with only tags and plain sentences it may be all you need. Per its help page it cannot open links, and on 2026-11-16 Markdown and LaTeX in comments were still open requests on JetBrains' tracker. We have read that, not run it.
+    <strong>What CLion already does.</strong> CLion already does part of this, and we say so. Its Rendered View (Ctrl+Alt+Q) groups a comment's Doxygen tags, and for comments with only tags and plain sentences it may be all you need. Per its help page it cannot open links; Markdown and LaTeX in comments were open requests on JetBrains' tracker on 2026-11-16. We have read that, not run it.
   </div>
 
   <h2 id="real">In the IDE, for real</h2>
-  <p>Docsheen 1.0.2, IntelliJ IDEA 2025.3, OpenCV 4.14.0's own headers (not affiliated). Paid features shown with a test licence: the listing is not live. Images link to the full window.</p>
+  <p>Docsheen 1.0.3, IntelliJ IDEA 2025.3, unmodified headers of OpenCV 4.14.0, Bosch's BME280 and ST's STM32F4. Paid features: test licence. Images link to the full window.</p>
+  <figure class="real-size">
+    <a href="img/window-firmware-bme280.png"><img src="img/firmware.png" alt="Two captures of firmware headers without a licence. Top: Bosch's bme280.h, the bme280_init comment with its Parameters list showing [in,out] dev and a Return values list, 0 for success, above 0 for a warning, below 0 for failure. Bottom: ST's stm32f4xx_hal_uart.h, the UART_InitTypeDef members BaudRate, WordLength, StopBits and Parity, each with its comment drawn in a block under its line" width="980" height="703" loading="lazy"></a>
+    <figcaption>Free, on firmware: Parameters with <code>[in,out]</code>, Return values, member comments under their lines (<a href="img/window-firmware-uart.png">full UART window</a>).</figcaption>
+  </figure>
   <figure class="real-size">
     <a href="img/window-formulas-macros.png"><img src="img/formulas-macros.png" alt="The calibrateCamera comment in OpenCV's calib3d.hpp drawn by Docsheen: the cameraMatrix parameter with a typeset 3 by 3 matrix of fx, fy, cx and cy, and the distCoeffs parameter with the typeset vector k1, k2, p1, p2 and so on" width="960" height="205" loading="lazy"></a>
     <figcaption>OpenCV's own formula macros, read from the Doxyfile.</figcaption>
   </figure>
   <figure class="real-size">
     <a href="img/window-table.png"><img src="img/table.png" alt="OpenCV's dnn.hpp: the sentence 'List of supported combinations backend / target:' followed directly by a Markdown table drawn as a grid, with the columns DNN_BACKEND_OPENCV, DNN_BACKEND_INFERENCE_ENGINE, DNN_BACKEND_HALIDE and DNN_BACKEND_CUDA, the rows DNN_TARGET_CPU, DNN_TARGET_OPENCL, DNN_TARGET_OPENCL_FP16, DNN_TARGET_MYRIAD, DNN_TARGET_FPGA, DNN_TARGET_CUDA, DNN_TARGET_CUDA_FP16 and DNN_TARGET_HDDL, and a plus sign in the cells that are supported" width="910" height="282" loading="lazy"></a>
-    <figcaption>A pipe table from <code>dnn.hpp</code>, written on the line right after a sentence.</figcaption>
+    <figcaption>A pipe table from <code>dnn.hpp</code>, right after a sentence.</figcaption>
   </figure>
   <figure class="real-size">
     <a href="img/window-image.png"><img src="img/image.png" alt="In OpenCV's imgproc.hpp the comment of the threshold types drawn with its picture: four panels labelled Value and Threshold Level, Threshold Binary, Threshold Binary Inverted and Truncate" width="980" height="670" loading="lazy"></a>
@@ -174,7 +178,7 @@
   </figure>
   <figure class="real-size">
     <a href="img/window-free-tier.png"><img src="img/free-tier.png" alt="The end of the first comment in OpenCV's imgproc.hpp that has a formula, without a licence: group lines and Markdown drawn, an image written as ![Delaunay triangulation (black) and Voronoi (red)](pics/delaunay_voronoi.png) left as source text, and one quiet line at the bottom: 'Formulas, tables and images are drawn with a licence ($9 once, 30-day trial). Get a licence or trial'" width="980" height="498" loading="lazy"></a>
-    <figcaption>Free tier: formulas, tables and images stay source; one quiet line, at the end of the first such comment in the file.</figcaption>
+    <figcaption>Without a licence: formulas, tables and images stay source; one quiet line per file.</figcaption>
   </figure>
 
   <h2 id="limits">Known limits</h2>
@@ -192,10 +196,10 @@
   <ul>
     <li>OpenCV 4.14.0, 33 headers: 4,699 comments drawn with all their text; 1,819 of 1,819 formulas typeset without an error, with OpenCV's macro file.</li>
     <li>Against Doxygen 1.9.8 on <code>imgproc.hpp</code>: headings, lists, code spans, links and emphasis equal on 631 of 633 comments.</li>
-    <li><code>imgproc.hpp</code> (5,251 lines, 760 comments) drawn in a median 0.9 s off the UI thread; Docsheen's longest UI-thread block: median 8 ms, worst 10 ms (no window).</li>
-    <li>167 automated tests, 0 failed. Window checks: IntelliJ IDEA 2025.3, 26 of 26 steps; 2026.3, 22 of 26. <a href="quick-start.html#tested">The full table</a>.</li>
+    <li><code>imgproc.hpp</code> (5,251 lines, 760 comments) drawn in a median 1.3 s off the UI thread; Docsheen's longest UI-thread block: median 11 ms, worst 46 ms (no window).</li>
+    <li>184 automated tests, 0 failed. Window checks: IntelliJ IDEA 2025.3, 32 of 32 steps; 2026.3, 28 of 32. <a href="quick-start.html#tested">The full table</a>.</li>
   </ul>
-  <p class="fine"><a href="eula.html">End User License Agreement</a> &middot; no network calls, no telemetry (<a href="../privacy.html">privacy</a>) &middot; Docsheen is affiliated with JetBrains, OpenCV and Doxygen in no way.</p>
+  <p class="fine"><a href="eula.html">End User License Agreement</a> &middot; no network calls, no telemetry (<a href="../privacy.html">privacy</a>) &middot; Docsheen is affiliated with JetBrains, OpenCV, Bosch, ST and Doxygen in no way.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>
