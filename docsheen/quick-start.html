@@ -113,7 +113,7 @@
   <ol>
     <li>In the IDE, open <strong>Settings | Plugins</strong>, search for <em>Docsheen</em> and click <strong>Install</strong>. The listing is in review and not on JetBrains Marketplace yet; until it is live, the search finds nothing.</li>
     <li>The IDE first shows its <strong>Third-Party Plugins Notice</strong>, naming &ldquo;Docsheen: Doxygen Rendering (Ochrestack)&rdquo;: click <strong>Accept</strong>.</li>
-    <li>Click <strong>Restart IDE</strong> when it asks. It always asks: the IDE does not load a plugin that carries a Marketplace licence without a restart.</li>
+    <li>Click <strong>Restart IDE</strong> when it asks. It asked in IntelliJ IDEA 2025.3 and 2026.3: the IDE does not load a plugin that carries a Marketplace licence without a restart.</li>
     <li>Open a C or C++ file. Its Doxygen comments are drawn.</li>
   </ol>
   <p><strong>From a zip</strong> (for example one you were sent before the listing is live): <strong>Settings | Plugins</strong>, the gear icon, <strong>Install Plugin from Disk&hellip;</strong>, choose <code>docsheen-1.0.1.zip</code> without unzipping it, then the same notice and restart.</p>
@@ -135,7 +135,7 @@
   <h2 id="formulas">Formulas and the live preview (licence)</h2>
   <ol>
     <li>Put the caret inside a formula in a comment's source: <code>\f$ &hellip; \f$</code>, <code>\f[ &hellip; \f]</code> or <code>\f{align}{ &hellip; \f}</code> (the <code>@f</code> spellings too). A preview appears below the caret and follows each keystroke; <strong>Escape</strong> closes it.</li>
-    <li>A typo shows the formula's source in a framed box with the reason, such as &ldquo;unbalanced brace: 1 '{' is not closed&rdquo;, never a blank.</li>
+    <li>A formula that cannot be typeset, for example with an unclosed brace or an unknown command, shows its source in a framed box with the reason, such as &ldquo;unbalanced brace: 1 '{' is not closed&rdquo;.</li>
     <li>An optional setting typesets <code>$ &hellip; $</code> and <code>$$ &hellip; $$</code> too (<strong>Settings | Tools | Docsheen</strong>; off by default, so <code>$10</code> and <code>$PATH</code> stay text).</li>
   </ol>
   <figure><a href="img/window-live-preview.png"><img src="img/live-preview.png" alt="Two captures of warpPerspective's formula: the typeset preview under the caret, then the red-framed reason box after + \sqrt{x is typed" width="1170" height="360" loading="lazy"></a><figcaption>The live preview, then the reason box (OpenCV 4.14.0, IntelliJ IDEA 2025.3, test licence).</figcaption></figure>
@@ -144,14 +144,14 @@
   <p>If your project has a <code>Doxyfile</code> at its root, formulas use its FORMULA_MACROFILE (<code>\newcommand</code> and <code>\renewcommand</code>, with arguments) and images are found through its IMAGE_PATH, after the file's own folder and the project root. Choose another Doxyfile in <strong>Settings | Tools | Docsheen</strong>; the page shows what was read: the macro file and how many macros, the image directories, or why something could not be read. A missing image shows its alt text and the paths tried; remote images are not fetched.</p>
 
   <h2 id="licence">Licence and trial</h2>
-  <p>Comments, Markdown and links are free with no time limit. Formulas, tables, images, the live preview and the macros need a licence, or the 30-day trial: the &ldquo;Get a licence or trial&rdquo; link under a comment opens the IDE's own licence dialog with Docsheen selected. Without one, a formula, table or image shows its source with one quiet line; nothing pops up. The licence is sold through JetBrains Marketplace once the listing is live. The paid half has been tested with a test licence in the window, not with a real purchase or trial.</p>
+  <p>Comments, Markdown and links are free with no time limit. Formulas, tables, images, the live preview and the macros need a licence, or the 30-day trial: the &ldquo;Get a licence or trial&rdquo; link under a comment opens the IDE's own licence dialog with Docsheen selected. Without one, a formula, table or image shows its source with one quiet line; nothing pops up at startup or when the trial ends. The licence is sold through JetBrains Marketplace once the listing is live. The paid half has been tested with a test licence in the window, not with a real purchase or trial.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
     <li>The editor only: the Quick Documentation popup and documentation shown at call sites stay the IDE's own. Where the IDE's Rendered View shows a comment, Docsheen leaves it alone (see First use, step 2).</li>
     <li>C and C++ source and header files (<code>.c .h .cpp .hpp .cc .hh .cxx .hxx .inl .ipp .tpp</code> and others); not Objective-C, CUDA, Java or Python comments.</li>
     <li>A pipe table is drawn when a blank line precedes it. A table that starts on the line right after a sentence, as in OpenCV's <code>dnn.hpp</code> and <code>operations.hpp</code>, is shown as text.</li>
-    <li>LaTeX: Doxygen's formula syntax with the math of standard LaTeX and amssymb, matrices, and the environments equation, align, gather, multline, eqnarray and flalign; not LaTeX packages, <code>\usepackage</code> or whole documents; equation numbers are not drawn. A command it does not know (<code>\color</code>, <code>\hfill</code>, <code>\SI</code>, a macro defined outside FORMULA_MACROFILE) shows the source and the reason. A formula never loads a file or a web address.</li>
+    <li>LaTeX: Doxygen's formula syntax with the math of standard LaTeX and amssymb, matrices, and the environments equation, align, gather, multline, eqnarray and flalign; not LaTeX packages, <code>\usepackage</code> or whole documents; equation numbers are not drawn. A command it does not know (<code>\color</code>, <code>\hfill</code>, <code>\SI</code>, a macro defined outside FORMULA_MACROFILE) shows the source and the reason. The formula commands that would load a file or a web address (<code>\includegraphics</code> and three others) are refused with a reason.</li>
     <li>Not drawn: Graphviz <code>\dot</code> and <code>\dotfile</code>, <code>\msc</code>, PlantUML (their source is shown with a label), <code>\image latex</code>, remote and SVG images. <code>\ref</code> and <code>#symbol</code> show their text and do not jump to code.</li>
     <li>A comment of more than 4,000 lines or 200,000 characters stays as source, with the toggle disabled and the reason shown. A formula that would draw wider or taller than 8,000 px shows its reason instead.</li>
     <li>Memory: prepared drawings stay while the file is open, about 50 to 150 KB per drawn comment. Measured on large real headers: 354 comments (a Drake header) added about 50 MB to the IDE's heap, 1,351 comments (a CGAL header) about 90 MB. Drawing happens off the UI thread, about 1 to 2 seconds for such a header.</li>
