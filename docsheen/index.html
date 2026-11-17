@@ -137,7 +137,7 @@
     <p class="price"><strong>Free</strong> with no time limit: comments, Markdown, links. <strong>$9 once</strong> for formulas, tables, images, the preview and macros: personal or commercial, every update, 30-day trial.</p>
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
     <p class="note" id="buy-note">Not on JetBrains Marketplace yet.</p>
-    <p class="fine">Tested in a window: IntelliJ IDEA 2025.3 and 2026.3, Linux. CLion 2025.3 and 2026.3: Plugin Verifier and automated tests only. Windows and macOS untested. Licence: end-user agreement; the source of the bundled typesetting library is included, Docsheen's own is not. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> &middot; <a href="quick-start.html">Quick start</a></p>
+    <p class="fine">Tested in a window: IntelliJ IDEA 2025.3 and 2026.3, Linux. CLion 2025.3 and 2026.3: Plugin Verifier and automated tests only. Licence: end-user agreement; the source of the bundled typesetting library is included, Docsheen's own is not. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> &middot; <a href="quick-start.html">Quick start</a></p>
   </div>
 </section>
 <main>
@@ -190,14 +190,15 @@
   <div class="buy">
     <p><a class="button pending" id="buy-2" href="#" aria-describedby="buy-note-2" onclick="return false;">Get it on JetBrains Marketplace</a></p>
     <p class="note" id="buy-note-2">Not on JetBrains Marketplace yet.</p>
+    <p class="fine">Not run on Windows or macOS (desktop IDE).</p>
   </div>
 
   <h2 id="tested">How we tested</h2>
   <ul>
     <li>OpenCV 4.14.0, 33 headers: 4,699 comments drawn with all their text; 1,819 of 1,819 formulas typeset without an error, with OpenCV's macro file.</li>
     <li>Against Doxygen 1.9.8 on <code>imgproc.hpp</code>: headings, lists, code spans, links and emphasis equal on 631 of 633 comments.</li>
-    <li><code>imgproc.hpp</code> (5,251 lines, 760 comments) drawn in a median 1.3 s off the UI thread; Docsheen's longest UI-thread block: median 11 ms, worst 46 ms (no window).</li>
-    <li>184 automated tests, 0 failed. Window checks: IntelliJ IDEA 2025.3, 32 of 32 steps; 2026.3, 28 of 32. <a href="quick-start.html#tested">The full table</a>.</li>
+    <li><code>imgproc.hpp</code> (5,251 lines, 760 comments) drawn in a median 1.4 s off the UI thread; Docsheen's longest UI-thread block: median 17 ms, worst 51 ms (no window).</li>
+    <li>188 automated tests, 0 failed. Window checks: IntelliJ IDEA 2025.3, 32 of 32 steps; 2026.3, 28 of 32. <a href="quick-start.html#tested">The full table</a>.</li>
   </ul>
   <p class="fine"><a href="eula.html">End User License Agreement</a> &middot; no network calls, no telemetry (<a href="../privacy.html">privacy</a>) &middot; Docsheen is affiliated with JetBrains, OpenCV, Bosch, ST and Doxygen in no way.</p>
 </main>
