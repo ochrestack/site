@@ -28,6 +28,8 @@ Allow: /xsdtrail/
 Allow: /xsdtrail/quick-start.html
 Allow: /hexgrain/
 Allow: /hexgrain/quick-start.html
+Allow: /docsheen/
+Allow: /docsheen/quick-start.html
 Allow: /histsight/
 Allow: /histsight/quick-start.html
 Allow: /scrollgrep/

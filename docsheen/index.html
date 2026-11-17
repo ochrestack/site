@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docsheen: Doxygen Rendering for JetBrains IDEs: Markdown and LaTeX formulas in C and C++ doc comments</title>
+<meta name="description" content="Docsheen draws the Doxygen comments of C and C++ files in the editor, where they are written: Markdown formatted and links that open, free; LaTeX formulas typeset, tables and images for $9 once. Checked in IntelliJ IDEA 2025.3 and 2026.3.">
+<link rel="canonical" href="https://ochrestack.com/docsheen/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Docsheen: Doxygen Rendering for JetBrains IDEs">
+<meta property="og:description" content="Doxygen comments full of ** and \f$ read as raw text. Docsheen draws them in the editor: Markdown formatted, links that open, free. LaTeX formulas, tables and images: $9 once.">
+<meta property="og:url" content="https://ochrestack.com/docsheen/">
+<meta property="og:image" content="https://ochrestack.com/docsheen/img/og-docsheen-2x1.png">
+<meta property="og:image:width" content="980">
+<meta property="og:image:height" content="490">
+<meta property="og:image:alt" content="IntelliJ IDEA 2025.3 with OpenCV's imgproc.hpp: the warpAffine Doxygen comment drawn in the editor, its formula typeset, Parameters as a list with a typeset 2 by 3 matrix, and See also, above the function signature">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Docsheen: Doxygen Rendering for JetBrains IDEs">
+<meta name="twitter:description" content="Doxygen comments in C and C++ drawn in the editor: Markdown formatted, links that open, free. Formulas, tables and images: $9 once.">
+<meta name="twitter:image" content="https://ochrestack.com/docsheen/img/og-docsheen-2x1.png">
+<meta name="twitter:image:alt" content="The warpAffine comment from OpenCV's imgproc.hpp drawn by Docsheen in IntelliJ IDEA, formula typeset">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  code { font-size: 15px; }
+  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .note { font-size: 15px; color: var(--muted); }
+  .benefits { padding-left: 20px; margin: 16px 0; }
+  .benefits li { margin: 6px 0; }
+  .hero { margin-bottom: 8px; }
+  .pair figure { flex: 0 1 auto; }
+  /* The IDE captures are up to 1026 px wide: on wide screens they get the width of the top section, centred on the column. */
+  @media (min-width: 1080px) {
+    .real-size { width: 1026px; margin-left: -157px; margin-right: -157px; }
+    .real-size img { width: auto; max-width: 100%; margin: 0 auto; }
+    .real-size figcaption { text-align: center; }
+  }
+  header { max-width: 1200px; }
+  .top { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .top h1 { margin-top: 24px; }
+  .top .sub { font-size: 18px; line-height: 1.5; margin-bottom: 8px; }
+  .top .benefits { margin: 8px 0; }
+  .top .benefits li { margin: 2px 0; }
+  .top .buy { margin-top: 10px; }
+  .top .note, .top .fine { margin: 0 0 6px; line-height: 1.45; }
+  .top-image { margin: 16px 0; }
+  @media (min-width: 1000px) {
+    .top { display: grid; grid-template-columns: minmax(420px, 1fr) minmax(0, 640px); column-gap: 36px; align-items: start; }
+    .top > * { grid-column: 1; }
+    .top > .top-image { grid-column: 2; grid-row: 1 / span 4; margin: 28px 0 0; }
+    .top { grid-template-rows: repeat(4, auto) 1fr; }
+    .top > .top-images { grid-column: 2; grid-row: 1 / span 5; margin: 28px 0 0; }
+    .top-images .top-image { margin: 0 0 14px; }
+  }
+  .top-images .top-image:last-child img { border: 1px solid #E6DED3; border-radius: 10px; }
+  .preview-narrow { margin: 20px 0 0; }
+  @media (min-width: 1000px) { .preview-narrow { display: none; } }
+  @media (max-width: 999px) { .top-images .top-image.preview-wide { display: none; } }
+  figcaption.lead { font-size: 17px; font-weight: 600; color: var(--ink); margin: 0 0 8px; }
+  .top-images .preview-wide img, .preview-narrow img { max-width: 567px; }
+  @media (min-width: 1000px) { .top > .top-images { margin-top: 14px; } .top-images .top-image { margin-bottom: 10px; } }
+  .compare th:first-child, .compare td:first-child { width: 30%; }
+  .compare code { white-space: nowrap; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<section class="top">
+  <h1>Docsheen: Doxygen Rendering</h1>
+  <p class="sub">Doxygen comments full of <code>**bold**</code>, backticks and <code>\f$ &hellip; \f$</code> read as raw text in the editor. Docsheen draws them where they are written: Markdown formatted and links that open, free; formulas typeset, tables and images for $9 once.</p>
+  <div class="top-images">
+    <figure class="top-image">
+      <a href="img/window-drawn.png"><img class="hero" src="img/before-after.png" alt="IntelliJ IDEA 2025.3, OpenCV's imgproc.hpp, the warpAffine comment twice. Before: the comment as source, with the formula written as \f[\texttt{dst} (x,y) = ...\f] and the parameters as @param lines. After: the same comment drawn by Docsheen, with the formula typeset as dst(x,y) = src(M11 x + M12 y + M13, M21 x + M22 y + M23), a Parameters list in which M is a typeset 2 by 3 matrix, and See also" width="980" height="722"></a>
+      <figcaption>The same comment in OpenCV 4.14.0's <code>imgproc.hpp</code>, as source and drawn.</figcaption>
+    </figure>
+  </div>
+  <ul class="benefits">
+    <li><strong>Comments you can read.</strong> Parameters, Returns, Notes and See also grouped as Doxygen groups them; bold, code spans, lists and headings formatted. Free.</li>
+    <li><strong>Formulas that look like formulas.</strong> <code>\f$</code>, <code>\f[</code> and <code>\f{align}{</code> typeset in place with your Doxyfile's macros, no TeX installation, no network.</li>
+    <li><strong>Links that open, tables and images in place,</strong> and a live preview while you type a formula.</li>
+  </ul>
+  <div class="buy">
+    <p class="price"><strong>Free</strong> with no time limit: comments, Markdown, links. <strong>$9 once</strong> for formulas, tables, images, the live preview and Doxyfile macros: personal or commercial, every update included, 30-day trial.</p>
+    <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
+    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet.</p>
+    <p class="fine">Tested in a window: IntelliJ IDEA 2025.3 and 2026.3 on Linux. CLion 2025.3 and 2026.3: Plugin Verifier and automated tests, no window check yet. Windows and macOS untested. End-user licence, not open source. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> &middot; <a href="quick-start.html">Quick start</a></p>
+  </div>
+</section>
+<main>
+  <div class="box">
+    <strong>What CLion already does.</strong> CLion already does part of this, and we say so. Its Rendered View (Ctrl+Alt+Q) groups a comment's Doxygen tags, and for comments with only tags and plain sentences it may be all you need. According to CLion's help page it cannot open links, and on 2026-11-16 Markdown and LaTeX in comments were still open requests on JetBrains' tracker (CPP-8590, CPP-9210). We have read that, not run it: CLion has not been opened in a window yet.
+  </div>
+
+  <h2 id="what">Free, and what $9 adds</h2>
+  <p><strong>Free, no time limit:</strong> Doxygen comments in C and C++ files drawn in place of their source lines, with Doxygen's groups (brief and details, Parameters, Returns, Exceptions, Note, Warning, See also and more); Markdown (emphasis, code spans and blocks, headings, lists, quotes); links that open, in your editor's font and colours.</p>
+  <p><strong>With a licence, $9 once (30-day trial):</strong> LaTeX formulas typeset in place (<code>\f$</code>, <code>\f[</code>, <code>\f{env}{</code> and the <code>@f</code> spellings; one it cannot typeset shows its source and the reason); tables; images found next to the file, at the project root or in your Doxyfile's IMAGE_PATH; a live preview while you type a formula; the formula macros of your Doxyfile.</p>
+  <p>Without a licence, a formula, table or image shows its source text, with one quiet line saying what the licence adds: no popup, no banner, no notification. The free part does not move behind the licence in later versions. Docsheen only draws over the editor; it never changes your files.</p>
+
+  <h2 id="real">In the IDE, for real</h2>
+  <p>Captures of Docsheen 1.0.1 in IntelliJ IDEA 2025.3 (default dark theme, Linux), on OpenCV 4.14.0's own headers, unmodified (Apache-2.0, used as sample code; not affiliated). Formulas, tables, images and the live preview are licence features, and the Marketplace listing is not live, so these captures were taken with a test licence switched on by a test setting. Each image links to the full window.</p>
+
+  <figure class="real-size">
+    <a href="img/window-formulas-macros.png"><img src="img/formulas-macros.png" alt="The calibrateCamera comment in OpenCV's calib3d.hpp drawn by Docsheen: the cameraMatrix parameter with a typeset 3 by 3 matrix of fx, fy, cx and cy, and the distCoeffs parameter with the typeset vector k1, k2, p1, p2 and so on" width="960" height="205" loading="lazy"></a>
+    <figcaption>OpenCV's own formula macros (<code>\cameramatrix</code>, <code>\distcoeffs</code>), read from the project's Doxyfile (FORMULA_MACROFILE) and typeset.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/window-table.png"><img src="img/table.png" alt="A Markdown table from the comment of OpenCV's intrin_cpp.hpp drawn as a grid: a header row 'Operations\Types, uint 8, int 8, uint 16, int 16, uint 32, int 32' and rows load, store; interleave; expand; expand_low; expand_high; expand_q; add, sub and more, with x marks centred in their cells" width="960" height="414" loading="lazy"></a>
+    <figcaption>A pipe table from <code>intrin_cpp.hpp</code>, with the centred columns its source asks for.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/window-image.png"><img src="img/image.png" alt="In OpenCV's imgproc.hpp the comment of the threshold types drawn with its picture: four panels labelled Value and Threshold Level, Threshold Binary, Threshold Binary Inverted and Truncate" width="960" height="505" loading="lazy"></a>
+    <figcaption>The threshold-types picture, found through the Doxyfile's IMAGE_PATH and drawn in the comment.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/window-live-preview.png"><img src="img/live-preview.png" alt="Two captures of warpPerspective's formula in imgproc.hpp. First: with the caret in the formula, a typeset preview of dst(x,y) = src of a pair of fractions opens under it. Second: after typing + \sqrt{x, a red-framed box under the caret shows the formula's source and the reason, 'unbalanced brace: 1 { is not closed'" width="1170" height="360" loading="lazy"></a>
+    <figcaption>The live preview follows each keystroke; a typo shows the reason, not a blank.</figcaption>
+  </figure>
+
+  <figure class="real-size">
+    <a href="img/window-free-tier.png"><img src="img/free-tier.png" alt="The warpAffine comment without a licence: Markdown and the Parameters group drawn, the formula shown as source text in a grey box, and one quiet line under See also: 'Formulas, tables and images are drawn with a licence ($9 once, 30-day trial). Get a licence or trial'" width="960" height="470" loading="lazy"></a>
+    <figcaption>The free tier of the same comment: the formula stays source text, and one line says what a licence adds.</figcaption>
+  </figure>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li><strong>The editor only.</strong> The Quick Documentation popup and documentation shown at call sites stay the IDE's own.</li>
+    <li><strong>Where the IDE's Rendered View already shows a comment, Docsheen leaves it alone.</strong> If nothing changes, press Ctrl+Alt+Q on the comment, or untick <em>Settings | Editor | General | Appearance | Render documentation comments</em>.</li>
+    <li>C and C++ source and header files only. A pipe table is drawn when a blank line precedes it: in two of OpenCV's headers (<code>dnn.hpp</code>, <code>operations.hpp</code>) a table starts on the line right after a sentence, and Docsheen shows it as text.</li>
+    <li>LaTeX: Doxygen's formula syntax with the math of standard LaTeX and amssymb, not packages or whole documents. A command it does not know (<code>\color</code>, <code>\hfill</code>, a macro defined outside FORMULA_MACROFILE) shows the source and the reason.</li>
+    <li>Not tested: CLion in a window, Remote Development, Rider, CLion's Classic engine, Windows, macOS. The rest of the limits (what is not drawn, size, memory) are in the <a href="quick-start.html#limits">quick start</a>.</li>
+  </ul>
+
+  <div class="buy">
+    <p><a class="button pending" id="buy-2" href="#" aria-describedby="buy-note-2" onclick="return false;">Get it on JetBrains Marketplace</a></p>
+    <p class="note" id="buy-note-2">Listing in review: not on JetBrains Marketplace yet.</p>
+    <p class="fine">Free to use; $9 once for formulas, tables, images, the live preview and macros &middot; personal and commercial alike &middot; tested in IntelliJ IDEA 2025.3 and 2026.3 on Linux</p>
+  </div>
+
+  <h2 id="tested">How we tested</h2>
+  <table>
+    <tr><th>What</th><th>Result (Docsheen 1.0.1)</th></tr>
+    <tr><td>The 33 OpenCV 4.14.0 headers that contain formulas</td><td>4,699 comments drawn with all their text (91,692 words checked, 0 problems); 10 empty comments are not drawn</td></tr>
+    <tr><td>Their formulas</td><td>1,819 of 1,819 typeset without an error with OpenCV's macro file; 1,724 without it, the other 95 use OpenCV's macros</td></tr>
+    <tr><td>Markdown against Doxygen 1.9.8 on <code>imgproc.hpp</code></td><td>headings, list items, code spans, links and emphasis equal on 631 of 633 comments; the other two are lists inside <code>\internal</code>, which Doxygen hides and Docsheen shows</td></tr>
+    <tr><td>Speed on <code>imgproc.hpp</code> (5,251 lines, 760 comments)</td><td>all drawn in a median 1.2 s, off the UI thread; Docsheen's longest UI-thread block: median 11 ms, worst 70 ms</td></tr>
+    <tr><td>Automated tests</td><td>157 run, 0 failed</td></tr>
+    <tr><td>In a window, Linux</td><td>IntelliJ IDEA 2025.3: 24 of 24 steps. IntelliJ IDEA 2026.3: 20 of 24 (the other four type into the editor and click the settings page, which differ in 2026.3; not re-run)</td></tr>
+    <tr><td>JetBrains' Plugin Verifier</td><td>Compatible with IntelliJ IDEA 2025.3 and 2026.3 and CLion 2025.3 and 2026.3</td></tr>
+  </table>
+  <p class="fine">Speed was measured on the test platform of IntelliJ IDEA 2025.3 (no window), Linux, 4-core Xeon at 2.10 GHz. &ldquo;Typeset&rdquo; means drawn without an error: we did not compare each formula's look with Doxygen's own output. The paid half has been tested with the test licence, not with a real purchase or trial. Android Studio Panda 1 (2025.3.1 Canary 5) was checked with release 1.0.0 only.</p>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li>Licence: perpetual, sold through JetBrains Marketplace once the listing is live: $9, one price for personal and commercial use, every update included, nothing renews. <a href="eula.html">End User License Agreement</a>. Source code is not included; the source of the bundled typesetting library (JLaTeXMath, GPL-2.0-or-later with the Classpath Exception) is inside the zip.</li>
+    <li>IDE builds 2025.3 and later, no upper limit. IntelliJ IDEA, CLion and the other JetBrains IDEs that open C and C++ files.</li>
+    <li>Privacy: no network calls, no telemetry, no analytics; nothing is collected or sent. Docsheen reads the C and C++ files open in your editor and, for formulas and images, your Doxyfile, the macro file it names and the image files your comments refer to. Licence checks are done by the IDE through JetBrains Marketplace. <a href="../privacy.html">Privacy policy</a>.</li>
+    <li>Install and first steps: <a href="quick-start.html">quick start</a>. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+  </ul>
+  <p style="font-size:14px;color:var(--muted)">Images: OpenCV 4.14.0 headers (Apache-2.0), IntelliJ IDEA 2025.3. CLion, IntelliJ IDEA and Rendered View are names of JetBrains s.r.o.; OpenCV is a name of its project; Docsheen is made by Ochrestack and is affiliated with neither JetBrains, OpenCV nor the Doxygen project.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

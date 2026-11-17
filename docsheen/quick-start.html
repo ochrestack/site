@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docsheen quick start: install, draw a comment, type a formula</title>
+<meta name="description" content="Install Docsheen in a JetBrains IDE, draw the Doxygen comments of a C or C++ file in the editor, edit them, and set up formulas, images and the Doxyfile.">
+<link rel="canonical" href="https://ochrestack.com/docsheen/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  code { font-size: 15px; }
+  .button.pending, .button.pending:hover { background: var(--muted); cursor: default; }
+  .note { font-size: 15px; color: var(--muted); }
+  .benefits { padding-left: 20px; margin: 16px 0; }
+  .benefits li { margin: 6px 0; }
+  .hero { margin-bottom: 8px; }
+  .pair figure { flex: 0 1 auto; }
+  /* The IDE captures are up to 1026 px wide: on wide screens they get the width of the top section, centred on the column. */
+  @media (min-width: 1080px) {
+    .real-size { width: 1026px; margin-left: -157px; margin-right: -157px; }
+    .real-size img { width: auto; max-width: 100%; margin: 0 auto; }
+    .real-size figcaption { text-align: center; }
+  }
+  header { max-width: 1200px; }
+  .top { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .top h1 { margin-top: 24px; }
+  .top .sub { font-size: 18px; line-height: 1.5; margin-bottom: 8px; }
+  .top .benefits { margin: 8px 0; }
+  .top .benefits li { margin: 2px 0; }
+  .top .buy { margin-top: 10px; }
+  .top .note, .top .fine { margin: 0 0 6px; line-height: 1.45; }
+  .top-image { margin: 16px 0; }
+  @media (min-width: 1000px) {
+    .top { display: grid; grid-template-columns: minmax(420px, 1fr) minmax(0, 640px); column-gap: 36px; align-items: start; }
+    .top > * { grid-column: 1; }
+    .top > .top-image { grid-column: 2; grid-row: 1 / span 4; margin: 28px 0 0; }
+    .top { grid-template-rows: repeat(4, auto) 1fr; }
+    .top > .top-images { grid-column: 2; grid-row: 1 / span 5; margin: 28px 0 0; }
+    .top-images .top-image { margin: 0 0 14px; }
+  }
+  .top-images .top-image:last-child img { border: 1px solid #E6DED3; border-radius: 10px; }
+  .preview-narrow { margin: 20px 0 0; }
+  @media (min-width: 1000px) { .preview-narrow { display: none; } }
+  @media (max-width: 999px) { .top-images .top-image.preview-wide { display: none; } }
+  figcaption.lead { font-size: 17px; font-weight: 600; color: var(--ink); margin: 0 0 8px; }
+  .top-images .preview-wide img, .preview-narrow img { max-width: 567px; }
+  @media (min-width: 1000px) { .top > .top-images { margin-top: 14px; } .top-images .top-image { margin-bottom: 10px; } }
+  .compare th:first-child, .compare td:first-child { width: 30%; }
+  .compare code { white-space: nowrap; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Docsheen quick start</h1>
+  <p>Installing Docsheen, drawing a comment and using its features. Back to the <a href="index.html">Docsheen product page</a>.</p>
+
+  <h2 id="install">Install (IDE builds 2025.3 and later)</h2>
+  <ol>
+    <li>In the IDE, open <strong>Settings | Plugins</strong>, search for <em>Docsheen</em> and click <strong>Install</strong>. The listing is in review and not on JetBrains Marketplace yet; until it is live, the search finds nothing.</li>
+    <li>The IDE first shows its <strong>Third-Party Plugins Notice</strong>, naming &ldquo;Docsheen: Doxygen Rendering (Ochrestack)&rdquo;: click <strong>Accept</strong>.</li>
+    <li>Click <strong>Restart IDE</strong> when it asks. It always asks: the IDE does not load a plugin that carries a Marketplace licence without a restart.</li>
+    <li>Open a C or C++ file. Its Doxygen comments are drawn.</li>
+  </ol>
+  <p><strong>From a zip</strong> (for example one you were sent before the listing is live): <strong>Settings | Plugins</strong>, the gear icon, <strong>Install Plugin from Disk&hellip;</strong>, choose <code>docsheen-1.0.1.zip</code> without unzipping it, then the same notice and restart.</p>
+  <figure><img class="ui" src="img/install-restart.png" alt="IntelliJ IDEA 2025.3, Settings, Plugins, Installed: Docsheen: Doxygen Rendering by Ochrestack with the Freemium tag, version 1.0.0, and a green Restart IDE button" width="800" height="650" loading="lazy"><figcaption>After installing from disk: Docsheen with its <em>Freemium</em> tag and the <strong>Restart IDE</strong> button. Recorded with release 1.0.0 in IntelliJ IDEA 2025.3; the 1.0.1 zip has the same layout.</figcaption></figure>
+  <p><strong>The &ldquo;Cannot update plugin&rdquo; balloon (IntelliJ IDEA 2026.3, zip installs).</strong> After a zip install, 2026.3 shows its own notification &ldquo;Cannot update plugin: Unable to identify where Docsheen: Doxygen Rendering was installed from&rdquo;, also on the plugin's page. It asks this of every plugin installed from a zip and is harmless; a Marketplace install should not show it, which cannot be checked before the listing exists. IntelliJ IDEA 2025.3 did not show it.</p>
+
+  <h2 id="first">First use</h2>
+  <ol>
+    <li>Open a C or C++ header that has Doxygen comments. <strong>What you should see:</strong> a block in place of each comment's lines, with Parameters, Returns and the other groups, and Markdown formatted. A comment that shares a line with code is drawn just below that line.</li>
+    <li><strong>Nothing changed?</strong> The IDE's own Rendered View is showing that comment (Android Studio's does; CLion's does when it is on, as its help page describes, which we have not run), and Docsheen leaves it to it. Press <strong>Ctrl+Alt+Q</strong> on the comment, or untick <strong>Settings | Editor | General | Appearance | Render documentation comments</strong>.</li>
+    <li>Switch a comment between drawn and source with the <strong>gutter icon</strong> next to it, <strong>Render with Docsheen</strong> in the editor's context menu, <strong>Find Action</strong> (Ctrl+Shift+A, type &ldquo;Docsheen&rdquo;), or <strong>Ctrl+Alt+Shift+O</strong> with the caret in the comment. <strong>Render All in File with Docsheen</strong> does the whole file.</li>
+    <li>To keep comments as source when a file opens, untick <strong>Settings | Tools | Docsheen | Render Doxygen comments when a C or C++ file opens</strong>.</li>
+  </ol>
+  <p>The shortcut, the gutter icon, the context menu entries, Find Action and Render All were each driven in a real IntelliJ IDEA 2025.3 window with this version (24 of 24 steps). CLion has not been run in a window yet.</p>
+
+  <h2 id="edit">Edit a drawn comment</h2>
+  <p>Click it (not on a link): its source shows with the caret in it. When the caret leaves, it is drawn again with your edit. A web link opens in your browser, a link to a file opens it in the editor. Docsheen never edits or saves a file by itself.</p>
+
+  <h2 id="formulas">Formulas and the live preview (licence)</h2>
+  <ol>
+    <li>Put the caret inside a formula in a comment's source: <code>\f$ &hellip; \f$</code>, <code>\f[ &hellip; \f]</code> or <code>\f{align}{ &hellip; \f}</code> (the <code>@f</code> spellings too). A preview appears below the caret and follows each keystroke; <strong>Escape</strong> closes it.</li>
+    <li>A typo shows the formula's source in a framed box with the reason, such as &ldquo;unbalanced brace: 1 '{' is not closed&rdquo;, never a blank.</li>
+    <li>An optional setting typesets <code>$ &hellip; $</code> and <code>$$ &hellip; $$</code> too (<strong>Settings | Tools | Docsheen</strong>; off by default, so <code>$10</code> and <code>$PATH</code> stay text).</li>
+  </ol>
+  <figure><a href="img/window-live-preview.png"><img src="img/live-preview.png" alt="Two captures of warpPerspective's formula: the typeset preview under the caret, then the red-framed reason box after + \sqrt{x is typed" width="1170" height="360" loading="lazy"></a><figcaption>The live preview, then the reason box (OpenCV 4.14.0, IntelliJ IDEA 2025.3, test licence).</figcaption></figure>
+
+  <h2 id="doxyfile">Your Doxyfile: macros and images</h2>
+  <p>If your project has a <code>Doxyfile</code> at its root, formulas use its FORMULA_MACROFILE (<code>\newcommand</code> and <code>\renewcommand</code>, with arguments) and images are found through its IMAGE_PATH, after the file's own folder and the project root. Choose another Doxyfile in <strong>Settings | Tools | Docsheen</strong>; the page shows what was read: the macro file and how many macros, the image directories, or why something could not be read. A missing image shows its alt text and the paths tried; remote images are not fetched.</p>
+
+  <h2 id="licence">Licence and trial</h2>
+  <p>Comments, Markdown and links are free with no time limit. Formulas, tables, images, the live preview and the macros need a licence, or the 30-day trial: the &ldquo;Get a licence or trial&rdquo; link under a comment opens the IDE's own licence dialog with Docsheen selected. Without one, a formula, table or image shows its source with one quiet line; nothing pops up. The licence is sold through JetBrains Marketplace once the listing is live. The paid half has been tested with a test licence in the window, not with a real purchase or trial.</p>
+
+  <h2 id="limits">Known limits</h2>
+  <ul>
+    <li>The editor only: the Quick Documentation popup and documentation shown at call sites stay the IDE's own. Where the IDE's Rendered View shows a comment, Docsheen leaves it alone (see First use, step 2).</li>
+    <li>C and C++ source and header files (<code>.c .h .cpp .hpp .cc .hh .cxx .hxx .inl .ipp .tpp</code> and others); not Objective-C, CUDA, Java or Python comments.</li>
+    <li>A pipe table is drawn when a blank line precedes it. A table that starts on the line right after a sentence, as in OpenCV's <code>dnn.hpp</code> and <code>operations.hpp</code>, is shown as text.</li>
+    <li>LaTeX: Doxygen's formula syntax with the math of standard LaTeX and amssymb, matrices, and the environments equation, align, gather, multline, eqnarray and flalign; not LaTeX packages, <code>\usepackage</code> or whole documents; equation numbers are not drawn. A command it does not know (<code>\color</code>, <code>\hfill</code>, <code>\SI</code>, a macro defined outside FORMULA_MACROFILE) shows the source and the reason. A formula never loads a file or a web address.</li>
+    <li>Not drawn: Graphviz <code>\dot</code> and <code>\dotfile</code>, <code>\msc</code>, PlantUML (their source is shown with a label), <code>\image latex</code>, remote and SVG images. <code>\ref</code> and <code>#symbol</code> show their text and do not jump to code.</li>
+    <li>A comment of more than 4,000 lines or 200,000 characters stays as source, with the toggle disabled and the reason shown. A formula that would draw wider or taller than 8,000 px shows its reason instead.</li>
+    <li>Memory: prepared drawings stay while the file is open, about 50 to 150 KB per drawn comment. Measured on large real headers: 354 comments (a Drake header) added about 50 MB to the IDE's heap, 1,351 comments (a CGAL header) about 90 MB. Drawing happens off the UI thread, about 1 to 2 seconds for such a header.</li>
+    <li>Tested in a window on Linux: IntelliJ IDEA 2025.3 (24 of 24 steps) and 2026.3 (20 of 24). Not tested: CLion in a window (Plugin Verifier and automated tests only), Remote Development and Code With Me clients, Rider, the Classic C/C++ engine, Windows, macOS.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Docsheen reads the text of the C and C++ files open in your editor and, for formulas and images, your project's Doxyfile, the macro file it names and the image files your comments refer to. It keeps everything in memory, writes nothing to your project, and keeps its own settings in the IDE's settings (per-file toggles in the project's workspace file). It makes no network calls, does not fetch remote images, and collects and sends nothing. Licence checks are done by the IDE through JetBrains Marketplace. See also the <a href="../privacy.html">privacy policy</a>.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your IDE version (Help | About) and, if you can, the comment that went wrong. Bug reports and feature requests are welcome at the same address.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
