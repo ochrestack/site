@@ -59,6 +59,7 @@
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
 </style>
+<style>@media (max-width: 600px) { .scroll-x img.ui { width: 960px; } }</style>
 </head>
 <body>
 <header>
@@ -72,12 +73,13 @@
   <h2 id="install">Install</h2>
   <p>Requires WordPress 6.5 or later, PHP 7.4 or later, and an administrator account.</p>
   <ol>
-    <li>Get the free plugin: <a href="download/consentwell.zip?v=1.0.1">consentwell.zip</a> (version 1.0.1) from this site. Pro buyers get <code>consentwell-pro-download.zip</code> from Polar, through the link in the order email; unzip it once and you have <code>consentwell.zip</code>, <code>consentwell-pro.zip</code> and <code>INSTALL.txt</code>. Do not unzip the plugin zips.</li>
+    <li>Get the free plugin: <a href="download/consentwell.zip?v=1.0.2">consentwell.zip</a> (version 1.0.2) from this site. Pro buyers get <code>consentwell-pro-download.zip</code> from Polar, through the link in the order email; unzip it once and you have <code>consentwell.zip</code>, <code>consentwell-pro.zip</code> and <code>INSTALL.txt</code>. Do not unzip the plugin zips.</li>
     <li>In WordPress, go to <strong>Plugins &gt; Add Plugin</strong> (WordPress 6.5 calls it <strong>Add New Plugin</strong>), click <strong>Upload Plugin</strong>, choose <code>consentwell.zip</code>, then <strong>Install Now</strong> and <strong>Activate Plugin</strong>. WordPress says “Plugin activated.” Consentwell adds no wizard, no redirect and no notice. It shows up in two places: a <strong>Check a page</strong> link under its name on the Plugins screen, and <strong>Tools &gt; Consentwell</strong>.</li>
     <li>Pro only, after the free plugin: the same with <code>consentwell-pro.zip</code>. Pro needs the free plugin: if you upload Pro alone, the Plugins screen says “You cannot activate this plugin as it has unmet requirements” and WordPress will not activate it (the <strong>Activate Plugin</strong> link on the upload result leads to a WordPress error naming <code>consentwell</code>). Install and activate <code>consentwell.zip</code> first. Pro then adds <strong>Tools &gt; Consentwell Pro</strong>.</li>
   </ol>
   <figure>
-    <img src="img/plugins-list.png" alt="The Plugins screen on the demo bakery site: Complianz, Consentwell – Check What Loads After Reject with a 'Check a page' link and Deactivate, Contact Form 7 and SQLite Database Integration" loading="lazy" width="1424" height="441">
+    <p class="swipe-hint narrow-only">On a phone the screenshots are wider than the screen: swipe each one sideways to read it &rarr;</p>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/plugins-list.png" alt="The Plugins screen on the demo bakery site: Complianz, Consentwell – Check What Loads After Reject with a 'Check a page' link and Deactivate, Contact Form 7 and SQLite Database Integration" loading="lazy" width="1424" height="441"></div></div>
     <figcaption>After activation: the <strong>Check a page</strong> link on the Plugins screen opens the check screen.</figcaption>
   </figure>
 
@@ -90,43 +92,51 @@
   </ol>
   <p><strong>Server-side check only</strong> fetches the page without a browser: faster, no Reject, and it also sees cookies set with HttpOnly. A page that forbids being shown in a frame (<code>X-Frame-Options: DENY</code>) gets this check automatically, and the screen says so.</p>
   <figure>
-    <img src="img/tools-first-screen.png" alt="Tools &gt; Consentwell before any check: the heading, 'Check any page of your site as a logged-out visitor: does the consent banner show, and what still loads after Reject', the note naming Complianz 7.5.7, the Page to check list set to Home page, the address field, the Check this page and Server-side check only buttons, and 'Last 20 checks: No checks yet'" loading="lazy" width="1424" height="890">
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/tools-first-screen.png" alt="Tools &gt; Consentwell before any check: the heading, 'Check any page of your site as a logged-out visitor: does the consent banner show, and what still loads after Reject', the note naming Complianz 7.5.7, the Page to check list set to Home page, the address field, the Check this page and Server-side check only buttons, and 'Last 20 checks: No checks yet'" loading="lazy" width="1424" height="890"></div></div>
     <figcaption>Tools &gt; Consentwell before the first check.</figcaption>
   </figure>
 
   <h2 id="reading">Reading the result</h2>
   <ul>
-    <li><strong>Banner in the page HTML / visible on screen / Reject button visible on the first layer.</strong> If the banner is in the HTML but not on screen, the result says what hides it (a class such as <code>cmplz-hidden</code>, <code>display: none</code>, zero size, off screen), and a <strong>Likely cause</strong> box names the reason where it found one: no <code>wp_footer()</code> in the theme, a script error, the consent plugin’s own file answering an error, a page-cache copy that differs, or Global Privacy Control with the consent plugin set to respect it (hidden by design; nothing is broken).</li>
-    <li><strong>Before any choice</strong> and <strong>After Reject (page reloaded)</strong>: the requests to other domains the page made while Consentwell watched it, each with type, full address and the service name where it is a well-known one, and the cookies the page can read. The seconds watched are printed under each list. A request that starts later, or only after a real click, is not listed.</li>
+    <li><strong>Banner in the page HTML / visible on screen / Reject button visible on the first layer.</strong> If the banner is in the HTML but not on screen, the result says what hides it (a class such as <code>cmplz-hidden</code>, <code>display: none</code>, zero size, off screen), and a <strong>Likely cause</strong> box names the reason where it found one: no <code>wp_footer()</code> in the theme, a script error, the consent plugin’s own files answering an error, a style rule that hides the banner, a page-cache copy that differs, or Global Privacy Control with the consent plugin set to respect it (hidden by design; nothing is broken).</li>
+    <li><strong>Before any choice</strong> and <strong>After Reject (page reloaded)</strong>: the requests to other domains the page made while Consentwell watched it, each with type, full address and the service name where it is a well-known one, and the cookies the page can read (the consent plugin’s own record cookie is named, not listed). The seconds watched are printed under each list. A request that starts later, or only after a real click, is not listed.</li>
     <li><strong>An empty After Reject list is not an all-clear.</strong> It means nothing to another domain was seen in the seconds watched.</li>
   </ul>
   <figure>
-    <a href="img/contact-result.png"><img src="img/contact-result.png" alt="The whole result for the demo bakery's contact page: three green 'yes' rows (banner in the page HTML, visible on screen, Reject button visible on the first layer), 'Consentwell clicked the banner's Reject button, then reloaded the page', then the Before any choice list and the After Reject list, each with four rows and 'Watched about 8 seconds'" loading="lazy" width="1424" height="1298"></a>
+    <div class="swipe-wrap"><div class="scroll-x"><a href="img/contact-result.png"><img class="ui" src="img/contact-result.png" alt="The whole result for the demo bakery's contact page: three green 'yes' rows (banner in the page HTML, visible on screen, Reject button visible on the first layer), 'Consentwell clicked the banner's Reject button, then reloaded the page', then the Before any choice list and the After Reject list, each with four rows, 'Watched about 8 seconds' and the cookies line (after Reject: none, the consent plugin's own record named as not listed)" loading="lazy" width="1424" height="1324"></a></div></div>
     <figcaption>A whole result: the banner facts, then the two lists.</figcaption>
   </figure>
   <figure>
-    <img src="img/copy-as-text.png" alt="The Copy as text button after a click, with 'Copied.' beside it, above a plain-text summary: 'Consentwell check', the page address, the date, WordPress 7.1.4, Consent plugin: Complianz 7.5.7, the method, and the findings" loading="lazy" width="1424" height="790">
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/copy-as-text.png" alt="The Copy as text button after a click, with 'Copied.' beside it, above a plain-text summary: 'Consentwell check', the page address, the date, WordPress 7.1.4, Consent plugin: Complianz 7.5.7, the method, and the findings" loading="lazy" width="1424" height="790"></div></div>
     <figcaption><strong>Copy as text</strong>: the page address, plugin versions and every finding with its address, for your consent plugin’s support forum.</figcaption>
   </figure>
   <figure>
-    <img src="img/last-checks.png" alt="The Last 20 checks table: the page, the date, banner shown, Reject visible, third-party requests before a choice, third-party requests after Reject, cookies after Reject, and View and Check again buttons; five rows, one of them 'no banner found'" loading="lazy" width="1424" height="474">
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/last-checks.png" alt="The Last 20 checks table: the page, the date, banner shown, Reject visible, third-party requests before a choice, third-party requests after Reject, cookies after Reject, and View and Check again buttons; five rows, one of them 'no banner found'" loading="lazy" width="1424" height="474"></div></div>
     <figcaption>The last 20 checks, each with <strong>View</strong> and <strong>Check again</strong>.</figcaption>
   </figure>
   <figure>
-    <img src="img/site-health.png" alt="Tools &gt; Site Health with the Consentwell item opened: '4 third-party addresses loaded on the home page after Reject', the date of the last check, 'Consent plugin: Complianz 7.5.7', 'This reports technical facts from one check, not legal advice' and an Open Consentwell link" loading="lazy" width="1424" height="254">
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/site-health.png" alt="Tools &gt; Site Health with the Consentwell item opened: '4 third-party addresses loaded on the home page after Reject', the date of the last check, 'Consent plugin: Complianz 7.5.7', 'This reports technical facts from one check, not legal advice' and an Open Consentwell link" loading="lazy" width="1424" height="254"></div></div>
     <figcaption><strong>Tools &gt; Site Health</strong> shows “Consent banner check (Consentwell)” from your last check of the home page.</figcaption>
   </figure>
 
   <h2 id="other">Another consent plugin</h2>
-  <p>Complianz and CookieYes are recognised by name. For another banner, Consentwell finds it when it is visible, has buttons labelled like a choice (Accept, Reject, Allow) and mentions cookies or consent, in the page or in an open shadow root. The screen then says “Your turn: click Reject in the check window below.” Click the banner’s Reject, and Consentwell continues by itself (or click <strong>I clicked Reject, continue</strong>). A banner in a closed shadow root or in a frame is not found. Cookiebot’s dialog is looked for by its usual id but was not tested with a Cookiebot account.</p>
+  <p>Complianz and CookieYes are recognised by name. For another banner, Consentwell finds it when it is visible, has buttons labelled like a choice (Accept, Reject, Allow) and mentions cookies or consent, in the page or in an open shadow root. The screen then says “Your turn: click Reject in the check window below.” Click the banner’s Reject, and Consentwell continues by itself (or click <strong>I clicked Reject, continue</strong>). A banner in a closed shadow root or in a frame is not found. Cookiebot’s dialog is looked for by its usual id but was not tested with a Cookiebot account. Pro cannot take a manual Reject: Pro clicks Reject on Complianz and CookieYes banners; on any other banner it lists what loads before any choice only.</p>
 
   <h2 id="pro-steps">Consentwell Pro</h2>
   <ol>
     <li>Go to <strong>Tools &gt; Consentwell Pro</strong> and click <strong>Check every page</strong>. Pro reads your sitemap (the one <code>robots.txt</code> declares, such as an SEO plugin’s, or WordPress’s own <code>wp-sitemap.xml</code>) and checks each address in turn. Keep the screen open: a page takes about 20 seconds, so 120 pages take about 40 minutes. A run covers at most 5,000 addresses from at most 200 sitemap files, and the summary says so when your sitemap is bigger.</li>
     <li><strong>Pause</strong> at any time; <strong>Resume</strong> continues with the next page, also after you leave the screen and come back. <strong>Start over</strong> begins a new run.</li>
-    <li>At the end: a summary, a table of every page and <strong>Download CSV</strong>. In a run, a banner Consentwell does not recognise by name is checked before any choice only.</li>
+    <li>At the end: a summary, a table of every page (each page’s likely cause is under its address, and its addresses and cookie names fold out) and <strong>Download CSV</strong>. Pro clicks Reject on Complianz and CookieYes banners; on any other banner it lists what loads before any choice only. For those pages After Reject reads “not checked” (and so does the summary line when Reject was clicked on none), a notice says how many pages Reject was clicked on, and the summary lists what loads before any choice, with the most common addresses. The CSV has a “Reject clicked” column and the before-choice addresses.</li>
     <li>Run it again after you fix something: <strong>Since the previous run</strong> lists what is new or gone (pages, addresses after Reject, cookies, banners that stopped showing).</li>
   </ol>
+  <figure>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/pro-row-cause.png" alt="The Every page table of a Consentwell Pro run on the demo bakery: each page's address with an 'Addresses on this page' fold-out under it. The Our breads row says 'no banner found', and under its address: 'Likely cause: This page has no wp_footer output: the theme's template does not call wp_footer(). Complianz adds its banner there, so the banner cannot appear on this page.', with the before-choice addresses unfolded" loading="lazy" width="1424" height="864"></div></div>
+    <figcaption>Each page’s likely cause is under its address, and its addresses fold out. The CSV has the same cause.</figcaption>
+  </figure>
+  <figure>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/pro-other-banner.png" alt="Tools &gt; Consentwell Pro after a run on the demo bakery with GDPR Cookie Compliance instead of Complianz: a notice 'Consentwell clicked Reject on 0 of 9 pages', the summary with 'Pages with third-party requests after Reject: not checked', 9 pages with a banner Consentwell does not recognise by name and 9 with requests before any choice, and the most common addresses before any choice" loading="lazy" width="1424" height="1114"></div></div>
+    <figcaption>A run on a banner Consentwell does not recognise by name (GDPR Cookie Compliance 5.3.1 with its Reject button switched on): Reject was not clicked on any page, so After Reject says “not checked”, and the addresses are the ones loaded before any choice.</figcaption>
+  </figure>
   <p id="updates"><strong>Updating.</strong> Neither plugin checks for updates by itself. For a new version, download the new zip (Pro: from your order email or order page) and use <strong>Plugins &gt; Add Plugin &gt; Upload Plugin</strong>, <strong>Install Now</strong> and <strong>Replace current with uploaded</strong>.</p>
 
   <h2 id="remove">Deactivate or delete</h2>
@@ -148,21 +158,31 @@
   <h2 id="tested">How we tested</h2>
   <table>
     <tr><th>What</th><th>Result</th></tr>
-    <tr><td>PHPUnit, WordPress test suite, PHP 7.4.33 and 8.3.6 on WordPress 7.1.4 and 6.5.5</td><td>89 tests, 2,240 assertions, OK in all four runs</td></tr>
-    <tr><td>Browser tests in Chromium 141, WordPress 7.1.4, PHP 8.3.6, with Complianz 7.5.7 and CookieYes 3.5.9 (local mode)</td><td>37 passed</td></tr>
+    <tr><td>PHPUnit, WordPress test suite, PHP 7.4.33 and 8.3.6 on WordPress 7.1.4 and 6.5.5</td><td>104 tests, 2,920 assertions, OK in all four runs</td></tr>
+    <tr><td>Browser tests in Chromium 141, WordPress 7.1.4, PHP 8.3.6, with Complianz 7.5.7 and CookieYes 3.5.9 (local mode)</td><td>38 passed</td></tr>
     <tr><td>Tests written to break it: a script-delay plugin at its default 5 seconds and in load-on-first-input mode, a tag fired 3 seconds after load (with Complianz and with CookieYes), a lazy map, banners in shadow roots or without “cookie” in their id, the admin’s own cookies, Global Privacy Control, a page-cache copy</td><td>15 passed</td></tr>
     <tr><td>WordPress.org Plugin Check 2.2.0, both plugins</td><td>0 errors, 0 warnings</td></tr>
     <tr><td>Both zips installed through Plugins &gt; Add Plugin &gt; Upload Plugin on a clean WordPress with debugging on, on the same four PHP and WordPress combinations</td><td>all four pass; Pro alone is refused with WordPress’s “unmet requirements”; Tools &gt; Consentwell, Tools &gt; Consentwell Pro and Site Health open; nothing from either plugin in the debug log</td></tr>
     <tr><td>phpcs, WordPress-Extra, PHP 7.4 and later</td><td>0 errors, 0 warnings</td></tr>
   </table>
-  <p class="fine">Everything ran on Linux against version 1.0.1 of both plugins. Windows, macOS, MySQL servers other than MariaDB 10.11, Cookiebot banners and browsers other than Chromium were not tested. The images and the demo site are described under <a href="#images">how the images were made</a>.</p>
+  <p class="fine">Everything ran on Linux against version 1.0.2 of both plugins. Windows, macOS, MySQL servers other than MariaDB 10.11, Cookiebot banners and browsers other than Chromium were not tested. The images and the demo site are described under <a href="#images">how the images were made</a>.</p>
 
   <h2 id="images">How the images were made</h2>
-  <p>Every image on both pages is a capture of Consentwell 1.0.1 in a real Chromium 141 window under a virtual display, on a local WordPress 7.1.4 (PHP’s built-in server, SQLite) with Complianz Free 7.5.7 set up through its own wizard with the default answers. The demo bakery site has a Contact Form 7 form with reCAPTCHA (Google’s published test keys), a YouTube embed, a Google Map and a theme that loads Google Fonts. Google’s hosts were answered by a local stand-in server instead of the real services, so every address in the images is one the site’s own pages requested, not a measurement of Google. Online, reCAPTCHA’s <code>api.js</code> also loads a file from gstatic.com. The “Our breads” page uses a template, written for the demo, that does not call <code>wp_footer()</code>. Consentwell Pro is installed only for the Pro image.</p>
+  <p>Every image on both pages is a capture of Consentwell 1.0.2 in a real Chromium 141 window under a virtual display, on a local WordPress 7.1.4 (PHP’s built-in server, SQLite) with Complianz Free 7.5.7 set up through its own wizard with the default answers. The demo bakery site has a Contact Form 7 form with reCAPTCHA (Google’s published test keys), a YouTube embed, a Google Map and a theme that loads Google Fonts. Google’s hosts were answered by a local stand-in server instead of the real services, so every address in the images is one the site’s own pages requested, not a measurement of Google. Online, reCAPTCHA’s <code>api.js</code> also loads a file from gstatic.com. The “Our breads” page uses a template, written for the demo, that does not call <code>wp_footer()</code>. Consentwell Pro is installed only for the Pro images. The “other banner” image replaces Complianz with GDPR Cookie Compliance 5.3.1 from WordPress.org, its Reject button switched on in its own settings, and nothing else changed.</p>
 
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your WordPress and PHP versions, your consent plugin and its version, the address you checked, and the text from <strong>Copy as text</strong>.</p>
 </main>
+<script>
+// Hide the right-edge fade of a screenshot box once it is scrolled to its end.
+(function () {
+  document.querySelectorAll(".swipe-wrap .scroll-x").forEach(function (box) {
+    box.addEventListener("scroll", function () {
+      box.parentNode.classList.toggle("at-end", box.scrollLeft + box.clientWidth >= box.scrollWidth - 2);
+    }, { passive: true });
+  });
+})();
+</script>
 <footer>
   <a href="../guides/">Guides</a>
   <a href="../privacy.html">Privacy</a>
