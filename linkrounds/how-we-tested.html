@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How we tested Linkrounds: two sites, every number</title>
+<meta name="description" content="How Linkrounds and Linkrounds Pro were tested: a 300-post archive and a demo blog, with the counts, the times, what we checked by hand, and what a scan costs your server.">
+<link rel="canonical" href="https://ochrestack.com/linkrounds/how-we-tested.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; border-right: 1px solid #E6DED3; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; min-width: 520px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  pre, code { overflow-wrap: anywhere; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>How we tested Linkrounds</h1>
+  <p>The numbers on the <a href="index.html">product page</a> and in the <a href="quick-start.html">quick start</a>, with the times and what we did by hand. Back to the <a href="index.html">product page</a>.</p>
+
+  <h2 id="tested">Where and when</h2>
+  <p>Everything on the product page and the quick start was measured with Linkrounds 1.2.5 and Linkrounds Pro 1.2.2 on WordPress 7.1.4 with PHP 8.3.6, on November 17, 2026 (times are London time, which is UTC in November). Both sites are local, on PHP's built-in server with the SQLite Database Integration plugin; screenshots are from Chromium under a virtual display, the film too. Pro installed first was shown on a fresh WordPress 7.1.4 site. The automated tests and the Upload Plugin install check also ran on WordPress 6.5.14, and on both WordPress versions with PHP 7.4.33 (the oldest PHP the plugins support).</p>
+
+  <h2 id="archive">"The Hook Weekly", a 300-post archive</h2>
+  <p>A PHP and WordPress link digest we generated for this test: 300 weekly issues from 2014 to 2019 (297 still published), linking to real php.net, developer.wordpress.org, wordpress.org and GitHub pages, some of which are gone. That is 708 different addresses in 2,702 places (links to codex.wordpress.org, a host our test machine cannot reach, were left out). Nobody else visited the site.</p>
+  <ul>
+    <li>Scan now took 6 min 15 s with the screen open (one run; it depends on how fast the linked sites answer).</li>
+    <li>First scan, finished 4:16 pm: nothing Broken yet. 71 addresses (251 places) failed once, 18 forwarded somewhere (49 places), 619 answered normally (2,402 places), and no site blocked the check.</li>
+    <li>We left Tools &gt; Linkrounds open. The second checks ran by themselves from 5:10 pm; we had closed the screen by mistake for about a minute and a half at 5:11 and opened it again, and the last check finished at 5:16 pm. All 71 failed again and became Broken (251 places). At 5:18 pm we requested all 71 Broken addresses ourselves (curl, a browser's User-Agent, redirects followed): 71 of 71 returned 404. So 0 of the 71 Broken addresses were working.</li>
+    <li>Six of the forwards were wordpress.org plugin pages that now land on wordpress.org's plugin search, and the reason says so (below).</li>
+    <li>On the Broken view we ticked rows 4 and 12 of 20 and chose Unlink. We compared all 297 posts before and after: exactly 2 posts changed, and in each only the link's own opening and closing tags were removed.</li>
+  </ul>
+  <figure><picture><source media="(max-width: 600px)" srcset="img/redirected-search-phone.png" width="300" height="467"><img class="shot" src="img/redirected-search.png" alt="Two Redirected rows from the 300-post archive after searching for wordpress.org/plugins. First: https://wordpress.org/plugins/wp-easy-gallery-old/, 'Ends at: https://wordpress.org/plugins/search/wp-easy-gallery-old/'. Second: https://wordpress.org/plugins/jquery-colorbox-plus/, ending at https://wordpress.org/plugins/search/jquery-colorbox-plus/. Each has a yellow Redirected badge, 200, and the reason 'The address forwards to what looks like a search or “not found” page on the same site. Sites often do this when a page was removed, so open it and check that it is where readers should go.'" loading="lazy" width="668" height="451"></picture><figcaption>Removed plugin pages that forward to wordpress.org's plugin search: the reason says so.</figcaption></figure>
+
+  <h2 id="demo">"Low Poly Lane", a demo blog</h2>
+  <p>A demo blog of a small 3D studio that we built for these tests: 12 posts and 2 pages from 2019 to 2025, a menu (also as a block-theme Navigation menu), and links to real Blender, Godot and WordPress documentation, some of which has since moved or gone. The film and the screenshots of the results, the fixes and the revisions are from this run.</p>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="The demo blog's counts at three times (scrolls sideways on a phone)">
+  <table>
+    <tr><th>Answer</th><th>First scan, 4:26 pm (63 addresses in 70 places)</th><th>After the second checks, 5:26 pm</th><th>After our four fixes, 5:28 pm (60 addresses in 68 places)</th></tr>
+    <tr><td>Broken</td><td>0</td><td>8 addresses (10 places)</td><td>4 addresses (6 places)</td></tr>
+    <tr><td>Looks broken</td><td>8 addresses (10 places)</td><td>0</td><td>0</td></tr>
+    <tr><td>Redirected</td><td>5 addresses (7 places)</td><td>5 addresses (7 places)</td><td>5 addresses (7 places)</td></tr>
+    <tr><td>Inconclusive</td><td>6 addresses (6 places), all refused the check (403): blender.org and registry.khronos.org</td><td>6 addresses (6 places)</td><td>6 addresses (6 places)</td></tr>
+    <tr><td>OK</td><td>44 addresses (47 places)</td><td>44 addresses (47 places)</td><td>45 addresses (49 places)</td></tr>
+  </table>
+  </div>
+  <p>The four fixes were Edit address on two links (a web page and an image) and a bulk Unlink of two ticked rows. At 5:29 pm we requested the seven web pages that had become Broken ourselves (curl, a browser's User-Agent, redirects followed): all seven returned 404, and the eighth address, an image, is not in the uploads folder. We requested the six Inconclusive addresses too: blender.org and registry.khronos.org refused our request as well (403), so those links are honestly Inconclusive. So 0 of the 8 Broken addresses were working.</p>
+  <p>Pro's daily scan, set in the film for 6:00 pm, started on the first visit after it (6:00:03 pm) and finished 23 seconds later (59 addresses in 67 places). Pro sends the report an hour after the scan (the event was due at 7:05 pm); we did not wait for that hour and ran the report step by hand at 6:00:58 pm (<a href="index.html#report">the whole email</a>): 3 addresses, used in 5 places, each listed once. Then we switched the mail off, cleared the record of the last report and ran the step again to see a refused report (the Schedule &amp; email tab says “Could not instantiate mail function.” and, because we cleared the record, “No report sent yet.”), switched the mail on again and sent a test email, which went through at 6:01 pm.</p>
+
+  <h2 id="gentle">What a scan costs your server</h2>
+  <ul>
+    <li>The scan runs in small background batches through WordPress's scheduled tasks (WP-Cron), with a live count and Pause and Resume. If the host kills a batch, the scan picks itself up again.</li>
+    <li>Links to your own posts, pages and uploads are checked against your own database and files, with no request to your site.</li>
+    <li>Each address is requested once per scan, however many posts use it. At most six requests run at once, and at most two go to the same site.</li>
+    <li>A batch starts no new request after 10 seconds and ends within about 25. While it waits for answers it barely uses the processor: on our 300-post archive, a 10-second batch used 1.6 to 2.2 seconds of processor time.</li>
+    <li>Addresses in private or local networks (10.x, 192.168.x, 127.0.0.1) are never requested, except your own site's address. On a local or staging install your site itself is on such an address, so links to your own site that Linkrounds cannot match to a post, page or upload (an archive, a feed, <code>/wp-admin/</code>) are requested from it.</li>
+  </ul>
+
+
+  <h2 id="automated">Automated tests</h2>
+  <p>The test suite is 158 tests, plus a separate suite of 21 attack tests written against the first release. Both pass on WordPress 7.1.4 and 6.5.14, each with PHP 8.3.6 and PHP 7.4.33 (the oldest PHP the plugins support). The Upload Plugin check (Pro uploaded first, then the free plugin, through the real Upload Plugin form) passes on the same four, and Plugin Check 2.2.0 reports no errors on the free zip. In Chromium we also checked the results screen&#8217;s Enter key, error and result lines, phone layout and Export CSV on both sites, every control as an Administrator, an Editor, an Author and a Subscriber, and installing Pro before the free plugin on a fresh site. Not tested: other WordPress or PHP versions, and multisite in a live install.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

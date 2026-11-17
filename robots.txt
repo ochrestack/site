@@ -8,6 +8,7 @@ Allow: /exportmint/
 Allow: /exportmint/quick-start.html
 Allow: /linkrounds/
 Allow: /linkrounds/quick-start.html
+Allow: /linkrounds/how-we-tested.html
 Allow: /skintap/
 Allow: /skintap/quick-start.html
 Allow: /sunreckon/
