@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How Rolemend was tested: counts, versions, images and video</title>
-<meta name="description" content="What was run on Rolemend 1.3.0 and Rolemend Pro 1.2.0: screens opened, changes attempted, upload routes tried, the WordPress, PHP and plugin versions, and how the product-page images and the demo video were made.">
+<meta name="description" content="What was run on Rolemend 1.3.1 and Rolemend Pro 1.2.1: screens opened, changes attempted, upload routes tried, the WordPress, PHP and plugin versions, and how the product-page images and the demo video were made.">
 <link rel="canonical" href="https://ochrestack.com/rolemend/how-we-tested.html">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <style>
@@ -67,7 +67,7 @@
 </header>
 <main>
   <h1>How Rolemend was tested</h1>
-  <p>What was run on Rolemend 1.3.0 and Rolemend Pro 1.2.0, and how the pictures and the video were made. Back to the <a href="index.html">Rolemend product page</a>.</p>
+  <p>What was run on Rolemend 1.3.1 and Rolemend Pro 1.2.1, and how the pictures and the video were made. Back to the <a href="index.html">Rolemend product page</a>.</p>
 
   <h2 id="tested">What was run</h2>
   <table>
@@ -76,8 +76,11 @@
     <tr><td>View Only user tries to change something: Settings, posts, pages and drafts, media, comments, users, plugins, themes, menus, widgets, Customizer, REST API, another plugin's own save handlers</td><td>142 attempts, none got through: 141 refused with the plain message, 1 background request's plugin data dropped. A checksum of the site's content, settings and user tables was identical after every one</td></tr>
     <tr><td>Media role uploads through 11 routes (the library uploader, drag and drop, REST API, a file fetched from a URL, another plugin's upload handler)</td><td>All 11 refused, and again after a role editor gave the role upload rights (22 refusals); no new file, no new attachment</td></tr>
     <tr><td>Media role saves Title, Alternative Text, Caption and Description</td><td>Saved through Attachment details and Edit Media, read back</td></tr>
-    <tr><td>Both roles on a site with WooCommerce 11.2.2, Yoast SEO 28.8, GiveWP 4.19.2 and Contact Form 7 6.2.5 (Contact Form 7 on PHP 8.3 only)</td><td>The media role signs in to the library, not the shop's My account page, and the product page shows the alt text it saved. Every link in both roles' menus opens without a refusal, and so does every wp-admin link on their Dashboard and Plugins screens; none belongs to those four plugins, and none of their widgets, notices or row links such as Settings is shown</td></tr>
+    <tr><td>Both roles on a site with WooCommerce 11.3.0, Yoast SEO 28.8, GiveWP 4.19.2 and Contact Form 7 6.2.5 (Contact Form 7 on PHP 8.3 only)</td><td>The media role signs in to the library, not the shop's My account page, and the product page shows the alt text it saved. Every link in both roles' menus opens without a refusal, and so does every wp-admin link on their Dashboard and Plugins screens; none belongs to those four plugins, and none of their widgets, notices or row links such as Settings is shown</td></tr>
+    <tr><td>View Only user clicks Run and Cancel in WooCommerce's Tools &gt; Scheduled Actions (a job that writes a file, so that running it can be seen)</td><td>Both refused with the plain message; the jobs stayed pending and the file was not written. The same links, clicked by an administrator, ran and cancelled them</td></tr>
+    <tr><td>View Only user and media role only open Add User, another person's profile, Add Media File, Export and the Customizer</td><td>Each says the screen does not open; the same screens asked for with a change in the request say nothing was changed</td></tr>
     <tr><td>Rolemend Pro: Access ends on, set on Users &gt; Add User</td><td>The user is created with the role and the date; a date that is today, past or not a date stops Add User and creates nobody; for another role the date is ignored</td></tr>
+    <tr><td>Rolemend Pro: a date of today saved on a profile</td><td>Access ends at once and the screen says "Access ended now", once; a later date says nothing of the kind</td></tr>
     <tr><td>Rolemend Pro: a change made before Pro was activated</td><td>Not in Media &gt; Text Changes (the screen says the list starts when Pro is activated); a change made after is</td></tr>
     <tr><td>Activation</td><td>Every existing role and user identical; home page, a post, a page, an archive and a search byte-identical before and after</td></tr>
     <tr><td>Deactivate, reactivate, delete</td><td>Both roles' users lose wp-admin, then get the same access back; on deletion the roles go and the users keep their accounts with no role</td></tr>
@@ -86,10 +89,10 @@
   <p>Tested on Linux with WordPress 7.1.4 and 6.5.14, PHP 8.3.6 and 7.4.33, MariaDB 10.11.14, single site and multisite (subdirectory network), on PHP's built-in web server; both zips also installed through Upload Plugin on each WordPress and PHP pair with WP_DEBUG on and no notices. Plugin Check 2.2.0: 0 errors, 0 warnings. Requires WordPress 6.5 or later and PHP 7.4 or later. Not tested: MySQL 8, Apache or nginx, servers on Windows or macOS, translations; the full test suite has not been run on the SQLite Database Integration plugin.</p>
 
   <h2 id="images">How the images were made</h2>
-  <p>They are captures of a real WordPress 7.1.4 with Rolemend 1.3.0 (and Rolemend Pro 1.2.0 for the Pro images), in Chromium 141, of a demo site, Northfield Botanic Garden: 13 posts, 6 pages, 5 comments, 7 people and 20 photographs that ship with the Twenty Twenty-Five theme. On that site we checked, while capturing, that the Site Title was unchanged after the refused save, that nothing in the content, settings or user tables changed during the View Only session, that the alt text was stored, and that no file or attachment was added after the refused drop. The dropped photo was handed to WordPress's uploader by a script in the page, because the virtual display cannot drag from a file manager. The shop image is the same demo site with WooCommerce 11.2.2 added and three products that use the garden's photos; there we also read the product page's HTML for the alt text the media role saved.</p>
+  <p>They are captures of a real WordPress 7.1.4 with Rolemend 1.3.1 (and Rolemend Pro 1.2.1 for the Pro images), in Chromium 141, of a demo site, Northfield Botanic Garden: 13 posts, 6 pages, 5 comments, 7 people and 20 photographs that ship with the Twenty Twenty-Five theme. On that site we checked, while capturing, that the Site Title was unchanged after the refused save, that nothing in the content, settings or user tables changed during the View Only session, that the alt text was stored, and that no file or attachment was added after the refused drop. The dropped photo was handed to WordPress's uploader by a script in the page, because the virtual display cannot drag from a file manager. The shop image is the same demo site with WooCommerce 11.3.0 added and three products that use the garden's photos; there we also read the product page's HTML for the alt text the media role saved.</p>
 
   <h2 id="video">How the video was made</h2>
-  <p>One continuous recording of the same demo site on a fresh WordPress 7.1.4, in Chromium 141 drawn at 2.25 times normal size, with Rolemend 1.3.0 installed from the free zip. The pointer moves and clicks and the typing are real input events from a script; the sign-ins between people and the page loads are cut out. The dropped photo was handed over the same way as in the images. After the recording we read back from the database that the Site Title was unchanged, the alt text was stored and no attachment was added. It plays at 60 frames a second; the only stretch without motion is the closing card.</p>
+  <p>One continuous recording of the same demo site on a fresh WordPress 7.1.4, in Chromium 141 drawn at 2.25 times normal size, with Rolemend 1.3.1 installed from the free zip. The pointer moves and clicks and the typing are real input events from a script; the sign-ins between people and the page loads are cut out. The dropped photo was handed over the same way as in the images. After the recording we read back from the database that the Site Title was unchanged, the alt text was stored and no attachment was added. It plays at 60 frames a second; the only stretch without motion is the closing card.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>

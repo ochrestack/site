@@ -94,11 +94,12 @@
   </ul>
 
   <div class="buy" style="margin-top:10px">
-    <p class="price" style="margin-bottom:6px"><strong>Free:</strong> <a href="download/rolemend.zip?v=1.3.0">rolemend.zip</a> 1.3.0, both roles · <strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
+    <p class="price" style="margin-bottom:6px"><strong>Free:</strong> <a href="download/rolemend.zip?v=1.3.1">rolemend.zip</a> 1.3.1, both roles · <strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
+    <p class="fine" style="margin-bottom:6px">Handing access to a contractor? Pro ends it on a date you choose and undoes their alt-text edits. For a team member or an auditor you don't need Pro: both roles are in the free plugin.</p>
     <p class="fine" id="trust" style="margin-bottom:0">Tested on WordPress 7.1.4 and 6.5.14, PHP 8.3 and 7.4, on Linux; Windows and macOS untested · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 
-  <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Rolemend adds both roles and changes nothing else. Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. The free zip is 41 KB. <a href="how-we-tested.html">How we tested</a>.</p>
+  <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Rolemend adds both roles and changes nothing else. Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. The free zip is 42 KB. <a href="how-we-tested.html">How we tested</a>.</p>
 
   <div class="box warn">
     <strong>Why a role editor can't do this.</strong> WordPress lists posts only for people who may edit them, and opens the Media Library only for people who may upload. Two site owners asked WordPress.org's support forums for exactly these roles. WordPress core cannot do either job, which is why both askers were told "Partly" and "no combination of capabilities".
@@ -111,11 +112,11 @@
         <source src="video/rolemend-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
         <source src="video/rolemend-demo-720p.mp4" type="video/mp4">
       </video>
-      <figcaption>The demo, 57 s, captions only, no sound (1080p, 720p on phones; <a href="video/rolemend-demo-1080p.mp4">open full size</a>). On a fresh WordPress 7.1.4, Rolemend 1.3.0 is activated and both roles appear in the Role list. Ravi (View Only) sees every post, his Site Title change is refused and the title stays as it was, and Plugins has no Activate or Delete. Jo (Media Library, no uploads) fixes the alt text on a photo Sam uploaded, and a dropped photo is refused. Faster parts say "sped up". The free plugin only; Pro is not shown.</figcaption>
+      <figcaption>The demo, 57 s, captions only, no sound (1080p, 720p on phones; <a href="video/rolemend-demo-1080p.mp4">open full size</a>). On a fresh WordPress 7.1.4, Rolemend 1.3.1 is activated and both roles appear in the Role list. Ravi (View Only) sees every post, his Site Title change is refused and the title stays as it was, and Plugins has no Activate or Delete. Jo (Media Library, no uploads) fixes the alt text on a photo Sam uploaded, and a dropped photo is refused. Faster parts say "sped up". The free plugin only; Pro is not shown.</figcaption>
     </figure>
     <figure>
       <img src="video/rolemend-view-only-refused.gif" alt="A 13-second loop from the demo: Ravi Patel, signed in as View Only, sees the Posts list with drafts and private posts and the 'View only' marker; he types 'Changed by the accountant' as the Site Title and clicks Save Changes; the page says 'This account is view only, so nothing was changed. Ask an administrator if this change is needed.'; Settings > General shows the Site Title still 'Northfield Botanic Garden'" width="960" height="540" loading="lazy">
-      <figcaption>The View Only refusal alone (13 s GIF, 1.1 MB).</figcaption>
+      <figcaption>The View Only refusal alone (13 s GIF, 0.9 MB).</figcaption>
     </figure>
   </section>
 
@@ -150,7 +151,7 @@
   <h2 id="works-with">Does it work with my plugins?</h2>
   <table>
     <tr><th>Plugin tested</th><th>Media Library role</th><th>View Only</th></tr>
-    <tr><td>WooCommerce 11.2.2</td><td><strong>Yes.</strong> Opens wp-admin, not My account; the product page shows the alt text it saves.</td><td>No WooCommerce menu, no orders.</td></tr>
+    <tr><td>WooCommerce 11.3.0</td><td><strong>Yes.</strong> Opens wp-admin, not My account; the product page shows the alt text it saves.</td><td>No WooCommerce menu and no orders. Tools &gt; Scheduled Actions can be read; its Run and Cancel links are refused.</td></tr>
     <tr><td>Yoast SEO 28.8</td><td>Yes. No Yoast screens.</td><td>No Yoast menu or settings.</td></tr>
     <tr><td>GiveWP 4.19.2</td><td>Yes. No GiveWP screens.</td><td>No donations or reports; GiveWP has its own Accountant role.</td></tr>
     <tr><td>Contact Form 7 6.2.5</td><td>Yes. No Contact screens.</td><td>No Contact menu and no Settings link on Plugins.</td></tr>
@@ -182,14 +183,14 @@
   <details id="not-locked">
     <summary>What it does not lock</summary>
     <ul>
-      <li>Anything another plugin does outside the WordPress database when a plain link is clicked or a screen is read, such as sending an email or writing a file. WordPress's own links, such as Trash or Activate, are refused, and database writes from other plugins' code on these users' requests are stopped. A plugin whose save was stopped may still show its own "Saved" message. Choose who gets the role as you would for any account that can read your site.</li>
-      <li>Code that runs before WordPress knows who is signed in, and plugins that write through their own database connection instead of WordPress's.</li>
+      <li>Some plugins can still send an email or save a file when this person opens one of their screens. Rolemend stops them saving anything to your site's database (caches and the person's own settings aside), but not what they do outside it. WordPress's own links, such as Trash or Activate, are refused. A plugin whose save was stopped may still say "Saved". Give the role as you would to anyone who can read your site.</li>
+      <li>A few plugins start work before WordPress checks who is signed in, or reach the database by a route of their own. Rolemend cannot stop those.</li>
       <li>What the account can read is readable, including user email addresses and commenter details.</li>
       <li>Drafts are listed by title, author and date, but their text cannot be opened, because WordPress shows a draft only to people who may edit it.</li>
       <li>Tools &gt; Export and the theme and plugin file editors are not available to the role.</li>
-      <li>Other plugins' screens appear only when they use WordPress's own Settings permission, and some of them may load empty when their reading also goes through a save handler. Other plugins' menu entries, toolbar items, Plugins-screen links, Dashboard widgets and admin notices, such as WooCommerce's Products and Yoast SEO's SEO menu, are left out; if someone types the address of such a screen, Contact Form 7's dashboard shows the refusal as raw text in its News box. A notice or widget that a plugin prints by other means than WordPress's own hooks is not caught.</li>
+      <li>Other plugins' screens show only when they use WordPress's own Settings permission, and a few may load empty. WooCommerce's Tools &gt; Scheduled Actions is one that shows: it can be read, and its Run and Cancel links are refused. Other plugins' menu entries, toolbar items, Plugins-screen links, Dashboard widgets and notices, such as WooCommerce's Products and Yoast SEO's menu, are left out; if someone types the address of such a screen, Contact Form 7's dashboard shows the refusal as raw text in its News box. A notice or widget that a plugin adds in an unusual way is not caught.</li>
       <li>Appearance &gt; Editor opens, but its previews of posts, pages and navigation are empty, because WordPress lists those only for people who may edit them; a notice in the editor says so.</li>
-      <li>On other plugins' screens, a link or form whose handler checks WordPress's security token is refused for both roles, even when it only reads (for example a download link).</li>
+      <li>On other plugins' screens, a link or button that WordPress protects with a hidden check code is refused for both roles, even one that only reads, such as a download link.</li>
       <li>The media role cannot post comments or other front-end forms while signed in.</li>
     </ul>
   </details>
