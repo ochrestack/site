@@ -48,6 +48,7 @@
   figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
   figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #2B2118; display: block; }
   .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 6px; }
   .narrow-only { display: none; }
   .fine { font-size: 15px; color: var(--muted); }
@@ -105,6 +106,19 @@
   <div class="box" id="free-route">
     <strong>Do you need it?</strong> Blender already does this by hand: in Edit Mode select the faces that show one image, add a material slot, give it a copy of the material, delete the other image nodes and press Assign. For a single wall with two images that takes a few minutes and you do not need Texapart. An atlas bake (Auto Bake 2, Quick Baker, Lazy Atlas, Atlas Pro) is the right tool when you want fewer materials and one texture for the whole model; it does not keep tiling textures tiling.
   </div>
+
+  <h2 id="watch">Watch</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080">
+      <source src="video/texapart-demo-1080p60.mp4" type="video/mp4" media="(min-width: 768px)">
+      <source src="video/texapart-demo-720p60.mp4" type="video/mp4">
+    </video>
+    <figcaption>The demo, 46 s, captions only, no sound (1080p60, 720p60 on phones; <a href="video/texapart-demo-1080p60.mp4">open full size</a>). Real clicks in Blender 4.2.23 with Texapart 1.0.1 on Rain, whose skin, jeans, hair and eye images sit in one material: the node group, Report, a click on a row in Edit Mode, Split by Texture, the same view before and after, then the glTF in Godot 4.7. Credits <a href="#credits">below</a>.</figcaption>
+  </figure>
+  <figure>
+    <img src="video/texapart-split.gif" alt="Blender 4.2: Report lists Rain's one material with six images and their face counts, rows are clicked in Edit Mode and light up her jeans, hair and skin, Split by Texture is pressed, and the summary reports 20851 faces placed, 6 new materials, 0 faces listed" width="960" height="540" loading="lazy">
+    <figcaption>The split alone: <a href="video/texapart-split.gif">14-second GIF</a>, 2.3 MB, from Report to the summary.</figcaption>
+  </figure>
 
   <h2>In Blender, for real</h2>
   <p>Every image here is a capture of a real Blender 4.2 window with Texapart 1.0.1 installed from its zip. Rain's skin, jeans, hair and eye images are in one material, as a game port delivers her.</p>
