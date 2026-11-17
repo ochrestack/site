@@ -86,13 +86,13 @@
   <p class="sub">Chipped edges that keep separate bricks separate.</p>
   <p class="lead">Select your meshes, press Damage: real chipped geometry, at a chip size in metres. Every brick or block stays its own part, and Revert brings the original back, even after Apply.</p>
   <div class="buy">
-    <!-- Checkout is held until the Polar product carries knapwell-1.5.0.zip under the name Knapwell
+    <!-- Checkout is held until the Polar product carries knapwell-1.5.1.zip under the name Knapwell
          (it still delivered the old Spallwork 1.4.0 zip). To reopen it, run tools/page/reopen_checkout.py
          from the product repository (queue card q-021): both buttons become "Buy for $15" links and the
          note goes. -->
-    <p><button class="button pending" id="buy" type="button" disabled aria-describedby="buy-note" title="Checkout opens when the download is updated to Knapwell 1.5.0">$15 · checkout opens soon</button></p>
+    <p><button class="button pending" id="buy" type="button" disabled aria-describedby="buy-note" title="Checkout opens when the download is updated to Knapwell 1.5.1">$15 · checkout opens soon</button></p>
     <p class="fine">One payment, source included, updates at no charge.<br>Blender 4.5 LTS to 5.2 LTS · <a href="../terms.html">14-day refund</a></p>
-    <p class="note" id="buy-note">Checkout is paused while the download is updated to Knapwell 1.5.0, so nobody receives an older file. For a note on the day it opens, email <a href="mailto:support@ochrestack.com?subject=Knapwell%20checkout">support@ochrestack.com</a>.</p>
+    <p class="note" id="buy-note">Checkout is paused while the download is updated to Knapwell 1.5.1, so nobody receives an older file. For a note on the day it opens, email <a href="mailto:support@ochrestack.com?subject=Knapwell%20checkout">support@ochrestack.com</a>.</p>
   </div>
 
   <a href="img/hero-steps-closeup-full.jpg"><img src="img/hero-steps-closeup.jpg" alt="A Cycles render close up in low sun: three granite steps and a granite plinth beside a red-brick wall and a sandstone door surround. The step and plinth edges carry scattered faceted chips of different sizes, pale where fresh stone shows inside each break; the bricks and the surround have small pale chips at their edges" width="1600" height="800" style="width:100%;height:auto;border:1px solid #E6DED3;border-radius:10px;display:block"></a>
@@ -105,7 +105,7 @@
       <source src="video/knapwell-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/knapwell-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo in a real Blender window with Knapwell 1.4.9 and real clicks: the view moves in on the panel for each button pressed, and a label names each press; captions only, no sound. The looks side by side and the same chips at scale 1 and 3 are renders (<a href="video/knapwell-demo-1080p.mp4">open full size</a>; the wall and the three looks as a <a href="video/knapwell-wall-and-looks.gif">13-second GIF</a>). Ellie (Sprite Fright) (CC BY) Blender Foundation | download.blender.org.</figcaption>
+    <figcaption>The demo in a real Blender window with Knapwell 1.5.1 and real clicks: the view moves in on the panel for each button pressed, and a label names each press; captions only, no sound. The looks side by side and the same chips at scale 1 and 3 are renders (<a href="video/knapwell-demo-1080p.mp4">open full size</a>; the wall and the three looks as a <a href="video/knapwell-wall-and-looks.gif">12-second GIF</a>). Ellie (Sprite Fright) (CC BY) Blender Foundation | download.blender.org.</figcaption>
   </figure>
   </section>
 
@@ -119,7 +119,7 @@
   </figure>
   <ul>
     <li><strong>Many objects at once.</strong> Select them all and press Damage. Worn, Chipped and Ruined set the sliders; the damage stays live and editable until Apply.</li>
-    <li><strong>Chip size in metres.</strong> The same physical size on every object, whether or not its scale is applied. On thin parts, such as real-size bricks, chips are capped to fit the part, and the panel says so ("Chips capped at 0.02 m"); there the three looks differ in how many chips and how deep, not in chip size.</li>
+    <li><strong>Chip size in metres.</strong> The same physical size on every object, whether or not its scale is applied. On thin parts, such as real-size bricks, chips are capped to fit the part, and the panel says so ("Capped at 0.02 m"); there the three looks differ in how many chips and how deep, not in chip size.</li>
     <li><strong>Imported models too.</strong> Check Model finds split seams, holes and sheets, and text or curves that are not meshes yet, and fixes each in one click: Weld Seams, Fill Holes, Add Solidify, Convert to Mesh.</li>
     <li><strong>Keep a doorway clean.</strong> Protect the faces you select: they and the edges around them stay clean. Give the broken faces a material of their own; every other face keeps its material and UVs.</li>
     <li><strong>Apply for export, Revert later.</strong> Apply makes it plain mesh with outward normals; Target faces reduces it for a game. Revert to Original brings the original back, even after you save and reopen the file, until you choose Forget Original (which asks first).</li>
@@ -145,7 +145,7 @@
   <div class="uses">
     <div>
       <img src="img/game-wall-4x.jpg" alt="A close view of a rendered castle wall module of separate stone blocks in low sun, applied with Target faces for a game: pale fresh chips at block corners and edges" width="1200" height="800" loading="lazy">
-      <p><strong>Game kits.</strong> Each block of a wall module stays a closed part. Target faces reduces the result for the engine: our 46-block castle wall (2,484 faces) at Target 9,936 came out at 9,710 faces, 25,316 triangles, 560 chips on Blender 5.2 (the picture is a close view of it); on 4.5 the counts differ a little (<a href="tested.html#tested">how we tested</a>).</p>
+      <p><strong>Game kits.</strong> Each block of a wall module stays a closed part. Target faces reduces the result for the engine: our 46-block castle wall (2,484 faces) at Target 9,936 came out at 9,710 faces, 25,316 triangles, 560 chips on Blender 5.2 (the picture is a close view of a few of its chips); on 4.5 the counts differ a little (<a href="tested.html#tested">how we tested</a>).</p>
     </div>
     <div>
       <img src="img/hero-facade.jpg" alt="A rendered brick facade with a sandstone door surround and granite steps, all chipped; Blender Studio's Rain stands in the doorway" width="1600" height="800" loading="lazy">
@@ -161,7 +161,7 @@
 
   <h2 id="install">Install</h2>
   <ol>
-    <li>Download the Knapwell zip (<code>knapwell-1.5.0.zip</code>) from the link in your checkout email. Do not unzip it.</li>
+    <li>Download the Knapwell zip (<code>knapwell-1.5.1.zip</code>) from the link in your checkout email. Do not unzip it.</li>
     <li>In Blender, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the menu at the top right (<strong>&#8964;</strong>), <strong>Install from Disk...</strong>, and pick the zip.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Knapwell</strong> tab.</li>
   </ol>
@@ -190,7 +190,7 @@
   </details>
 
   <div class="buy" style="margin-top:32px">
-    <p><button class="button pending" id="buy-2" type="button" disabled aria-describedby="buy-note" title="Checkout opens when the download is updated to Knapwell 1.5.0">$15 · checkout opens soon</button></p>
+    <p><button class="button pending" id="buy-2" type="button" disabled aria-describedby="buy-note" title="Checkout opens when the download is updated to Knapwell 1.5.1">$15 · checkout opens soon</button></p>
     <p class="fine">One payment, source included · Blender 4.5 LTS to 5.2 LTS</p>
   </div>
 </main>
