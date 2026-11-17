@@ -98,7 +98,7 @@
     <p class="fine" id="trust" style="margin-bottom:0">Tested on WordPress 7.1.4 and 6.5.14, PHP 8.3 and 7.4, on Linux; Windows and macOS untested · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 
-  <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Rolemend adds both roles and changes nothing else. Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. The free zip is 39 KB. <a href="how-we-tested.html">How we tested</a>.</p>
+  <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Rolemend adds both roles and changes nothing else. Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. The free zip is 40 KB. <a href="how-we-tested.html">How we tested</a>.</p>
 
   <div class="box warn">
     <strong>Why a role editor can't do this.</strong> WordPress lists posts only for people who may edit them, and opens the Media Library only for people who may upload. Two site owners asked WordPress.org's support forums for exactly these roles. WordPress core cannot do either job, which is why both askers were told "Partly" and "no combination of capabilities".
@@ -179,7 +179,7 @@
       <li>Drafts are listed by title, author and date, but their text cannot be opened, because WordPress shows a draft only to people who may edit it.</li>
       <li>Tools &gt; Export and the theme and plugin file editors are not available to the role.</li>
       <li>Other plugins' screens appear only when they use WordPress's own Settings permission, and some of them may load empty when their reading also goes through a save handler. Other plugins' menu entries and toolbar items, such as WooCommerce's Products and Yoast SEO's SEO menu, are left out.</li>
-      <li>Appearance &gt; Editor opens, but its previews of posts, pages and navigation are empty, because WordPress lists those only for people who may edit them.</li>
+      <li>Appearance &gt; Editor opens, but its previews of posts, pages and navigation are empty, because WordPress lists those only for people who may edit them; a notice in the editor says so.</li>
       <li>On other plugins' screens, a link or form whose handler checks WordPress's security token is refused for both roles, even when it only reads (for example a download link).</li>
       <li>The media role cannot post comments or other front-end forms while signed in.</li>
     </ul>
