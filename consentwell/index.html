@@ -102,6 +102,19 @@
     <strong>What it is, and what it isn’t.</strong> Your browser’s developer tools show the same requests for free, and see more (frames, late requests). Consentwell does the steps for you (a fresh visitor, Reject clicked, the page reloaded and scrolled), writes the result in plain words, and names the likely reason when a banner is in the page but not on screen. It changes nothing on your site and does not fix the consent plugin’s settings; it is a technical check, not legal advice, and no plugin can make a site compliant.
   </div>
 
+  <h2 id="watch">Watch it work</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster-after-reject.jpg" width="1920" height="1080">
+      <source src="video/consentwell-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
+      <source src="video/consentwell-demo-720p.mp4" type="video/mp4">
+    </video>
+    <figcaption>The demo, 54 s, captions only, no sound (1080p, 720p on phones; <a href="video/consentwell-demo-1080p.mp4">open full size</a>). A real Chromium 141 on the demo bakery site (WordPress 7.1.4, Complianz Free 7.5.7 with its wizard defaults, Consentwell 1.0.1, free plugin only): Tools &gt; Consentwell, the contact page, then a page whose template never calls <code>wp_footer()</code>. The waits are sped up 3&times; and labelled. Google&rsquo;s hosts are answered by a local stand-in server, so the lists show what the pages requested, not a measurement of Google.</figcaption>
+  </figure>
+  <figure>
+    <img src="video/consentwell-after-reject.gif" alt="A 14-second clip of the demo: Consentwell clicks Reject in the Complianz banner, reloads the page and watches it (sped up 3 times), then the result lists four third-party requests after Reject: two Google Fonts stylesheets, google.com/recaptcha/api.js and a Google Maps frame" loading="lazy" width="896" height="504">
+    <figcaption>The same check, 14 seconds as a GIF (5.7 MB): Reject clicked, page reloaded and watched, then the After Reject list.</figcaption>
+  </figure>
+
   <h2>What a check shows</h2>
   <p>Tools &gt; Consentwell: pick a page, click <strong>Check this page</strong>, keep the screen open for about 20 seconds.</p>
   <figure>
