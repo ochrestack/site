@@ -85,7 +85,7 @@
   <h1>Rolemend for WordPress</h1>
   <p class="sub" style="margin-bottom:12px">Need someone to view your WordPress back end but not edit it, or an SEO person to fix alt text but not upload files?</p>
 
-  <a href="img/view-only-posts.png"><img class="hero" style="margin-bottom:6px" src="img/view-only-posts-hero.png" alt="WordPress Posts screen signed in as Ravi Patel, who has the View Only role: the blue 'View only' marker in the toolbar; All (13), Published (6), Scheduled (1), Drafts (3), Pending (1), Private (2); no Add Post button; the list starts with a scheduled post. Click for the full screen with drafts and private posts" width="1024" height="310"></a>
+  <a href="img/view-only-posts.png"><picture><source media="(max-width: 600px)" srcset="img/view-only-posts-phone.png" width="600" height="250"><img class="hero" style="margin-bottom:6px" src="img/view-only-posts-hero.png" alt="WordPress Posts screen signed in as Ravi Patel, who has the View Only role: the blue 'View only' marker in the toolbar; All (13), Published (6), Scheduled (1), Drafts (3), Pending (1), Private (2); no Add Post button; the list starts with a scheduled post. Click for the full screen with drafts and private posts" width="1024" height="346"></picture></a>
 
   <ul style="margin:6px 0">
     <li><strong>View but not edit:</strong> drafts listed, saving refused (<a href="#not-locked">limits</a>).</li>
@@ -94,12 +94,12 @@
   </ul>
 
   <div class="buy" style="margin-top:10px">
-    <p class="price" style="margin-bottom:6px"><strong>Free:</strong> <a href="download/rolemend.zip?v=1.3.1">rolemend.zip</a> 1.3.1, both roles · <strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
+    <p class="price" style="margin-bottom:6px"><strong>Free, both roles:</strong> <a href="download/rolemend.zip?v=1.3.2">rolemend.zip</a> 1.3.2<br><strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
     <p class="fine" style="margin-bottom:6px">Handing access to a contractor? Pro ends it on a date you choose and undoes their alt-text edits. For a team member or an auditor you don't need Pro: both roles are in the free plugin.</p>
     <p class="fine" id="trust" style="margin-bottom:0">Tested on WordPress 7.1.4 and 6.5.14, PHP 8.3 and 7.4, on Linux; Windows and macOS untested · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 
-  <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Rolemend adds both roles and changes nothing else. Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. The free zip is 42 KB. <a href="how-we-tested.html">How we tested</a>.</p>
+  <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Rolemend adds both roles and changes nothing else. Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. The free zip is 44 KB. <a href="how-we-tested.html">How we tested</a>.</p>
 
   <div class="box warn">
     <strong>Why a role editor can't do this.</strong> WordPress lists posts only for people who may edit them, and opens the Media Library only for people who may upload. Two site owners asked WordPress.org's support forums for exactly these roles. WordPress core cannot do either job, which is why both askers were told "Partly" and "no combination of capabilities".
@@ -112,34 +112,30 @@
         <source src="video/rolemend-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
         <source src="video/rolemend-demo-720p.mp4" type="video/mp4">
       </video>
-      <figcaption>The demo, 57 s, captions only, no sound (1080p, 720p on phones; <a href="video/rolemend-demo-1080p.mp4">open full size</a>). On a fresh WordPress 7.1.4, Rolemend 1.3.1 is activated and both roles appear in the Role list. Ravi (View Only) sees every post, his Site Title change is refused and the title stays as it was, and Plugins has no Activate or Delete. Jo (Media Library, no uploads) fixes the alt text on a photo Sam uploaded, and a dropped photo is refused. Faster parts say "sped up". The free plugin only; Pro is not shown.</figcaption>
+      <figcaption>The demo, 62 s, captions only, no sound (1080p, 720p on phones; <a href="video/rolemend-demo-1080p.mp4">open full size</a>). On a fresh WordPress 7.1.4, Rolemend 1.3.2 is activated and both roles appear in the Role list. Ravi (View Only) sees every post; on Settings a notice says saving is switched off and Save Changes is greyed out; Plugins has no Activate or Delete. Jo (Media Library, no uploads) fixes the alt text on a photo Sam uploaded, and a dropped photo is refused. Faster parts say "sped up". The free plugin only; Pro is not shown.</figcaption>
     </figure>
     <figure>
-      <img src="video/rolemend-view-only-refused.gif" alt="A 13-second loop from the demo: Ravi Patel, signed in as View Only, sees the Posts list with drafts and private posts and the 'View only' marker; he types 'Changed by the accountant' as the Site Title and clicks Save Changes; the page says 'This account is view only, so nothing was changed. Ask an administrator if this change is needed.'; Settings > General shows the Site Title still 'Northfield Botanic Garden'" width="960" height="540" loading="lazy">
-      <figcaption>The View Only refusal alone (13 s GIF, 0.9 MB).</figcaption>
+      <img src="video/rolemend-view-only-saves-off.gif" alt="A 9-second loop from the demo: Ravi Patel, signed in as View Only, opens Settings &gt; General, where a notice says 'This account is view only. You can read this screen; saving is switched off.'; he types 'Changed by the accountant' as the Site Title, scrolls down and rests on Save Changes, which is greyed out, with the tooltip 'Saving is switched off: this account is view only.'" width="800" height="450" loading="lazy">
+      <figcaption>The View Only Settings screen alone (9 s GIF, 1.6 MB).</figcaption>
     </figure>
   </section>
 
   <h2>View Only</h2>
   <p>Sees the screens an Administrator sees for WordPress itself, except Export, Import and the file editors; drafts are listed, not opened. Can save only their own password and Screen Options.</p>
   <figure>
-    <img src="img/view-only-settings-typed.png" alt="Settings &gt; General for the View Only user, with 'Changed by the accountant' typed into Site Title and the 'View only' marker in the toolbar" width="1024" height="330" loading="lazy">
-    <img src="img/view-only-settings-refused.png" alt="After Save Changes: a box headed 'View only' saying 'This account is view only, so nothing was changed. Ask an administrator if this change is needed.' with a Back link" width="824" height="270" loading="lazy" style="margin-top:12px">
-    <figcaption>Save Changes: refused. The Site Title is unchanged.</figcaption>
-  </figure>
-  <figure>
-    <img src="img/view-only-plugins.png" alt="Plugins for the View Only user: Akismet, Hello Dolly, Rolemend Pro and Rolemend listed with their descriptions, with no Activate, Deactivate or Delete links and no bulk actions" width="1024" height="640" loading="lazy">
-    <figcaption>Plugins: the list is there; Activate, Deactivate, Delete and other plugins' own links such as Settings are not.</figcaption>
+    <picture><source media="(max-width: 600px)" srcset="img/view-only-settings-phone.png" width="600" height="360"><img src="img/view-only-settings-typed.png" alt="Settings &gt; General for the View Only user, with 'Changed by the accountant' typed into Site Title, the 'View only' marker in the toolbar and, above the form, the sentence 'This account is view only. You can read this screen; saving is switched off.'" width="1024" height="330" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/view-only-settings-refused-phone.png" width="600" height="300"><img src="img/view-only-settings-refused.png" alt="A save that reaches the server anyway: a box headed 'View only' saying 'This account is view only, so nothing was changed. Ask an administrator if this change is needed.' with a Back link" width="824" height="270" loading="lazy" style="margin-top:12px"></picture>
+    <figcaption>Save Changes is greyed out, with the reason on top. A save that reaches the server anyway (here the button was switched back on to send one) is refused, and the Site Title is unchanged.</figcaption>
   </figure>
 
   <h2>Media Library (no uploads)</h2>
   <p>Saves Title, Alternative Text, Caption and Description. Uploading, deleting and Edit Image are refused, and their buttons are not shown.</p>
   <figure>
-    <a href="img/media-alt-text.jpg"><img src="img/media-alt-text.jpg" alt="Attachment details for Jo Osei, who has the Media Library (no uploads) role: a red hibiscus photo uploaded by Sam Carter, Alternative Text 'Red hibiscus in flower, close-up', and 'Saved.' at the top" width="1024" height="640" loading="lazy"></a>
+    <a href="img/media-alt-text.jpg"><picture><source media="(max-width: 600px)" srcset="img/media-alt-text-phone.jpg" width="338" height="529"><img src="img/media-alt-text.jpg" alt="Attachment details for Jo Osei, who has the Media Library (no uploads) role: a red hibiscus photo uploaded by Sam Carter, Alternative Text 'Red hibiscus in flower, close-up', and 'Saved.' at the top" width="1024" height="640" loading="lazy"></picture></a>
     <figcaption>Alt text saved on a photo someone else uploaded.</figcaption>
   </figure>
   <figure>
-    <a href="img/media-drop-refused.jpg"><img src="img/media-drop-refused.jpg" alt="Jo Osei's Media Library grid of garden photographs, with the notice 'meadow-in-july.jpg: This account cannot upload files, so nothing was uploaded. Ask an administrator to add the file to the Media Library.' The menu shows only Dashboard, Media and Profile, and there is no Add Media File button" width="1024" height="640" loading="lazy"></a>
+    <a href="img/media-drop-refused.jpg"><picture><source media="(max-width: 600px)" srcset="img/media-drop-refused-phone.jpg" width="600" height="520"><img src="img/media-drop-refused.jpg" alt="Jo Osei's Media Library grid of garden photographs, with the notice 'meadow-in-july.jpg: This account cannot upload files, so nothing was uploaded. Ask an administrator to add the file to the Media Library.' The menu shows only Dashboard, Media and Profile, and there is no Add Media File button" width="1024" height="640" loading="lazy"></picture></a>
     <figcaption>A photo dropped onto the library: refused, nothing added.</figcaption>
   </figure>
   <figure>
@@ -168,12 +164,12 @@
     <figcaption>Access ends on, set when the account is made.</figcaption>
   </figure>
   <figure>
-    <a href="img/pro-text-changes.jpg"><img src="img/pro-text-changes.jpg" alt="Media &gt; Text Changes in Rolemend Pro: three Alternative Text changes by Jo Osei, each with the time, a thumbnail, the value before (empty or the old text) and after, and an Undo button; a Download CSV button; and a form to undo everything by one user since a date" width="1024" height="640" loading="lazy"></a>
+    <a href="img/pro-text-changes.jpg"><picture><source media="(max-width: 600px)" srcset="img/pro-text-changes-phone.jpg" width="630" height="166"><img src="img/pro-text-changes.jpg" alt="Media &gt; Text Changes in Rolemend Pro: three Alternative Text changes by Jo Osei, each with the time, a thumbnail, the value before (empty or the old text) and after, and an Undo button; a Download CSV button; and a form to undo everything by one user since a date" width="1024" height="640" loading="lazy"></picture></a>
     <figcaption>Three changes by the SEO contractor, each with Undo.</figcaption>
   </figure>
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
-    <p class="fine">$19 once, unlimited sites, updates included · needs the free plugin, installed first · Polar checkout · <a href="../terms.html">14-day refund if it doesn't work as described</a></p>
+    <p class="fine">$19 once, unlimited sites, updates included · needs the free plugin, installed first · checkout by Polar, our payment provider · <a href="../terms.html">14-day refund if it doesn't work as described</a></p>
   </div>
 
   <div class="box" id="free-route">
