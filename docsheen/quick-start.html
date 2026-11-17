@@ -158,6 +158,19 @@
     <li>Tested in a window on Linux: IntelliJ IDEA 2025.3 (24 of 24 steps) and 2026.3 (20 of 24). Not tested: CLion in a window (Plugin Verifier and automated tests only), Remote Development and Code With Me clients, Rider, the Classic C/C++ engine, Windows, macOS.</li>
   </ul>
 
+  <h2 id="tested">How we tested</h2>
+  <table>
+    <tr><th>What</th><th>Result (Docsheen 1.0.1)</th></tr>
+    <tr><td>The 33 OpenCV 4.14.0 headers that contain formulas</td><td>4,699 comments drawn with all their text (91,692 words checked, 0 problems); 10 empty comments are not drawn</td></tr>
+    <tr><td>Their formulas</td><td>1,819 of 1,819 typeset without an error with OpenCV's macro file; 1,724 without it, the other 95 use OpenCV's macros</td></tr>
+    <tr><td>Markdown against Doxygen 1.9.8 on <code>imgproc.hpp</code></td><td>headings, list items, code spans, links and emphasis equal on 631 of 633 comments; the other two are lists inside <code>\internal</code>, which Doxygen hides and Docsheen shows</td></tr>
+    <tr><td>Speed on <code>imgproc.hpp</code> (5,251 lines, 760 comments)</td><td>all drawn in a median 1.2 s, off the UI thread; Docsheen's longest UI-thread block: median 11 ms, worst 70 ms</td></tr>
+    <tr><td>Automated tests</td><td>157 run, 0 failed</td></tr>
+    <tr><td>In a window, Linux</td><td>IntelliJ IDEA 2025.3: 24 of 24 steps. IntelliJ IDEA 2026.3: 20 of 24 (the other four type into the editor and click the settings page, which differ in 2026.3; not re-run)</td></tr>
+    <tr><td>JetBrains' Plugin Verifier</td><td>Compatible with IntelliJ IDEA 2025.3 and 2026.3 and CLion 2025.3 and 2026.3</td></tr>
+  </table>
+  <p class="fine">Speed was measured on the test platform of IntelliJ IDEA 2025.3 (no window), Linux, 4-core Xeon at 2.10 GHz. &ldquo;Typeset&rdquo; means drawn without an error: we did not compare each formula's look with Doxygen's own output. The paid half has been tested with a test licence, not with a real purchase or trial. Android Studio Panda 1 (2025.3.1 Canary 5) was checked with release 1.0.0 only. The licence is perpetual and sold through JetBrains Marketplace once the listing is live; the source of the bundled typesetting library (JLaTeXMath, GPL-2.0-or-later with the Classpath Exception) is inside the zip, Docsheen's own source is not.</p>
+
   <h2 id="privacy">Privacy</h2>
   <p>Docsheen reads the text of the C and C++ files open in your editor and, for formulas and images, your project's Doxyfile, the macro file it names and the image files your comments refer to. It keeps everything in memory, writes nothing to your project, and keeps its own settings in the IDE's settings (per-file toggles in the project's workspace file). It makes no network calls, does not fetch remote images, and collects and sends nothing. Licence checks are done by the IDE through JetBrains Marketplace. See also the <a href="../privacy.html">privacy policy</a>.</p>
 
