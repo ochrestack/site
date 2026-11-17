@@ -55,7 +55,7 @@
   ul.benefits { padding-left: 20px; margin: 0; }
   ul.benefits li { margin: 0 0 12px; }
   .top { display: grid; grid-template-columns: 400px 1fr; gap: 26px; align-items: start; }
-  .top .hero { margin: 4px 0 6px; }
+  .top .hero { margin: 4px auto 6px; width: auto; max-width: 100%; }
   .top .fine { margin: 0; line-height: 1.45; }
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
   summary { cursor: pointer; }
@@ -84,8 +84,8 @@
 
   <div class="top">
     <div class="top-fig">
-        <img class="hero" src="img/rain-split.gif" alt="A real Blender 4.2 window: Blender Studio's Rain in the viewport, the Texapart panel in the Material Properties. Report lists one material, Rain_Game, with six images and their face counts (her skin in three UDIM tiles, jeans, hair, eyes). Three rows are clicked in Edit Mode and light up her jeans, her hair and her head. Split by Texture is pressed and the material slots list six one-image materials. She looks the same." width="960" height="540">
-      <p class="fine">Real clicks in Blender 4.2.23, 35 s, no sound. Rain, packed as a game port ships her: one material, four images; six one-image materials in 0.3 s. <a href="#credits">Credits</a></p>
+        <img class="hero" src="img/rain-panel.gif" alt="The Texapart panel in Blender 4.2, filmed in the real window on Blender Studio's Rain. Report lists one material, Rain_Game, with six images and their face counts (her skin in three UDIM tiles 2642, 3362 and 6318, jeans 4192, hair 2927, eyes 1410). Rows are clicked and highlighted in turn. After Split by Texture the material slot list shows six one-image materials: rain_skin.1001, .1002, .1003, rain_jeans, rain_hair and rain_eyes." width="332" height="194">
+      <p class="fine">Real Blender 4.2.23, Texapart 1.0.3, 40 s, no sound: Rain, packed as a game port ships her, split into six one-image materials. <a href="#watch">Whole window</a> · <a href="#credits">Credits</a></p>
     </div>
     <div class="top-side">
       <p class="narrow-only" style="margin:0 0 6px"><strong>$10 once</strong>, source included. <a class="button" id="buy-top" href="https://buy.polar.sh/polar_cl_djnMNDNLYjBj1bZCSOPA2KTQcy3xrYDYtqCX921HcvU">Buy for $10</a></p>
@@ -113,7 +113,7 @@
       <source src="video/texapart-demo-1080p60.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/texapart-demo-720p60.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 46 s, captions only, no sound (1080p60, 720p60 on phones; <a href="video/texapart-demo-1080p60.mp4">open full size</a>). Real clicks in Blender 4.2.23 with Texapart 1.0.2 on Rain (its opening shots, the node group, the before and after and the Godot shots were recorded on 1.0.1), whose skin, jeans, hair and eye images sit in one material: the node group, Report, a click on a row in Edit Mode, Split by Texture, the same view before and after, then the glTF in Godot 4.7. Credits <a href="#credits">below</a>.</figcaption>
+    <figcaption>The demo, 46 s, captions only, no sound (1080p60, 720p60 on phones; <a href="video/texapart-demo-1080p60.mp4">open full size</a>). Real clicks in Blender 4.2.23 with Texapart 1.0.2 on Rain (recorded before 1.0.3, which changes nothing this film shows; its opening shots, the node group, the before and after and the Godot shots were recorded on 1.0.1), whose skin, jeans, hair and eye images sit in one material: the node group, Report, a click on a row in Edit Mode, Split by Texture, the same view before and after, then the glTF in Godot 4.7. Credits <a href="#credits">below</a>.</figcaption>
   </figure>
   <figure>
     <img src="video/texapart-split.gif" alt="Blender 4.2: Report lists Rain's one material with six images and their face counts, rows are clicked in Edit Mode and light up her jeans, hair and skin, Split by Texture is pressed, and the summary reports 20851 faces placed, 6 new materials, 0 faces listed" width="960" height="540" loading="lazy">
@@ -121,7 +121,7 @@
   </figure>
 
   <h2>In Blender, for real</h2>
-  <p>Every image here is a capture of a real Blender 4.2 window with Texapart 1.0.2 installed from its zip, except the two Cycles renders of the Pavilion below. Rain's skin, jeans, hair and eye images are in one material, as a game port delivers her.</p>
+  <p>Every image here is a capture of a real Blender 4.2 window with Texapart installed from its zip (version 1.0.2, recorded before 1.0.3, whose panel looks the same in these views), except the two Cycles renders of the Pavilion below. Rain's skin, jeans, hair and eye images are in one material, as a game port delivers her.</p>
   <figure>
     <img src="img/rain-node-group.png" alt="Blender's Shader Editor inside the node group Game Surface: an Attribute node reading tex_slot feeds three Map Range and Clamp pairs that set the factors of three Mix nodes; the Mix nodes choose between four Image Texture nodes labelled Skin (a UDIM image), Jeans, Hair and Eyes" width="910" height="490" loading="lazy">
     <figcaption>Before: one material. An attribute, <code>tex_slot</code>, picks one of four images for each face; her skin image has three UDIM tiles.</figcaption>
@@ -167,14 +167,14 @@
   <p>Install and first split: <a href="quick-start.html">Texapart quick start</a>.</p>
 
   <details id="tested">
-    <summary><strong>How we tested</strong> (Rain, a building, scenes built to break it, 110 tests on four Blender versions)</summary>
+    <summary><strong>How we tested</strong> (Rain, a building, scenes built to break it, 117 tests on four Blender versions)</summary>
     <table>
       <tr><th>Scene</th><th>Result</th></tr>
       <tr><td>Rain, packed as above (Blender 4.2.23)</td><td>1 material, 6 images, 20,851 faces: all placed in 6 one-image materials, 0 listed, 0.3 s. A Cycles render (32 samples, 640 x 800) before and after: mean difference 0.0%, no pixel differs. A control that shows her hair image on her jeans measures 0.80%, so the comparison does see a wrong image. Exported with Blender's glTF and FBX exporters and re-imported: 6 materials, each with one image.</td></tr>
       <tr><td>Barcelona Pavilion, rebuilt as an importer delivers it (Blender 5.2.4)</td><td>3 multi-image materials on 7 objects became 8 one-image materials; 7,480 faces placed in 0.2 s; 1 face listed, not guessed (its UVs sit 0.0024 outside its UDIM tile), placed with Move Selected Faces. Render difference 0.0%. In Godot 4.7: one albedo texture per surface.</td></tr>
       <tr><td>Scenes built to break it</td><td>The same image at two scales, two UV maps, colour adjustments, unlit shaders, unclamped mixes, a fixed 50% mix, material indices past the last slot, linked duplicates outside the selection, Array modifiers with UV offsets: 25 scenarios; in each, every face either keeps its look or is listed.</td></tr>
-      <tr><td>Automated tests, real Blender, headless</td><td>110 passed and 1 skipped in each of Blender 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux). The skipped one is undo; Ctrl+Z after the split was checked with real key presses on 4.2.23 and 5.2.4.</td></tr>
-      <tr><td>Size</td><td>204,800 faces on 40 objects: Report and Split each under 0.8 s. 2,000,000 faces on 200 objects: Report 4.6 to 5.0 s, Split 8.2 to 10.3 s (4-core Linux VM).</td></tr>
+      <tr><td>Automated tests, real Blender, headless</td><td>117 passed and 1 skipped in each of Blender 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux). The skipped one is undo; Ctrl+Z after the split was checked with real key presses on 4.2.23 and 5.2.4.</td></tr>
+      <tr><td>Size</td><td>204,800 faces on 40 objects: Report and Split each under 0.8 s. 2,000,000 faces on 200 objects: Report 4.0 to 4.5 s, Split 6.8 to 8.4 s (4-core Linux VM).</td></tr>
     </table>
   </details>
 
