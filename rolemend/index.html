@@ -64,8 +64,17 @@
     header img { width: 30px; height: 30px; }
     h1 { margin-top: 12px; font-size: 26px; }
     .sub { font-size: 16px; line-height: 1.45; }
-    main > ul li { line-height: 1.45; }
+    main > ul li, .top > ul li { line-height: 1.45; }
     .hero { margin-bottom: 6px; }
+    /* On a phone the price and Buy come first and the tall picture of the Posts list follows (its first screen shows the picture's top, with the View only marker). */
+    .top { display: flex; flex-direction: column; }
+    .top > .buy { display: contents; }
+    .top .buy > .price { order: 1; margin-top: 10px; }
+    .top > a { order: 2; }
+    .top > ul { order: 3; }
+    .top .buy > .fine { order: 4; }
+    .settings-fig picture { display: none; }
+    figure { margin: 20px 0; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
     .scroll-x img.ui { max-width: none; width: 764px; }
@@ -89,7 +98,8 @@
   <h1>Rolemend for WordPress</h1>
   <p class="sub" style="margin-bottom:12px">Need someone to view your WordPress back end but not edit it, or an SEO person to fix alt text but not upload files?</p>
 
-  <a href="img/view-only-posts.png"><picture><source media="(max-width: 600px)" srcset="img/view-only-posts-phone.png" width="400" height="226"><img class="hero" src="img/view-only-posts-hero.png" alt="WordPress Posts screen signed in as Ravi Patel, who has the View Only role: the blue 'View only' marker in the toolbar; All (13), Published (6), Scheduled (1), Drafts (3), Pending (1), Private (2); no Add Post button; the list starts with a scheduled post. Click for the full screen with drafts and private posts" width="900" height="323"></picture></a>
+  <div class="top">
+  <a href="img/view-only-posts.png"><picture><source media="(max-width: 600px)" srcset="img/view-only-posts-phone.png" width="400" height="690"><img class="hero" src="img/view-only-posts-hero.png" alt="WordPress Posts screen signed in as Ravi Patel, who has the View Only role: the blue 'View only' marker in the toolbar; All (13), Published (6), Scheduled (1), Drafts (3), Pending (1), Private (2); no Add Post button; the list starts with a scheduled post. Click for the full screen with drafts and private posts" width="900" height="323"></picture></a>
 
   <ul style="margin:6px 0">
     <li><strong>View but not edit:</strong> drafts listed, saving refused (<a href="#not-locked">limits</a>).</li>
@@ -101,6 +111,8 @@
     <p class="price" style="margin-bottom:6px"><strong>Free, both roles:</strong> <a href="download/rolemend.zip?v=1.3.4">rolemend.zip</a> 1.3.4<br><strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
     <p class="fine" style="margin-bottom:6px">Handing access to a contractor? Pro ends it on a date you choose and undoes their alt-text edits. For a team member or an auditor you don't need Pro: both roles are in the free plugin.</p>
     <p class="fine" id="trust" style="margin-bottom:0">Tested on WordPress 7.1.4 and 6.5.14, PHP 8.3 and 7.4, on Linux · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+  </div>
+
   </div>
 
   <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. The free zip is 48 KB. <a href="how-we-tested.html">How we tested</a>.</p>
@@ -122,7 +134,7 @@
 
   <h2>View Only</h2>
   <p>Sees the screens an Administrator sees for WordPress itself, except Export, Import and the file editors; drafts are listed, not opened. Can save only their own password and Screen Options.</p>
-  <figure>
+  <figure class="settings-fig">
     <picture><source media="(max-width: 600px)" srcset="img/view-only-settings-phone.png" width="400" height="390"><img src="img/view-only-settings-typed.png" alt="Settings &gt; General for the View Only user, with 'Plants, tours and a new tagline' typed into Tagline, the 'View only' marker in the toolbar and, above the form, the sentence 'This account is view only. You can read this screen; saving is switched off.'" width="900" height="330" loading="lazy"></picture>
     <figcaption>The reason is on top of the screen, and a Tagline can be typed but not saved: Save Changes, further down, is greyed out (the film shows it). A save that reaches the server anyway (here the button was switched back on to send one) is refused: "This account is view only, so nothing was changed."</figcaption>
   </figure>
