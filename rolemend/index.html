@@ -59,7 +59,9 @@
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
   summary { cursor: pointer; }
   @media (max-width: 600px) {
-    h1 { margin-top: 28px; }
+    header { padding-top: 16px; }
+    h1 { margin-top: 18px; font-size: 26px; }
+    .sub { font-size: 17px; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
     .scroll-x img.ui { max-width: none; width: 764px; }
@@ -86,9 +88,9 @@
   <a href="img/view-only-posts.png"><img class="hero" style="margin-bottom:6px" src="img/view-only-posts-hero.png" alt="WordPress Posts screen signed in as Ravi Patel, who has the View Only role: the blue 'View only' marker in the toolbar; All (13), Published (6), Scheduled (1), Drafts (3), Pending (1), Private (2); no Add Post button; the list starts with a scheduled post. Click for the full screen with drafts and private posts" width="1024" height="310"></a>
 
   <ul style="margin:6px 0">
-    <li><strong>View but not edit:</strong> drafts listed, Settings, Plugins, Users; saving refused (<a href="#not-locked">limits</a>).</li>
-    <li><strong>Fix alt text, no uploads:</strong> on any photo in the Media Library, on a WooCommerce shop too.</li>
-    <li><strong>Changes nothing else</strong> on your site; delete it and the roles go.</li>
+    <li><strong>View but not edit:</strong> drafts listed, saving refused (<a href="#not-locked">limits</a>).</li>
+    <li><strong>Fix alt text, no uploads:</strong> on any photo, shops included.</li>
+    <li><strong>Changes nothing else;</strong> delete it and the roles go.</li>
   </ul>
 
   <div class="buy" style="margin-top:10px">
@@ -143,12 +145,12 @@
 
   <h2 id="works-with">Does it work with my plugins?</h2>
   <table>
-    <tr><th>Plugin (version tested)</th><th>Media Library role</th><th>View Only</th></tr>
-    <tr><td>WooCommerce 11.2.2</td><td><strong>Yes.</strong> Signs in to wp-admin, not to the shop's My account page; the product page shows the alt text they save.</td><td>Looks round WordPress's screens; no WooCommerce menu, no orders.</td></tr>
-    <tr><td>Yoast SEO 28.8</td><td>Yes: the media fields are WordPress's own. No Yoast screens.</td><td>No Yoast menu or settings.</td></tr>
-    <tr><td>GiveWP 4.19.2</td><td>Yes. No GiveWP screens.</td><td>No donations or reports. GiveWP has its own Accountant role for that.</td></tr>
+    <tr><th>Plugin tested</th><th>Media Library role</th><th>View Only</th></tr>
+    <tr><td>WooCommerce 11.2.2</td><td><strong>Yes.</strong> Opens wp-admin, not My account; the product page shows the alt text it saves.</td><td>No WooCommerce menu, no orders.</td></tr>
+    <tr><td>Yoast SEO 28.8</td><td>Yes. No Yoast screens.</td><td>No Yoast menu or settings.</td></tr>
+    <tr><td>GiveWP 4.19.2</td><td>Yes. No GiveWP screens.</td><td>No donations or reports; GiveWP has its own Accountant role.</td></tr>
   </table>
-  <p class="fine">Other plugins' menus are left out of both roles' menus unless the plugin uses WordPress's Settings permission. Other plugins that send people without the Edit Posts permission to an account page are not handled.</p>
+  <p class="fine">Other plugins' menu entries and toolbar items are left out for both roles unless the plugin uses WordPress's Settings permission. Other plugins that send people without the Edit Posts permission to an account page are not handled.</p>
 
   <h2 id="pro">Rolemend Pro</h2>
   <ul>
@@ -176,7 +178,7 @@
       <li>What the account can read is readable, including user email addresses and commenter details.</li>
       <li>Drafts are listed by title, author and date, but their text cannot be opened, because WordPress shows a draft only to people who may edit it.</li>
       <li>Tools &gt; Export and the theme and plugin file editors are not available to the role.</li>
-      <li>Other plugins' screens appear only when they use WordPress's own Settings permission, and some of them may load empty when their reading also goes through a save handler. Other plugins' menu entries, such as WooCommerce's Products, are left out.</li>
+      <li>Other plugins' screens appear only when they use WordPress's own Settings permission, and some of them may load empty when their reading also goes through a save handler. Other plugins' menu entries and toolbar items, such as WooCommerce's Products and Yoast SEO's SEO menu, are left out.</li>
       <li>Appearance &gt; Editor opens, but its previews of posts, pages and navigation are empty, because WordPress lists those only for people who may edit them.</li>
       <li>On other plugins' screens, a link or form whose handler checks WordPress's security token is refused for both roles, even when it only reads (for example a download link).</li>
       <li>The media role cannot post comments or other front-end forms while signed in.</li>
