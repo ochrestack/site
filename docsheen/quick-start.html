@@ -111,13 +111,13 @@
 
   <h2 id="install">Install (IDE builds 2025.3 and later)</h2>
   <ol>
-    <li>In the IDE, open <strong>Settings | Plugins</strong>, search for <em>Docsheen</em> and click <strong>Install</strong>. The listing is in review and not on JetBrains Marketplace yet; until it is live, the search finds nothing.</li>
+    <li>In the IDE, open <strong>Settings | Plugins</strong>, search for <em>Docsheen</em> and click <strong>Install</strong>. Docsheen is not on JetBrains Marketplace yet; until it is live, the search finds nothing.</li>
     <li>The IDE first shows its <strong>Third-Party Plugins Notice</strong>, naming &ldquo;Docsheen: Doxygen Rendering (Ochrestack)&rdquo;: click <strong>Accept</strong>.</li>
     <li>Click <strong>Restart IDE</strong> when it asks. It asked in IntelliJ IDEA 2025.3 and 2026.3: the IDE does not load a plugin that carries a Marketplace licence without a restart.</li>
     <li>Open a C or C++ file. Its Doxygen comments are drawn.</li>
   </ol>
-  <p><strong>From a zip</strong> (for example one you were sent before the listing is live): <strong>Settings | Plugins</strong>, the gear icon, <strong>Install Plugin from Disk&hellip;</strong>, choose <code>docsheen-1.0.1.zip</code> without unzipping it, then the same notice and restart.</p>
-  <figure><img class="ui" src="img/install-restart.png" alt="IntelliJ IDEA 2025.3, Settings, Plugins, Installed: Docsheen: Doxygen Rendering by Ochrestack with the Freemium tag, version 1.0.0, and a green Restart IDE button" width="800" height="650" loading="lazy"><figcaption>After installing from disk: Docsheen with its <em>Freemium</em> tag and the <strong>Restart IDE</strong> button. Recorded with release 1.0.0 in IntelliJ IDEA 2025.3; the 1.0.1 zip has the same layout.</figcaption></figure>
+  <p><strong>From a zip</strong> (for example one you were sent before the listing is live): <strong>Settings | Plugins</strong>, the gear icon, <strong>Install Plugin from Disk</strong>, choose <code>docsheen-1.0.2.zip</code> without unzipping it, then the same notice and restart.</p>
+  <figure><img class="ui" src="img/install-restart.png" alt="IntelliJ IDEA 2025.3, Settings, Plugins, Installed: Docsheen: Doxygen Rendering by Ochrestack with the Freemium tag, version 1.0.0, and a green Restart IDE button" width="800" height="650" loading="lazy"><figcaption>After installing from disk: Docsheen with its <em>Freemium</em> tag and the <strong>Restart IDE</strong> button. Recorded with release 1.0.0 in IntelliJ IDEA 2025.3; the 1.0.2 zip has the same layout.</figcaption></figure>
   <p><strong>The &ldquo;Cannot update plugin&rdquo; balloon (IntelliJ IDEA 2026.3, zip installs).</strong> After a zip install, 2026.3 shows its own notification &ldquo;Cannot update plugin: Unable to identify where Docsheen: Doxygen Rendering was installed from&rdquo;, also on the plugin's page. It asks this of every plugin installed from a zip and is harmless; a Marketplace install should not show it, which cannot be checked before the listing exists. IntelliJ IDEA 2025.3 did not show it.</p>
 
   <h2 id="first">First use</h2>
@@ -127,7 +127,7 @@
     <li>Switch a comment between drawn and source with the <strong>gutter icon</strong> next to it, <strong>Render with Docsheen</strong> in the editor's context menu, <strong>Find Action</strong> (Ctrl+Shift+A, type &ldquo;Docsheen&rdquo;), or <strong>Ctrl+Alt+Shift+O</strong> with the caret in the comment. <strong>Render All in File with Docsheen</strong> does the whole file.</li>
     <li>To keep comments as source when a file opens, untick <strong>Settings | Tools | Docsheen | Render Doxygen comments when a C or C++ file opens</strong>.</li>
   </ol>
-  <p>The shortcut, the gutter icon, the context menu entries, Find Action and Render All were each driven in a real IntelliJ IDEA 2025.3 window with this version (24 of 24 steps). CLion has not been run in a window yet.</p>
+  <p>The shortcut, the gutter icon, the context menu entries, Find Action and Render All were each driven in a real IntelliJ IDEA 2025.3 window with this version (26 of 26 steps). CLion has not been run in a window yet.</p>
 
   <h2 id="edit">Edit a drawn comment</h2>
   <p>Click it (not on a link): its source shows with the caret in it. When the caret leaves, it is drawn again with your edit. A web link opens in your browser, a link to a file opens it in the editor. Docsheen never edits or saves a file by itself.</p>
@@ -144,32 +144,32 @@
   <p>If your project has a <code>Doxyfile</code> at its root, formulas use its FORMULA_MACROFILE (<code>\newcommand</code> and <code>\renewcommand</code>, with arguments) and images are found through its IMAGE_PATH, after the file's own folder and the project root. Choose another Doxyfile in <strong>Settings | Tools | Docsheen</strong>; the page shows what was read: the macro file and how many macros, the image directories, or why something could not be read. A missing image shows its alt text and the paths tried; remote images are not fetched.</p>
 
   <h2 id="licence">Licence and trial</h2>
-  <p>Comments, Markdown and links are free with no time limit. Formulas, tables, images, the live preview and the macros need a licence, or the 30-day trial: the &ldquo;Get a licence or trial&rdquo; link under a comment opens the IDE's own licence dialog with Docsheen selected. Without one, a formula, table or image shows its source with one quiet line; nothing pops up at startup or when the trial ends. The licence is sold through JetBrains Marketplace once the listing is live. The paid half has been tested with a test licence in the window, not with a real purchase or trial.</p>
+  <p>Comments, Markdown and links are free with no time limit. Formulas, tables, images, the live preview and the macros need a licence, or the 30-day trial: the &ldquo;Get a licence or trial&rdquo; link under a comment opens the IDE's own licence dialog with Docsheen selected. Without one, a formula, table or image shows its source, and the first such comment in a file has one quiet line saying what the licence adds; nothing pops up at startup or when the trial ends. The licence is sold through JetBrains Marketplace once the listing is live. The paid half has been tested with a test licence in the window, not with a real purchase or trial.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
     <li>The editor only: the Quick Documentation popup and documentation shown at call sites stay the IDE's own. Where the IDE's Rendered View shows a comment, Docsheen leaves it alone (see First use, step 2).</li>
     <li>C and C++ source and header files (<code>.c .h .cpp .hpp .cc .hh .cxx .hxx .inl .ipp .tpp</code> and others); not Objective-C, CUDA, Java or Python comments.</li>
-    <li>A pipe table is drawn when a blank line precedes it. A table that starts on the line right after a sentence, as in OpenCV's <code>dnn.hpp</code> and <code>operations.hpp</code>, is shown as text.</li>
+    <li>Doxygen ALIASES defined in your project are not expanded: an alias such as <code>\eigenvalues_module</code> shows as text, and so does a Doxygen command written after it on the same line. <code>\ingroup</code>, <code>\defgroup</code>, <code>\class</code> and <code>\file</code> alone on a line are shown as one grey line each.</li>
     <li>LaTeX: Doxygen's formula syntax with the math of standard LaTeX and amssymb, matrices, and the environments equation, align, gather, multline, eqnarray and flalign; not LaTeX packages, <code>\usepackage</code> or whole documents; equation numbers are not drawn. A command it does not know (<code>\color</code>, <code>\hfill</code>, <code>\SI</code>, a macro defined outside FORMULA_MACROFILE) shows the source and the reason. The formula commands that would load a file or a web address (<code>\includegraphics</code> and three others) are refused with a reason.</li>
     <li>Not drawn: Graphviz <code>\dot</code> and <code>\dotfile</code>, <code>\msc</code>, PlantUML (their source is shown with a label), <code>\image latex</code>, remote and SVG images. <code>\ref</code> and <code>#symbol</code> show their text and do not jump to code.</li>
     <li>A comment of more than 4,000 lines or 200,000 characters stays as source, with the toggle disabled and the reason shown. A formula that would draw wider or taller than 8,000 px shows its reason instead.</li>
     <li>Memory: prepared drawings stay while the file is open, about 50 to 150 KB per drawn comment. Measured on large real headers: 354 comments (a Drake header) added about 50 MB to the IDE's heap, 1,351 comments (a CGAL header) about 90 MB. Drawing happens off the UI thread, about 1 to 2 seconds for such a header.</li>
-    <li>Tested in a window on Linux: IntelliJ IDEA 2025.3 (24 of 24 steps) and 2026.3 (20 of 24). Not tested: CLion in a window (Plugin Verifier and automated tests only), Remote Development and Code With Me clients, Rider, the Classic C/C++ engine, Windows, macOS.</li>
+    <li>Tested in a window on Linux: IntelliJ IDEA 2025.3 (26 of 26 steps) and 2026.3 (22 of 26). Not tested: CLion in a window (Plugin Verifier and automated tests only), Remote Development and Code With Me clients, Rider, the Classic C/C++ engine, Windows, macOS.</li>
   </ul>
 
   <h2 id="tested">How we tested</h2>
   <table>
-    <tr><th>What</th><th>Result (Docsheen 1.0.1)</th></tr>
+    <tr><th>What</th><th>Result (Docsheen 1.0.2)</th></tr>
     <tr><td>The 33 OpenCV 4.14.0 headers that contain formulas</td><td>4,699 comments drawn with all their text (91,692 words checked, 0 problems); 10 empty comments are not drawn</td></tr>
     <tr><td>Their formulas</td><td>1,819 of 1,819 typeset without an error with OpenCV's macro file; 1,724 without it, the other 95 use OpenCV's macros</td></tr>
     <tr><td>Markdown against Doxygen 1.9.8 on <code>imgproc.hpp</code></td><td>headings, list items, code spans, links and emphasis equal on 631 of 633 comments; the other two are lists inside <code>\internal</code>, which Doxygen hides and Docsheen shows</td></tr>
-    <tr><td>Speed on <code>imgproc.hpp</code> (5,251 lines, 760 comments)</td><td>all drawn in a median 1.2 s, off the UI thread; Docsheen's longest UI-thread block: median 11 ms, worst 70 ms</td></tr>
-    <tr><td>Automated tests</td><td>157 run, 0 failed</td></tr>
-    <tr><td>In a window, Linux</td><td>IntelliJ IDEA 2025.3: 24 of 24 steps. IntelliJ IDEA 2026.3: 20 of 24 (the other four type into the editor and click the settings page, which differ in 2026.3; not re-run)</td></tr>
+    <tr><td>Speed on <code>imgproc.hpp</code> (5,251 lines, 760 comments)</td><td>all drawn in a median 0.9 s, off the UI thread; Docsheen's longest UI-thread block: median 8 ms, worst 10 ms</td></tr>
+    <tr><td>Automated tests</td><td>167 run, 0 failed</td></tr>
+    <tr><td>In a window, Linux</td><td>IntelliJ IDEA 2025.3: 26 of 26 steps. IntelliJ IDEA 2026.3: 22 of 26 (the other four type into the editor and click the settings page, which differ in 2026.3; the same four fail on 1.0.1 and 1.0.2)</td></tr>
     <tr><td>JetBrains' Plugin Verifier</td><td>Compatible with IntelliJ IDEA 2025.3 and 2026.3 and CLion 2025.3 and 2026.3</td></tr>
   </table>
-  <p class="fine">Speed was measured on the test platform of IntelliJ IDEA 2025.3 (no window), Linux, 4-core Xeon at 2.10 GHz. &ldquo;Typeset&rdquo; means drawn without an error: we did not compare each formula's look with Doxygen's own output. The paid half has been tested with a test licence, not with a real purchase or trial. Android Studio Panda 1 (2025.3.1 Canary 5) was checked with release 1.0.0 only. The licence is perpetual and sold through JetBrains Marketplace once the listing is live; the source of the bundled typesetting library (JLaTeXMath, GPL-2.0-or-later with the Classpath Exception) is inside the zip, Docsheen's own source is not.</p>
+  <p class="fine">Speed was measured on the test platform of IntelliJ IDEA 2025.3 (no window), Linux, 4-core Xeon at 2.30 GHz. &ldquo;Typeset&rdquo; means drawn without an error: we did not compare each formula's look with Doxygen's own output. The paid half has been tested with a test licence, not with a real purchase or trial. Android Studio Panda 1 (2025.3.1 Canary 5) was checked with release 1.0.0 only. The licence is perpetual and sold through JetBrains Marketplace once the listing is live; the source of the bundled typesetting library (JLaTeXMath, GPL-2.0-or-later with the Classpath Exception) is inside the zip, Docsheen's own source is not.</p>
 
   <h2 id="privacy">Privacy</h2>
   <p>Docsheen reads the text of the C and C++ files open in your editor and, for formulas and images, your project's Doxyfile, the macro file it names and the image files your comments refer to. It keeps everything in memory, writes nothing to your project, and keeps its own settings in the IDE's settings (per-file toggles in the project's workspace file). It makes no network calls, does not fetch remote images, and collects and sends nothing. Licence checks are done by the IDE through JetBrains Marketplace. See also the <a href="../privacy.html">privacy policy</a>.</p>

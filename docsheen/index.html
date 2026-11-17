@@ -136,7 +136,7 @@
   <div class="buy">
     <p class="price"><strong>Free</strong> with no time limit: comments, Markdown, links. <strong>$9 once</strong> for formulas, tables, images, the preview and macros: personal or commercial, every update, 30-day trial.</p>
     <p><a class="button pending" id="buy" href="#" aria-describedby="buy-note" onclick="return false;">Get it on JetBrains Marketplace</a></p>
-    <p class="note" id="buy-note">Listing in review: not on JetBrains Marketplace yet.</p>
+    <p class="note" id="buy-note">Not on JetBrains Marketplace yet.</p>
     <p class="fine">Tested in a window: IntelliJ IDEA 2025.3 and 2026.3, Linux. CLion 2025.3 and 2026.3: Plugin Verifier and automated tests only. Windows and macOS untested. Licence: end-user agreement; the source of the bundled typesetting library is included, Docsheen's own is not. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> &middot; <a href="quick-start.html">Quick start</a></p>
   </div>
 </section>
@@ -155,14 +155,14 @@
   </div>
 
   <h2 id="real">In the IDE, for real</h2>
-  <p>Docsheen 1.0.1, IntelliJ IDEA 2025.3, OpenCV 4.14.0's own headers (not affiliated). Paid features shown with a test licence: the listing is not live. Images link to the full window.</p>
+  <p>Docsheen 1.0.2, IntelliJ IDEA 2025.3, OpenCV 4.14.0's own headers (not affiliated). Paid features shown with a test licence: the listing is not live. Images link to the full window.</p>
   <figure class="real-size">
     <a href="img/window-formulas-macros.png"><img src="img/formulas-macros.png" alt="The calibrateCamera comment in OpenCV's calib3d.hpp drawn by Docsheen: the cameraMatrix parameter with a typeset 3 by 3 matrix of fx, fy, cx and cy, and the distCoeffs parameter with the typeset vector k1, k2, p1, p2 and so on" width="960" height="205" loading="lazy"></a>
     <figcaption>OpenCV's own formula macros, read from the Doxyfile.</figcaption>
   </figure>
   <figure class="real-size">
-    <a href="img/window-table.png"><img src="img/table.png" alt="A Markdown table from the comment of OpenCV's intrin_cpp.hpp drawn as a grid: a header row 'Operations\Types, uint 8, int 8, uint 16, int 16, uint 32, int 32' and rows load, store; interleave; expand; expand_low; expand_high; expand_q; add, sub and more, with x marks centred in their cells" width="960" height="414" loading="lazy"></a>
-    <figcaption>A pipe table from <code>intrin_cpp.hpp</code>.</figcaption>
+    <a href="img/window-table.png"><img src="img/table.png" alt="OpenCV's dnn.hpp: the sentence 'List of supported combinations backend / target:' followed directly by a Markdown table drawn as a grid, with the columns DNN_BACKEND_OPENCV, DNN_BACKEND_INFERENCE_ENGINE, DNN_BACKEND_HALIDE and DNN_BACKEND_CUDA, the rows DNN_TARGET_CPU, DNN_TARGET_OPENCL, DNN_TARGET_OPENCL_FP16, DNN_TARGET_MYRIAD, DNN_TARGET_FPGA, DNN_TARGET_CUDA, DNN_TARGET_CUDA_FP16 and DNN_TARGET_HDDL, and a plus sign in the cells that are supported" width="910" height="282" loading="lazy"></a>
+    <figcaption>A pipe table from <code>dnn.hpp</code>, written on the line right after a sentence.</figcaption>
   </figure>
   <figure class="real-size">
     <a href="img/window-image.png"><img src="img/image.png" alt="In OpenCV's imgproc.hpp the comment of the threshold types drawn with its picture: four panels labelled Value and Threshold Level, Threshold Binary, Threshold Binary Inverted and Truncate" width="980" height="670" loading="lazy"></a>
@@ -173,27 +173,27 @@
     <figcaption>The live preview, then the reason for an unclosed brace.</figcaption>
   </figure>
   <figure class="real-size">
-    <a href="img/window-free-tier.png"><img src="img/free-tier.png" alt="The warpAffine comment without a licence: Markdown and the Parameters group drawn, the formula shown as source text in a grey box, and one quiet line under See also: 'Formulas, tables and images are drawn with a licence ($9 once, 30-day trial). Get a licence or trial'" width="980" height="470" loading="lazy"></a>
-    <figcaption>Free tier: the formula stays source, one quiet line.</figcaption>
+    <a href="img/window-free-tier.png"><img src="img/free-tier.png" alt="The end of the first comment in OpenCV's imgproc.hpp that has a formula, without a licence: group lines and Markdown drawn, an image written as ![Delaunay triangulation (black) and Voronoi (red)](pics/delaunay_voronoi.png) left as source text, and one quiet line at the bottom: 'Formulas, tables and images are drawn with a licence ($9 once, 30-day trial). Get a licence or trial'" width="980" height="498" loading="lazy"></a>
+    <figcaption>Free tier: formulas, tables and images stay source; one quiet line, at the end of the first such comment in the file.</figcaption>
   </figure>
 
   <h2 id="limits">Known limits</h2>
   <ul>
     <li>The editor only; the Quick Documentation popup stays the IDE's. Where the IDE's Rendered View already shows a comment, Docsheen leaves it: press Ctrl+Alt+Q on it, or untick <em>Render documentation comments</em>.</li>
-    <li>C and C++ files. A pipe table needs a blank line above it: in OpenCV's <code>dnn.hpp</code> and <code>operations.hpp</code> a table follows a sentence directly and shows as text. LaTeX means standard math, not packages. <a href="quick-start.html#limits">All limits</a>.</li>
+    <li>C and C++ files. LaTeX means standard math, not packages. Your project's Doxygen ALIASES are not expanded and show as text. <a href="quick-start.html#limits">All limits</a>.</li>
   </ul>
 
   <div class="buy">
     <p><a class="button pending" id="buy-2" href="#" aria-describedby="buy-note-2" onclick="return false;">Get it on JetBrains Marketplace</a></p>
-    <p class="note" id="buy-note-2">Listing in review: not on JetBrains Marketplace yet.</p>
+    <p class="note" id="buy-note-2">Not on JetBrains Marketplace yet.</p>
   </div>
 
   <h2 id="tested">How we tested</h2>
   <ul>
     <li>OpenCV 4.14.0, 33 headers: 4,699 comments drawn with all their text; 1,819 of 1,819 formulas typeset without an error, with OpenCV's macro file.</li>
     <li>Against Doxygen 1.9.8 on <code>imgproc.hpp</code>: headings, lists, code spans, links and emphasis equal on 631 of 633 comments.</li>
-    <li><code>imgproc.hpp</code> (5,251 lines, 760 comments) drawn in a median 1.2 s off the UI thread; Docsheen's longest UI-thread block: median 11 ms, worst 70 ms (no window).</li>
-    <li>157 automated tests, 0 failed. Window checks: IntelliJ IDEA 2025.3, 24 of 24 steps; 2026.3, 20 of 24. <a href="quick-start.html#tested">The full table</a>.</li>
+    <li><code>imgproc.hpp</code> (5,251 lines, 760 comments) drawn in a median 0.9 s off the UI thread; Docsheen's longest UI-thread block: median 8 ms, worst 10 ms (no window).</li>
+    <li>167 automated tests, 0 failed. Window checks: IntelliJ IDEA 2025.3, 26 of 26 steps; 2026.3, 22 of 26. <a href="quick-start.html#tested">The full table</a>.</li>
   </ul>
   <p class="fine"><a href="eula.html">End User License Agreement</a> &middot; no network calls, no telemetry (<a href="../privacy.html">privacy</a>) &middot; Docsheen is affiliated with JetBrains, OpenCV and Doxygen in no way.</p>
 </main>
