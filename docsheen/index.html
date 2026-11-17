@@ -130,7 +130,7 @@
   </div>
   <ul class="benefits">
     <li><strong>Comments you can read.</strong> Parameters, Returns and See also grouped, Markdown formatted, links that open. Free.</li>
-    <li><strong>Formulas that look like formulas.</strong> <code>\f$</code>, <code>\f[</code>, <code>\f{align}{</code> and their <code>@f</code> spellings typeset in place with your Doxyfile's macros, no TeX, no network.</li>
+    <li><strong>Formulas that look like formulas.</strong> <code>\f$</code>, <code>\f[</code>, <code>\f{align}{</code> and their <code>@f</code> spellings typeset in place with your Doxyfile's <code>\newcommand</code> macros, arguments included. No TeX, no network.</li>
     <li><strong>Tables, images and a live preview</strong> while you type a formula.</li>
   </ul>
   <div class="buy">
@@ -155,10 +155,18 @@
   </div>
 
   <h2 id="real">In the IDE, for real</h2>
-  <p>Docsheen 1.0.3, IntelliJ IDEA 2025.3, unmodified headers of OpenCV 4.14.0, Bosch's BME280 and ST's STM32F4. Paid features shown with a test licence. Images link to the full window.</p>
+  <p>Docsheen 1.0.4, IntelliJ IDEA 2025.3, unmodified headers of OpenCV 4.14.0, Bosch's BME280, ST's STM32F4 and the Pico SDK. Paid features shown with a test licence. Images link to the full window.</p>
   <figure class="real-size">
     <a href="img/window-firmware-bme280.png"><img src="img/firmware.png" alt="Two captures of firmware headers without a licence. Top: Bosch's bme280.h, the bme280_init comment with its Parameters list showing [in,out] dev and a Return values list, 0 for success, above 0 for a warning, below 0 for failure. Bottom: ST's stm32f4xx_hal_uart.h, the UART_InitTypeDef members BaudRate, WordLength, StopBits and Parity, each with its comment drawn in a block under its line" width="980" height="703" loading="lazy"></a>
     <figcaption>Free, on firmware: Parameters with <code>[in,out]</code>, Return values, member comments under their lines (<a href="img/window-firmware-uart.png">full UART window</a>).</figcaption>
+  </figure>
+  <figure class="real-size">
+    <a href="img/window-live-preview.png"><img src="img/live-preview.png" alt="Two captures of warpPerspective's formula in imgproc.hpp. First: with the caret in the formula, a typeset preview of dst(x,y) = src of a pair of fractions opens under it. Second: after typing + \sqrt{x, a red-framed box under the caret shows the formula's source and the reason, 'unbalanced brace: 1 { is not closed'" width="1170" height="360" loading="lazy"></a>
+    <figcaption>The live preview, then the reason for an unclosed brace.</figcaption>
+  </figure>
+  <figure class="real-size">
+    <a href="img/window-firmware-table.png"><img src="img/firmware-table.png" alt="With a licence, the Raspberry Pi Pico SDK's gpio.h: the Function Select Table of the RP2040 drawn as a grid, with the columns GPIO, F1 to F9 and the rows for GPIO 0 to 12, such as GPIO 0 with SPI0 RX, UART0 TX, I2C0 SDA and PWM0 A" width="980" height="478" loading="lazy"></a>
+    <figcaption>With a licence, on firmware: the Pico SDK's pin-function table, drawn as a grid.</figcaption>
   </figure>
   <figure class="real-size">
     <a href="img/window-formulas-macros.png"><img src="img/formulas-macros.png" alt="The calibrateCamera comment in OpenCV's calib3d.hpp drawn by Docsheen: the cameraMatrix parameter with a typeset 3 by 3 matrix of fx, fy, cx and cy, and the distCoeffs parameter with the typeset vector k1, k2, p1, p2 and so on" width="960" height="205" loading="lazy"></a>
@@ -171,10 +179,6 @@
   <figure class="real-size">
     <a href="img/window-image.png"><img src="img/image.png" alt="In OpenCV's imgproc.hpp the comment of the threshold types drawn with its picture: four panels labelled Value and Threshold Level, Threshold Binary, Threshold Binary Inverted and Truncate" width="980" height="670" loading="lazy"></a>
     <figcaption>A picture found through IMAGE_PATH.</figcaption>
-  </figure>
-  <figure class="real-size">
-    <a href="img/window-live-preview.png"><img src="img/live-preview.png" alt="Two captures of warpPerspective's formula in imgproc.hpp. First: with the caret in the formula, a typeset preview of dst(x,y) = src of a pair of fractions opens under it. Second: after typing + \sqrt{x, a red-framed box under the caret shows the formula's source and the reason, 'unbalanced brace: 1 { is not closed'" width="1170" height="360" loading="lazy"></a>
-    <figcaption>The live preview, then the reason for an unclosed brace.</figcaption>
   </figure>
   <figure class="real-size">
     <a href="img/window-free-tier.png"><img src="img/free-tier.png" alt="The end of the first comment in OpenCV's imgproc.hpp that has a formula, without a licence: group lines and Markdown drawn, an image written as ![Delaunay triangulation (black) and Voronoi (red)](pics/delaunay_voronoi.png) left as source text, and one quiet line at the bottom: 'Formulas, tables and images are drawn with a licence ($9 once, 30-day trial). Get a licence or trial'" width="980" height="498" loading="lazy"></a>
@@ -190,17 +194,16 @@
   <div class="buy">
     <p><a class="button pending" id="buy-2" href="#" aria-describedby="buy-note-2" onclick="return false;">Get it on JetBrains Marketplace</a></p>
     <p class="note" id="buy-note-2">Not on JetBrains Marketplace yet.</p>
-    <p class="fine">Not run on Windows or macOS (desktop IDE).</p>
   </div>
 
   <h2 id="tested">How we tested</h2>
   <ul>
     <li>OpenCV 4.14.0, 33 headers: 4,699 comments drawn with all their text; 1,819 of 1,819 formulas typeset without an error, with OpenCV's macro file.</li>
     <li>Against Doxygen 1.9.8 on <code>imgproc.hpp</code>: headings, lists, code spans, links and emphasis equal on 631 of 633 comments.</li>
-    <li><code>imgproc.hpp</code> (5,251 lines, 760 comments) drawn in a median 1.4 s off the UI thread; Docsheen's longest UI-thread block: median 17 ms, worst 51 ms (no window).</li>
-    <li>188 automated tests, 0 failed. Window checks: IntelliJ IDEA 2025.3, 32 of 32 steps; 2026.3, 28 of 32. <a href="quick-start.html#tested">The full table</a>.</li>
+    <li><code>imgproc.hpp</code> (5,251 lines, 760 comments) drawn in a median 1.4 s off the UI thread; Docsheen's longest UI-thread block: median 15 ms, worst 33 ms (no window).</li>
+    <li>192 automated tests, 0 failed. Window checks: IntelliJ IDEA 2025.3, 33 of 33 steps; 2026.3, 29 of 33. <a href="quick-start.html#tested">The full table</a>.</li>
   </ul>
-  <p class="fine"><a href="eula.html">End User License Agreement</a> &middot; no network calls, no telemetry (<a href="../privacy.html">privacy</a>) &middot; Docsheen is affiliated with JetBrains, OpenCV, Bosch, ST and Doxygen in no way.</p>
+  <p class="fine">Not run on Windows or macOS (desktop IDE). Refunds follow the JetBrains Marketplace terms (<a href="eula.html">End User License Agreement</a>) &middot; no network calls, no telemetry (<a href="../privacy.html">privacy</a>) &middot; Docsheen is affiliated with JetBrains, OpenCV, Bosch, ST, Raspberry Pi and Doxygen in no way.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>
