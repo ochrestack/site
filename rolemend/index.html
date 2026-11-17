@@ -12,8 +12,8 @@
 <meta property="og:description" content="Want someone to view your WordPress back end but not edit it? Or an SEO person who can fix alt text but not upload files? Rolemend adds both roles, and changes nothing else.">
 <meta property="og:url" content="https://ochrestack.com/rolemend/">
 <meta property="og:image" content="https://ochrestack.com/rolemend/img/view-only-posts.png">
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1280">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="1200">
 <meta property="og:image:alt" content="A View Only user's Posts screen in WordPress: drafts, private, pending and scheduled posts listed, and a blue 'View only' marker in the toolbar">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Rolemend for WordPress: View Only, and Media Library without uploads">
@@ -59,9 +59,11 @@
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
   summary { cursor: pointer; }
   @media (max-width: 600px) {
-    header { padding-top: 16px; }
-    h1 { margin-top: 18px; font-size: 26px; }
-    .sub { font-size: 17px; }
+    header { padding-top: 10px; }
+    header img { width: 30px; height: 30px; }
+    h1 { margin-top: 12px; font-size: 26px; }
+    .sub { font-size: 16px; line-height: 1.45; }
+    main > ul li { line-height: 1.45; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
     .scroll-x img.ui { max-width: none; width: 764px; }
@@ -85,7 +87,7 @@
   <h1>Rolemend for WordPress</h1>
   <p class="sub" style="margin-bottom:12px">Need someone to view your WordPress back end but not edit it, or an SEO person to fix alt text but not upload files?</p>
 
-  <a href="img/view-only-posts.png"><picture><source media="(max-width: 600px)" srcset="img/view-only-posts-phone.png" width="600" height="250"><img class="hero" style="margin-bottom:6px" src="img/view-only-posts-hero.png" alt="WordPress Posts screen signed in as Ravi Patel, who has the View Only role: the blue 'View only' marker in the toolbar; All (13), Published (6), Scheduled (1), Drafts (3), Pending (1), Private (2); no Add Post button; the list starts with a scheduled post. Click for the full screen with drafts and private posts" width="1024" height="346"></picture></a>
+  <a href="img/view-only-posts.png"><picture><source media="(max-width: 600px)" srcset="img/view-only-posts-phone.png" width="400" height="226"><img class="hero" style="margin-bottom:6px" src="img/view-only-posts-hero.png" alt="WordPress Posts screen signed in as Ravi Patel, who has the View Only role: the blue 'View only' marker in the toolbar; All (13), Published (6), Scheduled (1), Drafts (3), Pending (1), Private (2); no Add Post button; the list starts with a scheduled post. Click for the full screen with drafts and private posts" width="900" height="323"></picture></a>
 
   <ul style="margin:6px 0">
     <li><strong>View but not edit:</strong> drafts listed, saving refused (<a href="#not-locked">limits</a>).</li>
@@ -94,12 +96,12 @@
   </ul>
 
   <div class="buy" style="margin-top:10px">
-    <p class="price" style="margin-bottom:6px"><strong>Free, both roles:</strong> <a href="download/rolemend.zip?v=1.3.2">rolemend.zip</a> 1.3.2<br><strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
+    <p class="price" style="margin-bottom:6px"><strong>Free, both roles:</strong> <a href="download/rolemend.zip?v=1.3.3">rolemend.zip</a> 1.3.3<br><strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
     <p class="fine" style="margin-bottom:6px">Handing access to a contractor? Pro ends it on a date you choose and undoes their alt-text edits. For a team member or an auditor you don't need Pro: both roles are in the free plugin.</p>
     <p class="fine" id="trust" style="margin-bottom:0">Tested on WordPress 7.1.4 and 6.5.14, PHP 8.3 and 7.4, on Linux · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 
-  <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Rolemend adds both roles and changes nothing else. Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. The free zip is 44 KB. <a href="how-we-tested.html">How we tested</a>.</p>
+  <p class="fine">Above: a View Only user's Posts list (<a href="img/view-only-posts.png">full screen</a>: drafts and private posts listed, no edit links). Rolemend adds both roles and changes nothing else. Pro adds end dates and an undo list for media text (<a href="#pro">see it</a>); neither role needs Pro. The free zip is 47 KB. <a href="how-we-tested.html">How we tested</a>.</p>
 
   <div class="box warn">
     <strong>Why a role editor can't do this.</strong> WordPress lists posts only for people who may edit them, and opens the Media Library only for people who may upload. Two site owners asked WordPress.org's support forums for exactly these roles. WordPress core cannot do either job, which is why both askers were told "Partly" and "no combination of capabilities".
@@ -112,47 +114,39 @@
         <source src="video/rolemend-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
         <source src="video/rolemend-demo-720p.mp4" type="video/mp4">
       </video>
-      <figcaption>The demo, 62 s, captions only, no sound (1080p, 720p on phones; <a href="video/rolemend-demo-1080p.mp4">open full size</a>). On a fresh WordPress 7.1.4, Rolemend 1.3.2 is activated and both roles appear in the Role list. Ravi (View Only) sees every post; on Settings a notice says saving is switched off and Save Changes is greyed out; Plugins has no Activate or Delete. Jo (Media Library, no uploads) fixes the alt text on a photo Sam uploaded, and a dropped photo is refused. Faster parts say "sped up". The free plugin only; Pro is not shown.</figcaption>
-    </figure>
-    <figure>
-      <img src="video/rolemend-view-only-saves-off.gif" alt="A 9-second loop from the demo: Ravi Patel, signed in as View Only, opens Settings &gt; General, where a notice says 'This account is view only. You can read this screen; saving is switched off.'; he types 'Changed by the accountant' as the Site Title, scrolls down and rests on Save Changes, which is greyed out, with the tooltip 'Saving is switched off: this account is view only.'" width="800" height="450" loading="lazy">
-      <figcaption>The View Only Settings screen alone (9 s GIF, 1.6 MB).</figcaption>
+      <figcaption>The demo, 67 s, captions only, no sound (1080p, 720p on phones; <a href="video/rolemend-demo-1080p.mp4">open full size</a>). Ravi (View Only) sees every post; on Settings a notice says saving is switched off and Save Changes is greyed out; Plugins has no Activate or Delete. Then, on a fresh WordPress 7.1.4, Rolemend 1.3.3 is activated and both roles appear in the Role list. Jo (Media Library, no uploads) fixes the alt text on a photo Sam uploaded, and a dropped photo is refused. Faster parts say "sped up". The free plugin only; Pro is not shown.</figcaption>
     </figure>
   </section>
 
   <h2>View Only</h2>
   <p>Sees the screens an Administrator sees for WordPress itself, except Export, Import and the file editors; drafts are listed, not opened. Can save only their own password and Screen Options.</p>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/view-only-settings-phone.png" width="600" height="360"><img src="img/view-only-settings-typed.png" alt="Settings &gt; General for the View Only user, with 'Changed by the accountant' typed into Site Title, the 'View only' marker in the toolbar and, above the form, the sentence 'This account is view only. You can read this screen; saving is switched off.'" width="1024" height="330" loading="lazy"></picture>
-    <picture><source media="(max-width: 600px)" srcset="img/view-only-settings-refused-phone.png" width="600" height="300"><img src="img/view-only-settings-refused.png" alt="A save that reaches the server anyway: a box headed 'View only' saying 'This account is view only, so nothing was changed. Ask an administrator if this change is needed.' with a Back link" width="824" height="270" loading="lazy" style="margin-top:12px"></picture>
-    <figcaption>Save Changes is greyed out, with the reason on top. A save that reaches the server anyway (here the button was switched back on to send one) is refused, and the Site Title is unchanged.</figcaption>
+    <picture><source media="(max-width: 600px)" srcset="img/view-only-settings-phone.png" width="400" height="390"><img src="img/view-only-settings-typed.png" alt="Settings &gt; General for the View Only user, with 'Plants, tours and a new tagline' typed into Tagline, the 'View only' marker in the toolbar and, above the form, the sentence 'This account is view only. You can read this screen; saving is switched off.'" width="900" height="330" loading="lazy"></picture>
+    <figcaption>The reason is on top of the screen, and a Tagline can be typed but not saved: Save Changes, further down, is greyed out (the film shows it). A save that reaches the server anyway (here the button was switched back on to send one) is refused: "This account is view only, so nothing was changed. Ask an administrator if this change is needed."</figcaption>
   </figure>
 
   <h2>Media Library (no uploads)</h2>
   <p>Saves Title, Alternative Text, Caption and Description. Uploading, deleting and Edit Image are refused, and their buttons are not shown.</p>
   <figure>
-    <a href="img/media-alt-text.jpg"><picture><source media="(max-width: 600px)" srcset="img/media-alt-text-phone.jpg" width="338" height="529"><img src="img/media-alt-text.jpg" alt="Attachment details for Jo Osei, who has the Media Library (no uploads) role: a red hibiscus photo uploaded by Sam Carter, Alternative Text 'Red hibiscus in flower, close-up', and 'Saved.' at the top" width="1024" height="640" loading="lazy"></picture></a>
+    <a href="img/media-alt-text.jpg"><picture><source media="(max-width: 600px)" srcset="img/media-alt-text-phone.jpg" width="294" height="274"><img src="img/media-alt-text.jpg" alt="Attachment details for Jo Osei, who has the Media Library (no uploads) role: a red hibiscus photo uploaded by Sam Carter, Alternative Text 'Red hibiscus in flower, close-up', and 'Saved.' at the top" width="900" height="440" loading="lazy"></picture></a>
     <figcaption>Alt text saved on a photo someone else uploaded.</figcaption>
   </figure>
   <figure>
-    <a href="img/media-drop-refused.jpg"><picture><source media="(max-width: 600px)" srcset="img/media-drop-refused-phone.jpg" width="600" height="520"><img src="img/media-drop-refused.jpg" alt="Jo Osei's Media Library grid of garden photographs, with the notice 'meadow-in-july.jpg: This account cannot upload files, so nothing was uploaded. Ask an administrator to add the file to the Media Library.' The menu shows only Dashboard, Media and Profile, and there is no Add Media File button" width="1024" height="640" loading="lazy"></picture></a>
+    <a href="img/media-drop-refused.jpg"><picture><source media="(max-width: 600px)" srcset="img/media-drop-refused-phone.jpg" width="400" height="341"><img src="img/media-drop-refused.jpg" alt="Jo Osei's Media Library grid of garden photographs, with the notice 'meadow-in-july.jpg: This account cannot upload files, so nothing was uploaded. Ask an administrator to add the file to the Media Library.' The menu shows only Dashboard, Media and Profile, and there is no Add Media File button" width="900" height="330" loading="lazy"></picture></a>
     <figcaption>A photo dropped onto the library: refused, nothing added.</figcaption>
-  </figure>
-  <figure>
-    <a href="img/media-shop-photo.jpg"><img src="img/media-shop-photo.jpg" alt="Attachment details for Jo Osei, who has the Media Library (no uploads) role, on a WooCommerce shop: a red hibiscus photo that is the product photo of 'Red hibiscus, 3 litre pot', uploaded by Sam Carter, Alternative Text 'Red hibiscus in flower, sold in a 3 litre pot', and 'Saved.' at the top. The menu has no WooCommerce entries" width="1024" height="640" loading="lazy"></a>
-    <figcaption>On a WooCommerce shop: the same screen on a product photo. After signing in, the media role lands on Media &gt; Library, and the shop's page shows the saved text.</figcaption>
   </figure>
   <p class="fine">Images already placed in posts keep the alt text they were inserted with; featured images, galleries and shop product photos show the new text.</p>
 
   <h2 id="works-with">Does it work with my plugins?</h2>
   <table>
     <tr><th>Plugin tested</th><th>Media Library role</th><th>View Only</th></tr>
-    <tr><td>WooCommerce 11.3.0</td><td><strong>Yes.</strong> Opens wp-admin, not My account; the product page shows the alt text it saves.</td><td>No WooCommerce menu and no orders. Tools &gt; Scheduled Actions can be read; its Run and Cancel links are refused.</td></tr>
+    <tr><td>WooCommerce 11.3.0</td><td><strong>Yes.</strong> Opens wp-admin, not My account; the product page shows the alt text it saves.</td><td>No WooCommerce menu and no orders. Tools &gt; Scheduled Actions can be read; its Run and Cancel links are greyed out.</td></tr>
     <tr><td>Yoast SEO 28.8</td><td>Yes. No Yoast screens.</td><td>No Yoast menu or settings.</td></tr>
     <tr><td>GiveWP 4.19.2</td><td>Yes. No GiveWP screens.</td><td>No donations or reports; GiveWP has its own Accountant role.</td></tr>
     <tr><td>Contact Form 7 6.2.5</td><td>Yes. No Contact screens.</td><td>No Contact menu and no Settings link on Plugins.</td></tr>
+    <tr><td>Elementor 4.4.1</td><td>Yes. No Elementor screens.</td><td>Elementor's Home and four more of its pages open and can be read; their buttons are greyed out, with the reason on top.</td></tr>
   </table>
-  <p class="fine">Other plugins' menu entries and toolbar items are left out for both roles unless the plugin uses WordPress's Settings permission, and their Plugins-screen links, Dashboard widgets and admin notices are left out. Other plugins that send people without the Edit Posts permission to an account page are not handled. Elementor and Gravity Forms were not tested.</p>
+  <p class="fine">Other plugins' menu entries and toolbar items are left out for both roles unless the plugin uses WordPress's Settings permission, and their Plugins-screen links, Dashboard widgets and admin notices are left out. Other plugins that send people without the Edit Posts permission to an account page are not handled. Gravity Forms was not tested.</p>
 
   <h2 id="pro">Rolemend Pro</h2>
   <ul>
@@ -160,12 +154,12 @@
     <li><strong>Media &gt; Text Changes:</strong> every title, alt text, caption and description change by the media role, before and after, with Undo and CSV. The list starts when Pro is activated: install Pro before you give someone the media role.</li>
   </ul>
   <figure>
-    <img src="img/pro-add-user-access-ends.png" alt="Users > Add User with Rolemend Pro active: Role set to Media Library (no uploads) and, below it, Access ends on set to 12/31/2027 with the note that it applies when the role is View Only or Media Library (no uploads)" width="807" height="230" loading="lazy">
+    <picture><source media="(max-width: 600px)" srcset="img/pro-add-user-phone.png" width="390" height="261"><img src="img/pro-add-user-access-ends.png" alt="Users > Add User with Rolemend Pro active: Role set to Media Library (no uploads) and, below it, Access ends on set to 12/31/2027 with the note that it applies when the role is View Only or Media Library (no uploads)" width="807" height="230" loading="lazy"></picture>
     <figcaption>Access ends on, set when the account is made.</figcaption>
   </figure>
   <figure>
-    <a href="img/pro-text-changes.jpg"><picture><source media="(max-width: 600px)" srcset="img/pro-text-changes-phone.jpg" width="630" height="166"><img src="img/pro-text-changes.jpg" alt="Media &gt; Text Changes in Rolemend Pro: three Alternative Text changes by Jo Osei, each with the time, a thumbnail, the value before (empty or the old text) and after, and an Undo button; a Download CSV button; and a form to undo everything by one user since a date" width="1024" height="640" loading="lazy"></picture></a>
-    <figcaption>Three changes by the SEO contractor, each with Undo.</figcaption>
+    <a href="img/pro-text-changes.jpg"><picture><source media="(max-width: 600px)" srcset="img/pro-text-changes-phone.jpg" width="389" height="259"><img src="img/pro-text-changes.jpg" alt="Media &gt; Text Changes in Rolemend Pro: three Alternative Text changes by Jo Osei, each with the time, a thumbnail, the value before (empty or the old text) and after, and an Undo button; a Download CSV button; and a form to undo everything by one user since a date" width="900" height="417" loading="lazy"></picture></a>
+    <figcaption>Changes by the SEO contractor, each with Undo.</figcaption>
   </figure>
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_bQ7kLo8eO7svyqkKQKrtCjRFnSYnQbUaLL8HS3A5b3X">Buy for $19</a></p>
@@ -184,8 +178,8 @@
       <li>What the account can read is readable, including user email addresses and commenter details.</li>
       <li>Drafts are listed by title, author and date, but their text cannot be opened, because WordPress shows a draft only to people who may edit it.</li>
       <li>Tools &gt; Export and the theme and plugin file editors are not available to the role.</li>
-      <li>Other plugins' screens show only when they use WordPress's own Settings permission, and a few may load empty. WooCommerce's Tools &gt; Scheduled Actions is one that shows: it can be read, and its Run and Cancel links are refused. Other plugins' menu entries, toolbar items, Plugins-screen links, Dashboard widgets and notices, such as WooCommerce's Products and Yoast SEO's menu, are left out; if someone types the address of such a screen, Contact Form 7's dashboard shows the refusal as raw text in its News box. A notice or widget that a plugin adds in an unusual way is not caught.</li>
-      <li>Appearance &gt; Editor opens, but its previews of posts, pages and navigation are empty, because WordPress lists those only for people who may edit them; a notice in the editor says so.</li>
+      <li>Other plugins' screens show only when they use WordPress's own Settings permission, and a few may load empty. WooCommerce's Tools &gt; Scheduled Actions is one that shows: it can be read, and its Run and Cancel links are greyed out. Other plugins' menu entries, toolbar items, Plugins-screen links, Dashboard widgets and notices, such as WooCommerce's Products and Yoast SEO's menu, are left out; if someone types the address of such a screen, it answers in Rolemend's words. A notice or widget that a plugin adds in an unusual way is not caught.</li>
+      <li>Appearance &gt; Editor (Design with a classic theme) opens, but its previews of posts, pages and navigation are empty, because WordPress lists those only for people who may edit them; a notice in the editor says so.</li>
       <li>On other plugins' screens, a link or button that WordPress protects with a hidden check code is refused for both roles, even one that only reads, such as a download link.</li>
       <li>The media role cannot post comments or other front-end forms while signed in.</li>
     </ul>
