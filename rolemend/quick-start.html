@@ -72,7 +72,7 @@
   <h2 id="install">Install</h2>
   <p>Requires WordPress 6.5 or later and PHP 7.4 or later.</p>
   <ol>
-    <li>Get the zips. Everyone needs the free plugin, <a href="download/rolemend.zip?v=1.3.5">rolemend.zip</a> (version 1.3.5), from this site. Pro buyers also get <code>rolemend-pro.zip</code> (version 1.2.5) from Polar, through the link in the order email. Do not unzip them.</li>
+    <li>Get the zips. Everyone needs the free plugin, <a href="download/rolemend.zip?v=1.3.6">rolemend.zip</a> (version 1.3.6), from this site. Pro buyers also get <code>rolemend-pro.zip</code> (version 1.2.6) from Polar, through the link in the order email. Do not unzip them.</li>
     <li>In WordPress, go to <strong>Plugins &gt; Add Plugin</strong>, click <strong>Upload Plugin</strong>, choose <code>rolemend.zip</code>, then <strong>Install Now</strong> and <strong>Activate</strong>. Activation adds the two roles and nothing else: no notice, no wizard, no redirect.</li>
     <li>Pro only: do the same with <code>rolemend-pro.zip</code>, after the free plugin. If you activate Pro first, it activates and does nothing, and the Plugins screen shows one notice, "Rolemend Pro needs the free Rolemend plugin.", with a link to download or activate it; Pro starts as soon as the free plugin is active. If the free plugin is deactivated or removed later, Pro stops and shows the same notice.</li>
   </ol>
@@ -104,7 +104,7 @@
 
   <h2 id="pro">Rolemend Pro</h2>
   <ul>
-    <li><strong>Access ends on.</strong> Set the date on Users &gt; Add User, under Role (it must be after today; it is used only when the role is View Only or Media Library (no uploads)), or open the person's profile (Users &gt; All Users &gt; Edit), set the date and click <strong>Update User</strong>; the profile field appears only for people with one of the two roles. On that date, in the site's time zone, they lose the role and are signed out; their account stays. Users &gt; Rolemend shows the dates. A date of today or earlier saved on a profile ends access at once, and the screen says "Access ended now".</li>
+    <li><strong>Access ends on.</strong> Set the date on Users &gt; Add User, under Role (it must be after today; it is used only when the role is View Only or Media Library (no uploads)), or open the person's profile (Users &gt; All Users &gt; Edit), set the date and click <strong>Update User</strong>; the profile field appears only for people with one of the two roles. On that date, in the site's time zone, they lose the role and are signed out; their account stays. Users &gt; Rolemend shows the dates, soonest first. A date of today or earlier saved on a profile ends access at once, and the screen says "Access ended now".</li>
     <li><strong>Media &gt; Text Changes.</strong> Every change of Title, Alternative Text, Caption and Description made by the media role: who, when, before and after. <strong>Undo</strong> puts one value back; a change to a field someone else has changed since is skipped and says so. The form under the list undoes everything one person changed since a date. <strong>Download CSV</strong> saves the filtered list. Only administrators can open this screen. The list starts when Rolemend Pro is activated: changes made before that are not in it, so install Pro before you give someone the media role.</li>
   </ul>
   <figure>
@@ -116,8 +116,8 @@
     <figcaption>Access ends on, on the profile of a View Only user.</figcaption>
   </figure>
   <figure>
-    <img src="img/pro-users-rolemend-dates.png" alt="Users > Rolemend with Pro active: the View Only card now lists 'Access ends on: March 31, 2027' under Ravi Patel's name" width="401" height="500" loading="lazy">
-    <figcaption>Users &gt; Rolemend with Pro: each person's end date.</figcaption>
+    <img src="img/pro-users-rolemend-dates.png" alt="Users > Rolemend with Pro active: the View Only card lists Ravi Patel as 'Ravi Patel · ravi · ends March 31, 2027', with his address under the line, and the other holders after him" width="401" height="500" loading="lazy">
+    <figcaption>Users &gt; Rolemend with Pro: each person's end date on their line; people with a date come first, the soonest first, and a long list shows ten and "Show the other n users".</figcaption>
   </figure>
   <p id="updates"><strong>Updating.</strong> Neither plugin checks for updates by itself. For Pro, download the new <code>rolemend-pro.zip</code> from your order email or order page, then <strong>Plugins &gt; Add Plugin &gt; Upload Plugin</strong>, <strong>Install Now</strong> and <strong>Replace current with uploaded</strong>. Update the free plugin the same way with <code>rolemend.zip</code> from the <a href="index.html">product page</a>.</p>
 
