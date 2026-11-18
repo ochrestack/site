@@ -86,7 +86,7 @@
     <li>Check that <strong>Settings | Tools | Terminal | Engine</strong> is <strong>Reworked</strong>, the default since 2025.2. Scrollgrep does not see Classic terminal tabs.</li>
   </ol>
   <p>Scrollgrep is not on the JetBrains Marketplace yet. Once it is, you can also type <em>Scrollgrep</em> in the Plugins search field and click <strong>Install</strong>, and get updates from there.</p>
-  <p>Tested on Linux in IntelliJ IDEA 2025.3 (the full test suite, with real Bash, Zsh and sh terminals) and 2026.3 (the free filter on fast output, with both of its terminal emulators), PyCharm 2025.3 (install and filter check) and PyCharm 2026.3 (filter, Regex hint, and the licensed features with a test licence: Python frame, last command with context, preset, watch alert), and in WebStorm 2025.3 (the same test suite, run headless on WebStorm's own platform: no window was opened). What has not been tested is listed under <a href="#limits">Known limits</a>.</p>
+  <p>Tested on Linux in IntelliJ IDEA 2025.3 (the full test suite, with real Bash, Zsh and sh terminals) and 2026.3 (the free filter on fast output, with both of its terminal emulators), PyCharm 2025.3 (install and filter check) and PyCharm 2026.3 (filter, Regex hint, and the licensed features with a test licence: Python frame, last command with context, preset, watch alert), and in WebStorm 2025.3 (the same test suite, run headless on WebStorm's own platform: no window was opened), and WebStorm 2026.3 (started headless with Scrollgrep installed from the zip: it loaded; no filter was run). What has not been tested is listed under <a href="#limits">Known limits</a>.</p>
 
   <h2 id="filter">Live filter (free)</h2>
   <ol>
@@ -172,7 +172,7 @@
     <li>With Bash, the IDE reports only the first part of a compound command line in the Scope list.</li>
     <li>Clearing the terminal (<code>clear</code>, Clear Buffer) clears that tab's results too.</li>
     <li>IDE 2026.3 with the Ghostty emulator (its default): output that prints faster than the Terminal shows it is partly skipped by the Terminal itself; Scrollgrep marks where (it cannot know how many lines) and offers JediTerm, which keeps every line (<a href="#fast">fast output</a>).</li>
-    <li>Tested on Linux in IntelliJ IDEA and PyCharm 2025.3 and 2026.3 (windows opened), and in WebStorm 2025.3 (the test suite, headless: no window). Not tested yet: WebStorm's window and WebStorm 2026.3 (JetBrains' Plugin Verifier finds Scrollgrep compatible with it; it has not been run there), GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell, Remote Development, and a real Marketplace trial or purchase.</li>
+    <li>Tested on Linux in IntelliJ IDEA and PyCharm 2025.3 and 2026.3 (windows opened), and in WebStorm 2025.3 (the test suite, headless: no window), and WebStorm 2026.3 (started headless with the plugin loaded). Not tested yet: WebStorm's window and the filter in WebStorm 2026.3 (JetBrains' Plugin Verifier finds Scrollgrep compatible with it; no window was opened), GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell, Remote Development, and a real Marketplace trial or purchase.</li>
     <li>Not covered: the Run, Debug, Build and Services consoles, Run configurations that use a terminal console, Remote Development and Code With Me clients. English only.</li>
     <li>The Terminal API Scrollgrep uses is marked experimental by JetBrains, so a new IDE version can need a compatibility update.</li>
   </ul>
