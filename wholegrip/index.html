@@ -26,7 +26,9 @@
   p, li, dd { text-wrap: pretty; }
   h1, h2, h3, figcaption, summary { text-wrap: balance; }
   td, th { white-space: normal; }
-  td.nw, th.nw { white-space: nowrap; }
+  dl.runs { margin: 12px 0; }
+  dl.runs dt { font-weight: 600; margin-top: 8px; }
+  dl.runs dd { margin: 0; }
   :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
   * { box-sizing: border-box; }
   body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
@@ -312,10 +314,12 @@
   <p>Tested on five Blender versions, 4.2&nbsp;LTS to 5.2&nbsp;LTS, on Linux, with real mouse and keyboard input in a full Blender window. Not yet tested on a Windows PC or a Mac: if it doesn't work as described on yours and we cannot fix it, the 14-day refund in our <a href="../terms.html">terms</a> applies.</p>
   <details>
     <summary>The test runs, and how these pictures were made</summary>
-    <table>
-      <tr><th>Blender (official Linux builds)</th><th class="nw">Automated tests</th><th class="nw">In a Blender window</th><th>Real mouse and key events</th></tr>
-      <tr><td>4.2.23&nbsp;LTS, 4.5.15&nbsp;LTS, 5.0.1, 5.1.2&nbsp;and 5.2.3&nbsp;LTS</td><td>302&nbsp;passed, 0&nbsp;failed, on each</td><td class="nw">8&nbsp;passed on each</td><td class="nw">35&nbsp;of 35&nbsp;on each</td></tr>
-    </table>
+    <dl class="runs">
+      <dt>Blender (official Linux builds)</dt><dd>4.2.23&nbsp;LTS, 4.5.15&nbsp;LTS, 5.0.1, 5.1.2&nbsp;and 5.2.3&nbsp;LTS</dd>
+      <dt>Automated tests</dt><dd>303&nbsp;passed, 0&nbsp;failed, on&nbsp;each</dd>
+      <dt>In a Blender window</dt><dd>8&nbsp;passed on each</dd>
+      <dt>Real mouse and key events</dt><dd>35&nbsp;of 35&nbsp;on each</dd>
+    </dl>
     <p>Wholegrip 1.1.9, 18&nbsp;November 2026. The real-input checks send real mouse and key events to Blender: Ctrl+click over a plate with bolts under it, Shift+D and Alt+D, the Tweak tool and right-click select on a chair standing on a floor (press and drag moves the chair, never the floor), a click on the spot just Ctrl+clicked (the chair, not the floor behind it), one Ctrl+Z after Shift+D (the copy and its new collection both go), typing "weig" in Add Modifier (it searches and adds Weighted Normal) and, new in 1.1.5, typing it in the sidebar popup of one collection while another is active (it lands on the popup's collection). Every panel, button, menu entry, checkbox and shortcut is also driven with real input in a full Blender window, a screenshot per step: 57&nbsp;of 57&nbsp;steps on Blender 5.2.3&nbsp;and on 4.2.23, and 30&nbsp;of 30&nbsp;on a second scene and 6&nbsp;of 6&nbsp;on a third, each at 1920x1080 and at 1366x768. On 2,000&nbsp;objects in 200&nbsp;marked collections, a click selection took 0.049&nbsp;s and one value change on a 50-member stack 0.012&nbsp;s (Blender 5.2.3, measured on 1.1.9). The automated tests also pass with Blender 4.2.23's official Windows build run under Wine, a Windows compatibility layer on Linux; that is not a Windows PC. Wholegrip is pure Python on Blender's own API with no system-specific&nbsp;code.</p>
     <p>The pictures are real captures of the full Blender 5.2.3&nbsp;window on a virtual display, driven by real mouse and keyboard input, with Wholegrip 1.1.9&nbsp;installed from its zip. The labels above the before/after pictures are set on this page; the grid under the product shot is the same scene's sidebar, drawn by Blender at interface scale 2&nbsp;right after the product shot; the classroom loop was brightened after recording and its key labels were added to the recording; the View Layer menu picture and the phone version of the sidebar were drawn by Blender at interface scale 2&nbsp;and 1.6; the hero loop is the classroom recording as an MP4. We posed the two characters and built their backdrop and outline node group; we turned each classroom desk into its own collection of the asset's 23&nbsp;parts; we merged the vertices the model import splits on the Kenney models, stacked the rocket from its five parts, and built its Panel Inset node group and the product-shot backdrop and&nbsp;lights.</p>
   </details>
