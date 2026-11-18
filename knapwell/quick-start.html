@@ -39,7 +39,7 @@
 
   <h2 id="install">Install (Blender 4.5 LTS to 5.2 LTS)</h2>
   <ol>
-    <li>Download the Knapwell zip (<code>knapwell-1.5.1.zip</code>) from the link in your checkout email. Install the zip itself; do not unzip it.</li>
+    <li>Download the Knapwell zip (<code>knapwell-1.5.2.zip</code>) from the link in your checkout email. Install the zip itself; do not unzip it.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>. If Blender asks about internet access, <strong>Continue Offline</strong> is fine: Knapwell needs none. Blender may then show a yellow "Repository Alert" saying the extensions.blender.org data is unavailable; that is about Blender's online catalogue, not about Knapwell.</li>
     <li>Open the menu at the top right (the rightmost <strong>&#8964;</strong>), choose <strong>Install from Disk...</strong> and pick the zip.</li>
     <li>Knapwell is on at once, and Preferences lists it as "Chipped edges on closed meshes. Press N, open the Knapwell tab". Press <strong>N</strong> in the 3D Viewport and open the <strong>Knapwell</strong> tab. The main buttons are also in <strong>Object &gt; Knapwell</strong>, so F3 search finds them.</li>
@@ -48,12 +48,21 @@
 
   <h2 id="first-damage">First damage</h2>
   <ol>
-    <li><strong>Check Model</strong> (recommended for an imported model). Select the meshes and click it. The <strong>Check Model</strong> sub-panel, below the sliders, gives one line per object, with the fix under any problem: <strong>Weld Seams</strong> for a mesh split at UV seams, <strong>Fill Holes</strong> for holes, <strong>Add Solidify</strong> for a plane, <strong>Fix Normals</strong>, <strong>Remove Zero-Area Faces</strong>, and <strong>Convert to Mesh</strong> for a text or curve object. Objects that need nothing fold into one line ("6 ready"). A low-poly curved mesh, such as a low-poly head, gets a note ("ready; sharp edges"): every one of its facet edges will chip, so try Worn or Edge angle 50°. On a short screen (1366 x 768) the list is compact, each fix button on its object's row, so Apply stays in view while Mask &amp; Material is folded, as it starts. Click a line to see every finding for that object.</li>
+    <li>Select your meshes and click <strong>Check Model</strong> (recommended for an imported model). It gives one line per object, with a fix button under any problem.</li>
     <li>Click <strong>Damage</strong>. Each mesh gets a "Knapwell" modifier; its own mesh is not changed until Apply. Cameras and lights in the selection are left alone.</li>
     <li>Under <strong>Set sliders to:</strong>, pick <strong>Worn</strong>, <strong>Chipped</strong> or <strong>Ruined</strong>, then adjust Amount, Chip size (in metres, whatever the object's scale), Depth, Edge angle, Seed and Mode. With several objects selected, a slider change goes to all of them; Seed changes only the active one.</li>
-    <li>On thin parts, such as real-size bricks, chips are capped to fit each part. The line under the sliders says so ("Capped at 0.02 m"); its <strong>Use</strong> button writes that size, the size of the largest chips, into Chip size, so every part keeps its chip size and the look stays set. When only an object's thinner parts are capped, the line reads "Thinnest part capped at …" and there is no Use button for it: the slider already shows the largest chips. With several objects selected, the line describes the active one, and a button that reads "Use on 2" changes the two others that are capped.</li>
+    <li>On thin parts, such as real-size bricks, chips are capped to fit each part. The line under the sliders says so ("Capped at 0.02 m"), and <strong>Use</strong> writes that size into Chip size.</li>
     <li><strong>Preview &amp; Final Detail</strong> (closed by default): 1 to 4, higher is finer chips and slower. The viewport uses Preview detail; F12 renders and Apply use Final detail.</li>
   </ol>
+  <details id="first-damage-more">
+    <summary>More on Check Model and the chip-size line</summary>
+    <ul>
+      <li><strong>Check Model's fixes.</strong> <strong>Weld Seams</strong> for a mesh split at UV seams, <strong>Fill Holes</strong> for holes, <strong>Add Solidify</strong> for a plane, <strong>Fix Normals</strong>, <strong>Remove Zero-Area Faces</strong>, and <strong>Convert to Mesh</strong> for a text or curve object. Objects that need nothing fold into one line ("6 ready"). Click a line to see every finding for that object.</li>
+      <li><strong>Low-poly curved meshes</strong>, such as a low-poly head, get a note ("ready; sharp edges"): every one of its facet edges will chip, so try Worn or Edge angle 50&deg;.</li>
+      <li><strong>On a short screen</strong> (1366 x 768) the list is compact, each fix button on its object's row, so Apply stays in view while Mask &amp; Material is folded, as it starts.</li>
+      <li><strong>Use</strong> writes the size of the largest chips, so every part keeps its chip size and the look stays set. When only an object's thinner parts are capped, the line reads "Thinnest part capped at &hellip;" and there is no Use button for it: the slider already shows the largest chips. With several objects selected, the line describes the active one, and a button that reads "Use on 2" changes the two others that are capped.</li>
+    </ul>
+  </details>
   <div class="pair">
     <figure><img src="img/panel-check-model.png" alt="The Knapwell tab after Check Model on eleven objects: the status line, Check Model, Damage and Remove, the looks row, the sliders and the line 'Capped at 0.02 m' with a Use button; below them the Check Model sub-panel with '8 of 11 ready · 3 to fix', then 'Imported Urn: 60 open edges' with a Weld Seams button, 'Floor Tile: no thickness' with Add Solidify, 'Sign Text: text, convert first' with Convert to Mesh, 'Crates: ready; parts touch' and one line '7 ready'" width="291" height="696" loading="lazy"><figcaption>After Check Model on eleven objects: the sliders stay where they are; what needs a fix comes first, with its button.</figcaption></figure>
     <figure><img src="img/panel-step-protected.png" alt="The Knapwell tab on a stone step with one face protected: 'Step: damaged, live', the sliders, and in Mask &amp; Material the line '1 face protected: it and the edges around it stay clean.' above a Select Protected button" width="291" height="687" loading="lazy"><figcaption>A step with its top face protected: that face and the edges around it stay clean.</figcaption></figure>

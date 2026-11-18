@@ -64,7 +64,7 @@
   .inpanel { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
   .inpanel .panel { flex: 0 1 auto; max-width: 100%; }
   .inpanel .panel img { width: auto; max-width: 100%; border-radius: 6px; image-rendering: auto; }
-  .inpanel .view { flex: 1 1 240px; }
+  .inpanel .cap { flex: 1 1 240px; margin: 0; align-self: center; }
   @media (max-width: 600px) {
     header { padding-top: 18px; }
     h1 { margin-top: 16px; font-size: 27px; }
@@ -86,13 +86,13 @@
   <p class="sub">Chipped edges that keep separate bricks separate.</p>
   <p class="lead">Select your meshes, press Damage: real chipped geometry, at a chip size in metres. Every brick or block stays its own part, and Revert brings the original back, even after Apply.</p>
   <div class="buy">
-    <!-- Checkout is held until the Polar product carries knapwell-1.5.1.zip under the name Knapwell
+    <!-- Checkout is held until the Polar product carries knapwell-1.5.2.zip under the name Knapwell
          (it still delivered the old Spallwork 1.4.0 zip). To reopen it, run tools/page/reopen_checkout.py
          from the product repository (queue card q-021): both buttons become "Buy for $15" links and the
          note goes. -->
-    <p><button class="button pending" id="buy" type="button" disabled aria-describedby="buy-note" title="Checkout opens when the download is updated to Knapwell 1.5.1">$15 · checkout opens soon</button></p>
-    <p class="fine">One payment, source included, updates at no charge.<br>Blender 4.5 LTS to 5.2 LTS · <a href="../terms.html">14-day refund</a></p>
-    <p class="note" id="buy-note">Checkout is paused while the download is updated to Knapwell 1.5.1, so nobody receives an older file. For a note on the day it opens, email <a href="mailto:support@ochrestack.com?subject=Knapwell%20checkout">support@ochrestack.com</a>.</p>
+    <p><button class="button pending" id="buy" type="button" disabled aria-describedby="buy-note" title="Checkout opens when the download is updated to Knapwell 1.5.2">$15 · checkout opens soon</button></p>
+    <p class="fine">One payment, source included, updates at no charge.<br>Blender 4.5 LTS to 5.2 LTS<br>Refund within 14 days if it doesn't work as described and we can't fix it (<a href="../terms.html">terms</a>)</p>
+    <p class="note" id="buy-note">Checkout is paused while the download is updated to Knapwell 1.5.2, so nobody receives an older file. For a note on the day it opens, email <a href="mailto:support@ochrestack.com?subject=Knapwell%20checkout">support@ochrestack.com</a>.</p>
   </div>
 
   <a href="img/hero-steps-closeup-full.jpg"><img src="img/hero-steps-closeup.jpg" alt="A Cycles render close up in low sun: three granite steps and a granite plinth beside a red-brick wall and a sandstone door surround. The step and plinth edges carry scattered faceted chips of different sizes, pale where fresh stone shows inside each break; the bricks and the surround have small pale chips at their edges" width="1600" height="800" style="width:100%;height:auto;border:1px solid #E6DED3;border-radius:10px;display:block"></a>
@@ -105,7 +105,7 @@
       <source src="video/knapwell-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/knapwell-demo-phone-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo in a real Blender window with Knapwell 1.5.1 and real clicks: the view moves in on the panel for each button pressed, and a label names each press; captions only, no sound. The looks side by side and the same chips at scale 1 and 3 are renders (<a href="video/knapwell-demo-1080p.mp4">open full size</a>; the wall and the three looks as a <a href="video/knapwell-wall-and-looks.gif">12-second GIF</a>). Ellie (Sprite Fright) (CC BY) Blender Foundation | download.blender.org.</figcaption>
+    <figcaption>The demo in a real Blender window with Knapwell 1.5.2 and real clicks: the view moves in on the panel for each button pressed, and a label names each press; captions only, no sound. The looks side by side and the same chips at scale 1 and 3 are renders (<a href="video/knapwell-demo-1080p.mp4">open full size</a>; the wall and the three looks as a <a href="video/knapwell-wall-and-looks.gif">11-second GIF</a>). Ellie (Sprite Fright) (CC BY) Blender Foundation | download.blender.org.</figcaption>
   </figure>
   </section>
 
@@ -129,23 +129,21 @@
   <figure>
     <div class="inpanel">
       <a class="panel" href="img/inpanel2-check-model-panel.png"><img src="img/inpanel2-check-model-panel.png" alt="The Knapwell panel after Check Model on eleven objects: 'Capped at 0.02 m' with a Use button, then the Check Model sub-panel: '8 of 11 ready · 3 to fix', 'Imported Urn: 60 open edges' with Weld Seams, 'Floor Tile: no thickness' with Add Solidify, 'Sign Text: text, convert first' with Convert to Mesh, 'Crates: ready; parts touch' and one line '7 ready'" width="381" height="543" loading="lazy"></a>
-      <a class="view" href="img/inpanel2-check-model-view.jpg"><img src="img/inpanel2-check-model-view.jpg" alt="The eleven selected objects in the viewport: a brick wall, a pillar, steps, an open urn, a floor tile, the text INN and others" width="840" height="400" loading="lazy"></a>
+      <figcaption class="cap">Check Model on eleven objects: what needs a fix comes first, each with its button; the seven that need nothing fold into one line.</figcaption>
     </div>
-    <figcaption>Check Model on eleven objects: what needs a fix comes first, each with its button; the seven that need nothing fold into one line.</figcaption>
   </figure>
   <figure>
     <div class="inpanel">
       <a class="panel" href="img/inpanel2-step-panel.png"><img src="img/inpanel2-step-panel.png" alt="The Mask &amp; Material section: Protect Selected Faces, Paint Mask, Clear Mask, the line '1 face protected: it and the edges around it stay clean.', a Select Protected button, the Break material field and the line 'No UV map: Apply adds &quot;UVMap&quot;.'" width="381" height="350" loading="lazy"></a>
-      <a class="view" href="img/inpanel2-step-view.jpg"><img src="img/inpanel2-step-view.jpg" alt="A long stone step: its top face and the edges around it have no chips; the bottom edges are chipped" width="910" height="350" loading="lazy"></a>
+      <figcaption class="cap">One face protected on a stone step: that face and the edges around it stay clean; the bottom edges keep their chips.</figcaption>
     </div>
-    <figcaption>One face protected on a stone step: that face and the edges around it stay clean; the bottom edges keep their chips.</figcaption>
   </figure>
 
   <h2>Made for</h2>
   <div class="uses">
     <div>
-      <img src="img/game-wall-4x.jpg" alt="A rendered castle wall module of 46 separate stone blocks, applied with Target faces for a game: small darker chips at the joints and a few larger ones on the block faces" width="1200" height="800" loading="lazy">
-      <p><strong>Game kits.</strong> Each block of a wall module stays a closed part. Target faces reduces the result for the engine: our 46-block castle wall (2,484 faces) at Target 9,936 came out at 9,710 faces, 25,316 triangles, 560 chips on Blender 5.2 (the gallery picture shows the whole module); on 4.5 the counts differ a little (<a href="tested.html#tested">how we tested</a>).</p>
+      <img src="img/game-wall-4x.jpg" alt="A close view of one corner of a rendered castle wall module of 46 separate stone blocks, applied with Target faces for a game: small darker chips at the joints and larger ones on a few block faces" width="1200" height="800" loading="lazy">
+      <p><strong>Game kits.</strong> Each block of a wall module stays a closed part. Target faces reduces the result for the engine: our 46-block castle wall (2,484 faces) at Target 9,936 came out at 9,710 faces, 25,316 triangles, 560 chips on Blender 5.2 (the picture is one corner of the module; the gallery shows the whole module beside it); on 4.5 the counts differ a little (<a href="tested.html#tested">how we tested</a>).</p>
     </div>
     <div>
       <img src="img/hero-facade.jpg" alt="A rendered brick facade with a sandstone door surround and granite steps, all chipped; Blender Studio's Rain stands in the doorway" width="1600" height="800" loading="lazy">
@@ -161,7 +159,7 @@
 
   <h2 id="install">Install</h2>
   <ol>
-    <li>Download the Knapwell zip (<code>knapwell-1.5.1.zip</code>) from the link in your checkout email. Do not unzip it.</li>
+    <li>Download the Knapwell zip (<code>knapwell-1.5.2.zip</code>) from the link in your checkout email. Do not unzip it.</li>
     <li>In Blender, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the menu at the top right (<strong>&#8964;</strong>), <strong>Install from Disk...</strong>, and pick the zip.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Knapwell</strong> tab.</li>
   </ol>
@@ -190,7 +188,7 @@
   </details>
 
   <div class="buy" style="margin-top:32px">
-    <p><button class="button pending" id="buy-2" type="button" disabled aria-describedby="buy-note" title="Checkout opens when the download is updated to Knapwell 1.5.1">$15 · checkout opens soon</button></p>
+    <p><button class="button pending" id="buy-2" type="button" disabled aria-describedby="buy-note" title="Checkout opens when the download is updated to Knapwell 1.5.2">$15 · checkout opens soon</button></p>
     <p class="fine">One payment, source included · Blender 4.5 LTS to 5.2 LTS</p>
   </div>
 </main>
