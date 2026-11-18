@@ -63,6 +63,8 @@
     .wide-only { display: none; }
     .narrow-only { display: block; }
     .scroll-x img.ui { max-width: none; width: 764px; }
+    .scroll-x img.ui[width="1200"] { width: 960px; }
+    .scroll-x img.ui[width="960"] { width: 768px; }
     .swipe-wrap { position: relative; }
     .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
     .swipe-wrap.at-end::after { display: none; }
@@ -142,8 +144,7 @@
 </section>
 <main>
   <figure class="py-narrow">
-    <p class="swipe-hint">Swipe the picture sideways.</p>
-    <div class="swipe-wrap scroll-x"><a href="img/preview-python-frame-opened-window.png"><img class="ui" src="img/preview-python-frame-opened.png" alt="PyCharm 2026.3 with sync_orders.py open at line 14 beside the Scrollgrep panel: Include pattern 'sync finished' with Watch ticked, 7 matching lines of a sample sync job's output, and the traceback frame File sync_orders.py selected" width="800" height="574"></a></div>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/preview-python-frame-opened-window.png"><img class="ui" src="img/preview-python-frame-opened.png" alt="PyCharm 2026.3 with sync_orders.py open at line 14 beside the Scrollgrep panel: Include pattern 'sync finished' with Watch ticked, 7 matching lines of a sample sync job's output, and the traceback frame File sync_orders.py selected" width="800" height="574"></a></div>
     <figcaption>Python, in PyCharm 2026.3: the licensed features on Preview's sample sync job. The traceback frame clicked, sync_orders.py open at line 14; the Watch pattern is set.</figcaption>
   </figure>
   <h2 id="watch">Watch it work</h2>
@@ -161,42 +162,42 @@
   <h2 id="real">In the IDE, for real</h2>
 
   <figure class="real-size">
-    <a href="img/kept-after-trim-263-window.png"><img src="img/kept-after-trim-263.png" alt="IntelliJ IDEA 2026.3 after five Gradle test runs of a 164-test project with 2 failing tests: the Scrollgrep panel filtering FAILED shows 70 matching lines, starting with the first run's LedgerTest and MoneyTest failures; below, the Terminal's own search for 'failed' counts 35/35, because the Terminal has trimmed the earlier runs" width="1200" height="728" loading="lazy"></a>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/kept-after-trim-263-window.png"><img class="ui" src="img/kept-after-trim-263.png" alt="IntelliJ IDEA 2026.3 after five Gradle test runs of a 164-test project with 2 failing tests: the Scrollgrep panel filtering FAILED shows 70 matching lines, starting with the first run's LedgerTest and MoneyTest failures; below, the Terminal's own search for 'failed' counts 35/35, because the Terminal has trimmed the earlier runs" width="1200" height="728" loading="lazy"></a></div>
     <figcaption>Free, in IntelliJ IDEA 2026.3: five Gradle test runs with the debug log, about 11,000 lines. The Terminal kept the last part, so its search finds 35; Scrollgrep, open before the runs, lists all 70 lines with "failed", from the first run on.</figcaption>
   </figure>
 
   <figure class="real-size">
-    <a href="img/skipped-output-window.png"><img src="img/skipped-output.png" alt="IntelliJ IDEA 2026.3, cat of a 97,317-line sync log in a Terminal tab on the Ghostty emulator. The Scrollgrep panel filtering 'skipped row' shows 918 matching lines and 'some lines missing', rows reading '⋯ the Terminal skipped lines here ⋯' between matching lines, and the notice: The Terminal skipped output that printed too fast. Keep every line: use JediTerm for new tabs" width="1200" height="728" loading="lazy"></a>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/skipped-output-window.png"><img class="ui" src="img/skipped-output.png" alt="IntelliJ IDEA 2026.3, cat of a 97,317-line sync log in a Terminal tab on the Ghostty emulator. The Scrollgrep panel filtering 'skipped row' shows 918 matching lines and 'some lines missing', rows reading '⋯ the Terminal skipped lines here ⋯' between matching lines, and the notice: The Terminal skipped output that printed too fast. Keep every line: use JediTerm for new tabs" width="1200" height="728" loading="lazy"></a></div>
     <figcaption>Free, in IntelliJ IDEA 2026.3: <code>cat</code> of a 97,317-line log at full speed. The 2026.3 Terminal's Ghostty emulator skipped most of it; Scrollgrep kept the 918 matching lines that arrived in this run and says where lines are missing. After one click on "use JediTerm for new tabs", the same <code>cat</code> in a new tab: all 10,470.</figcaption>
   </figure>
 
   <figure class="real-size">
-    <a href="img/pycharm-etl-log-window.png"><img src="img/pycharm-etl-log.png" alt="PyCharm 2025.3 with worker.py open. The Scrollgrep panel filters 'failed row' and shows 59 matching lines, ERROR lines with row ids. Below, the Terminal's own search for 'failed row' counts 16/16 above a Python traceback" width="1200" height="728" loading="lazy"></a>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/pycharm-etl-log-window.png"><img class="ui" src="img/pycharm-etl-log.png" alt="PyCharm 2025.3 with worker.py open. The Scrollgrep panel filters 'failed row' and shows 59 matching lines, ERROR lines with row ids. Below, the Terminal's own search for 'failed row' counts 16/16 above a Python traceback" width="1200" height="728" loading="lazy"></a></div>
     <figcaption>Free, in PyCharm 2025.3: <code>tail -f</code> on a 60,000-row sync log. Scrollgrep lists 59 failed rows, as many as <code>grep -c</code> counts in the file; the Terminal's own search finds 16.</figcaption>
   </figure>
 
   <figure class="real-size">
-    <a href="img/preview-unlocked-window.png"><img src="img/preview-unlocked.png" alt="IntelliJ IDEA 2026.3 without a licence: the Scrollgrep panel on its Scrollgrep preview tab shows Scope, Context, Preset and Add pattern, the note 'Preview on sample output: the licensed features work in this tab until it runs another command', and 12 matching lines for FAILED|Money from a sample Gradle test run, with the stack frames MoneyTest.java:16, Money.java:15 and MoneyTest.java:22 underlined as links" width="1200" height="728" loading="lazy"></a>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/preview-unlocked-window.png"><img class="ui" src="img/preview-unlocked.png" alt="IntelliJ IDEA 2026.3 without a licence: the Scrollgrep panel on its Scrollgrep preview tab shows Scope, Context, Preset and Add pattern, the note 'Preview on sample output: the licensed features work in this tab until it runs another command', and 12 matching lines for FAILED|Money from a sample Gradle test run, with the stack frames MoneyTest.java:16, Money.java:15 and MoneyTest.java:22 underlined as links" width="1200" height="728" loading="lazy"></a></div>
     <figcaption>Try before you buy, in IntelliJ IDEA 2026.3 without a licence: <strong>Preview</strong> runs a sample test run in a Terminal tab of its own, where links, scope, context, patterns and alerts work. Your own tabs stay free-only.</figcaption>
   </figure>
 
   <figure class="real-size">
-    <a href="img/link-opened-at-line-window.png"><img src="img/link-opened-at-line.png" alt="The panel filtering ElementTest: the stack frame 'at org.jsoup.nodes.ElementTest.testGetChildText(ElementTest.java:138)' is selected, with ElementTest.java:138 as a link; the editor on the left has ElementTest.java open with the caret on line 138, the failing assertion" width="1200" height="558" loading="lazy"></a>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/link-opened-at-line-window.png"><img class="ui" src="img/link-opened-at-line.png" alt="The panel filtering ElementTest: the stack frame 'at org.jsoup.nodes.ElementTest.testGetChildText(ElementTest.java:138)' is selected, with ElementTest.java:138 as a link; the editor on the left has ElementTest.java open with the caret on line 138, the failing assertion" width="1200" height="558" loading="lazy"></a></div>
     <figcaption>Licence: the stack frame clicked, ElementTest.java open at line 138.</figcaption>
   </figure>
 
   <figure class="real-size">
-    <a href="img/node-frame-opened-window.png"><img src="img/node-frame-opened.png" alt="A Node.js dev server's output filtered with TypeError|orders\.js: 45 matching lines, each TypeError 'Cannot read properties of undefined (reading amount)' followed by its frames 'at formatTotal (/opt/sample/orders-api/src/orders.js:10:23)' and 'at parseOrder (…orders.js:15:59)' as links. The last formatTotal frame is selected, and the editor on the left shows orders.js with the caret on line 10, column 23, at order.price.amount" width="1200" height="558" loading="lazy"></a>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/node-frame-opened-window.png"><img class="ui" src="img/node-frame-opened.png" alt="A Node.js dev server's output filtered with TypeError|orders\.js: 45 matching lines, each TypeError 'Cannot read properties of undefined (reading amount)' followed by its frames 'at formatTotal (/opt/sample/orders-api/src/orders.js:10:23)' and 'at parseOrder (…orders.js:15:59)' as links. The last formatTotal frame is selected, and the editor on the left shows orders.js with the caret on line 10, column 23, at order.price.amount" width="1200" height="558" loading="lazy"></a></div>
     <figcaption>Licence, Node.js: a dev server answered 1,500 requests and 15 failed. The <code>formatTotal</code> frame clicked, orders.js open at line 10, column 23.</figcaption>
   </figure>
 
   <figure class="real-size">
-    <a href="img/one-command-context-window.png"><img src="img/one-command-context.png" alt="Scope set to 'mvn -B test -DtrimStackTrace=false · /opt/sample/jsoup · exit 1', Context 3: the two FAILURE lines with three grey context lines before and after, and '2 matching lines · exit 1'. The Terminal below shows two later commands, git status and ls" width="1200" height="728" loading="lazy"></a>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/one-command-context-window.png"><img class="ui" src="img/one-command-context.png" alt="Scope set to 'mvn -B test -DtrimStackTrace=false · /opt/sample/jsoup · exit 1', Context 3: the two FAILURE lines with three grey context lines before and after, and '2 matching lines · exit 1'. The Terminal below shows two later commands, git status and ls" width="1200" height="728" loading="lazy"></a></div>
     <figcaption>Licence: one earlier command, three lines of context, exit code 1.</figcaption>
   </figure>
 
   <figure class="real-size">
-    <a href="img/pycharm-watch-alert-window.png"><img src="img/pycharm-watch-alert.png" alt="PyCharm 2026.3 with sync_orders.py open and the Terminal and the Scrollgrep panel hidden. A notification reads: Scrollgrep: 'sync finished with' in Local, 2026-11-10 05:20:40,677 ERROR sync_orders: sync finished with 201 skipped rows, Show in Scrollgrep" width="1200" height="430" loading="lazy"></a>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/pycharm-watch-alert-window.png"><img class="ui" src="img/pycharm-watch-alert.png" alt="PyCharm 2026.3 with sync_orders.py open and the Terminal and the Scrollgrep panel hidden. A notification reads: Scrollgrep: 'sync finished with' in Local, 2026-11-10 05:20:40,677 ERROR sync_orders: sync finished with 201 skipped rows, Show in Scrollgrep" width="1200" height="430" loading="lazy"></a></div>
     <figcaption>Licence, in PyCharm 2026.3: a Python sync job's last line, "ERROR … sync finished with 201 skipped rows", raised an alert while the Terminal was hidden (test licence: the listing is not live yet).</figcaption>
   </figure>
 
