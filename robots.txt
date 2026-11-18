@@ -42,6 +42,7 @@ Allow: /rolemend/quick-start.html
 Allow: /rolemend/how-we-tested.html
 Allow: /consentwell/
 Allow: /consentwell/quick-start.html
+Allow: /consentwell/how-we-tested.html
 Allow: /wholegrip/
 Allow: /wholegrip/quick-start.html
 Allow: /guides/

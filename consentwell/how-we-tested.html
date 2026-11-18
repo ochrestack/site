@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Consentwell was tested</title>
+<meta name="description" content="What was run to test Consentwell and Consentwell Pro: the test suites, the consent plugins, the WordPress and PHP versions, and how the screenshots and the film were made.">
+<link rel="canonical" href="https://ochrestack.com/consentwell/how-we-tested.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+<style>@media (max-width: 600px) { .scroll-x img.ui { width: 960px; } }</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>How Consentwell was tested</h1>
+  <p>The tests, the versions and the way the pictures and the film were made. Back to the <a href="index.html">Consentwell product page</a> or the <a href="quick-start.html">quick start</a>.</p>
+
+  <h2 id="tested">What was run</h2>
+  <table>
+    <tr><th>What</th><th>Result</th></tr>
+    <tr><td>PHPUnit, WordPress test suite, PHP 7.4.33 and 8.3.6 on WordPress 7.1.4 and 6.5.5</td><td>140 tests, 3,111 assertions, OK in all four runs</td></tr>
+    <tr><td>Browser tests in Chromium 153, WordPress 7.1.4, PHP 8.3.6, with Complianz 7.5.7, CookieYes 3.5.9 (local mode) and Cookie Notice &amp; Compliance 3.1.19, including a crawl of every control of both screens as administrator, editor and subscriber</td><td>60 passed</td></tr>
+    <tr><td>Six more consent plugins, each with its banner on: GDPR Cookie Compliance 5.3.1, CookieAdmin 1.2.6, SureCookie 1.8.1, Beautiful Cookie Consent Banner 4.10.0, WPConsent 1.2.1 and Cookie Notice &amp; Compliance 3.1.19, through the free check, the server-side check and a three-page Pro run</td><td>6 passed: where a visitor sees a banner, none was reported as “No consent banner found” or counted as “did not show”</td></tr>
+    <tr><td>Tests written to break it: a script-delay plugin at its default 5 seconds and in load-on-first-input mode, a tag fired 3 seconds after load (with Complianz and with CookieYes), a lazy map, banners in shadow roots or without “cookie” in their id, the admin’s own cookies, Global Privacy Control, a page-cache copy</td><td>15 passed</td></tr>
+    <tr><td>WordPress.org Plugin Check 2.2.0, both plugins</td><td>0 errors, 0 warnings</td></tr>
+    <tr><td>Both zips installed through Plugins &gt; Add Plugin &gt; Upload Plugin on a clean WordPress with debugging on, on the same four PHP and WordPress combinations</td><td>all four pass; Pro alone is refused with WordPress’s “unmet requirements”; Tools &gt; Consentwell, Tools &gt; Consentwell Pro and Site Health open; nothing from either plugin in the debug log</td></tr>
+    <tr><td>phpcs, WordPress-Extra, PHP 7.4 and later</td><td>0 errors, 0 warnings</td></tr>
+  </table>
+  <p class="fine">Everything ran on Linux against version 1.0.4 of both plugins. Windows, macOS, MySQL servers other than MariaDB 10.11, Cookiebot banners and browsers other than Chromium were not tested. The images and the demo site are described under <a href="#images">how the images were made</a>.</p>
+
+  <h2 id="images">How the images were made</h2>
+  <p>Every image on both pages is a capture of Consentwell 1.0.4 in a real Chromium 153 window under a virtual display, on a local WordPress 7.1.4 (PHP’s built-in server, SQLite) with Complianz Free 7.5.7 set up through its own wizard with the default answers. The demo bakery site has a Contact Form 7 form with reCAPTCHA (Google’s published test keys), a YouTube embed, a Google Map and a theme that loads Google Fonts. The browser, the site and the plugins are real; only the replies of Google’s hosts came from a local stand-in server (the recording machine has no route to them), so every address in the images is one the site’s own pages requested, not a measurement of Google. Online, reCAPTCHA’s <code>api.js</code> also loads a file from gstatic.com. The “Our breads” page uses a template, written for the demo, that does not call <code>wp_footer()</code>. Consentwell Pro is installed only for the Pro images. The “other banner” image replaces Complianz with GDPR Cookie Compliance 5.3.1 from WordPress.org, its Reject button switched on in its own settings, and nothing else changed. The Cookie Notice &amp; Compliance image does the same with Cookie Notice &amp; Compliance 3.1.19 (Reject button on), in a window whose user agent is an ordinary visitor’s, because that plugin hides its banner from what it takes for a crawler. The CSV picture is the file the first Pro run downloaded, shown as a table by a script that changes no cell; it is not a screenshot of a spreadsheet program. The first picture on a phone is two element captures of one result, taken at 320 px wide (the three banner facts and the first After Reject address), joined with a thin gap; what lies between them is left out. The film is a real Chromium on the same demo site, recorded at 60 fps with the real pointer moving, 1080p with a 720p copy for phones; its camera is never zoomed into the screen, so no word is cut by the frame.</p>
+
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
