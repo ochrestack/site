@@ -94,7 +94,7 @@
 
   <div class="buy" style="margin-top:10px">
     <p class="price" style="margin-bottom:6px"><strong>Pro, $19 once:</strong> your sitemap in one run. <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_SaANA61tGSK8IxpAj2kFJu6Cm8WGKOdcY1iqR4KSzf8">Buy for $19</a></p>
-    <p class="fine" id="trust" style="margin-bottom:0"><strong>Free</strong> for any single page: <a href="download/consentwell.zip?v=1.0.2">consentwell.zip</a> 1.0.2 · tested on WordPress 7.1.4 and 6.5.5, PHP 7.4.33 and 8.3.6, on Linux · source code included (GPL-2.0-or-later) · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+    <p class="fine" id="trust" style="margin-bottom:0"><strong>Free</strong> for any single page: <a href="download/consentwell.zip?v=1.0.3">consentwell.zip</a> 1.0.3 · tested on WordPress 7.1.4 and 6.5.5, PHP 7.4.33 and 8.3.6, on Linux · source code included (GPL-2.0-or-later) · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 
   <p class="fine">Above: after Reject on the contact page of a demo bakery site running Complianz Free (wizard defaults), the page still requested two Google Fonts stylesheets, reCAPTCHA’s api.js and a Google Maps frame, each with its full address. <a href="quick-start.html#images">How the images were made</a>.</p>
@@ -103,17 +103,25 @@
     <strong>What it is, and what it isn’t.</strong> Your browser’s developer tools show the same requests for free, and see more (frames, late requests). Consentwell does the steps for you (a fresh visitor, Reject clicked, the page reloaded and scrolled), writes the result in plain words, and names the likely reason when a banner is in the page but not on screen. It changes nothing on your site and does not fix the consent plugin’s settings; it is a technical check, not legal advice, and no plugin can make a site compliant.
   </div>
 
+  <h2 id="works-with">Works with</h2>
+  <ul>
+    <li><strong>Complianz 7.5.7 and CookieYes 3.5.9:</strong> Consentwell clicks Reject for you.</li>
+    <li><strong>GDPR Cookie Compliance 5.3.1, CookieAdmin 1.2.6, SureCookie 1.8.1 and Beautiful Cookie Consent Banner 4.10.0:</strong> the banner is found and you click its Reject in the check window.</li>
+    <li><strong>Cookie Notice &amp; Compliance 3.1.19 and WPConsent 1.2.1:</strong> the banner does not appear in the check window. The result says the banner is in the page HTML but not shown in the check window, gives the likely cause, lists what loads before any choice and does not click Reject.</li>
+    <li>Not run, because they need an account, a licence or a site ID: Real Cookie Banner, Cookiebot, iubenda, Termly.</li>
+  </ul>
+
   <h2 id="watch">Watch it work</h2>
   <figure>
     <video controls preload="none" playsinline poster="video/poster-after-reject.jpg" width="1920" height="1080">
       <source src="video/consentwell-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/consentwell-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 53 s, captions only, no sound (1080p, 720p on phones; <a href="video/consentwell-demo-1080p.mp4">open full size</a>). A real Chromium 141 on the demo bakery site (WordPress 7.1.4, Complianz Free 7.5.7 with its wizard defaults, Consentwell 1.0.2, free plugin only): Tools &gt; Consentwell, the contact page, then a page whose template never calls <code>wp_footer()</code>. The waits are sped up 3&times; and labelled. Google&rsquo;s hosts are answered by a local stand-in server, so the lists show what the pages requested, not a measurement of Google.</figcaption>
+    <figcaption>The demo, 53 s, captions only, no sound (1080p, 720p on phones; <a href="video/consentwell-demo-1080p.mp4">open full size</a>). A real Chromium 141 on the demo bakery site (WordPress 7.1.4, Complianz Free 7.5.7 with its wizard defaults, Consentwell 1.0.3, free plugin only): Tools &gt; Consentwell, the contact page, then a page whose template never calls <code>wp_footer()</code>. The waits are sped up 3&times; and labelled. The browser, the site and the plugins are real; only Google&rsquo;s replies come from a local stand-in server (<a href="quick-start.html#images">how the images were made</a>).</figcaption>
   </figure>
   <figure>
     <img src="video/consentwell-after-reject.gif" alt="A 14-second clip of the demo: Consentwell clicks Reject in the Complianz banner, reloads the page and watches it (sped up 3 times), then the result lists four third-party requests after Reject: two Google Fonts stylesheets, google.com/recaptcha/api.js and a Google Maps frame" loading="lazy" width="896" height="504">
-    <figcaption>The same check, 14 seconds as a GIF (7.0 MB): Reject clicked, page reloaded and watched, then the After Reject list.</figcaption>
+    <figcaption>The same check, 14 seconds as a GIF (6.5 MB): Reject clicked, page reloaded and watched, then the After Reject list.</figcaption>
   </figure>
 
   <h2>What a check shows</h2>
@@ -135,8 +143,12 @@
     <li>Pro clicks Reject on Complianz and CookieYes banners; on any other banner it lists what loads before any choice only.</li>
   </ul>
   <figure>
-    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/pro-summary.png" alt="Tools &gt; Consentwell Pro after two runs on the demo bakery site: the summary (9 of 9 pages checked; pages where the banner did not show, 0; pages with third-party requests after Reject, 9; before any choice, 9), the most common addresses before any choice and after Reject with the number of pages for each, and a Since the previous run list: three new addresses loaded after Reject on the Our breads page, and 'banner did not show' gone, with a Download CSV button" loading="lazy" width="1424" height="1892"></div></div>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/pro-summary.png" alt="Tools &gt; Consentwell Pro after two runs on the demo bakery site: the summary (9 of 9 pages checked; pages where the banner did not show, 0; pages with third-party requests after Reject, 9; before any choice, 9), the most common addresses before any choice and after Reject with the number of pages for each, and a Since the previous run list: three new addresses requested after Reject on the Our breads page, and 'banner did not show' gone, with a Download CSV button" loading="lazy" width="1424" height="1958"></div></div>
     <figcaption>Pro after two runs on the demo bakery. The theme template was fixed between them: the second run lists “banner did not show” as gone for the “Our breads” page, and three addresses as new after Reject (the page now loads what the other pages load).</figcaption>
+  </figure>
+  <figure>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/pro-csv.png" alt="The downloaded CSV of a Consentwell Pro run on the demo bakery, shown as a table with four columns. Our breads: banner shown, no banner found; likely cause, this page has no wp_footer output, the theme's template does not call wp_footer(). Contact page and home page: banner shown, yes; addresses requested after Reject, the Google Fonts stylesheets, google.com/recaptcha/api.js, the Google Maps frame (contact) and the YouTube embed (home), each in full" loading="lazy" width="1424" height="644"></div></div>
+    <figcaption>Download CSV: one row per page. Shown here as a table, with four of its twelve columns and no cell changed; in the file, the addresses in a cell are separated by a space.</figcaption>
   </figure>
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_SaANA61tGSK8IxpAj2kFJu6Cm8WGKOdcY1iqR4KSzf8">Buy for $19</a></p>
@@ -146,7 +158,7 @@
   <h2 id="details">Details</h2>
   <ul>
     <li><a href="quick-start.html">Quick start</a>: install, first check, reading the result, limits, <a href="quick-start.html#tested">how we tested</a>.</li>
-    <li>Needs WordPress 6.5+, PHP 7.4+ and an administrator account. In the free plugin, automatic Reject on Complianz and CookieYes; for another banner you click Reject yourself. Tested in Chromium. Windows and macOS are untested; if it doesn’t work on yours and we cannot fix it, the 14-day refund applies.</li>
+    <li>Needs WordPress 6.5+, PHP 7.4+ and an administrator account. In the free plugin, automatic Reject on Complianz and CookieYes; for another banner you click Reject yourself when it appears in the check window (see <a href="#works-with">Works with</a>). Tested in Chromium. Windows and macOS are untested; if it doesn’t work on yours and we cannot fix it, the 14-day refund applies.</li>
     <li>Checkout by Polar; the download arrives by email. Neither plugin sends anything to us or anyone else, and Pro never asks for the licence key Polar emails.</li>
     <li>GPL-2.0-or-later, source in both zips. The free plugin is not in the WordPress.org directory yet. Not affiliated with Complianz, CookieYes or Cookiebot. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
   </ul>
