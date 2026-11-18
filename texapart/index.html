@@ -65,7 +65,9 @@
     h1 { margin-top: 20px; }
     .wide-only { display: none; }
     .top { display: flex; flex-direction: column; }
-    .top-side { order: -1; margin: 0 0 12px; }
+    .top-buy { order: -2; margin: 0 0 12px; }
+    .top-fig { order: -1; }
+    .top-side { margin: 0 0 12px; }
     .narrow-only { display: block; }
     .pair { display: block; }
     .pair img { width: 100%; margin-bottom: 8px; }
@@ -84,12 +86,12 @@
   <p class="sub">Your game's shaders only accept one texture per material, and this material has multiple textures in it? Texapart splits it into one material per texture, and each face keeps the image it showed in Blender.</p>
 
   <div class="top">
+    <p class="narrow-only top-buy"><strong>$10 once</strong>, source included. <a class="button" id="buy-top" href="https://buy.polar.sh/polar_cl_djnMNDNLYjBj1bZCSOPA2KTQcy3xrYDYtqCX921HcvU">Buy for $10</a></p>
     <div class="top-fig">
         <picture><source media="(max-width: 600px)" srcset="img/rain-panel.gif" width="333" height="195"><img class="hero" src="img/rain-hero.gif" alt="Rain, close up, beside the Texapart panel in Blender 4.2, filmed in the real window. Report lists one material, Rain_Game, with six images and their face counts (her skin in three UDIM tiles 2642, 3362 and 6318, jeans 4192, hair 2927, eyes 1410). Rows are clicked and highlighted in turn. Split by Texture is pressed and the Result box gives the six new one-image materials; the material slot list then shows them: rain_skin.1001, .1002, .1003, rain_jeans, rain_hair and rain_eyes." width="443" height="195"></picture>
-      <p class="fine">Real Blender 4.2.23, Texapart 1.0.5, 35 s, no sound: Rain, packed as a game port ships her, split into six one-image materials. <a href="#watch">Whole window</a> · <a href="#credits">Credits</a></p>
+      <p class="fine">Real Blender 4.2.23, Texapart 1.0.6, 35 s, no sound: Rain, packed as a game port ships her, split into six one-image materials. <a href="#watch">Whole window</a> · <a href="#credits">Credits</a></p>
     </div>
     <div class="top-side">
-      <p class="narrow-only" style="margin:0 0 6px"><strong>$10 once</strong>, source included. <a class="button" id="buy-top" href="https://buy.polar.sh/polar_cl_djnMNDNLYjBj1bZCSOPA2KTQcy3xrYDYtqCX921HcvU">Buy for $10</a></p>
       <ul class="benefits">
         <li><strong>One material per texture</strong>, for shaders that take only one.</li>
         <li><strong>Each face keeps its image</strong>, or is listed with the reason.</li>
@@ -114,21 +116,22 @@
       <source src="video/texapart-demo-1080p60.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/texapart-demo-720p60-phone.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 59 s, captions only, no sound (1080p60, 720p60 on phones; <a href="video/texapart-demo-1080p60.mp4">open full size</a>). Real clicks in Blender 4.2.23 with Texapart 1.0.5 on Rain, whose skin, jeans, hair and eye images sit in one material: the node group, Report, a click on a row in Edit Mode, Split by Texture, the same view before and after, then the glTF in Godot 4.7. Credits <a href="#credits">below</a>.</figcaption>
+    <figcaption>The demo, 57 s, captions only, no sound (1080p60, 720p60 on phones; <a href="video/texapart-demo-1080p60.mp4">open full size</a>). Real clicks in Blender 4.2.23 on Rain (the film was recorded with Texapart 1.0.5; <a href="how-we-tested.html#film">what 1.0.6 words differently</a>), whose skin, jeans, hair and eye images sit in one material: the node group, Report, a click on a row in Edit Mode, Split by Texture, the same view before and after, then the glTF in Godot 4.7. Credits <a href="#credits">below</a>.</figcaption>
   </figure>
   <figure>
-    <img src="video/texapart-split.gif" alt="Blender 4.2: Report lists Rain's one material with six images and their face counts, rows are clicked in Edit Mode and light up her jeans, hair and skin, Split by Texture is pressed, and the Result box reports 20851 faces placed, 6 new materials, 0 faces listed" width="800" height="450" loading="lazy">
-    <figcaption>The split alone: <a href="video/texapart-split.gif">14-second GIF</a>, 6.9 MB, from Report to the Split Result.</figcaption>
+    <img class="wide-only" src="video/texapart-split.gif" alt="Blender 4.2: Report lists Rain's one material with six images and their face counts, rows are clicked in Edit Mode and light up her jeans, hair and skin, Split by Texture is pressed, and the Result box reports 20851 faces placed, 6 new materials, 0 faces listed" width="800" height="450" loading="lazy">
+    <video class="narrow-only" src="video/texapart-split-phone.mp4" aria-label="Blender 4.2: Report lists Rain's one material with six images and their face counts, rows are clicked in Edit Mode and light up her jeans, hair and skin, Split by Texture is pressed, and the Result box reports 20851 faces placed, 6 new materials, 0 faces listed" width="640" height="360" autoplay muted loop playsinline preload="metadata"></video>
+    <figcaption>The split alone: <a href="video/texapart-split.gif">14-second GIF</a>, 6.9 MB, from Report to the Split Result (phones get the same loop as a 0.5 MB video).</figcaption>
   </figure>
 
   <h2>In Blender, for real</h2>
-  <p>Every image here is a capture of a real Blender 4.2 window with Texapart 1.0.5 installed from its zip, except the two Cycles renders of the Pavilion below. Rain's skin, jeans, hair and eye images are in one material, as a game port delivers her. In Blender the Texapart panel is in the Material tab of the Properties editor, below Blender's own Surface and Settings panels.</p>
+  <p>Every image here is a capture of a real Blender 4.2 window with Texapart 1.0.6 installed from its zip, except the two Cycles renders of the Pavilion below. Rain's skin, jeans, hair and eye images are in one material, as a game port delivers her. In Blender the Texapart panel is in the Material tab of the Properties editor, below Blender's own Surface and Settings panels.</p>
   <figure>
     <img src="img/rain-node-group.png" alt="Blender's Shader Editor inside the node group Game Surface: an Attribute node reading tex_slot feeds three Map Range and Clamp pairs that set the factors of three Mix nodes; the Mix nodes choose between four Image Texture nodes labelled Skin (a UDIM image), Jeans, Hair and Eyes" width="910" height="490" loading="lazy">
     <figcaption>Before: one material. An attribute, <code>tex_slot</code>, picks one of four images for each face; her skin image has three UDIM tiles.</figcaption>
   </figure>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/rain-report-panel-narrow.png" width="332" height="600"><img class="ui" src="img/rain-report-panel.png" alt="The Texapart panel in Blender's Material Properties after Report with Whole File: the Result box says Report found 1 material with more than one image, and the list shows material Rain_Game with six rows, each with its face count: rain_skin tile 1001 2642, tile 1002 3362, tile 1003 6318, rain_jeans 4192, rain_hair 2927, rain_eyes 1410" width="684" height="550" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/rain-report-panel-narrow.png" width="332" height="600"><img class="ui" src="img/rain-report-panel.png" alt="The Texapart panel in Blender's Material Properties after Report with Whole File: the Result box says Report found 1 material that shows more than one image on 1 object, and under the line Report list (whole file) the list shows material Rain_Game with six rows, each with its face count: rain_skin tile 1001 2642, tile 1002 3362, tile 1003 6318, rain_jeans 4192, rain_hair 2927, rain_eyes 1410" width="684" height="540" loading="lazy"></picture>
     <figcaption>Report: what it found in the Result box, then each image and its face count. Nothing has changed yet.</figcaption>
   </figure>
   <figure>
@@ -136,8 +139,8 @@
     <figcaption>Edit Mode: a click on a row selects its faces, here her jeans.</figcaption>
   </figure>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/rain-slots-after-narrow.png" width="332" height="205"><img class="ui" src="img/rain-slots-after.png" alt="Blender's material slot list after Split by Texture: six materials, rain_skin.1001, rain_skin.1002, rain_skin.1003, rain_jeans, rain_hair and rain_eyes" width="684" height="215" loading="lazy"></picture>
-    <picture><source media="(max-width: 600px)" srcset="img/rain-summary-narrow.png" width="332" height="205"><img class="ui" src="img/rain-summary.png" alt="The Texapart Result box: Split 1 material on 1 object into 6 one-image materials (6 new, 0 reused). Faces placed: 20851 (rain_eyes 1410, rain_hair 2927, rain_jeans 4192, rain_skin.1001 2642, rain_skin.1002 3362, rain_skin.1003 6318). Faces listed: 0. UVs rewritten on 9680 faces (old UVs kept in the backup UV map)." width="684" height="135" loading="lazy" style="margin-top:10px"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/rain-slots-after-narrow.png" width="332" height="204"><img class="ui" src="img/rain-slots-after.png" alt="Blender's material slot list after Split by Texture: six materials, rain_skin.1001, rain_skin.1002, rain_skin.1003, rain_jeans, rain_hair and rain_eyes" width="684" height="215" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/rain-summary-narrow.png" width="332" height="204"><img class="ui" src="img/rain-summary.png" alt="The Texapart Result box: Split 1 material on 1 object into 6 one-image materials (6 new, 0 reused). Faces placed: 20851 (rain_eyes 1410, rain_hair 2927, rain_jeans 4192, rain_skin.1001 2642, rain_skin.1002 3362, rain_skin.1003 6318). Faces listed: 0. UVs rewritten on 9680 faces (old UVs kept in the backup UV map)." width="684" height="128" loading="lazy" style="margin-top:10px"></picture>
     <figcaption>After Split by Texture: six one-image materials, and the summary. <a href="img/rain-after-split-window.jpg">The whole window</a>.</figcaption>
   </figure>
 
@@ -167,7 +170,7 @@
   </ul>
   <p>Install and first split: <a href="quick-start.html">Texapart quick start</a>.</p>
 
-  <p>Rain, a building, scenes built to break it and 173 tests on four Blender versions: <a href="how-we-tested.html">how we tested</a>.</p>
+  <p>Rain, a building, scenes built to break it and 194 tests on four Blender versions: <a href="how-we-tested.html">how we tested</a>.</p>
 
   <p class="fine" id="credits">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We packed her four images into one material and joined her body, head, jeans, hair and eyes into one mesh. Rain is not included with Texapart. Test building: "Barcelona Pavilion" by eMirage (Hamza Cheggour; base model and textures by Claudio Andres), CC-BY, from blender.org's demo files; architecture by Ludwig Mies van der Rohe.</p>
 
