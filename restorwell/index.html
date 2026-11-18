@@ -129,7 +129,7 @@
   <div class="buy">
     <p class="price"><strong>Restorwell is free:</strong> <a href="download/restorwell.zip?v=1.2.0">download restorwell.zip</a> (version 1.2.0, 75 KB).<br><strong>Restorwell Pro, $19 once, unlimited sites:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_UIWbTLwhrdfdwbV2g5dLi3SPrzI3I4GgUMBKB0aCriG">Buy for $19</a></p>
     <p class="fine"><strong>Old host closing and a slow line at home?</strong> Pro makes your new server fetch the backup from the old one, not through your connection (<a href="#pro">watch it</a>). Restoring never needs Pro. 14-day refund if it doesn't work as described and we can't fix it.</p>
-    <p class="fine">Tested on WordPress 7.1.4 and PHP 8.3.6 on Linux; Windows and macOS untested (<a href="#tested">full list</a>) · GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+    <p class="fine">GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 
   <section id="before-after">
@@ -154,7 +154,7 @@
       <source media="(max-width: 600px)" src="video/restorwell-demo-phone.mp4" type="video/mp4">
       <source src="video/restorwell-demo-720p.mp4" type="video/mp4">
       </video>
-      <figcaption>58 s, recorded on 1.2.0, on an 8 MB host.</figcaption>
+      <figcaption>51 s, recorded on 1.2.0, on an 8 MB host.</figcaption>
     </figure>
   </section>
 
@@ -201,7 +201,7 @@
       <source media="(max-width: 600px)" src="video/restorwell-pro-phone.mp4" type="video/mp4">
       <source src="video/restorwell-pro-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>49 s: the old host stops at 45 %; Continue finishes.</figcaption>
+    <figcaption>40 s: the old host stops at 45 %; Continue finishes.</figcaption>
   </figure>
   <details>
     <summary>Which link to paste, what was tested, updates</summary>
@@ -256,13 +256,14 @@
       <tr><td>Pro 1.0.4: the Download link from an old site's All-in-One WP Migration 7.113 Backups page</td><td>Link of the form shown above; fetched file identical (SHA-256); the Check accepts it</td></tr>
       <tr><td>Backup versions restored</td><td>7.113 (all kinds); 7.62, 7.80, 7.98, 7.100, 7.101 (password); 7.0, 7.40, 7.62, 7.80, 7.100 (plain)</td></tr>
     </table>
-    <p>On 1.1.0, behind nginx refusing bodies over 1 MB, the pieces got smaller after HTTP 413 and the upload completed. Tested on: Linux, WordPress 7.1.4, PHP 8.3.6, MariaDB 10.11.14, Apache 2.4.58 with mod_php and PHP's built-in server. The test suite (191 tests) passed on 1.2.0 and Pro 1.1.0 there; uploads and Pro downloads were driven in Chromium 141. Version 1.0.0 was also installed and run on WordPress 6.5.14 and PHP 7.4.33; that has not been re-run on 1.1.x. Requires WordPress 6.5 or later and PHP 7.4 or later (64-bit for backups over 2 GB), with OpenSSL for password-protected backups and bz2 for bzip2 ones. Not tested: MySQL (only MariaDB was run); servers on Windows or macOS; LiteSpeed, IIS, and Apache with PHP-FPM; browsers other than Chromium; password-protected backups made before version 7.62. Timings come from a fast test machine: they show each request stays short, not how fast your host is.</p>
+    <p>On 1.1.0, behind nginx refusing bodies over 1 MB, the pieces got smaller after HTTP 413 and the upload completed. Tested on: Linux, WordPress 7.1.4, PHP 8.3.6, MariaDB 10.11.14, Apache 2.4.58 with mod_php and PHP's built-in server. The test suite (196 tests) passed on 1.2.0 and Pro 1.1.0 there; uploads and Pro downloads were driven in Chromium 141. Version 1.0.0 was also installed and run on WordPress 6.5.14 and PHP 7.4.33; that has not been re-run on 1.1.x. Requires WordPress 6.5 or later and PHP 7.4 or later (64-bit for backups over 2 GB), with OpenSSL for password-protected backups and bz2 for bzip2 ones. Not tested: MySQL (only MariaDB was run); servers on Windows or macOS; LiteSpeed, IIS, and Apache with PHP-FPM; browsers other than Chromium; password-protected backups made before version 7.62. Timings come from a fast test machine: they show each request stays short, not how fast your host is.</p>
     <h3 id="images">How the images were made</h3>
     <p>Captures of a real WordPress 7.1.4 with Restorwell 1.2.0 and Pro 1.1.0, in Chromium 141, on a host with an 8 MB upload limit, 30-second requests and 128 MB of memory. The backup is our demo blog, Hollin Marsh Field Notes: 16 posts, 2 pages, the 36 CC0 photographs that ship with Twenty Twenty-Five and 10 videos made from them, 2.29 GB with a password. Three things differ from a real host so the moments could be captured: the disk-space image reports 1.46 GB free, the progress steps were made smaller, and Pro downloads from a second web server on the same machine. The SQLite image is from a WordPress on the SQLite Database Integration plugin 3.1.3. The demo video was recorded on 1.2.0 with steps set to 0.3 s; the Pro clip was recorded on 1.1.4 and Pro 1.0.5 (the screens it shows are unchanged in 1.2.0 and Pro 1.1.0) with the old host on Apache, slowed to about 35 MB/s and stopped by hand at 45 %. The before and after is the demo blog on the PHP built-in server, then restored into a fresh WordPress on the same.</p>
   </details>
 
   <h2 id="details">Details</h2>
   <ul>
+    <li>Refund and what was tested: 14-day refund if it doesn't work as described and we can't fix it (<a href="../terms.html">terms</a>). Tested on WordPress 7.1.4 and PHP 8.3.6 on Linux; Windows and macOS untested (<a href="#tested">full list</a>).</li>
     <li>Privacy: the free plugin makes no network request; Pro contacts only the address you type.</li>
     <li>Install: the <a href="quick-start.html">quick start</a>.</li>
   </ul>
