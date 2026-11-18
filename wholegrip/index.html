@@ -141,7 +141,7 @@
     </figure>
     <figure class="wide-only">
       <img src="video/wholegrip-demo-select.gif" alt="A loop from the demo: in Blender's Outliner, CH-rain and CH-ellie are selected and right-click, Treat as One is chosen; one click on Rain's shoe outlines all of Rain; Shift+click on Ellie's boot adds all of Ellie; a click on the floor clears; a box across both characters' knees selects both whole; Ctrl+click on Rain's scarf takes the scarf alone and a click on the same spot takes all of Rain again" width="1280" height="720" loading="lazy">
-      <figcaption>Treat as One and the clicks alone (12&nbsp;s GIF,&nbsp;2.8&nbsp;MB).</figcaption>
+      <figcaption>Treat as One and the clicks alone (12&nbsp;s GIF,&nbsp;3.0&nbsp;MB).</figcaption>
     </figure>
   </section>
 
@@ -199,10 +199,11 @@
       <img src="img/hero-select.gif" alt="A real Blender 5.2 viewport with Blender Studio's Rain and Ellie on a grey studio backdrop. The pointer clicks Rain's shoe and all of Rain is outlined in orange; Shift+click on Ellie's boot adds all of Ellie; a click on the floor clears the selection; a box dragged across both characters' knees selects both whole" width="720" height="600" loading="lazy">
       <figcaption>One click takes all of Rain (18&nbsp;objects), Shift+click adds Ellie, a box takes&nbsp;both.</figcaption>
     </figure>
-    <figure>
+    <figure class="wide-only">
       <img class="ui" src="img/classroom-outliner-marked.png" alt="Blender's Outliner after marking the classroom's desks: Desk 01 to Desk 18 visible, each with a blue collection icon; Room, Windows and the other unmarked collections above them with white icons" width="339" height="640" loading="lazy">
       <figcaption>Marked collections are blue in the&nbsp;Outliner.</figcaption>
     </figure>
+  <p class="narrow-only"><a href="img/classroom-outliner-marked.png">The Outliner after marking the 20 desks (picture, full size)</a>.</p>
     <figure>
       <img class="ui" src="img/outliner-treat-as-one.png" alt="Blender's Outliner right-click menu for the collection CH-rain, with Wholegrip's Treat as One entry, an unticked checkbox, at the bottom" width="272" height="592" loading="lazy">
       <figcaption>Outliner right-click &gt; Treat as One, real size. The whole Blender windows: <a href="img/wholegrip-click-window.jpg">with Wholegrip</a>, <a href="img/plain-click-window.jpg">plain</a>.</figcaption>
@@ -242,14 +243,16 @@
       <li><strong>Apply to All</strong> and <strong>Remove from All</strong> ask first, saying how many modifiers and members they will change, and Ctrl+Z undoes&nbsp;them.</li>
       <li>The copies are ordinary modifiers, so the file opens and renders the same without the add-on. A collection with collection modifiers also gets one hidden helper object, <code>.Wholegrip stack &lt;name&gt;</code>, linked to no scene. No Empties, instances or group&nbsp;objects.</li>
     </ul>
-    <figure>
+    <figure class="wide-only">
       <img class="ui" src="img/rocket-modifiers-panel.png" alt="Collection Properties of Rocket: the Wholegrip panel with Treat as One ticked, 5 objects, Collection Modifiers with Add Modifier, On 5 of 5 members, a GeometryNodes box whose header has the name, the Edit Mode, viewport and render toggles, a menu button and a ✕, Blender's node-group field showing Panel Inset, Inset 0.150 and Depth 0.030, then Apply to All and Remove from All one above the other" width="339" height="688" loading="lazy">
       <figcaption>The rocket's panel, real size: Blender's own modifier header, with Apply, Duplicate, the moves and Remove in its &#8964; menu.</figcaption>
     </figure>
-    <figure>
+  <p class="narrow-only"><a href="img/rocket-modifiers-panel.png">The rocket's panel (picture, full size)</a>.</p>
+    <figure class="wide-only">
       <img class="ui" src="img/corner-modifiers-panel.png" alt="Collection Properties of Reading Corner: Treat as One ticked, 7 objects, On 7 of 7 members, a Bevel box with a ✕ in its header, Affect Vertices or Edges, Width Type Offset, Amount 0.02 m and Segments 3, and a WeightedNormal box, then Apply to All and Remove from All" width="339" height="801" loading="lazy">
       <figcaption>The reading corner's panel: "On 7&nbsp;of&nbsp;7&nbsp;members".</figcaption>
     </figure>
+  <p class="narrow-only"><a href="img/corner-modifiers-panel.png">The reading corner's panel (picture, full size)</a>.</p>
     <figure>
       <img src="img/collection-modifiers.gif" alt="Rain in the viewport beside Collection Properties of her rain-geometry collection, marked Treat as One. Add Modifier opens Blender's modifier list; Geometry Nodes is chosen; the node group Toon Outline is picked; Thickness is typed as 12; a black outline appears around every part of Rain: hair, face, scarf, top, arms and jeans" width="880" height="605" loading="lazy">
       <figcaption>On a character: one Geometry Nodes outline set once on Rain's 19-object collection (our outline node&nbsp;group).</figcaption>
@@ -270,14 +273,11 @@
     <figcaption>The same scene's grid, drawn by Blender at twice the interface scale: two clicks keep the props out of Product_Only and the blender out of&nbsp;Props_Pass.</figcaption>
   </figure>
   <div class="pair">
-    <figure class="narrow-only">
-      <img src="img/sidebar-tab-phone.png" width="467" height="813" alt="The Wholegrip sidebar tab drawn by Blender at 1.6 times the interface scale: the Treat as One switch, the marked collections CH-ellie and CH-rain with blue icons, object counts and wrench buttons, the view-layer key reading 1 Rain (active), 2 Ellie, 3 Set, and the grid's first rows: CH-rain ticked in column 1 only, her child collections ticked in 1 with a dash in 2 and 3, each row ending with the +All, −All and Only buttons" loading="lazy">
-      <figcaption>The sidebar tab at 1.6&nbsp;times the interface scale: the list, the key and the first rows. A dash marks a collection whose parent is excluded there. CH-rain's 60&nbsp;include her hidden rig parts; a click takes the 18&nbsp;visible&nbsp;ones.</figcaption>
-    </figure>
     <figure class="wide-only">
       <img class="ui" src="img/sidebar-tab.png" alt="The Wholegrip tab in the 3D Viewport sidebar at Blender's default width: the Treat as One switch, the New Collections option, the marked collections CH-ellie and CH-rain with blue icons, object counts and wrench buttons, then View Layers: a key reading 1 Rain (active), 2 Ellie, 3 Set, and a grid headed 1, 2, 3, +All, −All and Only, its first rows: CH-rain ticked in column 1 only, its child collections with a dash in columns 2 and 3; the names that fit sit beside their checkboxes, rain-geometry and rain-eyes-viewport on a line of their own above them" width="292" height="550" loading="lazy">
       <figcaption>The sidebar tab at Blender's default width: numbered columns with a key of layer names; a dash marks a collection whose parent is excluded there. CH-rain's 60&nbsp;include her hidden rig parts; a click takes the 18&nbsp;visible&nbsp;ones.</figcaption>
     </figure>
+    <p class="narrow-only"><a href="img/sidebar-tab.png">The sidebar tab (picture, full size)</a>.</p>
     <figure style="flex:1 1 300px">
       <img class="ui" src="img/view-layer-menu-2x.png" width="409" height="379" alt="The Outliner's View Layer submenu drawn at twice the interface scale: the label Across view layers: and Wholegrip's Include in All View Layers, Exclude from All View Layers and Only in This View Layer, under the pointer" loading="lazy">
       <figcaption>Right-click a collection &gt; View Layer &gt; Only in This View Layer: the other layers leave it out. Drawn at twice the interface scale. <a href="img/view-layers.gif">The whole window, animated</a>: two menu picks give Rain and Ellie each a view&nbsp;layer.</figcaption>
@@ -290,10 +290,11 @@
       <li>If a parent collection is excluded in some layer, Wholegrip leaves the parent alone and leaves the collection out of that layer too, as Blender does when you exclude a parent; the status bar says where it was included and where it was left&nbsp;out.</li>
       <li>An option, off by default, makes new collections start in the active view layer&nbsp;only.</li>
     </ul>
-    <figure>
+    <figure class="wide-only">
       <img class="ui" src="img/view-layer-menu.png" alt="The Outliner's View Layer submenu: Blender's own Disable from View Layer, Enable in View Layer, Set Holdout and Clear Holdout, then the label Across view layers: and Wholegrip's Include in All View Layers, Exclude from All View Layers and Only in This View Layer, under the pointer" width="513" height="493" loading="lazy">
       <figcaption>Wholegrip's three entries under Blender's own, below the label "Across view&nbsp;layers:".</figcaption>
     </figure>
+  <p class="narrow-only"><a href="img/view-layer-menu.png">The View Layer menu (picture, full size)</a>.</p>
   </details>
 
   <h2>Limits</h2>
@@ -316,7 +317,7 @@
     <summary>The test runs, and how these pictures were made</summary>
     <dl class="runs">
       <dt>Blender (official Linux builds)</dt><dd>4.2.23&nbsp;LTS, 4.5.15&nbsp;LTS, 5.0.1, 5.1.2&nbsp;and 5.2.3&nbsp;LTS</dd>
-      <dt>Automated tests</dt><dd>303&nbsp;passed, 0&nbsp;failed, on&nbsp;each</dd>
+      <dt>Automated tests</dt><dd>306&nbsp;passed, 0&nbsp;failed, on&nbsp;each</dd>
       <dt>In a Blender window</dt><dd>8&nbsp;passed on each</dd>
       <dt>Real mouse and key events</dt><dd>35&nbsp;of 35&nbsp;on each</dd>
     </dl>
@@ -329,6 +330,7 @@
   <ul>
     <li><strong>Buying:</strong> download by email after checkout; 14-day refund (<a href="../terms.html">terms</a>) if it doesn't work as described and we cannot fix it. Studio, up to 10&nbsp;people: $48, email&nbsp;us.</li>
     <li><strong>Privacy:</strong> no network calls, no telemetry, no licence&nbsp;check.</li>
+    <li><strong>Every detail:</strong> the <a href="reference.html">reference</a>.</li>
     <li><strong>Install:</strong> Install from Disk in Blender's Get Extensions; see the <a href="quick-start.html">quick start</a>.</li>
     <li><strong>Support:</strong> <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></li>
   </ul>
