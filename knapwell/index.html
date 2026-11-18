@@ -84,9 +84,9 @@
 <main>
   <h1>Knapwell for Blender</h1>
   <p class="sub">Chipped edges that keep separate bricks separate.</p>
-  <p class="lead">Select your meshes, press Damage: real chipped geometry, at a chip size in metres. Bricks that touch or sit apart stay separate parts (a stray chip can come loose where two meet), and Revert brings the original back, even after Apply.</p>
+  <p class="lead">Select your closed meshes, press Damage: real chipped geometry, at a chip size in metres. Bricks that touch or sit apart stay separate parts (a stray chip can come loose where two meet), and Revert brings the original back, even after Apply.</p>
   <div class="buy">
-    <!-- Checkout is held until the Polar product carries knapwell-1.5.3.zip under the name Knapwell
+    <!-- Checkout is held until the Polar product carries knapwell-1.5.4.zip under the name Knapwell
          (it still delivered the old Spallwork 1.4.0 zip). To reopen it, run tools/page/reopen_checkout.py
          from the product repository (queue card q-021): both buttons become "Buy for $15" links and the
          note goes. -->
@@ -118,7 +118,7 @@
     <figcaption>Our 119-brick wall at the default look, whole and a corner up close: still 119 separate bricks, each chipped on its own.</figcaption>
   </figure>
   <ul>
-    <li><strong>Many objects at once.</strong> Select them all and press Damage. Worn, Chipped and Ruined set the sliders; the damage stays live and editable until Apply.</li>
+    <li><strong>Many objects at once.</strong> Select your closed meshes together and press Damage. Worn, Chipped and Ruined set the sliders; the damage stays live and editable until Apply.</li>
     <li><strong>Chip size in metres.</strong> The same physical size on every object, whether or not its scale is applied. On thin parts, such as real-size bricks, chips are capped to fit the part, and the panel says so ("Capped at 0.02 m"); there the three looks differ in how many chips and how deep, not in chip size.</li>
     <li><strong>Imported models too.</strong> Check Model finds split seams, holes and sheets, and text or curves that are not meshes yet, and fixes each in one click: Weld Seams, Fill Holes, Add Solidify, Convert to Mesh.</li>
     <li><strong>Keep a doorway clean.</strong> Protect the faces you select: they and the edges around them stay clean. Give the broken faces a material of their own; every other face keeps its material and UVs.</li>
@@ -128,13 +128,13 @@
   <h2>In the panel</h2>
   <figure>
     <div class="inpanel">
-      <a class="panel" href="img/inpanel2-check-model-panel.png"><img src="img/inpanel2-check-model-panel.png" alt="The Knapwell panel after Check Model on eleven objects: 'Capped at 0.02 m' with a Use button, then the Check Model sub-panel: '8 of 11 ready · 3 to fix', 'Imported Urn: 60 open edges' with Weld Seams, 'Floor Tile: no thickness' with Add Solidify, 'Sign Text: text, convert first' with Convert to Mesh, 'Crates: ready; parts touch' and one line '7 ready'" width="381" height="543" loading="lazy"></a>
+      <a class="panel" href="img/inpanel2-check-model-panel-2x.png"><img src="img/inpanel2-check-model-panel.png" srcset="img/inpanel2-check-model-panel.png 1x, img/inpanel2-check-model-panel-2x.png 2x" alt="The Knapwell panel after Check Model on eleven objects: 'Capped at 0.02 m' with a Use button, then the Check Model sub-panel: '8 of 11 ready · 3 to fix', 'Imported Urn: 60 open edges' with Weld Seams, 'Floor Tile: no thickness' with Add Solidify, 'Sign Text: text, convert first' with Convert to Mesh, 'Crates: ready; parts touch' and one line '7 ready'" width="381" height="547" loading="lazy"></a>
       <figcaption class="cap">Check Model on eleven objects: what needs a fix comes first, each with its button; the seven that need nothing fold into one line.</figcaption>
     </div>
   </figure>
   <figure>
     <div class="inpanel">
-      <a class="panel" href="img/inpanel2-step-panel.png"><img src="img/inpanel2-step-panel.png" alt="The Mask &amp; Material section: Protect Selected Faces, Paint Mask, Clear Mask, the line '1 face protected: it and the edges around it stay clean.', a Select Protected button, the Break material field and the line 'No UV map: Apply adds &quot;UVMap&quot;.'" width="381" height="350" loading="lazy"></a>
+      <a class="panel" href="img/inpanel2-step-panel-2x.png"><img src="img/inpanel2-step-panel.png" srcset="img/inpanel2-step-panel.png 1x, img/inpanel2-step-panel-2x.png 2x" alt="The Mask &amp; Material section: Protect Selected Faces, Paint Mask, Clear Mask, the line '1 face protected: it and the edges around it stay clean.', a Select Protected button, the Break material field and the line 'No UV map: Apply adds &quot;UVMap&quot;.'" width="381" height="356" loading="lazy"></a>
       <figcaption class="cap">One face protected on a stone step: that face and the edges around it stay clean; the bottom edges keep their chips.</figcaption>
     </div>
   </figure>
@@ -159,7 +159,7 @@
 
   <h2 id="install">Install</h2>
   <ol>
-    <li>Download the Knapwell zip (<code>knapwell-1.5.3.zip</code>) from the link in your checkout email. Do not unzip it.</li>
+    <li>Download the Knapwell zip (<code>knapwell-1.5.4.zip</code>) from the link in your checkout email. Do not unzip it.</li>
     <li>In Blender, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the menu at the top right (<strong>&#8964;</strong>), <strong>Install from Disk...</strong>, and pick the zip.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Knapwell</strong> tab.</li>
   </ol>

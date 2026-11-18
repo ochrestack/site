@@ -39,7 +39,7 @@
 
   <h2 id="install">Install (Blender 4.5 LTS to 5.2 LTS)</h2>
   <ol>
-    <li>Download the Knapwell zip (<code>knapwell-1.5.3.zip</code>) from the link in your checkout email. Install the zip itself; do not unzip it.</li>
+    <li>Download the Knapwell zip (<code>knapwell-1.5.4.zip</code>) from the link in your checkout email. Install the zip itself; do not unzip it.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>. If Blender asks about internet access, <strong>Continue Offline</strong> is fine: Knapwell needs none. Blender may then show a yellow "Repository Alert" saying the extensions.blender.org data is unavailable; that is about Blender's online catalogue, not about Knapwell.</li>
     <li>Open the menu at the top right (the rightmost <strong>&#8964;</strong>), choose <strong>Install from Disk...</strong> and pick the zip.</li>
     <li>Knapwell is on at once, and Preferences lists it as "Chipped edges on closed meshes. Press N, open the Knapwell tab". Press <strong>N</strong> in the 3D Viewport and open the <strong>Knapwell</strong> tab. The main buttons are also in <strong>Object &gt; Knapwell</strong>, so F3 search finds them.</li>
@@ -49,7 +49,7 @@
   <h2 id="first-damage">First damage</h2>
   <ol>
     <li>Select your meshes and click <strong>Check Model</strong> (recommended for an imported model). It gives one line per object, with a fix button under any problem.</li>
-    <li>Click <strong>Damage</strong>. Each mesh gets a "Knapwell" modifier; its own mesh is not changed until Apply. Cameras and lights in the selection are left alone.</li>
+    <li>Click <strong>Damage</strong>. Each closed mesh gets a "Knapwell" modifier; its own mesh is not changed until Apply. Cameras and lights in the selection are left alone, and so is a mesh with a problem Check Model names (the status bar lists what was skipped).</li>
     <li>Under <strong>Set sliders to:</strong>, pick <strong>Worn</strong>, <strong>Chipped</strong> or <strong>Ruined</strong>, then adjust Amount, Chip size (in metres, whatever the object's scale), Depth, Edge angle, Seed and Mode. With several objects selected, a slider change goes to all of them; Seed changes only the active one.</li>
     <li>On thin parts, such as real-size bricks, chips are capped to fit each part. The line under the sliders says so ("Capped at 0.02 m"), and <strong>Use</strong> writes that size into Chip size.</li>
     <li><strong>Preview &amp; Final Detail</strong> (closed by default): 1 to 4, higher is finer chips and slower. The viewport uses Preview detail; F12 renders and Apply use Final detail.</li>
