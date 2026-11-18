@@ -1,0 +1,79 @@
+1
+00:00:00,000 --> 00:00:02,350
+Old posts link to pages that are gone.
+
+2
+00:00:02,350 --> 00:00:05,617
+It runs on your own server. No account, no card, no link limit.
+
+3
+00:00:05,617 --> 00:00:07,817
+Scan now checks the links and images in posts, pages and menus.
+
+4
+00:00:07,817 --> 00:00:09,767
+One 404 is not enough.
+
+5
+00:00:09,767 --> 00:00:13,067
+It is checked again an hour later.
+
+6
+00:00:13,067 --> 00:00:14,217
+A site that blocks checkers stays Inconclusive, never Broken.
+
+7
+00:00:14,217 --> 00:00:16,167
+A site that blocks checkers stays Inconclusive, never Broken.
+
+8
+00:00:16,167 --> 00:00:18,117
+It failed again, so it is Broken.
+
+9
+00:00:18,117 --> 00:00:21,717
+Edit address changes one link.
+
+10
+00:00:21,717 --> 00:00:24,600
+The new address is checked at once.
+
+11
+00:00:24,600 --> 00:00:27,200
+Tick the rows you want to fix.
+
+12
+00:00:27,200 --> 00:00:30,150
+Bulk actions change only the rows you ticked.
+
+13
+00:00:30,150 --> 00:00:33,050
+Only the two ticked rows changed.
+
+14
+00:00:33,050 --> 00:00:36,050
+Each fix in a post is a revision.
+
+15
+00:00:36,050 --> 00:00:38,767
+You can restore the version before the fix.
+
+16
+00:00:38,767 --> 00:00:40,867
+Pro adds scheduled scans.
+
+17
+00:00:40,867 --> 00:00:43,667
+You choose the hour.
+
+18
+00:00:43,667 --> 00:00:46,567
+It emails the addresses you set.
+
+19
+00:00:46,567 --> 00:00:48,567
+It runs by itself.
+
+20
+00:00:48,567 --> 00:00:51,567
+The email lists what broke, and where.
