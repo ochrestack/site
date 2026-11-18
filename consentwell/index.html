@@ -74,6 +74,10 @@
   footer a { margin-right: 18px; }
 </style>
 <style>
+  .phone-video { display: none; }
+  @media (max-width: 767px) { .wide-video { display: none; } .phone-video { display: block; max-width: 420px; margin: 0 auto; } }
+</style>
+<style>
   .button.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); padding: 8px 16px; }
   .button.alt:hover, .button.alt:focus { background: var(--ink); color: var(--paper); }
   .actions .button { margin: 0 8px 8px 0; }
@@ -119,11 +123,14 @@
 
   <h2 id="watch">Watch it work</h2>
   <figure>
-    <video controls preload="none" playsinline poster="video/poster-after-reject.jpg" width="1920" height="1080">
+    <video class="wide-video" controls preload="none" playsinline poster="video/poster-after-reject.jpg" width="1920" height="1080">
       <source src="video/consentwell-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/consentwell-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo, 58 s, captions only, no sound (1080p, 720p on phones; <a href="video/consentwell-demo-1080p.mp4">open full size</a>). A real Chromium 153 on the demo bakery site (WordPress 7.1.4, Complianz Free 7.5.7 with its wizard defaults, Consentwell and Pro 1.0.4): Tools &gt; Consentwell, the contact page, a page whose template never calls <code>wp_footer()</code>, then Pro over the nine pages of the sitemap. The waits are sped up (5&times; for a single check, 50&times; for the Pro run) and labelled. The browser, the site and the plugins are real; only Google&rsquo;s replies come from a local stand-in server (<a href="how-we-tested.html#images">how the images were made</a>).</figcaption>
+    <video class="phone-video" controls preload="none" playsinline poster="video/poster-phone.jpg" width="720" height="1280">
+      <source src="video/consentwell-demo-phone-720x1280.mp4" type="video/mp4">
+    </video>
+    <figcaption>The demo, 58 s, captions only, no sound (1080p; phones get a portrait 720&times;1280 cut of the same story, recorded at a phone&rsquo;s width so its text can be read on a small screen; <a href="video/consentwell-demo-1080p.mp4">open the 1080p file</a>). A real Chromium 153 on the demo bakery site (WordPress 7.1.4, Complianz Free 7.5.7 with its wizard defaults, Consentwell and Pro 1.0.4): Tools &gt; Consentwell, the contact page, a page whose template never calls <code>wp_footer()</code>, then Pro over the nine pages of the sitemap. The waits are sped up (5&times; for a single check, 50&times; for the Pro run) and labelled. The browser, the site and the plugins are real; only Google&rsquo;s replies come from a local stand-in server (<a href="how-we-tested.html#images">how the images were made</a>).</figcaption>
   </figure>
   <figure>
     <img src="video/consentwell-after-reject.gif" alt="A 14-second clip of the demo: Consentwell clicks Reject in the Complianz banner, reloads the page and watches it (sped up 5 times), then the result says all 4 addresses requested before any choice were requested again after Reject, and lists them: two Google Fonts stylesheets, google.com/recaptcha/api.js and a Google Maps frame" loading="lazy" width="768" height="432">
