@@ -73,7 +73,7 @@
   <h2 id="tested">What was run</h2>
   <table>
     <tr><th>What</th><th>Result</th></tr>
-    <tr><td>PHPUnit, WordPress test suite, PHP 7.4.33 and 8.3.6 on WordPress 7.1.4 and 6.5.5</td><td>140 tests, 3,111 assertions, OK in all four runs</td></tr>
+    <tr><td>PHPUnit, WordPress test suite, PHP 7.4.33 and 8.3.6 on WordPress 7.1.4 and 6.5.5</td><td>141 tests, 3,119 assertions, OK in all four runs</td></tr>
     <tr><td>Browser tests in Chromium 153, WordPress 7.1.4, PHP 8.3.6, with Complianz 7.5.7, CookieYes 3.5.9 (local mode) and Cookie Notice &amp; Compliance 3.1.19, including a crawl of every control of both screens as administrator, editor and subscriber</td><td>61 passed</td></tr>
     <tr><td>Six more consent plugins, each with its banner on: GDPR Cookie Compliance 5.3.1, CookieAdmin 1.2.6, SureCookie 1.8.1, Beautiful Cookie Consent Banner 4.10.0, WPConsent 1.2.1 and Cookie Notice &amp; Compliance 3.1.19, through the free check, the server-side check and a three-page Pro run</td><td>6 passed: where a visitor sees a banner, none was reported as “No consent banner found” or counted as “did not show”</td></tr>
     <tr><td>Tests written to break it: a script-delay plugin at its default 5 seconds and in load-on-first-input mode, a tag fired 3 seconds after load (with Complianz and with CookieYes), a lazy map, banners in shadow roots or without “cookie” in their id, the admin’s own cookies, Global Privacy Control, a page-cache copy</td><td>15 passed</td></tr>
