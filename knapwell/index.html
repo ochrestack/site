@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ochrestack">
 <meta property="og:title" content="Knapwell for Blender: chipped edges that keep separate bricks separate">
-<meta property="og:description" content="Remesh and Displace melt your bricks into one blob? Knapwell chips the edges of closed meshes, keeps every separate brick separate, sizes chips in metres, and lets you Revert even after Apply. $15, source included.">
+<meta property="og:description" content="Remesh and Displace melt your bricks into one blob? Knapwell chips the edges of closed meshes, keeps separate bricks separate, sizes chips in metres, and lets you Revert even after Apply. $15, source included.">
 <meta property="og:url" content="https://ochrestack.com/knapwell/">
 <meta property="og:image" content="https://ochrestack.com/knapwell/img/og-knapwell-2x1.jpg">
 <meta property="og:image:width" content="1600">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Granite steps and a plinth beside a brick wall, their edges chipped by Knapwell, fresh pale stone inside each break">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Knapwell for Blender: chipped edges that keep separate bricks separate">
-<meta name="twitter:description" content="Remesh and Displace melt your bricks into one blob? Knapwell chips the edges of closed meshes, keeps every separate brick separate, sizes chips in metres, and lets you Revert even after Apply. $15, source included.">
+<meta name="twitter:description" content="Remesh and Displace melt your bricks into one blob? Knapwell chips the edges of closed meshes, keeps separate bricks separate, sizes chips in metres, and lets you Revert even after Apply. $15, source included.">
 <meta name="twitter:image" content="https://ochrestack.com/knapwell/img/og-knapwell-2x1.jpg">
 <meta name="twitter:image:alt" content="Granite steps and a plinth beside a brick wall, their edges chipped by Knapwell, fresh pale stone inside each break">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
@@ -84,15 +84,15 @@
 <main>
   <h1>Knapwell for Blender</h1>
   <p class="sub">Chipped edges that keep separate bricks separate.</p>
-  <p class="lead">Select your meshes, press Damage: real chipped geometry, at a chip size in metres. Every brick or block stays its own part, and Revert brings the original back, even after Apply.</p>
+  <p class="lead">Select your meshes, press Damage: real chipped geometry, at a chip size in metres. Bricks that touch or sit apart stay separate parts (a stray chip can come loose where two meet), and Revert brings the original back, even after Apply.</p>
   <div class="buy">
-    <!-- Checkout is held until the Polar product carries knapwell-1.5.2.zip under the name Knapwell
+    <!-- Checkout is held until the Polar product carries knapwell-1.5.3.zip under the name Knapwell
          (it still delivered the old Spallwork 1.4.0 zip). To reopen it, run tools/page/reopen_checkout.py
          from the product repository (queue card q-021): both buttons become "Buy for $15" links and the
          note goes. -->
-    <p><button class="button pending" id="buy" type="button" disabled aria-describedby="buy-note" title="Checkout opens when the download is updated to Knapwell 1.5.2">$15 · checkout opens soon</button></p>
+    <p><button class="button pending" id="buy" type="button" disabled aria-describedby="buy-note" title="Checkout is not open yet">$15 · checkout opens soon</button></p>
     <p class="fine">One payment, source included, updates at no charge.<br>Blender 4.5 LTS to 5.2 LTS<br>Refund within 14 days if it doesn't work as described and we can't fix it (<a href="../terms.html">terms</a>)</p>
-    <p class="note" id="buy-note">Checkout is paused while the download is updated to Knapwell 1.5.2, so nobody receives an older file. For a note on the day it opens, email <a href="mailto:support@ochrestack.com?subject=Knapwell%20checkout">support@ochrestack.com</a>.</p>
+    <p class="note" id="buy-note">Checkout is not open yet. Email <a href="mailto:support@ochrestack.com?subject=Knapwell%20checkout">support@ochrestack.com</a> and we will tell you when it opens.</p>
   </div>
 
   <a href="img/hero-steps-closeup-full.jpg"><img src="img/hero-steps-closeup.jpg" alt="A Cycles render close up in low sun: three granite steps and a granite plinth beside a red-brick wall and a sandstone door surround. The step and plinth edges carry scattered faceted chips of different sizes, pale where fresh stone shows inside each break; the bricks and the surround have small pale chips at their edges" width="1600" height="800" style="width:100%;height:auto;border:1px solid #E6DED3;border-radius:10px;display:block"></a>
@@ -105,7 +105,7 @@
       <source src="video/knapwell-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/knapwell-demo-phone-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>The demo in a real Blender window with Knapwell 1.5.2 and real clicks: the view moves in on the panel for each button pressed, and a label names each press; captions only, no sound. The looks side by side and the same chips at scale 1 and 3 are renders (<a href="video/knapwell-demo-1080p.mp4">open full size</a>; the wall and the three looks as a <a href="video/knapwell-wall-and-looks.gif">11-second GIF</a>). Ellie (Sprite Fright) (CC BY) Blender Foundation | download.blender.org.</figcaption>
+    <figcaption>The demo in a real Blender window, with real clicks: the view moves in on the panel for each button pressed, and a label names each press; captions only, no sound. The looks side by side and the same chips at scale 1 and 3 are renders (<a href="video/knapwell-demo-1080p.mp4">open full size</a>; the wall and the three looks as a <a href="video/knapwell-wall-and-looks.gif">11-second GIF</a>). Ellie (Sprite Fright) (CC BY) Blender Foundation | download.blender.org.</figcaption>
   </figure>
   </section>
 
@@ -143,7 +143,7 @@
   <div class="uses">
     <div>
       <img src="img/game-wall-4x.jpg" alt="A close view of one corner of a rendered castle wall module of 46 separate stone blocks, applied with Target faces for a game: small darker chips at the joints and larger ones on a few block faces" width="1200" height="800" loading="lazy">
-      <p><strong>Game kits.</strong> Each block of a wall module stays a closed part. Target faces reduces the result for the engine: our 46-block castle wall (2,484 faces) at Target 9,936 came out at 9,710 faces, 25,316 triangles, 560 chips on Blender 5.2 (the picture is one corner of the module; the gallery shows the whole module beside it); on 4.5 the counts differ a little (<a href="tested.html#tested">how we tested</a>).</p>
+      <p><strong>Game kits.</strong> Each block of a wall module stays a closed part, and Target faces reduces the result for your engine. The face, triangle and chip counts for our castle wall are on <a href="tested.html#tested">how we tested</a>.</p>
     </div>
     <div>
       <img src="img/hero-facade.jpg" alt="A rendered brick facade with a sandstone door surround and granite steps, all chipped; Blender Studio's Rain stands in the doorway" width="1600" height="800" loading="lazy">
@@ -151,7 +151,7 @@
     </div>
     <div>
       <img src="img/tabletop.jpg" alt="A small chipped tower and wall piece on a cutting mat with a 10 mm grid" width="1200" height="800" loading="lazy">
-      <p><strong>Tabletop.</strong> Type the chip size in millimetres. After Apply, each of our test pieces gave a watertight STL, as long as its parts do not touch each other; Check Model says when they do.</p>
+      <p><strong>Tabletop.</strong> Type the chip size in millimetres. After Apply, each of our test pieces gave a watertight STL where its parts do not touch; Check Model says when they do.</p>
     </div>
   </div>
 
@@ -159,7 +159,7 @@
 
   <h2 id="install">Install</h2>
   <ol>
-    <li>Download the Knapwell zip (<code>knapwell-1.5.2.zip</code>) from the link in your checkout email. Do not unzip it.</li>
+    <li>Download the Knapwell zip (<code>knapwell-1.5.3.zip</code>) from the link in your checkout email. Do not unzip it.</li>
     <li>In Blender, <strong>Edit &gt; Preferences &gt; Get Extensions</strong>, the menu at the top right (<strong>&#8964;</strong>), <strong>Install from Disk...</strong>, and pick the zip.</li>
     <li>Press <strong>N</strong> in the 3D Viewport and open the <strong>Knapwell</strong> tab.</li>
   </ol>
@@ -188,7 +188,7 @@
   </details>
 
   <div class="buy" style="margin-top:32px">
-    <p><button class="button pending" id="buy-2" type="button" disabled aria-describedby="buy-note" title="Checkout opens when the download is updated to Knapwell 1.5.2">$15 · checkout opens soon</button></p>
+    <p><button class="button pending" id="buy-2" type="button" disabled aria-describedby="buy-note" title="Checkout is not open yet">$15 · checkout opens soon</button></p>
     <p class="fine">One payment, source included · Blender 4.5 LTS to 5.2 LTS</p>
   </div>
 </main>
