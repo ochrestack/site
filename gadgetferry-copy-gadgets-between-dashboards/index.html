@@ -58,11 +58,14 @@
   summary { cursor: pointer; }
   @media (max-width: 600px) {
     h1 { margin-top: 28px; }
-    h1 { margin-top: 20px; font-size: 25px; }
-    header { padding-top: 24px; }
-    .sub { font-size: 17px; line-height: 1.5; }
-    .buy .price { font-size: 17px; line-height: 1.45; }
-    .buy p { margin-bottom: 8px; }
+    h1 { margin-top: 14px; font-size: 24px; }
+    header { padding-top: 16px; }
+    .sub { font-size: 16px; line-height: 1.45; }
+    .buy { margin-top: 12px; }
+    .buy .price { font-size: 16px; line-height: 1.4; }
+    .buy p { margin-bottom: 6px; }
+    .note { font-size: 14px; line-height: 1.45; }
+    figure { margin: 16px 0; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
     .scroll-x img.ui { max-width: none; width: 764px; }
@@ -98,14 +101,14 @@
   </figure>
 
   <ul class="benefits">
-    <li><strong>“being able to copy/duplicate a gadget over to another dashboard”</strong> (a comment on Jira ticket JRACLOUD-18207). Pick the gadget, a dashboard you can edit and a column, and press Copy gadget.</li>
+    <li><strong>“being able to copy/duplicate a gadget over to another dashboard”</strong> (Jira ticket JRACLOUD-18207). Pick the gadget, a dashboard you can edit and a column, and press Copy gadget.</li>
     <li><strong>“the dashboard where I need to copy the gadget already has several gadgets”</strong> (the same Community question). They stay. One gadget can go onto up to 20 dashboards in one run.</li>
     <li><strong>A Filter Counts gadget with a long list of custom counts?</strong> Its settings are read back after the copy, each Matched or Not copied with Jira's reason. Undo this copy removes only what the run added.</li>
   </ul>
 
   <div class="buy" id="trust">
     <p class="fine">Jira Cloud only · version 1.0.2 · 146 automated tests pass outside Jira (<a href="#tested">what is and is not tested</a>) · source not included (commercial app) · support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. We answer every message, usually within one business day.</p>
-    <p class="fine">Billed monthly or annually (a year costs ten times the monthly price): 15 users cost $2.25 a month or $22.50 a year. One edition, every feature in every tier; no usage plan, no copy quota, no price change at renewal. Atlassian bills the renewal, sends the renewal notice and handles refunds within 30 days.</p>
+    <p class="fine">Billed monthly or annually (a year costs ten times the monthly price): 15 users cost $2.25 a month or $22.50 a year. One edition, no usage plan, no copy quota. Atlassian bills the renewal, sends the renewal notice and handles refunds within 30 days.</p>
   </div>
 
   <h2 id="how">How it works</h2>
@@ -113,25 +116,24 @@
     <img src="workflow.svg" alt="Diagram in three steps. One: you choose a gadget on a dashboard you can view, and see its title, type, column and row and its settings listed by name. Two: Gadgetferry adds it to up to 20 dashboards you can edit, in the column you choose, and the gadgets already there stay. Three: it reads the copy back, each setting Matched or Not copied with the reason, and you open the copy to check it or press Undo this copy. It runs from Apps, Gadgetferry, with your own Jira permissions, and nothing leaves Atlassian." width="720" height="330" loading="lazy">
     <figcaption>Choose, copy, check or undo.</figcaption>
   </figure>
-  <p class="narrow-only">Choose a gadget, copy it to up to 20 dashboards you can edit, then check each setting or undo.</p>
 
   <div class="box warn" id="already">
-    <strong>What Jira already does.</strong> To make a new dashboard from an old one, use Jira's Copy dashboard. To repeat a gadget on the same dashboard, use the gadget's More actions (…) &gt; Duplicate in edit mode. For a gadget whose only setting is a saved filter, adding it again by hand takes a minute. Gadgetferry is for a dashboard that already exists and already has gadgets.
+    <strong>What Jira already does.</strong> For a new dashboard from an old one, use Copy dashboard. To repeat a gadget on the same dashboard, use More actions (…) &gt; Duplicate. A gadget whose only setting is a saved filter takes a minute to add by hand. Gadgetferry is for a dashboard that already exists and already has gadgets.
   </div>
 
   <h2 id="limits">What you do not get</h2>
   <ul>
-    <li><strong>Settings Jira does not keep or return.</strong> An app gadget whose vendor keeps its settings arrives unconfigured, and Gadgetferry says so before copying. <strong>Matched means the value Jira returned for the source reads back the same on the copy. It does not prove the gadget is configured, so open each copy and look;</strong> whether a given gadget type arrives configured has not yet been shown on a live Jira site.</li>
+    <li><strong>Settings Jira does not keep or return.</strong> An app gadget whose vendor keeps its settings arrives unconfigured, and Gadgetferry says so before copying. <strong>Matched means the value Jira returned reads back the same on the copy. It does not prove the gadget is configured, so open each copy and look;</strong> no gadget type has yet been shown to arrive configured on a live Jira site.</li>
     <li><strong>Dashboards you cannot edit as targets</strong>, Jira admins included: that is Jira's rule.</li>
-    <li><strong>Moving, syncing or copying between Jira sites,</strong> or a copy of the saved filter (the copy uses the same one, and viewers of the target see the gadget only if it is shared with them). Jira Cloud only, English only.</li>
+    <li><strong>Moving, syncing or copying between Jira sites,</strong> or a copy of the saved filter (the copy uses the same one; viewers see the gadget only if it is shared with them). Jira Cloud only, English only.</li>
     <li><strong>Speed on large sites.</strong> Each dashboard is copied in one step that must finish within Atlassian's 25-second limit.</li>
   </ul>
 
   <h2 id="tested">How we tested</h2>
-  <p>146 automated tests pass on version 1.0.2 (Linux, Node 22) against a model of Jira's published REST operations; it can be wrong where real Jira differs. <strong>Not yet done:</strong> a run on a live Jira site, the Forge command-line tool's own lint check and deploy, and the Runs on Atlassian check; no Atlassian login was available for the tests. The tests ran on a Linux machine, with Gadgetferry's screen in a browser against that model. Gadgetferry runs on Atlassian's servers and inside Jira in your browser, and neither has been run. That Jira has no cross-dashboard copy rests on public Atlassian pages (Atlassian Community threads, Jira ticket JRACLOUD-18207). Screenshots from inside Jira are added after the first live run. <a href="quick-start.html">Quick start</a>.</p>
+  <p>146 automated tests pass on version 1.0.2 (Linux, Node 22) against a model of Jira's published REST operations, which can be wrong where real Jira differs. The tests ran on a Linux machine, with Gadgetferry's screen in a browser against that model. Gadgetferry runs on Atlassian's servers and inside Jira in your browser, and neither has been run. <strong>Not yet done:</strong> a run on a live Jira site, the Forge command-line tool's lint check and deploy, and the Runs on Atlassian check. That Jira has no cross-dashboard copy rests on public Atlassian pages (Community threads, ticket JRACLOUD-18207). <a href="quick-start.html">Quick start</a>.</p>
 
   <h2 id="privacy">Privacy, access and support</h2>
-  <p>Gadgetferry sends nothing outside Atlassian and has no analytics or tracking. It acts with your own Jira permissions: copying needs edit access to the target dashboard, not an admin role. It asks for 18 permissions (dashboards, gadgets and their settings, saved filters, its own storage, plus eleven read permissions Atlassian lists beside those operations) and stores only your run history. <a href="../privacy.html">Privacy policy</a>. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
+  <p>Gadgetferry sends nothing outside Atlassian and has no analytics or tracking. It acts with your own Jira permissions: copying needs edit access to the target dashboard, not an admin role. It asks for 18 permissions (dashboards, gadgets and settings, saved filters, its own storage, plus eleven read permissions Atlassian lists beside those operations) and stores only your run history. <a href="../privacy.html">Privacy policy</a>. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
 
   <div class="buy" id="last-buy">
     <p><a class="button" id="notify-2" href="mailto:support@ochrestack.com?subject=Tell%20me%20when%20Gadgetferry%20is%20on%20the%20Atlassian%20Marketplace" aria-describedby="buy-note-2">Email us to be told when it is listed</a></p>
