@@ -74,7 +74,7 @@
     <li><strong>Incomplete</strong> (the file ends early) or <strong>damaged</strong> (a checksum fails, and the file inside is named): copy the backup again; the Check's result offers to delete the bad copy.</li>
     <li><strong>Password needed</strong> or <strong>wrong</strong>: type it again; it is case-sensitive.</li>
     <li><strong>Not enough free disk space</strong>: free the space shown, then check again.</li>
-    <li><strong>Statement larger than <code>max_allowed_packet</code></strong>: ask your host to raise it to the size shown.</li>
+    <li><strong>Statement larger than <code>max_allowed_packet</code></strong> (the database's limit on one statement): ask your host to raise it to the size shown.</li>
     <li><strong>Tables not in the backup</strong> (a warning): they stay, with their data.</li>
     <li><strong>Multisite</strong>, or a database that is not MySQL or MariaDB: not supported, and Restore stays off.</li>
   </ul>
@@ -96,7 +96,7 @@ wp restorwell fetch https://old-site.com/…/old-site.wpress   (Pro)</pre>
   <ul>
     <li>It does not make backups, restore multisite networks or read other formats.</li>
     <li>If the host kills a request during the final switch, reopen Tools &gt; Restorwell: Continue finishes the restore, Cancel puts the site's folders back.</li>
-    <li>Left out by design: <code>wp-config.php</code>, drop-ins such as <code>object-cache.php</code>, caches (Elementor rewrites its CSS on the first visit); plugins, themes and tables not in the backup stay.</li>
+    <li>Left out by design: your site's settings file (<code>wp-config.php</code>), drop-in files such as <code>object-cache.php</code> (a cache plugin's hook into WordPress), caches (Elementor rewrites its CSS on the first visit); plugins, themes and tables not in the backup stay.</li>
     <li>Not tested: Windows and macOS servers, LiteSpeed, IIS, MySQL, browsers other than Chromium.</li>
   </ul>
 
