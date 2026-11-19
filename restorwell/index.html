@@ -118,7 +118,7 @@
 
   <a href="img/check-report.png"><picture>
     <source media="(max-width: 600px)" srcset="img/hero-narrow.png" width="378" height="303">
-    <img class="hero" src="img/hero.png" alt="Restorwell on Tools &gt; Restorwell. Restore finished: fieldnotes-2026-11-09.wpress, restored from https://fieldnotes.example.org: 820 files and 12 database tables. Below it, three of the limits that backup was checked against before anything changed, each with a green tick: password accepted, used only while restoring and never saved; single site, not a multisite network; free disk space, about 2.39 GB needed and 8.92 GB available" width="822" height="229">
+    <img class="hero" src="img/hero.png" alt="Restorwell on Tools &gt; Restorwell. Restore finished: fieldnotes-2026-11-09.wpress, restored from https://fieldnotes.example.org: 820 files and 12 database tables. Below it, three of the limits that backup was checked against before anything changed, each with a green tick: password accepted, used only while restoring and never saved; single site, not a multisite network; free disk space, about 2.39 GB needed and 8.00 GB available" width="822" height="229">
   </picture></a>
 
   <ul>
@@ -155,7 +155,7 @@
       <source media="(max-width: 600px)" src="video/restorwell-demo-phone.mp4" type="video/mp4">
       <source src="video/restorwell-demo-720p.mp4" type="video/mp4">
       </video>
-      <figcaption>51 s, recorded on 1.2.0, on an 8 MB host.</figcaption>
+      <figcaption>54 s, recorded on 1.2.1, on an 8 MB host.</figcaption>
     </figure>
   </section>
 
@@ -166,8 +166,8 @@
       <p>If you can raise the limit (your .htaccess or .user.ini settings file, or a request to your host), the same applies. Restorwell is for the rest: a backup over the limit, a password, the command line, or a full check before anything is touched. Shiftbox restores large .wpress files, but not password-protected ones, and Poly Bright Quick Restore restores them up to 512 MB (their WordPress.org listings, read November 9, 2026). Restorwell does not make backups; for new backups, use a backup plugin whose restore is free.</p>
       <figure>
         <p class="swipe-hint">Swipe the picture sideways to read it.</p>
-<div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="video/restorwell-resume.gif" alt="A 4-second loop from the demo, after a page reload: 'Unfinished upload: fieldnotes-2026-11-09.wpress, 726.0 MB of 2.29 GB' is listed under the upload box, the same file is chosen again, and the upload continues from 726.0 MB" width="960" height="466" loading="lazy"></div></div>
-        <figcaption>The resume from the demo (4 s GIF, 0.5 MB).</figcaption>
+<div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="video/restorwell-resume.gif" alt="A 5-second loop from the demo, after a page reload: 'Unfinished upload: fieldnotes-2026-11-09.wpress, 720.0 MB of 2.29 GB' is listed under the upload box, the same file is chosen again, and the upload continues from 720.0 MB" width="960" height="466" loading="lazy"></div></div>
+        <figcaption>The resume from the demo (5 s GIF, 0.1 MB).</figcaption>
       </figure>
     </details>
   </div>
@@ -176,7 +176,7 @@
   <p><strong>1. Choose the backup.</strong> Upload it in pieces, or copy it in by FTP.</p>
   <figure>
     <p class="swipe-hint">Swipe the picture sideways to read it.</p>
-<div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/upload.png" alt="The Upload a backup box: 'The file is sent in pieces of 6 MB, below this server's upload limit of 8 MB, so the size of the backup does not matter', and the progress line 'Uploading fieldnotes-2026-11-09.wpress: 390.0 MB of 2.29 GB (16%)'. Below it, Backups already on this server lists fieldnotes-2026-11-09 (1).wpress, 1.38 GB, with Check and Delete buttons" width="822" height="549" loading="lazy"></div></div>
+<div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/upload.png" alt="The Upload a backup box: 'The file is sent in pieces of 6 MB, below this server's upload limit of 8 MB, so the size of the backup does not matter', and the progress line 'Uploading fieldnotes-2026-11-09.wpress: 384.0 MB of 2.29 GB (16%)'. Below it, Backups already on this server lists fieldnotes-2026-11-09 (1).wpress, 1.38 GB, with Check and Delete buttons" width="822" height="549" loading="lazy"></div></div>
     <figcaption>6 MB pieces on an 8 MB host.</figcaption>
   </figure>
 
@@ -190,7 +190,7 @@
   <p><strong>3. Restore.</strong> Prepared beside your live site and switched in at the end; cancel before that and nothing changed. Elementor pages keep their look (tested: Elementor 4.4.0).</p>
   <figure>
     <p class="swipe-hint">Swipe the picture sideways to read it.</p>
-<div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/finished.png" alt="Restore finished: 'fieldnotes-2026-11-09.wpress, restored on November 19, 2026 8:22 pm from https://fieldnotes.example.org: 820 files and 12 database tables.', a muted line saying this web server does not use .htaccess so nothing was written, then 'The backup file (2.29 GB) is still on the server. Delete it now to free the space?' with Delete backup file and Keep it, and Close" width="822" height="232" loading="lazy"></div></div>
+<div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/finished.png" alt="Restore finished: 'fieldnotes-2026-11-09.wpress, restored on November 19, 2026 9:48 pm from https://fieldnotes.example.org: 820 files and 12 database tables.', a muted line saying this web server does not use .htaccess so nothing was written, then 'The backup file (2.29 GB) is still on the server. Delete it now to free the space?' with Delete backup file and Keep it, and Close" width="822" height="232" loading="lazy"></div></div>
     <figcaption>Then log in with an account from the backup.</figcaption>
   </figure>
   <p>Also free: <code>wp restorwell restore</code> (<a href="quick-start.html#cli">quick start</a>).</p>
@@ -203,7 +203,7 @@
       <source media="(max-width: 600px)" src="video/restorwell-pro-phone.mp4" type="video/mp4">
       <source src="video/restorwell-pro-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>40 s: the old host stops at 45 %; Continue finishes.</figcaption>
+    <figcaption>39 s: the old host stops at 45 %; Continue finishes.</figcaption>
   </figure>
   <details>
     <summary>Which link to paste, what was tested, updates</summary>
@@ -247,7 +247,7 @@
     <summary id="tested">How we tested</summary>
     <table>
       <tr><th>Test</th><th>Result</th></tr>
-      <tr><td>1.1.0, 8 MB / 30 s / 128 MB host: 2.29 GB password backup</td><td>820 files, 12 tables (450 rows) match; longest request 4.0 s; peak memory 10 MiB</td></tr>
+      <tr><td>1.2.1, 8 MB / 30 s / 128 MB host: 2.29 GB password backup</td><td>820 files, 12 tables (450 rows) match; longest request 5.3 s; peak memory 10 MiB</td></tr>
       <tr><td>1.0.0, same limits, nginx: 4.3 GB password backup</td><td>Restored; SHA-256 matches</td></tr>
       <tr><td>1.1.4: an Elementor 4.4.0 page (section with a background photo, heading, button, global styles) and a Twenty Twenty-Five block-theme post, exported by All-in-One WP Migration 7.113 and restored</td><td>Every Elementor stylesheet loads; both pages pixel-identical to the old site in Chromium</td></tr>
       <tr><td>1.2.0 on Apache 2.4.58 with its PHP module (mod_php), a WordPress installed with WP-CLI (no .htaccess), a password backup restored</td><td>WordPress's rewrite rules are written to .htaccess and a page other than the home page answers 200; with the site's folder not writable, the message says so and that page is not found</td></tr>
@@ -260,9 +260,9 @@
       <tr><td>Pro 1.0.4: the Download link from an old site's All-in-One WP Migration 7.113 Backups page</td><td>Link of the form shown above; fetched file identical (SHA-256); the Check accepts it</td></tr>
       <tr><td>Backup versions restored</td><td>7.113 (all kinds); 7.62, 7.80, 7.98, 7.100, 7.101 (password); 7.0, 7.40, 7.62, 7.80, 7.100 (plain)</td></tr>
     </table>
-    <p>On 1.1.0, behind nginx refusing bodies over 1 MB, the pieces got smaller after HTTP 413 and the upload completed. Tested on: Linux, WordPress 7.1.4, PHP 8.3.6, MariaDB 10.11.14, Apache 2.4.58 with mod_php and PHP's built-in server. The test suite (216 tests) passed on 1.2.1 and Pro 1.1.1 there; uploads and Pro downloads were driven in Chrome 153. Version 1.0.0 was also installed and run on WordPress 6.5.14 and PHP 7.4.33; that has not been re-run on 1.1.x. Requires WordPress 6.5 or later and PHP 7.4 or later (64-bit for backups over 2 GB), with OpenSSL for password-protected backups and bz2 for bzip2 ones. Not tested: MySQL (only MariaDB was run); servers on Windows or macOS; LiteSpeed, IIS, and Apache with PHP-FPM; browsers other than Chromium; password-protected backups made before version 7.62. Timings come from a fast test machine: they show each request stays short, not how fast your host is.</p>
+    <p>On 1.1.0, behind nginx refusing bodies over 1 MB, the pieces got smaller after HTTP 413 and the upload completed. Tested on: Linux, WordPress 7.1.4, PHP 8.3.6, MariaDB 10.11.14, Apache 2.4.58 with mod_php and PHP's built-in server. The test suite (218 tests) passed on 1.2.1 and Pro 1.1.1 there; uploads and Pro downloads were driven in Chrome 153. Version 1.0.0 was also installed and run on WordPress 6.5.14 and PHP 7.4.33; that has not been re-run on 1.1.x. Requires WordPress 6.5 or later and PHP 7.4 or later (64-bit for backups over 2 GB), with OpenSSL for password-protected backups and bz2 for bzip2 ones. Not tested: MySQL (only MariaDB was run); servers on Windows or macOS; LiteSpeed, IIS, and Apache with PHP-FPM; browsers other than Chromium; password-protected backups made before version 7.62. Timings come from a fast test machine: they show each request stays short, not how fast your host is.</p>
     <h3 id="images">How the images were made</h3>
-    <p>Captures of a real WordPress 7.1.4 with Restorwell 1.2.1 and Pro 1.1.1, in Chrome 153, on a host with an 8 MB upload limit, 30-second requests and 128 MB of memory. The backup is our demo blog, Hollin Marsh Field Notes: 16 posts, 2 pages, the 36 CC0 photographs that ship with Twenty Twenty-Five and 10 videos made from them, 2.29 GB with a password. The free disk space reads differently in the first image and in the two films because each was captured at a different time on the same machine. Three things differ from a real host so the moments could be captured: the disk-space image reports 1.46 GB free, the progress steps were made smaller, and Pro downloads from a second web server on the same machine. The SQLite image is from a WordPress on the SQLite Database Integration plugin 3.1.3. The demo video was recorded on 1.2.0 with steps set to 0.3 s; the Pro clip was recorded on 1.1.4 and Pro 1.0.5, since when Pro has added one line under its progress bar, with the old host on Apache, slowed to about 35 MB/s and stopped by hand at 45 %; its last caption was replaced in the finished file. The before and after is the demo blog on the PHP built-in server, then restored into a fresh WordPress on the same, each shown in a real Chrome window under its own address.</p>
+    <p>Captures of a real WordPress 7.1.4 with Restorwell 1.2.1 and Pro 1.1.1, in Chrome 153, on a host with an 8 MB upload limit, 30-second requests and 128 MB of memory. The backup is our demo blog, Hollin Marsh Field Notes: 16 posts, 2 pages, the 36 CC0 photographs that ship with Twenty Twenty-Five and 10 videos made from them, 2.29 GB with a password. The free disk space the Check shows is held at 8 GB through the plugin's own filter in the images and in both films, so it reads the same everywhere (the disk-space image sets 1.46 GB, on purpose). Three things differ from a real host so the moments could be captured: the disk-space image reports 1.46 GB free, the progress steps were made smaller, and Pro downloads from a second web server on the same machine. The SQLite image is from a WordPress on the SQLite Database Integration plugin 3.1.3. Both films were recorded on 1.2.1 and Pro 1.1.1 with steps set to 0.3 s; in the Pro clip the old host runs on Apache, slowed to about 35 MB/s, and is stopped by hand at 45 %. The before and after is the demo blog on the PHP built-in server, then restored into a fresh WordPress on the same, each shown in a real Chrome window under its own address.</p>
   </details>
 
   <h2 id="details">Details</h2>
