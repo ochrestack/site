@@ -58,6 +58,11 @@
   summary { cursor: pointer; }
   @media (max-width: 600px) {
     h1 { margin-top: 28px; }
+    h1 { margin-top: 20px; font-size: 25px; }
+    header { padding-top: 24px; }
+    .sub { font-size: 17px; line-height: 1.5; }
+    .buy .price { font-size: 17px; line-height: 1.45; }
+    .buy p { margin-bottom: 8px; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
     .scroll-x img.ui { max-width: none; width: 764px; }
@@ -79,25 +84,27 @@
 </header>
 <main>
   <h1>Gadgetferry – Copy Gadgets Between Dashboards for Jira</h1>
-  <p class="sub">“Is it possible to copy a gadget from one dashboard to another?” Jira has no action for it. Gadgetferry adds the gadget to dashboards that already have gadgets, and shows what arrived.</p>
+  <p class="sub">An Atlassian Community question: “Is it possible to copy a gadget from one dashboard to another?” Jira has no action for it. Gadgetferry adds the gadget to dashboards that already have gadgets, and shows what arrived.</p>
+
+  <div class="buy" id="first-buy">
+    <p class="price"><strong>Free for up to 10 users. From 11 users, $0.15 per user per month.</strong></p>
+    <p class="note" id="buy-note"><strong>Not on the Atlassian Marketplace yet.</strong> Gadgetferry has not yet run on a live Jira site, and it can be installed only from the listing.</p>
+    <p><a class="button" id="notify" href="mailto:support@ochrestack.com?subject=Tell%20me%20when%20Gadgetferry%20is%20on%20the%20Atlassian%20Marketplace" aria-describedby="buy-note">Email us to be told when it is listed</a></p>
+  </div>
 
   <figure id="shot-h1">
-    <img class="slot" src="img/shot-h1-target-dashboard.svg" alt="Slot for screenshot H1, taken in Jira: a dashboard named Operations leadership after one copy, with a Filter Counts gadget titled Open requests by type in column 2, beside the six gadgets that were already on it" width="920" height="380">
-    <figcaption>Screenshot H1 follows, from inside Jira: the target dashboard after one copy.</figcaption>
+    <img class="slot" src="img/shot-h1-target-dashboard.svg" alt="Empty frame: no screenshot has been taken yet. It will show a dashboard named Operations leadership after one copy, with a Filter Counts gadget titled Open requests by type in column 2, beside the six gadgets that were already on it" width="920" height="300">
+    <figcaption>No screenshot yet: the target dashboard after one copy. It is added after the first run on a live Jira site.</figcaption>
   </figure>
 
   <ul class="benefits">
-    <li><strong>“Being able to copy/duplicate a gadget over to another dashboard.”</strong> Pick the gadget, a dashboard you can edit and a column, and press Copy gadget.</li>
-    <li><strong>“The dashboard … already has several gadgets.”</strong> They stay. One gadget can go onto up to 20 dashboards in one run.</li>
-    <li><strong>A gadget with “a large number of ‘Custom counts’”.</strong> Its settings are read back after the copy, each Matched or Not copied with Jira's reason. Undo this copy removes only what the run added.</li>
+    <li><strong>“being able to copy/duplicate a gadget over to another dashboard”</strong> (a comment on Jira ticket JRACLOUD-18207). Pick the gadget, a dashboard you can edit and a column, and press Copy gadget.</li>
+    <li><strong>“the dashboard where I need to copy the gadget already has several gadgets”</strong> (the same Community question). They stay. One gadget can go onto up to 20 dashboards in one run.</li>
+    <li><strong>A Filter Counts gadget with a long list of custom counts?</strong> Its settings are read back after the copy, each Matched or Not copied with Jira's reason. Undo this copy removes only what the run added.</li>
   </ul>
 
-  <div class="buy">
-    <p class="price"><strong>Free for up to 10 users. From 11 users, $0.15 per user per month.</strong></p>
-    <!-- Until the listing URL exists the button points to "#". When Atlassian approves the listing, set href to the listing URL on #buy and #buy-2 and delete the two notes. -->
-    <p><a class="button" id="buy" href="#" aria-describedby="buy-note">Get it on the Atlassian Marketplace</a></p>
-    <p class="note" id="buy-note">Atlassian Marketplace listing in review. <strong>Not installable yet:</strong> Gadgetferry has not yet run on a live Jira site, and it can be installed only from the listing.</p>
-    <p class="fine">Jira Cloud only · version 1.0.1 · 142 automated tests pass outside Jira (<a href="#tested">what is and is not tested</a>) · source not included (commercial app) · support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+  <div class="buy" id="trust">
+    <p class="fine">Jira Cloud only · version 1.0.2 · 145 automated tests pass outside Jira (<a href="#tested">what is and is not tested</a>) · source not included (commercial app) · support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. We answer every message, usually within one business day.</p>
     <p class="fine">Billed monthly or annually (a year costs ten times the monthly price): 15 users cost $2.25 a month or $22.50 a year. One edition, every feature in every tier; no usage plan, no copy quota, no price change at renewal. Atlassian bills the renewal, sends the renewal notice and handles refunds within 30 days.</p>
   </div>
 
@@ -107,15 +114,6 @@
     <figcaption>Choose, copy, check or undo.</figcaption>
   </figure>
   <p class="narrow-only">Choose a gadget, copy it to up to 20 dashboards you can edit, then check each setting or undo.</p>
-
-  <figure id="shot-h2">
-    <img class="slot" src="img/shot-h2-result.svg" alt="Slot for screenshot H2, taken in Jira: Gadgetferry open from Apps, Gadgetferry after a three-target run, the first result opened to show each setting as Matched with its size, the saved filter Open requests named, and the line saying viewers of the target dashboard see the gadget only if the filter is shared with them" width="920" height="450" loading="lazy">
-    <figcaption>Screenshot H2 follows, from inside Jira: the result for one target.</figcaption>
-  </figure>
-  <figure id="shot-h3">
-    <img class="slot" src="img/shot-h3-targets.svg" alt="Slot for screenshot H3, taken in Jira: Gadgetferry with three target dashboards chosen, column 2 and the top of the column selected, the count of targets and the Copy gadget button" width="920" height="450" loading="lazy">
-    <figcaption>Screenshot H3 follows, from inside Jira: three targets chosen.</figcaption>
-  </figure>
 
   <div class="box warn" id="already">
     <strong>What Jira already does.</strong> To make a new dashboard from an old one, use Jira's Copy dashboard. To repeat a gadget on the same dashboard, use the gadget's More actions (…) &gt; Duplicate in edit mode. For a gadget whose only setting is a saved filter, adding it again by hand takes a minute. Gadgetferry is for a dashboard that already exists and already has gadgets.
@@ -130,14 +128,14 @@
   </ul>
 
   <h2 id="tested">How we tested</h2>
-  <p>142 automated tests pass on version 1.0.1 (Linux, Node 22) against a model of Jira's published REST operations; it can be wrong where real Jira differs. <strong>Not yet done:</strong> a run on a live Jira site, the Forge command-line tool's own lint check and deploy, and the Runs on Atlassian check; no Atlassian login was available for the tests. The tests ran on Linux, not on Windows or macOS. That Jira has no cross-dashboard copy rests on public Atlassian pages (Atlassian Community threads, Jira ticket JRACLOUD-18207). Screenshots from inside Jira follow the first live run. <a href="quick-start.html">Quick start</a>.</p>
+  <p>145 automated tests pass on version 1.0.2 (Linux, Node 22) against a model of Jira's published REST operations; it can be wrong where real Jira differs. <strong>Not yet done:</strong> a run on a live Jira site, the Forge command-line tool's own lint check and deploy, and the Runs on Atlassian check; no Atlassian login was available for the tests. The tests ran on a Linux machine, with Gadgetferry's screen in a browser against that model. Gadgetferry runs on Atlassian's servers and inside Jira in your browser, and neither has been run. That Jira has no cross-dashboard copy rests on public Atlassian pages (Atlassian Community threads, Jira ticket JRACLOUD-18207). Screenshots from inside Jira are added after the first live run. <a href="quick-start.html">Quick start</a>.</p>
 
   <h2 id="privacy">Privacy, access and support</h2>
   <p>Gadgetferry sends nothing outside Atlassian and has no analytics or tracking. It acts with your own Jira permissions: copying needs edit access to the target dashboard, not an admin role. It asks for 18 permissions (dashboards, gadgets and their settings, saved filters, its own storage, plus eleven read permissions Atlassian lists beside those operations) and stores only your run history. <a href="../privacy.html">Privacy policy</a>. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
 
-  <div class="buy">
-    <p><a class="button" id="buy-2" href="#" aria-describedby="buy-note-2">Get it on the Atlassian Marketplace</a></p>
-    <p class="note" id="buy-note-2">Atlassian Marketplace listing in review; not installable yet. Free for up to 10 users, then $0.15 per user per month.</p>
+  <div class="buy" id="last-buy">
+    <p><a class="button" id="notify-2" href="mailto:support@ochrestack.com?subject=Tell%20me%20when%20Gadgetferry%20is%20on%20the%20Atlassian%20Marketplace" aria-describedby="buy-note-2">Email us to be told when it is listed</a></p>
+    <p class="note" id="buy-note-2">Not on the Atlassian Marketplace yet. Free for up to 10 users, then $0.15 per user per month.</p>
   </div>
 </main>
 <footer>
