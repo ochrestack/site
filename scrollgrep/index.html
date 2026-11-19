@@ -196,6 +196,14 @@
     <strong>What the IDE already does.</strong> The IDE already does part of this, so here is where Scrollgrep fits. Ctrl+F in the Terminal highlights matches but hides nothing. Since 2026.1 the Reworked terminal links file paths itself; Scrollgrep links only inside its results. <code>cmd | grep FAIL</code> works if you know the pattern before you run. Scrollgrep does not touch the Run and Debug consoles.
   </div>
 
+  <h2 id="watch">Watch it work</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080" data-narrow="video/scrollgrep-demo-540p60.mp4">
+      <source src="video/scrollgrep-demo-1080p60.mp4" type="video/mp4">
+    </video>
+    <figcaption>Scrollgrep 1.1.7 in IntelliJ IDEA 2025.3, 42 seconds, captions only, no sound. First the free filter on the jsoup run, then Preview without a license.</figcaption>
+  </figure>
+
   <h2 id="real">In the IDE</h2>
 
   <figure class="real-size">
@@ -242,5 +250,12 @@
   <a href="../support.html">Support</a>
   <span>&copy; 2026 Ochrestack</span>
 </footer>
+<script>
+  // phones fetch the 540p copy (about 4 MB), everything else the 1080p file
+  (function () {
+    var v = document.querySelector('video[data-narrow]');
+    if (v && window.matchMedia('(max-width: 600px)').matches) { v.querySelector('source').src = v.getAttribute('data-narrow'); v.load(); }
+  })();
+</script>
 </body>
 </html>
