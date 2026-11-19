@@ -43,6 +43,7 @@
   .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
   figure { margin: 28px 0; }
+  #shot-h1 { margin: 16px 0; }
   figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
   figure video { background: #2B2118; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
@@ -73,6 +74,14 @@
     figure { margin: 16px 0; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
+    main { display: flex; flex-direction: column; }
+    main > * { min-width: 0; }
+    h1, .sub, .status { order: -3; }
+    #first-buy { display: contents; }
+    #first-buy p:first-child { order: -2; margin: 12px 0 0; }
+    #shot-h1 { order: -1; margin: 12px 0 8px; }
+    #buy-note { order: -1; }
+    #first-buy .button { display: block; text-align: center; }
     .scroll-x img.ui { max-width: none; width: 764px; }
     .swipe-wrap { position: relative; }
     .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
@@ -97,13 +106,15 @@
   <p class="status" id="status-line"><strong>Free for up to 10&nbsp;users, then $0.15&nbsp;per&nbsp;user per&nbsp;month.</strong> Not on the Atlassian Marketplace&nbsp;yet.</p>
 
   <figure id="shot-h1">
-    <img class="slot" src="img/shot-h1-target-dashboard.svg" alt="Empty frame: no screenshot has been taken yet. It will show a dashboard named Operations leadership after one copy, with a Filter Counts gadget titled Open requests by type in column 2, beside the six gadgets that were already on it" width="920" height="110">
-    <figcaption>Added after the first run on a live Jira&nbsp;site.</figcaption>
+    <picture>
+      <source media="(max-width: 600px)" srcset="workflow-narrow.svg" width="330" height="150">
+      <img src="workflow.svg" alt="Diagram in three steps. One: choose a gadget on a dashboard you can view; its settings are listed by name. Two: copy it to up to 20 dashboards you can edit; the gadgets already there stay. Three: check each setting, Matched or Not copied with the reason, or press Undo this copy." width="720" height="120">
+    </picture>
   </figure>
 
   <ul class="benefits">
     <li><strong>“being able to copy/duplicate a gadget over to another dashboard”</strong> (Jira ticket JRACLOUD-18207). Pick a gadget, a dashboard you can edit and a&nbsp;column.</li>
-    <li><strong>“the dashboard where I need to copy the gadget already has several gadgets”</strong> (the same Community question). They stay; copy to up to 20&nbsp;dashboards in one&nbsp;run.</li>
+    <li><strong>“the dashboard where I need to copy the gadget already has several gadgets”</strong> (from the same Atlassian Community question). They stay; copy to up to 20&nbsp;dashboards in one&nbsp;run.</li>
     <li><strong>A Filter Counts gadget with many custom counts?</strong> Each setting is read back; Undo this copy removes only what the run&nbsp;added.</li>
   </ul>
 
@@ -113,14 +124,15 @@
   </div>
 
   <div class="buy" id="trust">
-    <p class="fine">Jira Cloud only · version 1.0.2 · 146&nbsp;automated tests pass outside Jira (<a href="#tested">details</a>) · source not included · support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. We answer every message, usually within one business&nbsp;day.</p>
-    <p class="fine">Billed monthly or annually (a year costs ten times the monthly price): 15&nbsp;users cost $2.25&nbsp;a&nbsp;month or $22.50&nbsp;a year. Atlassian bills the renewal, sends the renewal notice and handles refunds within 30&nbsp;days.</p>
+    <p class="fine">Jira Cloud only · version 1.0.3 · 150&nbsp;automated tests pass outside Jira (<a href="#tested">details</a>) · source not included · support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. We answer every message, usually within one business&nbsp;day.</p>
+    <p class="fine">Billed monthly or annually. Annual prices are flat for each band of&nbsp;users: 15&nbsp;users cost $2.25&nbsp;a&nbsp;month or $22.50&nbsp;a&nbsp;year; 60&nbsp;users cost $9.00&nbsp;a&nbsp;month or $150.00&nbsp;a&nbsp;year. Atlassian bills the renewal, sends the renewal notice and handles refunds within 30&nbsp;days.</p>
   </div>
 
-    <figure class="wide-only">
-    <img src="workflow.svg" alt="Diagram in three steps. One: you choose a gadget on a dashboard you can view, and see its title, type, column and row and its settings listed by name. Two: Gadgetferry adds it to up to 20 dashboards you can edit, in the column you choose, and the gadgets already there stay. Three: it reads the copy back, each setting Matched or Not copied with the reason, and you open the copy to check it or press Undo this copy. It runs from Apps, Gadgetferry, with your own Jira permissions, and nothing leaves Atlassian." width="720" height="330" loading="lazy">
-    <figcaption>Choose, copy, check, undo.</figcaption>
+  <figure id="shot-after">
+    <img class="slot" src="img/shot-h1-target-dashboard.svg" alt="Empty frame: no screenshot has been taken yet. It will show a dashboard named Operations leadership after one copy, with a Filter Counts gadget titled Open requests by type in column 2, beside the six gadgets that were already on it" width="920" height="110">
+    <figcaption>Added after the first run on a live Jira&nbsp;site.</figcaption>
   </figure>
+
 
   <div class="box warn" id="already">
     <strong>What Jira already does.</strong> For a new dashboard from an old one, use Copy dashboard; to repeat a gadget on the same dashboard, use More actions (…) &gt; Duplicate. A gadget with only a saved filter is quick to add by&nbsp;hand.
@@ -134,10 +146,10 @@
   </ul>
 
   <h2 id="tested">How we tested</h2>
-  <p>146&nbsp;automated tests pass on version 1.0.2 (Linux, Node 22) against a model of Jira's published REST operations, which can be wrong where real Jira differs. Gadgetferry runs on Atlassian's servers and inside Jira in your browser, and neither has been run. <strong>Not yet done:</strong> a run on a live Jira site, the Forge lint check and deploy, and the Runs on Atlassian check. <a href="quick-start.html">Quick start</a>.</p>
+  <p>150&nbsp;automated tests pass on version 1.0.3 (Linux, Node 22) against a model of Jira's published REST operations, which can be wrong where real Jira differs. Gadgetferry runs on Atlassian's servers and inside Jira in your browser, and neither has been run. <strong>Not yet done:</strong> a run on a live Jira site, the Forge lint check and deploy, and the Runs on Atlassian check. <a href="quick-start.html">Quick start</a>.</p>
 
   <h2 id="privacy">Privacy, access and support</h2>
-  <p>Gadgetferry sends nothing outside Atlassian and has no analytics or tracking. It acts with your own Jira permissions: copying needs edit access to the target, not an admin role. It asks for 18&nbsp;permissions (plus eleven read permissions Atlassian lists beside the others) and stores only your run&nbsp;history. <a href="../privacy.html">Privacy policy</a>. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
+  <p>Gadgetferry sends nothing outside Atlassian and has no analytics or tracking. It acts with your own Jira permissions: copying needs edit access to the target, not an admin role. It asks for 18&nbsp;permissions, eleven of them read permissions that Atlassian lists beside the dashboard and filter&nbsp;ones, and stores only your run&nbsp;history. <a href="../privacy.html">Privacy policy</a>. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>

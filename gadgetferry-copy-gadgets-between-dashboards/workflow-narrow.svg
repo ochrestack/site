@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 150" width="330" height="150" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <rect width="330" height="150" fill="#FAF7F2"/>
+
+  <rect x="3" y="3" width="324" height="44" rx="10" fill="#FFFFFF" stroke="#E6DED3"/>
+  <text x="16" y="23" font-size="15" font-weight="600" fill="#7A4E14">1. Choose a gadget</text>
+  <text x="16" y="40" font-size="13" fill="#5A4E43">on a dashboard you can view</text>
+
+  <rect x="3" y="53" width="324" height="44" rx="10" fill="#2B2118"/>
+  <text x="16" y="73" font-size="15" font-weight="600" fill="#F2C98E">2. Copy it to up to 20 dashboards</text>
+  <text x="16" y="90" font-size="13" fill="#E6DED3">you can edit; the gadgets there stay</text>
+
+  <rect x="3" y="103" width="324" height="44" rx="10" fill="#FFFFFF" stroke="#C8842B" stroke-width="2"/>
+  <text x="16" y="123" font-size="15" font-weight="600" fill="#7A4E14">3. Check each setting, or undo</text>
+  <text x="16" y="140" font-size="13" fill="#5A4E43">Matched or Not copied, with why</text>
+</svg>
