@@ -64,6 +64,7 @@
     .narrow-only { display: block; }
     .scroll-x img.ui { max-width: none; width: 764px; }
     .scroll-x img.ui[width="1200"] { width: 960px; }
+    .scroll-x img.ui[width="1260"] { width: 1008px; }
     .scroll-x img.ui[width="960"] { width: 768px; }
     .swipe-wrap { position: relative; }
     .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
@@ -108,6 +109,8 @@
   /* Short or narrow laptop windows (1024x600): a narrower picture column and tighter text keep the Download button in the first screen. */
   @media (min-width: 1000px) and (max-width: 1250px) {
     .top { grid-template-columns: minmax(380px, 1fr) minmax(0, 380px); column-gap: 28px; }
+    .top-images .top-image-py { display: none; }
+    .py-narrow { display: block; }
   }
   @media (min-width: 1000px) and (max-height: 800px) {
     .top .sub { margin-bottom: 4px; }
@@ -154,110 +157,82 @@
 </header>
 <section class="top">
   <h1>Scrollgrep: Terminal Filter</h1>
-  <p class="sub">The failing line is somewhere in thousands of lines of Terminal output; Ctrl+F hides nothing, and <code>| grep</code> means running the command again.</p>
+  <p class="sub">Only the lines you want, from a Terminal tab, while the output is still scrolling.</p>
   <div class="top-images">
   <figure class="top-image">
-    <a href="img/live-filter-window.png"><picture><source media="(prefers-reduced-motion: reduce)" srcset="img/live-filter.png"><source media="(max-width: 600px)" srcset="video/scrollgrep-live-filter-phone.gif"><img class="hero" src="video/scrollgrep-live-filter.gif" alt="A 6.5-second loop of the Scrollgrep panel in IntelliJ IDEA 2025.3 during jsoup's Maven test run. It opens on the result, 6 matching lines for FAIL|Exception with Match case and Regex on, including the failing ElementTest.testGetChildText line and BUILD FAILURE; then it replays how the count climbs from 2 to 6 as those lines arrive" width="1280" height="720"></picture></a>
-    <figcaption>Free, live: jsoup's 2,648-test Maven run, 6 matching lines, and how the count climbed while it ran (6.5-second loop, recorded with 1.1.0<span class="wide-only">: 1.1.6 adds a Preview link under the lock line</span><span class="narrow-only-inline">; the left part of the panel, at a readable size</span>).</figcaption>
+    <a href="img/live-filter-window.png"><picture><source media="(prefers-reduced-motion: reduce)" srcset="img/live-filter.png"><source media="(max-width: 600px)" srcset="video/scrollgrep-live-filter-phone.gif"><img class="hero" src="video/scrollgrep-live-filter.gif" alt="A loop of 3.8 seconds of the Scrollgrep panel in IntelliJ IDEA 2025.3 during jsoup's Maven test run. It opens on the result, 6 matching lines for FAIL|Exception with Match case and Regex on, including the failing ElementTest line and BUILD FAILURE; then it replays how the count climbs from 2 to 4 to 6 as those lines arrive" width="592" height="352"></picture></a>
+    <figcaption>Free: jsoup's 2,648-test Maven run in IntelliJ IDEA 2025.3, filtered to 6 matching lines as it runs.</figcaption>
   </figure>
   <figure class="top-image top-image-py">
-    <a href="img/preview-python-frame-opened-window.png"><img class="hero" src="img/preview-python-frame-opened.png" alt="PyCharm 2026.3 with sync_orders.py open at line 14 beside the Scrollgrep panel: Include pattern 'sync finished' with Watch ticked, 7 matching lines of a sample sync job's output, and the traceback frame File sync_orders.py selected" width="800" height="574"></a>
-    <figcaption>Python, in PyCharm 2026.3: the licensed features on Preview's sample sync job. The traceback frame clicked, sync_orders.py open at line 14; the Watch pattern is set.</figcaption>
+    <a href="img/preview-python-frame-opened.png"><img class="hero" src="img/preview-python-frame-opened.png" alt="PyCharm 2026.3 with sync_orders.py open at line 14 beside the Scrollgrep panel: Include pattern 'sync finished' with Watch ticked, and the traceback frame File sync_orders.py, line 14 selected in the results" width="834" height="610"></a>
+    <figcaption>Python, in PyCharm 2026.3: Preview's sample sync job, the traceback frame clicked.</figcaption>
   </figure>
   </div>
   <ul class="benefits">
     <li><strong>Filter/grep the Terminal output, live.</strong><span class="more"> Change the pattern after the run; no re-running through <code>| grep</code>.</span></li>
-    <li><strong>Keep what the Terminal forgets.</strong> Five Gradle test runs in IntelliJ IDEA 2026.3: its own search found 35 failure lines; Scrollgrep kept all 70.</li>
-    <li><strong>Click a stack frame, land on the line<span class="more">:</span></strong><span class="more"> JVM, Python, Node.js or Go (licence).</span></li>
+    <li><strong>Keep what the Terminal forgets.</strong> Five Gradle test runs in IntelliJ IDEA 2026.3: its own search found 49 failure lines; Scrollgrep kept all 70.</li>
+    <li><strong>Click a stack frame, land on the line<span class="more">:</span></strong><span class="more"> JVM, Python, Node.js or Go (license).</span></li>
   </ul>
   <div class="buy">
     <p class="price"><strong>Free:</strong> the live filter, no time limit. <strong>$12 once</strong> for links, one-command scope, patterns and alerts (perpetual), on sale once the JetBrains Marketplace listing is approved. Try them now on sample output with <strong>Preview</strong>; the Marketplace's 30-day trial then runs them on your own output.</p>
     <!-- Colin, when the JetBrains Marketplace listing is live: add a second button, "Get it on JetBrains Marketplace",
          linking to the listing's URL, and change "on sale once the JetBrains Marketplace listing is approved" in the price line to "on JetBrains Marketplace". -->
-    <p class="buttons"><a class="button" id="download" href="download/scrollgrep-1.1.6.zip" aria-describedby="download-note">Download Scrollgrep 1.1.6 (free filter)</a></p>
-    <p class="note" id="download-note">Install: Settings | Plugins | ⚙ | Install Plugin from Disk, then restart the IDE (File | Exit if it does not offer a restart); Settings may close with no sign that the install worked.</p>
+    <p class="buttons"><a class="button" id="download" href="download/scrollgrep-1.1.7.zip" aria-describedby="download-note">Download Scrollgrep 1.1.7 (free filter)</a></p>
+    <p class="note" id="download-note">Install: Settings | Plugins | ⚙ | Install Plugin from Disk, pick the zip, then restart the IDE (File | Exit if it offers no restart). A balloon then says where Scrollgrep is; the IDE may also say "Cannot update plugin", which is expected for a plugin installed from a file.</p>
     <p class="fine">Tested on Linux in IntelliJ IDEA and PyCharm 2025.3 and 2026.3, and WebStorm 2025.3 (its test run). Source included. <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="quick-start.html">Quick start</a> · <a href="eula.html">EULA</a></p>
   </div>
 </section>
 <main>
   <figure class="py-narrow">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/preview-python-frame-opened-window.png"><img class="ui" src="img/preview-python-frame-opened.png" alt="PyCharm 2026.3 with sync_orders.py open at line 14 beside the Scrollgrep panel: Include pattern 'sync finished' with Watch ticked, 7 matching lines of a sample sync job's output, and the traceback frame File sync_orders.py selected" width="800" height="574"></a></div>
-    <figcaption>Python, in PyCharm 2026.3: the licensed features on Preview's sample sync job. The traceback frame clicked, sync_orders.py open at line 14; the Watch pattern is set.</figcaption>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/preview-python-frame-opened.png"><img class="ui" src="img/preview-python-frame-opened.png" alt="PyCharm 2026.3 with sync_orders.py open at line 14 beside the Scrollgrep panel: Include pattern 'sync finished' with Watch ticked, and the traceback frame File sync_orders.py, line 14 selected in the results" width="834" height="610"></a></div>
+    <figcaption>Python, in PyCharm 2026.3: Preview's sample sync job, the traceback frame clicked.</figcaption>
   </figure>
-  <h2 id="watch">Watch it work</h2>
-  <figure>
-    <video controls preload="none" playsinline poster="video/poster.jpg" width="1280" height="720">
-      <source src="video/scrollgrep-demo-720p60.mp4" type="video/mp4">
-    </video>
-    <figcaption>The demo, 50 s, captions only, no sound track, recorded at 60 fps in IntelliJ IDEA 2025.3 (with 1.1.0; later versions add a menu label, texts, a Regex hint and the 2026.3 skipped-output notice, not in the video) on the jsoup clone (one assertion changed so one test fails). Free until 0:19; after that the licensed features, shown with a test licence because Scrollgrep is not on the Marketplace yet. The live filter alone: <a href="video/scrollgrep-live-filter.gif">6.5-second GIF</a> (0.2 MB).</figcaption>
-  </figure>
+
+  <h2 id="license">Try or buy: what the IDE's dialog says</h2>
+  <p><strong>Try or buy</strong> in the panel opens the IDE's own license dialog for Scrollgrep, with the tabs <strong>Paid license</strong> and <strong>Start trial</strong>. The dialog uses JetBrains' words, for example "Subscription" and "Log In to JetBrains Account"; Scrollgrep is a perpetual license: you pay $12 once and nothing renews. The 30-day trial starts under <strong>Start trial</strong> once Scrollgrep is on the Marketplace.</p>
 
   <div class="box">
     <strong>What the IDE already does.</strong> The IDE already does part of this, so here is where Scrollgrep fits. Ctrl+F in the Terminal highlights matches but hides nothing. Since 2026.1 the Reworked terminal links file paths itself; Scrollgrep links only inside its results. <code>cmd | grep FAIL</code> works if you know the pattern before you run. Scrollgrep does not touch the Run and Debug consoles.
   </div>
 
-  <h2 id="real">In the IDE, for real</h2>
+  <h2 id="real">In the IDE</h2>
 
   <figure class="real-size">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/kept-after-trim-263-window.png"><img class="ui" src="img/kept-after-trim-263.png" alt="IntelliJ IDEA 2026.3 after five Gradle test runs of a 164-test project with 2 failing tests: the Scrollgrep panel filtering FAILED shows 70 matching lines, starting with the first run's LedgerTest and MoneyTest failures; below, the Terminal's own search for 'failed' counts 35/35, because the Terminal has trimmed the earlier runs" width="1200" height="728" loading="lazy"></a></div>
-    <figcaption>Free, in IntelliJ IDEA 2026.3: five Gradle test runs with the debug log, about 11,000 lines. The Terminal kept the last part, so its search finds 35; Scrollgrep, open before the runs, lists all 70 lines with "failed", from the first run on.</figcaption>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/kept-after-trim.png"><img class="ui" src="img/kept-after-trim.png" alt="IntelliJ IDEA 2026.3 after five Gradle test runs of a 164-test project with 2 failing tests: the Scrollgrep panel filtering failed shows 70 matching lines, starting with the first run's LedgerTest and MoneyTest failures; below, the Terminal's own search for failed counts 49/49, because the Terminal has trimmed the earlier runs" width="1260" height="760" loading="lazy"></a></div>
+    <figcaption>Free, IntelliJ IDEA 2026.3: five Gradle test runs, about 11,000 lines. The Terminal kept the last part, so its search finds 49; Scrollgrep, open before the runs, lists all 70 lines with "failed".</figcaption>
   </figure>
 
   <figure class="real-size">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/skipped-output-window.png"><img class="ui" src="img/skipped-output.png" alt="IntelliJ IDEA 2026.3, cat of a 97,317-line sync log in a Terminal tab on the Ghostty emulator. The Scrollgrep panel filtering 'skipped row' shows 918 matching lines and 'some lines missing', rows reading '⋯ the Terminal skipped lines here ⋯' between matching lines, and the notice: The Terminal skipped output that printed too fast. Keep every line: use JediTerm for new tabs" width="1200" height="728" loading="lazy"></a></div>
-    <figcaption>Free, in IntelliJ IDEA 2026.3: <code>cat</code> of a 97,317-line log at full speed. The 2026.3 Terminal's Ghostty emulator skipped most of it; Scrollgrep kept the 918 matching lines that arrived in this run and says where lines are missing. After one click on "use JediTerm for new tabs", the same <code>cat</code> in a new tab: all 10,470.</figcaption>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/skipped-output.png"><img class="ui" src="img/skipped-output.png" alt="IntelliJ IDEA 2026.3, cat of a 97,317-line sync log in a Terminal tab on the Ghostty emulator. The Scrollgrep panel filtering 'skipped row' shows 874 matching lines and 'some lines missing', and the notice: The Terminal skipped output that printed too fast. Keep every line: use JediTerm for new tabs" width="1260" height="760" loading="lazy"></a></div>
+    <figcaption>Free, IntelliJ IDEA 2026.3: <code>cat</code> of a 97,317-line log. The Terminal's Ghostty emulator skipped lines; Scrollgrep kept 874 matching ones and says lines are missing. In a new JediTerm tab, the same <code>cat</code> kept all 10,470.</figcaption>
   </figure>
 
   <figure class="real-size">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/pycharm-etl-log-window.png"><img class="ui" src="img/pycharm-etl-log.png" alt="PyCharm 2025.3 with worker.py open. The Scrollgrep panel filters 'failed row' and shows 59 matching lines, ERROR lines with row ids. Below, the Terminal's own search for 'failed row' counts 16/16 above a Python traceback" width="1200" height="728" loading="lazy"></a></div>
-    <figcaption>Free, in PyCharm 2025.3: <code>tail -f</code> on a 60,000-row sync log. Scrollgrep lists 59 failed rows, as many as <code>grep -c</code> counts in the file; the Terminal's own search finds 16.</figcaption>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/preview-frame-opened.png"><img class="ui" src="img/preview-frame-opened.png" alt="IntelliJ IDEA 2025.3 on its Scrollgrep preview tab, without a license: the panel filtering com.example shows 3 stack frames of a sample Gradle test run as links, the first selected, and the editor on the left has MoneyTest.java open with the caret on line 16" width="1260" height="760" loading="lazy"></a></div>
+    <figcaption>Try before you buy, in IntelliJ IDEA 2025.3 without a license: <strong>Preview</strong> runs a sample test run in a Terminal tab of its own. The stack frame clicked, MoneyTest.java open at line 16. Your own tabs stay free-only.</figcaption>
   </figure>
 
   <figure class="real-size">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/preview-unlocked-window.png"><img class="ui" src="img/preview-unlocked.png" alt="IntelliJ IDEA 2026.3 without a licence: the Scrollgrep panel on its Scrollgrep preview tab shows Scope, Context, Preset and Add pattern, the note 'Preview on sample output: the licensed features work in this tab until it runs another command', and 12 matching lines for FAILED|Money from a sample Gradle test run, with the stack frames MoneyTest.java:16, Money.java:15 and MoneyTest.java:22 underlined as links" width="1200" height="728" loading="lazy"></a></div>
-    <figcaption>Try before you buy, in IntelliJ IDEA 2026.3 without a licence: <strong>Preview</strong> runs a sample test run in a Terminal tab of its own, where links, scope, context, patterns and alerts work. Your own tabs stay free-only.</figcaption>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/one-command-context.png"><img class="ui" src="img/one-command-context.png" alt="IntelliJ IDEA 2025.3 on its Scrollgrep preview tab: Scope set to the sample test command with exit 1, Context 3, filter FAILED: 8 matching lines with the failing test's lines and grey context lines around them" width="1260" height="760" loading="lazy"></a></div>
+    <figcaption>Preview, in IntelliJ IDEA 2025.3: one earlier command (exit code 1) and three lines of context around each match.</figcaption>
   </figure>
-
-  <figure class="real-size">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/link-opened-at-line-window.png"><img class="ui" src="img/link-opened-at-line.png" alt="The panel filtering ElementTest: the stack frame 'at org.jsoup.nodes.ElementTest.testGetChildText(ElementTest.java:138)' is selected, with ElementTest.java:138 as a link; the editor on the left has ElementTest.java open with the caret on line 138, the failing assertion" width="1200" height="558" loading="lazy"></a></div>
-    <figcaption>Licence: the stack frame clicked, ElementTest.java open at line 138.</figcaption>
-  </figure>
-
-  <figure class="real-size">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/node-frame-opened-window.png"><img class="ui" src="img/node-frame-opened.png" alt="A Node.js dev server's output filtered with TypeError|orders\.js: 45 matching lines, each TypeError 'Cannot read properties of undefined (reading amount)' followed by its frames 'at formatTotal (/opt/sample/orders-api/src/orders.js:10:23)' and 'at parseOrder (…orders.js:15:59)' as links. The last formatTotal frame is selected, and the editor on the left shows orders.js with the caret on line 10, column 23, at order.price.amount" width="1200" height="558" loading="lazy"></a></div>
-    <figcaption>Licence, Node.js: a dev server answered 1,500 requests and 15 failed. The <code>formatTotal</code> frame clicked, orders.js open at line 10, column 23.</figcaption>
-  </figure>
-
-  <figure class="real-size">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/one-command-context-window.png"><img class="ui" src="img/one-command-context.png" alt="Scope set to 'mvn -B test -DtrimStackTrace=false · /opt/sample/jsoup · exit 1', Context 3: the two FAILURE lines with three grey context lines before and after, and '2 matching lines · exit 1'. The Terminal below shows two later commands, git status and ls" width="1200" height="728" loading="lazy"></a></div>
-    <figcaption>Licence: one earlier command, three lines of context, exit code 1.</figcaption>
-  </figure>
-
-  <figure class="real-size">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/pycharm-watch-alert-window.png"><img class="ui" src="img/pycharm-watch-alert.png" alt="PyCharm 2026.3 with sync_orders.py open and the Terminal and the Scrollgrep panel hidden. A notification reads: Scrollgrep: 'sync finished with' in Local, 2026-11-10 05:20:40,677 ERROR sync_orders: sync finished with 201 skipped rows, Show in Scrollgrep" width="1200" height="430" loading="lazy"></a></div>
-    <figcaption>Licence, in PyCharm 2026.3: a Python sync job's last line, "ERROR … sync finished with 201 skipped rows", raised an alert while the Terminal was hidden (test licence: Scrollgrep is not on the Marketplace yet).</figcaption>
-  </figure>
-
-  <h2 id="measured">Measured</h2>
-  <p>200,000 lines at full speed in IntelliJ IDEA 2025.3 (headless, Linux): 2,061 matching lines in each of five runs, the same as <code>grep -c</code>. Timings and the 2026.3 runs: <a href="quick-start.html#measured">quick start</a>.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
     <li>Results show in Scrollgrep's own panel, as plain text; the terminal itself hides nothing.</li>
     <li>IDE 2025.3 or later with the Reworked terminal engine (the default). No SSH sessions, no vim, less or htop.</li>
-    <li>Matches outlast the Terminal's history for output that reached the Terminal while the panel showed the tab (up to 32 MB and 200,000 lines per tab).</li>
+    <li>Matches outlast the Terminal's history for output that reached the Terminal while the panel showed the tab (up to 32 MB and 200,000 lines per tab).</li>
     <li>IDE 2026.3 starts Terminal tabs on the Ghostty emulator, which skips output that prints faster than it shows it; no plugin can read those lines. Scrollgrep marks where (not how many) and offers the JediTerm emulator for new tabs, which keeps every line.</li>
-    <li>Tested on Linux in IntelliJ IDEA and PyCharm 2025.3 and 2026.3 (windows opened), and in WebStorm 2025.3 (the plugin's test suite, run headless on WebStorm's own platform: no window was opened), and WebStorm 2026.3 (started headless with Scrollgrep installed from the zip: it loaded; no filter was run). Untested: WebStorm's window and the filter in WebStorm 2026.3 (JetBrains' Plugin Verifier finds it compatible, but no window was opened: WebStorm starts only after a JetBrains Account login), GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell, Remote Development, and a real Marketplace trial or purchase.</li>
+    <li>Not tested: WebStorm's window, GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell, Remote Development, and a real Marketplace trial or purchase. What was run: <a href="how-we-tested.html">how we tested</a>.</li>
     <li>Preview runs shell scripts, so it is offered on Linux and macOS; it was run on Linux. It ends at the first command of your own in its tab.</li>
-    <li>The IDE's licence dialog says "Subscription"; Scrollgrep's licence is perpetual (you pay once). A plugin installed from the zip makes the IDE say it "cannot update" it; that is expected.</li>
   </ul>
 
   <h2 id="details">Details</h2>
   <ul>
-    <li>Sold through JetBrains Marketplace as a perpetual licence: every update included.</li>
+    <li>Sold through JetBrains Marketplace as a perpetual license: every update included.</li>
     <li>Keeps a copy of Terminal output in memory, within the limits above; no network calls, no telemetry (<a href="../privacy.html">privacy</a>).</li>
   </ul>
-  <p style="font-size:14px;color:var(--muted)">Screenshots: IntelliJ IDEA 2025.3 on a jsoup clone (MIT) with one assertion changed, and IntelliJ IDEA and PyCharm 2026.3 on a small Gradle project and a Python sync job, as each caption says. IntelliJ IDEA is a trademark of JetBrains s.r.o.; Scrollgrep is not affiliated with JetBrains.</p>
+  <p style="font-size:14px;color:var(--muted)">Screenshots: IntelliJ IDEA 2025.3 on a jsoup clone (MIT) with one assertion changed, IntelliJ IDEA 2026.3 on a small Gradle project and a sync log, and PyCharm 2026.3, as each caption says. IntelliJ IDEA is a trademark of JetBrains s.r.o.; Scrollgrep is not affiliated with JetBrains.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>

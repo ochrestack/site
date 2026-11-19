@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Scrollgrep quick start: live filter for the Terminal in JetBrains IDEs</title>
-<meta name="description" content="Install Scrollgrep in a JetBrains IDE 2025.3 or later, filter a Terminal tab live with text or grep -E patterns, and with a licence click stack frames, filter one command with context, keep patterns per project and get alerts.">
+<meta name="description" content="Install Scrollgrep in a JetBrains IDE 2025.3 or later, filter a Terminal tab live with text or grep -E patterns, and with a license click stack frames, filter one command with context, keep patterns per project and get alerts.">
 <link rel="canonical" href="https://ochrestack.com/scrollgrep/quick-start.html">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <style>
@@ -50,6 +50,7 @@
     .narrow-only { display: block; }
     .scroll-x img.ui { max-width: none; width: 764px; }
     .scroll-x img.ui[width="1200"] { width: 960px; }
+    .scroll-x img.ui[width="1260"] { width: 1008px; }
     .scroll-x img.ui[width="960"] { width: 768px; }
     .swipe-wrap { position: relative; }
     .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
@@ -77,111 +78,71 @@
 </header>
 <main>
   <h1>Scrollgrep quick start</h1>
-  <p>Installing Scrollgrep, the free live filter, and what the licence adds. Back to the <a href="index.html">Scrollgrep product page</a>.</p>
+  <p>Installing Scrollgrep, the free live filter, and what the license adds. Back to the <a href="index.html">Scrollgrep product page</a>.</p>
 
   <h2 id="install">Install (JetBrains IDEs 2025.3 or later)</h2>
   <ol>
-    <li><a href="download/scrollgrep-1.1.6.zip">Download scrollgrep-1.1.6.zip</a> (free; keep it zipped). In the IDE, open <strong>Settings | Plugins</strong>, click <strong>⚙</strong>, choose <strong>Install Plugin from Disk…</strong>, pick the zip and click <strong>OK</strong>, then <strong>Accept</strong> the third-party plugin notice.</li>
-    <li>Restart the IDE: it loads plugins with paid features only after a restart. Settings may close without showing a <strong>Restart IDE</strong> button (IntelliJ IDEA and PyCharm 2026.3 both do). Then use Find Action (Ctrl+Shift+A): <strong>Restart IDE</strong>. Or open <strong>Settings | Plugins</strong> again, type <em>Scrollgrep</em> in the search field, and click <strong>Restart IDE</strong> on its row. Or choose <strong>File | Exit</strong> and start the IDE again. A <strong>Scrollgrep</strong> tool window then appears on the right. The IDE may then show "Cannot update plugin": it cannot look for updates of a plugin installed from a file. It is the IDE's message, not an error of the plugin, and it can come back at later starts.</li>
-    <li>Check that <strong>Settings | Tools | Terminal | Engine</strong> is <strong>Reworked</strong>, the default since 2025.2. Scrollgrep does not see Classic terminal tabs.</li>
+    <li><a href="download/scrollgrep-1.1.7.zip">Download scrollgrep-1.1.7.zip</a> (free; keep it zipped). In the IDE, open <strong>Settings | Plugins</strong>, click <strong>⚙</strong>, choose <strong>Install Plugin from Disk</strong>, pick the zip and click <strong>OK</strong>, then <strong>Accept</strong> the third-party plugin notice.</li>
+    <li>Restart the IDE: it loads plugins with paid features only after a restart. Click <strong>Restart IDE</strong> on the plugin's row, or answer the IDE's restart prompt; if Settings offers neither, use <strong>File | Exit</strong> and start the IDE again.</li>
+    <li>After the restart a balloon says "Scrollgrep is installed" and which keys to press; the icon on the right edge opens the panel too. The IDE may also show "Cannot update plugin": it cannot look for updates of a plugin installed from a file. That is the IDE's message, not an error, and it can come back at later starts.</li>
+    <li>Check that <strong>Settings | Tools | Terminal | Engine</strong> is <strong>Reworked</strong>, the default. Scrollgrep does not see Classic terminal tabs.</li>
   </ol>
-  <p>Scrollgrep is not on the JetBrains Marketplace yet. Once it is, you can also type <em>Scrollgrep</em> in the Plugins search field and click <strong>Install</strong>, and get updates from there.</p>
-  <p>Tested on Linux in IntelliJ IDEA 2025.3 (the full test suite, with real Bash, Zsh and sh terminals) and 2026.3 (the free filter on fast output, with both of its terminal emulators), PyCharm 2025.3 (install and filter check) and PyCharm 2026.3 (filter, Regex hint, and the licensed features with a test licence: Python frame, last command with context, preset, watch alert), and in WebStorm 2025.3 (the same test suite, run headless on WebStorm's own platform: no window was opened), and WebStorm 2026.3 (started headless with Scrollgrep installed from the zip: it loaded; no filter was run). What has not been tested is listed under <a href="#limits">Known limits</a>.</p>
+  <p>Scrollgrep is not on the JetBrains Marketplace yet; once it is, you can also install it from the Plugins search field. What was run, and where: <a href="how-we-tested.html">how we tested</a>.</p>
 
   <h2 id="filter">Live filter (free)</h2>
   <ol>
-    <li>Open a Terminal tab and run something that prints a lot, such as your test suite.</li>
-    <li>Press <strong>Ctrl+Shift+G</strong> while the terminal has focus. Or right-click the tab's title, or inside the output, and choose <strong>Filter with Scrollgrep</strong>. Or use Find Action (Ctrl+Shift+A): <strong>Filter Terminal Output</strong>.</li>
-    <li>The filter field has focus. Type text, or tick <strong>Regex</strong> (Alt+X) for a pattern such as <code>FAIL|Exception</code>: with Regex off, <code>|</code> is matched as typed, and when such a pattern finds nothing the panel says so and offers <strong>Turn on Regex</strong>. The panel lists the matching lines the tab still holds and keeps adding new matches while the command runs.</li>
+    <li>Run something that prints a lot in a Terminal tab, such as your test suite.</li>
+    <li>Press <strong>Ctrl+Shift+G</strong> in the terminal, or right-click the tab's title and choose <strong>Filter with Scrollgrep</strong>.</li>
+    <li>Type text, or tick <strong>Regex (grep -E)</strong> (Alt+X) for a pattern such as <code>FAIL|Exception</code>. The panel lists the matching lines the tab holds and adds new ones while the command runs.</li>
     <li>Press <strong>Escape</strong> to go back to the terminal. The panel keeps filtering.</li>
   </ol>
-  <figure class="real-size"><p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/live-filter-window.png"><img class="ui" src="img/live-filter.png" alt="The Scrollgrep panel filtering FAIL|Exception with Match case and Regex on: 6 matching lines from jsoup's Maven test run, above the Terminal tool window" width="960" height="728" loading="lazy"></a></div><figcaption>The free filter on a finished Maven run. The line with the lock is all you see of the licensed features without a licence.</figcaption></figure>
-  <figure class="real-size"><p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/pycharm-regex-hint-window.png"><img class="ui" src="img/pycharm-regex-hint.png" alt="PyCharm 2026.3: the Scrollgrep panel with skipped|ERROR typed and Regex off shows 0 matching lines and the line: Regex is off: '|' is matched as typed. Turn on Regex. Below, the Terminal shows tail -f of a sync log with WARNING lines that contain skipped" width="1200" height="740" loading="lazy"></a></div><figcaption><code>skipped|ERROR</code> with Regex off finds nothing, so the panel says why; <strong>Turn on Regex</strong> fixes it in one click.</figcaption></figure>
+  <figure class="real-size">
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/regex-hint.png"><img class="ui" src="img/regex-hint.png" alt="IntelliJ IDEA 2025.3: the Scrollgrep panel with FAIL|Exception typed and Regex off shows 0 matching lines, and under the count the note: Regex is off: | is matched as typed. Turn on Regex" width="1260" height="760" loading="lazy"></a></div>
+    <figcaption>FAIL|Exception with Regex off finds nothing, so the panel says why; Turn on Regex fixes it in one click.</figcaption>
+  </figure>
   <ul>
-    <li><strong>Match case</strong>, <strong>Words</strong>, <strong>Regex</strong> and <strong>Invert</strong> mean what grep's <code>-i</code> (off), <code>-w</code>, <code>-E</code> and <code>-v</code> mean. Regex uses <code>grep -E</code> syntax: <code>[[:digit:]]+</code> and <code>\&lt;word\&gt;</code> work as in grep, and as in grep <code>\d</code> means the letter "d"; the panel says so and suggests <code>[0-9]</code>.</li>
-    <li>A progress bar or spinner redrawn in place appears once, with its final text.</li>
-    <li>An invalid pattern is outlined in red with grep's reason, and the results stay as they were. Clearing the field clears the results.</li>
-    <li>A line whose first match would sit past the panel's right edge is shown from just before the match, after "…"; hover over it for the whole line.</li>
+    <li><strong>Match case</strong>, <strong>Words</strong>, <strong>Regex (grep -E)</strong> and <strong>Invert</strong> mean what grep's <code>-i</code> (off), <code>-w</code>, <code>-E</code> and <code>-v</code> mean. As in grep, <code>\d</code> means the letter "d"; the panel says so and suggests <code>[0-9]</code>. An invalid pattern is outlined in red with grep's reason.</li>
+    <li>The panel follows the Terminal tab you select, and keeps matches after the Terminal trims its history (up to 32 MB and 200,000 lines per tab; Settings | Tools | Scrollgrep). A panel opened after a run sees only what the Terminal still holds. A line wider than the panel shows its whole text as a tooltip. On IDE 2026.3, "some lines missing" means the Terminal itself skipped output: click <strong>use JediTerm for new tabs</strong> and run the command again (<a href="how-we-tested.html#fast">details</a>).</li>
   </ul>
-  <figure class="real-size"><p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/long-line-from-match-window.png"><img class="ui" src="img/long-line-from-match.png" alt="IntelliJ IDEA 2026.3 with etl.py open: the Scrollgrep panel filters 'rejected' and shows 31 matching lines; each long timestamped log line starts with '… 2026_11.csv' and shows the highlighted word rejected followed by the reason, such as bad amount 'N/A' or unknown policy id. Below, the Terminal ends with: claims_etl: load finished: 2970 rows loaded, 30 rejected" width="1200" height="728" loading="lazy"></a></div><figcaption>Free, in IntelliJ IDEA 2026.3: a claims load whose rejected rows give the reason at the end of a long line. Each line starts just before "rejected", so the reason is in view.</figcaption></figure>
-  <ul>
-    <li>The panel follows the Terminal tab you select.</li>
-    <li>Matches stay in the panel after the Terminal trims its own history, for output that reached the Terminal while the panel showed the tab (or the tab had a filter). A panel opened after a run sees only what the Terminal still holds. On IDE 2026.3, see <a href="#fast">fast output</a>.</li>
-    <li>The panel keeps up to 32 MB and 200,000 lines per tab (<strong>Settings | Tools | Scrollgrep</strong>, 4 to 1,024 MB). Past the limit the oldest lines that do not match go first. A tab you leave with an empty filter is not kept.</li>
-    <li>Changing the pattern on a long session does not freeze the IDE: long re-filters finish in the background, and the next keystroke cancels them.</li>
-  </ul>
-
-  <h2 id="kept">Keep what the Terminal forgets</h2>
-  <p>The Terminal trims its own history, and its search only finds what it still holds. Open Scrollgrep on a tab before a long run and the matching lines stay in its panel.</p>
-  <figure class="real-size"><p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/kept-after-trim-263-window.png"><img class="ui" src="img/kept-after-trim-263.png" alt="IntelliJ IDEA 2026.3 after five Gradle test runs of a 164-test project with 2 failing tests: the Scrollgrep panel filtering FAILED shows 70 matching lines, starting with the first run's LedgerTest and MoneyTest failures; below, the Terminal's own search for 'failed' counts 35/35, because the Terminal has trimmed the earlier runs" width="1200" height="728" loading="lazy"></a></div><figcaption>Free, in IntelliJ IDEA 2026.3: five Gradle test runs with the debug log, about 11,000 lines. The Terminal's own search finds 35; Scrollgrep, open before the runs, lists all 70 lines with "failed".</figcaption></figure>
-
-  <h2 id="fast">Fast output on IDE 2026.3</h2>
-  <p>The 2026.3 IDEs start new Terminal tabs on the Ghostty emulator. When output prints faster than it can show it (a <code>cat</code> of a large file, a generator at full speed), the Terminal shows only its screen until the output pauses, then the last few thousand lines: what scrolled past in between never reaches the Terminal's text, so no plugin can read it. Scrollgrep keeps every line that does arrive, in order, and lines up what the Terminal sends after a pause with what it already holds, so a build with pauses between bursts loses nothing. Where lines are missing, the results show <em>⋯ the Terminal skipped lines here ⋯</em>, the status line says "some lines missing", and the panel offers <strong>use JediTerm for new tabs</strong>.</p>
-  <p>That link switches the IDE's own setting (Registry: <code>terminal.use.ghostty.emulator</code>) off, and only when you click it. New tabs then run on the JediTerm emulator, as in 2025.3, which passes every line on; no restart is needed. Open a new tab and run the command again. To switch back: Find Action (Ctrl+Shift+A), <strong>Registry…</strong>, untick or tick <code>terminal.use.ghostty.emulator</code>.</p>
-  <figure class="real-size"><p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/skipped-output-window.png"><img class="ui" src="img/skipped-output.png" alt="IntelliJ IDEA 2026.3: cat of a 97,317-line sync log in a Terminal tab on the Ghostty emulator. The Scrollgrep panel filters 'skipped row' and shows rows '⋯ the Terminal skipped lines here ⋯' between matching lines, the status line ends with 'some lines missing', and a notice reads: The Terminal skipped output that printed too fast. Keep every line: use JediTerm for new tabs" width="1200" height="728" loading="lazy"></a></div><figcaption>Where the Terminal skipped lines, the results say so; the link starts new tabs on JediTerm.</figcaption></figure>
-
-  <h3 id="fewer">Fewer matches than grep?</h3>
-  <ul>
-    <li>A "⋯ the Terminal skipped lines here ⋯" row or "some lines missing": the Terminal skipped output (above). Use JediTerm for new tabs and run the command again.</li>
-    <li>The panel was opened after the run: it sees only what the Terminal still holds (about 1 MB of output by default). Open it before the run, or leave the tab with a filter.</li>
-    <li>More than 32 MB or 200,000 lines in the tab: the oldest lines go first; the status line says how many matches were dropped. Raise the limits in <strong>Settings | Tools | Scrollgrep</strong>.</li>
-    <li>Regex off: <code>a|b</code> is matched as typed (the panel offers <strong>Turn on Regex</strong>). Match case off finds upper and lower case, as <code>grep -i</code>.</li>
-  </ul>
-
   <h2 id="preview">Preview: try the licensed features first</h2>
-  <p>Without a licence the panel shows <em>Try them on sample output first: <strong>Preview</strong></em>. Preview writes a small sample project to a temporary folder, opens a Terminal tab named <strong>Scrollgrep preview</strong> there, and runs <code>./gradlew test</code>: a script that prints a sample Gradle test run with two failures (no Gradle runs). In that tab, links, Scope, Context, extra patterns, presets and Watch work without a licence.</p>
+  <p>Without a license the panel shows <strong>Try them on sample output first: Preview</strong>. It opens a Terminal tab named Scrollgrep preview and prints a sample Gradle test run with two failures (Gradle is not run). In that tab only, the licensed features work without a license:</p>
   <ol>
     <li>Click the frame <code>MoneyTest.java:16</code>: the sample's test opens at line 16.</li>
-    <li>Pick <strong>Scope</strong>: Last command and set <strong>Context</strong> to 3.</li>
-    <li><strong>Add pattern</strong> <code>sync finished</code>, tick <strong>Watch</strong>, hide the Terminal (Shift+Escape) and run <code>./sync-orders</code> in the preview tab: a notification arrives with "sync finished with 3 skipped rows", and <strong>Show in Scrollgrep</strong> selects it.</li>
+    <li>Pick the sample command under <strong>Scope</strong> and set <strong>Context</strong> to 3.</li>
+    <li>Add pattern <code>sync finished</code>, tick <strong>Watch</strong>, hide the Terminal (Shift+Escape) and run <code>./sync-orders</code> in the tab: a notification arrives.</li>
   </ol>
-  <p>The preview ends for that tab, for good, at the first command of your own in it (anything but <code>./gradlew test</code> and <code>./sync-orders</code>) or past 1,000 lines of output; the panel then says "Preview ended". Your other tabs stay free-only. Preview runs shell scripts, so it is offered on Linux and macOS; it was run on Linux, in IntelliJ IDEA and PyCharm 2026.3.</p>
-  <figure class="real-size"><p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/preview-frame-opened-window.png"><img class="ui" src="img/preview-frame-opened.png" alt="IntelliJ IDEA 2026.3, preview tab: the frame 'at com.example.ledger.MoneyTest.roundsHalfUp(MoneyTest.java:16)' selected in the Scrollgrep panel, and the editor showing the sample's MoneyTest.java with the caret on line 16, the failing assertEquals" width="1200" height="728" loading="lazy"></a></div><figcaption>Preview, IntelliJ IDEA 2026.3: the frame clicked, the sample's test open at line 16.</figcaption></figure>
-  <figure class="real-size"><p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/preview-watch-alert-window.png"><img class="ui" src="img/preview-watch-alert.png" alt="PyCharm 2026.3 with the Terminal and the Scrollgrep panel hidden: the Notifications panel shows 'Scrollgrep: “sync finished” in Scrollgrep preview' with the line '2026-11-16 02:00:09,880 ERROR sync_orders: sync finished with 3 skipped rows' and the link Show in Scrollgrep" width="1200" height="728" loading="lazy"></a></div><figcaption>Preview, PyCharm 2026.3: the watch alert from the sample sync job, with the Terminal hidden.</figcaption></figure>
+  <p>The preview ends for that tab at the first command of your own in it; your other tabs stay free-only. It is offered on Linux and macOS.</p>
+  <figure class="real-size">
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/scope-list.png"><img class="ui" src="img/scope-list.png" alt="IntelliJ IDEA 2025.3 on the Scrollgrep preview tab: the Scope list open, with All output, Last command and the sample command ./gradlew test with its directory and exit 1" width="1260" height="760" loading="lazy"></a></div>
+    <figcaption>Scope lists each command with its directory and exit code (Preview, IntelliJ IDEA 2025.3).</figcaption>
+  </figure>
 
-  <h2 id="links">Links in the results (licensed)</h2>
-  <p>Paths and stack-trace lines in the results open the file at the line, and at the column when one is printed: absolute paths; paths relative to the directory the command ran in, then to the project, then the one project file whose path ends with the printed path (when that is unique); <code>path:line</code> and <code>path:line:column</code>; JVM frames (matched by package), Python tracebacks, Node.js frames and Go panics. A path that matches several files opens a chooser; a path that matches nothing, or contains spaces, stays plain text.</p>
-  <figure class="real-size"><p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/link-opened-at-line-window.png"><img class="ui" src="img/link-opened-at-line.png" alt="The stack frame ElementTest.java:138 selected in the panel; the editor shows ElementTest.java with the caret on line 138" width="1200" height="558" loading="lazy"></a></div><figcaption>One click on <code>ElementTest.java:138</code> in a JVM frame.</figcaption></figure>
-
-  <h2 id="scope">One command, with context (licensed)</h2>
-  <p>With the IDE's shell integration (tested with Bash and Zsh), <strong>Scope</strong> limits the filter to all output, the last command, or a command picked from a list that shows each command line, its directory and its exit code, also for a command that printed more than the Terminal keeps. <strong>Context</strong> shows that many lines before and after each match, like <code>grep -C</code>, with <code>--</code> between groups. In a shell without integration, such as <code>sh</code>, the panel says why the scope is unavailable and filters all output.</p>
-  <figure class="real-size"><p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/command-list-window.png"><img class="ui" src="img/command-list.png" alt="The Scope list open: All output, Last command, 'ls --color=auto docs · /opt/sample/jsoup · exit 2', 'git status --short · /opt/sample/jsoup · exit 0' and 'mvn -B test -DtrimStackTrace=false · /opt/sample/jsoup · exit 1'" width="1200" height="558" loading="lazy"></a></div><figcaption>Three earlier commands, each with its directory and exit code.</figcaption></figure>
-
-  <h2 id="patterns">Several patterns, kept per project (licensed)</h2>
-  <p><strong>Add pattern</strong> adds a row with its own Include or Exclude choice, toggles, highlight colour and <strong>Watch</strong> box. Up to eight patterns work at once, the filter field counting as one; a ninth is refused with a message. A line is shown when it matches an include pattern and no exclude pattern. <strong>Save…</strong> keeps the set as a named preset in this project; the <strong>Preset</strong> list brings it back.</p>
-  <figure class="real-size"><p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/patterns-preset-window.png"><img class="ui" src="img/patterns-preset.png" alt="Three pattern rows: Include 'Tests run: [0-9]+, Failures: [1-9]' in red, Include 'BUILD (SUCCESS|FAILURE)' in blue with Watch ticked, Exclude 'Time elapsed'; the preset 'maven failures' saved for this project; two result lines highlighted red and blue" width="1200" height="636" loading="lazy"></a></div><figcaption>Two include patterns in two colours, one exclude, saved as "maven failures".</figcaption></figure>
-
-  <h2 id="watch">Watch alerts (licensed)</h2>
-  <p>A pattern with <strong>Watch</strong> on raises one IDE notification with the matching line when it appears in any Terminal tab of the project, even with the Terminal hidden. Matches within 2 seconds (Settings, 1 to 60) are grouped into one notification with a count. <strong>Show in Scrollgrep</strong> opens the panel on that tab with the line selected; if the tab was closed meanwhile, a note says so.</p>
-  <figure class="real-size"><p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/watch-click-through-window.png"><img class="ui" src="img/watch-click-through.png" alt="After Show in Scrollgrep: the panel with the preset 'maven failures' and the last BUILD FAILURE line selected" width="1200" height="728" loading="lazy"></a></div><figcaption>After <strong>Show in Scrollgrep</strong>: the line that raised the alert, selected.</figcaption></figure>
-
-  <h2 id="licence">Licence and trial</h2>
-  <p>The live filter is free and does not lock, with or without a licence or a trial. Everything else needs a JetBrains Marketplace licence: a perpetual licence, $12 once, the same for personal and commercial use, every update included, nothing renews. The 30-day trial starts from the IDE's licence dialog, through <strong>Try or buy</strong> in the panel; the dialog asks you to log in to your JetBrains Account. The licence and the trial become available when the JetBrains Marketplace listing is live; until then the free filter works, <strong>Try or buy</strong> cannot start a trial, and <a href="#preview">Preview</a> shows the licensed features on sample output. The licence dialog is the IDE's own, not Scrollgrep's: it says "Subscription" even though Scrollgrep's licence is perpetual. You pay $12 once, and nothing renews. Without a licence the panel shows one line with the price instead of the licensed controls; nothing pops up at project open or when a trial ends.</p>
-
-  <h2 id="measured">Measured</h2>
+  <h2 id="licensed">The licensed features</h2>
   <ul>
-    <li>IntelliJ IDEA 2025.3, headless, Linux, 4 CPUs: 200,000 lines at full speed in a real Bash tab, five runs. Each run: 2,061 matching lines, the same as <code>grep -c</code>. Matches appeared a median of 0.52 to 0.66 s after they were printed, and the longest block of the UI thread while they were added was 65.7 ms.</li>
-    <li>IntelliJ IDEA 2026.3, with its windows, Linux, each command in a new tab with the filter set first. Five Gradle test runs: 70 of 70 lines with "failed" (the Terminal's own search found 35). <code>tail -f</code> of a sync log written at about 4,000 lines a second: 10,470 of 10,470.</li>
-    <li>The same session, on the Ghostty emulator, output at full speed: <code>cat</code> of that sync log kept 988 of 10,470 (the Terminal itself held 859 at the end), <code>cat</code> of the Gradle log 35 of 70, the 200,000-line generator 85 of 2,062, each marked "some lines missing". How much Ghostty skips changes from run to run: the screenshot above is another run of the same <code>cat</code>, with 918. In new tabs on JediTerm: 10,470, 70 and 2,062, every line.</li>
+    <li><strong>Links.</strong> Paths and stack-trace lines in the results open the file at the line: absolute and relative paths, <code>path:line:column</code>, JVM frames, Python tracebacks, Node.js frames and Go panics. A path that matches several files opens a chooser. Without a license, a click on such a line says what a license does.</li>
+    <li><strong>One command, with context.</strong> Scope limits the filter to the last command or one picked from a list (command, directory, exit code); Context shows lines around each match, like <code>grep -C</code>. Needs the IDE's shell integration (tested with Bash and Zsh).</li>
+    <li><strong>Several patterns.</strong> Add pattern adds a row with its own Include or Exclude choice and color. A line shows if it matches any Include pattern (the filter field is the first) and no Exclude pattern; up to eight, saved as presets per project.</li>
+    <li><strong>Watch alerts.</strong> A pattern with Watch on raises an IDE notification with the matching line when it appears in a Terminal tab Scrollgrep can filter, even with the Terminal hidden.</li>
   </ul>
+  <figure class="real-size">
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/pattern-row.png"><img class="ui" src="img/pattern-row.png" alt="IntelliJ IDEA 2025.3 on the Scrollgrep preview tab: an extra pattern row with a green color square, Include, the text roundsHalfUp, and the boxes Match case, Words, Regex and Watch; above it the line explaining how the filter field and the rows combine" width="1260" height="760" loading="lazy"></a></div>
+    <figcaption>A pattern row: its color, Include or Exclude, and its own boxes (Preview, IntelliJ IDEA 2025.3).</figcaption>
+  </figure>
+
+  <h2 id="license-trial">License and trial</h2>
+  <p>The live filter is free and never locks. Everything else (Preview aside) needs a JetBrains Marketplace license: perpetual, $12 once, the same for personal and commercial use, every update included, nothing renews. The 30-day trial starts under <strong>Start trial</strong> in the IDE's license dialog, which <strong>Try or buy</strong> in the panel opens (it asks you to log in to your JetBrains Account). The dialog is the IDE's own and says "Subscription" even though the license is perpetual. License and trial begin when the Marketplace listing is live; until then Preview shows the licensed features on sample output.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>
-    <li>Results show in Scrollgrep's own panel; lines are not hidden inside the terminal. Results are plain text, without the terminal's colours, and show tabs as spaces.</li>
-    <li>Reworked terminal engine on IDE 2025.3 or later only. SSH sessions (Classic engine) and full-screen programs such as vim, less and htop are not filtered.</li>
-    <li>With Bash, the IDE reports only the first part of a compound command line in the Scope list.</li>
-    <li>Clearing the terminal (<code>clear</code>, Clear Buffer) clears that tab's results too.</li>
-    <li>IDE 2026.3 with the Ghostty emulator (its default): output that prints faster than the Terminal shows it is partly skipped by the Terminal itself; Scrollgrep marks where (it cannot know how many lines) and offers JediTerm, which keeps every line (<a href="#fast">fast output</a>).</li>
-    <li>Tested on Linux in IntelliJ IDEA and PyCharm 2025.3 and 2026.3 (windows opened), and in WebStorm 2025.3 (the test suite, headless: no window), and WebStorm 2026.3 (started headless with the plugin loaded). Not tested yet: WebStorm's window and the filter in WebStorm 2026.3 (JetBrains' Plugin Verifier finds Scrollgrep compatible with it; no window was opened), GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell, Remote Development, and a real Marketplace trial or purchase.</li>
-    <li>Not covered: the Run, Debug, Build and Services consoles, Run configurations that use a terminal console, Remote Development and Code With Me clients. English only.</li>
-    <li>The Terminal API Scrollgrep uses is marked experimental by JetBrains, so a new IDE version can need a compatibility update.</li>
+    <li>Results show in Scrollgrep's own panel as plain text. SSH sessions, vim, less, htop and the Run, Debug and Build consoles are not filtered.</li>
+        <li>Not tested: WebStorm's window, GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell, Remote Development, and a real Marketplace trial or purchase (<a href="how-we-tested.html#not-run">details</a>).</li>
   </ul>
 
   <h2 id="privacy">Privacy</h2>
-  <p>Scrollgrep reads the output of the Terminal tabs in the open project and keeps a copy of it in memory, not only the matching lines, within the limits above, for the tab its panel shows and tabs left with a filter. Patterns and presets are stored in the project's workspace settings; Preview writes its sample project to a temporary folder. It writes no output to disk, makes no network calls, and collects and sends nothing. The licence check is done by the IDE through JetBrains Marketplace licensing. See also the <a href="../privacy.html">privacy policy</a>.</p>
+  <p>Scrollgrep keeps a copy of the output of the Terminal tabs it filters in memory, within the limits above. Patterns and presets are stored in the project's workspace settings. It writes no output to disk, makes no network calls, and collects and sends nothing (<a href="../privacy.html">privacy policy</a>).</p>
 
   <h2 id="support">Support</h2>
-  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE version (Help | About), the shell you use, and what you saw. We answer every message, usually within one business day. Bug reports and feature requests are welcome at the same address.</p>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the IDE version (Help | About), the shell you use, and what you saw. We answer every message, usually within one business day.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>

@@ -35,6 +35,7 @@ Allow: /histsight/
 Allow: /histsight/quick-start.html
 Allow: /scrollgrep/
 Allow: /scrollgrep/quick-start.html
+Allow: /scrollgrep/how-we-tested.html
 Allow: /restorwell/
 Allow: /restorwell/quick-start.html
 Allow: /rolemend/
