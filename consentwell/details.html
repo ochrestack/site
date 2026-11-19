@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consentwell in detail: what the check does, other consent plugins, Pro, limits</title>
+<meta name="description" content="What Consentwell checks and how, how it treats another consent plugin, what Consentwell Pro adds, and the limits.">
+<link rel="canonical" href="https://ochrestack.com/consentwell/details.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+<style>
+  @media (min-width: 801px) { figure.wide { width: min(1000px, calc(100vw - 48px)); margin-left: 50%; transform: translateX(-50%); } }
+  @media (max-width: 600px) { .scroll-x img.ui { width: 960px; } }
+</style>
+<style>
+  /* One left edge for the heading, the pictures, the buttons and the text on a wide screen (round 2, R2-12). */
+  @media (min-width: 801px) { header, main, footer { max-width: 1048px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Consentwell in detail</h1>
+  <p>What the check does while it runs, how it treats a consent plugin it does not know, what Consentwell Pro adds to the summary, and what Consentwell does not do. The short version is on the <a href="quick-start.html">quick start</a>; back to the <a href="index.html">Consentwell product page</a>; what was run to test it is on <a href="how-we-tested.html">How Consentwell was tested</a>.</p>
+
+  <h2 id="during">What the check does</h2>
+  <p><strong>While it runs.</strong> The page opens in the check window as a visitor who is not logged in and has no consent stored. Consentwell clicks Reject, reloads the page, and watches each load while it moves the mouse, presses a key, touches and scrolls to the bottom (at most 40&nbsp;steps), until 6&nbsp;seconds after the last input with nothing new loading.</p>
+  <p><strong>Server-side check only</strong> is the second button: no check window and no Reject click. It fetches the page from your server and lists the script and frame tags in the HTML and the cookies the response sets, HttpOnly ones included. A page that forbids being shown in a frame (<code>X-Frame-Options: DENY</code>) gets this check automatically, and the screen says so.</p>
+  <p><strong>Which pages.</strong> A published page of this site. A page that is not published (a draft, a private or a scheduled page) answers 404 to a visitor, so the screen says that the page exists but is not published. An address that is not a page (a 404, a JSON address, WordPress&rsquo;s login or admin) stops with one sentence and is not stored.</p>
+  <figure class="wide">
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/last-checks.png" alt="The Last 20 checks table: the page, the date, banner shown, Reject visible, third-party requests before a choice, third-party requests after Reject, cookies after Reject, and View and Check again buttons; five rows, one of them 'no banner found'" loading="lazy" width="1424" height="641"></div></div>
+    <figcaption>The last 20&nbsp;checks, each with <strong>View</strong> and <strong>Check again</strong>.</figcaption>
+  </figure>
+  <figure class="wide">
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/copy-as-text.png" alt="Under the heading 'Share this result', the Copy as text button after a click, with 'Copied.' beside it, above a plain-text summary: 'Consentwell check', the page address, the date, WordPress 7.1.4, Consent plugin: Complianz 7.5.7, the method, and the findings" loading="lazy" width="1424" height="779"></div></div>
+    <figcaption><strong>Copy as text</strong>: the page address, plugin versions and every finding with its address, for your consent plugin’s support forum.</figcaption>
+  </figure>
+  <figure class="wide">
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/site-health.png" alt="Tools &gt; Site Health with the Consentwell item opened: '4 third-party addresses requested on the home page after Reject', the date of the last check, 'Consent plugin: Complianz 7.5.7', 'This reports technical facts from one check, not legal advice' and an Open Consentwell link" loading="lazy" width="1424" height="251"></div></div>
+    <figcaption><strong>Tools &gt; Site Health</strong> shows “Consent banner check (Consentwell)” from your last check of the home page.</figcaption>
+  </figure>
+
+  <h2 id="reading">Reading the result</h2>
+  <ul>
+    <li><strong>A banner in the HTML but not on screen:</strong> the result says what hides it (a class such as <code>cmplz-hidden</code>, <code>display: none</code>, zero size, off screen; the element is on a second line) and a <strong>Likely cause</strong> box gives one paragraph for it.</li>
+    <li><strong>Causes it can name:</strong> no <code>wp_footer()</code> in the theme; a page on Complianz&rsquo;s list of excluded pages; a script error; the consent plugin&rsquo;s own files answering an error; a style rule that hides the banner; a hiding class that the consent plugin&rsquo;s script has not removed; a page-cache copy that differs; Global Privacy Control with the consent plugin set to respect it (hidden by design, nothing is broken).</li>
+    <li><strong>The lists:</strong> each request has a type, its full address and a service name where it is well known, beside the cookies the page can read. The consent plugin&rsquo;s own cookies are counted, not listed. A request that starts later, or only after a real click, is not listed.</li>
+  </ul>
+
+<h2 id="other">Another consent plugin</h2>
+  <p>Complianz and CookieYes are recognised by name. For another banner, Consentwell finds it when it is visible in the check window, has buttons labelled like a choice (Accept, Reject) and mentions cookies or consent. The screen then says &ldquo;Your turn: click Reject in the check window below.&rdquo; Click the banner&rsquo;s Reject, and Consentwell continues by itself (or click <strong>I clicked Reject, continue</strong>).</p>
+  <p>A banner in a closed shadow root is not found, and Cookiebot&rsquo;s dialog was not tested with a Cookiebot account. Pro cannot take a manual Reject: Pro clicks Reject on Complianz and CookieYes banners; on any other banner it lists what loads before any choice only.</p>
+  <p id="not-in-window"><strong>Why does the banner show to my visitors but not in the check?</strong> The check window is a frame, and some banners do not show inside a frame: Cookie Notice &amp; Compliance 3.1.19 stops its own script when a page is in one, and WPConsent 1.2.1 did not appear either (the plugins that were run are under <a href="index.html#works-with">Works with</a>).</p>
+  <p>Consentwell reports such a banner as in the page HTML but not shown in the check window, with a likely cause, lists what loads before any choice and does not click Reject. Open the page in a private window to see what visitors see. Pro counts these pages on their own summary line. A banner that a script builds only for a top-level window is found by neither check; the result then says &ldquo;No consent banner found&rdquo; and suggests the same private window.</p>
+  <figure class="wide">
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/cookie-notice-result.png" alt="A Consentwell result for the contact page of the demo bakery with Cookie Notice &amp; Compliance 3.1.19: Banner in the page HTML, yes; Banner visible on screen, not shown in the check window (visitors may see it: open the page in a private window to confirm); Reject button visible on the first layer, not checked; and a yellow Likely cause box saying Cookie Notice &amp; Compliance does not show its banner inside a frame, that visitors who have not chosen yet should see it, and to open the page in a private window to confirm" loading="lazy" width="1424" height="478"></div></div>
+    <figcaption>Cookie Notice &amp; Compliance 3.1.19 with its Reject button on, on the demo bakery: the result says the banner is in the page HTML but not shown in the check window, instead of &ldquo;No consent banner found&rdquo;.</figcaption>
+  </figure>
+
+  
+  <h2 id="pro-detail">Consentwell Pro in detail</h2>
+  <ul>
+    <li>Pro reads the sitemap that <code>robots.txt</code> declares (such as an SEO plugin&rsquo;s), or WordPress&rsquo;s own <code>wp-sitemap.xml</code>.</li>
+    <li><strong>Start over</strong> begins a new run.</li>
+    <li>The summary shows only the counters that carry a number as rows; one line names the cases with no page. The table of every page puts each page&rsquo;s likely cause under its address, and its addresses and cookie names fold out.</li>
+    <li>For pages where Pro cannot click Reject, After Reject reads &ldquo;not checked&rdquo;, a notice says how many pages Reject was clicked on, and the CSV has a &ldquo;Reject clicked&rdquo; column and the before-choice addresses. Pro clicks Reject on Complianz and CookieYes banners; on any other banner it lists what loads before any choice only.</li>
+    <li>Run it again after you fix something: <strong>Since the previous run</strong> lists what is new or gone (pages, addresses after Reject, cookies, banners that stopped showing).</li>
+  </ul>
+  <figure class="wide">
+    <picture><source media="(max-width: 600px)" srcset="img/pro-csv-phone.png" width="642" height="594"><img class="ui" src="img/pro-csv.png" alt="The downloaded CSV of a Consentwell Pro run on the demo bakery, shown as a table with four columns. Our breads: banner shown, no banner found; likely cause, this page has no wp_footer output, the theme's template does not call wp_footer(). Contact page and home page: banner shown, yes; addresses requested after Reject, the Google Fonts stylesheets, google.com/recaptcha/api.js, the Google Maps frame (contact) and the YouTube embed (home), each in full" loading="lazy" width="1424" height="912"></picture>
+    <figcaption>Download CSV: one row per page. Shown here as a table with four of its twelve columns (three on a phone) and no cell changed; in the file, the addresses in a cell are separated by a space.</figcaption>
+  </figure>
+  <figure class="wide">
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/pro-row-cause.png" alt="The Every page table of a Consentwell Pro run on the demo bakery: each page's address with an 'Addresses on this page' fold-out under it. The Our breads row says 'no banner found', and under its address: 'Likely cause: This page has no wp_footer output: the theme's template does not call wp_footer(). Complianz adds its banner there, so the banner cannot appear on this page.', with the before-choice addresses unfolded" loading="lazy" width="1424" height="864"></div></div>
+    <figcaption>Each page’s likely cause is under its address, and its addresses fold out. The CSV has the same cause.</figcaption>
+  </figure>
+  <figure class="wide">
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/pro-other-banner.png" alt="Tools &gt; Consentwell Pro after a run on the demo bakery with GDPR Cookie Compliance instead of Complianz: a notice 'Consentwell clicked Reject on 0 of 9 pages', the summary with 'Pages with third-party requests after Reject: not checked', 9 pages with a banner Consentwell does not recognise by name and 9 with requests before any choice, the line 'No page with: ...' for the cases with none, and the most common addresses before any choice" loading="lazy" width="1424" height="960"></div></div>
+    <figcaption>A run on a banner Consentwell does not recognise by name (GDPR Cookie Compliance 5.3.1 with its Reject button switched on): Reject was not clicked on any page, so After Reject says “not checked”, and the addresses are the ones loaded before any choice.</figcaption>
+  </figure>
+<p id="updates"><strong>Updating.</strong> Neither plugin checks for updates by itself. For a new version, download the new zip (Pro: from your order email or order page) and use <strong>Plugins &gt; Add Plugin &gt; Upload Plugin</strong>, <strong>Install Now</strong> and <strong>Replace current with uploaded</strong>.</p>
+
+  <h2 id="remove">Deactivate or delete</h2>
+  <p>Deactivating stops the check screens; nothing on your site was changed by a check. Deleting the free plugin also removes its stored results (the last 20&nbsp;checks). WordPress will not let you deactivate the free plugin while Pro is active; deactivate Pro first.</p>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>It does not change, fix or block anything on your site, shows no banner of its own and does not edit your consent plugin’s settings. No score, no legal references, no “compliant” verdict.</li>
+    <li>One location, one browser: you see what a visitor from your own location sees in your own browser. Region-based banners may show other visitors something else. Ad blockers and privacy extensions in your browser can block requests or hide banners; use a profile without extensions.</li>
+    <li>Not listed: a request that starts after the watching ended or only after a real click, one inside a frame (the frame itself is listed), files another domain’s stylesheet loads (the stylesheet is listed), and requests the browser cancelled.</li>
+    <li>Consentwell moves the mouse and scrolls for you. A banner that records a choice on scroll would record one; in the tests, the Complianz and CookieYes banners were still on screen after the scrolling.</li>
+    <li>Your own cookies for the site are set aside during a check and put back with their expiry, path and SameSite. A browser without the Cookie Store API (older Firefox and Safari, or a plain-http admin) cannot read expiry dates: there only cookies named like a consent record are set aside, and they come back as session cookies.</li>
+    <li>Not checked: Accept and per-category choices, Google Consent Mode signals, pages behind a login. No schedules or e-mails; checks run when you click. No network-wide runs on multisite.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Neither plugin contacts any server: no account, no licence check, no telemetry, no analytics. Results are stored in your site’s own database (the last 20&nbsp;checks; for Pro, the current and the previous run). Cookie values are never stored or copied, only cookie names. During a check your site’s own pages are opened in the check window and fetched once by your own server; they load the third-party content they normally load for any visitor, which is what the check measures.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your WordPress and PHP versions, your consent plugin and its version, the address you checked, and the text from <strong>Copy as text</strong>.</p>
+</main>
+<script>
+// Hide the right-edge fade of a screenshot box once it is scrolled to its end.
+(function () {
+  document.querySelectorAll(".swipe-wrap .scroll-x").forEach(function (box) {
+    box.addEventListener("scroll", function () {
+      box.parentNode.classList.toggle("at-end", box.scrollLeft + box.clientWidth >= box.scrollWidth - 2);
+    }, { passive: true });
+  });
+})();
+</script>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

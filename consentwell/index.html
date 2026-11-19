@@ -75,7 +75,8 @@
 </style>
 <style>
   .phone-video { display: none; }
-  @media (max-width: 767px) { .wide-video { display: none; } .phone-video { display: block; max-width: 420px; margin: 0 auto; } }
+  .gif-phone { display: none; }
+  @media (max-width: 767px) { .wide-video { display: none; } .phone-video { display: block; max-width: 420px; margin: 0 auto; } .gif-wide { display: none; } .gif-phone { display: block; } }
 </style>
 <style>
   .button.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); padding: 8px 16px; }
@@ -101,7 +102,7 @@
   <a class="hero-link" href="img/contact-result.png"><picture><source media="(max-width: 600px)" srcset="img/after-reject-phone.png" width="498" height="586"><img class="hero" style="margin-bottom:6px" src="img/after-reject.png" alt="Consentwell's After Reject result for the contact page of a demo bakery site running Complianz: '4 third-party requests', the seconds watched, and a table with the full address of each request (two Google Fonts stylesheets, google.com/recaptcha/api.js for Google reCAPTCHA and a maps.google.com frame for Google Maps). On a phone the picture shows the three banner facts, all yes, and the first of those addresses instead. Click for the whole result" width="1424" height="455"></picture></a>
 
   <div class="buy" style="margin-top:10px">
-    <p class="actions" style="margin-bottom:6px"><a class="button alt" id="download" href="download/consentwell.zip?v=1.0.5">Download free</a> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_SaANA61tGSK8IxpAj2kFJu6Cm8WGKOdcY1iqR4KSzf8">Buy Pro for $19</a></p>
+    <p class="actions" style="margin-bottom:6px"><a class="button alt" id="download" href="download/consentwell.zip?v=1.0.6">Download free</a> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_SaANA61tGSK8IxpAj2kFJu6Cm8WGKOdcY1iqR4KSzf8">Buy Pro for $19</a></p>
     <p class="fine" id="trust" style="margin-bottom:0"><strong>Free:</strong> the check, one page at a time. <strong>Pro, $19 once:</strong> checks every page in your sitemap, up to 5,000, in one run.</p>
   </div>
 
@@ -128,23 +129,25 @@
   <h2 id="watch">Watch it work</h2>
   <figure>
     <video class="wide-video" controls preload="none" playsinline poster="video/poster-after-reject.jpg" width="1920" height="1080">
-      <source src="video/consentwell-demo-1080p.mp4" type="video/mp4" media="(min-width: 1600px)">
       <source src="video/consentwell-demo-720p.mp4" type="video/mp4">
     </video>
     <video class="phone-video" controls preload="none" playsinline poster="video/poster-phone.jpg" width="720" height="1280">
       <source src="video/consentwell-demo-phone-720x1280.mp4" type="video/mp4">
     </video>
-    <figcaption>59&nbsp;s, captions only, no sound; the waits are sped up and labelled. Phones get a portrait cut of the same film, and <a href="video/consentwell-demo-1080p.mp4">the 1080p file</a> (63.1 MB) is one click away. <a href="how-we-tested.html#film">How it was recorded</a>.</figcaption>
+    <figcaption>59&nbsp;s, captions only, no sound; the waits are sped up and labelled. It streams as a 9.9&nbsp;MB file (phones: a 7.1&nbsp;MB portrait cut); <a href="video/consentwell-demo-1080p.mp4">the 1080p file</a> (61.4&nbsp;MB) is one click away. <a href="how-we-tested.html#film">How it was recorded</a>.</figcaption>
   </figure>
   <figure>
-    <img src="video/consentwell-after-reject.gif" alt="A 15-second clip of the demo: Consentwell clicks Reject in the Complianz banner, reloads the page and watches it (sped up 5 times), then the result says all 4 addresses requested before any choice were requested again after Reject, and lists them: two Google Fonts stylesheets, google.com/recaptcha/api.js and a Google Maps frame" loading="lazy" width="720" height="405">
-    <figcaption>The same check, 15&nbsp;seconds as a GIF (7.3 MB): Reject clicked, page reloaded and watched, then the counted sentence and the After Reject list.</figcaption>
+    <img class="gif-wide" src="video/consentwell-after-reject.gif" alt="A 15-second clip of the demo: Consentwell clicks Reject in the Complianz banner, reloads the page and watches it (sped up 5 times), then the result says all 4 addresses requested before any choice were requested again after Reject, and lists them: two Google Fonts stylesheets, google.com/recaptcha/api.js and a Google Maps frame" loading="lazy" width="720" height="405">
+    <video class="gif-phone" autoplay muted loop playsinline preload="metadata" width="720" height="406" aria-label="A 15-second clip of the demo: Consentwell clicks Reject in the Complianz banner, reloads the page and watches it (sped up 5 times), then the result says all 4 addresses requested before any choice were requested again after Reject, and lists them: two Google Fonts stylesheets, google.com/recaptcha/api.js and a Google Maps frame">
+      <source src="video/consentwell-after-reject-phone.mp4" type="video/mp4">
+    </video>
+    <figcaption>The same check, 15&nbsp;seconds: Reject clicked, page reloaded and watched, then the counted sentence and the After Reject list (a 6.9&nbsp;MB GIF on a wide screen, a 0.4&nbsp;MB loop on a phone).</figcaption>
   </figure>
 
   <h2>What a check shows</h2>
   <p>Tools &gt; Consentwell: pick a page, click <strong>Check this page</strong>, keep the screen open for about 20&nbsp;seconds.</p>
   <figure class="wide">
-    <picture><source media="(max-width: 600px)" srcset="img/tools-check-window-phone.png" width="640" height="718"><img class="ui" src="img/tools-check-window.jpg" alt="Tools &gt; Consentwell in wp-admin while a check runs: the status line 'Scrolling the page and watching for late requests...', and below it the check window showing the Lindenhof Bakery home page with the Complianz banner (Accept, Deny, View preferences) on screen" loading="lazy" width="1424" height="695"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/tools-check-window-phone.png" width="640" height="718"><img class="ui" src="img/tools-check-window.jpg" alt="Tools &gt; Consentwell in wp-admin while a check runs: the status line 'Scrolling the page and watching for late requests...', and below it the check window showing the Lindenhof Bakery home page with the Complianz banner (Accept, Deny, View preferences) on screen" loading="lazy" width="1424" height="937"></picture>
     <figcaption>The page opens as a logged-out visitor with no consent stored. On Complianz and CookieYes, Consentwell clicks Reject itself and reloads.</figcaption>
   </figure>
   <figure class="wide">
@@ -159,8 +162,8 @@
     <li>Pro clicks Reject on Complianz and CookieYes banners; on any other banner it lists what loads before any choice only.</li>
   </ul>
   <figure class="wide">
-    <picture><source media="(max-width: 600px)" srcset="img/pro-csv-phone.png" width="642" height="594"><img class="ui" src="img/pro-csv.png" alt="The downloaded CSV of a Consentwell Pro run on the demo bakery, shown as a table with four columns. Our breads: banner shown, no banner found; likely cause, this page has no wp_footer output, the theme's template does not call wp_footer(). Contact page and home page: banner shown, yes; addresses requested after Reject, the Google Fonts stylesheets, google.com/recaptcha/api.js, the Google Maps frame (contact) and the YouTube embed (home), each in full" loading="lazy" width="1424" height="912"></picture>
-    <figcaption>Download CSV: one row per page. Shown here as a table with four of its twelve columns (three on a phone) and no cell changed; in the file, the addresses in a cell are separated by a space.</figcaption>
+    <picture><source media="(max-width: 600px)" srcset="img/pro-screen-phone.png" width="640" height="2368"><img class="ui" src="img/pro-screen.png" alt="Tools &gt; Consentwell Pro after a run on the demo bakery: the summary with its rows, then the line 'No page with:' naming the cases with none, then the Every page table with the Contact page and the Our breads page. Under the Our breads address, a Likely cause: this page has no wp_footer output, the theme's template does not call wp_footer()" loading="lazy" width="1424" height="775"></picture>
+    <figcaption>Pro's screen after a run on the demo bakery: the summary, then the table of every page with the likely cause under the address of the page that has no banner. <strong>Download CSV</strong> gives one row per page.</figcaption>
   </figure>
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_SaANA61tGSK8IxpAj2kFJu6Cm8WGKOdcY1iqR4KSzf8">Buy Pro for $19</a></p>
@@ -169,9 +172,9 @@
 
   <h2 id="details">Details</h2>
   <ul>
-    <li><a href="quick-start.html">Quick start</a>: install, first check, reading the result, limits. <a href="how-we-tested.html">How it was tested</a>.</li>
-    <li>Free plugin: <a href="download/consentwell.zip?v=1.0.5">consentwell.zip</a> 1.0.5, tested on WordPress 7.1.4 and 6.5.5, PHP 7.4.33 and 8.3.6, on Linux; source code&nbsp;included&nbsp;(GPL-2.0-or-later).</li>
-    <li>Needs WordPress 6.5+, PHP 7.4+ and an administrator account. In the free plugin, automatic Reject on Complianz and CookieYes; for another banner you click Reject yourself when it appears in the check window (see <a href="#works-with">Works with</a>). Tested in Chromium. Windows and macOS are untested; if it doesn’t work on yours and we cannot fix it, the 14-day refund applies.</li>
+    <li><a href="quick-start.html">Quick start</a>: install, first check, reading the result, Pro. <a href="details.html">In detail</a>: what the check does, other consent plugins, limits. <a href="how-we-tested.html">How it was tested</a>.</li>
+    <li>Free plugin: <a href="download/consentwell.zip?v=1.0.6">consentwell.zip</a> 1.0.6, tested on WordPress 7.1.4 and 6.5.5, PHP 7.4.33 and 8.3.6, on Linux; source code&nbsp;included&nbsp;(GPL-2.0-or-later).</li>
+    <li>Needs WordPress 6.5+, PHP 7.4+ and an administrator account. In the free plugin, automatic Reject on Complianz and CookieYes; for another banner you click Reject yourself when it appears in the check window (see <a href="#works-with">Works with</a>). Not run: a web server on Windows or macOS, and any browser but Chromium; if it doesn’t work for you and we cannot fix it, the 14-day refund applies.</li>
     <li>Checkout by Polar; the download arrives by email. Neither plugin sends anything to us or anyone else, and Pro never asks for the licence key Polar emails.</li>
     <li>GPL-2.0-or-later, source in both zips. The free plugin is not in the WordPress.org directory yet. Not affiliated with Complianz, CookieYes or Cookiebot. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
   </ul>
