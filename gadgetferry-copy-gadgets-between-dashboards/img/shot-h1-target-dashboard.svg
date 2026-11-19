@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="920" height="380" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <rect width="920" height="380" fill="#FAF7F2"/>
+  <rect x="12" y="12" width="896" height="356" rx="14" fill="#FFFFFF" stroke="#C8842B" stroke-width="3" stroke-dasharray="14 10"/>
+  <text x="460" y="90" text-anchor="middle" font-size="34" font-weight="600" fill="#7A4E14">Screenshot H1 · taken in Jira</text>
+  <text x="460" y="160" text-anchor="middle" font-size="42" font-weight="600" fill="#2B2118">The target dashboard after one copy</text>
+  <text x="460" y="214" text-anchor="middle" font-size="34" fill="#5A4E43">The new gadget in column 2,</text>
+  <text x="460" y="252" text-anchor="middle" font-size="34" fill="#5A4E43">beside the gadgets already there</text>
+  <text x="460" y="326" text-anchor="middle" font-size="34" fill="#5A4E43">Added after the first run on a live Jira site</text>
+</svg>

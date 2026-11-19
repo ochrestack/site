@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gadgetferry – Copy Gadgets Between Dashboards for Jira</title>
+<meta name="description" content="Jira has no action that copies a gadget from one dashboard to another. Gadgetferry adds it to up to 20 dashboards that already have gadgets, copies the settings Jira returns for it, shows what arrived, and can undo it. Free for up to 10 users.">
+<link rel="canonical" href="https://ochrestack.com/gadgetferry-copy-gadgets-between-dashboards/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Gadgetferry – Copy Gadgets Between Dashboards for Jira">
+<meta property="og:description" content="&quot;Is it possible to copy a gadget from one dashboard to another?&quot; Gadgetferry adds it to dashboards that already have gadgets, shows what arrived, and can undo it. Free for up to 10 users.">
+<meta property="og:url" content="https://ochrestack.com/gadgetferry-copy-gadgets-between-dashboards/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gadgetferry – Copy Gadgets Between Dashboards for Jira">
+<meta name="twitter:description" content="Copy a gadget from one Jira dashboard to another that already has gadgets. See what arrived, copy to up to 20 dashboards, undo.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .note { font-size: 15px; color: var(--muted); }
+  .benefits { padding-left: 20px; }
+  .benefits li { margin: 8px 0; }
+  figure img.slot { background: #fff; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Gadgetferry – Copy Gadgets Between Dashboards for Jira</h1>
+  <p class="sub">“Is it possible to copy a gadget from one dashboard to another?” Jira has no action for it. Gadgetferry adds the gadget to dashboards that already have gadgets, and shows what arrived.</p>
+
+  <figure id="shot-h1">
+    <img class="slot" src="img/shot-h1-target-dashboard.svg" alt="Slot for screenshot H1, taken in Jira: a dashboard named Operations leadership after one copy, with a Filter Counts gadget titled Open requests by type in column 2, beside the six gadgets that were already on it" width="920" height="380">
+    <figcaption>Screenshot H1 follows, from inside Jira: the target dashboard after one copy.</figcaption>
+  </figure>
+
+  <ul class="benefits">
+    <li><strong>“Being able to copy/duplicate a gadget over to another dashboard.”</strong> Pick the gadget, a dashboard you can edit and a column, and press Copy gadget.</li>
+    <li><strong>“The dashboard … already has several gadgets.”</strong> They stay. One gadget can go onto up to 20 dashboards in one run.</li>
+    <li><strong>A gadget with “a large number of ‘Custom counts’”.</strong> Its settings are read back after the copy, each Matched or Not copied with Jira's reason. Undo this copy removes only what the run added.</li>
+  </ul>
+
+  <div class="buy">
+    <p class="price"><strong>Free for up to 10 users. From 11 users, $0.15 per user per month.</strong></p>
+    <!-- Until the listing URL exists the button points to "#". When Atlassian approves the listing, set href to the listing URL on #buy and #buy-2 and delete the two notes. -->
+    <p><a class="button" id="buy" href="#" aria-describedby="buy-note">Get it on the Atlassian Marketplace</a></p>
+    <p class="note" id="buy-note">Atlassian Marketplace listing in review. <strong>Not installable yet:</strong> Gadgetferry has not yet run on a live Jira site, and it can be installed only from the listing.</p>
+    <p class="fine">Jira Cloud only · version 1.0.1 · 142 automated tests pass outside Jira (<a href="#tested">what is and is not tested</a>) · source not included (commercial app) · support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+    <p class="fine">Billed monthly or annually (a year costs ten times the monthly price): 15 users cost $2.25 a month or $22.50 a year. One edition, every feature in every tier. Atlassian bills the renewal, sends the renewal notice and handles refunds within 30 days.</p>
+  </div>
+
+  <h2 id="how">How it works</h2>
+  <figure class="wide-only">
+    <img src="workflow.svg" alt="Diagram in three steps. One: you choose a gadget on a dashboard you can view, and see its title, type, column and row and its settings listed by name. Two: Gadgetferry adds it to up to 20 dashboards you can edit, in the column you choose, and the gadgets already there stay. Three: it reads the copy back, each setting Matched or Not copied with the reason, and you open the copy to check it or press Undo this copy. It runs from Apps, Gadgetferry, with your own Jira permissions, and nothing leaves Atlassian." width="720" height="330" loading="lazy">
+    <figcaption>Choose, copy, check or undo.</figcaption>
+  </figure>
+  <ol class="narrow-only">
+    <li><strong>Choose</strong> a gadget on a dashboard you can view; its settings are listed by name.</li>
+    <li><strong>Copy.</strong> Gadgetferry adds it to up to 20 dashboards you can edit; the gadgets already there stay.</li>
+    <li><strong>Check or undo.</strong> Each setting is read back as Matched or Not copied; open the copy to check it, or press Undo this copy.</li>
+  </ol>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Copies</strong> the gadget's type, title and colour and the settings Jira returns for it. For Jira's own gadgets it also asks Jira for the usual setting names one by one, because Jira's list can be incomplete; those are marked “found by name”.</li>
+    <li><strong>Shows what arrived,</strong> and names the saved filter: viewers of the target dashboard see the gadget only if that filter is shared with them. <strong>Matched means the value Jira returned for the source reads back the same on the copy. It does not prove the gadget is configured, so open each copy and look.</strong></li>
+    <li><strong>Says why when Jira refuses,</strong> naming Jira's rule and the way round it, Jira admins included. Your last 20 runs are listed.</li>
+  </ul>
+
+  <figure id="shot-h2">
+    <img class="slot" src="img/shot-h2-result.svg" alt="Slot for screenshot H2, taken in Jira: Gadgetferry open from Apps, Gadgetferry after a three-target run, the first result opened to show each setting as Matched with its size, the saved filter Open requests named, and the line saying viewers of the target dashboard see the gadget only if the filter is shared with them" width="920" height="450" loading="lazy">
+    <figcaption>Screenshot H2 follows, from inside Jira: the result for one target.</figcaption>
+  </figure>
+  <figure id="shot-h3">
+    <img class="slot" src="img/shot-h3-targets.svg" alt="Slot for screenshot H3, taken in Jira: Gadgetferry with three target dashboards chosen, column 2 and the top of the column selected, the count of targets and the Copy gadget button" width="920" height="450" loading="lazy">
+    <figcaption>Screenshot H3 follows, from inside Jira: three targets chosen.</figcaption>
+  </figure>
+
+  <div class="box warn" id="already">
+    <strong>What Jira already does.</strong> To make a new dashboard from an old one, use Jira's Copy dashboard and delete what you do not need. To repeat a gadget on the same dashboard, use the gadget's More actions (…) &gt; Duplicate in edit mode. For a gadget whose only setting is a saved filter, adding it again by hand on the other dashboard takes a minute. Gadgetferry is for a dashboard that already exists and already has gadgets, without rebuilding the gadget by hand.
+  </div>
+
+  <h2 id="limits">What you do not get</h2>
+  <ul>
+    <li><strong>Settings Jira does not keep or return.</strong> Some app gadgets keep their settings with their vendor; Gadgetferry says before copying that such a gadget will arrive unconfigured. Whether a given gadget type arrives configured has not yet been shown on a live Jira site: open each copy and check it.</li>
+    <li><strong>Dashboards you cannot edit as targets.</strong> That is Jira's rule, and it holds for Jira admins too.</li>
+    <li><strong>A copy of the saved filter.</strong> The copy uses the same one.</li>
+    <li><strong>Moving, syncing or copying between Jira sites.</strong> Jira Cloud only, English only, not Jira Data Center.</li>
+    <li><strong>Speed on large sites.</strong> Each dashboard is copied in one step that must finish within Atlassian's 25-second limit; with thousands of dashboards the target list offers Show more dashboards.</li>
+  </ul>
+  <p>If Atlassian adds a copy-to-another-dashboard action to Jira, Gadgetferry is then worth its extras: several dashboards at once, the read-back and Undo.</p>
+
+  <h2 id="tested">How we tested</h2>
+  <p>142 automated tests pass on version 1.0.1 (Linux, Node 22) against a model of Jira's published REST operations, built from Atlassian's documentation and public reports; it can be wrong where real Jira differs.</p>
+  <p><strong>Not yet done:</strong> a run on a live Jira site (install, gadgets arriving configured, the allow-access prompt, the target list on a big site), the Forge command-line tool's own lint check and deploy, and the Runs on Atlassian check; we had no Atlassian login in the build environment. The tests ran on Linux, not on Windows or macOS. That Jira has no cross-dashboard copy rests on public Atlassian pages (Atlassian Community threads, Jira ticket JRACLOUD-18207). Screenshots from inside Jira follow the first live run. <a href="quick-start.html">Quick start</a>.</p>
+
+  <h2 id="privacy">Privacy, access and support</h2>
+  <p>Gadgetferry sends nothing outside Atlassian and has no analytics or tracking. It acts as you, with your own Jira permissions: copying needs edit access to the target dashboard, not an admin role. It asks for 18 permissions: dashboards, gadgets and their settings, saved filters, and its own storage, plus eleven read permissions Atlassian lists beside those operations; it does not use them for anything else. It stores only your run history in Atlassian-hosted app storage. <a href="../privacy.html">Privacy policy</a>. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
+
+  <div class="buy">
+    <p><a class="button" id="buy-2" href="#" aria-describedby="buy-note-2">Get it on the Atlassian Marketplace</a></p>
+    <p class="note" id="buy-note-2">Atlassian Marketplace listing in review; not installable yet. Free for up to 10 users, then $0.15 per user per month.</p>
+  </div>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

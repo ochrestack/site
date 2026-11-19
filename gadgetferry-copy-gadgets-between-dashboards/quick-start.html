@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gadgetferry quick start: copy your first gadget between Jira dashboards</title>
+<meta name="description" content="Install Gadgetferry for Jira Cloud, copy a gadget onto a dashboard that already has gadgets, read what arrived, copy to several dashboards and undo a copy.">
+<link rel="canonical" href="https://ochrestack.com/gadgetferry-copy-gadgets-between-dashboards/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  figure img.slot { background: #fff; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Gadgetferry quick start</h1>
+  <p>Your first copy of a gadget from one Jira Cloud dashboard to another, and how to read the result. Back to the <a href="index.html">Gadgetferry product page</a>. Gadgetferry has not yet run on a live Jira site: the pictures are labelled slots, and screenshots from inside Jira follow the first live run. The install steps and menu names below have not been followed on a live site.</p>
+
+  <h2 id="install">Install</h2>
+  <ol>
+    <li>When the listing is live on the Atlassian Marketplace (it is not yet), a Jira site admin opens <strong>Apps &gt; Explore more apps</strong>, searches for <em>Gadgetferry</em> and chooses <strong>Try it free</strong> or <strong>Get app</strong>.</li>
+    <li>Open <strong>Apps &gt; Gadgetferry</strong> from Jira's top bar. The first time, Jira may ask you to allow Gadgetferry to act as you; allow it and reload the page.</li>
+  </ol>
+  <p>You need edit access to the target dashboard: its owner, or someone it is shared with under <strong>Edit permissions</strong>. An admin role is not enough on its own, because Jira does not let an admin edit another person's dashboard unless it is shared with them for editing.</p>
+
+  <h2 id="source">1. Choose the source</h2>
+  <p>Type part of a dashboard name in <strong>Search dashboards by name</strong>, or paste a dashboard link (the form Jira shows today, <code>…/jira/dashboards/10005</code>, and the older form that ends <code>…selectPageId=10005</code>, both work) and press <strong>Use this link</strong>. The list shows the dashboards Jira returns for your account.</p>
+  <figure id="shot-s1">
+    <img class="slot" src="img/shot-s1-source.svg" alt="Slot for screenshot S1, taken in Jira: Gadgetferry with the source dashboard Service desk – weekly chosen and its gadget table, Newest requests as a Filter Results gadget in column 1, row 1, and Open requests by type as a Filter Counts gadget in column 2, row 1" width="920" height="450" loading="lazy">
+    <figcaption>Screenshot S1 follows, from inside Jira: a source dashboard and its gadgets.</figcaption>
+  </figure>
+
+  <h2 id="gadget">2. Choose the gadget</h2>
+  <p>Select one row. Below the table Gadgetferry lists the settings Jira returns for it by name, with the saved filter it uses named. For Jira's own gadgets it also asks Jira for the usual setting names one by one; settings found that way are marked “found by name”. If Jira holds no settings for the gadget, you see “Jira holds no settings for this gadget; it will arrive unconfigured”: tick <strong>Copy it anyway, unconfigured</strong> to go on.</p>
+  <figure id="shot-s2">
+    <img class="slot" src="img/shot-s2-settings.svg" alt="Slot for screenshot S2, taken in Jira: Gadgetferry with the Open requests by type gadget selected, its settings listed by name with their sizes and the saved filter Open requests named, before anything is copied" width="920" height="450" loading="lazy">
+    <figcaption>Screenshot S2 follows, from inside Jira: the settings, listed before copying.</figcaption>
+  </figure>
+
+  <h2 id="targets">3. Choose the targets</h2>
+  <p>Search the dashboards you can edit, or paste a link, and click each to add it: up to 20. Choose the column (1, 2 or 3) and the <strong>top</strong> or the <strong>bottom</strong> of it. On a site with many dashboards the list may offer <strong>Show more dashboards</strong>; typing part of a name or pasting a link is faster.</p>
+
+  <h2 id="copy">4. Copy</h2>
+  <p>Press <strong>Copy gadget</strong>. A count shows how many targets are done. Each target gets a result line with one badge:</p>
+  <ul>
+    <li><strong>Copied, settings matched</strong>: the settings Jira returned for the source read back the same on the copy.</li>
+    <li><strong>Copied unconfigured</strong>: Jira held no settings for the gadget.</li>
+    <li><strong>Copied, settings not copied</strong>: the gadget is there, and the settings that did not copy are listed with Jira's reason.</li>
+    <li><strong>Added, not finished</strong>: the step stopped after the gadget was added; <strong>Undo this copy</strong> removes it.</li>
+    <li><strong>Refused</strong>: Jira refused the step. The line names the rule and the way round it, for example: “You can't edit this dashboard. Its owner can add you under Edit permissions, or copy to a dashboard you own.”</li>
+  </ul>
+  <figure id="shot-s5">
+    <img class="slot" src="img/shot-s5-refusal.svg" alt="Slot for screenshot S5, taken in Jira: Gadgetferry refusing a dashboard the person cannot edit, with the sentence You can't edit this dashboard, its owner can add you under Edit permissions, or copy to a dashboard you own" width="920" height="450" loading="lazy">
+    <figcaption>Screenshot S5 follows, from inside Jira: a refusal.</figcaption>
+  </figure>
+
+  <h2 id="check">5. Check the copy</h2>
+  <p>A matched copy reads: “Copied: N of N settings Jira returned matched on the copy. Open the copy to check its configuration: Jira's list of a gadget's settings can be incomplete.” Open the settings under the result to see each as Matched or Not copied. Click <strong>Open this dashboard</strong> (it opens in a new tab), find the copied gadget and check its configuration. <strong>Matched does not prove the gadget is configured.</strong> When a setting names a saved filter, the result names the filter: viewers of the target dashboard see the gadget only if that filter is shared with them.</p>
+
+  <h2 id="undo">6. Undo a copy</h2>
+  <p><strong>Undo this copy</strong> under the result, or <strong>Undo</strong> on a row of “Your recent copies”, removes the gadgets that run added, from every target it reached, and nothing else. The list keeps your last 20 runs. A gadget someone else already removed or moved is reported. If Jira no longer shows a dashboard to you, its gadget is reported as not removed, the run stays “Partly undone”, and <strong>Retry undo</strong> tries again.</p>
+  <figure id="shot-s4">
+    <img class="slot" src="img/shot-s4-undo.svg" alt="Slot for screenshot S4, taken in Jira: Gadgetferry after Undo this copy, showing the message that the gadgets this copy added are removed and an Undone row in the history, and the target dashboard reloaded with its original six gadgets" width="920" height="450" loading="lazy">
+    <figcaption>Screenshot S4 follows, from inside Jira: the history after Undo.</figcaption>
+  </figure>
+
+  <h2 id="without">When Jira's own tools are enough</h2>
+  <p>For a new dashboard from an old one, use <strong>Copy dashboard</strong>. To repeat a gadget on the same dashboard, use <strong>More actions (…) &gt; Duplicate</strong> in edit mode.</p>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>Settings an app's vendor keeps outside Jira are not copied. A Jira gadget with a setting under a name Gadgetferry does not ask for arrives without it, and the result still says Matched for the settings it did copy. Whether a given gadget type arrives configured has not yet been shown on a live Jira site.</li>
+        <li>One setting can hold at most 32,768 characters in Jira; a longer one is shown as Not copied and the rest still copy.</li>
+    <li>Each target is copied in one step that must finish within Atlassian's 25-second limit; a gadget with very many large settings may stop part-way, and the settings not yet copied are shown as Not copied.</li>
+    <li>The copy uses the same saved filter, not a copy of it. Gadgetferry does not move gadgets (copy, then remove the original yourself), copy between Jira sites or keep copies in step. Jira Cloud only.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Gadgetferry sends nothing outside Atlassian and has no analytics or tracking. It acts with your own Jira permissions and stores only your run history in Atlassian-hosted app storage. See the <a href="../privacy.html">privacy policy</a>.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with the result line you saw and what you expected.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
