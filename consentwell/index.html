@@ -76,14 +76,14 @@
 <style>
   .phone-video { display: none; }
   .gif-phone { display: none; }
-  @media (max-width: 767px) { .wide-video { display: none; } .phone-video { display: block; max-width: 420px; margin: 0 auto; } .gif-wide { display: none; } .gif-phone { display: block; } }
+  @media (max-width: 767px) { .wide-video { display: none; } .phone-video { display: block; max-width: 420px; margin: 0 auto; } .gif-wide { display: none; } .gif-phone { display: block; max-width: 420px; margin: 0 auto; } }
 </style>
 <style>
   .button.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); padding: 8px 16px; }
   .button.alt:hover, .button.alt:focus { background: var(--ink); color: var(--paper); }
   .actions .button { margin: 0 8px 8px 0; }
   @media (min-width: 801px) { figure.wide, .hero-link { width: min(1000px, calc(100vw - 48px)); margin-left: 50%; transform: translateX(-50%); } .hero-link { display: block; } }
-  @media (max-width: 600px) { .scroll-x img.ui { width: 960px; } .hero { width: 249px; max-width: 100%; margin-left: auto; margin-right: auto; } header { padding-top: 18px; } h1 { margin: 14px 0 6px; font-size: 26px; } .sub { font-size: 17px; } }
+  @media (max-width: 600px) { .scroll-x img.ui { width: 960px; } .hero { width: 100%; margin-left: 0; margin-right: 0; } header { padding-top: 18px; } h1 { margin: 14px 0 6px; font-size: 26px; } .sub { font-size: 17px; } }
 </style>
 <style>
   /* One left edge for the heading, the pictures, the buttons and the text on a wide screen (round 2, R2-12). */
@@ -102,7 +102,7 @@
   <a class="hero-link" href="img/contact-result.png"><picture><source media="(max-width: 600px)" srcset="img/after-reject-phone.png" width="498" height="586"><img class="hero" style="margin-bottom:6px" src="img/after-reject.png" alt="Consentwell's After Reject result for the contact page of a demo bakery site running Complianz: '4 third-party requests', the seconds watched, and a table with the full address of each request (two Google Fonts stylesheets, google.com/recaptcha/api.js for Google reCAPTCHA and a maps.google.com frame for Google Maps). On a phone the picture shows the three banner facts, all yes, and the first of those addresses instead. Click for the whole result" width="1424" height="455"></picture></a>
 
   <div class="buy" style="margin-top:10px">
-    <p class="actions" style="margin-bottom:6px"><a class="button alt" id="download" href="download/consentwell.zip?v=1.0.6">Download free</a> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_SaANA61tGSK8IxpAj2kFJu6Cm8WGKOdcY1iqR4KSzf8">Buy Pro for $19</a></p>
+    <p class="actions" style="margin-bottom:6px"><a class="button alt" id="download" href="download/consentwell.zip?v=1.0.7">Download free</a> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_SaANA61tGSK8IxpAj2kFJu6Cm8WGKOdcY1iqR4KSzf8">Buy Pro for $19</a></p>
     <p class="fine" id="trust" style="margin-bottom:0"><strong>Free:</strong> the check, one page at a time. <strong>Pro, $19 once:</strong> checks every page in your sitemap, up to 5,000, in one run.</p>
   </div>
 
@@ -121,7 +121,7 @@
   <h2 id="works-with">Works with</h2>
   <ul>
     <li><strong>Complianz 7.5.7 and CookieYes 3.5.9:</strong> Consentwell clicks Reject for you.</li>
-    <li><strong>GDPR Cookie Compliance 5.3.1, CookieAdmin 1.2.6, SureCookie 1.8.1 and Beautiful Cookie Consent Banner 4.10.0:</strong> the banner is found and you click its Reject in the check window.</li>
+    <li><strong>GDPR Cookie Compliance 5.3.1, CookieAdmin 1.2.6, SureCookie 1.8.1 and Beautiful Cookie Consent Banner 4.10.0:</strong> the banner is found and you click its Reject in the check window when the screen says “Your turn”.</li>
     <li><strong>Cookie Notice &amp; Compliance 3.1.19 and WPConsent 1.2.1:</strong> the banner does not appear in the check window. The result says the banner is in the page HTML but not shown in the check window, gives the likely cause, lists what loads before any choice and does not click Reject.</li>
     <li>Not run, because they need an account, a licence or a site ID: Real Cookie Banner, Cookiebot, iubenda, Termly.</li>
   </ul>
@@ -134,14 +134,14 @@
     <video class="phone-video" controls preload="none" playsinline poster="video/poster-phone.jpg" width="720" height="1280">
       <source src="video/consentwell-demo-phone-720x1280.mp4" type="video/mp4">
     </video>
-    <figcaption>59&nbsp;s, captions only, no sound; the waits are sped up and labelled. It streams as a 11.0&nbsp;MB file (phones: a 7.1&nbsp;MB portrait cut); <a href="video/consentwell-demo-1080p.mp4">the 1080p file</a> (61.4&nbsp;MB) is one click away. <a href="how-we-tested.html#film">How it was recorded</a>.</figcaption>
+    <figcaption>60&nbsp;s, captions only, no sound; the waits are sped up and labelled. It streams as a 11.1&nbsp;MB file (phones: a 7.5&nbsp;MB portrait cut); <a href="video/consentwell-demo-1080p.mp4">the 1080p file</a> (62.2&nbsp;MB) is one click away. <a href="how-we-tested.html#film">How it was recorded</a>.</figcaption>
   </figure>
   <figure>
     <img class="gif-wide" src="video/consentwell-after-reject.gif" alt="A 10-second clip of the demo result: all 4 addresses requested before any choice were requested again after Reject, then the list of them: two Google Fonts stylesheets, google.com/recaptcha/api.js and a Google Maps frame" loading="lazy" width="720" height="405">
-    <video class="gif-phone" autoplay muted loop playsinline preload="metadata" width="720" height="406" aria-label="A 10-second clip of the demo result: all 4 addresses requested before any choice were requested again after Reject, then the list of them: two Google Fonts stylesheets, google.com/recaptcha/api.js and a Google Maps frame">
+    <video class="gif-phone" autoplay muted loop playsinline preload="metadata" width="640" height="878" aria-label="A 9-second clip of the demo result: all 4 addresses requested before any choice were requested again after Reject, then the list of them: two Google Fonts stylesheets, google.com/recaptcha/api.js and a Google Maps frame">
       <source src="video/consentwell-after-reject-phone.mp4" type="video/mp4">
     </video>
-    <figcaption>The result of that check, 10&nbsp;seconds: the counted sentence, then the After Reject list (a 6.4&nbsp;MB GIF on a wide screen, a 0.7&nbsp;MB loop on a phone).</figcaption>
+    <figcaption>The result of that check: the counted sentence, then the After Reject list (on a wide screen a 10&nbsp;second, 6.3&nbsp;MB GIF; on a phone a 9&nbsp;second, 1.0&nbsp;MB loop cut from the portrait film).</figcaption>
   </figure>
 
   <h2>What a check shows</h2>
@@ -173,8 +173,8 @@
   <h2 id="details">Details</h2>
   <ul>
     <li><a href="quick-start.html">Quick start</a>: install, first check, reading the result, Pro. <a href="details.html">In detail</a>: what the check does, other consent plugins, limits. <a href="how-we-tested.html">How it was tested</a>.</li>
-    <li>Free plugin: <a href="download/consentwell.zip?v=1.0.6">consentwell.zip</a> 1.0.6, tested on WordPress 7.1.4 and 6.5.5, PHP 7.4.33 and 8.3.6, on Linux; source code&nbsp;included&nbsp;(GPL-2.0-or-later).</li>
-    <li>Needs WordPress 6.5+, PHP 7.4+ and an administrator account. In the free plugin, automatic Reject on Complianz and CookieYes; for another banner you click Reject yourself when it appears in the check window (see <a href="#works-with">Works with</a>). Not run: a web server on Windows or macOS, and any browser but Chromium; if it doesn’t work for you and we cannot fix it, the 14-day refund applies.</li>
+    <li>Free plugin: <a href="download/consentwell.zip?v=1.0.7">consentwell.zip</a> 1.0.7, tested on WordPress 7.1.4 and 6.5.5, PHP 7.4.33 and 8.3.6, on Linux; source code&nbsp;included&nbsp;(GPL-2.0-or-later).</li>
+    <li>Needs WordPress 6.5+, PHP 7.4+ and an administrator account. In the free plugin, automatic Reject on Complianz and CookieYes; for another banner you click Reject yourself in the check window when the screen says “Your turn” (see <a href="#works-with">Works with</a>). Not run: a web server on Windows or macOS, and any browser but Chromium; if it doesn’t work for you and we cannot fix it, the 14-day refund applies.</li>
     <li>Checkout by Polar; the download arrives by email. Neither plugin sends anything to us or anyone else, and Pro never asks for the licence key Polar emails.</li>
     <li>GPL-2.0-or-later, source in both zips. The free plugin is not in the WordPress.org directory yet. Not affiliated with Complianz, CookieYes or Cookiebot. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
   </ul>
