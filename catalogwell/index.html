@@ -139,20 +139,20 @@
     <p class="fine trust" id="trust">Version 1.0.1&nbsp;&middot; tested on WordPress 7.1.5&nbsp;and 6.5.5,&nbsp;PHP 8.3.6&nbsp;and 7.4.33&nbsp;&middot; rules read from Meta&nbsp;for&nbsp;WooCommerce 3.7.9&nbsp;&middot; source code included (GPL-2.0-or-later)&nbsp;&middot;&nbsp;support@ochrestack.com</p>
   </div>
 
-  <p class="fine">Quoted words: topics on the Meta&nbsp;for&nbsp;WooCommerce support forum. Picture: WooCommerce&rsquo;s own sample store, default settings. <a href="#images">How the images were made</a>.</p>
+  <p class="fine">Quoted words: topics on the Meta&nbsp;for&nbsp;WooCommerce support forum. Pictures: a sample store, default settings. <a href="#images">How the images were made</a>.</p>
 
   <div class="box warn" id="free-route">
     <strong>What it is, and what it isn&rsquo;t.</strong> The platform&rsquo;s own path already works in four places, and we say so:
     <ul>
-      <li>Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own &ldquo;Synced to Meta catalog&rdquo; column already shows whether a product syncs; Catalogwell adds which synced products go as hidden, and why.</li>
-      <li>Google&nbsp;for&nbsp;WooCommerce&rsquo;s own Product Feed page already lists each product&rsquo;s status; Catalogwell adds only a summary.</li>
+      <li>Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own &ldquo;Synced to Meta catalog&rdquo; column shows whether a product syncs; Catalogwell adds which synced products go as hidden, and why.</li>
+      <li>Google&nbsp;for&nbsp;WooCommerce&rsquo;s own Product Feed page lists each product&rsquo;s status; Catalogwell adds only a summary.</li>
       <li>Developer tools and Meta&rsquo;s Test Events show one visit at a time; Catalogwell compares five.</li>
-      <li>Some faults are on Meta&rsquo;s or Google&rsquo;s side; Catalogwell labels them and says where they are fixed. It cannot see or change either account, and changes none of your products, orders or settings.</li>
+      <li>Some faults are on Meta&rsquo;s or Google&rsquo;s side; Catalogwell labels them. It cannot see or change either account, and changes none of your products, orders or settings.</li>
     </ul>
   </div>
 
   <h2>Which products go to Meta as hidden</h2>
-  <p>Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own Products list says &ldquo;Synced&rdquo; for Album and Single. Its own catalog file sends both as hidden, because the Virtual box on each is ticked.</p>
+  <p>Meta&nbsp;for&nbsp;WooCommerce&rsquo;s Products list says &ldquo;Synced&rdquo; for Album and Single. Its own catalog file sends both as hidden: the Virtual box is ticked.</p>
   <figure class="shot desk-only">
     <img class="ui" src="img/products-column.png" alt="Products &gt; All Products on the sample store, Music category: Single and Album, both In stock, and in the last column, Synced to Meta catalog, the word Synced for both" width="860" height="196" style="--w:860px" loading="lazy">
     <figcaption>Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own Products list, Music category.</figcaption>
@@ -163,7 +163,6 @@
   </figure>
 
   <h2>What Meta&nbsp;for&nbsp;WooCommerce has stored</h2>
-  <p>Whether a token is stored (never shown), the IDs, and the &ldquo;access token is missing&rdquo; lines in the plugin&rsquo;s log.</p>
   <figure class="shot">
     <picture><source media="(max-width: 800px)" srcset="img/left-behind-phone.png" width="314" height="389"><img class="ui" src="img/left-behind.png" alt="Catalogwell's Connection section for Meta for WooCommerce after the plugin was switched off: Left behind, labelled Fix on this site. Meta for WooCommerce is deactivated, but its access token or IDs are still stored in this site's database; deactivating the plugin does not remove them. Next step: install and activate it again and use its own Disconnect, which asks Meta to remove the link and then clears this data" width="858" height="213" style="--w:858px;--pw:314px" loading="lazy"></picture>
     <figcaption>Meta&nbsp;for&nbsp;WooCommerce switched off, its token and IDs still stored: &ldquo;Left behind&rdquo;.</figcaption>
@@ -174,7 +173,7 @@
   </figure>
 
   <h2>Does your page cache repeat event IDs?</h2>
-  <p>Catalogwell loads a page five times as separate visitors. Behind a page cache the five can share one event ID.</p>
+  <p>Catalogwell loads a page five times as separate visitors; behind a page cache the five can share one event ID.</p>
   <figure class="shot">
     <picture><source media="(max-width: 800px)" srcset="img/events-cache-phone.png" width="314" height="358"><img class="ui" src="img/events-cache.png" alt="Catalogwell's event ID check for the home page behind WP Super Cache: Repeated, different visitors would send the same event ID, a PageView event ID found in 5 of 5 loads; the page cache named is WP Super Cache. Wide screens also show a table of loads 1 to 5, each with the same PageView ID" width="858" height="457" style="--w:858px;--pw:314px" loading="lazy"></picture>
     <figcaption>WP Super Cache 3.1.5: one PageView event ID in all five loads.</figcaption>
@@ -183,7 +182,7 @@
   <h2 id="pro">Catalogwell Pro: the same checks every day</h2>
   <ul>
     <li>Runs the checks once a day (WordPress&rsquo;s own scheduler, so when the site gets a visit) and e-mails the admin address when something changed.</li>
-    <li>Keeps the last 30&nbsp;checks with what changed; downloads the product list as a CSV.</li>
+    <li>Keeps the last 30&nbsp;checks; downloads the product list as a CSV.</li>
   </ul>
   <figure class="shot">
     <picture><source media="(max-width: 800px)" srcset="img/pro-history-phone.png" width="340" height="411"><img class="ui" src="img/pro-history.png" alt="Catalogwell Pro's list The last 30 checks after two checks on the sample store: two rows, each with 2 of 22 hidden products; the newer lists a second Pixel on the home page and on the product page and says it was e-mailed to the admin address, the older is the first check, the starting point. Wide screens also show the top of the screen: The check finished. 2 changes were found and e-mailed to the admin address; Check now; and Download the product list (CSV) for 23 products" width="886" height="645" style="--w:886px;--pw:340px" loading="lazy"></picture>
@@ -198,21 +197,16 @@
   <h2 id="details">Details</h2>
   <ul>
     <li><a href="quick-start.html">Quick start</a>: what each part shows, limits, privacy.</li>
-    <li>Free plugin: <a href="download/catalogwell.zip?v=1.0.1">catalogwell.zip</a> 1.0.1,&nbsp;source code included, GPL-2.0-or-later. It is not in the WordPress.org directory yet; install it from this zip.</li>
-    <li>Needs WordPress 6.5&nbsp;and PHP 7.4&nbsp;or later (tested with WooCommerce 11.3.1&nbsp;and 9.0.2). Rules read from Meta&nbsp;for&nbsp;WooCommerce 3.7.9&nbsp;and Google&nbsp;for&nbsp;WooCommerce 3.10.1.&nbsp;Install the free plugin first: Pro uploaded alone ends on a WordPress error page and activates nothing.</li>
-    <li>Neither plugin sends anything to Ochrestack or any outside service; another plugin that records visits on the server may count Catalogwell&rsquo;s page loads.</li>
+    <li>Free plugin: <a href="download/catalogwell.zip?v=1.0.1">catalogwell.zip</a> 1.0.1,&nbsp;source code included (GPL-2.0-or-later); not in the WordPress.org directory yet. Needs WordPress 6.5,&nbsp;PHP 7.4.&nbsp;Install it before Pro: Pro alone ends on a WordPress error page.</li>
     <li>Run on Linux web servers and in Chromium. Not run: web servers on Windows or macOS, other browsers, WPML (Polylang was), and a real Meta or Google account. If it doesn&rsquo;t work for you and we cannot fix it, the 14-day refund applies.</li>
-    <li>Checkout by Polar. Not affiliated with or endorsed by Meta, Google or WooCommerce. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li>Not affiliated with or endorsed by Meta, Google or WooCommerce. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
   </ul>
 
   <h2 id="tested">How we tested (version 1.0.1)</h2>
-  <ul>
-    <li>198&nbsp;automated tests (11,840&nbsp;assertions, 1&nbsp;skipped) on PHP 8.3.6&nbsp;and 7.4.33,&nbsp;WordPress 7.1.5&nbsp;and 6.5.5;&nbsp;real WP Super Cache 3.1.5&nbsp;and W3 Total Cache 2.11.0.</li>
-    <li>The hidden list equals Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own catalog file: 22&nbsp;rows, 2&nbsp;hidden, 0&nbsp;differences on the sample store, and 0&nbsp;on real Polylang 3.9.2&nbsp;stores. 10,000&nbsp;products took 9.9&nbsp;seconds (PHP 8.3.6,&nbsp;WordPress 7.1.5).</li>
-  </ul>
+  <p>198&nbsp;automated tests on PHP 8.3.6&nbsp;and 7.4.33&nbsp;and WordPress 7.1.5&nbsp;and 6.5.5.&nbsp;The hidden list equals Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own catalog file: 22&nbsp;rows, 2&nbsp;hidden, 0&nbsp;differences. 10,000&nbsp;products took 9.9&nbsp;seconds (PHP 8.3.6,&nbsp;WordPress 7.1.5).</p>
   <details id="images">
     <summary>How the images were made</summary>
-    <p>Chromium 153&nbsp;captures of version 1.0.1&nbsp;on WordPress 7.1.5&nbsp;(PHP&rsquo;s built-in web server, SQLite Database Integration 3.1.3), WooCommerce 11.3.1&nbsp;with its own sample_products.csv imported unchanged, Meta&nbsp;for&nbsp;WooCommerce 3.7.9.&nbsp;The IDs are the demo store&rsquo;s, the product photos are plain stand-ins, the test site&rsquo;s mail goes to a file, and the Products list shows only its Name, Stock and Synced columns (Screen Options).</p>
+    <p>Chromium 153&nbsp;on WordPress 7.1.5&nbsp;(PHP&rsquo;s built-in server, SQLite Database Integration 3.1.3), WooCommerce 11.3.1&nbsp;with its own sample_products.csv, Meta&nbsp;for&nbsp;WooCommerce 3.7.9.&nbsp;IDs are the demo store&rsquo;s, product photos are stand-ins, the test site&rsquo;s mail goes to a file, and the Products list shows only Name, Stock and Synced (Screen Options).</p>
   </details>
 </main>
 <footer>
