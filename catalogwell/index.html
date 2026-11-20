@@ -88,6 +88,7 @@
   .button.alt:hover, .button.alt:focus { background: var(--ink); color: var(--paper); }
   .actions .button { margin: 0 8px 8px 0; }
   .trust { margin: 0 0 6px; }
+  .owner { font-size: 18px; margin: 14px 0 8px; }
   .box ul { margin: 8px 0 0; padding-left: 20px; }
   .box li { margin: 6px 0; }
   figure.shot { margin: 16px 0 24px; }
@@ -125,7 +126,7 @@
   <h1>Catalogwell for WooCommerce</h1>
   <p class="sub">Products hidden in Meta Commerce Manager? Access token missing? See what Meta&nbsp;for&nbsp;WooCommerce hides, and why, and what it has stored.</p>
 
-  <picture><source media="(max-width: 800px)" srcset="img/catalog-count-phone.png" width="314" height="161"><source media="(min-width: 801px) and (max-height: 700px)" srcset="img/catalog-count.png" width="858" height="74"><img class="hero" src="img/catalog-short.png" alt="Catalogwell's Catalog result for WooCommerce's own sample store: &ldquo;2 of 22 products go to Meta as hidden. 1 more product is not synced at all.&rdquo; Tall wide windows also show the reason table: Published 20, Not synced: hidden from the store catalog 1, Hidden: virtual product 2." width="858" height="281" style="--w:858px;--pw:314px"></picture>
+  <picture><source media="(max-width: 800px)" srcset="img/catalog-count-phone.png" width="314" height="161"><source media="(min-width: 801px) and (max-height: 700px)" srcset="img/catalog-count.png" width="858" height="74"><img class="hero" src="img/catalog-short.png" alt="Catalogwell's Catalog result for WooCommerce's own sample store: &ldquo;2 of 22 products go to Meta as hidden. 1 more product is not synced at all.&rdquo; Tall wide windows also show a line saying each variation is counted on its own, 7 of the 23 items, and the reason table: Published 20, Not synced: hidden from the store catalog 1, Hidden: virtual product 2." width="858" height="325" style="--w:858px;--pw:314px"></picture>
 
   <ul class="benefits">
     <li>&ldquo;Many products in my catalog are marked as <strong>hidden</strong>&rdquo;: see which, and why.</li>
@@ -134,10 +135,12 @@
   </ul>
 
   <div class="buy">
-    <p class="price"><strong>Pro: $19&nbsp;once</strong>, unlimited sites, no renewal: daily re-checks, e-mailed changes. The free plugin runs all four checks.</p>
-    <p class="actions"><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_rb8aBrLwrEqHNS1lEzhbXd2hF2ETPEwKS1zH41OqT0m">Buy for $19</a> <a class="button alt" id="download" href="download/catalogwell.zip?v=1.0.3">Download free</a></p>
-    <p class="fine trust" id="trust">Version 1.0.3&nbsp;&middot; tested on WordPress 7.1.5&nbsp;and 6.5.5,&nbsp;PHP 8.3.6&nbsp;and 7.4.33&nbsp;&middot; rules read from Meta&nbsp;for&nbsp;WooCommerce 3.7.9&nbsp;&middot; source code included (GPL-2.0-or-later)&nbsp;&middot;&nbsp;support@ochrestack.com</p>
+    <p class="price"><strong>Pro: $19&nbsp;once</strong>, every client site: daily re-checks, e-mailed to a chosen address. The free plugin runs all four checks.</p>
+    <p class="actions"><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_rb8aBrLwrEqHNS1lEzhbXd2hF2ETPEwKS1zH41OqT0m">Buy for $19</a> <a class="button alt" id="download" href="download/catalogwell.zip?v=1.0.4">Download free</a></p>
+    <p class="fine trust" id="trust">Version 1.0.4&nbsp;&middot; tested on WordPress 7.1.5&nbsp;and 6.5.5,&nbsp;PHP 8.3.6&nbsp;and 7.4.33&nbsp;&middot; rules read from Meta&nbsp;for&nbsp;WooCommerce 3.7.9&nbsp;&middot; source code included (GPL-2.0-or-later)&nbsp;&middot;&nbsp;support@ochrestack.com</p>
   </div>
+
+  <p class="owner">Your Products list says &ldquo;Synced&rdquo;; Meta can still hide the product. Catalogwell tells you which products, and the reason for each.</p>
 
   <p class="fine">Quoted words: topics on the Meta&nbsp;for&nbsp;WooCommerce support forum. Pictures: a sample store, default settings. <a href="#images">How the images were made</a>.</p>
 
@@ -157,7 +160,7 @@
       <source src="video/catalogwell-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/catalogwell-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>57&nbsp;s, captions only, no sound. Catalogwell 1.0.3 and Pro 1.0.3 on WooCommerce&rsquo;s own sample store; the IDs are the demo store&rsquo;s and the product photos are stand-ins. <a href="video/catalogwell-demo-1080p.mp4">1080p file</a> (9.4&nbsp;MB).</figcaption>
+    <figcaption>57&nbsp;s, captions only, no sound. Catalogwell 1.0.4 and Pro 1.0.4 on WooCommerce&rsquo;s own sample store; the IDs are the demo store&rsquo;s and the product photos are stand-ins. <a href="video/catalogwell-demo-1080p.mp4">1080p file</a> (9.4&nbsp;MB).</figcaption>
   </figure>
   <figure class="desk-only">
     <a href="video/catalogwell-synced-vs-hidden.gif"><img class="ui" src="video/catalogwell-synced-vs-hidden.gif" alt="Animated: Meta for WooCommerce's Products list says Synced for Single and Album; Catalogwell's list says both go to Meta as hidden; Album's product page has the Virtual box ticked" width="960" height="465" loading="lazy" style="width: 100%"></a>
@@ -188,6 +191,7 @@
     <picture><source media="(max-width: 800px)" srcset="img/left-behind-phone.png" width="314" height="389"><img class="ui" src="img/left-behind.png" alt="Catalogwell's Connection section for Meta for WooCommerce after the plugin was switched off: Left behind, labelled Fix on this site. Meta for WooCommerce is deactivated, but its access token or IDs are still stored in this site's database; deactivating the plugin does not remove them. Next step: install and activate it again and use its own Disconnect, which asks Meta to remove the link and then clears this data" width="858" height="213" style="--w:858px;--pw:314px" loading="lazy"></picture>
     <figcaption>Meta&nbsp;for&nbsp;WooCommerce switched off, its token and IDs still stored: &ldquo;Left behind&rdquo;.</figcaption>
   </figure>
+  <p>With the plugin off, this site is not sending products to Meta, and Catalogwell says so. On a store with one language it also says how many products would go as hidden if you switched it on again. On a store with Polylang or WPML it says that the plugin&rsquo;s language rules cannot be read while it is off, and gives no count: switch it on and run the checks again.</p>
   <figure class="shot">
     <picture><source media="(max-width: 800px)" srcset="img/token-missing-phone.png" width="314" height="350"><img class="ui" src="img/token-missing.png" alt="Catalogwell's Connection section for Meta for WooCommerce with IDs stored and no token: Access token missing, labelled Fix on this site. Its log then says &ldquo;Cannot create the API instance because the access token is missing.&rdquo; Next step: run Meta for WooCommerce's setup again until it finishes, then run Catalogwell again" width="858" height="213" style="--w:858px;--pw:314px" loading="lazy"></picture>
     <figcaption>IDs stored, no token: the log line, the next step, whose side it is.</figcaption>
@@ -218,7 +222,7 @@
     <figcaption>The e-mail Pro sent when a second Pixel plugin was switched on between two checks (plain text, as the test site&rsquo;s mail log kept it).</figcaption>
   </figure>
   <figure class="shot">
-    <picture><source media="(max-width: 800px)" srcset="img/pro-history-phone.png" width="340" height="411"><img class="ui" src="img/pro-history.png" alt="Catalogwell Pro's list The last 30 checks after two checks on the sample store: two rows, each with 2 of 22 hidden products; the newer lists a second Pixel on the home page and on the product page and says it was e-mailed to owner@fernbank.test, the older is the first check, the starting point. Wide screens also show the top of the screen: The check finished. 2 changes were found and e-mailed to owner@fernbank.test; Check now; Who gets the e-mail, a field holding owner@fernbank.test with Save address; and Download the product list (CSV) for 23 products" width="886" height="771" style="--w:886px;--pw:340px" loading="lazy"></picture>
+    <picture><source media="(max-width: 800px)" srcset="img/pro-history-phone.png" width="340" height="411"><img class="ui" src="img/pro-history.png" alt="Catalogwell Pro's list The last 30 checks after two checks on the sample store: two rows, each with 2 of 22 hidden products; the newer lists a second Pixel on the home page and on the product page and says it was e-mailed to owner@fernbank.test, the older is the first check, the starting point. Wide screens also show the top of the screen: The check finished. 2 changes were found and e-mailed to owner@fernbank.test; Check now; Who gets the e-mail, a field holding owner@fernbank.test with Save address; and Download the product list (CSV) for 23 products" width="886" height="772" style="--w:886px;--pw:340px" loading="lazy"></picture>
     <figcaption>Pro after two checks: a second Pixel plugin was switched on between them.</figcaption>
   </figure>
 
@@ -230,13 +234,13 @@
   <h2 id="details">Details</h2>
   <ul>
     <li><a href="quick-start.html">Quick start</a>: what each part shows, limits, privacy.</li>
-    <li>Free plugin: <a href="download/catalogwell.zip?v=1.0.3">catalogwell.zip</a> 1.0.3,&nbsp;source code included (GPL-2.0-or-later); not in the WordPress.org directory yet. Needs WordPress 6.5,&nbsp;PHP 7.4.&nbsp;Install it before Pro: Pro alone ends on a WordPress error page.</li>
+    <li>Free plugin: <a href="download/catalogwell.zip?v=1.0.4">catalogwell.zip</a> 1.0.4,&nbsp;source code included (GPL-2.0-or-later); not in the WordPress.org directory yet. Needs WordPress 6.5,&nbsp;PHP 7.4.&nbsp;Install it before Pro: Pro alone ends on a WordPress error page.</li>
     <li>Run on Linux web servers and in Chromium. Not run: web servers on Windows or macOS, other browsers, WPML (Polylang was), and a real Meta or Google account. If it doesn&rsquo;t work for you and we cannot fix it, the 14-day refund applies.</li>
     <li>Not affiliated with or endorsed by Meta, Google or WooCommerce. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
   </ul>
 
-  <h2 id="tested">How we tested (version 1.0.3)</h2>
-  <p>227&nbsp;automated tests on PHP 8.3.6&nbsp;and 7.4.33&nbsp;and WordPress 7.1.5&nbsp;and 6.5.5.&nbsp;The hidden list equals Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own catalog file: 22&nbsp;rows, 2&nbsp;hidden, 0&nbsp;differences. 10,000&nbsp;products took 14&nbsp;to 19&nbsp;seconds on MariaDB 10.11&nbsp;and 26&nbsp;to 27&nbsp;seconds on SQLite (PHP 8.3.6,&nbsp;WordPress 7.1.5,&nbsp;a 4-core 2.1&nbsp;GHz virtual machine); a slower host takes longer.</p>
+  <h2 id="tested">How we tested (version 1.0.4)</h2>
+  <p>242&nbsp;automated tests on PHP 8.3.6&nbsp;and 7.4.33&nbsp;and WordPress 7.1.5&nbsp;and 6.5.5.&nbsp;The hidden list equals Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own catalog file: 22&nbsp;rows, 2&nbsp;hidden, 0&nbsp;differences. 10,000&nbsp;products and variations took 13&nbsp;to 19&nbsp;seconds on MariaDB 10.11&nbsp;and 26&nbsp;to 32&nbsp;seconds on SQLite (PHP 8.3.6,&nbsp;WordPress 7.1.5,&nbsp;a 4-core 2.1&nbsp;GHz virtual machine); a slower host takes longer.</p>
   <details id="images">
     <summary>How the images were made</summary>
     <p>Chromium 153&nbsp;on WordPress 7.1.5&nbsp;(PHP&rsquo;s built-in server, SQLite Database Integration 3.1.3), WooCommerce 11.3.1&nbsp;with its own sample_products.csv, Meta&nbsp;for&nbsp;WooCommerce 3.7.9.&nbsp;IDs are the demo store&rsquo;s, product photos are stand-ins, the test site&rsquo;s mail goes to a file, and the Products list shows only Name, Stock and Synced (Screen Options). The bilingual picture is the same store with Polylang 3.9.2&nbsp;added, three sample products copied into French, one new product given no language, and Album and Single drafted for the capture. The e-mail picture is the text of the message from the mail log, set in a plain box.</p>
