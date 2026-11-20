@@ -91,6 +91,7 @@
     .top .buy .price { font-size: 15px; margin-bottom: 4px; }
     .top .hero { margin: 2px 0 4px; }
     .top .buy .fine { font-size: 14px; line-height: 1.4; }
+    .box { padding: 12px 14px; margin: 16px 0; line-height: 1.5; }
     .wide-only { display: none; }
     .narrow-only { display: block; }
     .scroll-x img.ui { max-width: none; width: 700px; }
@@ -139,7 +140,7 @@
   </div>
 
   <div class="box warn">
-    <strong>You can do this by hand.</strong> A careful admin can search the database for a template's ID in Elementor's saved page data and in post content. Templatrail does that search across the site, follows templates inside templates to the pages that show them, and writes the answer in plain words.
+    <strong>You can do this by hand.</strong> A careful admin can search the database for a template's ID in Elementor's saved page data and in post content. Templatrail does that search across the site, follows templates inside templates to the pages that show them, and writes the answer in plain&nbsp;words.
   </div>
 
   <h2 id="watch">Watch it work</h2>
@@ -153,20 +154,12 @@
 
   <h2 id="cleanup">Clear out templates with no use found</h2>
   <p>Only those can be ticked. <strong>Move selected to Trash</strong> re-reads the site first, skips any that gained a use, and uses WordPress's own Trash, so you can restore. Nothing is deleted for good.</p>
-  <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/cleanup-result-phone.png" width="390" height="225"><img src="img/cleanup-result.png" alt="Templatrail's result after Move selected to Trash: 'Re-checked, then moved 3 templates to the Trash', the three template names, a link to Elementor's Trash view, and 'Left alone after the re-check: 1 template. Logo strip: press gained a use: Press and awards (shortcode in content)'" width="864" height="140" loading="lazy"></picture>
-    <figcaption>Four ticked; one gained a page before the click, so it stayed.</figcaption>
-  </figure>
   <p><strong>No use found means no use was found in the places Templatrail reads</strong>, not that nothing uses the template. <em>Check by hand</em> marks what it cannot judge.</p>
 
 
   <h2 id="pro">Templatrail Pro</h2>
   <p><strong>Replace everywhere</strong> points the places that used one template at another of the same kind (both templates stay in your library): pick the replacement, check the places listed, confirm; each changed post gets a revision first. <strong>Export CSV</strong> saves the last scan's report. Other uses (global widgets, popup links, Components, Maintenance Mode, template blocks, titles, custom fields, site settings) are listed, not replaced.</p>
   <p><strong>Who Pro is for.</strong> People who repeat one clean-up across many pages or client sites, such as a rebrand that left a copy of “Call to action: book a call” behind. One site and only a clear-out: the free plugin does the whole job.</p>
-  <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/pro-preview-phone.png" width="390" height="263"><img src="img/pro-preview.png" alt="Templatrail Pro's preview before Replace everywhere: 'This will change 2 places', the Services and Pricing pages with how each uses the template, and a Replace everywhere button with the note that each changed post gets a revision first" width="864" height="239" loading="lazy"></picture>
-    <figcaption>The preview: two pages would change; nothing has yet.</figcaption>
-  </figure>
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
     <p class="fine">$19 once, unlimited sites, no renewal · free plugin inside the Pro zip · checkout by Polar · <a href="../terms.html">14-day refund if it doesn't work as described and we can't fix it</a></p>
@@ -174,6 +167,14 @@
   <p class="fine">New versions of Pro are free, and we don't push them to your site (Pro never contacts a server): download the new file from your Polar purchase and upload it with Replace current with uploaded (<a href="quick-start.html#updating">steps</a>).</p>
 
   <h2 id="column-h">More pictures</h2>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/cleanup-result-phone.png" width="390" height="225"><img src="img/cleanup-result.png" alt="Templatrail's result after Move selected to Trash: 'Re-checked, then moved 3 templates to the Trash', the three template names, a link to Elementor's Trash view, and 'Left alone after the re-check: 1 template. Logo strip: press gained a use: Press and awards (shortcode in content)'" width="864" height="140" loading="lazy"></picture>
+    <figcaption>Four ticked; one gained a page before the click, so it stayed.</figcaption>
+  </figure>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/pro-preview-phone.png" width="390" height="263"><img src="img/pro-preview.png" alt="Templatrail Pro's preview before Replace everywhere: 'This will change 2 places', the Services and Pricing pages with how each uses the template, and a Replace everywhere button with the note that each changed post gets a revision first" width="864" height="239" loading="lazy"></picture>
+    <figcaption>The preview: two pages would change; nothing has yet.</figcaption>
+  </figure>
   <figure id="csv">
     <p class="swipe-hint narrow-only">Swipe sideways to read the columns &rarr;</p>
     <div class="swipe-wrap"><div class="scroll-x"><img class="ui csv" style="width: 669px" src="img/csv-rows.png" alt="Export CSV opened as a table, four of its fourteen columns: Newsletter signup has Places 5 and five rows, one for each place, and Call to action: book a call has Places 2 and two rows" width="669" height="240" loading="lazy"></div></div>
