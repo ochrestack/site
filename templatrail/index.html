@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://ochrestack.com/templatrail/">
 <meta property="og:image" content="https://ochrestack.com/templatrail/img/hero-places.png">
 <meta property="og:image:width" content="1728">
-<meta property="og:image:height" content="688">
+<meta property="og:image:height" content="572">
 <meta property="og:image:alt" content="Templatrail's screen for the Elementor template Newsletter signup in WordPress: In use, 5 places, and a table of each place with its type, status, how it is used and an Edit with Elementor link">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Templatrail for Elementor: see which pages use each saved template">
@@ -124,7 +124,7 @@
   <p class="sub">“I'm pretty sure I have a load of templates that are no longer used anywhere.” <span class="src">(a user on Elementor's GitHub issue tracker)</span> Press Scan site and Templatrail shows the pages that use each saved Elementor template, and lists the ones with no use found.</p>
 
   <div class="top">
-  <picture><source media="(max-width: 600px)" srcset="img/hero-places-phone.png" width="390" height="318"><source media="(max-height: 800px)" srcset="img/hero-places-short.png" width="864" height="270"><img class="hero" src="img/hero-places.png" alt="Templatrail's screen for one saved Elementor template, Newsletter signup: In use, 5 places, and below it each place with its type, status, how it is used and an Edit with Elementor link. On a wide screen the first three places show: the template Footer: contact strip, which holds it, the Contact page through that template, and the Home page through a shortcode in its content" width="864" height="344"></picture>
+  <picture><source media="(max-width: 600px)" srcset="img/hero-places-phone.png" width="390" height="335"><source media="(max-height: 800px)" srcset="img/hero-places-short.png" width="864" height="231"><img class="hero" src="img/hero-places.png" alt="Templatrail's screen for one saved Elementor template, Newsletter signup: In use, 5 places, and below it each place with its type, status, how it is used and an Edit with Elementor link. On a wide screen the first three places show: the template Footer: contact strip, which holds it, the Contact page through that template, and the Home page through a shortcode in its content" width="864" height="286"></picture>
 
   <ul>
     <li><strong>See where each template is used</strong><span class="more">: the pages, posts and templates that hold it.</span></li>
@@ -133,21 +133,22 @@
   </ul>
 
   <div class="buy">
-    <p class="price"><strong>Free:</strong> <a href="download/templatrail.zip?v=1.0.2">templatrail.zip</a> 1.0.2, report and cleanup<br><strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
+    <p class="price"><strong>Free:</strong> <a href="download/templatrail.zip?v=1.0.3">templatrail.zip</a> 1.0.3, report and cleanup<br><strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
     <p class="fine" id="trust">Tested on WordPress 7.1.5 and 6.8.3, PHP 8.3 and 7.4, Elementor 4.4.1 · source code included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
   </div>
 
   <div class="box warn">
-    <strong>You can do this by hand.</strong> A careful admin can search the database for a template's ID in Elementor's saved page data and in post content. Templatrail does that search across the site in the places it reads, follows templates inside templates to the pages that show them, and writes the answer in plain words.
+    <strong>You can do this by hand.</strong> A careful admin can search the database for a template's ID in Elementor's saved page data and in post content. Templatrail does that search across the site, follows templates inside templates to the pages that show them, and writes the answer in plain words.
   </div>
 
   <h2 id="watch">Watch it work</h2>
   <figure>
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080">
+      <source media="(max-width: 767px)" src="video/templatrail-demo-phone.mp4" type="video/mp4">
       <source src="video/templatrail-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>Recorded on Templatrail 1.0.2: Scan site, one template's five places, the cleanup with its re-check, the Trash, and Pro's Replace everywhere. <a href="video/templatrail-demo-1080p.mp4">1080p file</a>.</figcaption>
+    <figcaption>Recorded on Templatrail 1.0.3: Scan site, one template's five places, the cleanup with its re-check, the Trash, and Pro's Replace everywhere. <a href="video/templatrail-demo-1080p.mp4">1080p file</a>.</figcaption>
   </figure>
 
   <h2 id="cleanup">Clear out templates with no use found</h2>
@@ -158,29 +159,31 @@
   </figure>
   <p><strong>No use found means no use was found in the places Templatrail reads</strong>, not that nothing uses the template. <em>Check by hand</em> marks what it cannot judge.</p>
 
-  <figure id="column">
-    <p class="swipe-hint narrow-only">Swipe sideways to read the columns &rarr;</p>
-    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/used-on-column.png" alt="Elementor's Saved Templates list with the Used on column: Call to action: book a call, 2 places; Call to action: guide, 0 places and No use found. The other columns are Title, Type, Shortcode, Author and Categories" width="846" height="253" loading="lazy"></div></div>
-    <figcaption>Elementor's own Saved Templates list gets a <strong>Used on</strong> column, for administrators. Searched for “Call to action”: one template in 2 places, one with no use found.</figcaption>
-  </figure>
 
   <h2 id="pro">Templatrail Pro</h2>
   <p><strong>Replace everywhere</strong> points the places that used one template at another of the same kind (both templates stay in your library): pick the replacement, check the places listed, confirm; each changed post gets a revision first. <strong>Export CSV</strong> saves the last scan's report. Other uses (global widgets, popup links, Components, Maintenance Mode, template blocks, titles, custom fields, site settings) are listed, not replaced.</p>
-  <p><strong>Who Pro is for.</strong> People who repeat one clean-up across many pages or client sites, such as a rebrand that left a copy of “Call to action: book a call” behind. $19 once covers unlimited sites. If you only want to clear out templates on one site, the free plugin does the whole job.</p>
+  <p><strong>Who Pro is for.</strong> People who repeat one clean-up across many pages or client sites, such as a rebrand that left a copy of “Call to action: book a call” behind. One site and only a clear-out: the free plugin does the whole job.</p>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/pro-preview-phone.png" width="390" height="252"><img src="img/pro-preview.png" alt="Templatrail Pro's preview before Replace everywhere: 'This will change 2 places', the Services and Pricing pages with how each uses the template, and a Replace everywhere button with the note that each changed post gets a revision first" width="864" height="192" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/pro-preview-phone.png" width="390" height="263"><img src="img/pro-preview.png" alt="Templatrail Pro's preview before Replace everywhere: 'This will change 2 places', the Services and Pricing pages with how each uses the template, and a Replace everywhere button with the note that each changed post gets a revision first" width="864" height="239" loading="lazy"></picture>
     <figcaption>The preview: two pages would change; nothing has yet.</figcaption>
-  </figure>
-  <figure id="csv">
-    <p class="swipe-hint narrow-only">Swipe sideways to read the columns &rarr;</p>
-    <div class="swipe-wrap"><div class="scroll-x"><img class="ui csv" style="width: 669px" src="img/csv-rows.png" alt="Export CSV opened as a table, four of its fourteen columns: Newsletter signup has Places 5 and five rows, one for each place, and Call to action: book a call has Places 2 and two rows" width="669" height="240" loading="lazy"></div></div>
-    <figcaption>The file from Export CSV on the demo site, shown as a table: Newsletter signup in 5 places is 5 rows, Call to action: book a call in 2 places is 2 rows.</figcaption>
   </figure>
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
     <p class="fine">$19 once, unlimited sites, no renewal · free plugin inside the Pro zip · checkout by Polar · <a href="../terms.html">14-day refund if it doesn't work as described and we can't fix it</a></p>
   </div>
   <p class="fine">New versions of Pro are free, and we don't push them to your site (Pro never contacts a server): download the new file from your Polar purchase and upload it with Replace current with uploaded (<a href="quick-start.html#updating">steps</a>).</p>
+
+  <h2 id="column-h">More pictures</h2>
+  <figure id="csv">
+    <p class="swipe-hint narrow-only">Swipe sideways to read the columns &rarr;</p>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui csv" style="width: 669px" src="img/csv-rows.png" alt="Export CSV opened as a table, four of its fourteen columns: Newsletter signup has Places 5 and five rows, one for each place, and Call to action: book a call has Places 2 and two rows" width="669" height="240" loading="lazy"></div></div>
+    <figcaption>The file from Export CSV on the demo site, shown as a table: Newsletter signup in 5 places is 5 rows, Call to action: book a call in 2 places is 2 rows.</figcaption>
+  </figure>
+  <figure id="column">
+    <p class="swipe-hint narrow-only">Swipe sideways to read the columns &rarr;</p>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/used-on-column.png" alt="Elementor's Saved Templates list with the Used on column: Call to action: book a call, 2 places; Call to action: guide, 0 places and No use found. The other columns are Title, Type, Shortcode, Author and Categories" width="752" height="253" loading="lazy"></div></div>
+    <figcaption>Elementor's own Saved Templates list gets a <strong>Used on</strong> column, for administrators. Searched for “Call to action”: one template in 2 places, one with no use found.</figcaption>
+  </figure>
 
   <h2 id="questions">Questions</h2>
   <details>
@@ -221,12 +224,12 @@
   <p class="fine">Not affiliated with or endorsed by Elementor or the add-ons named on this page.</p>
 
   <h2 id="tested">How we tested</h2>
-  <p>Templatrail and Templatrail Pro 1.0.2 pass 92 and 27 automated tests on Linux with PHP 8.3.6 and 7.4.33, WordPress 7.1.5 and 6.8.3, and Elementor 4.4.1. On our demo site, 15 of 38 saved templates had no use found.</p>
+  <p>Templatrail and Templatrail Pro 1.0.3 pass 102 and 30 automated tests on Linux with PHP 8.3.6 and 7.4.33, WordPress 7.1.5 and 6.8.3, and Elementor 4.4.1. On our demo site, 15 of 38 saved templates had no use found.</p>
   <details>
     <summary>The numbers behind this page</summary>
     <p>The tests use MariaDB 10.11 and a built site of 55 saved templates and Components. Real-window checks ran in Chrome, and a scan and Move to Trash also ran on WordPress 7.1.5 with the SQLite integration plugin.</p>
-    <p>On a generated 680-post site, a database search for each ID found a “use” for 38 of 40 unused templates, because the number also turns up in sizes and other IDs. Templatrail's status was right for all 80 templates. A generated site of 42,004 posts and 2,000 templates scanned in about 22 seconds on a 4-core machine; the re-check of 500 selected templates took 7.2 seconds (Templatrail 1.0.2).</p>
-    <p>The pictures and the film on this page are Templatrail 1.0.2 in Chrome on a local WordPress 7.1.5 with the SQLite integration plugin 3.1.3, served by PHP's built-in server: the demo site, with Hello Elementor 3.5.2, Elementor 4.4.1, Essential Addons for Elementor 6.8.9 and Show template by shortcode for Elementor 1.0.4.</p>
+    <p>On a generated 680-post site, a database search for each ID found a “use” for 38 of 40 unused templates, because the number also turns up in sizes and other IDs. Templatrail's status was right for all 80 templates. A generated site of 42,004 posts and 2,000 templates scanned in about 26 seconds on a 4-core machine; the re-check of 500 selected templates took about 8 seconds (Templatrail 1.0.3).</p>
+    <p>The pictures and the film on this page are Templatrail 1.0.3 in Chrome on a local WordPress 7.1.5 with the SQLite integration plugin 3.1.3, served by PHP's built-in server: the demo site, with Hello Elementor 3.5.2, Elementor 4.4.1, Essential Addons for Elementor 6.8.9 and Show template by shortcode for Elementor 1.0.4. The film is 52&nbsp;seconds at 60 frames a second, captions only, no sound: it streams as a 10.0&nbsp;MB file (a 2.8&nbsp;MB, 480p copy on windows under 768&nbsp;px) and <a href="video/templatrail-demo-1080p.mp4">the 1080p file</a> is 23.7&nbsp;MB. In the cleanup scene a second page is made with WP-CLI between the ticking and the click, to show the re-check leaving one template alone.</p>
   </details>
   <div class="buy">
     <p><a class="button" id="buy-3" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
