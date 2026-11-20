@@ -109,8 +109,6 @@
     .top ul, .top .buy .price { font-size: 14.5px; }
     .top .buy .button { padding: 6px 14px; }
   }
-  .gif-phone { display: none; }
-  @media (max-width: 767px) { .gif-wide { display: none; } .gif-phone { display: block; max-width: 420px; margin: 0 auto; } }
   figure video { background: #2B2118; }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
@@ -131,12 +129,12 @@
   <ul>
     <li><strong>See where each template is used</strong><span class="more">: the pages, posts and templates that hold it.</span></li>
     <li><strong>Clear out templates with no use found</strong><span class="more">: re-checked first, into WordPress's Trash, restorable.</span></li>
-    <li><strong>Merge duplicates (Pro)</strong><span class="more">: swap one template for another.</span></li>
+    <li><strong>Replace one template with another (Pro)</strong><span class="more">: pages that used the old one point at the new one.</span></li>
   </ul>
 
   <div class="buy">
     <p class="price"><strong>Free:</strong> <a href="download/templatrail.zip?v=1.0.2">templatrail.zip</a> 1.0.2, report and cleanup<br><strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
-    <p class="fine" id="trust">Tested on WordPress 7.1.5 and 6.8.3, PHP 8.3 and 7.4, Elementor 4.4.1 · Pro: unlimited sites, an update is a re-upload on each site · source code included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+    <p class="fine" id="trust">Tested on WordPress 7.1.5 and 6.8.3, PHP 8.3 and 7.4, Elementor 4.4.1 · source code included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
   </div>
 
@@ -149,14 +147,7 @@
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080">
       <source src="video/templatrail-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>55&nbsp;s, captions only, no sound, recorded on Templatrail 1.0.2: Scan site, one template's five places, the cleanup with its re-check, the Trash, and Pro's Replace everywhere. It streams as a 10.5&nbsp;MB file; <a href="video/templatrail-demo-1080p.mp4">the 1080p file</a> is 32.0&nbsp;MB.</figcaption>
-  </figure>
-  <figure>
-    <img class="gif-wide" src="video/templatrail-recheck.gif" alt="An 11-second clip of the cleanup on the demo site: four templates with no use found are ticked, Move selected to Trash is pressed, and the result reads 'Re-checked, then moved 3 templates to the Trash' and 'Left alone after the re-check: 1 template', because a page started using it" loading="lazy" width="840" height="473">
-    <video class="gif-phone" autoplay muted loop playsinline preload="metadata" width="720" height="406" aria-label="An 11-second clip of the cleanup on the demo site: four templates with no use found are ticked, Move selected to Trash is pressed, and the result reads 'Re-checked, then moved 3 templates to the Trash' and 'Left alone after the re-check: 1 template', because a page started using it">
-      <source src="video/templatrail-recheck-phone.mp4" type="video/mp4">
-    </video>
-    <figcaption>Four ticked; one gained a page between the scan and the click (a page we added for the demo), so it stayed. Wide screens get an 11&nbsp;second, 7.5&nbsp;MB GIF; phones a 0.5&nbsp;MB loop.</figcaption>
+    <figcaption>Recorded on Templatrail 1.0.2: Scan site, one template's five places, the cleanup with its re-check, the Trash, and Pro's Replace everywhere. <a href="video/templatrail-demo-1080p.mp4">1080p file</a>.</figcaption>
   </figure>
 
   <h2 id="cleanup">Clear out templates with no use found</h2>
@@ -174,7 +165,7 @@
   </figure>
 
   <h2 id="pro">Templatrail Pro</h2>
-  <p><strong>Replace everywhere</strong> merges duplicates: pick a template and a replacement of the same kind, check the places listed, confirm; each changed post gets a revision first. <strong>Export CSV</strong> saves the last scan's report. Other uses (global widgets, popup links, Components, Maintenance Mode, template blocks, titles, custom fields, site settings) are listed, not replaced.</p>
+  <p><strong>Replace everywhere</strong> points the places that used one template at another of the same kind (both templates stay in your library): pick the replacement, check the places listed, confirm; each changed post gets a revision first. <strong>Export CSV</strong> saves the last scan's report. Other uses (global widgets, popup links, Components, Maintenance Mode, template blocks, titles, custom fields, site settings) are listed, not replaced.</p>
   <p><strong>Who Pro is for.</strong> People who repeat one clean-up across many pages or client sites, such as a rebrand that left a copy of “Call to action: book a call” behind. $19 once covers unlimited sites. If you only want to clear out templates on one site, the free plugin does the whole job.</p>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/pro-preview-phone.png" width="390" height="252"><img src="img/pro-preview.png" alt="Templatrail Pro's preview before Replace everywhere: 'This will change 2 places', the Services and Pricing pages with how each uses the template, and a Replace everywhere button with the note that each changed post gets a revision first" width="864" height="192" loading="lazy"></picture>
@@ -187,9 +178,9 @@
   </figure>
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
-    <p class="fine">$19 once, unlimited sites, no renewal · an update is a re-upload on each site · free plugin inside the Pro zip · checkout by Polar · <a href="../terms.html">14-day refund if it doesn't work as described and we can't fix it</a></p>
+    <p class="fine">$19 once, unlimited sites, no renewal · free plugin inside the Pro zip · checkout by Polar · <a href="../terms.html">14-day refund if it doesn't work as described and we can't fix it</a></p>
   </div>
-  <p class="fine">Every Pro update is included, with no end date. Pro makes no network call, so WordPress shows no update: download the new file from your Polar purchase and upload it with Replace current with uploaded (<a href="quick-start.html#updating">steps</a>).</p>
+  <p class="fine">New versions of Pro are free, and we don't push them to your site (Pro never contacts a server): download the new file from your Polar purchase and upload it with Replace current with uploaded (<a href="quick-start.html#updating">steps</a>).</p>
 
   <h2 id="questions">Questions</h2>
   <details>
