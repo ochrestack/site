@@ -128,6 +128,26 @@
     <strong>Do you need it?</strong> For a mesh in one piece whose two copies share the same topology, free and paid tools already copy the order: pick two neighbouring faces on each, copy, paste. In those cases Ordergraft is a convenience.
   </div>
 
+  <h2 id="watch">Watch</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/ordergraft-poster.jpg" width="1920" height="1080">
+      <source src="video/ordergraft-demo-1080p60.mp4" type="video/mp4" media="(min-width: 768px)">
+      <source src="video/ordergraft-demo-720p60-phone.mp4" type="video/mp4">
+    </video>
+    <figcaption>53&nbsp;s, no sound, the waits cut. <a href="video/ordergraft-demo-1080p60.mp4">Full size</a>.</figcaption>
+  </figure>
+  <details>
+    <summary>What the film shows</summary>
+    <p>Captions only, 1080p at 60 frames a second (720p on phones). Rain's face in Blender 4.2.23 with Ordergraft 1.0.1: a smile key torn by Join as Shapes; Check Pair; one Copy Order on the all-triangle copy, 43 of 43 parts; the key playing clean; then the quad copy, with the one part it lists; and a copy whose topology differs, where Check Pair says where the copies stop matching and changes nothing. The waits while Blender works are cut (<a href="#made">how</a>). Character: <a href="#credits">credits</a>.</p>
+  </details>
+  <figure>
+    <picture>
+      <source media="(max-width: 600px)" srcset="video/ordergraft-demo-phone.gif" width="480" height="270">
+      <img src="video/ordergraft-demo.gif" alt="Blender 4.2.23, Rain's face twice side by side with the Ordergraft panel at the right. The left copy has a smile shape key torn by Join as Shapes: its face is shards, which come together as the key goes to zero and fly apart again. Then the Copy Order result box reads Parts matched: 43 of 43, Pins needed: 0, Turned 383 diagonals. Then the same key plays on the left copy, now clean, until both faces match." width="720" height="406" loading="lazy">
+    </picture>
+    <figcaption>Tear and clean key, 11&nbsp;s: <a href="video/ordergraft-demo.gif">GIF</a>.</figcaption>
+  </figure>
+
   <h2>In Blender, for real</h2>
   <p>Rain's face: 43&nbsp;loose parts, 16,109&nbsp;vertices (<a href="#made">how</a>).</p>
   <figure>
@@ -141,7 +161,7 @@
     </figure>
     <figure>
       <img class="ui" src="img/rain-quad-copy.png" alt="The Ordergraft panel after Copy Order on the quad pair. The Copy Order result box reads: Parts matched: 42 of 43; Pins needed: 1; Placed 15,888 vertices; Placed 31,231 edges; Placed 15,386 faces; Left as it was: Part 14 on the target (208 faces, Part 30 on the source); Reason: more than one way to fit, about equally close; Order matches: 15,888 of 16,109 vertices, 31,231 of 31,659 edges, 15,386 of 15,594 faces." width="370" height="775" loading="lazy">
-      <figcaption>Quad copy: 42&nbsp;of&nbsp;43&nbsp;parts. The 43rd, a small part of her lower teeth that is its own mirror image, is listed, not guessed.</figcaption>
+      <figcaption>Quad copy: 42&nbsp;of&nbsp;43&nbsp;parts. The 43rd, a part of her lower teeth that mirrors itself, is listed, not guessed.</figcaption>
     </figure>
   </div>
   <div class="pair wide">
@@ -159,7 +179,7 @@
       <source media="(max-width: 600px)" srcset="img/rain-different-phone.gif" width="640" height="490">
       <img src="img/rain-different.gif" alt="Blender 4.2.23: the second copy is selected, Check Pair is pressed and the Check result box says Different topology: nothing would change. Show is pressed, and both faces open in Edit Mode as wireframe with the reported vertex selected on each, an orange dot near her mouth." width="960" height="424" loading="lazy">
     </picture>
-    <figcaption>Check Pair, then Show (8&nbsp;s): the two vertices, orange dots near her mouth. <a href="img/rain-different-show-window.png">Whole window</a>.</figcaption>
+    <figcaption>Check Pair, then Show (8&nbsp;s). <a href="img/rain-different-show-window.png">Whole window</a>.</figcaption>
   </figure>
 
   <h2>What it does</h2>
@@ -192,7 +212,7 @@
 
   <h2 id="tested">How we tested</h2>
   <ul>
-    <li><strong>All triangles:</strong> Join as Shapes alone tears Rain's face, largest vertex error 0.255&nbsp;m. With Ordergraft: 43&nbsp;of&nbsp;43 parts, 383&nbsp;diagonals turned, error 0&nbsp;m.</li>
+    <li><strong>All triangles:</strong> 43&nbsp;of&nbsp;43 parts, 383&nbsp;diagonals turned; the key's largest vertex error 0.255&nbsp;m before, 0&nbsp;m after.</li>
     <li><strong>Quads</strong> (15,594&nbsp;faces): 42&nbsp;of&nbsp;43 parts, the 43rd listed, 1 pin needed.</li>
   </ul>
   <details>
@@ -203,6 +223,7 @@
   <details id="made">
     <summary>How these images were made</summary>
     <p>Rain's file was opened in the full Blender binary under a virtual display (Xvfb); every click and key press is a real X event sent with xdotool, and the screen was recorded with ffmpeg. Ordergraft was installed from the zip a buyer gets. We joined Rain's head, eyes, eyelashes, eyebrows, gums with teeth and tongue into one mesh, applied the Mirror modifiers her parts use, and made the copy by applying her Smile.L, Smile.R, EyebrowsDown.L, EyebrowsDown.R and mouth_open keys at 1.0, 1.0, 0.6, 0.6 and 0.35 to the head part, then renumbering it: the parts joined back in the reverse order and the vertices, edges and faces shuffled by a script of ours, as a round trip through another tool can leave them. The all-triangle pair is the same two meshes triangulated, the source at rest and the copy after its expression, with a different rule for the diagonals. The original index of every vertex is kept apart from the add-on, so each run could be compared with where every vertex belongs; the key errors above come from that. Blender's software renderer draws about one frame a second, so the key slider's moves in the GIFs are stepped by script, one finished frame each; every click, the panels and the Edit Mode view are real recordings. The pointer is drawn into the GIFs from the logged positions, because the screen grab has none. Nothing else was added to the captures except the two labels on the before and after picture.</p>
+    <p>The film: the same scene and the same zip, 1920 x 1080. Every click is a real X event; those stretches were recorded at 60 frames a second, and the pointer and a ring at each click are drawn from the logged positions. The slider sweeps were not recorded live: a timer inside Blender set the key's value, drew the whole window, and one screenshot was taken per frame, 60 a second, while the view turned 9 degrees (the tear) or 12 degrees (the clean key). The waits while Blender checks or copies, and a press that missed and was repeated, are cut; Check Pair took about 4&nbsp;s and the all-triangle Copy Order about 6&nbsp;s while the screen was being recorded. The captions, the bar under the picture, the slow push-in on the panel and the two cards are the only things added.</p>
   </details>
 
   <p class="fine" id="credits">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Rain is not included with Ordergraft.</p>
