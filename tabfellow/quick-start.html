@@ -151,24 +151,23 @@
   <p>Back to the <a href="index.html">product page</a>.</p>
 
   <h2 id="install">Install</h2>
-  <p>Tabfellow is not on JetBrains Marketplace yet, so there is nothing to install from there today.</p>
-  <p>Installing from the zip file was run in IntelliJ IDEA Community 2025.1 and 2026.3: <strong>Settings | Plugins</strong>, the gear (beside the tabs in 2025.1; beside the search field in 2026.3, which has no tabs), <strong>Install Plugin from Disk…</strong>, <strong>Accept</strong>. In 2026.3 the list then looks unchanged: type Tabfellow in the search field and <strong>Restart IDE</strong> appears. After the restart 2026.3 shows <em>Cannot update plugin</em> at every start; Tabfellow works with it showing.</p>
+  <p>Tabfellow is not on JetBrains Marketplace yet, so it cannot be installed today and there is no download on this page. Once it is listed: <strong>Settings | Plugins | Marketplace</strong>, search for Tabfellow, <strong>Install</strong>, and restart the IDE when it asks. The steps below are what you do after that.</p>
 
   <h2 id="share">Share a group (you)</h2>
   <ol>
     <li>In <strong>Settings | Editor | Live Templates</strong> keep your project's templates in one group of your own, not one of the IDE's.</li>
-    <li>Choose <strong>Tools | Share Live Templates with Project…</strong> (also in Find Action, and in the context menu of the project root). Tick the group and press <strong>Share</strong>. It is written to <code>.livetemplates/&lt;group&gt;.xml</code>; a group that already has a file under <code>.idea/liveTemplates</code> is written there. If the file already holds templates your group lacks, Share asks: another file name (the default), merge, replace or skip.</li>
-    <li>Commit the new file. The IDE may ask whether to add it to Git; if it does not, add <code>.livetemplates/</code> yourself.</li>
-    <li>To make the IDE ask newcomers to install Tabfellow, press <strong>Open Required Plugins…</strong> in the share dialog, press <strong>+</strong>, choose <em>Tabfellow: Team Live Templates</em>, press OK in both dialogs, and commit <code>.idea/externalDependencies.xml</code>.</li>
+    <li>Choose <strong>Tools | Tabfellow | Share Live Templates with Project…</strong> (also in Find Action, and in the context menu of the project root). Tick the group and press <strong>Share</strong>. It is written to <code>.livetemplates/&lt;group&gt;.xml</code> (or back to its file under <code>.idea/liveTemplates</code>). If that file holds templates your group lacks, Share asks: another file name (the default), merge, replace or skip.</li>
+    <li>The notice that follows names the file and has two links. <strong>Commit…</strong> opens the IDE's Commit window with the new file listed (the IDE may ask whether to add it to Git; if it does not, add <code>.livetemplates/</code> yourself).</li>
+    <li>To make the IDE ask newcomers to install Tabfellow, press <strong>Require Tabfellow for this project</strong> in that notice, and commit <code>.idea/externalDependencies.xml</code>. Tabfellow adds only its own entry to the project's Required Plugins list; <strong>Open Required Plugins…</strong> in the share dialog opens the IDE's own page instead.</li>
   </ol>
-  <p>Your own group stays as it is, so the IDE offers both your template and the shared one. <strong>Tools | Stop Sharing Live Templates…</strong> deletes one group's file after a confirmation that names it.</p>
+  <p>Your own group stays as it is, so the IDE offers both your template and the shared one until you delete yours. <strong>Tools | Tabfellow | Stop Sharing Live Templates…</strong> deletes one group's file after a confirmation that names it.</p>
 
   <h2 id="teammates">Teammates</h2>
   <ol start="5">
-    <li>Install Tabfellow, open the project, and trust it if the IDE asks. The group is in <strong>Settings | Editor | Live Templates</strong> as <em>group (project name)</em>. Type an abbreviation and press Tab.</li>
+    <li>Install Tabfellow, open the project, and trust it if the IDE asks. The group is in <strong>Settings | Editor | Live Templates</strong> as <em>group (project name)</em>. Type an abbreviation and press Tab. The first time a project's templates load, one notice says so (<em>Don’t show this again</em> switches it off).</li>
   </ol>
-  <p><strong>Nothing loaded?</strong> The IDE opened the project in Safe Mode: open any file and press <strong>Trust project…</strong> in the <em>Safe mode</em> bar above it, and the groups load. A template that calls <code>groovyScript</code> (a function that runs a script) loads switched off, and a notice says so; read it, then press <strong>Allow</strong> in the notice or on the Tabfellow page. That includes your own template on your own machine, right after you share it.</p>
-  <p><strong>Tools | Reload Shared Live Templates</strong> (or the same button on the Tabfellow page) reads the files again and names the file and line of any it cannot read.</p>
+  <p><strong>Nothing loaded?</strong> The IDE opened the project in Safe Mode: open any file and press <strong>Trust project…</strong> in the <em>Safe mode</em> bar above it, and the groups load. A template that calls <code>groovyScript</code> (a function that runs a script) loads switched off, and a notice says so; read it, then press <strong>Allow</strong> in the notice or on the Tabfellow page.</p>
+  <p><strong>Tools | Tabfellow | Reload Shared Live Templates</strong> (or the same button on the Tabfellow page, which answers under the button with the time) reads the files again and names the file and line of any it cannot read.</p>
 
   <h2 id="license">With a license</h2>
   <ul>
@@ -184,9 +183,8 @@
     <li><strong>No license.</strong> beside the plugin in Settings | Plugins: the IDE's wording when no paid license is held. The free part works.</li>
     <li><strong>Subscription:</strong> the IDE's word for a license in your JetBrains Account. Tabfellow is bought once, not rented.</li>
     <li><strong>Activate to enable</strong> under Tabfellow's name: the IDE's line for a paid plugin that has no license yet. The free part works.</li>
-    <li><strong>Log In to JetBrains Account:</strong> the trial and the license live in your account. Tabfellow never sees it.</li>
   </ul>
-  <p>The trial can start only once Tabfellow is on the Marketplace. In Android Studio, install the plugin JetBrains Marketplace Licensing first: the Tabfellow page names it.</p>
+  <p>The trial can start only once Tabfellow is on the Marketplace. In Android Studio, install the plugin JetBrains Marketplace Licensing first.</p>
 
   <h2 id="limits">Limits</h2>
   <ul>

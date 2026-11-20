@@ -123,6 +123,7 @@
   .narrow-only-inline { display: none; }
   /* Phones (375x667): the lead of each benefit, the price line and the Download button fit the first screen. */
   @media (max-width: 600px) {
+    header, main, footer, .top { padding-left: 16px; padding-right: 16px; }
     .narrow-only-inline { display: inline; }
     header { padding-top: 10px; }
     header img { width: 28px; height: 28px; }
@@ -165,8 +166,8 @@
   <p class="sub">Sharing live templates means exporting and importing XML by hand. Tabfellow keeps them in the project: commit one file, and teammates who have it get them when they open a project the IDE trusts.</p>
   <div class="top-images">
   <figure class="top-image">
-    <a href="img/hero-expansion.png"><picture><source media="(max-width: 600px), (min-width: 1000px) and (max-width: 1250px), (min-width: 1000px) and (max-height: 700px)" srcset="img/hero-expansion-phone.png" width="370" height="110"><img class="hero" src="img/hero-expansion.png" alt="OwnerController.java in IntelliJ IDEA Community 2025.1 after typing getm and Tab on a teammate's machine: a new @GetMapping handler for /owners/find with the method initFindForm, marked as new code in the margin" width="740" height="240"></picture></a>
-    <figcaption>A teammate types <code>getm</code> and presses Tab: the shared template expands (IntelliJ IDEA Community 2025.1).</figcaption>
+    <a href="img/hero-loaded.png"><picture><source media="(max-width: 600px), (min-width: 1000px) and (max-width: 1250px), (min-width: 1000px) and (max-height: 700px)" srcset="img/hero-loaded-phone.png" width="420" height="103"><img class="hero" src="img/hero-loaded.png" alt="IntelliJ IDEA Community 2025.1 on a teammate's machine: OwnerController.java with a new @GetMapping handler for /owners/hello expanded from the shared template getm, and the notice Shared live templates loaded: petclinic (spring-petclinic), 13 templates loaded, Type an abbreviation and press Tab" width="768" height="415"></picture></a>
+    <figcaption>A teammate opens the project: one notice says the shared templates loaded, and <code>getm</code> and Tab expand one (IntelliJ IDEA Community 2025.1).</figcaption>
   </figure>
   </div>
   <ul class="benefits">
@@ -184,68 +185,59 @@
   </div>
 </section>
 <main>
-  <h2 id="watch">Watch it work</h2>
-  <figure>
-    <video controls preload="none" playsinline poster="video/tabfellow-poster.jpg" width="1920" height="1080">
-      <source src="video/tabfellow-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
-      <source src="video/tabfellow-demo-720p.mp4" type="video/mp4">
-    </video>
-    <figcaption>57.1 s, captions only, no sound (1080p, 720p on phones; <a href="video/tabfellow-demo-1080p.mp4">open full size</a>). IntelliJ IDEA Community 2025.1, recorded with version 1.0.1, the public Spring PetClinic sample; the paid steps use a test license&nbsp;stand-in.</figcaption>
-  </figure>
-
   <h2 id="how">How it works</h2>
   <p class="fine"><a href="quick-start.html">Quick start</a>.</p>
 
-  <p><span class="step-tag">1. Share (free)</span><br>Tools | Share Live Templates with Project… writes a group of your own to one file in <code>.livetemplates</code>. Commit it.</p>
+  <p><span class="step-tag">1. Share (free)</span><br>Tools | Tabfellow | Share Live Templates with Project… writes a group of your own to one file in <code>.livetemplates</code>. Commit it.</p>
   <figure>
-    <img class="ui wide-only" src="img/share-dialog.png" alt="The Share Live Templates with Project dialog in IntelliJ IDEA Community 2025.1: the group petclinic ticked, 13 templates to .livetemplates/petclinic.xml, and the link Open Required Plugins" width="702" height="346" loading="lazy">
-    <img class="ui narrow-only" src="img/share-dialog-phone.png" alt="The group petclinic ticked: 13 templates to .livetemplates/petclinic.xml" width="368" height="36" loading="lazy">
+    <img class="ui wide-only" src="img/share-dialog.png" alt="The Share Live Templates with Project dialog in IntelliJ IDEA Community 2025.1: the group petclinic ticked, 13 templates to .livetemplates/petclinic.xml, and the link Open Required Plugins" width="704" height="226" loading="lazy">
+    <img class="ui narrow-only" src="img/share-dialog-phone.png" alt="The group petclinic ticked: 13 templates to .livetemplates/petclinic.xml" width="401" height="26" loading="lazy">
     <figcaption>13 templates to one file.</figcaption>
+  </figure>
+  <figure>
+    <img class="ui" src="img/share-notice.png" alt="The notice Live templates shared: petclinic, 13 templates in .livetemplates/petclinic.xml, You will see both until you delete your own group, with the links Commit and Require Tabfellow for this project" width="420" height="103" loading="lazy">
+    <figcaption>Then <em>Commit…</em> opens the IDE's Commit window with the new file listed, and <em>Require Tabfellow for this project</em> adds Tabfellow to the project's Required Plugins list, so the IDE asks a newcomer to install it.</figcaption>
   </figure>
 
   <p><span class="step-tag">2. Open (free)</span><br>A teammate with Tabfellow opens the project, trusts it when the IDE asks, and types an abbreviation and Tab. Nothing loads in an untrusted project (Safe Mode).</p>
   <figure>
-    <img class="ui wide-only" src="img/live-templates-group.png" alt="IntelliJ IDEA Community 2025.1, Settings | Editor | Live Templates, on a teammate's machine after opening the project: a group labelled petclinic (spring-petclinic) with the templates assj, col, ctrl, ent, flash, getm, initb, mvcget and mvct" width="740" height="364" loading="lazy">
-    <img class="ui narrow-only" src="img/live-templates-group-phone.png" alt="Live Templates settings: the group petclinic (spring-petclinic) with the templates assj, col, ctrl, ent, flash and getm" width="380" height="148" loading="lazy">
+    <img class="ui wide-only" src="img/live-templates-group.png" alt="IntelliJ IDEA Community 2025.1, Settings | Editor | Live Templates, on a teammate's machine after opening the project: a group labelled petclinic (spring-petclinic) with the templates assj, col, ctrl, ent, flash, getm, initb, mvcget and mvct" width="712" height="240" loading="lazy">
+    <img class="ui narrow-only" src="img/live-templates-group-phone.png" alt="Live Templates settings: the group petclinic (spring-petclinic) with the templates assj and col" width="353" height="72" loading="lazy">
     <figcaption>The shared group in a teammate's Live Templates, labelled with the project's name.</figcaption>
   </figure>
-  <figure>
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p>
-    <div class="swipe-wrap scroll-x"><img class="ui" src="img/kotlin-2026-3.png" alt="OwnerController.kt in IntelliJ IDEA 2026.3 after typing getm and Tab: a new @GetMapping handler for /owners/search with the Kotlin function searchForm, from the shared group kotlin-team" width="510" height="196" loading="lazy"></div>
+  <figure class="wide-only">
+    <img class="ui" src="img/kotlin-2026-3.png" alt="OwnerController.kt in IntelliJ IDEA 2026.3 after typing getm and Tab: a new @GetMapping handler for /owners/search with the Kotlin function searchForm, from the shared group kotlin-team" width="712" height="112" loading="lazy">
     <figcaption>The same in IntelliJ IDEA 2026.3 with Kotlin: <code>getm</code> from the shared group <code>kotlin-team</code>, in the public Spring PetClinic Kotlin sample.</figcaption>
   </figure>
-  <figure>
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p>
-    <div class="swipe-wrap scroll-x"><img class="ui" src="img/python-pycharm-2025-2.png" alt="grouped_barplot.py of seaborn in PyCharm Community 2025.2 after typing grpagg and Tab: the line penguins.groupby of species and body_mass_g with count and mean, from the shared group ds" width="700" height="92" loading="lazy"></div>
+  <figure class="wide-only">
+    <img class="ui" src="img/python-pycharm-2025-2.png" alt="grouped_barplot.py of seaborn in PyCharm Community 2025.2 after typing grpagg and Tab: the line penguins.groupby of species and body_mass_g with count and mean, from the shared group ds" width="712" height="60" loading="lazy">
     <figcaption>The same in PyCharm Community 2025.2 with Python, free half only: <code>grpagg</code> from the shared group <code>ds</code>, in the public seaborn project.</figcaption>
   </figure>
 
-  <p><span class="step-tag">3. Pull (license)</span><br>After a pull, branch switch, stash or rebase the groups update without reopening the project. To start the trial, press <em>Start the 30-day trial or enter a license…</em> on Settings | Tools | Tabfellow: the IDE's license dialog opens on its Paid license tab, so press the Start trial tab, which asks you to log in to a JetBrains Account.</p>
+  <p><span class="step-tag">3. Pull (license)</span><br>After a pull, branch switch, stash or rebase the groups update without reopening the project.</p>
   <figure>
-    <img class="ui wide-only" src="img/update-notification.png" alt="IntelliJ IDEA Community 2025.1 after a pull: the notification Shared live templates updated, petclinic (spring-petclinic): changed flash, with the link Turn off these notifications, in the corner of OwnerController.java" width="474" height="100" loading="lazy">
-    <img class="ui narrow-only" src="img/update-notification-phone.png" alt="The notification Shared live templates updated, petclinic (spring-petclinic): changed flash, with the link Turn off these notifications" width="338" height="74" loading="lazy">
+    <img class="ui" src="img/update-notification.png" alt="IntelliJ IDEA Community 2025.1 after a pull: the notice Pulled: shared live templates changed, petclinic (spring-petclinic): changed flash, with the link Turn off these notifications" width="420" height="85" loading="lazy">
     <figcaption>After a pull that changed <code>flash</code>.</figcaption>
   </figure>
+  <p class="note">To start the 30-day trial, open Settings | Tools | Tabfellow and press <em>Start the 30-day trial or enter a license…</em>. The link opens the IDE's license dialog on its Paid license tab. Tabfellow is bought once, not by subscription: the dialog may still say “Subscription” and “Activate to enable”, which is its wording for any plugin with a paid part. For the trial, press the Start trial tab: it asks you to log in to a JetBrains Account.</p>
 
   <p><span class="step-tag">4. Edit in place (license)</span><br>Change a template and press OK, then choose Write to Project or Discard. Only that group's file changes.</p>
   <figure>
-    <img class="ui wide-only" src="img/edit-notification.png" alt="IntelliJ IDEA Community 2025.1 after editing flash in Settings: the notification Shared live templates edited, petclinic (spring-petclinic): changed flash, with the buttons Write to Project and Discard" width="474" height="100" loading="lazy">
-    <img class="ui narrow-only" src="img/edit-notification-phone.png" alt="The notification Shared live templates edited, petclinic (spring-petclinic): changed flash, with Write to Project and Discard" width="338" height="74" loading="lazy">
+    <img class="ui" src="img/edit-notification.png" alt="IntelliJ IDEA Community 2025.1 after editing flash in Settings: the notice Shared live templates edited, petclinic (spring-petclinic): changed flash, with the buttons Write to Project and Discard" width="420" height="85" loading="lazy">
     <figcaption>The edit waits for your choice.</figcaption>
   </figure>
-  <figure class="real-size">
-    <img class="ui wide-only" src="img/diff.png" alt="The IDE's diff of .livetemplates/petclinic.xml after Write to Project, in the unified viewer: 1 difference, 0 included; the flash line with the added text $END$ highlighted" width="1199" height="360" loading="lazy">
-    <img class="ui narrow-only" src="img/diff-phone.png" alt="The right end of the IDE's diff of petclinic.xml: the flash line before and after, with the added text $END$ highlighted" width="390" height="44" loading="lazy">
-    <figcaption>After Write to Project: one line before and after.</figcaption>
+  <figure>
+    <img class="ui wide-only" src="img/diff.png" alt="The IDE's diff of .livetemplates/petclinic.xml after Write to Project, in the unified viewer: the flash line before with message and after with success highlighted" width="812" height="90" loading="lazy">
+    <img class="ui narrow-only" src="img/commit-one-file.png" alt="The IDE's Commit window after Write to Project: Changes, 1 file, petclinic.xml in .livetemplates" width="390" height="52" loading="lazy">
+    <figcaption>After Write to Project the Commit window lists one changed file<span class="wide-only">, and its diff shows one line before and after</span>.</figcaption>
   </figure>
 
   <p><span class="step-tag">5. Check (license)</span><br>Settings | Tools | Tabfellow lists clashing abbreviations and templates your IDE cannot expand, each with a link to the template.</p>
   <figure>
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p>
-    <div class="swipe-wrap scroll-x"><img class="ui" src="img/check-page.png" alt="Settings | Tools | Tabfellow in IntelliJ IDEA Community 2025.1: 1 shared group, 13 templates, 2 problems; petclinic (spring-petclinic) with slf also used by your own template in the group mine, and sqlrow with the context SQL, which this IDE does not have" width="678" height="190" loading="lazy"></div>
-    <figcaption><code>slf</code> clashes with a template in a personal group added for this picture; <code>sqlrow</code> needs the SQL context this IDE lacks.</figcaption>
+    <img class="ui wide-only" src="img/check-page.png" alt="Settings | Tools | Tabfellow in IntelliJ IDEA Community 2025.1: 1 shared group, 13 templates, 2 problems; petclinic (spring-petclinic) with slf also used by your own template in the group mine, and sqlrow with the context SQL, which this IDE does not have" width="712" height="140" loading="lazy">
+    <img class="ui narrow-only" src="img/check-page-phone.png" alt="Settings | Tools | Tabfellow: 1 shared group, 13 templates, 2 problems, with the buttons Reload Shared Live Templates and Check again" width="360" height="75" loading="lazy">
+    <figcaption>Two problems: <code>slf</code> is also used by a personal template, and <code>sqlrow</code> needs the SQL context this IDE lacks.</figcaption>
   </figure>
-  <p class="fine">Pictures for steps 3 to 5 used a test stand-in for the license.</p>
 
   <div class="box">
     <strong>What the IDE already does.</strong> File templates already travel with a project (Project scheme); Tabfellow does not touch them. For your own two machines, use Backup and Sync.
@@ -260,8 +252,8 @@
 
   <h2 id="details">Details</h2>
   <ul class="tight">
-    <li><strong>Price:</strong> $12 once, personal and commercial alike, nothing renews. Updates would arrive through Settings | Plugins (not run yet: no listing).</li>
-    <li><strong>Works in:</strong> IntelliJ-based IDEs from build 251 (2025.1), no upper limit. Opened in a window: IntelliJ IDEA Community 2025.1 and IntelliJ IDEA 2026.3 (version 1.0.3), PyCharm Community 2025.2 (version 1.0.3, free half only), Android Studio 2025.2.1 (version 1.0.0 only). Plugin Verifier and tests only: PhpStorm, WebStorm, PyCharm, GoLand 2026.3.</li>
+    <li><strong>Price:</strong> $12 once, personal and commercial alike, nothing renews. Updates come through Settings | Plugins once Tabfellow is listed.</li>
+    <li><strong>Works in:</strong> IntelliJ-based IDEs from build 251 (2025.1), no upper limit. Used in a window: IntelliJ IDEA Community 2025.1 and IntelliJ IDEA 2026.3, and PyCharm Community 2025.2 (free half only). Not opened with this version (Plugin Verifier and tests only): Android Studio, PhpStorm, WebStorm, GoLand and PyCharm 2026.3.</li>
     <li><strong>Untested:</strong> everything ran on Linux. Windows and macOS desktops, and a real Marketplace trial or purchase, were not run. <strong>Refunds:</strong> JetBrains Marketplace takes the payment and handles refund requests under its own purchase terms; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
     <li><strong>Privacy:</strong> Tabfellow makes no network calls and sends nothing; the IDE's own license and update checks are the IDE's.</li>
     <li><strong>Support:</strong> <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Not affiliated with the Spring PetClinic (Java and Kotlin) and seaborn (Python) sample projects.</li>
@@ -270,10 +262,11 @@
   <details id="tested">
     <summary>How we tested</summary>
     <ul>
-      <li>174 automated tests of version 1.0.3, none failing, run without a display.</li>
+      <li>190 automated tests of version 1.0.3, none failing, run without a display.</li>
       <li>Plugin Verifier 1.411 on IntelliJ IDEA Community 2025.1 and on IntelliJ IDEA, PhpStorm, WebStorm, PyCharm and GoLand 2026.3: all six Compatible, no internal API used.</li>
       <li>The 390 templates of the IDE's own bundled groups, copied into custom groups, shared, loaded from the files alone and written back: 390 compared, 0 differences.</li>
-      <li>After a pull that changes a shared file, the new template was in the IDE's registry in a median of 1,858 ms and at worst 2,003 ms over 10 runs (version 1.0.3, IntelliJ IDEA Community 2025.1, Linux, 4-core Intel Xeon 2.1 GHz).</li>
+      <li>After a pull that changes a shared file, the new template was in the IDE's registry in a median of 1,802 ms and at worst 1,837 ms over 10 runs (version 1.0.3, IntelliJ IDEA Community 2025.1, Linux, 4-core Intel Xeon 2.1 GHz).</li>
+      <li>The pictures are real captures from the IDEs named, on the public Spring PetClinic project (Java, Kotlin) and seaborn (Python), with Tabfellow 1.0.3; the pictures of steps 3 to 5 were taken with a test stand-in for the license (no real trial or purchase was run), and the check page picture has a personal group added to show a clash. The Android Studio run was made with version 1.0.0.</li>
       <li>On version 1.0.3, after a killed IDE and its next start, and after a normal exit, the personal templates folder was byte for byte what it was before. A close that keeps an unwritten edit leaves one group of your own on purpose.</li>
     </ul>
   </details>
