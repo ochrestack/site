@@ -108,25 +108,25 @@
 </header>
 <main>
   <h1>Catalogwell quick start</h1>
-  <p>Install Catalogwell, run your first check and read the result. Catalogwell Pro is at the end. Back to the <a href="index.html">Catalogwell product page</a>.</p>
+  <p>Install Catalogwell, run your first check, read the result; Pro is at the end. Back to the <a href="index.html">Catalogwell product page</a>.</p>
 
   <h2 id="install">Install</h2>
   <p>Needs WordPress 6.5&nbsp;or later and PHP 7.4&nbsp;or later. WooCommerce is not needed to activate Catalogwell; its checks are about Meta&nbsp;for&nbsp;WooCommerce and Google&nbsp;for&nbsp;WooCommerce.</p>
   <h3 id="install-free">The free plugin</h3>
   <ol>
-    <li>Download <a href="download/catalogwell.zip?v=1.0.2">catalogwell.zip</a> (version 1.0.2) from this site. Do not unzip it. The plugin is not in the WordPress.org directory yet.</li>
+    <li>Download <a href="download/catalogwell.zip?v=1.0.3">catalogwell.zip</a> (version 1.0.3) from this site. Do not unzip it. The plugin is not in the WordPress.org directory yet.</li>
     <li>In WordPress, go to <strong>Plugins &gt; Add Plugin</strong> (WordPress 6.5&nbsp;calls it <strong>Add New Plugin</strong>), click <strong>Upload Plugin</strong>, choose <code>catalogwell.zip</code>, then <strong>Install Now</strong> and <strong>Activate Plugin</strong>.</li>
-    <li>WordPress says &ldquo;Plugin activated.&rdquo; Catalogwell adds no wizard and no redirect. Find it in two places: the <strong>Open Catalogwell</strong> link on its row of the Plugins screen, and <strong>WooCommerce &gt; Catalogwell</strong> (<strong>Tools &gt; Catalogwell</strong> while WooCommerce is inactive).</li>
+    <li>WordPress says &ldquo;Plugin activated.&rdquo; Catalogwell adds no wizard or redirect. Find it in two places: the <strong>Open Catalogwell</strong> link on its row of the Plugins screen, and <strong>WooCommerce &gt; Catalogwell</strong> (<strong>Tools &gt; Catalogwell</strong> while WooCommerce is inactive).</li>
   </ol>
   <figure class="shot">
-    <picture><source media="(max-width: 800px)" srcset="img/plugins-row-phone.png" width="314" height="278"><img class="ui" src="img/plugins-row.png" alt="The Plugins screen on the sample store: the row of Catalogwell &ndash; Catalog and Pixel Checker for WooCommerce with its Open Catalogwell and Deactivate links, and its description: See what Meta for WooCommerce hides, and why, and what it has stored. Open it from WooCommerce &gt; Catalogwell (Tools &gt; Catalogwell while WooCommerce is inactive). Version 1.0.2, by Ochrestack" width="974" height="131" style="--w:974px;--pw:314px" loading="lazy"></picture>
+    <picture><source media="(max-width: 800px)" srcset="img/plugins-row-phone.png" width="314" height="278"><img class="ui" src="img/plugins-row.png" alt="The Plugins screen on the sample store: the row of Catalogwell &ndash; Catalog and Pixel Checker for WooCommerce with its Open Catalogwell and Deactivate links, and its description: See what Meta for WooCommerce hides, and why, and what it has stored. Open it from WooCommerce &gt; Catalogwell (Tools &gt; Catalogwell while WooCommerce is inactive). Version 1.0.3, by Ochrestack" width="974" height="131" style="--w:974px;--pw:314px" loading="lazy"></picture>
     <figcaption>After activation: the Plugins row says where Catalogwell is and links to it.</figcaption>
   </figure>
   <h3 id="install-pro">Catalogwell Pro (after the free plugin)</h3>
   <ol>
-    <li>Download <code>catalogwell-pro-<wbr>download.zip</code> from Polar, through the link in the order e-mail, and unzip it once. It holds <code>catalogwell.zip</code>, <code>catalogwell-pro.zip</code> and <code>INSTALL.txt</code>. Upload the two zips inside it, not the download itself, and do not unzip them.</li>
-    <li>Install and activate <code>catalogwell.zip</code> first, as above. Then do the same with <code>catalogwell-pro.zip</code>. Pro adds <strong>WooCommerce &gt; Catalogwell Pro</strong>.</li>
-    <li>If you upload Pro first, WordPress ends on a page reading &ldquo;Error: Catalogwell Pro requires 1&nbsp;plugin to be installed and activated: catalogwell.&rdquo; and activates nothing. The Plugins list says &ldquo;You cannot activate this plugin as it has unmet requirements&rdquo;. Install and activate <code>catalogwell.zip</code>, then press <strong>Activate</strong> on the Pro row.</li>
+    <li>Download <code>catalogwell-pro-<wbr>download.zip</code> from Polar, through the link in the order e-mail, and unzip it once. It holds <code>catalogwell.zip</code>, <code>catalogwell-pro.zip</code> and <code>INSTALL.txt</code>. Upload the two zips inside it, not the download itself.</li>
+    <li>Install and activate <code>catalogwell.zip</code> first, as above. If Catalogwell is already active, skip this; if you upload it again anyway, press <strong>Replace current with uploaded</strong> when WordPress asks. Then install and activate <code>catalogwell-pro.zip</code> the same way.</li>
+    <li>If you upload Pro first, WordPress ends on a page reading &ldquo;Error: Catalogwell Pro requires 1&nbsp;plugin to be installed and activated: catalogwell.&rdquo; and activates nothing. The Plugins list shows &ldquo;This plugin cannot be activated because required plugins are missing or inactive.&rdquo; on the Pro row. Install and activate <code>catalogwell.zip</code>, then press <strong>Activate</strong> on the Pro row.</li>
   </ol>
   <p>A new Pro version is a new file on your Polar download page, with no new purchase. Upload it the same way and press <strong>Replace current with uploaded</strong>.</p>
 
@@ -151,14 +151,14 @@
   </figure>
   <p><strong>Event IDs and Purchase pairs.</strong> The same page loaded five times, each as a new visitor. An event ID seen in two loads is reported as <strong>Repeated</strong>. In a cached copy more than 30&nbsp;minutes old, Meta&nbsp;for&nbsp;WooCommerce 3.7.9&nbsp;drops the ID in the browser, and Catalogwell says <strong>No event ID sent</strong>. For your last 50&nbsp;orders it counts the Purchase records Meta&nbsp;for&nbsp;WooCommerce saved on each order, never what Meta received.</p>
   <figure class="shot">
-    <picture><source media="(max-width: 800px)" srcset="img/copy-as-text-phone.png" width="314" height="445"><img class="ui" src="img/copy-as-text.png" alt="Catalogwell's Copy as text section: a plain report for the plugin's support forum that holds no access token, no customer data and no e-mail address, the Copy as text button, and the start of the report: Catalogwell 1.0.2 report, WordPress 7.1.5, PHP 8.3.6, WooCommerce 11.3.1, the Meta for WooCommerce version and its connection state and stored IDs" width="858" height="436" style="--w:858px;--pw:314px" loading="lazy"></picture>
+    <picture><source media="(max-width: 800px)" srcset="img/copy-as-text-phone.png" width="314" height="445"><img class="ui" src="img/copy-as-text.png" alt="Catalogwell's Copy as text section: a plain report for the plugin's support forum that holds no access token, no customer data and no e-mail address, the Copy as text button, and the start of the report: Catalogwell 1.0.3 report, WordPress 7.1.5, PHP 8.3.6, WooCommerce 11.3.1, the Meta for WooCommerce version and its connection state and stored IDs" width="858" height="436" style="--w:858px;--pw:314px" loading="lazy"></picture>
     <figcaption>Copy as text: the report starts with versions, then states and IDs. The box is made taller here.</figcaption>
   </figure>
 
   <h2 id="pro">Catalogwell Pro</h2>
   <ol>
     <li>Go to <strong>WooCommerce &gt; Catalogwell Pro</strong>, or use the <strong>Open Catalogwell Pro</strong> link on its Plugins row. <strong>Check now</strong> runs the checks at once and adds them to the history.</li>
-    <li>Once a day Pro runs checks 1&nbsp;to 4&nbsp;again and e-mails the admin address only when something changed. &ldquo;Once a day&rdquo; is WordPress&rsquo;s own scheduler, which runs when your site gets a visit: a site with very little traffic runs it late.</li>
+    <li>Once a day Pro runs checks 1&nbsp;to 4&nbsp;again and e-mails one address only when something changed: the admin address, or the one you save under <strong>Who gets the e-mail</strong> on the Pro screen. &ldquo;Once a day&rdquo; is WordPress&rsquo;s own scheduler, which runs when your site gets a visit: a site with very little traffic runs it late.</li>
     <li>The last 30&nbsp;checks are listed with what changed. <strong>Download the product list (CSV)</strong> gives each product with its visibility, the reason and what the feed file says.</li>
   </ol>
 
