@@ -33,6 +33,8 @@
   h2 { font-size: 20px; margin-top: 40px; }
   p, li { max-width: 64ch; }
   .sub { font-size: 19px; color: var(--muted); margin-top: 0; max-width: none; }
+  .quote { margin: 18px 0 8px; padding: 0 0 0 16px; border-left: 3px solid var(--ochre); font-size: 19px; line-height: 1.45; color: var(--muted); max-width: 64ch; }
+  .quote cite { display: block; font-style: normal; font-size: 15px; margin-top: 2px; }
   p, li, figcaption, td { text-wrap: pretty; }
   .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
   .box.warn { border-color: var(--ochre); }
@@ -49,9 +51,6 @@
   figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
   figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
-  .narrow-only { display: none; }
-  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .scroll-x a, .scroll-x picture { display: block; }
   .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
   .fine { font-size: 15px; color: var(--muted); }
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
@@ -64,6 +63,8 @@
     header { padding-top: 16px; }
     h1 { margin: 14px 0 4px; font-size: 28px; }
     .sub { font-size: 17px; line-height: 1.45; margin-bottom: 8px; }
+    .quote { margin: 8px 0 4px; font-size: 17px; line-height: 1.4; }
+    .quote cite { font-size: 14px; }
     .top .hero { margin: 2px 0 6px; }
     .top ul li { line-height: 1.4; }
     .top .buy { margin: 8px 0 4px; }
@@ -74,6 +75,7 @@
     header { padding-top: 8px; }
     h1 { margin: 6px 0 2px; font-size: 24px; }
     .sub { font-size: 16px; line-height: 1.4; margin-bottom: 4px; }
+    .quote { margin: 4px 0 2px; font-size: 15px; }
     .top .hero { margin: 0 0 4px; }
     .top ul { margin: 2px 0; }
     .top .buy { margin: 4px 0 2px; }
@@ -84,6 +86,8 @@
     header img { width: 30px; height: 30px; }
     h1 { margin-top: 8px; font-size: 25px; }
     .sub { font-size: 15px; line-height: 1.4; margin-bottom: 6px; }
+    .quote { margin: 6px 0 4px; padding-left: 12px; font-size: 15px; line-height: 1.35; }
+    .quote cite { font-size: 13.5px; }
     .top ul li, .top .buy .price { line-height: 1.4; }
     .top ul { font-size: 15px; margin: 4px 0; }
     .top ul li .more { display: none; }
@@ -92,20 +96,17 @@
     .top .hero { margin: 2px 0 4px; }
     .top .buy .fine { font-size: 14px; line-height: 1.4; }
     .box { padding: 12px 14px; margin: 16px 0; line-height: 1.5; }
-    .wide-only { display: none; }
-    .narrow-only { display: block; }
-    .scroll-x img.ui { max-width: none; width: 700px; }
-    .swipe-wrap { position: relative; }
-    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
-    .swipe-wrap.at-end::after { display: none; }
-    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
     figure { margin: 20px 0; }
     .top .buy .button { padding: 8px 16px; }
     table { font-size: 14px; }
     th, td { padding: 6px; }
   }
   @media (max-width: 600px) and (max-height: 680px) {
-    h1 { margin-top: 4px; font-size: 23px; }
+    header img { width: 26px; height: 26px; }
+    h1 { margin-top: 2px; margin-bottom: 4px; font-size: 22px; }
+    .quote { margin: 2px 0 2px; font-size: 14px; line-height: 1.3; }
+    .quote cite { font-size: 12.5px; }
+    .top ul { margin: 2px 0; }
     .sub { font-size: 14.5px; }
     .top ul, .top .buy .price { font-size: 14.5px; }
     .top .buy .button { padding: 6px 14px; }
@@ -124,7 +125,8 @@
 </header>
 <main>
   <h1>Templatrail for Elementor</h1>
-  <p class="sub">“I'm pretty sure I have a load of templates that are no longer used anywhere.” <span class="src">(a user on Elementor's GitHub issue tracker)</span> Press Scan site and Templatrail shows the pages that use each saved Elementor template, and lists the ones with no use found.</p>
+  <blockquote class="quote">“I'm pretty sure I have a load of templates that are no longer used anywhere.” <cite>(a user on Elementor's GitHub issue tracker)</cite></blockquote>
+  <p class="sub">Press Scan site and Templatrail shows the pages that use each saved Elementor template, and lists the ones with no use found.</p>
 
   <div class="top">
   <picture><source media="(max-width: 600px)" srcset="img/hero-places-phone.png" width="390" height="335"><source media="(max-height: 800px)" srcset="img/hero-places-short.png" width="864" height="231"><img class="hero" src="img/hero-places.png" alt="Templatrail's screen for one saved Elementor template, Newsletter signup: In use, 5 places, and below it each place with its type, status, how it is used and an Edit link. On a wide screen the first three places show: the template Footer: contact strip, which holds it, the Contact page through that template, and the Home page through a shortcode in its content" width="864" height="286"></picture>
@@ -132,11 +134,11 @@
   <ul>
     <li><strong>See where each template is used</strong><span class="more">: the pages, posts and templates that hold it.</span></li>
     <li><strong>Clear out templates with no use found</strong><span class="more">: re-checked first, into WordPress's Trash, restorable.</span></li>
-    <li><strong>Replace one template with another (Pro)</strong><span class="more">: pages that used the old one point at the new one.</span></li>
+    <li><strong>Replace everywhere (Pro)</strong><span class="more">: points the pages that used one template at another.</span></li>
   </ul>
 
   <div class="buy">
-    <p class="price"><strong>Free:</strong> <a href="download/templatrail.zip?v=1.0.3">templatrail.zip</a> 1.0.3, report and cleanup<br><strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
+    <p class="price"><strong>Free:</strong> <a href="download/templatrail.zip?v=1.0.4">templatrail.zip</a> 1.0.4, report and cleanup<br><strong>Pro, $19 once:</strong> Replace everywhere and CSV export. <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
     <p class="fine" id="trust">Tested on WordPress 7.1.5 and 6.8.3, PHP 8.3 and 7.4, Elementor 4.4.1 · source code included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
   </div>
@@ -149,7 +151,7 @@
     <video class="film-phone" controls preload="none" playsinline poster="video/poster-phone.jpg" width="720" height="1280">
       <source src="video/templatrail-demo-phone.mp4" type="video/mp4">
     </video>
-    <figcaption>Recorded on Templatrail 1.0.3: Scan site, one template's five places, the cleanup with its re-check, the Trash, and Pro's Replace everywhere. On a phone this plays the portrait cut (the same product in its own narrow layout, without the Trash and Pro scenes). <a href="video/templatrail-demo-1080p.mp4">1080p file</a>.</figcaption>
+    <figcaption>Recorded on Templatrail 1.0.4: Scan site, one template's five places, the cleanup with its re-check, the Trash, and Pro's Replace everywhere. On a phone this plays the portrait cut (the same product in its own narrow layout, without the Trash and Pro scenes). <a href="video/templatrail-demo-1080p.mp4">1080p file</a>.</figcaption>
   </figure>
 
   <h2 id="cleanup">Clear out templates with no use found</h2>
@@ -177,14 +179,12 @@
     <figcaption>The preview: two pages would change; nothing has yet.</figcaption>
   </figure>
   <figure id="csv">
-    <p class="swipe-hint narrow-only">Swipe sideways to read the columns &rarr;</p>
-    <div class="swipe-wrap"><div class="scroll-x"><img class="ui csv" style="width: 669px" src="img/csv-rows.png" alt="Export CSV opened as a table, four of its fourteen columns: Newsletter signup has Places 5 and five rows, one for each place, and Call to action: book a call has Places 2 and two rows" width="669" height="240" loading="lazy"></div></div>
-    <figcaption>The file from Export CSV on the demo site, shown as a table: Newsletter signup in 5 places is 5 rows, Call to action: book a call in 2 places is 2 rows.</figcaption>
+    <picture><source media="(max-width: 600px)" srcset="img/csv-rows-phone.png" width="403" height="240"><img class="ui csv" style="width: 669px" src="img/csv-rows.png" alt="Export CSV opened as a table: Newsletter signup has Places 5 and five rows, one for each place, and Call to action: book a call has Places 2 and two rows" width="669" height="240" loading="lazy"></picture>
+    <figcaption>The file from Export CSV on the demo site, shown as a table: Newsletter signup in 5&nbsp;places is 5&nbsp;rows, Call to action: book a call in 2&nbsp;places is 2&nbsp;rows.</figcaption>
   </figure>
   <figure id="column">
-    <p class="swipe-hint narrow-only">Swipe sideways to read the columns &rarr;</p>
-    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/used-on-column.png" alt="Elementor's Saved Templates list with the Used on column: Call to action: book a call, 2 places; Call to action: guide, 0 places and No use found. The other columns are Title, Type, Shortcode, Author and Categories" width="752" height="253" loading="lazy"></div></div>
-    <figcaption>Elementor's own Saved Templates list gets a <strong>Used on</strong> column, for administrators. Searched for “Call to action”: one template in 2 places, one with no use found.</figcaption>
+    <picture><source media="(max-width: 600px)" srcset="img/used-on-column-phone.png" width="390" height="104"><img class="ui" src="img/used-on-column.png" alt="Elementor's Saved Templates list with the Used on column: Call to action: guide, Container, 0 places and No use found" width="752" height="104" loading="lazy"></picture>
+    <figcaption>Elementor's own Saved Templates list gets a <strong>Used on</strong> column, for administrators. Here a template with no use found: 0 places.</figcaption>
   </figure>
 
   <h2 id="questions">Questions</h2>
@@ -226,28 +226,18 @@
   <p class="fine">Not affiliated with or endorsed by Elementor or the add-ons named on this page.</p>
 
   <h2 id="tested">How we tested</h2>
-  <p>Templatrail and Templatrail Pro 1.0.3 pass 104 and 30 automated tests on Linux with PHP 8.3.6 and 7.4.33, WordPress 7.1.5 and 6.8.3, and Elementor 4.4.1. On our demo site, 15 of 38 saved templates had no use found.</p>
+  <p>Templatrail and Templatrail Pro 1.0.4 pass 109 and 33 automated tests on Linux with PHP 8.3.6 and 7.4.33, WordPress 7.1.5 and 6.8.3, and Elementor 4.4.1. On our demo site, 15 of 38 saved templates had no use found.</p>
   <details>
     <summary>The numbers behind this page</summary>
     <p>The tests use MariaDB 10.11 and a built site of 55 saved templates and Components. Real-window checks ran in Chrome, and a scan and Move to Trash also ran on WordPress 7.1.5 with the SQLite integration plugin.</p>
-    <p>On a generated 680-post site, a database search for each ID found a “use” for 38 of 40 unused templates, because the number also turns up in sizes and other IDs. Templatrail's status was right for all 80 templates. A generated site of 42,004 posts and 2,000 templates scanned in about 26 seconds on a 4-core machine; the re-check of 500 selected templates took about 8 seconds (Templatrail 1.0.3).</p>
-    <p>The pictures and the film on this page are Templatrail 1.0.3 in Chrome on a local WordPress 7.1.5 with the SQLite integration plugin 3.1.3, served by PHP's built-in server: the demo site, with Hello Elementor 3.5.2, Elementor 4.4.1, Essential Addons for Elementor 6.8.9 and Show template by shortcode for Elementor 1.0.4. The film is 45&nbsp;seconds at 60 frames a second, captions only, no sound: it streams as a 8.6&nbsp;MB file (windows under 768&nbsp;px get the 30-second portrait cut, 3.5&nbsp;MB) and <a href="video/templatrail-demo-1080p.mp4">the 1080p file</a> is 19.2&nbsp;MB. In the cleanup scene a second page is made with WP-CLI between the ticking and the click, to show the re-check leaving one template alone.</p>
+    <p>On a generated 680-post site, a database search for each ID found a “use” for 38 of 40 unused templates, because the number also turns up in sizes and other IDs. Templatrail's status was right for all 80 templates. A generated site of 42,004 posts and 2,000 templates scanned in about 22 seconds on a 4-core machine; the re-check of 500 selected templates took about 7 seconds (Templatrail 1.0.4).</p>
+    <p>The pictures and the film on this page are Templatrail 1.0.4 in Chrome on a local WordPress 7.1.5 with the SQLite integration plugin 3.1.3, served by PHP's built-in server: the demo site, with Hello Elementor 3.5.2, Elementor 4.4.1, Essential Addons for Elementor 6.8.9 and Show template by shortcode for Elementor 1.0.4. The film is 44&nbsp;seconds at 60 frames a second, captions only, no sound: it streams as an 8.3&nbsp;MB file (windows under 768&nbsp;px get the 29-second portrait cut, 3.4&nbsp;MB) and <a href="video/templatrail-demo-1080p.mp4">the 1080p file</a> is 18.3&nbsp;MB. In the cleanup scene a second page is made with WP-CLI between the ticking and the click, to show the re-check leaving one template alone. The demo site shows one fixed time on its “Last scan” line, and the phone cut leaves WordPress’s toolbar out.</p>
   </details>
   <div class="buy">
     <p><a class="button" id="buy-3" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
     <p class="fine">$19 once · <a href="../terms.html">14-day refund if it doesn't work as described and we can't fix it</a></p>
   </div>
 </main>
-<script>
-// Hide the right-edge fade of the phone swipe box once it is scrolled to the end.
-(function () {
-  document.querySelectorAll(".swipe-wrap .scroll-x").forEach(function (box) {
-    box.addEventListener("scroll", function () {
-      box.parentNode.classList.toggle("at-end", box.scrollLeft + box.clientWidth >= box.scrollWidth - 2);
-    }, { passive: true });
-  });
-})();
-</script>
 <footer>
   <a href="../guides/">Guides</a>
   <a href="../privacy.html">Privacy</a>
