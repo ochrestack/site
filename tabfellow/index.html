@@ -138,6 +138,7 @@
     .top .buy .buttons { order: -1; margin: 6px 0 8px; }
     header { padding-top: 6px; }
   }
+  p, li, figcaption { text-wrap: pretty; }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
 
@@ -179,7 +180,7 @@
       <button class="button" id="buy" type="button" disabled aria-describedby="buy-note" title="Not on JetBrains Marketplace yet: there is no listing to open">Get it on JetBrains Marketplace</button>
       <span class="buy-note" id="buy-note">Not on JetBrains Marketplace yet.</span>
     </div>
-    <p class="fine">Tested in IntelliJ IDEA <span class="more">Community </span>2025.1 and <span class="more">IntelliJ IDEA </span>2026.3 · <span class="more">IDE builds 251 and later · </span>source code not included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+    <p class="fine">Tested in IntelliJ IDEA <span class="more">Community </span>2025.1 and <span class="more">IntelliJ IDEA </span>2026.3 · <span class="more">IDE builds 251 and later · </span>source code not&nbsp;included&nbsp;·&nbsp;<a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 </section>
 <main>
@@ -189,7 +190,7 @@
       <source src="video/tabfellow-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/tabfellow-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>57.1 s, captions only, no sound (1080p, 720p on phones; <a href="video/tabfellow-demo-1080p.mp4">open full size</a>). IntelliJ IDEA Community 2025.1, recorded with version 1.0.1, the public Spring PetClinic sample; the paid steps use a test license stand-in.</figcaption>
+    <figcaption>57.1 s, captions only, no sound (1080p, 720p on phones; <a href="video/tabfellow-demo-1080p.mp4">open full size</a>). IntelliJ IDEA Community 2025.1, recorded with version 1.0.1, the public Spring PetClinic sample; the paid steps use a test license&nbsp;stand-in.</figcaption>
   </figure>
 
   <figure class="wide-only">
@@ -254,7 +255,7 @@
   <ul class="tight">
     <li>Every teammate needs Tabfellow installed. Custom groups only.</li>
     <li>While two projects are open, a shared template expands in either window. With a group of the same name in both, the IDE offers both templates until you close one project.</li>
-    <li>Not covered: postfix templates, Rider's C# templates, several repositories.</li>
+    <li>Not covered: postfix templates, Rider's C# templates, several&nbsp;repositories.</li>
   </ul>
 
   <h2 id="details">Details</h2>
@@ -269,7 +270,7 @@
   <details id="tested">
     <summary>How we tested</summary>
     <ul>
-      <li>166 automated tests of version 1.0.2, none failing, run without a display.</li>
+      <li>167 automated tests of version 1.0.2, none failing, run without a display.</li>
       <li>Plugin Verifier 1.411 on IntelliJ IDEA Community 2025.1 and on IntelliJ IDEA, PhpStorm, WebStorm, PyCharm and GoLand 2026.3: all six Compatible, no internal API used.</li>
       <li>The 390 templates of the IDE's own bundled groups, copied into custom groups, shared, loaded from the files alone and written back: 390 compared, 0 differences.</li>
       <li>After a pull that changes a shared file, the new template was in the IDE's registry in a median of 1,840 ms and at worst 2,164 ms over 10 runs (version 1.0.2, IntelliJ IDEA Community 2025.1, Linux, 4-core Intel Xeon 2.1 GHz).</li>
