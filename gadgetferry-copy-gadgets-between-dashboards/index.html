@@ -37,8 +37,8 @@
   .buy p { margin: 0 0 10px; }
   .buy .price { font-size: 19px; }
   .status { font-size: 19px; margin: 0 0 12px; }
-  header { padding-top: 24px; }
-  h1 { margin-top: 24px; }
+  header { padding-top: 16px; }
+  h1 { margin-top: 16px; }
   .benefits li { margin: 4px 0; }
   .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
@@ -56,16 +56,16 @@
   .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
   .note { font-size: 15px; color: var(--muted); }
   .benefits { padding-left: 20px; }
-  .benefits li { margin: 8px 0; }
+  .benefits li { margin: 4px 0; }
   figure img.slot { background: #fff; }
   .fine { font-size: 15px; color: var(--muted); }
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
   summary { cursor: pointer; }
   @media (max-width: 600px) {
     h1 { margin-top: 28px; }
-    h1 { margin-top: 14px; font-size: 24px; }
-    header { padding-top: 16px; }
-    .sub { font-size: 16px; line-height: 1.45; }
+    h1 { margin-top: 10px; font-size: 24px; }
+    header { padding-top: 10px; }
+    .sub { font-size: 16px; line-height: 1.4; }
     .buy { margin-top: 12px; }
     .buy .price { font-size: 16px; line-height: 1.4; }
     .status { font-size: 16px; line-height: 1.4; margin-bottom: 8px; }
@@ -101,7 +101,7 @@
 </header>
 <main>
   <h1>Gadgetferry – Copy Gadgets Between Dashboards for Jira</h1>
-  <p class="sub">An Atlassian Community question: “Is it possible to copy a gadget from one dashboard to another?” Jira has no action for it. Gadgetferry adds the gadget to dashboards that already have gadgets, and shows what&nbsp;arrived.</p>
+  <p class="sub">An Atlassian Community question: “Is it possible to copy a gadget from one dashboard to another?” Jira has no action for it. Gadgetferry copies the gadget and the settings Jira returns to dashboards that already have gadgets, and shows what&nbsp;arrived.</p>
 
   <p class="status" id="status-line"><strong>Free for up to 10&nbsp;users, then $0.15&nbsp;per&nbsp;user per&nbsp;month.</strong> Not on the Atlassian Marketplace&nbsp;yet.</p>
 
@@ -113,18 +113,18 @@
   </figure>
 
   <ul class="benefits">
-    <li><strong>“being able to copy/duplicate a gadget over to another dashboard”</strong> (Jira ticket JRACLOUD-18207). Pick a gadget, a dashboard you can edit and a&nbsp;column.</li>
+    <li><strong>“being able to copy/duplicate a gadget over to another dashboard”</strong> (Jira ticket JRACLOUD-18207). Pick a gadget, a dashboard and a&nbsp;column.</li>
     <li><strong>“the dashboard where I need to copy the gadget already has several gadgets”</strong> (from the same Atlassian Community question). They stay; copy to up to 20&nbsp;dashboards in one&nbsp;run.</li>
     <li><strong>A Filter Counts gadget with many custom counts?</strong> Each setting is read back; Undo this copy removes only what the run&nbsp;added.</li>
   </ul>
 
   <div class="buy" id="first-buy">
     <p><a class="button" id="notify" href="mailto:support@ochrestack.com?subject=Tell%20me%20when%20Gadgetferry%20is%20on%20the%20Atlassian%20Marketplace" aria-describedby="buy-note">Email us to be told when it is listed</a></p>
-    <p class="note" id="buy-note"><strong>Not on the Atlassian Marketplace yet.</strong> Gadgetferry has not yet run on a live Jira site; it can be installed only from the&nbsp;listing.</p>
+    <p class="note" id="buy-note"><strong>Not on the Atlassian Marketplace yet.</strong> It has not yet run on a live Jira site; the button tells you when it is listed and&nbsp;installable.</p>
   </div>
 
   <div class="buy" id="trust">
-    <p class="fine">Jira Cloud only · version 1.0.3 · 150&nbsp;automated tests pass outside Jira (<a href="#tested">details</a>) · source not included · support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. We answer every message, usually within one business&nbsp;day.</p>
+    <p class="fine">Jira Cloud only · version 1.0.4 · 150&nbsp;automated tests pass outside Jira (<a href="#tested">details</a>) · source not included · support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. We answer every message, usually within one business&nbsp;day.</p>
     <p class="fine">Billed monthly or annually. Annual prices are flat for each band of&nbsp;users: 15&nbsp;users cost $2.25&nbsp;a&nbsp;month or $22.50&nbsp;a&nbsp;year; 60&nbsp;users cost $9.00&nbsp;a&nbsp;month or $150.00&nbsp;a&nbsp;year. Atlassian bills the renewal, sends the renewal notice and handles refunds within 30&nbsp;days.</p>
   </div>
 
@@ -146,7 +146,7 @@
   </ul>
 
   <h2 id="tested">How we tested</h2>
-  <p>150&nbsp;automated tests pass on version 1.0.3 (Linux, Node 22) against a model of Jira's published REST operations, which can be wrong where real Jira differs. Gadgetferry runs on Atlassian's servers and inside Jira in your browser, and neither has been run. <strong>Not yet done:</strong> a run on a live Jira site, the Forge lint check and deploy, and the Runs on Atlassian check. <a href="quick-start.html">Quick start</a>.</p>
+  <p>150&nbsp;automated tests pass on version 1.0.4 (Linux, Node 22) against a model of Jira's published REST operations, which can be wrong where real Jira differs. Gadgetferry runs on Atlassian's servers and inside Jira in your browser, and neither has been run. <strong>Not yet done:</strong> a run on a live Jira site, the Forge lint check and deploy, and the Runs on Atlassian check. <a href="quick-start.html">Quick start</a>.</p>
 
   <h2 id="privacy">Privacy, access and support</h2>
   <p>Gadgetferry sends nothing outside Atlassian and has no analytics or tracking. It acts with your own Jira permissions: copying needs edit access to the target, not an admin role. It asks for 18&nbsp;permissions, eleven of them read permissions that Atlassian lists beside the dashboard and filter&nbsp;ones, and stores only your run&nbsp;history. <a href="../privacy.html">Privacy policy</a>. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
