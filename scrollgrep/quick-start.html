@@ -82,7 +82,7 @@
 
   <h2 id="install">Install (JetBrains IDEs 2025.3 or later)</h2>
   <ol>
-    <li><a href="download/scrollgrep-1.1.7.zip">Download scrollgrep-1.1.7.zip</a> (free; keep it zipped). In the IDE, open <strong>Settings | Plugins</strong>, click <strong>⚙</strong>, choose <strong>Install Plugin from Disk</strong>, pick the zip and click <strong>OK</strong>, then <strong>Accept</strong> the third-party plugin notice.</li>
+    <li><a href="download/scrollgrep-1.1.8.zip">Download scrollgrep-1.1.8.zip</a> (free; keep it zipped). In the IDE, open <strong>Settings | Plugins</strong>, click <strong>⚙</strong>, choose <strong>Install Plugin from Disk</strong>, pick the zip and click <strong>OK</strong>, then <strong>Accept</strong> the third-party plugin notice.</li>
     <li>Restart the IDE: it loads plugins with paid features only after a restart. Click <strong>Restart IDE</strong> on the plugin's row, or answer the IDE's restart prompt; if Settings offers neither, use <strong>File | Exit</strong> and start the IDE again.</li>
     <li>After the restart a balloon says "Scrollgrep is installed" and which keys to press; the icon on the right edge opens the panel too. The IDE may also show "Cannot update plugin": it cannot look for updates of a plugin installed from a file. It is the IDE's message, not an error.</li>
     <li>Check that <strong>Settings | Tools | Terminal | Engine</strong> is <strong>Reworked</strong>, the default. Scrollgrep does not see Classic terminal tabs.</li>
@@ -93,12 +93,12 @@
   <ol>
     <li>Run something that prints a lot in a Terminal tab, such as your test suite.</li>
     <li>Press <strong>Ctrl+Shift+G</strong> in the terminal, or right-click the tab's title and choose <strong>Filter with Scrollgrep</strong>.</li>
-    <li>Type text, or tick <strong>Regex (grep -E)</strong> (Alt+X) for a pattern such as <code>FAIL|Exception</code>. The panel lists the matching lines the tab holds and adds new ones while the command runs.</li>
+    <li>Type text, or tick <strong>Regex (grep -E)</strong> (Alt+X) for a pattern such as <code>FAILURE|Failures: [1-9]</code>. The panel lists the matching lines the tab holds and adds new ones while the command runs.</li>
     <li>Press <strong>Escape</strong> to go back to the terminal. The panel keeps filtering.</li>
   </ol>
   <figure class="real-size">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/regex-hint.png"><img class="ui" src="img/regex-hint.png" alt="IntelliJ IDEA 2025.3: the Scrollgrep panel with FAIL|Exception typed and Regex off shows 0 matching lines, and under the count the note: Regex is off: | is matched as typed. Turn on Regex" width="1260" height="760" loading="lazy"></a></div>
-    <figcaption>FAIL|Exception with Regex off finds nothing, so the panel says why; Turn on Regex fixes it in one click.</figcaption>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x" data-start="630"><a href="img/regex-hint.png"><img class="ui" src="img/regex-hint.png" alt="IntelliJ IDEA 2025.3: the Scrollgrep panel with FAILURE|Failures: [1-9] typed and Regex off shows 0 matching lines, and under the count the note: Regex is off: | is matched as typed. Turn on Regex" width="1260" height="760" loading="lazy"></a></div>
+    <figcaption>FAILURE|Failures: [1-9] with Regex off finds nothing, so the panel says why; Turn on Regex fixes it in one click.</figcaption>
   </figure>
   <ul>
     <li><strong>Match case</strong>, <strong>Words</strong>, <strong>Regex (grep -E)</strong> and <strong>Invert</strong> mean what grep's <code>-i</code> (off), <code>-w</code>, <code>-E</code> and <code>-v</code> mean. As in grep, <code>\d</code> means the letter "d"; the panel says so and suggests <code>[0-9]</code>.</li>
@@ -114,7 +114,7 @@
   </ol>
   <p>The preview ends for that tab at the first command of your own in it; your other tabs stay free-only. It is offered on Linux and macOS.</p>
   <figure class="real-size">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/scope-list.png"><img class="ui" src="img/scope-list.png" alt="IntelliJ IDEA 2025.3 on the Scrollgrep preview tab: the Scope list open, with All output, Last command and the sample command ./gradlew test with its directory and exit 1" width="1260" height="760" loading="lazy"></a></div>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x" data-start="630"><a href="img/scope-list.png"><img class="ui" src="img/scope-list.png" alt="IntelliJ IDEA 2025.3 on the Scrollgrep preview tab: the Scope list open, with All output, Last command and the sample command ./gradlew test with its directory and exit 1" width="1260" height="760" loading="lazy"></a></div>
     <figcaption>Scope lists each command with its directory and exit code (Preview, IntelliJ IDEA 2025.3).</figcaption>
   </figure>
 
@@ -126,7 +126,7 @@
     <li><strong>Watch alerts.</strong> A pattern with Watch on raises an IDE notification with the matching line when it appears in a Terminal tab Scrollgrep can filter, even with the Terminal hidden.</li>
   </ul>
   <figure class="real-size">
-    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x"><a href="img/pattern-row.png"><img class="ui" src="img/pattern-row.png" alt="IntelliJ IDEA 2025.3 on the Scrollgrep preview tab: an extra pattern row with a green color square, Include, the text roundsHalfUp, and the boxes Match case, Words, Regex and Watch; above it the line explaining how the filter field and the rows combine" width="1260" height="760" loading="lazy"></a></div>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p><div class="swipe-wrap scroll-x" data-start="630"><a href="img/pattern-row.png"><img class="ui" src="img/pattern-row.png" alt="IntelliJ IDEA 2025.3 on the Scrollgrep preview tab: an extra pattern row with a green color square, Include, the text roundsHalfUp, and the boxes Match case, Words, Regex (grep -E) and Watch; above it the line explaining how the filter field and the rows combine" width="1260" height="760" loading="lazy"></a></div>
     <figcaption>A pattern row: its color, Include or Exclude, and its own boxes (Preview, IntelliJ IDEA 2025.3).</figcaption>
   </figure>
 
@@ -152,5 +152,15 @@
   <a href="../support.html">Support</a>
   <span>&copy; 2026 Ochrestack</span>
 </footer>
+<script>
+  // phones: each swipe picture starts on the Scrollgrep panel, not on the editor beside it
+  (function () {
+    if (!window.matchMedia('(max-width: 600px)').matches) return;
+    document.querySelectorAll('.swipe-wrap[data-start]').forEach(function (w) {
+      var img = w.querySelector('img');
+      w.scrollLeft = parseFloat(w.getAttribute('data-start')) * img.clientWidth / parseFloat(img.getAttribute('width'));
+    });
+  })();
+</script>
 </body>
 </html>

@@ -81,9 +81,9 @@
 
   <h2 id="run">What was run (Linux)</h2>
   <ul>
-    <li>IntelliJ IDEA 2025.3: the plugin's test suite (142 tests, headless, with real Bash, Zsh and sh terminals), and the window, with Scrollgrep 1.1.7 installed from the zip: the filter, Preview (the Gradle and Node.js samples), and a panel opened after a 300,000-line run.</li>
-    <li>IntelliJ IDEA 2026.3: the free filter on fast output with both of its terminal emulators, Preview, and the pictures on the product page (Scrollgrep 1.1.7).</li>
-    <li>PyCharm 2026.3: install, the filter and Preview with the Python sample job (Scrollgrep 1.1.7). PyCharm 2025.3: install and the filter (Scrollgrep 1.1.1).</li>
+    <li>IntelliJ IDEA 2025.3: the plugin's test suite (151 tests, headless, with real Bash, Zsh and sh terminals), and the window, with Scrollgrep 1.1.8 installed from the zip: the filter, Preview (the Gradle and Node.js samples), and a panel opened after a 300,000-line run.</li>
+    <li>IntelliJ IDEA 2026.3: the free filter on fast output with both of its terminal emulators, and the pictures on the product page (Scrollgrep 1.1.8).</li>
+    <li>PyCharm 2026.3: the filter and Preview with the Python sample job (Scrollgrep 1.1.8). PyCharm 2025.3: install and the filter (Scrollgrep 1.1.1).</li>
     <li>WebStorm 2025.3: the same test suite (129 tests then), run headless on WebStorm's own platform; no window was opened (Scrollgrep 1.1.6). WebStorm 2026.3: started headless with Scrollgrep installed from the zip; it loaded, and no filter was run (Scrollgrep 1.1.6).</li>
     <li>JetBrains' Plugin Verifier finds Scrollgrep compatible with IntelliJ IDEA 2025.3 and 2026.3 and WebStorm 2026.3.</li>
   </ul>
@@ -92,11 +92,11 @@
 
   <h2 id="measured">Measured</h2>
   <ul>
-    <li><strong>Scrollgrep 1.1.7, IntelliJ IDEA 2026.3, Linux.</strong> Five Gradle test runs with the debug log, about 11,000 lines: 70 of 70 lines with "failed" listed by Scrollgrep, 49 found by the Terminal's own search (it found between 35 and 49 across our runs of the same five). <code>cat</code> of a 97,317-line sync log on the Ghostty emulator: 874 of its 10,470 "skipped row" lines kept, marked "some lines missing"; after switching new tabs to JediTerm, the same <code>cat</code> kept 10,470.</li>
+    <li><strong>Scrollgrep 1.1.8, IntelliJ IDEA 2026.3, Linux.</strong> Five Gradle test runs with the debug log, about 11,800 lines: 70 of 70 lines with "failed" listed by Scrollgrep, 42 found by the Terminal's own search (it found between 35 and 49 across our runs of the same five). <code>cat</code> of a 97,317-line sync log on the Ghostty emulator: 866 of its 10,470 "skipped row" lines kept, marked "some lines missing"; after switching new tabs to JediTerm, the same <code>cat</code> kept 10,470.</li>
     <li><strong>Scrollgrep 1.1.0, IntelliJ IDEA 2025.3, headless, Linux, 4 CPUs.</strong> 200,000 lines at full speed in a real Bash tab, five runs. Each run: 2,061 matching lines, the same as <code>grep -c</code>. Matches appeared a median of 0.52 to 0.66 s after they were printed, and the longest block of the UI thread while they were added was 65.7 ms.</li>
     <li><strong>Scrollgrep 1.1.3, IntelliJ IDEA 2026.3 with its windows, Linux.</strong> Each command in a new tab with the filter set first. Five Gradle test runs: 70 of 70 (the Terminal's own search found 35 in that run). <code>tail -f</code> of a sync log written at about 4,000 lines a second: 10,470 of 10,470. On the Ghostty emulator at full speed: <code>cat</code> of that sync log kept 988 of 10,470 (the Terminal itself held 859 at the end), <code>cat</code> of the Gradle log 35 of 70, the 200,000-line generator 85 of 2,062, each marked "some lines missing". In new tabs on JediTerm: 10,470, 70 and 2,062, every line.</li>
   </ul>
-  <p>How much the Ghostty emulator skips changes from run to run: 874, 918 and 988 of the same 10,470 lines were kept in three runs.</p>
+  <p>How much the Ghostty emulator skips changes from run to run: 866, 874, 918 and 988 of the same 10,470 lines were kept in four runs.</p>
 
   <h2 id="fast">Fast output on IDE 2026.3</h2>
   <p>The 2026.3 IDEs start new Terminal tabs on the Ghostty emulator. When output prints faster than it can show it (a <code>cat</code> of a large file, a generator at full speed), the Terminal shows only its screen until the output pauses, then the last few thousand lines: what scrolled past in between never reaches the Terminal's text, so no plugin can read it. Scrollgrep keeps every line that does arrive, in order, and lines up what the Terminal sends after a pause with what it already holds, so a build with pauses between bursts loses nothing. Where lines are missing, the results show ⋯ the Terminal skipped lines here ⋯, the status line says "some lines missing", and the panel offers <strong>use JediTerm for new tabs</strong>.</p>
