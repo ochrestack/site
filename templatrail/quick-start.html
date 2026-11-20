@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Templatrail quick start: install, scan, clean up, Pro</title>
-<meta name="description" content="Install Templatrail for Elementor, press Scan site, read where each saved template is used, move the ones with no use found to the Trash, and use Templatrail Pro's Replace everywhere and CSV export.">
+<meta name="description" content="Install Templatrail for Elementor, press Scan site, read where each saved template is used, move the ones with no use found to the Trash, and use Templatrail Pro’s Replace everywhere and CSV export.">
 <link rel="canonical" href="https://ochrestack.com/templatrail/quick-start.html">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <style>
@@ -111,18 +111,18 @@
   <h2 id="install">Install</h2>
   <p>Requires WordPress 6.8 or later, PHP 7.4 or later, and Elementor active.</p>
   <ol>
-    <li>Get the files. The free plugin is <a href="download/templatrail.zip?v=1.0.4">templatrail.zip</a> (version 1.0.4) from this site; it is not on WordPress.org yet. Pro buyers also get <code>templatrail-pro.zip</code> (version 1.0.4) from Polar, through the link in the order email. Do not unzip either.</li>
+    <li>Get the files. The free plugin is <a href="download/templatrail.zip?v=1.0.5">templatrail.zip</a> (version 1.0.5) from this site; it is not on WordPress.org yet. Pro buyers also get <code>templatrail-pro.zip</code> (version 1.0.5) from Polar, through the link in the order email. Do not unzip either.</li>
     <li>In WordPress, go to <strong>Plugins &gt; Add Plugin</strong>, click <strong>Upload Plugin</strong>, choose <code>templatrail.zip</code>, then <strong>Install Now</strong> and <strong>Activate Plugin</strong>. The Plugins screen then says where it lives, with an <strong>Open Templatrail</strong> link.</li>
   </ol>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/qs-activated-phone.png" width="390" height="83"><img src="img/qs-activated.png" alt="WordPress's Plugins screen right after activating Templatrail: the notice 'Templatrail is active. It lives under Tools &gt; Templatrail: press Scan site there.' with an Open Templatrail link, and the Templatrail row with Open Templatrail and Deactivate" width="864" height="475" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/qs-activated-phone.png" width="390" height="83"><img src="img/qs-activated.png" alt="WordPress’s Plugins screen right after activating Templatrail: the notice 'Templatrail is active. It lives under Tools &gt; Templatrail: press Scan site there.' with an Open Templatrail link, and the Templatrail row with Open Templatrail and Deactivate" width="864" height="456" loading="lazy"></picture>
     <figcaption>The Plugins screen after Activate Plugin.</figcaption>
   </figure>
   <ol start="3">
-    <li>Pro only: do the same with <code>templatrail-pro.zip</code>. It carries the free plugin inside. If Templatrail is not active yet (you bought only Pro, or activated Pro first), the Plugins screen shows a notice with the button <strong>Install and activate Templatrail</strong>, which installs it from the zip inside Pro. If the free plugin is switched off later, Pro shows the same notice with <strong>Activate Templatrail</strong>. Tools &gt; Templatrail shows the same notice while the free plugin is missing.</li>
+    <li>Pro only: do the same with <code>templatrail-pro.zip</code>, which carries the free plugin inside. If Templatrail is not active (you bought only Pro, activated Pro first, or switched the free plugin off later), a notice on the Plugins screen and on Tools &gt; Templatrail has one button, <strong>Install and activate Templatrail</strong> (<strong>Activate Templatrail</strong> when it is installed already).</li>
   </ol>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/qs-pro-first-phone.png" width="390" height="271"><img src="img/qs-pro-first.png" alt="WordPress's Plugins screen after activating Templatrail Pro first: the notice 'Templatrail Pro is active, and is waiting for the free Templatrail plugin. The free plugin is inside this Pro download, so you do not need a second one.' with the button Install and activate Templatrail" width="864" height="173" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/qs-pro-first-phone.png" width="390" height="252"><img src="img/qs-pro-first.png" alt="WordPress’s Plugins screen after activating Templatrail Pro first: the notice 'Templatrail Pro is active, and is waiting for the free Templatrail plugin. The free plugin is inside this Pro download, so you do not need a second one.' with the button Install and activate Templatrail" width="864" height="173" loading="lazy"></picture>
     <figcaption>Pro activated before the free plugin.</figcaption>
   </figure>
 
@@ -134,7 +134,7 @@
   </figure>
 
   <h2 id="read">Read the report</h2>
-  <p>The tabs are <strong>All</strong>, <strong>In use</strong>, <strong>No use found</strong>, <strong>Check by hand</strong> and <strong>Missing templates</strong>. Each row is a saved template or Component with its type, status and number of places. Click the number of places (for example <strong>5 places</strong>) to open the list: each page, post or template that uses it, how, and an <strong>Edit</strong> link (<strong>Edit with Elementor</strong> where the reference is in Elementor's data). A template's name opens its own screen, with the same places in a table.</p>
+  <p>The tabs are <strong>All</strong>, <strong>In use</strong>, <strong>No use found</strong>, <strong>Check by hand</strong> and <strong>Missing templates</strong>. Each row is a saved template or Component with its type, status and number of places. Click the number of places (for example <strong>5 places</strong>) to open the list: each page, post or template that uses it, how, and an <strong>Edit</strong> link (<strong>Edit with Elementor</strong> where the reference is in Elementor’s data). A template’s name opens its own screen, with the same places in a table.</p>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/qs-report-phone.png" width="390" height="295"><img src="img/qs-report.png" alt="Tools &gt; Templatrail after a scan: the 'Last scan' line with the date and the number of posts read, the Scan again button, the line What counts as a use, which opens a note, and the tabs All (38), In use (23), No use found (15), Check by hand (0), Missing templates (2)" width="864" height="245" loading="lazy"></picture>
     <figcaption>The report on the demo site.</figcaption>
@@ -144,37 +144,37 @@
     <li><strong>No use found:</strong> no use was found in the places Templatrail reads.</li>
     <li><strong>Check by hand:</strong> Templatrail could not tell, and shows why.</li>
   </ul>
-  <p>In Elementor's own list, open <strong>Elementor &gt; Editor</strong>, then <strong>Templates &gt; Saved Templates</strong> in Elementor's side menu: it has a <strong>Used on</strong> column. Click a count to open that template's screen, where Pro adds <strong>Replace everywhere</strong>.</p>
+  <p>In Elementor’s own list, open <strong>Elementor &gt; Editor</strong>, then <strong>Templates &gt; Saved Templates</strong> in Elementor’s side menu: it has a <strong>Used on</strong> column. Click a count to open that template’s screen, where Pro adds <strong>Replace everywhere</strong>.</p>
 
   <h2 id="cleanup">Clear out templates</h2>
   <ol>
     <li>Open the <strong>No use found</strong> tab and tick the templates to clear out. On a long list Select all covers the page you are on. Read each row first, and the line above the button: templates placed from PHP theme files, menus or other plugins’ own tables show as No use found, because Templatrail cannot see them.</li>
-    <li>Press <strong>Move selected to Trash</strong>. Templatrail reads the site again for them, leaves out any that gained a use, and moves the rest to WordPress's Trash. The result names what moved and what was left alone, and why.</li>
+    <li>Press <strong>Move selected to Trash</strong>. Templatrail reads the site again for them, leaves out any that gained a use, and moves the rest to WordPress’s Trash. The result names what moved and what was left alone, and why.</li>
     <li>To restore, use the <strong>Open Elementor’s Trash view to restore templates</strong> link in the result, or the Trash link above the Saved Templates list; point at a template and choose Restore.</li>
   </ol>
   <figure>
-    <img class="ui" style="width: 297px" src="img/qs-trash.png" alt="Elementor's Trash view: the first columns of the list, Title and Type, with the moved templates Banner: autumn sale and Banner: free shipping bar" width="297" height="270" loading="lazy">
-    <figcaption>Elementor's Trash view, where a moved template is restored.</figcaption>
+    <img class="ui" style="width: 297px" src="img/qs-trash.png" alt="Elementor’s Trash view: the first columns of the list, Title and Type, with the moved templates Banner: autumn sale and Banner: free shipping bar" width="297" height="270" loading="lazy">
+    <figcaption>Elementor’s Trash view, where a moved template is restored.</figcaption>
   </figure>
   <p>WordPress empties its Trash after 30 days by default. If your site has the Trash switched off, Move selected to Trash is greyed out and says why.</p>
 
   <h2 id="missing">Missing templates</h2>
-  <p>The <strong>Missing templates</strong> tab lists pages, posts and templates that still point, by ID, at a template that was deleted or is in the Trash. A button opens the page for editing (<strong>Edit with Elementor</strong>, or <strong>Edit</strong> when the reference is in the page's content); for a template in the Trash, <strong>Restore the template</strong> brings it back.</p>
+  <p>The <strong>Missing templates</strong> tab lists pages, posts and templates that still point, by ID, at a template that was deleted or is in the Trash. A button opens the page for editing (<strong>Edit with Elementor</strong>, or <strong>Edit</strong> when the reference is in the page’s content); for a template in the Trash, <strong>Restore the template</strong> brings it back.</p>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/qs-missing-phone.png" width="390" height="691"><img src="img/qs-missing.png" alt="The Missing templates tab: two rows for the page Shop (archived), one pointing at #103, which no longer exists, with Edit, and one at #104 Banner: autumn sale, which is in the Trash, with Edit and Restore the template" width="864" height="319" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/qs-missing-phone.png" width="390" height="674"><img src="img/qs-missing.png" alt="The Missing templates tab: two rows for the page Shop (archived), one pointing at #103, which no longer exists, with Edit, and one at #104 Banner: autumn sale, which is in the Trash, with Edit and Restore the template" width="864" height="319" loading="lazy"></picture>
     <figcaption>Two pages that point at a template that is gone or in the Trash.</figcaption>
   </figure>
 
   <h2 id="pro">Templatrail Pro</h2>
   <ul>
-    <li><strong>Replace everywhere.</strong> Open the template's own screen (its count under Used on in Saved Templates), press <strong>Replace everywhere</strong>, choose a template of the same kind under <strong>Replace with</strong>, press <strong>Preview the change</strong>, and read <strong>This will change</strong> and the list of places. Press <strong>Replace everywhere</strong> again to confirm. On a template nothing uses it is greyed out, with the reason. Each changed post gets a revision first, Elementor's CSS cache is cleared, and a summary lists what changed and what failed.</li>
+    <li><strong>Replace everywhere.</strong> Open the template’s own screen (its count under Used on in Saved Templates), press <strong>Replace everywhere</strong>, choose a template of the same kind under <strong>Replace with</strong>, press <strong>Preview the change</strong>, and read <strong>This will change</strong> and the list of places. Press <strong>Replace everywhere</strong> again to confirm. On a template nothing uses it is greyed out, with the reason. Each changed post gets a revision first, Elementor’s CSS cache is cleared, and a summary lists what changed and what failed.</li>
     <li><strong>Export CSV.</strong> Beside Scan site on Tools &gt; Templatrail: the report of the last scan, one row per place that uses a template, plus the templates with no use found, those to check by hand, and the references to missing templates.</li>
   </ul>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/pro-summary-phone.png" width="390" height="236"><img src="img/pro-summary.png" alt="Templatrail Pro's summary after Replace everywhere: 'Replaced Call to action: book a call with Call to action: guide in 2 places.', the posts changed, Services and Pricing, each with an Edit link, and 'Elementor's CSS cache was cleared.'" width="864" height="187" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/pro-summary-phone.png" width="390" height="236"><img src="img/pro-summary.png" alt="Templatrail Pro’s summary after Replace everywhere: 'Replaced Call to action: book a call with Call to action: guide in 2 places.', the posts changed, Services and Pricing, each with an Edit link, and 'Elementor’s CSS cache was cleared.'" width="864" height="187" loading="lazy"></picture>
     <figcaption>The summary after Replace everywhere.</figcaption>
   </figure>
-  <p id="updating"><strong>Updating Pro.</strong> Pro makes no network call, so WordPress shows no update for it. Sign in to Polar's customer portal with the email address you bought with, download the new <code>templatrail-pro.zip</code>, then go to <strong>Plugins &gt; Add Plugin &gt; Upload Plugin</strong>, choose it, press <strong>Install Now</strong> and then <strong>Replace current with uploaded</strong>. Pro stays active.</p>
+  <p id="updating"><strong>Updating Pro.</strong> Pro makes no network call, so WordPress shows no update for it. Sign in to Polar’s customer portal with the email address you bought with, download the new <code>templatrail-pro.zip</code>, then go to <strong>Plugins &gt; Add Plugin &gt; Upload Plugin</strong>, choose it, press <strong>Install Now</strong> and then <strong>Replace current with uploaded</strong>. Pro stays active.</p>
 
   <h2 id="remove">Deactivate or delete</h2>
   <p>Deactivating stops Templatrail and keeps its scan results. Deleting it removes its two tables and its settings from your database; your templates and pages are not touched.</p>
@@ -183,7 +183,7 @@
   <p>No use found means no use was found in the places Templatrail reads; what it does not read is listed on the <a href="index.html#reads">product page</a>. Templatrail changes no post other than the templates you move to the Trash: Components are never offered, and nothing is deleted for good. Pro replaces shortcodes and widget settings only; the other uses are listed, not replaced. Tested on Linux with WordPress 7.1.5 and 6.8.3, PHP 8.3 and 7.4 and Elementor 4.4.1 (<a href="index.html#tested">how we tested</a>); Elementor Pro itself, a Windows or macOS web server, and browsers other than Chrome were not part of the tests.</p>
 
   <h2 id="privacy">Privacy</h2>
-  <p>Neither plugin contacts any server: no telemetry, no analytics, no license check, no update check of its own. Scan results are stored in your site's own database.</p>
+  <p>Neither plugin contacts any server: no telemetry, no analytics, no license check, no update check of its own. Scan results are stored in your site’s own database.</p>
 
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your WordPress, PHP and Elementor versions and what the screen showed.</p>
