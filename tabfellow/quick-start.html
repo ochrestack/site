@@ -147,49 +147,52 @@
 </header>
 <main>
   <h1>Tabfellow quick start</h1>
-  <p>Sharing a group of live templates with your team, and what the license adds. Back to the <a href="index.html">Tabfellow product page</a>.</p>
+  <p>Sharing live templates with your team, and what the license adds. Back to the <a href="index.html">product page</a>.</p>
 
   <h2 id="install">Install</h2>
-  <p>Tabfellow is not on JetBrains Marketplace yet, so there is nothing to install today. Once it is, each teammate opens <strong>Settings | Plugins</strong>, searches for Tabfellow and installs it, then restarts the IDE if it asks. It needs an IntelliJ-based IDE from build 251 (2025.1). That route has not been run, because there is no listing; installing the plugin from a file was run in IntelliJ IDEA Community 2025.1 and IntelliJ IDEA 2026.3.</p>
+  <p>Tabfellow is not on JetBrains Marketplace yet, so there is nothing to install from there today.</p>
+  <p>Installing from the zip file was run in IntelliJ IDEA Community 2025.1 and 2026.3: <strong>Settings | Plugins</strong>, the gear (beside the tabs in 2025.1; beside the search field in 2026.3, which has no tabs), <strong>Install Plugin from Disk…</strong>, <strong>Accept</strong>. In 2026.3 the list then looks unchanged: type Tabfellow in the search field and <strong>Restart IDE</strong> appears. After the restart 2026.3 shows <em>Cannot update plugin</em> at every start, as the IDE has no update source for a plugin installed from a file; Tabfellow works with it showing.</p>
 
   <h2 id="share">Share a group (you)</h2>
   <ol>
     <li>In <strong>Settings | Editor | Live Templates</strong> keep your project's templates in one group of your own, not one of the IDE's.</li>
     <li>Choose <strong>Tools | Share Live Templates with Project…</strong> (also in Find Action, and in the context menu of the project root). Tick the group and press <strong>Share</strong>. It is written to <code>.livetemplates/&lt;group&gt;.xml</code>; a group that already has a file under <code>.idea/liveTemplates</code> is written there. If the file already holds templates your group lacks, Share asks: another file name (the default), merge, replace or skip.</li>
-    <li>Commit the new file. The IDE asks whether to add it to Git.</li>
-    <li>To make the IDE ask newcomers to install Tabfellow, press <strong>Open Required Plugins…</strong> in the share dialog, press <strong>+</strong>, choose <em>Tabfellow: Team Live Templates</em> in the <em>Plugin</em> box, press OK in both dialogs, and commit <code>.idea/externalDependencies.xml</code>.</li>
+    <li>Commit the new file. The IDE may ask whether to add it to Git; if it does not, add <code>.livetemplates/</code> yourself.</li>
+    <li>To make the IDE ask newcomers to install Tabfellow, press <strong>Open Required Plugins…</strong> in the share dialog, press <strong>+</strong>, choose <em>Tabfellow: Team Live Templates</em>, press OK in both dialogs, and commit <code>.idea/externalDependencies.xml</code>.</li>
   </ol>
-  <p>Your own group stays as it is, so on your machine the IDE offers both your template and the shared one; delete your own group once the shared one has loaded if you want only one. <strong>Tools | Stop Sharing Live Templates…</strong> deletes one group's file after a confirmation that names it.</p>
+  <p>Your own group stays as it is, so the IDE offers both your template and the shared one; delete your own group once the shared one has loaded if you want only one. <strong>Tools | Stop Sharing Live Templates…</strong> deletes one group's file after a confirmation that names it.</p>
 
   <h2 id="teammates">Teammates</h2>
   <ol start="5">
     <li>Install Tabfellow, open the project, and trust it if the IDE asks. The group is in <strong>Settings | Editor | Live Templates</strong> as <em>group (project name)</em>. Type an abbreviation and press Tab.</li>
   </ol>
-  <p><strong>Nothing loaded?</strong> The IDE opened the project in Safe Mode (the Project view shows <em>[untrusted]</em>): trust the project, or choose <strong>Tools | Reload Shared Live Templates</strong>. A template that calls <code>groovyScript</code> (a function that runs a script) loads switched off, and a notice says so; read it, then press <strong>Allow</strong> in the notice or on the Tabfellow page.</p>
+  <p><strong>Nothing loaded?</strong> The IDE opened the project in Safe Mode (the Project view shows <em>[untrusted]</em>): trust the project and the groups load. A template that calls <code>groovyScript</code> (a function that runs a script) loads switched off, and a notice says so; read it, then press <strong>Allow</strong> in the notice or on the Tabfellow page. That includes your own template on your own machine, right after you share it.</p>
+  <p><strong>Tools | Reload Shared Live Templates</strong> (or the same button on the Tabfellow page) reads the files again and names the file and line of any it cannot read.</p>
 
   <h2 id="license">With a license</h2>
   <ul>
     <li><strong>Follow the repository.</strong> After a pull, branch switch, stash, rebase or any change to the shared files outside the IDE, the groups update within seconds without reopening the project. One notification lists what changed; <strong>Turn off these notifications</strong> silences it.</li>
     <li><strong>Edit in place.</strong> Change, add or delete a template in a shared group and press OK. A notification offers <strong>Write to Project</strong> or <strong>Discard</strong>. A read-only file is not written, and the notification says why.</li>
-    <li><strong>Check page.</strong> <strong>Settings | Tools | Tabfellow</strong> lists, per shared group, abbreviations that one of your own templates, one of the IDE's or another shared group also uses in a context both have on; templates for a language your IDE lacks; unknown functions in variables; scripts; and templates with no context. Each problem has a link that opens the template in Settings | Editor | Live Templates (not while that page holds unapplied edits).</li>
+    <li><strong>Check page.</strong> <strong>Settings | Tools | Tabfellow</strong> lists, per shared group, abbreviations that another template also uses in a context both have on, templates for a language your IDE lacks, unknown functions, scripts, and templates with no context. Each problem links to the template (not while Live Templates holds unapplied edits).</li>
   </ul>
 
   <h2 id="trial">License and trial</h2>
-  <p>Sharing and loading are free with no time limit. Following, editing in place and the check page need a JetBrains Marketplace license: $12 once, the same for personal and commercial use, with a 30-day trial of everything. Nothing renews. When the trial ends Tabfellow shows no popup (checked with a test stand-in for the license); the Tabfellow page then says so in one line.</p>
+  <p>Sharing and loading are free with no time limit. Following, editing in place and the check page need a JetBrains Marketplace license: $12 once, personal and commercial alike, with a 30-day trial of everything. Nothing renews. When the trial ends Tabfellow shows no popup (checked with a test stand-in for the license); the Tabfellow page says so in one line.</p>
   <p>On the Tabfellow page, <strong>Start the 30-day trial or enter a license…</strong> opens the IDE's license dialog (titled <em>Manage Licenses</em> in 2025.1 and <em>Manage Subscriptions</em> in 2026.3) for Tabfellow. Its words, in plain terms:</p>
   <ul>
     <li><strong>No license.</strong> beside the plugin in Settings | Plugins: the IDE's wording when no paid license is held. The free part works.</li>
-    <li><strong>Subscription:</strong> the IDE's word for a license kept in your JetBrains Account. Tabfellow has no subscription; it is a one-time purchase, a Perpetual License in Marketplace terms.</li>
+    <li><strong>Subscription:</strong> the IDE's word for a license kept in your JetBrains Account. Tabfellow is a one-time purchase (a Perpetual License in Marketplace terms).</li>
+    <li><strong>Activate to enable</strong> under Tabfellow's name: the IDE's line for a paid plugin that has no license yet. The free part works.</li>
     <li><strong>Log In to JetBrains Account:</strong> the trial and the license live in your account. Tabfellow never sees it.</li>
   </ul>
-  <p>The trial can start only once Tabfellow is on the Marketplace. In Android Studio, install the plugin JetBrains Marketplace Licensing first; the Tabfellow page names it and offers <strong>Open Settings | Plugins…</strong>.</p>
+  <p>The trial can start only once Tabfellow is on the Marketplace. In Android Studio, install the plugin JetBrains Marketplace Licensing first: the Tabfellow page names it.</p>
 
   <h2 id="limits">Limits</h2>
   <ul>
     <li>Every teammate needs Tabfellow installed to load the groups. Custom groups only; the IDE's predefined groups are not shared.</li>
-    <li>While two projects are open, a shared template can be expanded in either window.</li>
+    <li>While two projects are open, a shared template can be expanded in either window. With a group of the same name in both, the IDE offers both templates until you close one project.</li>
     <li>Not covered: postfix templates, Rider's C# templates, several repositories or submodules at once, Remote Development and Code With Me clients.</li>
-    <li>Everything here was run on Linux. Windows and macOS desktops, a real Marketplace trial or purchase, and PhpStorm, WebStorm, PyCharm and GoLand (checked by Plugin Verifier and tests only) were not run (<a href="index.html#details">details</a>).</li>
+    <li>Everything here was run on Linux. Windows and macOS desktops, a real Marketplace trial or purchase, and PhpStorm, WebStorm, PyCharm and GoLand (checked by Plugin Verifier and tests only) were not run (<a href="index.html#details">details</a>). Refunds: JetBrains Marketplace takes the payment and handles refund requests under its own purchase terms; if the paid half does not work as described and we cannot fix it, write to support@ochrestack.com.</li>
   </ul>
 
   <h2 id="privacy">Privacy</h2>

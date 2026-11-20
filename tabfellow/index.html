@@ -164,8 +164,8 @@
   <p class="sub">Sharing live templates means exporting and importing XML by hand. Tabfellow keeps them in the project: commit one file, and teammates who have it get them when they open a project the IDE trusts.</p>
   <div class="top-images">
   <figure class="top-image">
-    <a href="img/live-templates-group.png"><picture><source media="(max-width: 600px), (min-width: 1000px) and (max-width: 1250px), (min-width: 1000px) and (max-height: 700px)" srcset="img/live-templates-group-phone.png" width="380" height="148"><img class="hero" src="img/live-templates-group.png" alt="IntelliJ IDEA Community 2025.1, Settings | Editor | Live Templates, on a teammate's machine after opening the project: a group labelled petclinic (spring-petclinic) with the templates assj, col, ctrl, ent, flash, getm, initb, mvcget and mvct" width="740" height="364"></picture></a>
-    <figcaption>A teammate's Live Templates settings: the shared group, labelled with the project's name (IntelliJ IDEA Community 2025.1).</figcaption>
+    <a href="img/hero-expansion.png"><picture><source media="(max-width: 600px), (min-width: 1000px) and (max-width: 1250px), (min-width: 1000px) and (max-height: 700px)" srcset="img/hero-expansion-phone.png" width="370" height="110"><img class="hero" src="img/hero-expansion.png" alt="OwnerController.java in IntelliJ IDEA Community 2025.1 after typing getm and Tab on a teammate's machine: a new @GetMapping handler for /owners/find with the method initFindForm, marked as new code in the margin" width="740" height="240"></picture></a>
+    <figcaption>A teammate types <code>getm</code> and presses Tab: the shared template expands (IntelliJ IDEA Community 2025.1).</figcaption>
   </figure>
   </div>
   <ul class="benefits">
@@ -176,8 +176,8 @@
   <div class="buy">
     <p class="price"><strong>Free:</strong> share and load, no time limit. <strong>$12 once</strong> for updates after a pull, write-back and the check page; 30-day trial of everything.</p>
     <div class="buy-row">
-      <a class="button" id="buy" href="#">Get it on JetBrains Marketplace</a>
-      <span class="buy-note" id="buy-note">Listing in review.</span>
+      <button class="button" id="buy" type="button" disabled aria-describedby="buy-note" title="Not on JetBrains Marketplace yet: there is no listing to open">Get it on JetBrains Marketplace</button>
+      <span class="buy-note" id="buy-note">Not on JetBrains Marketplace yet.</span>
     </div>
     <p class="fine">Tested in IntelliJ IDEA <span class="more">Community </span>2025.1 and <span class="more">IntelliJ IDEA </span>2026.3 · <span class="more">IDE builds 251 and later · </span>source code not included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
@@ -209,9 +209,14 @@
 
   <p><span class="step-tag">2. Open (free)</span><br>A teammate with Tabfellow opens the project, trusts it when the IDE asks, and types an abbreviation and Tab. Nothing loads in an untrusted project (Safe Mode).</p>
   <figure>
-    <img class="ui wide-only" src="img/expanded.png" alt="OwnerController.java in IntelliJ IDEA Community 2025.1 after typing getm and Tab: the project's @GetMapping handler for /owners/find, with a method named initFindForm returning the view owners/findOwners" width="784" height="540" loading="lazy">
-    <img class="ui narrow-only" src="img/expanded-phone.png" alt="The expanded getm template in OwnerController.java: a @GetMapping handler for /owners/find and the method initFindForm" width="370" height="110" loading="lazy">
-    <figcaption><code>getm</code> and Tab, fields filled in.</figcaption>
+    <img class="ui wide-only" src="img/live-templates-group.png" alt="IntelliJ IDEA Community 2025.1, Settings | Editor | Live Templates, on a teammate's machine after opening the project: a group labelled petclinic (spring-petclinic) with the templates assj, col, ctrl, ent, flash, getm, initb, mvcget and mvct" width="740" height="364" loading="lazy">
+    <img class="ui narrow-only" src="img/live-templates-group-phone.png" alt="Live Templates settings: the group petclinic (spring-petclinic) with the templates assj, col, ctrl, ent, flash and getm" width="380" height="148" loading="lazy">
+    <figcaption>The shared group in a teammate's Live Templates, labelled with the project's name.</figcaption>
+  </figure>
+  <figure>
+    <p class="swipe-hint narrow-only">Swipe the picture sideways.</p>
+    <div class="swipe-wrap scroll-x"><img class="ui" src="img/kotlin-2026-3.png" alt="OwnerController.kt in IntelliJ IDEA 2026.3 after typing getm and Tab: a new @GetMapping handler for /owners/search with the Kotlin function searchForm, from the shared group kotlin-team" width="510" height="208" loading="lazy"></div>
+    <figcaption>The same in IntelliJ IDEA 2026.3 with Kotlin: <code>getm</code> from the shared group <code>kotlin-team</code>, in the public Spring PetClinic Kotlin sample.</figcaption>
   </figure>
 
   <p><span class="step-tag">3. Pull (license)</span><br>After a pull, branch switch, stash or rebase the groups update without reopening the project.</p>
@@ -248,7 +253,7 @@
   <h2 id="limits">Limits</h2>
   <ul class="tight">
     <li>Every teammate needs Tabfellow installed. Custom groups only.</li>
-    <li>While two projects are open, a shared template expands in either window.</li>
+    <li>While two projects are open, a shared template expands in either window. With a group of the same name in both, the IDE offers both templates until you close one project.</li>
     <li>Not covered: postfix templates, Rider's C# templates, several repositories.</li>
   </ul>
 
@@ -256,9 +261,9 @@
   <ul class="tight">
     <li><strong>Price:</strong> $12 once, personal and commercial alike, nothing renews. Updates would arrive through Settings | Plugins (not run yet: no listing).</li>
     <li><strong>Works in:</strong> IntelliJ-based IDEs from build 251 (2025.1), no upper limit. Opened in a window: IntelliJ IDEA Community 2025.1 and IntelliJ IDEA 2026.3 (version 1.0.1), Android Studio 2025.2.1 (version 1.0.0 only). Plugin Verifier and tests only: PhpStorm, WebStorm, PyCharm, GoLand 2026.3.</li>
-    <li><strong>Untested:</strong> everything ran on Linux. Windows and macOS desktops, and a real Marketplace trial or purchase, were not run.</li>
+    <li><strong>Untested:</strong> everything ran on Linux. Windows and macOS desktops, and a real Marketplace trial or purchase, were not run. <strong>Refunds:</strong> JetBrains Marketplace takes the payment and handles refund requests under its own purchase terms; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
     <li><strong>Privacy:</strong> Tabfellow makes no network calls and sends nothing; the IDE's own license and update checks are the IDE's.</li>
-    <li><strong>Support:</strong> <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Not affiliated with the Spring PetClinic sample project.</li>
+    <li><strong>Support:</strong> <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Not affiliated with the Spring PetClinic sample projects (Java and Kotlin).</li>
   </ul>
 
   <details id="tested">
@@ -274,8 +279,8 @@
 
   <div class="buy">
     <div class="buy-row">
-      <a class="button" id="buy-2" href="#">Get it on JetBrains Marketplace</a>
-      <span class="buy-note">Listing in review.</span>
+      <button class="button" id="buy-2" type="button" disabled aria-describedby="buy-note-2" title="Not on JetBrains Marketplace yet: there is no listing to open">Get it on JetBrains Marketplace</button>
+      <span class="buy-note" id="buy-note-2">Not on JetBrains Marketplace yet.</span>
     </div>
     <p class="fine">Free to share and load · $12 once for the rest</p>
   </div>
