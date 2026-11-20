@@ -48,7 +48,11 @@
   .button:hover, .button:focus { background: var(--ochre-text); }
   figure { margin: 28px 0; }
   figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
-  figure video { background: #2B2118; }
+  /* The player's control bar sits over the bottom of the element, so the element is taller than the film by a strip of the caption band's colour: no caption is ever under the bar (72 px on a computer, 90 px on a phone). */
+  figure:has(> video) { container-type: inline-size; }
+  figure video { background: #FAF7F2; object-fit: contain; object-position: top; height: calc(56.25cqw + 72px); }
+  figure video:fullscreen { object-position: center; background: #000; height: 100%; }
+  @media (max-width: 600px) { figure video { height: calc(183.333cqw + 90px); } }
   /* The films are wider than the text column on a screen that has the room, so the interface words in them stay readable (the 720p film is 1280 px wide). */
   @media (min-width: 601px) { figure:has(> video) { position: relative; left: 50%; width: min(1120px, 96vw); transform: translateX(-50%); } }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
@@ -128,7 +132,7 @@
 
   <a href="img/hero.png"><picture>
     <source media="(max-width: 600px)" srcset="img/hero-narrow.png" width="378" height="334">
-    <img class="hero" src="img/hero.png" alt="Restorwell on Tools &gt; Restorwell. Restore finished: the site from https://fieldnotes.example.org is now live at http://new.fieldnotes.example.org/, 820 files and 12 database tables restored. A line saying the accounts on the site are now the backup's, and two buttons: Log in with an account from the backup, and View the site" width="822" height="239">
+    <img class="hero" src="img/hero.png" alt="Restorwell on Tools &gt; Restorwell. Restore finished: the site from https://fieldnotes.example.org is now live at http://new.fieldnotes.example.org/, 820 files and 12 database tables restored. A line saying the accounts on the site are now the backup's, and two buttons: Log in with an account from the backup, and View the site" width="840" height="239">
   </picture></a>
 
   <ul>
@@ -138,7 +142,7 @@
   </ul>
 
   <div class="buy">
-    <p class="price"><strong>Restorwell is free:</strong> <a href="download/restorwell.zip?v=1.2.3">download restorwell.zip</a> (version 1.2.3, 79 KB).<br><strong>Restorwell Pro, $19 once, unlimited sites:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_UIWbTLwhrdfdwbV2g5dLi3SPrzI3I4GgUMBKB0aCriG">Buy for $19</a></p>
+    <p class="price"><strong>Restorwell is free:</strong> <a href="download/restorwell.zip?v=1.2.4">download restorwell.zip</a> (version 1.2.4, 80 KB).<br><strong>Restorwell Pro, $19 once, unlimited sites:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_UIWbTLwhrdfdwbV2g5dLi3SPrzI3I4GgUMBKB0aCriG">Buy for $19</a></p>
     <p class="fine"><strong>Old host closing and a slow line at home?</strong> Pro makes your new server fetch the backup from the old one (<a href="#pro">watch it</a>). Restoring never needs Pro. 14-day refund if it doesn't work as described and we can't fix it.</p>
     <p class="fine">GPL source included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
@@ -155,7 +159,7 @@
         <figcaption>The new host, after the restore.</figcaption>
       </figure>
     </div>
-    <p class="fine">Restored by <code>wp restorwell restore</code> on 1.2.1. Below the address bar, the home page and this post differ in 0 pixels.</p>
+    <p class="fine">Restored by <code>wp restorwell restore</code> on 1.2.1; below the address bar, 0 pixels differ.</p>
   </section>
 
   <section id="watch">
@@ -168,6 +172,10 @@
       <figcaption>Recorded on 1.2.3, on an 8 MB host.</figcaption>
     </figure>
   </section>
+
+  <div class="buy" id="buy-mid-box">
+    <p class="price"><strong>Restorwell Pro, $19 once, unlimited sites:</strong> <a class="button" id="buy-mid" href="https://buy.polar.sh/polar_cl_UIWbTLwhrdfdwbV2g5dLi3SPrzI3I4GgUMBKB0aCriG">Buy for $19</a></p>
+  </div>
 
   <div class="box warn">
     <strong>When you do not need Restorwell.</strong> If your backup is smaller than the upload limit your host shows, All-in-One WP Migration's own Import screen restores it for free. Not affiliated with All-in-One WP Migration or ServMask.
@@ -186,7 +194,7 @@
   <p><strong>1. Choose the backup.</strong> Upload it in pieces, or copy it in by FTP.</p>
   <figure>
     <p class="swipe-hint">Swipe the picture sideways to read it.</p>
-<div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/upload.png" alt="The Upload a backup box: 'The file is sent in pieces of 6 MB, below this server's upload limit of 8 MB, so the size of the backup does not matter', and the progress line 'Uploading fieldnotes-2026-11-09.wpress: 384.0 MB of 2.29 GB (16%)'. Below it, Backups already on this server lists fieldnotes-2026-11-09 (1).wpress, 1.38 GB, with Check and Delete buttons" width="822" height="553" loading="lazy"></div></div>
+<div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/upload.png" alt="The Upload a backup box: 'The file is sent in pieces of 6 MB, below this server's upload limit of 8 MB, so the size of the backup does not matter', and the progress line 'Uploading fieldnotes-2026-11-09.wpress: 438.0 MB of 2.29 GB (18%)'. Below it, Backups already on this server lists fieldnotes-2026-11-09 (1).wpress, 1.38 GB, with Check and Delete buttons" width="822" height="553" loading="lazy"></div></div>
     <figcaption>6 MB pieces on an 8 MB host.</figcaption>
   </figure>
 
@@ -200,13 +208,12 @@
   <p><strong>3. Restore.</strong> Prepared beside your live site and switched in at the end; cancel before that and nothing changed. Elementor pages keep their look (tested: Elementor 4.4.0).</p>
   <figure>
     <p class="swipe-hint">Swipe the picture sideways to read it.</p>
-<div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/finished.png" alt="Restore finished: 'fieldnotes-2026-11-09.wpress, restored on November 20, 2026 8:37 am from https://fieldnotes.example.org: 820 files and 12 database tables.', then 'The backup file (2.29 GB) is still on the server. Delete it now to free the space?' with Delete backup file and Keep it, and Close" width="822" height="232" loading="lazy"></div></div>
+<div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/finished.png" alt="Restore finished: 'fieldnotes-2026-11-09.wpress, restored on November 20, 2026 2:21 pm from https://fieldnotes.example.org: 820 files and 12 database tables.', then 'The backup file (2.29 GB) is still on the server. Delete it now to free the space?' with the buttons Delete backup file and Keep it and close" width="822" height="212" loading="lazy"></div></div>
     <figcaption>Then log in with an account from the backup.</figcaption>
   </figure>
-  <p>Also free: <code>wp restorwell restore</code> (<a href="quick-start.html#cli">quick start</a>).</p>
 
   <h2 id="pro">Restorwell Pro: Restore from a link</h2>
-  <p>For a backup on another server: paste its link, and your server fetches it, resuming after a dropped connection, then runs the same Check. For scripts, <code>wp restorwell fetch &lt;url&gt;</code> does the same on the command line (<code>PW</code>: the backup's password, if any):</p>
+  <p>For a backup on another server: paste its link, and your server fetches it, resuming after a dropped connection, then runs the same Check. For scripts, <code>wp restorwell fetch &lt;url&gt;</code> does the same on the command line (<code>LINK</code>: the link you paste; <code>PW</code>: the backup's password, empty if none):</p>
   <div class="box"><pre>name=$(wp restorwell fetch "$LINK" --porcelain) &amp;&amp;
   printf '%s' "$PW" |
   wp restorwell restore "$name" \
@@ -226,9 +233,9 @@
       <li><strong>Says when a server cannot resume</strong> (some script-served links): you see the bytes arrive in one long request, and if your host cuts it off, Pro tells you to upload the file or use FTP instead.</li>
       <li><strong>Which links work:</strong> a direct link to the .wpress file. Tested with the old site's Backups-page link (made by All-in-One WP Migration 7.113), and on our own servers with redirects, query strings (as the temporary signed links of cloud storage have), links without a file name and servers that cannot resume; not with Amazon S3, Backblaze, Dropbox or Google Drive themselves. A Google Drive viewer page is reported as a web page.</li>
       <li><strong>Why it matters:</strong> at 8 Mbit/s, uploading our 2.29 GB demo backup from home would take about 41 minutes; with Pro your connection carries none of it.</li>
-      <li><strong>The clip:</strong> both hosts ran on one machine (the old one on Apache, slowed to about 35 MB/s); faster parts say "sped up".</li>
+      <li><strong>The clip:</strong> both hosts ran on one machine (the old one on Apache, slowed to about 35 MB/s); faster parts say "sped up". It was recorded on Pro 1.1.3, whose help under the link box was one paragraph; Pro 1.1.4 shows it as three steps.</li>
     </ul>
-    <p id="updates"><strong>How updates reach you:</strong> Pro never checks for updates itself. Each new version is added to your Polar purchase at no charge: sign in to <a href="https://polar.sh/ochrestack/portal">Polar's customer portal</a> with your purchase e-mail, download the zip, then Upload Plugin and "Replace current with uploaded". Your backups are not touched. The Pro download, restorwell-pro.zip 1.1.3, carries Restorwell 1.2.3 and installs it in one click.</p>
+    <p id="updates"><strong>How updates reach you:</strong> Pro never checks for updates itself. Each new version is added to your Polar purchase at no charge: sign in to <a href="https://polar.sh/ochrestack/portal">Polar's customer portal</a> with your purchase e-mail, download the zip, then Upload Plugin and "Replace current with uploaded". Your backups are not touched. The Pro download, restorwell-pro.zip 1.1.4, carries Restorwell 1.2.4 and installs it in one click.</p>
   </details>
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_UIWbTLwhrdfdwbV2g5dLi3SPrzI3I4GgUMBKB0aCriG">Buy for $19</a></p>
@@ -266,18 +273,18 @@
       <tr><td>1.1.4: an Elementor 4.4.0 page (section with a background photo, heading, button, global styles) and a Twenty Twenty-Five block-theme post, exported by All-in-One WP Migration 7.113 and restored</td><td>Every Elementor stylesheet loads; both pages pixel-identical to the old site in Chromium</td></tr>
       <tr><td>1.2.0 on Apache 2.4.58 with its PHP module (mod_php), a WordPress installed with WP-CLI (no .htaccess), a password backup restored</td><td>WordPress's rewrite rules are written to .htaccess and a page other than the home page answers 200; with the site's folder not writable, the message says so and that page is not found</td></tr>
       <tr><td>1.2.1 on Apache 2.4.58 with mod_php: <code>wp restorwell restore</code> of a backup made on an Apache site, into a WordPress installed with WP-CLI (no .htaccess)</td><td>WordPress's rewrite rules are written to .htaccess and a page other than the home page answers 200</td></tr>
-      <tr><td>1.2.3 on Apache 2.4.58 with mod_php, 8 MB / 30 s / 128 MB: the 2.29 GB password backup uploaded in Chrome 153, checked and restored (the pictures and films on this page)</td><td>820 files and 12 tables; WordPress's rewrite rules were written, and the finished card has nothing to add about page addresses</td></tr>
+      <tr><td>1.2.4 on Apache 2.4.58 with mod_php, 8 MB / 30 s / 128 MB: the 2.29 GB password backup uploaded in Chrome 153, checked and restored (the pictures on this page; the films were recorded on 1.2.3)</td><td>820 files and 12 tables; WordPress's rewrite rules were written, and the finished card has nothing to add about page addresses</td></tr>
       <tr><td>1.2.1: the demo blog restored by <code>wp restorwell restore</code> into a fresh WordPress</td><td>The first screens of the home page and of a post differ in 0 pixels from the old host's</td></tr>
-      <tr><td>Pro 1.1.3 in Chrome 153, requests set to run up to ten seconds (the default is three), a download running at 0.7 to 1 MB/s from a local server: the page refreshed; the tab closed and opened again after 1 s, 3 s and 11 s; then Continue</td><td>One Continue finishes each time, with the same SHA-256 as the source</td></tr>
+      <tr><td>Pro 1.1.4 in Chrome 153, requests set to run up to ten seconds (the default is three), a download running at 0.7 to 1 MB/s from a local server: the page refreshed; the tab closed and opened again after 1 s, 3 s and 11 s; then Continue</td><td>One Continue finishes each time, with the same SHA-256 as the source</td></tr>
       <tr><td>Pro 1.1.0 <code>wp restorwell fetch</code> against local test servers</td><td>Byte-identical file; a dropped connection exits 6 with the bytes kept, and the same command continues from them; a short link is saved under the real file's name; a private address is refused</td></tr>
       <tr><td>Pro 1.1.0 uploaded on its own</td><td>Activates; its notice installs and activates the free plugin it carries in one click; on WP-CLI, <code>wp restorwell</code> names the command that installs it</td></tr>
-      <tr><td>1.1.3 and Pro 1.0.4 on Apache 2.4.58 with mod_php, 2 MB uploads, web-server limit 1 MB</td><td>Pieces shrink after HTTP 413; Check, restore and login; backup folder answers 403; Pro download from a server that cannot resume, with progress</td></tr>
+      <tr><td>1.2.4 and Pro 1.1.4 on Apache 2.4.58 with mod_php, 2 MB uploads, web-server limit 1 MB</td><td>Pieces shrink after HTTP 413; Check, restore and login; backup folder answers 403; Pro download from a server that cannot resume, with progress</td></tr>
       <tr><td>Pro 1.0.4: the Download link from an old site's All-in-One WP Migration 7.113 Backups page</td><td>Link of the form shown above; fetched file identical (SHA-256); the Check accepts it</td></tr>
       <tr><td>Backup versions restored</td><td>7.113 (all kinds); 7.62, 7.80, 7.98, 7.100, 7.101 (password); 7.0, 7.40, 7.62, 7.80, 7.100 (plain)</td></tr>
     </table>
-    <p>On 1.1.0, behind nginx refusing bodies over 1 MB, the pieces got smaller after HTTP 413 and the upload completed. Tested on: Linux, WordPress 7.1.4, PHP 8.3.6, MariaDB 10.11.14, Apache 2.4.58 with mod_php and PHP's built-in server. The test suite (247 tests) passed on 1.2.3 and Pro 1.1.3 there; uploads and Pro downloads were driven in Chrome 153. Version 1.0.0 was also installed and run on WordPress 6.5.14 and PHP 7.4.33; that has not been re-run on 1.1.x. Requires WordPress 6.5 or later and PHP 7.4 or later (64-bit for backups over 2 GB), with OpenSSL for password-protected backups and bz2 for bzip2 ones. Not tested: MySQL (only MariaDB was run); servers on Windows or macOS; LiteSpeed, IIS, and Apache with PHP-FPM; browsers other than Chromium; password-protected backups made before version 7.62. Timings come from a fast test machine: they show each request stays short, not how fast your host is.</p>
+    <p>On 1.1.0, behind nginx refusing bodies over 1 MB, the pieces got smaller after HTTP 413 and the upload completed. Tested on: Linux, WordPress 7.1.4, PHP 8.3.6, MariaDB 10.11.14, Apache 2.4.58 with mod_php and PHP's built-in server. The test suite (254 tests) passed on 1.2.4 and Pro 1.1.4 there; uploads and Pro downloads were driven in Chrome 153. Version 1.0.0 was also installed and run on WordPress 6.5.14 and PHP 7.4.33; that has not been re-run on 1.1.x. Requires WordPress 6.5 or later and PHP 7.4 or later (64-bit for backups over 2 GB), with OpenSSL for password-protected backups and bz2 for bzip2 ones. Not tested: MySQL (only MariaDB was run); servers on Windows or macOS; LiteSpeed, IIS, and Apache with PHP-FPM; browsers other than Chromium; password-protected backups made before version 7.62. Timings come from a fast test machine: they show each request stays short, not how fast your host is.</p>
     <h3 id="images">How the images were made</h3>
-    <p>Captures of a real WordPress 7.1.4 with Restorwell 1.2.3 and Pro 1.1.3, in Chrome 153, on Apache 2.4.58 with mod_php and a host with an 8 MB upload limit, 30-second requests and 128 MB of memory. The backup is our demo blog, Hollin Marsh Field Notes: 16 posts, 2 pages, the 36 CC0 photographs that ship with Twenty Twenty-Five and 10 videos made from them, 2.29 GB with a password. The free disk space the Check shows is held at 8 GB through the plugin's own filter in the images and in both films, so it reads the same everywhere (the disk-space image sets 1.46 GB, on purpose). Three things differ from a real host so the moments could be captured: the disk-space image reports 1.46 GB free, the progress steps were made smaller, and Pro downloads from a second web server on the same machine. The SQLite image is from a WordPress on the SQLite Database Integration plugin 3.1.3. Both films were recorded on 1.2.3 and Pro 1.1.3 with steps set to 0.3 s (the films a phone plays were recorded again in a window 430 px wide), and the two hosts have names (fieldnotes.example.org, new.fieldnotes.example.org) that point at this machine; in the Pro clip the old host runs on Apache, slowed to about 35 MB/s, and is stopped by hand at 45 %. The before and after is the demo blog on the PHP built-in server, then restored into a fresh WordPress on the same, each shown in a real Chrome window under its own address.</p>
+    <p>Captures of a real WordPress 7.1.4 with Restorwell 1.2.4 and Pro 1.1.4, in Chrome 153, on Apache 2.4.58 with mod_php and a host with an 8 MB upload limit, 30-second requests and 128 MB of memory. The backup is our demo blog, Hollin Marsh Field Notes: 16 posts, 2 pages, the 36 CC0 photographs that ship with Twenty Twenty-Five and 10 videos made from them, 2.29 GB with a password. The free disk space the Check shows is held at 8 GB through the plugin's own filter in the images and in both films, so it reads the same everywhere (the disk-space image sets 1.46 GB, on purpose). Three things differ from a real host so the moments could be captured: the disk-space image reports 1.46 GB free, the progress steps were made smaller, and Pro downloads from a second web server on the same machine. The SQLite image is from a WordPress on the SQLite Database Integration plugin 3.1.3. Both films were recorded on 1.2.3 and Pro 1.1.3 (before the pictures were captured again) with steps set to 0.3 s (the films a phone plays were recorded again in a window 430 px wide), and the two hosts have names (fieldnotes.example.org, new.fieldnotes.example.org) that point at this machine; in the Pro clip the old host runs on Apache, slowed to about 35 MB/s, and is stopped by hand at 45 %. The before and after is the demo blog on the PHP built-in server, then restored into a fresh WordPress on the same, each shown in a real Chrome window under its own address.</p>
   </details>
 
   <h2 id="details">Details</h2>
