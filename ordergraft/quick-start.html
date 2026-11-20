@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ordergraft quick start: install and first copy</title>
+<meta name="description" content="Install Ordergraft in Blender 4.2 and later, copy the vertex order of one mesh to another, settle a part it lists, and join the result as a shape key.">
+<link rel="canonical" href="https://ochrestack.com/ordergraft/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  p, li, figcaption, td, th, summary { text-wrap: pretty; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; background: #3d3d3d; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Ordergraft quick start</h1>
+  <p>Installing Ordergraft and your first copy. The full manual, <code>README.md</code>, is inside the download. Back to the <a href="index.html">Ordergraft product page</a>.</p>
+
+  <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0)</h2>
+  <ol>
+    <li>After checkout, download <code>ordergraft-1.0.1.zip</code> from the link in the email. Install the zip itself; do not unzip it first.</li>
+    <li>In Blender, choose <strong>Edit &gt; Preferences...</strong>, then <strong>Get Extensions</strong> in the list on the left. The first time, Blender shows an "Online Extensions" box with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Ordergraft needs neither; you can leave the box alone.</li>
+    <li>Open the drop-down menu at the top right of that tab, choose <strong>Install from Disk...</strong>, pick the zip, and press the <strong>Install from Disk</strong> button. <strong>Enable on Install</strong> is ticked, so Ordergraft is on. Its row under Installed reads "Copy vertex order between meshes. Sidebar, Ordergraft tab."</li>
+    <li>Close Preferences, press <strong>N</strong> in the 3D Viewport and open the <strong>Ordergraft</strong> tab.</li>
+  </ol>
+  <p>To update, install the newer zip the same way; Blender replaces the old version.</p>
+
+  <h2 id="copy">First copy</h2>
+  <ol>
+    <li>In the Ordergraft tab pick the <strong>Source</strong>: the mesh whose order you want. The picker lists meshes only.</li>
+    <li>In Object Mode select the target meshes, the ones that get the source's order: click one, Shift-click&nbsp;more.</li>
+    <li>Optional: <strong>Check Pair</strong>. Make one target the active object first. It says whether the topology is the same, how many parts pair up, and where the order first differs. It changes nothing in your file.</li>
+    <li>Press <strong>Copy Order to Selected</strong>. The result box lists, per target, the parts matched, the pins needed, the vertices, edges and faces placed, and an "Order matches" line computed again from both meshes. <strong>Ctrl+Z</strong> undoes the whole run.</li>
+    <li>For shape keys, tick <strong>Then join as shape keys</strong> before step 4: each target is added to the source as a shape key named after it. A key of that name is replaced by the new shape.</li>
+  </ol>
+  <figure>
+    <img class="ui" src="img/rain-tri-result.png" alt="The Ordergraft panel in Blender after Copy Order on Rain's all-triangle face: Source Rain_face_tri, Match triangulation and Then join as shape keys ticked, Check Pair and Copy Order to Selected, and the Copy Order result box: Parts matched 43 of 43, Pins needed 0, Placed 16,109 vertices, 47,115 edges and 31,050 faces, Turned 383 diagonals, Joined as shape key Rain_face_smile_tri updated, and the Order matches lines." width="370" height="825" loading="lazy">
+    <figcaption>The panel after a run on Rain's all-triangle face. Character: Rain Rig (CC) Blender Foundation | studio.blender.org, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</figcaption>
+  </figure>
+
+  <h2 id="pins">A part is listed</h2>
+  <p>When Ordergraft cannot tell a part apart, for example identical teeth that moved a lot, or a part that is its own mirror image, it leaves that part as it was and lists it with the reason. Click <strong>Target</strong> or <strong>Source</strong> on its row to select that part in Edit Mode. Pick two neighbouring faces on the target part (click, then Shift-click), then the matching two on the source part with Shift-clicks. Press <strong>Pin Selected Faces</strong>, go back to Object Mode and press Copy Order again. Pins are kept for the session and are not written into the file; <strong>Clear Pins</strong> forgets them.</p>
+
+  <h2 id="triangles">Triangulated copies</h2>
+  <p>Triangles and quads need nothing set. When two copies were triangulated after different sculpts, tick <strong>Match triangulation</strong> to turn the target's flipped diagonals to the source's first; vertex positions do not move.</p>
+
+  <h2 id="different">A different topology</h2>
+  <p>If the copies really differ (a vertex added or merged, a different retopology), Check Pair and Copy Order name the part and the vertices where they stop matching, and the target is left as it was. <strong>Show</strong> selects those vertices on both meshes in Edit Mode, and <strong>Copy Report to Text Editor</strong> writes the same lines to a text block.</p>
+
+  <h2 id="holds">What else holds the target's&nbsp;numbers</h2>
+  <p>Copy Order renumbers the target's vertices. Objects parented to one or three of its vertices and its Hook modifiers are moved to the same vertices. Hair or particle systems and modifiers bound to the target (Surface Deform and similar) cannot be re-pointed: the result names them, and Ctrl+Z undoes the copy.</p>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>Tested on Blender 4.2.23, 4.5.16, 5.2.4 and 5.3.0 on Linux; Windows and macOS have not been tested.</li>
+    <li>A large mesh blocks Blender while it runs: no progress bar, and Esc does not cancel.</li>
+    <li>Join as Shapes uses the target's result with its modifiers, as Blender's own operator does.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Ordergraft makes no network connections and sends nothing anywhere.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version and, if you can, the two meshes in a .blend file.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

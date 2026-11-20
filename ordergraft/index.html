@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ordergraft for Blender: copy vertex order so shape keys line up</title>
+<meta name="description" content="Copy the vertex, edge and face order between two meshes of the same topology, loose parts included, so shape keys line up. $8, source included. Blender 4.2 LTS to 5.3.">
+<link rel="canonical" href="https://ochrestack.com/ordergraft/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Ordergraft for Blender: copy vertex order so shape keys line up">
+<meta property="og:description" content="A shape key that tears the face because the copy came back in another vertex order? Ordergraft copies the order, eyes and teeth included, in one run. $8, source included.">
+<meta property="og:url" content="https://ochrestack.com/ordergraft/">
+<meta property="og:image" content="https://ochrestack.com/ordergraft/img/rain-torn-vs-clean-2x1.png">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="Blender Studio's Rain in Blender 4.2.23, the same mesh with its smile shape key at full strength. Left, labelled Join as Shapes alone: her face is torn into shards. Right, labelled After one Ordergraft run: she smiles.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ordergraft for Blender: copy vertex order so shape keys line up">
+<meta name="twitter:description" content="A shape key that tears the face because the copy came back in another vertex order? Ordergraft copies the order, eyes and teeth included, in one run.">
+<meta name="twitter:image" content="https://ochrestack.com/ordergraft/img/rain-torn-vs-clean-2x1.png">
+<meta name="twitter:image:alt" content="Rain's face torn by Join as Shapes alone, and smiling after one Ordergraft run">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 22px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 20px 0 6px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  p, li, figcaption, td, th, summary { text-wrap: pretty; }
+  .sub { font-size: 18px; line-height: 1.5; color: var(--muted); margin: 0 0 10px; max-width: none; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 12px 0 8px; }
+  .buy p { margin: 0 0 8px; }
+  .buy .row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
+  .buy .price { font-size: 19px; margin: 0; max-width: none; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; white-space: nowrap; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #3d3d3d; display: block; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 6px; background: #3d3d3d; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 328px; margin: 0; }
+  .pair figure img.ui { width: 100%; }
+  .narrow-only { display: none; }
+  .fine { font-size: 15px; color: var(--muted); }
+  .hero-note { margin: 0 0 10px; line-height: 1.45; max-width: none; }
+  ul.benefits { list-style: none; padding: 0; margin: 0; }
+  ul.benefits li { margin: 0 0 12px; font-size: 16px; line-height: 1.45; }
+  ul.benefits strong { display: block; }
+  .top { display: grid; grid-template-columns: 452px 1fr; gap: 24px; align-items: start; margin: 12px 0 8px; }
+  .top figure { margin: 0; }
+  .top .hero { margin: 0 0 6px; }
+  .top figcaption { line-height: 1.4; }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  @media (max-width: 760px) {
+    .top { display: block; }
+    .top figure { margin: 0 0 14px; }
+  }
+  @media (max-width: 600px) {
+    h1 { margin-top: 16px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .top-buy { margin: 0 0 12px; }
+    .pair { display: block; }
+    .pair figure { margin: 0 0 20px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Ordergraft for Blender</h1>
+  <p class="sub">A shape key that tears the face because the copy came back in another vertex order? Ordergraft copies the vertex, edge and face order to it, loose parts included.</p>
+
+  <p class="narrow-only top-buy"><strong>$8&nbsp;once</strong>, source included. <a class="button" id="buy-top" href="https://buy.polar.sh/polar_cl_rdqbgeUkMaodrb2rkmYhl7No8ePegijYhDIGT1nyApk">Buy for $8</a></p>
+
+  <div class="top">
+    <figure>
+      <picture>
+        <source media="(max-width: 600px)" srcset="img/rain-hero-phone.gif" width="640" height="490">
+        <img class="hero" src="img/rain-hero.gif" alt="Blender 4.2.23, Rain's all-triangle face twice side by side. The left copy has a smile shape key at full strength, made by Join as Shapes from a copy in another order, and the face is torn into shards. The key slider goes to zero and back. Then the other copy is selected, Match triangulation and Then join as shape keys are ticked, Copy Order to Selected is pressed, and the Result box fills in. The left face now smiles like the right one, and the key slider plays to zero and back without tearing." width="960" height="424">
+      </picture>
+      <figcaption class="fine">Rain in Blender 4.2.23: a smile key torn by Join as Shapes, one Ordergraft run, then clean. 21&nbsp;s, the wait cut. <a href="img/rain-hero.gif">Full size</a> · <a href="#made">How</a> · <a href="#credits">Credits</a></figcaption>
+    </figure>
+    <ul class="benefits">
+      <li><strong>Loose parts in one run</strong>Eyes, teeth, tongue and lashes, with no faces to pick. A part it can't tell apart is listed, and two picked faces settle it.</li>
+      <li><strong>Triangulated copies too</strong>All-triangle meshes work, even triangulated after different sculpts.</li>
+      <li><strong>Check first, one undo</strong>Check Pair changes nothing in your file. One Ctrl+Z undoes a copy.</li>
+    </ul>
+  </div>
+
+  <div class="buy">
+    <div class="row">
+      <p class="price"><strong>$8&nbsp;once</strong>, source included. Every update included.</p>
+      <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_rdqbgeUkMaodrb2rkmYhl7No8ePegijYhDIGT1nyApk">Buy for $8</a>
+    </div>
+    <p class="fine">GPL-3.0-or-later · Blender 4.2 LTS to 5.3, tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux) · source code included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · Polar checkout · <a href="../terms.html">refund within 14&nbsp;days if we can't fix a fault</a> · no license check · <a href="#details">details</a></p>
+  </div>
+
+  <div class="box" id="free-route">
+    <strong>Do you need it?</strong> For a mesh in one piece whose two copies share the same topology, free and paid tools already copy the order: pick two neighbouring faces on each, copy, paste. In those cases Ordergraft is a convenience. You pay for loose parts in one run with no UVs needed, no faces to pick, triangulated copies, and a read-only check first.
+  </div>
+
+  <h2>In Blender, for real</h2>
+  <p>Rain's face is one mesh of 43&nbsp;loose parts and 16,109&nbsp;vertices (<a href="#made">how</a>).</p>
+  <figure>
+    <img src="img/rain-torn-vs-clean-2x1.png" alt="The same mesh and camera in Blender, the smile shape key at full strength. Left, labelled Join as Shapes alone: Rain's face is torn into shards. Right, labelled After one Ordergraft run: she smiles, with her eyes, eyebrows and teeth in place." width="1600" height="800" loading="lazy">
+    <figcaption>Smile key at full strength. Left: Join as Shapes alone, largest vertex error 0.255&nbsp;m on a face 0.344&nbsp;m tall. Right: after one Ordergraft run, 0&nbsp;m.</figcaption>
+  </figure>
+  <div class="pair">
+    <figure>
+      <a href="img/rain-tri-result-window.png"><img class="ui" src="img/rain-tri-result.png" alt="The Ordergraft panel after Copy Order on the all-triangle pair, Match triangulation and Then join as shape keys ticked. The Copy Order result box reads: Parts matched: 43 of 43; Pins needed: 0; Placed 16,109 vertices; Placed 47,115 edges; Placed 31,050 faces; Turned 383 diagonals to match the source's triangulation; Joined as shape key Rain_face_smile_tri updated, its earlier shape replaced; Order matches: 16,109 of 16,109 vertices, 47,115 of 47,115 edges, 31,050 of 31,050 faces." width="370" height="825" loading="lazy"></a>
+      <figcaption>All-triangle copy: 43&nbsp;of&nbsp;43&nbsp;parts, no pins, 383&nbsp;diagonals turned. <a href="img/rain-tri-result-window.png">Whole window</a>.</figcaption>
+    </figure>
+    <figure>
+      <img class="ui" src="img/rain-quad-copy.png" alt="The Ordergraft panel after Copy Order on the quad pair. The Copy Order result box reads: Parts matched: 42 of 43; Pins needed: 1; Placed 15,888 vertices; Placed 31,231 edges; Placed 15,386 faces; Left as it was: Part 14 on the target (208 faces, Part 30 on the source); Reason: more than one way to fit, about equally close; Order matches: 15,888 of 16,109 vertices, 31,231 of 31,659 edges, 15,386 of 15,594 faces." width="370" height="775" loading="lazy">
+      <figcaption>Quad copy: 42&nbsp;of&nbsp;43&nbsp;parts. The 43rd, a small part at the middle of her lower teeth that is its own mirror image, is listed, not guessed.</figcaption>
+    </figure>
+  </div>
+  <div class="pair">
+    <figure>
+      <img class="ui" src="img/rain-quad-check.png" alt="The Ordergraft panel after Check Pair on the quad pair. The Check result box reads: Same topology; Source has 43 parts; Target has 43 parts; 43 parts pair up; Order differs from vertex 0; First edge that differs: 0; First face that differs: 0; Part 14 on the target (208 faces, Part 30 on the source) needs a pin; Reason: more than one way to fit, about equally close. Below it, Target and Source buttons for the listed part." width="370" height="850" loading="lazy">
+      <figcaption>Check Pair first: where the order differs, and which part needs a pin. Nothing changes.</figcaption>
+    </figure>
+    <figure>
+      <img class="ui" src="img/rain-different-check.png" alt="The Ordergraft panel after Check Pair on a pair where one edge at the tip of the nose has been cut in two. The Check result box reads: Different topology: nothing would change; Part 1 on the source (6,318 faces) and Part 43 on the target (6,318 faces) are not the same topology; they stop matching at source vertex 3,223 and target vertex 14,729; Source has 43 parts; Target has 43 parts; 43 parts pair up. Below it, Show and Copy Report to Text Editor." width="370" height="850" loading="lazy">
+      <figcaption>One vertex added at her nose: a different topology. It says where the copies stop matching and changes nothing.</figcaption>
+    </figure>
+  </div>
+  <figure>
+    <picture>
+      <source media="(max-width: 600px)" srcset="img/rain-different-phone.gif" width="640" height="490">
+      <img src="img/rain-different.gif" alt="Blender 4.2.23: the second copy is selected, Check Pair is pressed and the Check result box says Different topology: nothing would change. Show is pressed, and both faces open in Edit Mode as wireframe with the reported vertex selected on each, an orange dot near her mouth." width="960" height="424" loading="lazy">
+    </picture>
+    <figcaption>Check Pair, then Show (8&nbsp;s): the two reported vertices, orange dots near her mouth. <a href="img/rain-different-show-window.png">Whole window</a>.</figcaption>
+  </figure>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Copy Order to Selected</strong> gives the selected meshes the source's order. Shape keys, UV maps, vertex groups, color attributes, materials, seams, sharp edges and creases travel with their elements; shape and transform stay.</li>
+    <li>Parts are matched by their own topology, identical ones by where they sit. <strong>Match triangulation</strong> turns flipped diagonals to the source's. <strong>Then join as shape keys</strong> adds each target as a shape key.</li>
+  </ul>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li>Buying: checkout by Polar; the download arrives by email; the zip holds the full source. To update, download the new zip from where you bought Ordergraft and install it the same way (Blender replaced 1.0.0 with 1.0.1 in our check). If it doesn't work as described and we can't fix it, email us within 14&nbsp;days for a full refund (<a href="../terms.html">terms</a>).</li>
+    <li>Blender 4.2 LTS to 5.3, tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0. Windows and macOS have not been tested.</li>
+    <li>GPL-3.0-or-later. No telemetry, no analytics, no network calls of any kind, no license check.</li>
+  </ul>
+  <details>
+    <summary>Not covered</summary>
+    <ul>
+      <li>Meshes whose topology really differs (a vertex added or merged, a new retopology) are reported, not changed; there is no matching by UVs or by vertex position alone.</li>
+      <li>Identical parts that moved a lot, and a round part turned about its own axis, are listed, not guessed.</li>
+      <li>Hair, particle systems and Surface Deform bindings on the target are named after the copy, not re-pointed.</li>
+      <li>A large mesh blocks Blender while it runs: no progress bar, and Esc does not cancel.</li>
+    </ul>
+  </details>
+  <p>Install and first copy: <a href="quick-start.html">Ordergraft quick start</a>.</p>
+  <details>
+    <summary>Words used on this page: loose part, topology, shape key</summary>
+    <ul>
+      <li><strong>Loose part</strong>: a piece of a mesh that is not connected to the rest, such as an eye or a tooth.</li>
+      <li><strong>Same topology</strong>: the same vertices joined the same way. Their positions and their order may differ.</li>
+      <li><strong>Shape key</strong>: Blender's name for a blendshape or morph target.</li>
+    </ul>
+  </details>
+
+  <h2 id="tested">How we tested</h2>
+  <ul>
+    <li><strong>All triangles</strong>, smile key from a renumbered copy: Join as Shapes alone tears it, largest vertex error 0.255&nbsp;m. With Ordergraft: 43&nbsp;of&nbsp;43 parts, 383&nbsp;diagonals turned, error 0&nbsp;m.</li>
+    <li><strong>Quads</strong> (15,594&nbsp;faces): 42&nbsp;of&nbsp;43 parts, the 43rd listed, 1 pin needed. Join as Shapes alone: not measured.</li>
+  </ul>
+  <p>148&nbsp;tests passed and 1 was skipped on each of the four versions (the skip is Undo, which needs a window); 31&nbsp;of&nbsp;31&nbsp;steps with real mouse and keyboard events pass on each. All on Linux. Copy Order took 1.4&nbsp;s on Rain's quad face and 4.6&nbsp;s on her all-triangle face with Match triangulation (Blender 4.2.23, Intel Xeon at 2.10&nbsp;GHz, 4&nbsp;cores, no&nbsp;window).</p>
+
+  <details id="made">
+    <summary>How these images were made</summary>
+    <p>Rain's file was opened in the full Blender binary under a virtual display (Xvfb); every click and key press is a real X event sent with xdotool, and the screen was recorded with ffmpeg. Ordergraft was installed from the zip a buyer gets. We joined Rain's head, eyes, eyelashes, eyebrows, gums with teeth and tongue into one mesh, applied the Mirror modifiers her parts use, and made the copy by applying her Smile.L, Smile.R, EyebrowsDown.L, EyebrowsDown.R and mouth_open keys at 1.0, 1.0, 0.6, 0.6 and 0.35 to the head part, then renumbering it: the parts joined back in the reverse order and the vertices, edges and faces shuffled by a script of ours, as a round trip through another tool can leave them. The all-triangle pair is the same two meshes triangulated, the source at rest and the copy after its expression, with a different rule for the diagonals. The original index of every vertex is kept apart from the add-on, so each run could be compared with where every vertex belongs; the key errors above come from that. Blender's software renderer draws about one frame a second, so the key slider's moves in the GIFs are stepped by script, one finished frame each; every click, the panels and the Edit Mode view are real recordings. The pointer is drawn into the GIFs from the logged positions, because the screen grab has none. Nothing else was added to the captures except the two labels on the before and after picture.</p>
+  </details>
+
+  <p class="fine" id="credits">Character: Rain Rig (CC) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We joined her face meshes and renumbered a copy. Rain is not included with Ordergraft.</p>
+
+  <div class="buy">
+    <div class="row">
+      <p class="price"><strong>$8&nbsp;once</strong>, source included.</p>
+      <a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_rdqbgeUkMaodrb2rkmYhl7No8ePegijYhDIGT1nyApk">Buy for $8</a>
+    </div>
+    <p class="fine">Polar checkout · <a href="../terms.html">refund within 14&nbsp;days if we can't fix a fault</a> · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+  </div>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
