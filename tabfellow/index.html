@@ -189,7 +189,7 @@
       <source src="video/tabfellow-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/tabfellow-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>57.1 s, captions only, no sound (1080p, 720p on phones; <a href="video/tabfellow-demo-1080p.mp4">open full size</a>). IntelliJ IDEA Community 2025.1, version 1.0.1, the public Spring PetClinic sample; the paid steps use a test license stand-in.</figcaption>
+    <figcaption>57.1 s, captions only, no sound (1080p, 720p on phones; <a href="video/tabfellow-demo-1080p.mp4">open full size</a>). IntelliJ IDEA Community 2025.1, recorded with version 1.0.1, the public Spring PetClinic sample; the paid steps use a test license stand-in.</figcaption>
   </figure>
 
   <figure class="wide-only">
@@ -260,7 +260,7 @@
   <h2 id="details">Details</h2>
   <ul class="tight">
     <li><strong>Price:</strong> $12 once, personal and commercial alike, nothing renews. Updates would arrive through Settings | Plugins (not run yet: no listing).</li>
-    <li><strong>Works in:</strong> IntelliJ-based IDEs from build 251 (2025.1), no upper limit. Opened in a window: IntelliJ IDEA Community 2025.1 and IntelliJ IDEA 2026.3 (version 1.0.1), Android Studio 2025.2.1 (version 1.0.0 only). Plugin Verifier and tests only: PhpStorm, WebStorm, PyCharm, GoLand 2026.3.</li>
+    <li><strong>Works in:</strong> IntelliJ-based IDEs from build 251 (2025.1), no upper limit. Opened in a window: IntelliJ IDEA Community 2025.1 and IntelliJ IDEA 2026.3 (version 1.0.2), Android Studio 2025.2.1 (version 1.0.0 only). Plugin Verifier and tests only: PhpStorm, WebStorm, PyCharm, GoLand 2026.3.</li>
     <li><strong>Untested:</strong> everything ran on Linux. Windows and macOS desktops, and a real Marketplace trial or purchase, were not run. <strong>Refunds:</strong> JetBrains Marketplace takes the payment and handles refund requests under its own purchase terms; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
     <li><strong>Privacy:</strong> Tabfellow makes no network calls and sends nothing; the IDE's own license and update checks are the IDE's.</li>
     <li><strong>Support:</strong> <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Not affiliated with the Spring PetClinic sample projects (Java and Kotlin).</li>
@@ -269,11 +269,11 @@
   <details id="tested">
     <summary>How we tested</summary>
     <ul>
-      <li>162 automated tests of version 1.0.1, none failing, run without a display.</li>
+      <li>165 automated tests of version 1.0.2, none failing, run without a display.</li>
       <li>Plugin Verifier 1.411 on IntelliJ IDEA Community 2025.1 and on IntelliJ IDEA, PhpStorm, WebStorm, PyCharm and GoLand 2026.3: all six Compatible, no internal API used.</li>
       <li>The 390 templates of the IDE's own bundled groups, copied into custom groups, shared, loaded from the files alone and written back: 390 compared, 0 differences.</li>
-      <li>After a pull that changes a shared file, the new template was in the IDE's registry in a median of 1,814 ms and at worst 1,919 ms over 10 runs (version 1.0.1, IntelliJ IDEA Community 2025.1, Linux, 4-core Intel Xeon 2.1 GHz).</li>
-      <li>On version 1.0.0, after a killed IDE and its next start, and after a normal exit, the personal templates folder was byte for byte what it was before. Version 1.0.1 adds one group of your own on purpose when a close keeps an unwritten edit.</li>
+      <li>After a pull that changes a shared file, the new template was in the IDE's registry in a median of 1,840 ms and at worst 2,164 ms over 10 runs (version 1.0.2, IntelliJ IDEA Community 2025.1, Linux, 4-core Intel Xeon 2.1 GHz).</li>
+      <li>On version 1.0.2, after a killed IDE and its next start, and after a normal exit, the personal templates folder was byte for byte what it was before. A close that keeps an unwritten edit leaves one group of your own on purpose.</li>
     </ul>
   </details>
 
