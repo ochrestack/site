@@ -207,7 +207,8 @@
   <p>For a backup on another server: paste its link, and your server fetches it, resuming after a dropped connection, then runs the same Check. For scripts, <code>wp restorwell fetch &lt;url&gt;</code> does the same on the command line (<code>PW</code>: the backup's password, if any):</p>
   <div class="box"><pre>name=$(wp restorwell fetch "$LINK" --porcelain) &amp;&amp;
   printf '%s' "$PW" |
-  wp restorwell restore "$name" --password-stdin --yes</pre></div>
+  wp restorwell restore "$name" \
+    --password-stdin --yes</pre></div>
   <figure>
     <video controls preload="none" playsinline poster="video/pro-poster.jpg" data-poster-phone="video/pro-poster-phone.jpg" width="1280" height="720" title="Restorwell Pro: Restore from a link: 49 s on a computer, 53 s on a phone">
       <source media="(max-width: 600px)" src="video/restorwell-pro-phone.mp4" type="video/mp4">
