@@ -141,6 +141,13 @@
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
 
+  /* The film's GIF runs the width of a phone, so that its captions are about 11 px tall. */
+  @media (max-width: 600px) {
+    figure.gif { margin-left: -24px; margin-right: -24px; }
+    figure.gif img.ui { width: 100%; max-width: none; border-radius: 0; border-left: 0; border-right: 0; }
+    figure.gif figcaption { margin-left: 24px; margin-right: 24px; }
+  }
+
   /* Additions for the JetBrains pages */
   .buy-note { font-size: 15px; color: var(--muted); margin: 0 0 8px; }
   button.button { font: inherit; font-weight: 600; border: 0; cursor: not-allowed; }
@@ -189,6 +196,22 @@
   </div>
 </section>
 <main>
+  <h2 id="watch">Watch</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080">
+      <source src="video/sibfold-demo-1080p-web.mp4" type="video/mp4" media="(min-width: 768px)">
+      <source src="video/sibfold-demo-720p.mp4" type="video/mp4">
+    </video>
+    <figcaption>The demo, captions only, no sound (1080p; 720p on phones; <a href="video/sibfold-demo-1080p-web.mp4">open full size</a>). gRPC Go's <code>xds</code> folder in IntelliJ IDEA 2025.2: the IDE's own rule leaves four test files loose; one Sibfold rule puts all five under <code>server.go</code>.</figcaption>
+  </figure>
+  <figure class="gif">
+    <picture>
+      <source media="(max-width: 600px)" srcset="video/sibfold-rule-to-nested-phone.gif" width="512" height="288">
+      <img class="ui" src="video/sibfold-rule-to-nested.gif" alt="Sibfold's settings page with the rule typed in and the line 233 files would hold 266 nested files in 136 folders, then OK: in the Project view of IntelliJ IDEA 2025.2 the xds folder of gRPC Go folds server.go over its five tests, and Select Opened File finds server_serving_mode_ext_test.go under it" width="960" height="540" loading="lazy">
+    </picture>
+    <figcaption>The core of it alone, as a loop: the rule, OK, and Select Opened File (<a href="video/sibfold-rule-to-nested.gif">the GIF</a>).</figcaption>
+  </figure>
+
   <h2 id="how">How it works</h2>
   <p class="fine"><a href="quick-start.html">Quick start</a></p>
 
