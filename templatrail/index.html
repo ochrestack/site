@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Templatrail for Elementor: see which pages use each saved template</title>
+<meta name="description" content="Templatrail shows which pages use each saved Elementor template, in a Tools screen and a Used on column, and lists the ones with no use found. Move to Trash re-checks first and uses WordPress's own Trash. Free; Templatrail Pro adds Replace everywhere and CSV export for $19 once.">
+<link rel="canonical" href="https://ochrestack.com/templatrail/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Templatrail for Elementor: see which pages use each saved template">
+<meta property="og:description" content="Elementor's Saved Templates list does not say which pages use a template. Press Scan site and Templatrail lists the pages, and the templates with no use found. Free; Pro $19 once.">
+<meta property="og:url" content="https://ochrestack.com/templatrail/">
+<meta property="og:image" content="https://ochrestack.com/templatrail/img/hero-places.png">
+<meta property="og:image:width" content="1728">
+<meta property="og:image:height" content="688">
+<meta property="og:image:alt" content="Templatrail's screen for the Elementor template Newsletter signup in WordPress: In use, 5 places, and a table of each place with its type, status, how it is used and an Edit with Elementor link">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Templatrail for Elementor: see which pages use each saved template">
+<meta name="twitter:description" content="Press Scan site and Templatrail lists the pages that use each saved Elementor template, and the ones with no use found. Free; Pro $19 once.">
+<meta name="twitter:image" content="https://ochrestack.com/templatrail/img/hero-places.png">
+<meta name="twitter:image:alt" content="Templatrail's screen for the template Newsletter signup: In use, 5 places, each place with an Edit with Elementor link">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; max-width: none; }
+  p, li, figcaption, td { text-wrap: pretty; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  nobr, .nb { white-space: nowrap; }
+  .top ul { margin: 6px 0 4px; padding-left: 20px; }
+  .top ul li { margin: 2px 0; }
+  .top .buy { margin: 12px 0 8px; }
+  @media (max-height: 800px) and (min-width: 601px) {
+    header { padding-top: 16px; }
+    h1 { margin: 14px 0 4px; font-size: 28px; }
+    .sub { font-size: 17px; line-height: 1.45; margin-bottom: 8px; }
+    .top .hero { margin: 2px 0 6px; }
+    .top ul li { line-height: 1.4; }
+    .top .buy { margin: 8px 0 4px; }
+    .top .buy .price { font-size: 17px; margin-bottom: 6px; line-height: 1.5; }
+    .top .buy p { margin-bottom: 6px; }
+  }
+  @media (max-height: 650px) and (min-width: 601px) {
+    header { padding-top: 8px; }
+    h1 { margin: 6px 0 2px; font-size: 24px; }
+    .sub { font-size: 16px; line-height: 1.4; margin-bottom: 4px; }
+    .top .hero { margin: 0 0 4px; }
+    .top ul { margin: 2px 0; }
+    .top .buy { margin: 4px 0 2px; }
+    .top .buy .price { font-size: 16px; margin-bottom: 4px; line-height: 1.4; }
+  }
+  @media (max-width: 600px) {
+    header { padding-top: 8px; }
+    header img { width: 30px; height: 30px; }
+    h1 { margin-top: 8px; font-size: 25px; }
+    .sub { font-size: 15px; line-height: 1.4; margin-bottom: 6px; }
+    .top ul li, .top .buy .price { line-height: 1.4; }
+    .top ul { font-size: 15px; margin: 4px 0; }
+    .top ul li .more { display: none; }
+    .top .buy { margin: 8px 0 6px; }
+    .top .buy .price { font-size: 15px; margin-bottom: 4px; }
+    .top .hero { margin: 2px 0 4px; }
+    .top .buy .fine { font-size: 14px; line-height: 1.4; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 700px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    figure { margin: 20px 0; }
+    .top .buy .button { padding: 8px 16px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  @media (max-width: 600px) and (max-height: 680px) {
+    h1 { margin-top: 4px; font-size: 23px; }
+    .sub { font-size: 14.5px; }
+    .top ul, .top .buy .price { font-size: 14.5px; }
+    .top .buy .button { padding: 6px 14px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Templatrail for Elementor</h1>
+  <p class="sub">“I'm pretty sure I have a load of templates that are no longer used anywhere.” <span class="src">(a user on Elementor's GitHub issue tracker)</span> Press Scan site and Templatrail shows the pages that use each saved Elementor template, and lists the ones with no use found.</p>
+
+  <div class="top">
+  <picture><source media="(max-width: 600px)" srcset="img/hero-places-phone.png" width="390" height="318"><source media="(max-height: 800px)" srcset="img/hero-places-short.png" width="864" height="270"><img class="hero" src="img/hero-places.png" alt="Templatrail's screen for one saved Elementor template, Newsletter signup: In use, 5 places, and below it each place with its type, status, how it is used and an Edit with Elementor link. On a wide screen the first three places show: the template Footer: contact strip, which holds it, the Contact page through that template, and the Home page through a shortcode in its content" width="864" height="344"></picture>
+
+  <ul>
+    <li><strong>See where each template is used</strong><span class="more">: the pages, posts and templates that hold it.</span></li>
+    <li><strong>Clear out templates with no use found</strong><span class="more">: re-checked first, into WordPress's Trash, restorable.</span></li>
+    <li><strong>Merge duplicates (Pro)</strong><span class="more">: swap one template for another.</span></li>
+  </ul>
+
+  <div class="buy">
+    <p class="price"><strong>Free:</strong> <a href="download/templatrail.zip?v=1.0.1">templatrail.zip</a> 1.0.1, report and cleanup<br><strong>Pro, $19 once:</strong> <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
+    <p class="fine" id="trust">Tested on WordPress 7.1.5 and 6.8.3, PHP 8.3 and 7.4, Elementor 4.4.1 · Pro: unlimited sites · source code included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+  </div>
+  </div>
+
+  <div class="box warn">
+    <strong>You can do this by hand.</strong> A careful admin can search the database for a template's ID in Elementor's saved page data and in post content. Templatrail does that search across the site in the places it reads, follows templates inside templates to the pages that show them, and writes the answer in plain words.
+  </div>
+
+  <h2 id="cleanup">Clear out templates with no use found</h2>
+  <p>Only those can be ticked. <strong>Move selected to Trash</strong> re-reads the site first, skips any that gained a use, and uses WordPress's own Trash, so you can restore. Nothing is deleted for good.</p>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/cleanup-result-phone.png" width="390" height="225"><img src="img/cleanup-result.png" alt="Templatrail's result after Move selected to Trash: 'Re-checked, then moved 3 templates to the Trash', the three template names, a link to Elementor's Trash view, and 'Left alone after the re-check: 1 template. Logo strip: press gained a use: Press and awards (shortcode in content)'" width="864" height="140" loading="lazy"></picture>
+    <figcaption>Four ticked; one gained a page before the click, so it stayed.</figcaption>
+  </figure>
+  <p><strong>No use found means no use was found in the places Templatrail reads</strong>, not that nothing uses the template. <em>Check by hand</em> marks what it cannot judge.</p>
+
+  <figure id="column">
+    <p class="swipe-hint narrow-only">Swipe sideways to read the columns &rarr;</p>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/used-on-column.png" alt="Elementor's Saved Templates list with the Used on column: Call to action: book a call, 2 places; Call to action: guide, 0 places and No use found. The other columns are Title, Type, Shortcode, Author and Categories" width="846" height="253" loading="lazy"></div></div>
+    <figcaption>Elementor's own Saved Templates list gets a <strong>Used on</strong> column, for administrators. Searched for “Call to action”: one template in 2 places, one with no use found.</figcaption>
+  </figure>
+
+  <h2 id="pro">Templatrail Pro</h2>
+  <p><strong>Replace everywhere</strong> merges duplicates: pick a template and a replacement of the same kind, check the places listed, confirm; each changed post gets a revision first. <strong>Export CSV</strong> saves the last scan's report. Other uses (global widgets, popup links, Components, Maintenance Mode, template blocks, titles, custom fields, site settings) are listed, not replaced.</p>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/pro-preview-phone.png" width="390" height="252"><img src="img/pro-preview.png" alt="Templatrail Pro's preview before Replace everywhere: 'This will change 2 places', the Services and Pricing pages with how each uses the template, and a Replace everywhere button with the note that each changed post gets a revision first" width="864" height="192" loading="lazy"></picture>
+    <figcaption>The preview: two pages would change; nothing has yet.</figcaption>
+  </figure>
+  <div class="buy">
+    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
+    <p class="fine">$19 once, unlimited sites, no renewal · free plugin inside the Pro zip · checkout by Polar · <a href="../terms.html">14-day refund if it doesn't work as described and we can't fix it</a></p>
+  </div>
+  <p class="fine">Every Pro update is included, with no end date. Pro makes no network call, so WordPress shows no update: download the new file from your Polar purchase and upload it with Replace current with uploaded (<a href="quick-start.html#updating">steps</a>).</p>
+
+  <h2 id="questions">Questions</h2>
+  <details>
+    <summary>Could a template that is still in use show as No use found?</summary>
+    <p>Yes. Templatrail counts only a use it can read. A template placed from a PHP theme file, or by a plugin that keeps its references in its own database table, can show as No use found while a page still shows it. That is why Move selected to Trash re-reads the site first, why anything it cannot judge is Check by hand, and why the Trash can be restored.</p>
+  </details>
+  <details>
+    <summary>Why does a template I inserted show no uses?</summary>
+    <p>In free Elementor, inserting a saved template into a page copies it. The copy no longer points at the original, so it is not a use, and the Templatrail screen says so.</p>
+  </details>
+  <details>
+    <summary>Does it work with Elementor Pro?</summary>
+    <p>It reads the saved data Elementor Pro writes for its Template and Loop Grid widgets, global widgets, popup links and display conditions. Elementor Pro itself was not part of the tests: those formats were tested as saved data.</p>
+  </details>
+  <details id="reads">
+    <summary>What counts as a use, and what is not read</summary>
+    <ul>
+      <li>Template shortcodes, in post content and excerpts, custom fields, Elementor's Shortcode, Text Editor and HTML widgets, classic widgets and site settings: Elementor Pro's template shortcode, Show template by shortcode for Elementor and UltraAddons for Elementor.</li>
+      <li>Elementor settings that hold a saved template's ID, at any depth up to 40 levels: the Template and Loop Grid widgets, Essential Addons for Elementor's Advanced Tabs, and global widgets. Elementor Template blocks, a template an add-on picks by title (Premium Addons for Elementor), popup links, Component instances and the Maintenance Mode template.</li>
+      <li>Not read: term, user and comment fields; menus; PHP theme files; plugins' own database tables; other add-ons' own template post types; WPML and Polylang links; the other sites of a multisite network. A template an add-on picks by title cannot appear under Missing templates.</li>
+    </ul>
+  </details>
+  <details>
+    <summary>What else is in the free plugin?</summary>
+    <ul>
+      <li>Templates inside templates are followed to the pages that show the outer one; a loop of templates pointing at each other is stopped and reported.</li>
+      <li>Missing templates lists pages that still point at a template that was deleted or is in the Trash, with Edit and, for the Trash, Restore the template.</li>
+      <li>Scan site reads your posts in batches with a progress bar; Scan again starts over.</li>
+    </ul>
+  </details>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li><a href="quick-start.html">Quick start</a>: install, first scan, clean up, Pro. Privacy: neither plugin contacts any server.</li>
+    <li>GPL-2.0-or-later, source code included. Pro is a separate plugin that needs the free one. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li>Not on WordPress.org yet: the free plugin is the download above. Refund: email us within 14 days of purchase if Templatrail Pro doesn't work as described and we can't fix it (<a href="../terms.html">terms</a>). Not run: a web server on Windows or macOS, and any browser but Chrome.</li>
+  </ul>
+  <p class="fine">Not affiliated with or endorsed by Elementor or the add-ons named on this page.</p>
+
+  <h2 id="tested">How we tested</h2>
+  <p>Templatrail and Templatrail Pro 1.0.1 pass 79 and 24 automated tests on Linux with PHP 8.3.6 and 7.4.33, WordPress 7.1.5 and 6.8.3, and Elementor 4.4.1. On our demo site, 15 of 38 saved templates had no use found.</p>
+  <details>
+    <summary>The numbers behind this page</summary>
+    <p>The tests use MariaDB 10.11 and a built site of 55 saved templates and Components. Real-window checks ran in Chrome, and a scan and Move to Trash also ran on WordPress 7.1.5 with the SQLite integration plugin.</p>
+    <p>On a generated 680-post site, a database search for each ID found a “use” for 38 of 40 unused templates, because the number also turns up in sizes and other IDs. Templatrail's status was right for all 80 templates. A generated site of 42,004 posts and 2,000 templates scanned in 15.9 seconds on a 4-core machine; the re-check of 500 selected templates took 5.5 seconds.</p>
+    <p>The pictures on this page are Templatrail 1.0.1 in Chrome on a local WordPress 7.1.5 with the SQLite integration plugin 3.1.3, served by PHP's built-in server: the demo site, with Hello Elementor 3.5.2, Elementor 4.4.1, Essential Addons for Elementor 6.8.9 and Show template by shortcode for Elementor 1.0.4.</p>
+  </details>
+  <div class="buy">
+    <p><a class="button" id="buy-3" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
+    <p class="fine">$19 once · <a href="../terms.html">14-day refund if it doesn't work as described and we can't fix it</a></p>
+  </div>
+</main>
+<script>
+// Hide the right-edge fade of the phone swipe box once it is scrolled to the end.
+(function () {
+  var box = document.querySelector(".swipe-wrap .scroll-x");
+  if (!box) return;
+  box.addEventListener("scroll", function () {
+    box.parentNode.classList.toggle("at-end", box.scrollLeft + box.clientWidth >= box.scrollWidth - 2);
+  }, { passive: true });
+})();
+</script>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

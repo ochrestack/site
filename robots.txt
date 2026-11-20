@@ -45,6 +45,8 @@ Allow: /consentwell/
 Allow: /consentwell/quick-start.html
 Allow: /consentwell/details.html
 Allow: /consentwell/how-we-tested.html
+Allow: /templatrail/
+Allow: /templatrail/quick-start.html
 Allow: /wholegrip/
 Allow: /wholegrip/quick-start.html
 Allow: /guides/

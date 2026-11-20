@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Templatrail quick start: install, scan, clean up, Pro</title>
+<meta name="description" content="Install Templatrail for Elementor, press Scan site, read where each saved template is used, move the ones with no use found to the Trash, and use Templatrail Pro's Replace everywhere and CSV export.">
+<link rel="canonical" href="https://ochrestack.com/templatrail/quick-start.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; max-width: none; }
+  p, li, figcaption, td { text-wrap: pretty; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  nobr, .nb { white-space: nowrap; }
+  .top ul { margin: 6px 0 4px; padding-left: 20px; }
+  .top ul li { margin: 2px 0; }
+  .top .buy { margin: 12px 0 8px; }
+  @media (max-height: 800px) and (min-width: 601px) {
+    header { padding-top: 16px; }
+    h1 { margin: 14px 0 4px; font-size: 28px; }
+    .sub { font-size: 17px; line-height: 1.45; margin-bottom: 8px; }
+    .top .hero { margin: 2px 0 6px; }
+    .top ul li { line-height: 1.4; }
+    .top .buy { margin: 8px 0 4px; }
+    .top .buy .price { font-size: 17px; margin-bottom: 6px; line-height: 1.5; }
+    .top .buy p { margin-bottom: 6px; }
+  }
+  @media (max-height: 650px) and (min-width: 601px) {
+    header { padding-top: 8px; }
+    h1 { margin: 6px 0 2px; font-size: 24px; }
+    .sub { font-size: 16px; line-height: 1.4; margin-bottom: 4px; }
+    .top .hero { margin: 0 0 4px; }
+    .top ul { margin: 2px 0; }
+    .top .buy { margin: 4px 0 2px; }
+    .top .buy .price { font-size: 16px; margin-bottom: 4px; line-height: 1.4; }
+  }
+  @media (max-width: 600px) {
+    header { padding-top: 8px; }
+    header img { width: 30px; height: 30px; }
+    h1 { margin-top: 8px; font-size: 25px; }
+    .sub { font-size: 15px; line-height: 1.4; margin-bottom: 6px; }
+    .top ul li, .top .buy .price { line-height: 1.4; }
+    .top ul { font-size: 15px; margin: 4px 0; }
+    .top ul li .more { display: none; }
+    .top .buy { margin: 8px 0 6px; }
+    .top .buy .price { font-size: 15px; margin-bottom: 4px; }
+    .top .hero { margin: 2px 0 4px; }
+    .top .buy .fine { font-size: 14px; line-height: 1.4; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 700px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    figure { margin: 20px 0; }
+    .top .buy .button { padding: 8px 16px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  @media (max-width: 600px) and (max-height: 680px) {
+    h1 { margin-top: 4px; font-size: 23px; }
+    .sub { font-size: 14.5px; }
+    .top ul, .top .buy .price { font-size: 14.5px; }
+    .top .buy .button { padding: 6px 14px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Templatrail quick start</h1>
+  <p>Installing Templatrail, the first scan, clearing out templates, and what Templatrail Pro adds. Back to the <a href="index.html">Templatrail product page</a>.</p>
+
+  <h2 id="install">Install</h2>
+  <p>Requires WordPress 6.8 or later, PHP 7.4 or later, and Elementor active.</p>
+  <ol>
+    <li>Get the files. The free plugin is <a href="download/templatrail.zip?v=1.0.1">templatrail.zip</a> (version 1.0.1) from this site; it is not on WordPress.org yet. Pro buyers also get <code>templatrail-pro.zip</code> (version 1.0.1) from Polar, through the link in the order email. Do not unzip either.</li>
+    <li>In WordPress, go to <strong>Plugins &gt; Add Plugin</strong>, click <strong>Upload Plugin</strong>, choose <code>templatrail.zip</code>, then <strong>Install Now</strong> and <strong>Activate Plugin</strong>. The Plugins screen then says where it lives, with an <strong>Open Templatrail</strong> link.</li>
+  </ol>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/qs-activated-phone.png" width="390" height="83"><img src="img/qs-activated.png" alt="WordPress's Plugins screen right after activating Templatrail: the notice 'Templatrail is active. It lives under Tools &gt; Templatrail: press Scan site there.' with an Open Templatrail link, and the Templatrail row with Open Templatrail and Deactivate" width="864" height="402" loading="lazy"></picture>
+    <figcaption>The Plugins screen after Activate Plugin.</figcaption>
+  </figure>
+  <ol start="3">
+    <li>Pro only: do the same with <code>templatrail-pro.zip</code>. It carries the free plugin inside. If Templatrail is not active yet (you bought only Pro, or activated Pro first), the Plugins screen shows a notice with the button <strong>Install and activate Templatrail</strong>, which installs it from the zip inside Pro. If the free plugin is switched off later, Pro shows the same notice with <strong>Activate Templatrail</strong>.</li>
+  </ol>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/qs-pro-first-phone.png" width="390" height="271"><img src="img/qs-pro-first.png" alt="WordPress's Plugins screen after activating Templatrail Pro first: the notice 'Templatrail Pro is active, and is waiting for the free Templatrail plugin. The free plugin is inside this Pro download, so you do not need a second one.' with the button Install and activate Templatrail" width="864" height="173" loading="lazy"></picture>
+    <figcaption>Pro activated before the free plugin.</figcaption>
+  </figure>
+
+  <h2 id="scan">Scan the site</h2>
+  <p>Go to <strong>Tools &gt; Templatrail</strong> and press <strong>Scan site</strong>. A progress bar shows it working through your posts in batches. When it ends, the page shows the date of the scan and the report; <strong>Scan again</strong> starts over.</p>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/qs-before-scan-phone.png" width="390" height="171"><img src="img/qs-before-scan.png" alt="Tools &gt; Templatrail before the first scan: 'No scan yet. Press Scan site to read every page, post, template and widget for references to saved templates.' and the Scan site button" width="864" height="152" loading="lazy"></picture>
+    <figcaption>Tools &gt; Templatrail before the first scan.</figcaption>
+  </figure>
+
+  <h2 id="read">Read the report</h2>
+  <p>The tabs are <strong>All</strong>, <strong>In use</strong>, <strong>No use found</strong>, <strong>Check by hand</strong> and <strong>Missing templates</strong>. Each row is a saved template or Component with its type, status and number of places. Click the number of places (for example <strong>5 places</strong>) to open the list: each page, post or template that uses it, how, and an <strong>Edit with Elementor</strong> link. A template's name opens it in Elementor's editor.</p>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/qs-report-phone.png" width="390" height="390"><img src="img/qs-report.png" alt="Tools &gt; Templatrail after a scan: the 'Last scan' line with the date and the number of posts read, the Scan again button, a note that a template inserted as a copy is not a use, and the tabs All (38), In use (23), No use found (15), Check by hand (0), Missing templates (2)" width="864" height="270" loading="lazy"></picture>
+    <figcaption>The report on the demo site.</figcaption>
+  </figure>
+  <ul>
+    <li><strong>In use:</strong> at least one place uses it.</li>
+    <li><strong>No use found:</strong> no use was found in the places Templatrail reads.</li>
+    <li><strong>Check by hand:</strong> Templatrail could not tell, and shows why.</li>
+  </ul>
+  <p>To see the count in Elementor's own list, open <strong>Elementor &gt; Editor</strong>, then <strong>Templates &gt; Saved Templates</strong> in Elementor's side menu: the list has a <strong>Used on</strong> column. Click a count there to open that template's own screen: the same places in a table, and with Pro, <strong>Replace everywhere</strong>.</p>
+
+  <h2 id="cleanup">Clear out templates</h2>
+  <ol>
+    <li>Open the <strong>No use found</strong> tab and tick the templates to clear out. Read each row first.</li>
+    <li>Press <strong>Move selected to Trash</strong>. Templatrail reads the site again for them, leaves out any that gained a use, and moves the rest to WordPress's Trash. The result names what moved and what was left alone, and why.</li>
+    <li>To restore, use the <strong>Open Elementor’s Trash view to restore templates</strong> link in the result, or the Trash link above the Saved Templates list; point at a template and choose Restore.</li>
+  </ol>
+  <figure>
+    <img class="ui" src="img/qs-trash.png" alt="Elementor's Trash view: the first columns of the list, Title and Type, with the moved templates Banner: autumn sale and Banner: free shipping bar" width="358" height="254" loading="lazy">
+    <figcaption>Elementor's Trash view, where a moved template is restored.</figcaption>
+  </figure>
+  <p>WordPress empties its Trash after 30 days by default. If your site has the Trash switched off, Move selected to Trash is greyed out and says why.</p>
+
+  <h2 id="missing">Missing templates</h2>
+  <p>The <strong>Missing templates</strong> tab lists pages, posts and templates that still point, by ID, at a template that was deleted or is in the Trash. <strong>Edit</strong> opens the page; for a template in the Trash, <strong>Restore the template</strong> brings it back.</p>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/qs-missing-phone.png" width="390" height="640"><img src="img/qs-missing.png" alt="The Missing templates tab: two rows for the page Shop (archived), one pointing at #103, which no longer exists, with Edit, and one at #104 Banner: autumn sale, which is in the Trash, with Edit and Restore the template" width="864" height="269" loading="lazy"></picture>
+    <figcaption>Two pages that point at a template that is gone or in the Trash.</figcaption>
+  </figure>
+
+  <h2 id="pro">Templatrail Pro</h2>
+  <ul>
+    <li><strong>Replace everywhere.</strong> Open the template's own screen (its count under Used on in Saved Templates), press <strong>Replace everywhere</strong>, choose a template of the same kind under <strong>Replace with</strong>, press <strong>Preview the change</strong>, and read <strong>This will change</strong> and the list of places. Press <strong>Replace everywhere</strong> again to confirm. Each changed post gets a revision first, Elementor's CSS cache is cleared, and a summary lists what changed and what failed.</li>
+    <li><strong>Export CSV.</strong> Beside Scan site on Tools &gt; Templatrail: the report of the last scan, one row per use, plus the templates with no use found, those to check by hand, and the references to missing templates.</li>
+  </ul>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/pro-summary-phone.png" width="390" height="236"><img src="img/pro-summary.png" alt="Templatrail Pro's summary after Replace everywhere: 'Replaced Call to action: book a call with Call to action: guide in 2 places.', the posts changed, Services and Pricing, each with an Edit with Elementor link, and 'Elementor's CSS cache was cleared.'" width="864" height="187" loading="lazy"></picture>
+    <figcaption>The summary after Replace everywhere.</figcaption>
+  </figure>
+  <p id="updating"><strong>Updating Pro.</strong> Pro makes no network call, so WordPress shows no update for it. Sign in to Polar's customer portal with the email address you bought with, download the new <code>templatrail-pro.zip</code>, then go to <strong>Plugins &gt; Add Plugin &gt; Upload Plugin</strong>, choose it, press <strong>Install Now</strong> and then <strong>Replace current with uploaded</strong>. Pro stays active.</p>
+
+  <h2 id="remove">Deactivate or delete</h2>
+  <p>Deactivating stops Templatrail and keeps its scan results. Deleting it removes its two tables and its settings from your database; your templates and pages are not touched.</p>
+
+  <h2 id="limits">Limits</h2>
+  <p>No use found means no use was found in the places Templatrail reads; what it does not read is listed on the <a href="index.html#reads">product page</a>. Templatrail changes no post other than the templates you move to the Trash: Components are never offered, and nothing is deleted for good. Pro replaces shortcodes and widget settings only; the other uses are listed, not replaced. Tested on Linux with WordPress 7.1.5 and 6.8.3, PHP 8.3 and 7.4 and Elementor 4.4.1 (<a href="index.html#tested">how we tested</a>); Elementor Pro itself, a Windows or macOS web server, and browsers other than Chrome were not part of the tests.</p>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Neither plugin contacts any server: no telemetry, no analytics, no license check, no update check of its own. Scan results are stored in your site's own database.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your WordPress, PHP and Elementor versions and what the screen showed.</p>
+</main>
+<script>
+// Hide the right-edge fade of a phone swipe box once it is scrolled to the end.
+(function () {
+  var box = document.querySelector(".swipe-wrap .scroll-x");
+  if (!box) return;
+  box.addEventListener("scroll", function () {
+    box.parentNode.classList.toggle("at-end", box.scrollLeft + box.clientWidth >= box.scrollWidth - 2);
+  }, { passive: true });
+})();
+</script>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
