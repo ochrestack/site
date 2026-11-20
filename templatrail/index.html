@@ -109,6 +109,9 @@
     .top ul, .top .buy .price { font-size: 14.5px; }
     .top .buy .button { padding: 6px 14px; }
   }
+  .gif-phone { display: none; }
+  @media (max-width: 767px) { .gif-wide { display: none; } .gif-phone { display: block; max-width: 420px; margin: 0 auto; } }
+  figure video { background: #2B2118; }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
 </style>
@@ -140,6 +143,21 @@
   <div class="box warn">
     <strong>You can do this by hand.</strong> A careful admin can search the database for a template's ID in Elementor's saved page data and in post content. Templatrail does that search across the site in the places it reads, follows templates inside templates to the pages that show them, and writes the answer in plain words.
   </div>
+
+  <h2 id="watch">Watch it work</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080">
+      <source src="video/templatrail-demo-720p.mp4" type="video/mp4">
+    </video>
+    <figcaption>55&nbsp;s, captions only, no sound: Scan site, the counts, one template's five places, the cleanup with its re-check, the Trash, and Pro's Replace everywhere. It streams as a 10.4&nbsp;MB file; <a href="video/templatrail-demo-1080p.mp4">the 1080p file</a> (30.6&nbsp;MB) is one click away.</figcaption>
+  </figure>
+  <figure>
+    <img class="gif-wide" src="video/templatrail-recheck.gif" alt="An 11-second clip of the cleanup on the demo site: four templates with no use found are ticked, Move selected to Trash is pressed, and the result reads 'Re-checked, then moved 3 templates to the Trash' and 'Left alone after the re-check: 1 template', because a page started using it" loading="lazy" width="840" height="473">
+    <video class="gif-phone" autoplay muted loop playsinline preload="metadata" width="720" height="406" aria-label="An 11-second clip of the cleanup on the demo site: four templates with no use found are ticked, Move selected to Trash is pressed, and the result reads 'Re-checked, then moved 3 templates to the Trash' and 'Left alone after the re-check: 1 template', because a page started using it">
+      <source src="video/templatrail-recheck-phone.mp4" type="video/mp4">
+    </video>
+    <figcaption>The cleanup: four ticked, and one gained a page between the scan and the click (a page we added for the demo), so it stayed (a wide screen gets an 11&nbsp;second, 6.9&nbsp;MB GIF; a phone a 0.5&nbsp;MB loop of the same clip).</figcaption>
+  </figure>
 
   <h2 id="cleanup">Clear out templates with no use found</h2>
   <p>Only those can be ticked. <strong>Move selected to Trash</strong> re-reads the site first, skips any that gained a use, and uses WordPress's own Trash, so you can restore. Nothing is deleted for good.</p>
