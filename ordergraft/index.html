@@ -107,11 +107,11 @@
         <source media="(max-width: 600px)" srcset="img/rain-hero-phone.gif" width="640" height="490">
         <img class="hero" src="img/rain-hero.gif" alt="Blender 4.2.23, Rain's all-triangle face twice side by side. The left copy has a smile shape key at full strength, made by Join as Shapes from a copy in another order, and the face is torn into shards. The key slider goes to zero and back. Then the other copy is selected, Match triangulation and Then join as shape keys are ticked, Copy Order to Selected is pressed, and the Result box fills in. The left face now smiles like the right one, and the key slider plays to zero and back without tearing." width="960" height="424">
       </picture>
-      <figcaption class="fine">A smile key torn by Join as Shapes, then one Ordergraft run. 22&nbsp;s, the wait cut. <a href="how-made.html">How</a> · <a href="#credits">Credits</a></figcaption>
+      <figcaption class="fine">A smile key torn by Join as Shapes, then one Ordergraft run. 22&nbsp;s. <a href="how-made.html">How</a> · <a href="#credits">Credits</a></figcaption>
     </figure>
     <ul class="benefits">
       <li><strong>Loose parts in one run</strong>Eyes, teeth, tongue and lashes, no faces to pick. A part it can't tell apart is listed; two picked faces settle it.</li>
-      <li><strong>Triangulated copies too</strong>All-triangle meshes work, even triangulated after different poses, up to about 1.2&nbsp;average edge lengths of movement.</li>
+      <li><strong>Triangulated copies too</strong>All-triangle meshes work, even triangulated after different poses, up to about 1.2&nbsp;average edge lengths of movement (large parts: see below).</li>
       <li><strong>Check first, one undo</strong>Check Pair changes nothing in your file. One Ctrl+Z undoes a copy.</li>
     </ul>
   </div>
@@ -195,10 +195,18 @@
     <ul>
       <li>Meshes whose topology really differs (a vertex added or merged, a new retopology) are reported, not changed; there is no matching by UVs or by vertex position alone.</li>
       <li>Identical parts that moved a lot, and a round part turned about its own axis, are listed, not guessed.</li>
-      <li>Triangulated copies posed so differently that a vertex moved farther than about 1.2&nbsp;average edge lengths are reported ("The triangles could not be followed"), not changed: triangulate both the same way, or after posing.</li>
+      <li>Triangulated copies posed so differently that a vertex moved farther than about 1.2&nbsp;average edge lengths, or one part of more than 3,000 vertices whose diagonals differ in many places, are reported ("The triangles could not be followed"), not changed: triangulate both the same way, or after posing.</li>
       <li>Hair, particle systems and Surface Deform bindings on the target are named after the copy, not re-pointed.</li>
       <li>A large mesh blocks Blender while it runs: no progress bar, and Esc does not cancel.</li>
     </ul>
+  </details>
+  <details>
+    <summary>A game body, all triangles</summary>
+    <figure>
+      <a href="img/rain-game-window.png"><img class="ui" src="img/rain-game-morph.png" alt="The Ordergraft panel after Copy Order on a morph target of Rain's whole body, all triangles. The Copy Order result box reads: Parts matched: 78 of 78; Pins needed: 0; Placed 40,447 vertices; Placed 118,728 edges; Placed 78,351 faces; Order matches: 40,447 of 40,447 vertices, 118,728 of 118,728 edges, 78,351 of 78,351 faces." width="370" height="730" loading="lazy"></a>
+      <figcaption>Rain's body, jeans, top, shoes, scarf and face as one all-triangle mesh. A morph target sculpted up to half an edge and exported with the same triangles: one press, 1.6&nbsp;s without a window. <a href="img/rain-game-window.png">Whole window</a>.</figcaption>
+    </figure>
+    <p>The same sculpt triangulated again by another tool is reported, not followed ("The triangles could not be followed"): one part has 20,462 faces and many of its diagonals differ. Triangulate both copies the same way first.</p>
   </details>
   <p>Install and first copy: <a href="quick-start.html">quick start</a>.</p>
   <details>
@@ -217,7 +225,7 @@
   </ul>
   <details>
     <summary>Tests and timings</summary>
-    <p>170&nbsp;tests passed and 1 was skipped on each of the four versions; 34&nbsp;of&nbsp;34 real-window steps pass on each. All on Linux. Copy Order took 1.6&nbsp;s (quads) and 5.0&nbsp;s (all triangles, Match triangulation) on an Intel Xeon at 2.10&nbsp;GHz with 4&nbsp;cores, Blender 4.2.23.</p>
+    <p>171&nbsp;tests passed and 1 was skipped on each of the four versions; 34&nbsp;of&nbsp;34 real-window steps pass on each. All on Linux. Copy Order took 1.6&nbsp;s (quads) and 5.0&nbsp;s (all triangles, Match triangulation) on an Intel Xeon at 2.10&nbsp;GHz with 4&nbsp;cores, Blender 4.2.23.</p>
   </details>
 
   <p class="fine" id="made">Real Blender windows, real clicks; the slider moves are stepped by script. <a href="how-made.html">How these were made</a>.</p>
