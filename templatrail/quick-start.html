@@ -106,7 +106,7 @@
 </header>
 <main>
   <h1>Templatrail quick start</h1>
-  <p>Installing Templatrail, the first scan, clearing out templates, and what Templatrail Pro adds. Back to the <a href="index.html">Templatrail product page</a>.</p>
+  <p>Install, scan, clear out, and what Pro adds. Back to the <a href="index.html">product page</a>.</p>
 
   <h2 id="install">Install</h2>
   <p>Requires WordPress 6.8 or later, PHP 7.4 or later, and Elementor active.</p>
@@ -130,39 +130,33 @@
   <p>Go to <strong>Tools &gt; Templatrail</strong> and press <strong>Scan site</strong>. A progress bar shows it working through your posts in batches. When it ends, the page shows a <strong>Last scan</strong> line with the date, and the report; <strong>Scan again</strong> starts over.</p>
 
   <h2 id="read">Read the report</h2>
-  <p>Each row is a saved template or Component with its type, status and number of places. Click the number of places (for example <strong>5 places</strong>) to open the list: each page, post or template that uses it, how, and an <strong>Edit</strong> link (<strong>Edit with Elementor</strong> where the reference is in Elementor’s data). A template’s name opens its own screen, with the same places in a table.</p>
-  <p>The tabs are <strong>All</strong>, <strong>In use</strong> (at least one place uses it), <strong>No use found</strong> (no use was found in the places Templatrail reads), <strong>Check by hand</strong> (Templatrail could not tell, and shows why) and <strong>Missing templates</strong>. Elementor’s own <strong>Templates &gt; Saved Templates</strong> list has a <strong>Used on</strong> column too: click a count to open that template’s screen, where Pro adds <strong>Replace everywhere</strong>.</p>
+  <p>Each row is a saved template or Component with its type, status and number of places. Click the places (for example <strong>5 places</strong>) to see each page, post or template that uses it, how, and an <strong>Edit</strong> link (<strong>Edit with Elementor</strong> where the reference is in Elementor’s data). A template’s name opens its own screen. The tabs are <strong>All</strong>, <strong>In use</strong>, <strong>No use found</strong> (no use was found in the places Templatrail reads), <strong>Check by hand</strong> (Templatrail could not tell, and shows why) and <strong>Missing templates</strong>. Elementor’s <strong>Templates &gt; Saved Templates</strong> list has a <strong>Used on</strong> column too: a count opens that template’s screen, where Pro adds <strong>Replace everywhere</strong>.</p>
 
   <h2 id="cleanup">Clear out templates</h2>
   <ol>
-    <li>Open the <strong>No use found</strong> tab and tick the templates to clear out. Read each row first, and the line above the button: templates placed from PHP theme files, menus or other plugins’ own tables show as No use found, because Templatrail cannot see them.</li>
-    <li>Press <strong>Move selected to Trash</strong>. Templatrail reads the site again for them, leaves out any that gained a use, and moves the rest to WordPress’s Trash. The result names what moved and what was left alone.</li>
-    <li>To restore, use the <strong>Open Elementor’s Trash view to restore templates</strong> link in the result, point at a template and choose Restore.</li>
+    <li>Open the <strong>No use found</strong> tab and tick the templates to clear out. Read the line above the button first: templates placed from PHP theme files, menus or other plugins’ own tables show as No use found, because Templatrail cannot see them.</li>
+    <li>Press <strong>Move selected to Trash</strong>. Templatrail reads the site again, leaves out any template that gained a use, and moves the rest to WordPress’s Trash; the result names both.</li>
+    <li>To restore, use <strong>Open Elementor’s Trash view to restore templates</strong> in the result, point at a template and choose Restore. WordPress empties its Trash after 30 days by default; if your site has the Trash switched off, Move selected to Trash is greyed out and says why.</li>
   </ol>
-  <p>WordPress empties its Trash after 30 days by default. If your site has the Trash switched off, Move selected to Trash is greyed out and says why.</p>
 
   <h2 id="missing">Missing templates</h2>
   <p>The <strong>Missing templates</strong> tab lists pages, posts and templates that still point, by ID, at a template that was deleted or is in the Trash. A button opens the page for editing; for a template in the Trash, <strong>Restore the template</strong> brings it back.</p>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/qs-missing-phone.png" width="390" height="674"><img src="img/qs-missing.png" alt="The Missing templates tab: two rows for the page Shop (archived), one pointing at #104, which no longer exists, with Edit, and one at #105 Banner: autumn sale, which is in the Trash, with Edit and Restore the template" width="864" height="319" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/qs-missing-phone.png" width="390" height="254"><img src="img/qs-missing.png" alt="The Missing templates tab: two rows for the page Shop (archived), one pointing at #104, which no longer exists, with Edit, and one at #105 Banner: autumn sale, which is in the Trash, with Edit and Restore the template (on a phone, only the second row, the template in the Trash)" width="864" height="319" loading="lazy"></picture>
     <figcaption>Two pages that point at a template that is gone or in the Trash.</figcaption>
   </figure>
 
   <h2 id="pro">Templatrail Pro</h2>
   <ul>
-    <li><strong>Replace everywhere.</strong> Open the template’s own screen, press <strong>Replace everywhere</strong>, choose a template of the same kind under <strong>Replace with</strong>, press <strong>Preview the change</strong>, read <strong>This will change</strong> and the list of places, then press <strong>Replace everywhere</strong> again to confirm. Each changed post gets a revision first, and a summary lists what changed and what failed.</li>
+    <li><strong>Replace everywhere.</strong> Open the template’s own screen, press <strong>Replace everywhere</strong>, choose a template of the same kind under <strong>Replace with</strong>, press <strong>Preview the change</strong>, read <strong>This will change</strong>, then press <strong>Replace everywhere</strong> again. Each changed post gets a revision first.</li>
     <li><strong>Export CSV.</strong> Beside the Scan button on Tools &gt; Templatrail: the report of the last scan, one row per place that uses a template.</li>
   </ul>
-  <p id="updating"><strong>Updating Pro.</strong> Pro makes no network call, so WordPress shows no update for it. Sign in to Polar’s customer portal with the email address you bought with, download the new <code>templatrail-pro.zip</code>, then go to <strong>Plugins &gt; Add Plugin &gt; Upload Plugin</strong>, choose it, press <strong>Install Now</strong> and then <strong>Replace current with uploaded</strong>. Pro stays active.</p>
+  <p id="updating"><strong>Updating Pro.</strong> Pro makes no network call, so WordPress shows no update. Sign in to Polar’s customer portal with the email you bought with, download the new <code>templatrail-pro.zip</code>, then go to <strong>Plugins &gt; Add Plugin &gt; Upload Plugin</strong>, choose it, press <strong>Install Now</strong> and then <strong>Replace current with uploaded</strong>. Pro stays active.</p>
 
-  <h2 id="remove">Deactivate or delete</h2>
-  <p>Deactivating stops Templatrail and keeps its scan results. Deleting it removes its two tables and its settings from your database; your templates and pages are not touched.</p>
-
-  <h2 id="limits">Limits</h2>
+  <h2 id="limits">Limits, removal, privacy</h2>
   <p>What Templatrail does not read is listed on the <a href="index.html#reads">product page</a>. Pro replaces shortcodes and widget settings only; the other uses are listed, not replaced. Tested on Linux with WordPress 7.1.5 and 6.8.3, PHP 8.3 and 7.4 and Elementor 4.4.1 (<a href="index.html#tested">how we tested</a>); Elementor Pro itself, a Windows or macOS web server, and browsers other than Chrome were not part of the tests.</p>
-
-  <h2 id="privacy">Privacy</h2>
-  <p>Neither plugin contacts any server: no telemetry, no analytics, no license check, no update check of its own. Scan results are stored in your site’s own database.</p>
+  <p id="remove"><strong>Deactivate</strong> on the Plugins screen stops Templatrail and keeps its scan results; deleting it removes its two tables and its settings, and touches no template or page.</p>
+  <p id="privacy">Neither plugin contacts any server: no telemetry, no analytics, no license check, no update check of its own. Scan results are stored in your site’s own database.</p>
 
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your WordPress, PHP and Elementor versions and what the screen showed.</p>
