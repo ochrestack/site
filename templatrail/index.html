@@ -139,10 +139,6 @@
   </div>
   </div>
 
-  <div class="box warn">
-    <strong>You can do this by hand.</strong> A careful admin can search the database for a template's ID in Elementor's saved page data and in post content. Templatrail does that search across the site, follows templates inside templates to the pages that show them, and writes the answer in plain&nbsp;words.
-  </div>
-
   <h2 id="watch">Watch it work</h2>
   <figure>
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080">
@@ -153,18 +149,19 @@
   </figure>
 
   <h2 id="cleanup">Clear out templates with no use found</h2>
-  <p>Only those can be ticked. <strong>Move selected to Trash</strong> re-reads the site first, skips any that gained a use, and uses WordPress's own Trash, so you can restore. Nothing is deleted for good.</p>
-  <p><strong>No use found means no use was found in the places Templatrail reads</strong>, not that nothing uses the template. <em>Check by hand</em> marks what it cannot judge.</p>
-
+  <p>Only those can be ticked. <strong>Move selected to Trash</strong> re-reads the site first, skips any that gained a use, and uses WordPress's own Trash, so you can restore. Nothing is deleted for good. <strong>No use found means no use was found in the places Templatrail reads</strong>, not that nothing uses the template; <em>Check by hand</em> marks what it cannot&nbsp;judge.</p>
 
   <h2 id="pro">Templatrail Pro</h2>
-  <p><strong>Replace everywhere</strong> points the places that used one template at another of the same kind (both templates stay in your library): pick the replacement, check the places listed, confirm; each changed post gets a revision first. <strong>Export CSV</strong> saves the last scan's report. Other uses (global widgets, popup links, Components, Maintenance Mode, template blocks, titles, custom fields, site settings) are listed, not replaced.</p>
-  <p><strong>Who Pro is for.</strong> People who repeat one clean-up across many pages or client sites, such as a rebrand that left a copy of “Call to action: book a call” behind. One site and only a clear-out: the free plugin does the whole job.</p>
+  <p><strong>Replace everywhere</strong> points the places that used one template at another of the same kind (both stay in your library): pick the replacement, check the places listed, confirm; each changed post gets a revision first. <strong>Export CSV</strong> saves the last scan's report. Global widgets, popup links, Components, Maintenance Mode, template blocks, titles, custom fields and site settings are listed, not replaced. Pro is for repeating one clean-up across many pages or client sites, such as a rebrand that left a copy of “Call to action: book a call” behind; for one site and a clear-out, the free plugin does the whole&nbsp;job.</p>
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
     <p class="fine">$19 once, unlimited sites, no renewal · free plugin inside the Pro zip · checkout by Polar · <a href="../terms.html">14-day refund if it doesn't work as described and we can't fix it</a></p>
   </div>
   <p class="fine">New versions of Pro are free, and we don't push them to your site (Pro never contacts a server): download the new file from your Polar purchase and upload it with Replace current with uploaded (<a href="quick-start.html#updating">steps</a>).</p>
+
+  <div class="box warn">
+    <strong>You can do this by hand.</strong> A careful admin can search the database for a template's ID in Elementor's saved page data and in post content. Templatrail does that search across the site and writes the answer in plain&nbsp;words.
+  </div>
 
   <h2 id="column-h">More pictures</h2>
   <figure>
@@ -230,7 +227,7 @@
     <summary>The numbers behind this page</summary>
     <p>The tests use MariaDB 10.11 and a built site of 55 saved templates and Components. Real-window checks ran in Chrome, and a scan and Move to Trash also ran on WordPress 7.1.5 with the SQLite integration plugin.</p>
     <p>On a generated 680-post site, a database search for each ID found a “use” for 38 of 40 unused templates, because the number also turns up in sizes and other IDs. Templatrail's status was right for all 80 templates. A generated site of 42,004 posts and 2,000 templates scanned in about 26 seconds on a 4-core machine; the re-check of 500 selected templates took about 8 seconds (Templatrail 1.0.3).</p>
-    <p>The pictures and the film on this page are Templatrail 1.0.3 in Chrome on a local WordPress 7.1.5 with the SQLite integration plugin 3.1.3, served by PHP's built-in server: the demo site, with Hello Elementor 3.5.2, Elementor 4.4.1, Essential Addons for Elementor 6.8.9 and Show template by shortcode for Elementor 1.0.4. The film is 52&nbsp;seconds at 60 frames a second, captions only, no sound: it streams as a 10.0&nbsp;MB file (a 2.8&nbsp;MB, 480p copy on windows under 768&nbsp;px) and <a href="video/templatrail-demo-1080p.mp4">the 1080p file</a> is 23.7&nbsp;MB. In the cleanup scene a second page is made with WP-CLI between the ticking and the click, to show the re-check leaving one template alone.</p>
+    <p>The pictures and the film on this page are Templatrail 1.0.3 in Chrome on a local WordPress 7.1.5 with the SQLite integration plugin 3.1.3, served by PHP's built-in server: the demo site, with Hello Elementor 3.5.2, Elementor 4.4.1, Essential Addons for Elementor 6.8.9 and Show template by shortcode for Elementor 1.0.4. The film is 52&nbsp;seconds at 60 frames a second, captions only, no sound: it streams as a 10.0&nbsp;MB file (a 2.9&nbsp;MB, 480p copy on windows under 768&nbsp;px) and <a href="video/templatrail-demo-1080p.mp4">the 1080p file</a> is 21.8&nbsp;MB. In the cleanup scene a second page is made with WP-CLI between the ticking and the click, to show the re-check leaving one template alone.</p>
   </details>
   <div class="buy">
     <p><a class="button" id="buy-3" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
