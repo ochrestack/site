@@ -84,7 +84,17 @@
     .top .buy { margin: 4px 0 2px; }
     .top .buy .price { font-size: 16px; margin-bottom: 4px; line-height: 1.4; }
   }
+  /* On a phone the film (640 px tall) comes after the second Buy, so that Buy is under three screens down; the order of the text is otherwise the same. */
   @media (max-width: 600px) {
+    main { display: flex; flex-direction: column; }
+    main > * { min-width: 0; }
+    /* flex items do not collapse margins: keep the gaps the block layout had */
+    main > * { margin-top: 0; }
+    main > h2 { margin-top: 22px; }
+    main > figure, main > .box { margin-top: 11px; }
+    main > h1 { margin-top: 8px; }
+    main > .lead { order: -3; }
+    main > .pitch { order: -2; }
     header { padding-top: 8px; }
     header img { width: 30px; height: 30px; }
     h1 { margin-top: 8px; font-size: 25px; }
@@ -133,11 +143,11 @@
   <a href="../index.html">Ochrestack</a>
 </header>
 <main>
-  <h1>Templatrail for Elementor</h1>
-  <blockquote class="quote">“I’m pretty sure I have a load of templates that are no longer used anywhere.” <cite>(a user on Elementor’s GitHub issue tracker)</cite></blockquote>
-  <p class="sub">Press Scan site and Templatrail shows the pages that use each saved Elementor template, and lists the ones with no use found.</p>
+  <h1 class="lead">Templatrail for Elementor</h1>
+  <blockquote class="quote lead">“I’m pretty sure I have a load of templates that are no longer used anywhere.” <cite>(a user on Elementor’s GitHub issue tracker)</cite></blockquote>
+  <p class="sub lead">Press Scan site and Templatrail shows the pages that use each saved Elementor template, and lists the ones with no use found.</p>
 
-  <div class="top">
+  <div class="top lead">
   <picture><source media="(max-width: 600px)" srcset="img/hero-places-phone.png" width="390" height="318"><img class="hero" src="img/hero-places.png" alt="Templatrail’s screen for one saved Elementor template, Newsletter signup: In use, 5 places, and below it each place with its type, status, how it is used and an Edit link. The picture shows the first two places: the pages Home and About, each through Elementor Pro’s template shortcode (on a phone, the first)" width="864" height="237"></picture>
   <p class="fine hero-note"><span class="note-wide">The first two of its five places.</span><span class="note-phone">The first of its five places.</span></p>
 
@@ -164,12 +174,12 @@
     <figcaption>Recorded on Templatrail 1.0.6: Scan site, one template’s five places, the cleanup with its re-check, the Trash, and Pro’s Replace everywhere. On a phone this plays the portrait cut (the same product in its own narrow layout, without the Trash and Pro scenes). <a href="video/templatrail-demo-1080p.mp4">1080p file</a>.</figcaption>
   </figure>
 
-  <h2 id="cleanup">Clear out templates with no use found</h2>
-  <p>Only those can be ticked. <strong>Move selected to Trash</strong> re-reads the site first, skips any that gained a use, and uses WordPress’s own Trash, so you can restore. Nothing is deleted for good. <strong>No use found means no use was found in the places Templatrail reads</strong>, not that nothing uses the template; <em>Check by hand</em> marks what it cannot&nbsp;judge.</p>
+  <h2 id="cleanup" class="pitch">Clear out templates with no use found</h2>
+  <p class="pitch">Only those can be ticked. <strong>Move selected to Trash</strong> re-reads the site first, skips any that gained a use, and uses WordPress’s own Trash, so you can restore. Nothing is deleted for good. <strong>No use found means no use was found in the places Templatrail reads</strong>, not that nothing uses the template; <em>Check by hand</em> marks what it cannot&nbsp;judge.</p>
 
-  <h2 id="pro">Templatrail Pro</h2>
-  <p><strong>Replace everywhere</strong> points the places that used one template at another of the same kind (both stay in your library): pick the replacement, check the places listed, confirm; each changed post gets a revision first. <strong>Export CSV</strong> saves the last scan’s report. Global widgets, popup links, Components, Maintenance Mode, template blocks, titles, custom fields and site settings are listed, not replaced. Pro is for repeating one clean-up across many pages or client sites, such as a rebrand that left a copy of “Call to action: book a call” behind; for one site and a clear-out, the free plugin does the whole&nbsp;job.</p>
-  <div class="buy">
+  <h2 id="pro" class="pitch">Templatrail Pro</h2>
+  <p class="pitch"><strong>Replace everywhere</strong> points the places that used one template at another of the same kind (both stay in your library): pick the replacement, check the places listed, confirm; each changed post gets a revision first. <strong>Export CSV</strong> saves the last scan’s report. Global widgets, popup links, Components, Maintenance Mode, template blocks, titles, custom fields and site settings are listed, not replaced. Pro is for repeating one clean-up across many pages or client sites, such as a rebrand that left a copy of “Call to action: book a call” behind; for one site and a clear-out, the free plugin does the whole&nbsp;job.</p>
+  <div class="buy pitch">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_YNqtr9OrRjczmHxElyTdF7ybZXm4cGWi4jx612PUwwx">Buy for $19</a></p>
     <p class="fine">$19 once, unlimited sites, no renewal · free plugin inside the Pro zip · checkout by Polar · <a href="../terms.html">14-day refund if it doesn’t work as described and we can’t fix it</a></p>
   </div>
