@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sibfold quick start: your first nesting rule</title>
+<meta name="description" content="Write your first Sibfold rule, check it in the tester, and see what the license adds: more rules, a shared rules file, nesting levels and ready rule sets.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 17px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  code { font-size: 15px; }
+  .buttons .button { margin: 0 8px 8px 0; }
+  .note { font-size: 15px; color: var(--muted); }
+  .benefits { padding-left: 20px; margin: 16px 0; }
+  .benefits li { margin: 6px 0; }
+  .pair figure { flex: 0 1 auto; }
+  /* The IDE captures are 1200 px wide: on wide screens they get up to that width, centred on the column. */
+  @media (min-width: 1000px) {
+    .real-size { width: min(1200px, calc(100vw - 48px)); margin-left: calc((712px - min(1200px, calc(100vw - 48px))) / 2); }
+    .real-size figcaption { max-width: 712px; margin-left: auto; margin-right: auto; }
+  }
+  header { max-width: 1200px; }
+  .top { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .top h1 { margin-top: 12px; }
+  header { padding-top: 20px; }
+  .top .sub { font-size: 18px; line-height: 1.5; margin-bottom: 8px; }
+  .top .benefits { margin: 8px 0; }
+  .top .benefits li { margin: 2px 0; }
+  .top .buy { margin-top: 10px; }
+  .top .note, .top .fine { margin: 0 0 6px; line-height: 1.45; }
+  .top-image { margin: 16px 0; }
+  .top-image .hero { margin: 0 0 6px; }
+  .top-images .top-image { margin: 0 0 16px; }
+  @media (min-width: 1000px) {
+    .top { display: grid; grid-template-columns: minmax(380px, 1fr) minmax(0, 650px); grid-template-rows: auto auto auto auto 1fr; column-gap: 36px; align-items: start; }
+    .top > * { grid-column: 1; }
+    .top > .top-images { grid-column: 2; grid-row: 1 / span 5; margin: 28px 0 0; }
+  }
+  /* Short or narrow laptop windows (1024x600): a narrower picture column and tighter text keep the Download button in the first screen. */
+  @media (min-width: 1000px) and (max-width: 1250px) {
+    .top { grid-template-columns: minmax(380px, 1fr) minmax(0, 380px); column-gap: 28px; }
+  }
+  @media (min-width: 1000px) and (max-height: 800px) {
+    .top .sub { margin-bottom: 4px; }
+    .top .benefits li { margin: 1px 0; }
+    .top .note, .top .fine { margin: 0 0 3px; }
+    header { padding-top: 12px; }
+  }
+  @media (min-width: 1000px) and (max-height: 700px) {
+    .top { grid-template-columns: minmax(380px, 1fr) minmax(0, 380px); column-gap: 28px; }
+    .top .sub { font-size: 16px; line-height: 1.4; margin-bottom: 4px; }
+    .top .benefits { font-size: 15.5px; line-height: 1.4; margin: 6px 0; }
+    .top .buy p.price { font-size: 15.5px; line-height: 1.4; }
+    .top .note, .top .fine { font-size: 14px; line-height: 1.35; }
+    header { padding-top: 10px; }
+    .top h1 { font-size: 26px; margin: 6px 0 4px; }
+  }
+  @media (min-width: 1251px) { .top .note, .top .fine { font-size: 14px; line-height: 1.35; margin: 0 0 4px; } .top .sub { font-size: 17px; margin-bottom: 4px; } }
+  .narrow-only-inline { display: none; }
+  /* Phones (375x667): the lead of each benefit, the price line and the Download button fit the first screen. */
+  @media (max-width: 600px) {
+    .narrow-only-inline { display: inline; }
+    header { padding-top: 10px; }
+    header img { width: 28px; height: 28px; }
+    .top h1 { font-size: 24px; margin: 4px 0 4px; }
+    .top .sub { font-size: 15.5px; line-height: 1.35; margin-bottom: 6px; }
+    .top-images .top-image { margin: 0 0 6px; }
+    .top-image figcaption { display: none; }
+    .top .benefits { font-size: 15px; line-height: 1.35; margin: 4px 0; padding-left: 18px; }
+    .top .benefits .more { display: none; }
+    .top .buy p.price { font-size: 15px; line-height: 1.35; margin-bottom: 8px; }
+    .top .button { padding: 9px 14px; }
+    .top .buy { display: flex; flex-direction: column; }
+    .top .buy .buttons { order: -1; margin: 6px 0 8px; }
+    header { padding-top: 6px; }
+  }
+  p, li, figcaption { text-wrap: pretty; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+
+  /* Additions for the JetBrains pages */
+  .buy-note { font-size: 15px; color: var(--muted); margin: 0 0 8px; }
+  button.button { font: inherit; font-weight: 600; border: 0; cursor: not-allowed; }
+  button.button[disabled] { background: #8c8379; color: #fff; }
+  .buy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 6px 0 8px; }
+  .buy-row .buy-note { margin: 0; }
+  @media (max-width: 600px) { .top .fine .more { display: none; } .top .buy-row { margin: 4px 0 6px; gap: 4px 12px; } .top .buy-note { font-size: 14px; } .top .buy p.price { margin-bottom: 4px; } .top .fine { font-size: 14px; } .top .sub { font-size: 15px; line-height: 1.32; } }
+  .step-tag { font-size: 14px; font-weight: 600; color: var(--ochre-text); text-transform: uppercase; letter-spacing: .04em; }
+  figure img.ui { background: #1e1f22; }
+  .strip { margin: 16px 0; }
+  ul.tight li { margin: 4px 0; }
+  code { overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Sibfold quick start</h1>
+  <p>Your first rule, and what the license adds. Back to the <a href="index.html">product page</a>.</p>
+
+  <h2 id="install">Install</h2>
+  <p>Sibfold is not on JetBrains Marketplace yet, so there is nothing to install from there today.</p>
+  <p>Installing from a zip file was run in IntelliJ IDEA and PyCharm 2025.2 and 2026.3: <strong>Settings | Plugins</strong>, the gear menu, <strong>Install Plugin from Disk...</strong>, pick the zip without unpacking it, <strong>Accept</strong> the Third-Party Plugins Notice, then <strong>Restart IDE</strong>. After a restart the IDE may show its own &ldquo;Cannot update plugins&rdquo; balloon for a plugin installed from a file; it comes from the IDE and does not affect Sibfold.</p>
+  <p>After the restart the IDE shows no sign of Sibfold. It lives in three places: <strong>Settings | Appearance &amp; Behavior | Sibfold</strong>; the Project view's options menu (the three dots in the Project tool window) | Appearance | <strong>Sibfold Nesting Rules...</strong>; and Find Action (Ctrl+Shift+A), typing &ldquo;Sibfold Nesting Rules&rdquo;.</p>
+  <figure>
+    <img class="ui" src="img/options-menu.png" alt="The Project view's options menu with Appearance open in IntelliJ IDEA 2025.2: Show, Members, Excluded Files, Visibility Icons, Scratches and Consoles, File Details, Flatten Modules, Flatten Packages, Abbreviate Qualified Names, Compact Middle Packages, then File Nesting..., Sibfold Nesting Rules... and a ticked Sibfold Nesting, then Customize Tree Views..." width="236" height="398" loading="lazy">
+    <figcaption>Options menu | Appearance: the IDE's File Nesting..., then Sibfold Nesting Rules... and the Sibfold Nesting switch.</figcaption>
+  </figure>
+
+  <h2 id="first-rule">Your first rule</h2>
+  <ol>
+    <li>Open the settings page and click <strong>+</strong>.</li>
+    <li>Give the rule a name, a <strong>Parent pattern</strong> such as <code>(?&lt;base&gt;.+)\.go</code> and a <strong>Child pattern</strong> such as <code>${base}(_.+)?_test\.go</code>. Use your own extensions in place of <code>.go</code> and <code>_test.go</code>.</li>
+    <li>Under the editor, <strong>Matches in the open project</strong> lists the parents and the files that would go under them, by folder, as you type. A pattern with an error is marked in its field with the character where it fails, and cannot be applied until it is fixed.</li>
+    <li>Optional: type file names into <strong>Try file names</strong>, one per line, to see which would nest under which. Nothing on disk is touched.</li>
+    <li>Click <strong>OK</strong>. The Project view folds the files. Open a nested file and run <strong>Select Opened File</strong> (Find Action) to find it under its parent.</li>
+  </ol>
+  <figure>
+    <img class="ui wide-only" src="img/rule-tester.png" alt="The Sibfold settings page with the rule Go tests, its parent and child patterns, and the tester line 233 files would hold 266 nested files in 136 folders" width="702" height="628" loading="lazy">
+    <img class="ui narrow-only" src="img/rule-tester-phone.png" alt="The rule Go tests with its parent and child patterns and the line 233 files would hold 266 nested files in 136 folders" width="345" height="181" loading="lazy">
+    <figcaption>The settings page with one rule, in IntelliJ IDEA 2025.2 on gRPC Go.</figcaption>
+  </figure>
+  <p><strong>Nothing nested?</strong> Open the options menu | Appearance and look at <strong>Sibfold Nesting</strong>: it is the one switch that hides all of Sibfold's work. If the rule list says &ldquo;pattern error&rdquo;, fix the pattern first.</p>
+
+  <h2 id="license">With a license</h2>
+  <p>Each of these needs a license or the 30-day trial.</p>
+  <ul>
+    <li><strong>More rules.</strong> Every enabled rule is in force, in list order. A file that two rules would claim goes to the first rule.</li>
+    <li><strong>Share with the team.</strong> <strong>Save Rules to sibfold.rules</strong> writes your rules to the project root. Commit it; teammates who have Sibfold, and a license or the trial, get the rules, applied after their own. If the file already holds rules that are not among yours, the question names them and says saving removes them.</li>
+    <li><strong>Levels.</strong> A child can hold children, up to 5 levels below the top file. A set of rules that would make a loop is refused, naming the files in it.</li>
+    <li><strong>Ready Rule Sets...</strong> Choose a set; the dialog shows what it would nest in your project; <strong>Add Rules</strong> puts ordinary rules at the end of your list.</li>
+  </ul>
+
+  <h2 id="trial">License and trial</h2>
+  <p>One rule at a time, the tester, Select Opened File and live updates are free with no time limit. The license is $7 once, the same for personal and commercial use, with a 30-day trial of everything; nothing renews. When the trial ends nothing pops up: your first rule keeps working, the others stay saved and marked <em>not in force</em>, and the settings page says in one line what the license adds.</p>
+  <p>The license is checked through JetBrains Marketplace licensing, which is the IDE's own. The trial and the purchase can start only once Sibfold is on the Marketplace; they have not been run. Android Studio has no JetBrains licensing, so only the free tier would apply there (not run in Android Studio).</p>
+
+  <h2 id="syntax">Pattern syntax</h2>
+  <ul>
+    <li>Java regular expressions, matched against the whole file name: <code>(.+)\.go</code> matches <code>user.go</code>, not <code>user.go.bak</code>.</li>
+    <li>Use the parent's groups in the child pattern by number (<code>$1</code>) or by name (<code>${base}</code>, from <code>(?&lt;base&gt;...)</code>). The text a group captured is used literally.</li>
+    <li>A <code>$</code> not followed by a digit or <code>{</code> ends the name, as usual. Use <code>\$</code> for a dollar sign. Flags such as <code>(?i)</code> work.</li>
+    <li>If several parents of one rule could take a file, the one with the longest name wins. A file never becomes its own child.</li>
+  </ul>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>Files in the same folder only. The Project and Project Files views, not Scopes or Packages, and not Rider. Files are never moved, renamed or changed; the one file Sibfold writes is <code>sibfold.rules</code>.</li>
+    <li>A file the IDE's own File Nesting rules already put under a parent stays there.</li>
+    <li>Everything here was run on Linux. Windows and macOS desktops and a WebStorm window were not run (<a href="index.html#details">details</a>).</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Sibfold reads the names of files in the open project and, when you use it, the rules file. It makes no network calls and sends nothing (<a href="../privacy.html">privacy policy</a>).</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your IDE version (Help | About) and what you saw.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
