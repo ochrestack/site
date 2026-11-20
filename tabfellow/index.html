@@ -215,20 +215,20 @@
   </figure>
   <figure>
     <p class="swipe-hint narrow-only">Swipe the picture sideways.</p>
-    <div class="swipe-wrap scroll-x"><img class="ui" src="img/kotlin-2026-3.png" alt="OwnerController.kt in IntelliJ IDEA 2026.3 after typing getm and Tab: a new @GetMapping handler for /owners/search with the Kotlin function searchForm, from the shared group kotlin-team" width="510" height="208" loading="lazy"></div>
+    <div class="swipe-wrap scroll-x"><img class="ui" src="img/kotlin-2026-3.png" alt="OwnerController.kt in IntelliJ IDEA 2026.3 after typing getm and Tab: a new @GetMapping handler for /owners/search with the Kotlin function searchForm, from the shared group kotlin-team" width="510" height="196" loading="lazy"></div>
     <figcaption>The same in IntelliJ IDEA 2026.3 with Kotlin: <code>getm</code> from the shared group <code>kotlin-team</code>, in the public Spring PetClinic Kotlin sample.</figcaption>
   </figure>
 
   <p><span class="step-tag">3. Pull (license)</span><br>After a pull, branch switch, stash or rebase the groups update without reopening the project.</p>
   <figure>
-    <img class="ui wide-only" src="img/update-notification.png" alt="IntelliJ IDEA Community 2025.1 after a pull: the notification Shared live templates updated, petclinic (spring-petclinic): changed flash, with the link Turn off these notifications, in the corner of OwnerController.java" width="600" height="170" loading="lazy">
+    <img class="ui wide-only" src="img/update-notification.png" alt="IntelliJ IDEA Community 2025.1 after a pull: the notification Shared live templates updated, petclinic (spring-petclinic): changed flash, with the link Turn off these notifications, in the corner of OwnerController.java" width="474" height="100" loading="lazy">
     <img class="ui narrow-only" src="img/update-notification-phone.png" alt="The notification Shared live templates updated, petclinic (spring-petclinic): changed flash, with the link Turn off these notifications" width="338" height="74" loading="lazy">
     <figcaption>After a pull that changed <code>flash</code>.</figcaption>
   </figure>
 
   <p><span class="step-tag">4. Edit in place (license)</span><br>Change a template and press OK, then choose Write to Project or Discard. Only that group's file changes.</p>
   <figure>
-    <img class="ui wide-only" src="img/edit-notification.png" alt="IntelliJ IDEA Community 2025.1 after editing flash in Settings: the notification Shared live templates edited, petclinic (spring-petclinic): changed flash, with the buttons Write to Project and Discard" width="600" height="170" loading="lazy">
+    <img class="ui wide-only" src="img/edit-notification.png" alt="IntelliJ IDEA Community 2025.1 after editing flash in Settings: the notification Shared live templates edited, petclinic (spring-petclinic): changed flash, with the buttons Write to Project and Discard" width="474" height="100" loading="lazy">
     <img class="ui narrow-only" src="img/edit-notification-phone.png" alt="The notification Shared live templates edited, petclinic (spring-petclinic): changed flash, with Write to Project and Discard" width="338" height="74" loading="lazy">
     <figcaption>The edit waits for your choice.</figcaption>
   </figure>
@@ -269,7 +269,7 @@
   <details id="tested">
     <summary>How we tested</summary>
     <ul>
-      <li>165 automated tests of version 1.0.2, none failing, run without a display.</li>
+      <li>166 automated tests of version 1.0.2, none failing, run without a display.</li>
       <li>Plugin Verifier 1.411 on IntelliJ IDEA Community 2025.1 and on IntelliJ IDEA, PhpStorm, WebStorm, PyCharm and GoLand 2026.3: all six Compatible, no internal API used.</li>
       <li>The 390 templates of the IDE's own bundled groups, copied into custom groups, shared, loaded from the files alone and written back: 390 compared, 0 differences.</li>
       <li>After a pull that changes a shared file, the new template was in the IDE's registry in a median of 1,840 ms and at worst 2,164 ms over 10 runs (version 1.0.2, IntelliJ IDEA Community 2025.1, Linux, 4-core Intel Xeon 2.1 GHz).</li>
