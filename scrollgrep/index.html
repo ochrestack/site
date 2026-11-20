@@ -251,7 +251,7 @@
   <span>&copy; 2026 Ochrestack</span>
 </footer>
 <script>
-  // phones fetch the 540p copy (0.8 MB), everything else the 1080p file
+  // phones fetch the 540p copy (2.0 MB), everything else the 1080p file
   (function () {
     var v = document.querySelector('video[data-narrow]');
     if (v && window.matchMedia('(max-width: 600px)').matches) { v.querySelector('source').src = v.getAttribute('data-narrow'); v.load(); }
