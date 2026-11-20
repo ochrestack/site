@@ -138,6 +138,8 @@
   .strip { margin: 16px 0; }
   ul.tight li { margin: 4px 0; }
   code { overflow-wrap: anywhere; }
+  pre.pats { margin: 0; padding: 12px 16px; background: #fff; border: 1px solid #E6DED3; border-radius: 8px; font-size: 14px; line-height: 1.5; overflow-x: auto; }
+  pre.pats code { font-size: 14px; overflow-wrap: normal; }
 </style>
 </head>
 <body>
@@ -151,7 +153,7 @@
 
   <h2 id="install">Install</h2>
   <p>Sibfold is not on JetBrains Marketplace yet, so there is nothing to install from there today.</p>
-  <p>Installing from a zip file was run in IntelliJ IDEA and PyCharm 2025.2 and 2026.3: <strong>Settings | Plugins</strong>, the gear menu, <strong>Install Plugin from Disk...</strong>, pick the zip without unpacking it, <strong>Accept</strong> the Third-Party Plugins Notice, then <strong>Restart IDE</strong>. After a restart the IDE may show its own &ldquo;Cannot update plugins&rdquo; balloon for a plugin installed from a file; it comes from the IDE and does not affect Sibfold.</p>
+  <p>Installing from a zip file was run in IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3: <strong>Settings | Plugins</strong>, the gear menu, <strong>Install Plugin from Disk...</strong>, pick the zip without unpacking it, <strong>Accept</strong> the Third-Party Plugins Notice, then <strong>Restart IDE</strong>. After a restart the IDE may show its own &ldquo;Cannot update plugins&rdquo; balloon for a plugin installed from a file; it comes from the IDE and does not affect Sibfold.</p>
   <p>After the restart the IDE shows no sign of Sibfold. It lives in three places: <strong>Settings | Appearance &amp; Behavior | Sibfold</strong>; the Project view's options menu (the three dots in the Project tool window) | Appearance | <strong>Sibfold Nesting Rules...</strong>; and Find Action (Ctrl+Shift+A), typing &ldquo;Sibfold Nesting Rules&rdquo;.</p>
   <figure>
     <img class="ui" src="img/options-menu.png" alt="The Project view's options menu with Appearance open in IntelliJ IDEA 2025.2: Show, Members, Excluded Files, Visibility Icons, Scratches and Consoles, File Details, Flatten Modules, Flatten Packages, Abbreviate Qualified Names, Compact Middle Packages, then File Nesting..., Sibfold Nesting Rules... and a ticked Sibfold Nesting, then Customize Tree Views..." width="236" height="398" loading="lazy">
@@ -169,7 +171,7 @@
   <figure>
     <img class="ui wide-only" src="img/rule-tester.png" alt="The Sibfold settings page with the rule Go tests, its parent and child patterns, and the tester line 233 files would hold 266 nested files in 136 folders" width="702" height="628" loading="lazy">
     <img class="ui narrow-only" src="img/rule-tester-phone.png" alt="The rule Go tests with its parent and child patterns and the line 233 files would hold 266 nested files in 136 folders" width="345" height="181" loading="lazy">
-    <figcaption>The settings page with one rule, in IntelliJ IDEA 2025.2 on gRPC Go.</figcaption>
+    <figcaption>The settings page with one rule, in IntelliJ IDEA 2025.2&nbsp;on gRPC Go.</figcaption>
   </figure>
   <p><strong>Nothing nested?</strong> Open the options menu | Appearance and look at <strong>Sibfold Nesting</strong>: it is the one switch that hides all of Sibfold's work. If the rule list says &ldquo;pattern error&rdquo;, fix the pattern first.</p>
 
@@ -186,6 +188,15 @@
   <p>One rule at a time, the tester, Select Opened File and live updates are free with no time limit. The license is $7&nbsp;once, the same for personal and commercial use, with a 30-day&nbsp;trial of everything; nothing renews. When the trial ends nothing pops up: your first rule keeps working, the others stay saved and marked <em>not in force</em>, and the settings page says in one line what the license adds.</p>
   <p>The license is checked through JetBrains Marketplace licensing, which is the IDE's own. The trial and the purchase can start only once Sibfold is on the Marketplace; they have not been run. Android Studio has no JetBrains licensing, so only the free tier would apply there (not run in Android Studio).</p>
 
+  <h2 id="examples">More examples</h2>
+  <div class="swipe-wrap"><div class="scroll-x"><pre class="pats"><code>foo.1.log, foo.2.log under foo.log
+  parent  (?&lt;base&gt;.+)\.log
+  child   ${base}\.\d+\.log
+
+Function.cp37-win_amd64.pyd under Function.pyx
+  parent  (?&lt;base&gt;.+)\.pyx
+  child   ${base}(?:\.[A-Za-z0-9_-]+)*\.(?:pyd|so)</code></pre></div></div>
+
   <h2 id="syntax">Pattern syntax</h2>
   <ul>
     <li>Java regular expressions, matched against the whole file name: <code>(.+)\.go</code> matches <code>user.go</code>, not <code>user.go.bak</code>.</li>
@@ -197,7 +208,8 @@
   <h2 id="limits">Limits</h2>
   <ul>
     <li>Files in the same folder only. The Project and Project Files views, not Scopes or Packages, and not Rider. Files are never moved, renamed or changed; the one file Sibfold writes is <code>sibfold.rules</code>.</li>
-    <li>A file the IDE's own File Nesting rules already put under a parent stays there.</li>
+    <li>A file the IDE's own File Nesting rules already put under a parent stays there. Moving a parent carries the files the IDE nested, not Sibfold's (read from the platform's list, not run as a move).</li>
+    <li>No glob syntax. Not included: hiding files, named groups, nesting folders under files, importing the IDE's rules.</li>
     <li>Everything here was run on Linux. Windows and macOS desktops and a WebStorm window were not run (<a href="index.html#details">details</a>).</li>
   </ul>
 
@@ -207,12 +219,22 @@
   <h2 id="support">Support</h2>
   <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your IDE version (Help | About) and what you saw.</p>
 </main>
+<script>
+// A phone swipe strip fades at its right edge until it is scrolled to the end.
+(function () {
+  document.querySelectorAll(".swipe-wrap .scroll-x").forEach(function (box) {
+    var update = function () { box.parentNode.classList.toggle("at-end", box.scrollLeft + box.clientWidth >= box.scrollWidth - 2); };
+    box.addEventListener("scroll", update, { passive: true });
+    update();
+  });
+})();
+</script>
 <footer>
   <a href="../guides/">Guides</a>
   <a href="../privacy.html">Privacy</a>
   <a href="../terms.html">Terms</a>
   <a href="../support.html">Support</a>
-  <span>&copy; 2026 Ochrestack</span>
+  <span>&copy; 2026&nbsp;Ochrestack</span>
 </footer>
 </body>
 </html>
