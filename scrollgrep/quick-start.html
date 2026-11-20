@@ -84,10 +84,10 @@
   <ol>
     <li><a href="download/scrollgrep-1.1.7.zip">Download scrollgrep-1.1.7.zip</a> (free; keep it zipped). In the IDE, open <strong>Settings | Plugins</strong>, click <strong>⚙</strong>, choose <strong>Install Plugin from Disk</strong>, pick the zip and click <strong>OK</strong>, then <strong>Accept</strong> the third-party plugin notice.</li>
     <li>Restart the IDE: it loads plugins with paid features only after a restart. Click <strong>Restart IDE</strong> on the plugin's row, or answer the IDE's restart prompt; if Settings offers neither, use <strong>File | Exit</strong> and start the IDE again.</li>
-    <li>After the restart a balloon says "Scrollgrep is installed" and which keys to press; the icon on the right edge opens the panel too. The IDE may also show "Cannot update plugin": it cannot look for updates of a plugin installed from a file. That is the IDE's message, not an error, and it can come back at later starts.</li>
+    <li>After the restart a balloon says "Scrollgrep is installed" and which keys to press; the icon on the right edge opens the panel too. The IDE may also show "Cannot update plugin": it cannot look for updates of a plugin installed from a file. It is the IDE's message, not an error.</li>
     <li>Check that <strong>Settings | Tools | Terminal | Engine</strong> is <strong>Reworked</strong>, the default. Scrollgrep does not see Classic terminal tabs.</li>
   </ol>
-  <p>Scrollgrep is not on the JetBrains Marketplace yet; once it is, you can also install it from the Plugins search field. What was run, and where: <a href="how-we-tested.html">how we tested</a>.</p>
+  <p>Scrollgrep is not on the JetBrains Marketplace yet. What was run, and where: <a href="how-we-tested.html">how we tested</a>.</p>
 
   <h2 id="filter">Live filter (free)</h2>
   <ol>
@@ -101,8 +101,8 @@
     <figcaption>FAIL|Exception with Regex off finds nothing, so the panel says why; Turn on Regex fixes it in one click.</figcaption>
   </figure>
   <ul>
-    <li><strong>Match case</strong>, <strong>Words</strong>, <strong>Regex (grep -E)</strong> and <strong>Invert</strong> mean what grep's <code>-i</code> (off), <code>-w</code>, <code>-E</code> and <code>-v</code> mean. As in grep, <code>\d</code> means the letter "d"; the panel says so and suggests <code>[0-9]</code>. An invalid pattern is outlined in red with grep's reason.</li>
-    <li>The panel follows the Terminal tab you select, and keeps matches after the Terminal trims its history (up to 32 MB and 200,000 lines per tab; Settings | Tools | Scrollgrep). A panel opened after a run sees only what the Terminal still holds. A line wider than the panel shows its whole text as a tooltip. On IDE 2026.3, "some lines missing" means the Terminal itself skipped output: click <strong>use JediTerm for new tabs</strong> and run the command again (<a href="how-we-tested.html#fast">details</a>).</li>
+    <li><strong>Match case</strong>, <strong>Words</strong>, <strong>Regex (grep -E)</strong> and <strong>Invert</strong> mean what grep's <code>-i</code> (off), <code>-w</code>, <code>-E</code> and <code>-v</code> mean. As in grep, <code>\d</code> means the letter "d"; the panel says so and suggests <code>[0-9]</code>.</li>
+    <li>The panel follows the Terminal tab you select, and keeps matches after the Terminal trims its history (up to 32 MB and 200,000 lines per tab; Settings | Tools | Scrollgrep). A panel opened after a run says how many lines the Terminal had already dropped; open it before the run to keep them all. A line wider than the panel shows its whole text as a tooltip. On IDE 2026.3, "some lines missing" means the Terminal itself skipped output: click <strong>use JediTerm for new tabs</strong> and run the command again (<a href="how-we-tested.html#fast">details</a>).</li>
   </ul>
   <h2 id="preview">Preview: try the licensed features first</h2>
   <p>Without a license the panel shows <strong>Try them on sample output first: Preview</strong>. It opens a Terminal tab named Scrollgrep preview and prints a sample Gradle test run with two failures (Gradle is not run). In that tab only, the licensed features work without a license:</p>
@@ -110,6 +110,7 @@
     <li>Click the frame <code>MoneyTest.java:16</code>: the sample's test opens at line 16.</li>
     <li>Pick the sample command under <strong>Scope</strong> and set <strong>Context</strong> to 3.</li>
     <li>Add pattern <code>sync finished</code>, tick <strong>Watch</strong>, hide the Terminal (Shift+Escape) and run <code>./sync-orders</code> in the tab: a notification arrives.</li>
+    <li>Node.js: run <code>./dev-server</code>, filter <code>orders.js</code> and click <code>orders.js:12:62</code>: the file opens at line 12.</li>
   </ol>
   <p>The preview ends for that tab at the first command of your own in it; your other tabs stay free-only. It is offered on Linux and macOS.</p>
   <figure class="real-size">
@@ -119,7 +120,7 @@
 
   <h2 id="licensed">The licensed features</h2>
   <ul>
-    <li><strong>Links.</strong> Paths and stack-trace lines in the results open the file at the line: absolute and relative paths, <code>path:line:column</code>, JVM frames, Python tracebacks, Node.js frames and Go panics. A path that matches several files opens a chooser. Without a license, a click on such a line says what a license does.</li>
+    <li><strong>Links.</strong> Paths and stack-trace lines in the results open the file at the line: absolute and relative paths, <code>path:line:column</code>, JVM frames, Python tracebacks, Node.js frames and Go panics. Without a license, a click on such a line says what a license does.</li>
     <li><strong>One command, with context.</strong> Scope limits the filter to the last command or one picked from a list (command, directory, exit code); Context shows lines around each match, like <code>grep -C</code>. Needs the IDE's shell integration (tested with Bash and Zsh).</li>
     <li><strong>Several patterns.</strong> Add pattern adds a row with its own Include or Exclude choice and color. A line shows if it matches any Include pattern (the filter field is the first) and no Exclude pattern; up to eight, saved as presets per project.</li>
     <li><strong>Watch alerts.</strong> A pattern with Watch on raises an IDE notification with the matching line when it appears in a Terminal tab Scrollgrep can filter, even with the Terminal hidden.</li>
@@ -130,7 +131,7 @@
   </figure>
 
   <h2 id="license-trial">License and trial</h2>
-  <p>The live filter is free and never locks. Everything else (Preview aside) needs a JetBrains Marketplace license: perpetual, $12 once, the same for personal and commercial use, every update included, nothing renews. The 30-day trial starts under <strong>Start trial</strong> in the IDE's license dialog, which <strong>Try or buy</strong> in the panel opens (it asks you to log in to your JetBrains Account). The dialog is the IDE's own and says "Subscription" even though the license is perpetual. License and trial begin when the Marketplace listing is live; until then Preview shows the licensed features on sample output.</p>
+  <p>The live filter is free and never locks. Everything else (Preview aside) needs a JetBrains Marketplace license: perpetual, $12 once, the same for personal and commercial use, every update included, nothing renews. The 30-day trial starts under <strong>Start trial</strong> in the IDE's license dialog, which <strong>Try or buy</strong> in the panel opens (it asks you to log in to your JetBrains Account). The dialog is the IDE's own and says "Subscription" even though the license is perpetual. Until the Marketplace listing is live, Preview shows the licensed features on sample output.</p>
 
   <h2 id="limits">Known limits</h2>
   <ul>

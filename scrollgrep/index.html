@@ -175,7 +175,7 @@
     <li><strong>Click a stack frame, land on the line<span class="more">:</span></strong><span class="more"> JVM, Python, Node.js or Go (license).</span></li>
   </ul>
   <div class="buy">
-    <p class="price"><strong>Free:</strong> the live filter, no time limit. <strong>$12 once</strong> for links, one-command scope, patterns and alerts (perpetual), on sale once the JetBrains Marketplace listing is approved. Try them now on sample output with <strong>Preview</strong>; the Marketplace's 30-day trial then runs them on your own output.</p>
+    <p class="price"><strong>Free:</strong> the live filter, no time limit. <strong>$12 once</strong> for links, one-command scope, patterns and alerts (perpetual), on sale once the JetBrains Marketplace listing is approved. Try them now on sample Gradle, Python and Node.js output with <strong>Preview</strong>; the Marketplace's 30-day trial then runs them on your own output.</p>
     <!-- Colin, when the JetBrains Marketplace listing is live: add a second button, "Get it on JetBrains Marketplace",
          linking to the listing's URL, and change "on sale once the JetBrains Marketplace listing is approved" in the price line to "on JetBrains Marketplace". -->
     <p class="buttons"><a class="button" id="download" href="download/scrollgrep-1.1.7.zip" aria-describedby="download-note">Download Scrollgrep 1.1.7 (free filter)</a></p>
@@ -230,7 +230,7 @@
   <ul>
     <li>Results show in Scrollgrep's own panel, as plain text; the terminal itself hides nothing.</li>
     <li>IDE 2025.3 or later with the Reworked terminal engine (the default). No SSH sessions, no vim, less or htop.</li>
-    <li>Matches outlast the Terminal's history for output that reached the Terminal while the panel showed the tab (up to 32 MB and 200,000 lines per tab).</li>
+    <li>Matches outlast the Terminal's history for output that reached the Terminal while the panel showed the tab (up to 32 MB and 200,000 lines per tab). A panel opened after a long run says how many lines the Terminal had already dropped.</li>
     <li>IDE 2026.3 starts Terminal tabs on the Ghostty emulator, which skips output that prints faster than it shows it; no plugin can read those lines. Scrollgrep marks where (not how many) and offers the JediTerm emulator for new tabs, which keeps every line.</li>
     <li>Not tested: WebStorm's window, GoLand and the other JetBrains IDEs, Windows, macOS, PowerShell, Remote Development, and a real Marketplace trial or purchase. What was run: <a href="how-we-tested.html">how we tested</a>.</li>
     <li>Preview runs shell scripts, so it is offered on Linux and macOS; it was run on Linux. It ends at the first command of your own in its tab.</li>
@@ -251,7 +251,7 @@
   <span>&copy; 2026 Ochrestack</span>
 </footer>
 <script>
-  // phones fetch the 540p copy (about 4 MB), everything else the 1080p file
+  // phones fetch the 540p copy (about 1 MB), everything else the 1080p file
   (function () {
     var v = document.querySelector('video[data-narrow]');
     if (v && window.matchMedia('(max-width: 600px)').matches) { v.querySelector('source').src = v.getAttribute('data-narrow'); v.load(); }
