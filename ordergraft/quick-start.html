@@ -40,7 +40,7 @@
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0)</h2>
   <ol>
-    <li>After checkout, download <code>ordergraft-1.0.1.zip</code> from the link in the email. Install the zip itself; do not unzip it first.</li>
+    <li>After checkout, download <code>ordergraft-1.0.2.zip</code> from the link in the email. Install the zip itself; do not unzip it first.</li>
     <li>In Blender, choose <strong>Edit &gt; Preferences...</strong>, then <strong>Get Extensions</strong> in the list on the left. The first time, Blender shows an "Online Extensions" box with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Ordergraft needs neither; you can leave the box alone.</li>
     <li>Open the drop-down menu at the top right of that tab, choose <strong>Install from Disk...</strong>, pick the zip, and press the <strong>Install from Disk</strong> button. <strong>Enable on Install</strong> is ticked, so Ordergraft is on. Its row under Installed reads "Copy vertex order between meshes. Sidebar, Ordergraft tab."</li>
     <li>Close Preferences, press <strong>N</strong> in the 3D Viewport and open the <strong>Ordergraft</strong> tab.</li>
@@ -61,13 +61,13 @@
   </figure>
 
   <h2 id="pins">A part is listed</h2>
-  <p>When Ordergraft cannot tell a part apart, for example identical teeth that moved a lot, or a part that is its own mirror image, it leaves that part as it was and lists it with the reason. Click <strong>Target</strong> or <strong>Source</strong> on its row to select that part in Edit Mode. Pick two neighbouring faces on the target part (click, then Shift-click), then the matching two on the source part with Shift-clicks. Press <strong>Pin Selected Faces</strong>, go back to Object Mode and press Copy Order again. Pins are kept for the session and are not written into the file; <strong>Clear Pins</strong> forgets them.</p>
+  <p>When Ordergraft cannot tell a part apart, for example identical teeth that moved a lot, or a part that is its own mirror image, it leaves that part as it was and lists it with the reason. Click <strong>Target</strong> or <strong>Source</strong> on its row to select that part in Edit Mode; the view moves to it, and pressing the other button keeps the two faces you already picked. Pick two neighbouring faces on the target part (click, then Shift-click), then the matching two on the source part with Shift-clicks. Press <strong>Pin Selected Faces</strong>: if the two faces on the source cannot lie on the part the way the two on the target do, it says so and sets nothing. Go back to Object Mode and press Copy Order again; the result says "Placed by your pin" and leaves that part out of its Order matches line. A pin that is set and not used is named in the result, with its reason. Pins are kept for the session and are not written into the file; <strong>Clear Pins</strong> forgets them.</p>
 
   <h2 id="triangles">Triangulated copies</h2>
-  <p>Triangles and quads need nothing set. When two copies were triangulated after different sculpts, tick <strong>Match triangulation</strong> to turn the target's flipped diagonals to the source's first; vertex positions do not move.</p>
+  <p>Triangles and quads need nothing set. When two copies were triangulated after different poses, tick <strong>Match triangulation</strong> to turn the target's flipped diagonals to the source's first, in the same press; vertex positions do not move. This works while no vertex moved farther than about 1.2&nbsp;average edge lengths. Beyond that the result reads "The triangles could not be followed" and nothing changes: triangulate both copies the same way, or after posing, and run again.</p>
 
   <h2 id="different">A different topology</h2>
-  <p>If the copies really differ (a vertex added or merged, a different retopology), Check Pair and Copy Order name the part and the vertices where they stop matching, and the target is left as it was. <strong>Show</strong> selects those vertices on both meshes in Edit Mode, and <strong>Copy Report to Text Editor</strong> writes the same lines to a text block.</p>
+  <p>If the copies really differ (a vertex added or merged, a different retopology), Check Pair and Copy Order name the part and the vertices where they stop matching, and the target is left as it was. <strong>Show</strong> selects those vertices on both meshes in Edit Mode, and <strong>Copy Report to Text Editor</strong> writes the same lines to a text block and opens it in a new window; close the window when you are done.</p>
 
   <h2 id="holds">What else holds the target's&nbsp;numbers</h2>
   <p>Copy Order renumbers the target's vertices. Objects parented to one or three of its vertices and its Hook modifiers are moved to the same vertices. Hair or particle systems and modifiers bound to the target (Surface Deform and similar) cannot be re-pointed: the result names them, and Ctrl+Z undoes the copy.</p>
