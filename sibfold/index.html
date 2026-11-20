@@ -157,7 +157,7 @@
   pre.pats code { font-size: 14px; }
   code.nw { white-space: nowrap; }
   @media (max-width: 600px) { code.nw { white-space: normal; overflow-wrap: anywhere; } }
-  @media (max-width: 600px) { .top .sub .more { display: none; } .top h1 { font-size: 21px; } .top .button { padding: 7px 14px; } .top .fine { font-size: 13px; line-height: 1.35; } }
+  @media (max-width: 600px) { .top h1 { font-size: 21px; } .top .button { padding: 7px 14px; } .top .fine { font-size: 13px; line-height: 1.35; } }
 </style>
 </head>
 <body>
@@ -167,7 +167,7 @@
 </header>
 <section class="top">
   <h1>Sibfold: Regex File Nesting</h1>
-  <p class="sub">The IDE's File Nesting takes one fixed suffix, so <code>server_ext_test.go</code> stays loose beside <code>server.go</code>. Sibfold nests files<span class="more"> in the Project view</span> by regular expression, so it folds under it.</p>
+  <p class="sub">The IDE's File Nesting takes one fixed suffix, so <code>server_ext_test.go</code> stays loose. Sibfold nests files by regular expression, so it folds under <code>server.go</code>.</p>
   <div class="top-images">
   <figure class="top-image">
     <a href="img/hero-before-after.png"><picture><source media="(max-width: 600px), (min-width: 1000px) and (max-width: 1250px), (min-width: 1000px) and (max-height: 700px)" srcset="img/hero-after-phone.png" width="387" height="174"><img class="hero" src="img/hero-before-after.png" alt="The Project view of the xds folder of gRPC Go in IntelliJ IDEA 2025.2, before and after one Sibfold rule. Before, with no rule yet: server.go, server_ext_test.go, server_options.go, server_resource_ext_test.go, server_security_ext_test.go, server_serving_mode_ext_test.go, server_test.go and xds.go in one flat list. After one rule: server.go holds its five tests, server_ext_test.go, server_resource_ext_test.go, server_security_ext_test.go, server_serving_mode_ext_test.go and server_test.go, with server_options.go and xds.go beside it" width="790" height="342"></picture></a>
@@ -180,7 +180,7 @@
     <li><strong>My team gets the same rules from version control (license).</strong><span class="more"> Save Rules to sibfold.rules, commit it.</span></li>
   </ul>
   <div class="buy">
-    <p class="price"><strong>Free:</strong> one rule at a time<span class="more">, no time limit, tester included</span>. <strong>$7&nbsp;once</strong> adds more rules, Save Rules to sibfold.rules, nesting levels and Ready Rule Sets...; 30-day trial<span class="more"> of everything</span>.</p>
+    <p class="price"><strong>Free:</strong> complete for one rule at a time<span class="more">, no time limit, tester included</span>. <strong>$7&nbsp;once</strong> adds more rules, Save Rules to sibfold.rules, nesting levels and Ready Rule Sets...; 30-day&nbsp;trial<span class="more"> of everything</span>.</p>
     <div class="buy-row">
       <button class="button" id="buy" type="button" disabled aria-describedby="buy-note" title="Not on JetBrains Marketplace yet: there is no listing to open">Get it on JetBrains Marketplace</button>
       <span class="buy-note" id="buy-note">Not on JetBrains Marketplace yet.</span>
@@ -196,7 +196,7 @@
   <figure>
     <img class="ui wide-only" src="img/rule-tester.png" alt="Settings | Appearance &amp; Behavior | Sibfold in IntelliJ IDEA 2025.2: the rule Go tests with the parent pattern (?&lt;base&gt;.+)\.go and the child pattern ${base}(_.+)?_test\.go; under Matches in the open project the line 233 files would hold 266 nested files in 136 folders, and a list of the matches by folder, starting with balancer_wrapper.go holding balancer_wrapper_test.go. At the bottom, a line says one rule is in force at a time without a license and that a license costs $7 once" width="702" height="628" loading="lazy">
     <img class="ui narrow-only" src="img/rule-tester-phone.png" alt="The rule Go tests with its name, parent pattern (?&lt;base&gt;.+)\.go and child pattern ${base}(_.+)?_test\.go, and under Matches in the open project the line 233 files would hold 266 nested files in 136 folders" width="345" height="181" loading="lazy">
-    <figcaption>The rule and its tester on gRPC Go: 233 files would hold 266 nested files; the IDE's one rule <code>.go</code> with <code>_test.go</code> nests 225 of them (<a href="#tested">how we tested</a>).</figcaption>
+    <figcaption>The rule and its tester on gRPC Go: 233&nbsp;files would hold 266&nbsp;nested files; the IDE's one rule <code>.go</code> with <code>_test.go</code> nests 225&nbsp;of them (<a href="#tested">how we tested</a>).</figcaption>
   </figure>
   <p class="fine">The same idea for other names<span class="narrow-only-inline"> (swipe sideways)</span>:</p>
   <div class="swipe-wrap"><div class="scroll-x"><pre class="pats"><code>foo.1.log, foo.2.log under foo.log
@@ -231,14 +231,14 @@ Function.cp37-win_amd64.pyd under Function.pyx
     <figcaption>Your rule, and a teammate's <em>Protobuf output</em>, marked <em>from file</em> (added to the file by hand for this picture, as a pull would).</figcaption>
   </figure>
 
-  <p><span class="step-tag">5. Start from a ready set (license)</span><br>Seven sets with 17 rules in all, for Go, Dart, TypeScript, Python and more. The dialog shows what a set would nest in your open project before you add it; what is added are ordinary rules you can edit or delete.</p>
+  <p><span class="step-tag">5. Start from a ready set (license)</span><br>Seven&nbsp;sets with 17&nbsp;rules in all, for Go, Dart, TypeScript, Python and more. The dialog shows what a set would nest in your open project before you add it; what is added are ordinary rules you can edit or delete.</p>
   <figure>
     <img class="ui wide-only" src="img/ready-sets.png" alt="The Ready Rule Sets dialog in IntelliJ IDEA 2025.2 with the set Go selected, among Dart and Flutter, TypeScript and JavaScript, Python, GraphQL fragments, Rotated logs and Per-language resource files. The line reads Go: adds 3 rules. 243 files would hold 282 nested files in this project, above a tree of the matches, and the buttons Add Rules and Cancel" width="766" height="470" loading="lazy">
     <img class="ui narrow-only" src="img/ready-sets-phone.png" alt="The Ready Rule Sets preview for the set Go: the line 243 files would hold 282 nested files, above the tree of matches, starting with balancer_wrapper.go holding balancer_wrapper_test.go" width="312" height="409" loading="lazy">
-    <figcaption>The Go set previewed on gRPC Go: 243 files would hold 282 nested files; three suffix rules in the IDE nest 241 of them (<a href="#tested">how we tested</a>).</figcaption>
+    <figcaption>The Go set previewed on gRPC Go: 243&nbsp;files would hold 282&nbsp;nested files; three suffix rules in the IDE nest 241&nbsp;of them (<a href="#tested">how we tested</a>).</figcaption>
   </figure>
 
-  <p><span class="step-tag">6. Nest in levels (license)</span><br>A child can hold its own children, up to 5 levels: <code>bootstrap.css</code> holds <code>bootstrap.min.css</code>, which holds <code>bootstrap.min.css.map</code>. The IDE's own nesting has one level.</p>
+  <p><span class="step-tag">6. Nest in levels (license)</span><br>A child can hold its own children, up to 5&nbsp;levels: <code>bootstrap.css</code> holds <code>bootstrap.min.css</code>, which holds <code>bootstrap.min.css.map</code>. The IDE's own nesting has one level.</p>
   <figure>
     <img class="ui" src="img/levels.png" alt="The dist/css folder of Bootstrap 4.6.2 in IntelliJ IDEA 2025.2: bootstrap.css holds bootstrap.css.map and bootstrap.min.css, and bootstrap.min.css holds bootstrap.min.css.map, which is selected" width="387" height="144" loading="lazy">
     <figcaption>Bootstrap 4.6.2's <code>dist/css</code>, with two rules.</figcaption>
@@ -250,13 +250,13 @@ Function.cp37-win_amd64.pyd under Function.pyx
     <li>Files in the same folder only. The Project and Project Files views, not Scopes or Packages, and not Rider. Files are never moved, renamed or changed; the one file Sibfold writes is <code>sibfold.rules</code>.</li>
     <li>A file the IDE's own rules already nested stays under that parent. Moving a parent carries the files the IDE nested, not Sibfold's (read from the platform's list, not run as a move).</li>
     <li>No glob syntax. Not included: hiding files, named groups, nesting folders under files, importing the IDE's rules.</li>
-    <li>On one project of about 19,000 files (a TypeScript repository), Select Opened File right after OK selected the parent folder instead of the nested file in two of three window runs; the cause is not found. It did not happen on gRPC Go.</li>
-    <li>What you gain depends on how many of your names have a variable middle: on gRPC Go the free rule nests 41 more files than the IDE's one rule.</li>
+    <li>On one project of about 19,000&nbsp;files (a TypeScript repository), Select Opened File right after OK selected the parent folder instead of the nested file in two of three window runs; the cause is not found. It did not happen on gRPC Go.</li>
+    <li>What you gain depends on how many of your names have a variable middle: on gRPC Go the free rule nests 41&nbsp;more files than the IDE's one rule.</li>
   </ul>
 
   <h2 id="details">Details</h2>
   <ul class="tight">
-    <li><strong>Price:</strong> $7 once, personal and commercial alike, nothing renews; the free tier does not shrink. After the 30-day trial nothing pops up: the first rule keeps working. Updates released through JetBrains Marketplace are included (not run yet: no listing).</li>
+    <li><strong>Price:</strong> $7&nbsp;once, personal and commercial alike, nothing renews; the free tier does not shrink. After the 30-day&nbsp;trial nothing pops up: the first rule keeps working. Updates released through JetBrains Marketplace are included (not run yet: no listing).</li>
     <li><strong>Works in:</strong> IntelliJ-based IDEs from build 252 (2025.2), no upper limit; not Rider. Opened in a window: IntelliJ IDEA and PyCharm 2025.2 and 2026.3. Plugin Verifier and tests only: WebStorm, GoLand, PhpStorm, RubyMine, RustRover and Android Studio.</li>
     <li><strong>Untested:</strong> everything ran on Linux. Windows and macOS desktops, a WebStorm window, and a real Marketplace trial or purchase were not run. <strong>Refunds:</strong> JetBrains Marketplace takes the payment and handles refund requests under its own purchase terms; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
     <li><strong>Privacy:</strong> Sibfold reads file names in the open project and, when you use it, the rules file. It makes no network calls and sends nothing; the IDE's own license and update checks are the IDE's.</li>
@@ -266,11 +266,11 @@ Function.cp37-win_amd64.pyd under Function.pyx
   <details id="tested">
     <summary>How we tested</summary>
     <ul>
-      <li>149 automated tests of version 1.0.1, none failing, run without a display.</li>
-      <li>318 steps in 32 scripted runs of version 1.0.1 in full IDE windows (IntelliJ IDEA and PyCharm, 2025.2 and 2026.3, under a virtual display), none failing. Scripted clicks and keys; no person drove them.</li>
-      <li>Plugin Verifier on 15 builds (IntelliJ IDEA, PyCharm, WebStorm, GoLand, PhpStorm, RubyMine and RustRover 2025.2 and 2026.3, Android Studio 2025.2): all Compatible, no internal API.</li>
-      <li>gRPC Go at commit 50ea134, counted from the Project view's tree (version 1.0.1, IntelliJ IDEA 2025.2): the IDE's one rule <code>.go</code> with <code>_test.go</code> nests 225 files; the free rule above nests 266, the same 225 and 41 more such as <code>server_ext_test.go</code>; three suffix rules typed into the IDE nest 241; the Go ready set nests 282. That is 41 of the 1,221 files at the top level of its folders. On nine public projects the ready sets added files on five (41, 6, 40, 9 and 35) and none on four.</li>
-      <li>Speed (version 1.0.1, IntelliJ IDEA 2025.2, Linux, 4 CPUs, median of 10 runs in a window): gRPC Go's largest folder, 53 files with three Go rules, 2.3 ms with Sibfold on and 2.7 ms off; a generated folder of 5,001 files with 20 rules, 0.87 s to work out after a change. One folder of 10,000 Go files takes about 4 s and one of 20,000 about 20 s (names only, best of 3).</li>
+      <li>149&nbsp;automated tests of version 1.0.1, none failing, run without a display.</li>
+      <li>318&nbsp;steps in 32&nbsp;scripted runs of version 1.0.1 in full IDE windows (IntelliJ IDEA and PyCharm, 2025.2 and 2026.3, under a virtual display), none failing. Scripted clicks and keys; no person drove them.</li>
+      <li>Plugin Verifier on 15&nbsp;builds (IntelliJ IDEA, PyCharm, WebStorm, GoLand, PhpStorm, RubyMine and RustRover 2025.2 and 2026.3, Android Studio 2025.2): all Compatible, no internal API.</li>
+      <li>gRPC Go at commit 50ea134, counted from the Project view's tree (version 1.0.1, IntelliJ IDEA 2025.2): the IDE's one rule <code>.go</code> with <code>_test.go</code> nests 225 files; the free rule above nests 266, the same 225 and 41&nbsp;more such as <code>server_ext_test.go</code>; three suffix rules typed into the IDE nest 241; the Go ready set nests 282. That is 41&nbsp;of the 1,221&nbsp;files at the top level of its folders. On nine public projects the ready sets added files on five (41, 6, 40, 9 and 35) and none on four.</li>
+      <li>Speed (version 1.0.1, IntelliJ IDEA 2025.2, Linux, 4&nbsp;CPUs, median of 10&nbsp;runs in a window): gRPC Go's largest folder, 53&nbsp;files with three Go rules, 2.3&nbsp;ms with Sibfold on and 2.7&nbsp;ms off; a generated folder of 5,001&nbsp;files with 20 rules, 0.87&nbsp;s to work out after a change. One folder of 10,000&nbsp;Go files takes about 4 s and one of 20,000&nbsp;about 20 s (names only, best of 3).</li>
     </ul>
   </details>
 
@@ -279,7 +279,7 @@ Function.cp37-win_amd64.pyd under Function.pyx
       <button class="button" id="buy-2" type="button" disabled aria-describedby="buy-note-2" title="Not on JetBrains Marketplace yet: there is no listing to open">Get it on JetBrains Marketplace</button>
       <span class="buy-note" id="buy-note-2">Not on JetBrains Marketplace yet.</span>
     </div>
-    <p class="fine">Free: one rule at a time · $7 once for the rest</p>
+    <p class="fine">Free: one rule at a time · $7&nbsp;once for the rest</p>
   </div>
 </main>
 <script>
