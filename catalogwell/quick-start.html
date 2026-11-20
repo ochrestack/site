@@ -144,10 +144,6 @@
   <h2 id="reading">Reading the result</h2>
   <p><strong>Connection.</strong> Whether Meta&nbsp;for&nbsp;WooCommerce and Google&nbsp;for&nbsp;WooCommerce are active, deactivated or deleted, whether a token is stored (never shown) and the IDs. Meta&nbsp;for&nbsp;WooCommerce gets one of five states: <strong>Connected</strong> (a token is stored; Catalogwell does not log in to Meta), <strong>Token rejected by Meta</strong> (the plugin itself marked it invalid), <strong>Access token missing</strong>, <strong>Left behind</strong> (the plugin is off but its token or IDs are still stored) and <strong>Never connected</strong>. Each has one next step and a label: &ldquo;Fix on this site&rdquo;, or &ldquo;Meta&rsquo;s side: Catalogwell only reports this&rdquo;.</p>
   <p><strong>Catalog.</strong> How many products go to Meta as hidden, a table of reasons, and a list you can filter. Reasons name the WooCommerce setting or product field they come from.</p>
-  <figure class="shot">
-    <picture><source media="(max-width: 800px)" srcset="img/catalog-list-phone.png" width="314" height="444"><img class="ui" src="img/catalog-list.png" alt="Catalogwell's list of hidden products, 2 products in this list: Album (ID 40) and Single (ID 42), each going to Meta as hidden, with the reason: Virtual product (the &ldquo;Virtual&rdquo; box on the product is ticked): Meta for WooCommerce sends virtual products, bundles excepted, as hidden" width="858" height="289" style="--w:858px;--pw:314px" loading="lazy"></picture>
-    <figcaption>The list of hidden products, with a reason for each.</figcaption>
-  </figure>
   <p><strong>Pixel.</strong> The Pixel IDs your home page and a product page carry, and which plugin printed each. Flags: no Pixel while one is stored, a Pixel that is not the stored one, two Pixel IDs, or one Pixel started twice.</p>
   <figure class="shot">
     <picture><source media="(max-width: 800px)" srcset="img/pixel-two-phone.png" width="314" height="497"><img class="ui" src="img/pixel-two.png" alt="Catalogwell's Pixel check for the home page: a table of two Pixel IDs, one printed by Meta for WooCommerce and one by Meta pixel for WordPress, and two flags: the second Pixel is not the Pixel stored by Meta for WooCommerce, and two different Pixel IDs are started on this page, so each event can be sent once for each Pixel" width="858" height="328" style="--w:858px;--pw:314px" loading="lazy"></picture>
@@ -156,7 +152,7 @@
   <p><strong>Event IDs and Purchase pairs.</strong> The same page loaded five times, each as a new visitor. An event ID seen in two loads is reported as <strong>Repeated</strong>. In a cached copy more than 30&nbsp;minutes old, Meta&nbsp;for&nbsp;WooCommerce 3.7.9&nbsp;drops the ID in the browser, and Catalogwell says <strong>No event ID sent</strong>. For your last 50&nbsp;orders it counts the Purchase records the store saved: what your store recorded, never what Meta received.</p>
   <figure class="shot">
     <picture><source media="(max-width: 800px)" srcset="img/copy-as-text-phone.png" width="314" height="445"><img class="ui" src="img/copy-as-text.png" alt="Catalogwell's Copy as text section: a plain report for the plugin's support forum that holds no access token, no customer data and no e-mail address, the Copy as text button, and the start of the report: Catalogwell 1.0.1 report, WordPress 7.1.5, PHP 8.3.6, WooCommerce 11.3.1, the Meta for WooCommerce version and its connection state and stored IDs" width="858" height="436" style="--w:858px;--pw:314px" loading="lazy"></picture>
-    <figcaption>Copy as text: the report starts with versions, then states and IDs.</figcaption>
+    <figcaption>Copy as text: the report starts with versions, then states and IDs. The box is made taller here.</figcaption>
   </figure>
 
   <h2 id="pro">Catalogwell Pro</h2>
