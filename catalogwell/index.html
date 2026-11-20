@@ -144,7 +144,7 @@
   <div class="box warn" id="free-route">
     <strong>What it is, and what it isn&rsquo;t.</strong> The platform&rsquo;s own path already works in four places, and we say so:
     <ul>
-      <li>Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own &ldquo;Synced to Meta catalog&rdquo; column already shows whether a product syncs. Catalogwell adds which synced products go as hidden, and why.</li>
+      <li>Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own &ldquo;Synced to Meta catalog&rdquo; column already shows whether a product syncs; Catalogwell adds which synced products go as hidden, and why.</li>
       <li>Google&nbsp;for&nbsp;WooCommerce&rsquo;s own Product Feed page already lists each product&rsquo;s status; Catalogwell adds only a summary.</li>
       <li>Developer tools and Meta&rsquo;s Test Events show one visit at a time; Catalogwell compares five.</li>
       <li>Some faults are on Meta&rsquo;s or Google&rsquo;s side; Catalogwell labels them and says where they are fixed. It cannot see or change either account, and changes none of your products, orders or settings.</li>
@@ -197,7 +197,7 @@
 
   <h2 id="details">Details</h2>
   <ul>
-    <li><a href="quick-start.html">Quick start</a>: what each part shows (Pixel IDs, Purchase records, Copy as text), limits and privacy.</li>
+    <li><a href="quick-start.html">Quick start</a>: what each part shows, limits, privacy.</li>
     <li>Free plugin: <a href="download/catalogwell.zip?v=1.0.1">catalogwell.zip</a> 1.0.1,&nbsp;source code included, GPL-2.0-or-later. It is not in the WordPress.org directory yet; install it from this zip.</li>
     <li>Needs WordPress 6.5&nbsp;and PHP 7.4&nbsp;or later (tested with WooCommerce 11.3.1&nbsp;and 9.0.2). Rules read from Meta&nbsp;for&nbsp;WooCommerce 3.7.9&nbsp;and Google&nbsp;for&nbsp;WooCommerce 3.10.1.&nbsp;Install the free plugin first: Pro uploaded alone ends on a WordPress error page and activates nothing.</li>
     <li>Neither plugin sends anything to Ochrestack or any outside service; another plugin that records visits on the server may count Catalogwell&rsquo;s page loads.</li>
@@ -207,9 +207,8 @@
 
   <h2 id="tested">How we tested (version 1.0.1)</h2>
   <ul>
-    <li>198&nbsp;automated tests (11,840&nbsp;assertions, 1&nbsp;skipped) on PHP 8.3.6&nbsp;and 7.4.33,&nbsp;WordPress 7.1.5&nbsp;and 6.5.5.</li>
-    <li>The hidden list matches Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own catalog file: 22&nbsp;rows, 2&nbsp;hidden, 0&nbsp;differences on the sample store, and 0&nbsp;on real Polylang 3.9.2&nbsp;stores.</li>
-    <li>Real WP Super Cache 3.1.5&nbsp;and W3 Total Cache 2.11.0; 10,000&nbsp;products in 9.9&nbsp;seconds (PHP 8.3.6,&nbsp;WordPress 7.1.5).</li>
+    <li>198&nbsp;automated tests (11,840&nbsp;assertions, 1&nbsp;skipped) on PHP 8.3.6&nbsp;and 7.4.33,&nbsp;WordPress 7.1.5&nbsp;and 6.5.5;&nbsp;real WP Super Cache 3.1.5&nbsp;and W3 Total Cache 2.11.0.</li>
+    <li>The hidden list equals Meta&nbsp;for&nbsp;WooCommerce&rsquo;s own catalog file: 22&nbsp;rows, 2&nbsp;hidden, 0&nbsp;differences on the sample store, and 0&nbsp;on real Polylang 3.9.2&nbsp;stores. 10,000&nbsp;products took 9.9&nbsp;seconds (PHP 8.3.6,&nbsp;WordPress 7.1.5).</li>
   </ul>
   <details id="images">
     <summary>How the images were made</summary>
