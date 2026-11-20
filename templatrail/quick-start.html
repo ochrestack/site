@@ -111,7 +111,7 @@
   <h2 id="install">Install</h2>
   <p>Requires WordPress 6.8 or later, PHP 7.4 or later, and Elementor active.</p>
   <ol>
-    <li>Get the files. The free plugin is <a href="download/templatrail.zip?v=1.0.1">templatrail.zip</a> (version 1.0.1) from this site; it is not on WordPress.org yet. Pro buyers also get <code>templatrail-pro.zip</code> (version 1.0.1) from Polar, through the link in the order email. Do not unzip either.</li>
+    <li>Get the files. The free plugin is <a href="download/templatrail.zip?v=1.0.2">templatrail.zip</a> (version 1.0.2) from this site; it is not on WordPress.org yet. Pro buyers also get <code>templatrail-pro.zip</code> (version 1.0.1) from Polar, through the link in the order email. Do not unzip either.</li>
     <li>In WordPress, go to <strong>Plugins &gt; Add Plugin</strong>, click <strong>Upload Plugin</strong>, choose <code>templatrail.zip</code>, then <strong>Install Now</strong> and <strong>Activate Plugin</strong>. The Plugins screen then says where it lives, with an <strong>Open Templatrail</strong> link.</li>
   </ol>
   <figure>
@@ -148,7 +148,7 @@
 
   <h2 id="cleanup">Clear out templates</h2>
   <ol>
-    <li>Open the <strong>No use found</strong> tab and tick the templates to clear out. Read each row first.</li>
+    <li>Open the <strong>No use found</strong> tab and tick the templates to clear out. Read each row first, and the line above the button: a template placed from a PHP theme file, a menu or another plugin’s own tables shows as No use found, because Templatrail cannot see it.</li>
     <li>Press <strong>Move selected to Trash</strong>. Templatrail reads the site again for them, leaves out any that gained a use, and moves the rest to WordPress's Trash. The result names what moved and what was left alone, and why.</li>
     <li>To restore, use the <strong>Open Elementor’s Trash view to restore templates</strong> link in the result, or the Trash link above the Saved Templates list; point at a template and choose Restore.</li>
   </ol>
@@ -168,7 +168,7 @@
   <h2 id="pro">Templatrail Pro</h2>
   <ul>
     <li><strong>Replace everywhere.</strong> Open the template's own screen (its count under Used on in Saved Templates), press <strong>Replace everywhere</strong>, choose a template of the same kind under <strong>Replace with</strong>, press <strong>Preview the change</strong>, and read <strong>This will change</strong> and the list of places. Press <strong>Replace everywhere</strong> again to confirm. Each changed post gets a revision first, Elementor's CSS cache is cleared, and a summary lists what changed and what failed.</li>
-    <li><strong>Export CSV.</strong> Beside Scan site on Tools &gt; Templatrail: the report of the last scan, one row per use, plus the templates with no use found, those to check by hand, and the references to missing templates.</li>
+    <li><strong>Export CSV.</strong> Beside Scan site on Tools &gt; Templatrail: the report of the last scan, one row per place that uses a template, plus the templates with no use found, those to check by hand, and the references to missing templates.</li>
   </ul>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/pro-summary-phone.png" width="390" height="236"><img src="img/pro-summary.png" alt="Templatrail Pro's summary after Replace everywhere: 'Replaced Call to action: book a call with Call to action: guide in 2 places.', the posts changed, Services and Pricing, each with an Edit with Elementor link, and 'Elementor's CSS cache was cleared.'" width="864" height="187" loading="lazy"></picture>
