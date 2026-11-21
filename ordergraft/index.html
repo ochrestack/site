@@ -77,6 +77,8 @@
   .buy .row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
   .buy .row .price { margin: 0; max-width: none; }
   .button { white-space: nowrap; }
+  .studio { display: inline-block; border: 2px solid var(--ink); color: var(--ink); text-decoration: none; font-weight: 600; padding: 8px 14px; border-radius: 8px; white-space: nowrap; }
+  .studio:hover, .studio:focus { border-color: var(--ochre-text); color: var(--ochre-text); }
   .top { display: grid; grid-template-columns: 452px 1fr; gap: 24px; align-items: start; margin: 12px 0 8px; }
   .top figure { margin: 0; }
   .top .hero { margin: 0 0 6px; }
@@ -120,6 +122,7 @@
     <div class="row">
       <p class="price"><strong>$8&nbsp;once</strong>, source included. Every update included.</p>
       <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_rdqbgeUkMaodrb2rkmYhl7No8ePegijYhDIGT1nyApk">Buy for $8</a>
+      <a class="studio" id="studio" href="mailto:support@ochrestack.com?subject=Ordergraft%20Studio%20licence&amp;body=Please%20send%20me%20the%20checkout%20link%20for%20the%20Ordergraft%20Studio%20licence%20(up%20to%2010%20seats%2C%20%2430).">Studio, $30 (email)</a>
     </div>
     <p class="fine">Blender 4.2 LTS to 5.3, tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux) · source code included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · Polar checkout · <a href="../terms.html">refund within 14&nbsp;days if we can't fix a fault</a> · no license check · <a href="#details">details</a></p>
   </div>
@@ -151,7 +154,7 @@
   <p>Rain's face: 43&nbsp;loose parts, 16,109&nbsp;vertices (<a href="how-made.html">how</a>).</p>
   <figure>
     <img src="img/rain-torn-vs-clean-2x1.png" alt="The same mesh and camera in Blender, the smile shape key at full strength. Left, labelled Join as Shapes alone: Rain's face is torn into shards. Right, labelled After one Ordergraft run: she smiles, with her eyes, eyebrows and teeth in place." width="1600" height="800" loading="lazy">
-    <figcaption>Left: Join as Shapes alone, largest vertex error 0.255&nbsp;m on a face 0.344&nbsp;m tall. Right: after one Ordergraft run, 0&nbsp;m.</figcaption>
+    <figcaption>Left: Join as Shapes alone, largest vertex error 0.255&nbsp;m. Right: after one Ordergraft run, 0&nbsp;m.</figcaption>
   </figure>
   <div class="pair wide">
     <figure>
@@ -208,6 +211,13 @@
       <figcaption>Rain's body, jeans, top, shoes, scarf and face as one all-triangle mesh. A morph target sculpted up to half an edge and exported with the same triangles: one press, 1.8&nbsp;s without a window. <a href="img/rain-game-window.png">Whole window</a>.</figcaption>
     </figure>
     <p>The same sculpt triangulated again by another tool is reported, not followed ("The triangles could not be followed"): one part has 20,462 faces and many of its diagonals differ. Triangulate both copies the same way first.</p>
+  </details>
+  <details>
+    <summary>Settling a listed part, step by step (38&nbsp;s)</summary>
+    <figure>
+      <img src="img/rain-pin.gif" alt="Blender 4.2.23, Rain's face twice side by side, the copy with her left cornea, a round part, turned about its own axis. Copy Order lists it (Parts matched: 41 of 43, Pins needed: 2). Target selects the part in Edit Mode and the view moves to her eye; two neighbouring faces are picked. Source does the same on the other face; the matching two faces are picked. Pin Selected Faces, then Copy Order again: Parts matched: 42 of 43, Pins needed: 1, Placed by your pin: Part 8 on the target (672 faces, Part 8 on the source)." width="960" height="424" loading="lazy">
+      <figcaption>Pinning a listed part on Rain: her left cornea is turned about its own axis in the copy. The view is zoomed by script; the waits are sped up. <a href="quick-start.html#pins">Steps</a>.</figcaption>
+    </figure>
   </details>
   <p>Install and first copy: <a href="quick-start.html">quick start</a>.</p>
   <details>
