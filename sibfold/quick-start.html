@@ -155,7 +155,9 @@
 
   <h2 id="install">Install</h2>
   <p>Sibfold is not on JetBrains Marketplace yet, so there is nothing to install from there today.</p>
-  <p>Installing from a zip file was run in IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3: <strong>Settings | Plugins</strong>, the gear menu, <strong>Install Plugin from Disk...</strong>, pick the zip without unpacking it, <strong>Accept</strong> the Third-Party Plugins Notice, then <strong>Restart IDE</strong> and confirm the second question, &ldquo;Restart IntelliJ IDEA to apply changes in plugins?&rdquo;. After a restart the IDE may show its own &ldquo;Cannot update plugins&rdquo; balloon; it comes from the IDE and does not affect Sibfold.</p>
+  <p>Installing from a zip file was run in IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3: <strong>Settings | Plugins</strong>, the gear menu, <strong>Install Plugin from Disk...</strong>, pick the zip without unpacking it, <strong>Accept</strong> the Third-Party Plugins Notice, then <strong>Restart IDE</strong> and confirm the second question, &ldquo;Restart IntelliJ IDEA to apply changes in plugins?&rdquo;.</p>
+
+  <p>After a restart the IDE may show its own &ldquo;Cannot update plugins&rdquo; balloon; it comes from the IDE and does not affect Sibfold.</p>
   <p>After the restart the IDE shows no sign of Sibfold. It lives in three places: <strong>Settings | Appearance &amp; Behavior | Sibfold</strong>; the Project view's options menu (the three dots in the Project tool window) | Appearance | <strong>Sibfold Nesting Rules...</strong>; and Find Action (Ctrl+Shift+A), typing &ldquo;Sibfold Nesting Rules&rdquo;.</p>
   <figure>
     <img class="ui" src="img/options-menu.png" alt="The Project view's options menu with Appearance open in IntelliJ IDEA 2025.2: Show, Members, Excluded Files, Visibility Icons, Scratches and Consoles, File Details, Flatten Modules, Flatten Packages, Abbreviate Qualified Names, Compact Middle Packages, then File Nesting..., Sibfold Nesting Rules... and a ticked Sibfold Nesting, then Customize Tree Views..." width="236" height="398" loading="lazy">
@@ -187,7 +189,13 @@
   </ul>
 
   <h2 id="trial">License and trial</h2>
-  <p>One rule at a time, the tester, Select Opened File and live updates are free with no time limit. Your rules are the IDE's settings, not a project's, so the one rule in force is the same in all your projects; a second rule stays saved and marked <em>not in force</em> until you untick the first or have a license, and the tester names the rule in force. The license is $7&nbsp;once per person, the same for personal and commercial use (a team of six is $42), with a 30-day&nbsp;trial of everything; nothing renews. When the trial ends nothing pops up: your first rule keeps working, the others stay saved and marked <em>not in force</em>, and the settings page says in one line what the license adds.</p>
+  <p>One rule at a time, the tester, Select Opened File and live updates are free with no time limit.</p>
+
+  <p>Your rules are the IDE's settings, not a project's, so the one rule in force is the same in all your projects; a second rule stays saved and marked <em>not in force</em> until you untick the first or have a license, and the tester names the rule in force.</p>
+
+  <p>The license is $7&nbsp;once per person, the same for personal and commercial use (a team of six is $42), with a 30-day&nbsp;trial of everything; nothing renews.</p>
+
+  <p>When the trial ends nothing pops up: your first rule keeps working, the others stay saved and marked <em>not in force</em>, and the settings page says in one line what the license adds.</p>
   <p>The license is checked through JetBrains Marketplace licensing, which is the IDE's own. The trial and the purchase can start only once Sibfold is on the Marketplace; they have not been run. Android Studio has no JetBrains licensing, so only the free tier would apply there (not run in Android Studio).</p>
 
   <h2 id="examples">More examples</h2>
@@ -214,7 +222,7 @@ Button.test.tsx, Button.story.tsx, Button.module.css under Button.tsx
   <h2 id="limits">Limits</h2>
   <ul>
     <li>Files in the same folder only. The Project and Project Files views, not Scopes or Packages, and not Rider. Files are never moved, renamed or changed; the one file Sibfold writes is <code>sibfold.rules</code>.</li>
-    <li>A file the IDE's own File Nesting rules already put under a parent stays there. Moving a parent carries the files the IDE nested, not Sibfold's (read from the platform's list, not run as a move).</li>
+    <li>A file the IDE's own File Nesting rules already put under a parent stays there. Renaming or moving a parent leaves its Sibfold children in place; nothing is lost (run as the IDE's Rename and Move in a test).</li>
     <li>No glob syntax. Not included: hiding files, named groups, nesting folders under files, importing the IDE's rules.</li>
     <li>Everything here was run on Linux. Windows and macOS desktops and a WebStorm window were not run (<a href="index.html#details">details</a>).</li>
   </ul>

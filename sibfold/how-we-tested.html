@@ -148,14 +148,16 @@
 </header>
 <main>
   <h1>How we tested Sibfold</h1>
-  <p>Back to the <a href="index.html">product page</a>. Everything here is version 1.0.3&nbsp;and ran on Linux. The window runs, the measurements and the pictures were made on 1.0.2, whose program code is the same; 1.0.3&nbsp;changes only the plugin&rsquo;s description text, version and change notes.</p>
+  <p>Back to the <a href="index.html">product page</a>. Everything here is version 1.0.4&nbsp;and ran on Linux. The window runs, the measurements and the pictures were made on 1.0.2. Since then one thing in the program changed (the default name of a new rule is selected, run in a window on 1.0.4), besides the plugin&rsquo;s description text, version and change notes.</p>
   <ul>
-    <li>158&nbsp;automated tests, none failing, run without a display.</li>
+    <li>164&nbsp;automated tests, none failing, run without a display.</li>
     <li>340&nbsp;steps in 32&nbsp;scripted runs in full IDE windows (IntelliJ IDEA and PyCharm, 2025.2&nbsp;and 2026.3, under a virtual display), none failing. Scripted clicks and keys; no person drove them.</li>
     <li>Plugin Verifier on 15&nbsp;builds (IntelliJ IDEA, PyCharm, WebStorm, GoLand, PhpStorm, RubyMine and RustRover 2025.2&nbsp;and 2026.3, Android Studio 2025.2): all Compatible, no internal API used.</li>
-    <li>gRPC Go at commit 50ea134, counted from the Project view's tree in IntelliJ IDEA 2025.2: the IDE's one rule <code>.go</code> with <code>_test.go</code> nests 225&nbsp;files; the free rule on the product page nests 266, the same 225&nbsp;and 41&nbsp;more such as <code>server_ext_test.go</code>; three suffix rules typed into the IDE's dialog nest 241; the Go ready set nests 282. That is 41&nbsp;of the 1,221&nbsp;files at the top level of its folders.</li>
+    <li>gRPC Go at commit 50ea134, counted from the Project view's tree in IntelliJ IDEA 2025.2: the IDE's one rule <code>.go</code> with <code>_test.go</code> nests 225&nbsp;files; the free rule on the product page nests 266, the same 225&nbsp;and 41&nbsp;more such as <code>server_ext_test.go</code>; three suffix rules typed into the IDE's dialog nest 241; the Go ready set nests 282.</li>
+    <li>That is 41&nbsp;of the 1,221&nbsp;files at the top level of gRPC Go's folders.</li>
     <li>On nine public projects the ready sets added files on five (41, 6, 40, 9&nbsp;and 35) and none on four. What you gain depends on how many of your names have a variable middle.</li>
-    <li>Speed, median of 10&nbsp;runs in a window in IntelliJ IDEA 2025.2&nbsp;(Linux, 4&nbsp;CPUs): gRPC Go's largest folder, 53&nbsp;files with three Go rules, 1.4&nbsp;ms with Sibfold on and 1.0&nbsp;ms off; a generated folder of 5,001&nbsp;files with 20&nbsp;rules, 0.80&nbsp;s to work out after a change. One folder of 10,000&nbsp;Go files takes about 4&nbsp;s and one of 20,000&nbsp;about 18&nbsp;s (names only, best of 3).</li>
+    <li>Speed, median of 10&nbsp;runs in a window in IntelliJ IDEA 2025.2&nbsp;(Linux, 4&nbsp;CPUs): gRPC Go's largest folder, 53&nbsp;files with three Go rules, 1.4&nbsp;ms with Sibfold on and 1.0&nbsp;ms off; a generated folder of 5,001&nbsp;files with 20&nbsp;rules, 0.80&nbsp;s to work out after a change.</li>
+    <li>One folder of 10,000&nbsp;Go files takes about 4&nbsp;s and one of 20,000&nbsp;about 18&nbsp;s (names only, best of 3).</li>
     <li>The pictures on the product page are captures from IntelliJ IDEA 2025.2&nbsp;started with the plugin built from source, on clones of gRPC Go and Bootstrap 4.6.2. The pictures of the paid features were taken with the paid features switched on by a test tool; the Marketplace trial and purchase have not been run.</li>
   </ul>
 </main>

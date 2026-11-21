@@ -165,6 +165,7 @@
   pre.pats { margin: 0; padding: 12px 16px; background: #fff; border: 1px solid #E6DED3; border-radius: 8px; font-size: 14px; line-height: 1.5; overflow-x: auto; }
   pre.pats code { font-size: 14px; }
   code.nw { white-space: nowrap; }
+  span.nw { white-space: nowrap; }
   @media (max-width: 600px) { code.nw { white-space: normal; overflow-wrap: anywhere; } }
   @media (max-width: 600px) { .top h1 { font-size: 21px; } .top .button { padding: 7px 14px; } .top .fine { font-size: 13px; line-height: 1.35; } }
   /* Phones: the lead, the price line and the trust line say the same words as on a desktop, so they are set a little tighter to keep the buy button in the first screen. */
@@ -182,11 +183,10 @@
   <div class="top-images">
   <figure class="top-image">
     <a href="img/hero-after.png"><picture><source media="(max-width: 600px), (min-width: 1000px) and (max-width: 1250px), (min-width: 1000px) and (max-height: 700px)" srcset="img/hero-after-phone.png" width="387" height="174"><img class="hero ui" src="img/hero-after.png" alt="The Project view of the xds folder of gRPC Go in IntelliJ IDEA 2025.2 after one Sibfold rule: server.go holds its five tests, server_ext_test.go, server_resource_ext_test.go, server_security_ext_test.go, server_serving_mode_ext_test.go (selected) and server_test.go, with server_options.go and xds.go beside it" width="459" height="342"></picture></a>
-    <figcaption>gRPC Go's <code>xds</code> folder after the free rule below.</figcaption>
   </figure>
   </div>
   <ul class="benefits">
-    <li><strong>My <code>server_ext_test.go</code> files fold under <code>server.go</code>.</strong></li>
+    <li><strong>My <code>_ext_test.go</code>, <code>.test.tsx</code> or <code>.pyd</code> files fold under their parent file.</strong></li>
     <li><strong>I see what a rule does before the tree changes.</strong></li>
     <li><strong>My team gets the same rules from version control (license).</strong></li>
   </ul>
@@ -196,7 +196,7 @@
       <button class="button" id="buy" type="button" disabled aria-describedby="buy-note" title="Not on JetBrains Marketplace yet: there is no listing to open">Get it on JetBrains Marketplace</button>
       <span class="buy-note" id="buy-note">Not on JetBrains Marketplace yet.</span>
     </div>
-    <p class="fine">Tested in IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3 · not Rider · source&nbsp;code&nbsp;not&nbsp;included&nbsp;·&nbsp;<a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+    <p class="fine">Tested in IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3 <span class="nw">·&nbsp;not&nbsp;Rider</span> <span class="nw">·&nbsp;source&nbsp;code&nbsp;not&nbsp;included</span> <span class="nw">·&nbsp;<a href="mailto:support@ochrestack.com">support@ochrestack.com</a></span></p>
   </div>
 </section>
 <main>
@@ -226,8 +226,8 @@
     <figcaption>On gRPC Go: 233&nbsp;files would hold 266&nbsp;nested files; the IDE's one rule nests 225.</figcaption>
   </figure>
   <ul class="tight">
-    <li><strong>TypeScript (free):</strong> <code class="nw">(?&lt;c&gt;[A-Z]\w*)\.tsx</code> with <code class="nw">${c}\..+</code> puts <code>Button.test.tsx</code>, <code>Button.story.tsx</code> and <code>Button.module.css</code> under&nbsp;<code>Button.tsx</code>.</li>
-    <li><strong>Cython (free; file names only):</strong> <code class="nw">(?&lt;base&gt;.+)\.pyx</code> with <code class="nw">${base}(?:\.[A-Za-z0-9_-]+)*\.(?:pyd|so|c|pxd|pyi)</code> puts <code>Function.cp37-win_amd64.pyd</code> and <code>Function.c</code> under&nbsp;<code>Function.pyx</code>.</li>
+    <li><strong>TypeScript:</strong> <code class="nw">(?&lt;c&gt;[A-Z]\w*)\.tsx</code> with <code class="nw">${c}\..+</code> puts <code>Button.test.tsx</code>, <code>Button.story.tsx</code> and <code>Button.module.css</code> under&nbsp;<code>Button.tsx</code>.</li>
+    <li><strong>Cython (file names only):</strong> <code class="nw">(?&lt;base&gt;.+)\.pyx</code> with <code class="nw">${base}(?:\.[A-Za-z0-9_-]+)*\.(?:pyd|so|c|pxd|pyi)</code> puts <code>Function.cp37-win_amd64.pyd</code> and <code>Function.c</code> under&nbsp;<code>Function.pyx</code>.</li>
   </ul>
   <figure>
     <img class="ui" src="img/button-after.png" alt="The Button folder of mantine in IntelliJ IDEA 2025.2 after the free TypeScript rule: Button.tsx holds Button.module.css, Button.story.tsx and Button.test.tsx (selected); index.ts and the folders ButtonGroup and ButtonGroupSection sit beside it" width="387" height="222" loading="lazy">
@@ -247,21 +247,25 @@
     <figcaption>The IDE alone: only <code>server_test.go</code> goes under <code>server.go</code>.</figcaption>
   </figure>
 
-  <p><span class="step-tag">3. Share with the team (license)</span><br>Save Rules to sibfold.rules; commit it and teammates get your rules.</p>
+  <p><span class="step-tag">3. Share with the team (license)</span><br>Save Rules to sibfold.rules; commit it and teammates get your rules:</p>
+  <pre class="pats"><code>[Go tests]
+parent = (?&lt;base&gt;.+)\.go
+child = ${base}(_.+)?_test\.go
+enabled = true</code></pre>
   <figure>
     <img class="ui wide-only" src="img/rules-file.png" alt="The Sibfold settings page with two rules: Go tests, and Protobuf output marked from file. Below, the line sibfold.rules: 1 rule shown below, 1 the same as a personal rule, and the buttons Save Rules to sibfold.rules and Ready Rule Sets..." width="702" height="628" loading="lazy">
     <img class="ui narrow-only" src="img/rules-file-phone.png" alt="The rule list: Go tests, and Protobuf output marked from file" width="358" height="84" loading="lazy">
     <figcaption>A teammate's rule, added by hand.</figcaption>
   </figure>
 
-  <p><span class="step-tag">4. Start from a ready set (license)</span><br>Seven sets, 17&nbsp;rules, previewed first.</p>
+  <p><span class="step-tag">4. Start from a ready set (license)</span><br>Seven sets, 17&nbsp;rules, previewed.</p>
   <figure>
     <img class="ui wide-only" src="img/ready-sets.png" alt="The Ready Rule Sets dialog in IntelliJ IDEA 2025.2 with the set Go selected, among Dart and Flutter, TypeScript and JavaScript, Python, GraphQL fragments, Rotated logs and Per-language resource files. The line reads Go: adds 3 rules. 243 files would hold 282 nested files in this project, above a tree of the matches, and the buttons Add Rules and Cancel" width="766" height="470" loading="lazy">
     <img class="ui narrow-only" src="img/ready-sets-phone.png" alt="The Ready Rule Sets preview for the set Go: the line 243 files would hold 282 nested files, above the tree of matches, starting with balancer_wrapper.go holding balancer_wrapper_test.go" width="312" height="409" loading="lazy">
-    <figcaption>Go set: 243&nbsp;files would hold 282; three IDE suffix rules nest 241.</figcaption>
+    <figcaption>Go set: 243&nbsp;files would hold 282; the IDE's three rules, 241.</figcaption>
   </figure>
 
-  <p><span class="step-tag">5. Nest in levels (license)</span><br>Children nest too, up to 5&nbsp;levels; the IDE has one.</p>
+  <p><span class="step-tag">5. Nest in levels (license)</span><br>Up to 5&nbsp;levels; the IDE has one.</p>
   <figure>
     <img class="ui" src="img/levels.png" alt="The dist/css folder of Bootstrap 4.6.2 in IntelliJ IDEA 2025.2: bootstrap.css holds bootstrap.css.map and bootstrap.min.css, and bootstrap.min.css holds bootstrap.min.css.map, which is selected" width="387" height="144" loading="lazy">
   </figure>
@@ -270,15 +274,18 @@
   <h2 id="limits">Limits</h2>
   <ul class="tight">
     <li>Same folder only; Project and Project Files views; no glob syntax; files are never changed.</li>
-    <li>Select Opened File sometimes selects the parent folder, not the nested file (seen on 19,000&nbsp;files and after renames on 2026.3&nbsp;IDEs); cause not found.</li>
+    <li>Renaming or moving a parent leaves its Sibfold children in place; nothing is lost.</li>
+    <li>Select Opened File sometimes selects the parent folder, not the nested file; cause not found.</li>
   </ul>
 
   <h2 id="details">Details</h2>
   <ul class="tight">
-    <li><strong>Works in:</strong> build 252 and later, not Rider. Verifier and tests only: WebStorm, GoLand, PhpStorm, RubyMine, RustRover, Android Studio.</li>
-    <li><strong>Untested:</strong> only Linux ran; Windows, macOS, a WebStorm window and a Marketplace trial or purchase were not run. <strong>Refunds:</strong> JetBrains Marketplace handles refund requests under its terms; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
-    <li><strong>Updates</strong> come through Marketplace (not run yet); nothing renews. <strong>Privacy:</strong> no network calls, nothing sent.</li>
-    <li><a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. gRPC Go and Bootstrap: test data, no affiliation. <a href="how-we-tested.html">How we tested</a>.</li>
+    <li><strong>Works in:</strong> build 252 and later. Verifier and tests only: WebStorm, GoLand, PhpStorm, RubyMine, RustRover, Android Studio.</li>
+    <li><strong>Untested:</strong> only Linux ran; Windows, macOS, a WebStorm window and a Marketplace trial or purchase were not run.</li>
+    <li><strong>Refunds:</strong> JetBrains Marketplace handles refund requests under its terms; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li><strong>Updates</strong> come through Marketplace (not run yet); nothing renews.</li>
+    <li><strong>Privacy:</strong> no network calls, nothing sent.</li>
+    <li>gRPC Go and Bootstrap: test data, no affiliation. <a href="how-we-tested.html">How we tested</a>.</li>
   </ul>
 
   <div class="buy">
