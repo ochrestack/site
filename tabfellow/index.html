@@ -245,7 +245,7 @@
 
   <p><span class="step-tag">5. Check (license)</span><br>Settings | Tools | Tabfellow lists clashing abbreviations and templates your IDE cannot expand, each with a link to the template.</p>
   <figure>
-    <img class="ui wide-only" src="img/check-page.png" alt="Settings | Tools | Tabfellow in IntelliJ IDEA Community 2025.1: 1 shared group, 13 templates, 2 problems; petclinic (spring-petclinic) with slf also used by your own template in the group mine, and sqlrow with the context SQL, which this IDE does not have" width="712" height="180" loading="lazy">
+    <img class="ui wide-only" src="img/check-page.png" alt="Settings | Tools | Tabfellow in IntelliJ IDEA Community 2025.1: 1 shared group, 13 templates, 2 problems; petclinic (spring-petclinic) with slf also used by your own template in the group mine, and sqlrow with the context SQL, which this IDE does not have" width="712" height="190" loading="lazy">
     <img class="ui narrow-only" src="img/check-page-phone.png" alt="Settings | Tools | Tabfellow: 1 shared group, 13 templates, 2 problems, with the buttons Reload Shared Live Templates and Check again" width="360" height="80" loading="lazy">
     <figcaption>Two problems: <code>slf</code> is also used by a personal template, and <code>sqlrow</code> needs the SQL context this IDE lacks.</figcaption>
   </figure>
@@ -276,7 +276,7 @@
       <li>201 automated tests of version 1.0.5, none failing, run without a display.</li>
       <li>Plugin Verifier 1.411 on IntelliJ IDEA Community 2025.1 and on IntelliJ IDEA, PhpStorm, WebStorm, PyCharm and GoLand 2026.3: all six Compatible, no internal API used.</li>
       <li>The 390 templates of the IDE's own bundled groups, copied into custom groups, shared, loaded from the files alone and written back: 390 compared, 0 differences.</li>
-      <li>After a pull that changes a shared file, the new template was in the IDE's registry in a median of 1,804 ms and at worst 1,879 ms over 10 runs (version 1.0.5, IntelliJ IDEA Community 2025.1, Linux, 4-core Intel Xeon 2.1 GHz).</li>
+      <li>After a pull that changes a shared file, the new template was in the IDE's registry in a median of 1,808 ms and at worst 1,830 ms over 10 runs (version 1.0.5, IntelliJ IDEA Community 2025.1, Linux, 4-core Intel Xeon 2.1 GHz).</li>
       <li>The pictures and the film are real captures from the IDEs named, on the public Spring PetClinic project (Java, Kotlin) and seaborn (Python), with Tabfellow builds 1.0.3, 1.0.4 and 1.0.5 (1.0.5 is the one you install; the film and the check-page picture are of 1.0.5, the other pictures of earlier builds on screens that 1.0.5 did not change); the pictures of steps 3 to 5 and the film's pull, edit and check steps were taken with a test stand-in for the license (no real trial or purchase was run), and the check page picture has a personal group added to show a clash. The film was recorded in IntelliJ IDEA Community 2025.1 at 2560x1440 and 60 frames a second. The Android Studio run was made with version 1.0.0.</li>
       <li>On version 1.0.5, after a killed IDE and its next start, and after a normal exit, the personal templates folder was byte for byte what it was before. A close that keeps an unwritten edit leaves one group of your own on purpose.</li>
     </ul>
