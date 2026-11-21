@@ -45,6 +45,7 @@
   .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
   figure { margin: 28px 0; }
+  figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #2B2118; display: block; }
   figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
   figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
@@ -111,7 +112,18 @@
     <strong>Do you need it?</strong> Blender can do all of this by hand, with an orthographic camera, Cycles passes and shader outputs. A technical artist making one atlas once can do that and does not need Tressmap. With Blender's default settings that route gives wrong maps (<a href="how-we-tested.html#by-hand">the numbers</a>). If your hair is made inside an add-on that bakes its own maps, its baker may be all you need.
   </div>
 
-  <h2>Watch it work</h2>
+  <h2 id="watch">Watch it work</h2>
+  <figure>
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080" aria-label="Tressmap demo: 49 seconds, captions only, no sound">
+      <source src="video/tressmap-demo-1080p60.mp4" type="video/mp4" media="(min-width: 768px)">
+      <source src="video/tressmap-demo-720p60.mp4" type="video/mp4">
+    </video>
+    <figcaption>The demo, 49 s, captions only, no sound (1080p at 60 frames a second, 720p on phones; <a href="video/tressmap-demo-1080p60.mp4">open full size</a>). A real Blender 4.5.16 window with Tressmap 1.0.1 installed from the zip: Blender Studio's Ellie, her particle hair converted to hair curves and cut into eight locks, then the eight locks into eight slots, the bake, the maps, the preview cards and the report. The bake took 64 s on four CPU cores (56 to 65 s in other runs of this groom); that wait is shown 13 times faster with the real time on screen, and the interface's own waits are cut. <a href="#credits">Credits</a></figcaption>
+  </figure>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/tressmap-demo-best-moment-phone.gif" width="480" height="270"><img src="img/tressmap-demo-best-moment.gif" alt="Blender window, screen recording from the demo: the Result panel's buttons are pressed one after another and the wide Image Editor shows alpha, base color, normal, depth, ambient occlusion, flow, strand ID and root to tip for Ellie's eight locks, then the packed image" width="1280" height="720" loading="lazy"></picture>
+    <figcaption>The eight maps and the packed image, one after another: 11 s from the demo, no sound.</figcaption>
+  </figure>
   <p>Ellie's particle hair, converted with Convert to Curves and cut into eight locks with Separate, one lock per slot.</p>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/tressmap-slots-phone.gif" width="320" height="740"><img src="img/tressmap-slots.gif" alt="Blender window, screen recording: for each of the eight slots a lock of Ellie's hair is outlined in orange in the viewport, the slot's row is clicked, Use Selected Hair is pressed and the row takes the lock's name (Front left, Front right, Back left, Back right, Back top, Ponytail left, Ponytail right, Loose); then Preview Layout opens a numbered coverage picture of the eight slots in the Image Editor" width="1200" height="640" loading="lazy"></picture>
