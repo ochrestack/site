@@ -230,6 +230,10 @@
     <li><strong>TypeScript:</strong> <code class="nw">(?&lt;c&gt;[A-Z]\w*)\.tsx</code> with <code class="nw">${c}\..+</code> puts <code>Button.test.tsx</code>, <code>Button.story.tsx</code> and <code>Button.module.css</code> under&nbsp;<code>Button.tsx</code>.</li>
     <li><strong>Cython:</strong> <code class="nw">(?&lt;base&gt;.+)\.pyx</code> with <code class="nw">${base}(?:\.[A-Za-z0-9_-]+)*\.(?:pyd|so|c|pxd|pyi)</code> puts <code>Function.cp37-win_amd64.pyd</code>, <code>Function.cpython-311-x86_64-linux-gnu.so</code>, <code>Function.c</code>, <code>Function.pxd</code> and <code>Function.pyi</code> under&nbsp;<code>Function.pyx</code>. Run on these names; no public project keeps built files to open.</li>
   </ul>
+  <figure>
+    <img class="ui" src="img/button-after.png" alt="The Button folder of mantine in IntelliJ IDEA 2025.2 after the free TypeScript rule: Button.tsx holds Button.module.css, Button.story.tsx and Button.test.tsx (selected); index.ts and the folders ButtonGroup and ButtonGroupSection sit beside it" width="387" height="222" loading="lazy">
+    <figcaption>mantine's own <code>Button</code> folder after that TypeScript rule.</figcaption>
+  </figure>
 
   <p><span class="step-tag">2. Check it first (free)</span><br>A pattern error is marked where it fails. Try file names shows what would nest, touching nothing.</p>
   <figure>
@@ -270,7 +274,7 @@
   <h2 id="limits">Limits</h2>
   <ul class="tight">
     <li>Same folder only; the Project and Project Files views; not Rider; no glob syntax. Files are never moved, renamed or changed.</li>
-    <li>On one project of about 19,000&nbsp;files, Select Opened File picked the parent folder in two of three window runs; the cause is not found.</li>
+    <li>On one project of about 19,000&nbsp;files, Select Opened File picked the parent folder in two of three window runs; the cause is not found. After a rename that made a file nest, it did the same in 3&nbsp;of&nbsp;4&nbsp;runs on IntelliJ IDEA and PyCharm&nbsp;2026.3, with the nested file collapsed under its parent.</li>
   </ul>
 
   <h2 id="details">Details</h2>
