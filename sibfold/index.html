@@ -206,14 +206,13 @@
       <source src="video/sibfold-demo-1080p-web.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/sibfold-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>Captions only, no sound (720p on phones; <a href="video/sibfold-demo-1080p-web.mp4">open full size</a>). gRPC Go's <code>xds</code> folder: the IDE's own rule leaves four test files loose; one Sibfold rule puts all five under <code>server.go</code>.</figcaption>
+    <figcaption>Captions only, no sound (720p on phones; <a href="video/sibfold-demo-1080p-web.mp4">open full size</a>).</figcaption>
   </figure>
   <figure class="gif">
     <picture>
       <source media="(max-width: 600px)" srcset="video/sibfold-rule-to-nested-phone.gif" width="512" height="288">
       <img class="ui" src="video/sibfold-rule-to-nested.gif" alt="Sibfold's settings page with the rule typed in and the line 233 files would hold 266 nested files in 136 folders, then OK: in the Project view of IntelliJ IDEA 2025.2 the xds folder of gRPC Go folds server.go over its five tests, and Select Opened File finds server_serving_mode_ext_test.go under it" width="960" height="540" loading="lazy">
     </picture>
-    <figcaption>The core as a loop (<a href="video/sibfold-rule-to-nested.gif">the GIF</a>).</figcaption>
   </figure>
 
   <h2 id="how">How it works</h2>
@@ -228,22 +227,20 @@
   <p class="fine">Also free, one rule each:</p>
   <ul class="tight">
     <li><strong>TypeScript:</strong> <code class="nw">(?&lt;c&gt;[A-Z]\w*)\.tsx</code> with <code class="nw">${c}\..+</code> puts <code>Button.test.tsx</code>, <code>Button.story.tsx</code> and <code>Button.module.css</code> under&nbsp;<code>Button.tsx</code>.</li>
-    <li><strong>Cython</strong> (run on file names, not on a project): <code class="nw">(?&lt;base&gt;.+)\.pyx</code> with <code class="nw">${base}(?:\.[A-Za-z0-9_-]+)*\.(?:pyd|so|c|pxd|pyi)</code> puts <code>Function.cp37-win_amd64.pyd</code>, <code>Function.so</code> and <code>Function.c</code> under&nbsp;<code>Function.pyx</code>.</li>
+    <li><strong>Cython</strong> (file names only): <code class="nw">(?&lt;base&gt;.+)\.pyx</code> with <code class="nw">${base}(?:\.[A-Za-z0-9_-]+)*\.(?:pyd|so|c|pxd|pyi)</code> puts <code>Function.cp37-win_amd64.pyd</code>, <code>Function.so</code> and <code>Function.c</code> under&nbsp;<code>Function.pyx</code>.</li>
   </ul>
   <figure>
     <img class="ui" src="img/button-after.png" alt="The Button folder of mantine in IntelliJ IDEA 2025.2 after the free TypeScript rule: Button.tsx holds Button.module.css, Button.story.tsx and Button.test.tsx (selected); index.ts and the folders ButtonGroup and ButtonGroupSection sit beside it" width="387" height="222" loading="lazy">
-    <figcaption>mantine's <code>Button</code> folder after the TypeScript rule.</figcaption>
   </figure>
 
   <p><span class="step-tag">2. Check it first (free)</span><br>A pattern error is marked where it fails. Try file names shows what would nest, touching nothing.</p>
   <figure>
     <img class="ui wide-only" src="img/invalid-pattern.png" alt="The parent pattern field outlined in red with the pattern (?&lt;base&gt;.+)\.go( and the message Unclosed group at character 17 under it" width="480" height="137" loading="lazy">
     <img class="ui narrow-only" src="img/invalid-pattern-phone.png" alt="The parent pattern field outlined in red with the message Unclosed group at character 17 under it" width="345" height="137" loading="lazy">
-    <figcaption>A missing bracket, marked where it is.</figcaption>
   </figure>
 
   <div class="box">
-    <strong>The IDE already nests files.</strong> Its File Nesting takes a child under a parent when the names differ by a fixed suffix. Where a suffix rule says what you need, you do not need Sibfold.
+    <strong>The IDE already nests files</strong> by a fixed suffix. Where a suffix rule says what you need, you do not need Sibfold.
   </div>
   <figure>
     <img class="ui" src="img/ide-alone.png" alt="The xds folder in IntelliJ IDEA 2025.2 with only the IDE's own rule .go and _test.go: server.go is collapsed, holding server_test.go, and server_ext_test.go, server_options.go, server_resource_ext_test.go, server_security_ext_test.go and server_serving_mode_ext_test.go sit loose beside it, then xds.go" width="387" height="288" loading="lazy">
@@ -254,7 +251,7 @@
   <figure>
     <img class="ui wide-only" src="img/rules-file.png" alt="The Sibfold settings page with two rules: Go tests, and Protobuf output marked from file. Below, the line sibfold.rules: 1 rule shown below, 1 the same as a personal rule, and the buttons Save Rules to sibfold.rules and Ready Rule Sets..." width="702" height="628" loading="lazy">
     <img class="ui narrow-only" src="img/rules-file-phone.png" alt="The rule list: Go tests, and Protobuf output marked from file" width="358" height="84" loading="lazy">
-    <figcaption>A teammate's rule, marked <em>from file</em> (added by hand).</figcaption>
+    <figcaption>A teammate's rule, added by hand.</figcaption>
   </figure>
 
   <p><span class="step-tag">4. Start from a ready set (license)</span><br>Seven sets, 17&nbsp;rules, previewed before you add them.</p>
@@ -269,19 +266,19 @@
     <img class="ui" src="img/levels.png" alt="The dist/css folder of Bootstrap 4.6.2 in IntelliJ IDEA 2025.2: bootstrap.css holds bootstrap.css.map and bootstrap.min.css, and bootstrap.min.css holds bootstrap.min.css.map, which is selected" width="387" height="144" loading="lazy">
     <figcaption>Bootstrap 4.6.2, two rules.</figcaption>
   </figure>
-  <p class="fine">Steps 3&nbsp;to 5&nbsp;were pictured with the paid features switched on by a test tool.</p>
+  <p class="fine">Steps 3&nbsp;to 5: paid features switched on by a test tool.</p>
 
   <h2 id="limits">Limits</h2>
   <ul class="tight">
     <li>Same folder only; the Project and Project Files views; not Rider; no glob syntax. Files are never moved, renamed or changed.</li>
-    <li>On one project of about 19,000&nbsp;files, Select Opened File picked the parent folder in two of three window runs; the cause is not found. After a rename that made a file nest it did so in 3&nbsp;of&nbsp;4&nbsp;runs on the 2026.3 IDEs.</li>
+    <li>Select Opened File sometimes picks the parent folder, not the nested file: on a project of about 19,000&nbsp;files (two of three runs) and after a rename on the 2026.3&nbsp;IDEs (3&nbsp;of&nbsp;4&nbsp;runs); cause not found.</li>
   </ul>
 
   <h2 id="details">Details</h2>
   <ul class="tight">
-    <li><strong>Works in:</strong> IntelliJ-based IDEs from build 252, not Rider. Opened in a window: IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3. Verifier and tests only: WebStorm, GoLand, PhpStorm, RubyMine, RustRover, Android Studio.</li>
-    <li><strong>Untested:</strong> everything ran on Linux; Windows and macOS desktops, a WebStorm window, and a real Marketplace trial or purchase were not run. <strong>Refunds:</strong> JetBrains Marketplace handles refund requests under its terms; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
-    <li><strong>Price:</strong> $7&nbsp;once for personal and commercial use, nothing renews; updates come through JetBrains Marketplace (not run yet: no listing). <strong>Privacy:</strong> no network calls, nothing sent.</li>
+    <li><strong>Works in:</strong> build 252 and later, not Rider. Opened in a window: IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3. Verifier and tests only: WebStorm, GoLand, PhpStorm, RubyMine, RustRover, Android Studio.</li>
+    <li><strong>Untested:</strong> everything ran on Linux; Windows, macOS, a WebStorm window and a real Marketplace trial or purchase were not run. <strong>Refunds:</strong> JetBrains Marketplace handles refund requests under its terms; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li><strong>Price:</strong> $7&nbsp;once, nothing renews; updates come through JetBrains Marketplace (not run yet: no listing). <strong>Privacy:</strong> no network calls, nothing sent.</li>
     <li><strong>Support:</strong> <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. gRPC Go and Bootstrap are test data; no affiliation. <a href="how-we-tested.html">How we tested</a>.</li>
   </ul>
 
