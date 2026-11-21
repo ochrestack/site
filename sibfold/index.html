@@ -191,12 +191,12 @@
     <li><strong>My team gets the same rules from version control (license).</strong></li>
   </ul>
   <div class="buy">
-    <p class="price"><strong>Free:</strong> complete for one rule at a time, in all your projects, no time limit. <strong>$7&nbsp;once per person</strong> adds more rules, Save Rules to sibfold.rules, nesting levels and Ready Rule Sets...; 30-day trial.</p>
+    <p class="price"><strong>Free:</strong> complete for one rule at a time, in all your projects, no time limit. <strong>$7&nbsp;once per person</strong> (a team of six: $42) adds more rules, Save Rules to sibfold.rules, nesting levels and Ready Rule Sets...; 30-day trial.</p>
     <div class="buy-row">
       <button class="button" id="buy" type="button" disabled aria-describedby="buy-note" title="Not on JetBrains Marketplace yet: there is no listing to open">Get it on JetBrains Marketplace</button>
       <span class="buy-note" id="buy-note">Not on JetBrains Marketplace yet.</span>
     </div>
-    <p class="fine">Tested in IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3 · not Rider · source code not&nbsp;included&nbsp;·&nbsp;<a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+    <p class="fine">Tested in IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3 · not Rider · source&nbsp;code&nbsp;not&nbsp;included&nbsp;·&nbsp;<a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 </section>
 <main>
@@ -206,12 +206,14 @@
       <source src="video/sibfold-demo-1080p-web.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/sibfold-demo-720p.mp4" type="video/mp4">
     </video>
+    <figcaption>Full film: 58&nbsp;seconds.</figcaption>
   </figure>
   <figure class="gif">
     <picture>
       <source media="(max-width: 600px)" srcset="video/sibfold-rule-to-nested-phone.gif" width="512" height="288">
       <img class="ui" src="video/sibfold-rule-to-nested.gif" alt="Sibfold's settings page with the rule typed in and the line 233 files would hold 266 nested files in 136 folders, then OK: in the Project view of IntelliJ IDEA 2025.2 the xds folder of gRPC Go folds server.go over its five tests, and Select Opened File finds server_serving_mode_ext_test.go under it" width="960" height="540" loading="lazy">
     </picture>
+    <figcaption>Short loop: 10.5&nbsp;seconds.</figcaption>
   </figure>
 
   <h2 id="how">How it works</h2>
@@ -242,6 +244,7 @@
   </div>
   <figure>
     <img class="ui" src="img/ide-alone.png" alt="The xds folder in IntelliJ IDEA 2025.2 with only the IDE's own rule .go and _test.go: server.go is collapsed, holding server_test.go, and server_ext_test.go, server_options.go, server_resource_ext_test.go, server_security_ext_test.go and server_serving_mode_ext_test.go sit loose beside it, then xds.go" width="387" height="288" loading="lazy">
+    <figcaption>The IDE alone: only <code>server_test.go</code> goes under <code>server.go</code>.</figcaption>
   </figure>
 
   <p><span class="step-tag">3. Share with the team (license)</span><br>Save Rules to sibfold.rules; commit it and teammates get your rules.</p>
@@ -266,16 +269,16 @@
 
   <h2 id="limits">Limits</h2>
   <ul class="tight">
-    <li>Same folder only; Project and Project Files views; not Rider; no glob syntax; files are never changed.</li>
+    <li>Same folder only; Project and Project Files views; no glob syntax; files are never changed.</li>
     <li>Select Opened File sometimes selects the parent folder, not the nested file (seen on 19,000&nbsp;files and after renames on 2026.3&nbsp;IDEs); cause not found.</li>
   </ul>
 
   <h2 id="details">Details</h2>
   <ul class="tight">
     <li><strong>Works in:</strong> build 252 and later, not Rider. Verifier and tests only: WebStorm, GoLand, PhpStorm, RubyMine, RustRover, Android Studio.</li>
-    <li><strong>Untested:</strong> only Linux ran; Windows, macOS, a WebStorm window and a real Marketplace trial or purchase were not run. <strong>Refunds:</strong> JetBrains Marketplace handles refund requests under its terms; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
-    <li><strong>Price:</strong> $7&nbsp;once, nothing renews; updates come through Marketplace (not run yet). <strong>Privacy:</strong> no network calls, nothing sent.</li>
-    <li><a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. gRPC Go and Bootstrap are test data; no affiliation. <a href="how-we-tested.html">How we tested</a>.</li>
+    <li><strong>Untested:</strong> only Linux ran; Windows, macOS, a WebStorm window and a Marketplace trial or purchase were not run. <strong>Refunds:</strong> JetBrains Marketplace handles refund requests under its terms; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li><strong>Updates</strong> come through Marketplace (not run yet); nothing renews. <strong>Privacy:</strong> no network calls, nothing sent.</li>
+    <li><a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. gRPC Go and Bootstrap: test data, no affiliation. <a href="how-we-tested.html">How we tested</a>.</li>
   </ul>
 
   <div class="buy">
