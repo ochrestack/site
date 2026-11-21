@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Tressmap was tested</title>
+<meta name="description" content="What Tressmap 1.0.1 was tested on, what was measured, the by-hand comparison, the limits, and how the pictures on the product page were made.">
+<link rel="canonical" href="https://ochrestack.com/tressmap/how-we-tested.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 22px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 24px 0 6px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 18px; line-height: 1.5; color: var(--muted); margin: 0 0 12px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 14px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 446px; margin: 0; }
+  .pair figure img.ui { width: 100%; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 6px; }
+  .narrow-only { display: none; }
+  .fine { font-size: 15px; color: var(--muted); }
+  ul.benefits { padding-left: 20px; margin: 14px 0; }
+  ul.benefits li { margin: 0 0 10px; }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 20px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>How Tressmap was tested</h1>
+  <p class="sub">Tressmap 1.0.1 for Blender 4.2 LTS to 5.3, tested on Linux in 4.2.23, 4.5.16, 5.2.4 and 5.3.0. Back to the <a href="index.html">Tressmap page</a> or the <a href="quick-start.html">quick start</a>.</p>
+
+  <h2 id="tested">What was run</h2>
+  <table>
+    <tr><th>What</th><th>Result (Tressmap 1.0.1)</th></tr>
+    <tr><td>Test suite, headless, in Blender 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux)</td><td>237 passed on each, 0 skipped</td></tr>
+    <tr><td>Real Blender window, 1366 x 768, the tab's buttons and fields pressed and filled with real mouse and key events, on the four versions</td><td>68 results, all passed, on each</td></tr>
+    <tr><td>Install from the zip in a real window, on the four versions</td><td>12 results, all passed, on each</td></tr>
+    <tr><td>8192 x 8192 bakes (<code>pytest -m huge</code>)</td><td>4 passed; Blender Studio's cattle fur, 23,703 strands in 8 slots: 461 s</td></tr>
+    <tr><td>Preview cards imported with Godot 4.7.2's headless importer</td><td>passed (not opened in the editor)</td></tr>
+    <tr><td>Blender Studio's cattle fur, 8 slots, 23,703 strands, all eight maps and the packed image</td><td>30 to 39 s at 2048 px, 112 to 139 s at 4096 px (4 cores, Blender 4.5.16)</td></tr>
+    <tr><td>Ellie's eight locks on the product page, 1,090 strands, 2048 px</td><td>57.0 s in the run shown (4 cores, Blender 4.5.16)</td></tr>
+  </table>
+  <p class="fine">Every figure was measured on Tressmap 1.0.1 on a four-core Intel Xeon 2.30 GHz Linux machine; timings vary by a few seconds from run to run.</p>
+
+  <h2 id="by-hand">By hand, with Blender's defaults</h2>
+  <p>The by-hand route: point an orthographic camera at the clumps, render in Cycles with the Normal, Depth (or Mist) and Ambient Occlusion passes on, add Shader AOVs (Curves Info's Intercept for root-to-tip and Random for strand ID, the Geometry node's Tangent for flow), save each pass, then pad and pack the images. With Blender's default settings that route gives wrong maps. On our test clumps (Blender 4.5.16) root-to-tip reads 0.53 a quarter of the way along a strand instead of 0.25, depth has 5 grey levels, and flow from Curves Info's Tangent Normal is 135 degrees off on average. With the view transform set to Raw and the Geometry node's Tangent, the by-hand flow is right to a median of 0.68 degrees; Tressmap does the setup for you.</p>
+
+  <h2>What Tressmap measured</h2>
+  <ul>
+    <li>Flow: where a strand lies clear of the others the flow map agrees with the strand's direction to 0.13 degrees; over every strand segment of 200 crossing strands the median error is 0.24 degrees and the mean 6.7; on one slot of the cattle fur the median is 7.1 degrees (an upper bound).</li>
+    <li>Padded base color shows no dark halo when downsampled by 2, 4 and 8 on the test clumps.</li>
+    <li>Every written file is the size you chose, square and 2:1.</li>
+  </ul>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/report-text-phone.png" width="320" height="150"><img class="ui" src="img/report-text.png" alt="The Tressmap Report in Blender's Text Editor: Tressmap report, Version 1.0.1, Blender 4.5.16 LTS, Atlas hair, 2048 x 2048 px, Run Bake Maps, Bake time 57.0 s, Files written (9), each with map, size, format and path" width="769" height="290" loading="lazy"></picture>
+    <figcaption>The report of the bake on the product page: version, atlas, bake time, every file with its size.</figcaption>
+  </figure>
+  <div class="pair">
+    <figure>
+      <img class="ui" src="img/map-packed.png" alt="The packed image in Blender's Image Editor: Channel Packing wrote ambient occlusion, root to tip, strand ID and alpha into the red, green, blue and alpha channels of one 2048 x 2048 image, shown over a checker" width="769" height="676" loading="lazy">
+      <figcaption>Channel Packing: ambient occlusion, root to tip, strand ID and alpha in one image.</figcaption>
+    </figure>
+    <figure>
+      <img class="ui" src="img/preview-layout.png" alt="Preview Layout in Blender's Image Editor: the 2048 x 2048 atlas as a small picture, eight slots in two rows of four, each numbered 1 to 8, Ellie's locks as light strands on a dark ground" width="769" height="676" loading="lazy">
+      <figcaption>Preview Layout, before any full bake.</figcaption>
+    </figure>
+  </div>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>Hair curves objects only. One slot is one flat clump: a whole groom in one object bakes as a view from above it, and Tressmap says so. Blender 4.5 and later can split a groom with Separate; 4.2 LTS cannot, so groom each clump as its own object.</li>
+    <li>Flow follows the strand on top (figures above).</li>
+    <li>Blender answers Esc between the steps of a bake, not during one. On the cattle fur the longest step is 1.1 s at 2048 px, 2.6 s at 4096 px and 6.6 s at 8192 px; a bake at 8192 px needs about 6 GB.</li>
+    <li>Base color is the color of the shader the hair uses (Principled, Principled Hair in Color mode, Hair, Diffuse or Emission, also inside node groups); with none, the material's Viewport Display color is used and the report says so.</li>
+    <li>No grooming, no card placement, no specular or roughness maps, no engine shader, no EEVEE bake.</li>
+    <li>Windows and macOS were not tested; Unity and Unreal were not tested; the Godot check is a headless import.</li>
+  </ul>
+
+  <h2 id="made">How the pictures on the product page were made</h2>
+  <p>Everything on the product page except the contact sheet of the eight files (the files themselves, shrunk) is a capture of one pass through a real Blender 4.5.16 window on a virtual display (Xvfb, 1920 x 1080, interface scale 1.1), with Tressmap 1.0.1 installed from its zip. The Tressmap buttons, the Result buttons and the scrolling are real mouse events. A script sets the layout of the window, the view of Ellie, which object types the viewport draws (no bones or helper shapes), the selection of the lock before each Use Selected Hair click, the Folder field (a full path) and the 3D cursor before Make Preview Cards. The hair conversion and the locks use Blender's own Convert to Curves (front 2,300, back 3,400, ponytail 2,850 and loose 40 strands) and Separate; which strands go into a lock (the 150 whose roots are nearest the left-most, the right-most or the highest root of a hair system) is chosen by script, and no hair is drawn or edited by hand. Her mesh hair and the groom's helper objects are hidden in the viewport so that the hair curves are what is shown. The recordings are cut from one 268 s recording of that pass; the bake recording is cut as its caption says, nothing else is cut or drawn on.</p>
+  <p class="fine">Character: Ellie Rig (CC) Blender Foundation | studio.blender.org, Sprite Fright, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Test groom for the timings: "Fur - Highland Cattle" by Simon Thommes, Blender Studio, CC0. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
