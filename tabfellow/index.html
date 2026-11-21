@@ -134,6 +134,7 @@
     .top-images .top-image { margin: 0 0 6px; }
     .top-image figcaption { display: none; }
     .top .benefits { font-size: 15px; line-height: 1.35; margin: 4px 0; padding-left: 18px; }
+    .top .benefits .more { display: none; }
     .top .buy p.price { font-size: 15px; line-height: 1.35; margin-bottom: 8px; }
     .top .button { padding: 9px 14px; }
     .top .buy { display: flex; flex-direction: column; }
@@ -182,7 +183,7 @@
       <button class="button" id="buy" type="button" disabled aria-describedby="buy-note" title="Not on JetBrains Marketplace yet: there is no listing to open">Get it on JetBrains Marketplace</button>
       <span class="buy-note" id="buy-note">Not on JetBrains Marketplace yet.</span>
     </div>
-    <p class="fine">Tested in IntelliJ IDEA Community 2025.1 and IntelliJ IDEA 2026.3 · IDE&nbsp;builds&nbsp;251&nbsp;and&nbsp;later · source code not&nbsp;included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+    <p class="fine">Tested in IntelliJ IDEA Community 2025.1 and IntelliJ IDEA 2026.3 · IDE&nbsp;builds&nbsp;251&nbsp;and&nbsp;later · source code not&nbsp;included&nbsp;·&nbsp;<a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 </section>
 <main>
@@ -192,7 +193,7 @@
       <source src="video/tabfellow-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/tabfellow-demo-720p.mp4" type="video/mp4">
     </video>
-    <figcaption>54.4 s, captions only, no sound (1080p; 720p on phones; <a href="video/tabfellow-demo-1080p.mp4">open full size</a>).</figcaption>
+    <figcaption>53.8 s, captions only, no sound (1080p; 720p on phones; <a href="video/tabfellow-demo-1080p.mp4">open full size</a>).</figcaption>
   </figure>
 
   <h2 id="how">How it works</h2>
@@ -237,15 +238,15 @@
     <figcaption>The edit waits for your choice.</figcaption>
   </figure>
   <figure>
-    <img class="ui wide-only" src="img/diff.png" alt="The IDE's diff of .livetemplates/petclinic.xml after Write to Project, in the unified viewer: the flash line before with message and after with success highlighted" width="812" height="90" loading="lazy">
+    <img class="ui wide-only" src="img/diff.png" alt="The IDE's diff of .livetemplates/petclinic.xml after Write to Project, in the unified viewer: the flash line before with message and after with success highlighted" width="882" height="46" loading="lazy">
     <img class="ui narrow-only" src="img/commit-one-file.png" alt="The IDE's Commit window after Write to Project: Changes, 1 file, petclinic.xml in .livetemplates" width="390" height="52" loading="lazy">
-    <figcaption>After Write to Project the Commit window lists one changed file<span class="wide-only">, and its diff shows one line before and after</span>.</figcaption>
+    <figcaption>After Write to Project the Commit window lists one changed file<span class="wide-only">, and its diff shows one line before and after (the file is XML, so a quotation mark is written <code>&amp;quot;</code>)</span>.</figcaption>
   </figure>
 
   <p><span class="step-tag">5. Check (license)</span><br>Settings | Tools | Tabfellow lists clashing abbreviations and templates your IDE cannot expand, each with a link to the template.</p>
   <figure>
-    <img class="ui wide-only" src="img/check-page.png" alt="Settings | Tools | Tabfellow in IntelliJ IDEA Community 2025.1: 1 shared group, 13 templates, 2 problems; petclinic (spring-petclinic) with slf also used by your own template in the group mine, and sqlrow with the context SQL, which this IDE does not have" width="712" height="140" loading="lazy">
-    <img class="ui narrow-only" src="img/check-page-phone.png" alt="Settings | Tools | Tabfellow: 1 shared group, 13 templates, 2 problems, with the buttons Reload Shared Live Templates and Check again" width="360" height="75" loading="lazy">
+    <img class="ui wide-only" src="img/check-page.png" alt="Settings | Tools | Tabfellow in IntelliJ IDEA Community 2025.1: 1 shared group, 13 templates, 2 problems; petclinic (spring-petclinic) with slf also used by your own template in the group mine, and sqlrow with the context SQL, which this IDE does not have" width="712" height="180" loading="lazy">
+    <img class="ui narrow-only" src="img/check-page-phone.png" alt="Settings | Tools | Tabfellow: 1 shared group, 13 templates, 2 problems, with the buttons Reload Shared Live Templates and Check again" width="360" height="80" loading="lazy">
     <figcaption>Two problems: <code>slf</code> is also used by a personal template, and <code>sqlrow</code> needs the SQL context this IDE lacks.</figcaption>
   </figure>
 
@@ -272,12 +273,12 @@
   <details id="tested">
     <summary>How we tested</summary>
     <ul>
-      <li>190 automated tests of version 1.0.4, none failing, run without a display.</li>
+      <li>201 automated tests of version 1.0.5, none failing, run without a display.</li>
       <li>Plugin Verifier 1.411 on IntelliJ IDEA Community 2025.1 and on IntelliJ IDEA, PhpStorm, WebStorm, PyCharm and GoLand 2026.3: all six Compatible, no internal API used.</li>
       <li>The 390 templates of the IDE's own bundled groups, copied into custom groups, shared, loaded from the files alone and written back: 390 compared, 0 differences.</li>
-      <li>After a pull that changes a shared file, the new template was in the IDE's registry in a median of 1,867 ms and at worst 1,892 ms over 10 runs (version 1.0.4, IntelliJ IDEA Community 2025.1, Linux, 4-core Intel Xeon 2.1 GHz).</li>
-      <li>The pictures and the film are real captures from the IDEs named, on the public Spring PetClinic project (Java, Kotlin) and seaborn (Python), with Tabfellow builds 1.0.3 and 1.0.4 (1.0.4 is the one you install); the pictures of steps 3 to 5 and the film's pull, edit and check steps were taken with a test stand-in for the license (no real trial or purchase was run), and the check page picture has a personal group added to show a clash. The film was recorded in IntelliJ IDEA Community 2025.1 at 2560x1440 and 60 frames a second. The Android Studio run was made with version 1.0.0.</li>
-      <li>On version 1.0.4, after a killed IDE and its next start, and after a normal exit, the personal templates folder was byte for byte what it was before. A close that keeps an unwritten edit leaves one group of your own on purpose.</li>
+      <li>After a pull that changes a shared file, the new template was in the IDE's registry in a median of 1,804 ms and at worst 1,879 ms over 10 runs (version 1.0.5, IntelliJ IDEA Community 2025.1, Linux, 4-core Intel Xeon 2.1 GHz).</li>
+      <li>The pictures and the film are real captures from the IDEs named, on the public Spring PetClinic project (Java, Kotlin) and seaborn (Python), with Tabfellow builds 1.0.3, 1.0.4 and 1.0.5 (1.0.5 is the one you install; the film and the check-page picture are of 1.0.5, the other pictures of earlier builds on screens that 1.0.5 did not change); the pictures of steps 3 to 5 and the film's pull, edit and check steps were taken with a test stand-in for the license (no real trial or purchase was run), and the check page picture has a personal group added to show a clash. The film was recorded in IntelliJ IDEA Community 2025.1 at 2560x1440 and 60 frames a second. The Android Studio run was made with version 1.0.0.</li>
+      <li>On version 1.0.5, after a killed IDE and its next start, and after a normal exit, the personal templates folder was byte for byte what it was before. A close that keeps an unwritten edit leaves one group of your own on purpose.</li>
     </ul>
   </details>
 
