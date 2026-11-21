@@ -80,7 +80,11 @@
   <p class="fine">Every figure was measured on Tressmap 1.0.2 on a four-core Intel Xeon 2.30 GHz Linux machine; timings vary by a few seconds from run to run.</p>
 
   <h2 id="by-hand">By hand, with Blender's defaults</h2>
-  <p>The by-hand route: point an orthographic camera at the clumps, render in Cycles with the Normal, Depth (or Mist) and Ambient Occlusion passes on, add Shader AOVs (Curves Info's Intercept for root-to-tip and Random for strand ID, the Geometry node's Tangent for flow), save each pass, then pad and pack the images. With Blender's default settings that route gives wrong maps. On our test clumps (Blender 4.5.16) root-to-tip reads 0.53 a quarter of the way along a strand instead of 0.25, depth has 5 grey levels, and flow from Curves Info's Tangent Normal is 135 degrees off on average. With the view transform set to Raw and the Geometry node's Tangent, the by-hand flow is right to a median of 0.68 degrees; Tressmap does the setup for you.</p>
+  <p>The by-hand route: point an orthographic camera at the clumps, render in Cycles with the Normal, Depth (or Mist) and Ambient Occlusion passes on, add Shader AOVs (Curves Info's Intercept for root-to-tip and Random for strand ID, the Geometry node's Tangent for flow), save each pass, then pad and pack the images.</p>
+  <ul>
+    <li>With Blender's default settings that route gives wrong maps. On our test clumps (Blender 4.5.16) root-to-tip reads 0.53 a quarter of the way along a strand instead of 0.25, depth has 5 grey levels, and flow from Curves Info's Tangent Normal is 135 degrees off on average.</li>
+    <li>With the view transform set to Raw and the Geometry node's Tangent, the by-hand flow is right to a median of 0.68 degrees. Tressmap does the setup for you.</li>
+  </ul>
 
   <h2>What Tressmap measured</h2>
   <ul>
