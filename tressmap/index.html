@@ -108,26 +108,26 @@
   </div>
 
   <div class="box" id="free-route">
-    <strong>Do you need it?</strong> Blender can do all of this by hand, with an orthographic camera, Cycles passes and shader outputs, then padding and packing. A technical artist making one atlas once can do that and does not need Tressmap. With Blender's default settings that route gives wrong maps (<a href="how-we-tested.html#by-hand">the numbers</a>). If your hair is made inside an add-on that bakes its own maps, its baker may be all you need. We say this on the page because you should know it before you pay.
+    <strong>Do you need it?</strong> Blender can do all of this by hand, with an orthographic camera, Cycles passes and shader outputs. A technical artist making one atlas once can do that and does not need Tressmap. With Blender's default settings that route gives wrong maps (<a href="how-we-tested.html#by-hand">the numbers</a>). If your hair is made inside an add-on that bakes its own maps, its baker may be all you need.
   </div>
 
   <h2>Watch it work</h2>
-  <p>Ellie's hair is particle hair. We converted it with Blender's Convert to Curves, took seven locks of 150 strands with Separate, kept her 40 loose strands as the eighth, and put one in each slot.</p>
+  <p>Ellie's particle hair, converted with Convert to Curves and cut into eight locks with Separate, one lock per slot.</p>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/tressmap-slots-phone.gif" width="320" height="740"><img src="img/tressmap-slots.gif" alt="Blender window, screen recording: for each of the eight slots a lock of Ellie's hair is outlined in orange in the viewport, the slot's row is clicked, Use Selected Hair is pressed and the row takes the lock's name (Front left, Front right, Back left, Back right, Back top, Ponytail left, Ponytail right, Loose); then Preview Layout opens a numbered coverage picture of the eight slots in the Image Editor" width="1200" height="640" loading="lazy"></picture>
-    <figcaption>One lock per slot with Use Selected Hair, then Preview Layout: 26 s, real speed after an opening hold on the result, no sound.</figcaption>
+    <figcaption>Slots filled with Use Selected Hair, then Preview Layout: 26 s, no sound.</figcaption>
   </figure>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/tressmap-bake-phone.gif" width="320" height="850"><img src="img/tressmap-bake.gif" alt="Blender window, screen recording: the Bake Maps button is clicked, the panel shows a progress bar and 'Baking... Esc cancels'; the recording then jumps to the end, where the message reads 'Baked 9 files in 57.0 s. Report text made.' and the Result panel appears" width="1200" height="640" loading="lazy"></picture>
-    <figcaption>Bake Maps: 13 s, cut from the 57.0 s bake (the first 7 s, then the last 4 s). Esc cancels it.</figcaption>
+    <figcaption>Bake Maps: 13 s, cut from the 57.0 s bake (first 7 s, last 4 s).</figcaption>
   </figure>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/tressmap-maps-phone.gif" width="768" height="674"><img src="img/tressmap-maps.gif" alt="Blender window, screen recording: the nine buttons of the Result panel are clicked one after another and the Image Editor shows alpha, base color, normal, depth, ambient occlusion, flow, strand ID, root to tip and the packed image" width="1200" height="640" loading="lazy"></picture>
-    <figcaption>Each file opened from the Result panel, one click each: 18 s, real speed.</figcaption>
+    <figcaption>Each file opened from the Result panel: 18 s.</figcaption>
   </figure>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/maps-contact-sheet-phone.png" width="800" height="1800"><img src="img/maps-contact-sheet.png" alt="The eight files Bake Maps wrote, each a 2048 x 2048 image shown at a fifth of its size under its file name: hair_alpha.png white strands on black, hair_basecolor.png one flat brown, hair_normal.png blue-violet with colored edges, hair_depth.png, hair_ao.png white with dark centers, hair_flow.png green and yellow, hair_strandid.png, hair_roottip.png" width="1600" height="900" loading="lazy"></picture>
-    <figcaption>The eight files Bake Maps wrote, shrunk to a fifth. Ellie's hair shader is procedural, so her base color is its Diffuse color, one flat brown.</figcaption>
+    <figcaption>The eight files Bake Maps wrote, shrunk to a fifth. Her base color is one flat brown, her shader's Diffuse color.</figcaption>
   </figure>
   <div class="pair">
     <figure>
@@ -141,24 +141,22 @@
   </div>
   <figure>
     <img class="ui" src="img/cards-material.png" alt="Blender's 3D Viewport in Material Preview, front view: eight flat cards in a row, each showing one of Ellie's locks as the baked base color with its alpha cut-out, the five smaller locks on the left and the two ponytail locks and the loose strands on the right" width="1000" height="480" loading="lazy">
-    <figcaption>Make Preview Cards: one flat card per slot with the baked maps on it, in Material Preview.</figcaption>
+    <figcaption>Make Preview Cards: the baked maps on flat cards.</figcaption>
   </figure>
 
-  <h2>What it does</h2>
-  <p>A grid or vertical strips of slots, one or several hair curves objects each; eight maps as PNG 8 bit, PNG 16 bit or OpenEXR at 512 to 8192 px, square or 2:1, normal in OpenGL or DirectX green; edge padding and Channel Packing with presets; preview cards, Re-bake Slot and a report that lists every file and size. Tressmap makes the textures. It does not groom hair, make cards on a head or write your engine's hair shader.</p>
+  <p>Tressmap makes the textures. It does not groom hair, make cards on a head or write your engine's hair shader.</p>
 
   <h2 id="details">Details</h2>
   <ul>
-    <li>Buying: secure checkout by Polar; the download arrives by email; the zip includes the full source. If it doesn't work as described and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>). A studio of up to 10 artists pays $57: email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li>Secure checkout by Polar; the download arrives by email; the zip includes the full source. If it doesn't work as described and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>). A studio of up to 10 artists pays $57: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
     <li>Windows and macOS were not tested, and neither were Unity or Unreal.</li>
-    <li>Updates: an update is a new zip, installed the same way (<a href="quick-start.html">quick start</a>). Tressmap makes no network calls, so it never checks for one; write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> for the latest zip.</li>
-    <li>Tressmap 1.0.1 reads hair curves objects (Curves Sculpt, Geometry Nodes, or an add-on that outputs hair curves); particle hair needs Convert to Curves first. Tested on Linux in Blender 4.2.23 LTS, 4.5.16 LTS, 5.2.4 LTS and 5.3.0.</li>
-    <li>GPL-3.0-or-later. No telemetry, no analytics, no network calls. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
-    <li>Limits: hair curves objects only; one slot is one flat clump; Blender answers Esc between the steps of a bake; flow follows the strand on top. <a href="how-we-tested.html#limits">All limits</a>, and <a href="how-we-tested.html">how we tested</a>.</li>
+    <li>Tressmap 1.0.1 reads hair curves objects; particle hair needs Convert to Curves first. Tested on Linux in Blender 4.2.23 LTS, 4.5.16 LTS, 5.2.4 LTS and 5.3.0.</li>
+    <li>An update is a new zip, installed the same way. The add-on makes no network calls, so it never checks for one; write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> for the latest zip.</li>
+    <li>GPL-3.0-or-later. No telemetry, no analytics. <a href="how-we-tested.html#limits">Limits</a> and <a href="how-we-tested.html">how we tested</a>.</li>
   </ul>
-  <p>Install and your first bake: <a href="quick-start.html">Tressmap quick start</a>. The full manual (<code>README.md</code>) is inside the zip.</p>
+  <p>Install and your first bake: <a href="quick-start.html">quick start</a>. The full manual is inside the zip.</p>
 
-  <p class="fine" id="credits">Character: Ellie Rig (CC) Blender Foundation | studio.blender.org, Sprite Fright, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We converted her particle hair to hair curves, cut locks from it and hid her mesh hair in the viewport; her materials and rig are unchanged. Ellie is not included with Tressmap.</p>
+  <p class="fine" id="credits">Character: Ellie Rig (CC) Blender Foundation | studio.blender.org, Sprite Fright, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Her particle hair was converted to hair curves and cut into locks; her mesh hair is hidden in the viewport. Ellie is not included with Tressmap.</p>
 
   <div class="buy">
     <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_yk4OWR1pF5mdkYesWlOVy2njhiiX3IPtYMrKG42roBX">Buy for $19</a></p>
