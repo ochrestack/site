@@ -137,19 +137,17 @@
     <video controls preload="none" playsinline poster="video/ordergraft-poster.jpg" width="1920" height="1080">
       <source src="video/ordergraft-demo-1080p60.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/ordergraft-demo-720p60-phone.mp4" type="video/mp4">
+      <picture>
+      <source media="(max-width: 600px)" srcset="video/ordergraft-demo-phone.gif" width="480" height="270">
+      <img src="video/ordergraft-demo.gif" alt="Blender 4.2.23, Rain's face twice side by side with the Ordergraft panel at the right. The left copy has a smile shape key torn by Join as Shapes: its face is shards, which come together as the key goes to zero and fly apart again. Then the Copy Order result box reads Parts matched: 43 of 43, Pins needed: 0, Turned 383 diagonals. Then the same key plays on the left copy, now clean, until both faces match." width="720" height="406">
+    </picture>
     </video>
     <figcaption>52&nbsp;s, no sound, the waits cut. <a href="video/ordergraft-demo-1080p60.mp4">Full size</a>.</figcaption>
   </figure>
   <details>
     <summary>What the film shows</summary>
-    <p>Captions only, 1080p at 60 frames a second (720p on phones). Rain's face in Blender 4.2.23 with Ordergraft 1.0.3: a smile key torn by Join as Shapes; Check Pair; one Copy Order on the all-triangle copy, 43 of 43 parts; the key playing clean; then the quad copy, with the one part it lists; and a copy whose topology differs, where Check Pair says where the copies stop matching and changes nothing. The waits while Blender works are cut (<a href="how-made.html">how</a>). Character: <a href="#credits">credits</a>.</p>
+    <p>Captions only, 1080p at 60 frames a second (720p on phones). Rain's face in Blender 4.2.23 with Ordergraft 1.0.4: a smile key torn by Join as Shapes; Check Pair; one Copy Order on the all-triangle copy, 43 of 43 parts; the key playing clean; then the quad copy, with the one part it lists; and a copy whose topology differs, where Check Pair says where the copies stop matching and changes nothing. The waits while Blender works are cut (<a href="how-made.html">how</a>). Character: <a href="#credits">credits</a>.</p>
   </details>
-  <figure>
-    <picture>
-      <source media="(max-width: 600px)" srcset="video/ordergraft-demo-phone.gif" width="480" height="270">
-      <img src="video/ordergraft-demo.gif" alt="Blender 4.2.23, Rain's face twice side by side with the Ordergraft panel at the right. The left copy has a smile shape key torn by Join as Shapes: its face is shards, which come together as the key goes to zero and fly apart again. Then the Copy Order result box reads Parts matched: 43 of 43, Pins needed: 0, Turned 383 diagonals. Then the same key plays on the left copy, now clean, until both faces match." width="720" height="406" loading="lazy">
-    </picture>
-  </figure>
 
   <h2>In Blender, for real</h2>
   <p>Rain's face: 43&nbsp;loose parts, 16,109&nbsp;vertices (<a href="how-made.html">how</a>).</p>
@@ -185,8 +183,16 @@
     <figcaption>Check Pair, then Show. <a href="img/rain-different-show-window.png">Whole window</a>.</figcaption>
   </figure>
 
+  <details open>
+    <summary>Two faces settle a listed part: step by step (38&nbsp;s)</summary>
+    <figure>
+      <img src="img/rain-pin.gif" alt="Blender 4.2.23, Rain's face twice side by side, the copy with her left cornea, a round part, turned about its own axis. Copy Order lists it (Parts matched: 41 of 43, Pins needed: 2). Target selects the part in Edit Mode and the view moves to her eye; two neighbouring faces are picked. Source does the same on the other face; the matching two faces are picked. Pin Selected Faces, then Copy Order again: Parts matched: 42 of 43, Pins needed: 1, Placed by your pin: Part 8 on the target (672 faces, Part 8 on the source)." width="960" height="424" loading="lazy">
+      <figcaption>Pinning a listed part on Rain: her left cornea is turned about its own axis in the copy. The view is zoomed by script; the waits are sped up. <a href="quick-start.html#pins">Steps</a>.</figcaption>
+    </figure>
+  </details>
+
   <h2>What it does</h2>
-  <p><strong>Copy Order to Selected</strong>: shape keys, UV maps, vertex groups, materials and seams travel with their elements. <strong>Then join as shape keys</strong> adds each target as a shape key.</p>
+  <p><strong>Copy Order to Selected</strong>: shape keys, UV maps, vertex groups, materials and seams travel with their elements; so do vertex-parented objects and Hook modifiers. <strong>Then join as shape keys</strong> adds each target as a shape key.</p>
 
   <h2 id="details">Details</h2>
   <ul>
@@ -198,7 +204,7 @@
     <summary>Not covered</summary>
     <ul>
       <li>Meshes whose topology really differs (a vertex added or merged, a new retopology) are reported, not changed; there is no matching by UVs or by vertex position alone.</li>
-      <li>Identical parts that moved a lot, and a round part turned about its own axis, are listed, not guessed.</li>
+      <li>Identical parts that moved a lot, and a round part turned about its own axis, are listed, not guessed; so can a round part that changed shape (a sphere-based head, a disc eye).</li>
       <li>Triangulated copies posed so differently that a vertex moved farther than about 1.2&nbsp;average edge lengths, or one part of more than 3,000 vertices whose diagonals differ in many places, are reported ("The triangles could not be followed"), not changed: triangulate both the same way, or after posing.</li>
       <li>A target more than twice or less than half the size of the source (a centimetre export beside a metre mesh) is matched, but not joined as a shape key until its size matches; the result says what to do.</li>
       <li>Hair, particle systems and Surface Deform bindings on the target are named after the copy, not re-pointed.</li>
@@ -213,13 +219,6 @@
     </figure>
     <p>The same sculpt triangulated again by another tool is reported, not followed ("The triangles could not be followed"): one part has 20,462 faces and many of its diagonals differ. Triangulate both copies the same way first.</p>
   </details>
-  <details>
-    <summary>Settling a listed part, step by step (38&nbsp;s)</summary>
-    <figure>
-      <img src="img/rain-pin.gif" alt="Blender 4.2.23, Rain's face twice side by side, the copy with her left cornea, a round part, turned about its own axis. Copy Order lists it (Parts matched: 41 of 43, Pins needed: 2). Target selects the part in Edit Mode and the view moves to her eye; two neighbouring faces are picked. Source does the same on the other face; the matching two faces are picked. Pin Selected Faces, then Copy Order again: Parts matched: 42 of 43, Pins needed: 1, Placed by your pin: Part 8 on the target (672 faces, Part 8 on the source)." width="960" height="424" loading="lazy">
-      <figcaption>Pinning a listed part on Rain: her left cornea is turned about its own axis in the copy. The view is zoomed by script; the waits are sped up. <a href="quick-start.html#pins">Steps</a>.</figcaption>
-    </figure>
-  </details>
   <p>Install and first copy: <a href="quick-start.html">quick start</a>.</p>
   <details>
     <summary>Words used on this page: loose part, topology, shape key</summary>
@@ -232,12 +231,12 @@
 
   <h2 id="tested">How we tested</h2>
   <ul>
-    <li><strong>All triangles:</strong> 43&nbsp;of&nbsp;43 parts, 383&nbsp;diagonals turned; the key's largest vertex error 0.255&nbsp;m before, 0&nbsp;m after.</li>
-    <li><strong>Quads</strong> (15,594&nbsp;faces): 42&nbsp;of&nbsp;43 parts, the 43rd listed, 1 pin needed.</li>
+    <li><strong>All triangles:</strong> 43&nbsp;of&nbsp;43 parts; the key's largest vertex error 0.255&nbsp;m before, 0&nbsp;m after.</li>
+    <li><strong>Quads</strong> (15,594&nbsp;faces): 42&nbsp;of&nbsp;43 parts, 1 pin needed.</li>
   </ul>
   <details>
     <summary>Tests and timings</summary>
-    <p>207&nbsp;tests passed and 1 was skipped on each of the four versions; 38&nbsp;of&nbsp;38 real-window steps pass on each. All on Linux. Copy Order took 1.6&nbsp;s (quads) and 5.7&nbsp;s (all triangles, Match triangulation) on an Intel Xeon at 2.10&nbsp;GHz with 4&nbsp;cores, Blender 4.2.23.</p>
+    <p>226&nbsp;tests passed and 1 was skipped on each of the four versions; 46&nbsp;of&nbsp;46 real-window steps pass on each. All on Linux. Copy Order took 1.6&nbsp;s (quads) and 5.7&nbsp;s (all triangles, Match triangulation) on an Intel Xeon at 2.10&nbsp;GHz with 4&nbsp;cores, Blender 4.2.23.</p>
   </details>
 
   <p class="fine" id="made">Real Blender windows, real clicks; the slider moves are stepped by script. <a href="how-made.html">How these were made</a>.</p>

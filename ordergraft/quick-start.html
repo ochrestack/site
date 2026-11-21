@@ -40,7 +40,7 @@
 
   <h2 id="install">Install (Blender 4.2 or newer; tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0)</h2>
   <ol>
-    <li>After checkout, download <code>ordergraft-1.0.3.zip</code> from the link in the email. Install the zip itself; do not unzip it first.</li>
+    <li>After checkout, download <code>ordergraft-1.0.4.zip</code> from the link in the email. Install the zip itself; do not unzip it first.</li>
     <li>In Blender, choose <strong>Edit &gt; Preferences...</strong>, then <strong>Get Extensions</strong> in the list on the left. The first time, Blender shows an "Online Extensions" box with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Ordergraft needs neither; you can leave the box alone.</li>
     <li>Open the drop-down menu at the top right of that tab, choose <strong>Install from Disk...</strong>, pick the zip, and press the <strong>Install from Disk</strong> button. <strong>Enable on Install</strong> is ticked, so Ordergraft is on. Its row under Installed reads "Copy vertex order between meshes. Sidebar, Ordergraft tab."</li>
     <li>Close Preferences, press <strong>N</strong> in the 3D Viewport and open the <strong>Ordergraft</strong> tab.</li>
@@ -51,27 +51,36 @@
   <ol>
     <li>In the Ordergraft tab pick the <strong>Source</strong>: the mesh whose order you want. The picker lists meshes only.</li>
     <li>In Object Mode select the target meshes, the ones that get the source's order: click one, Shift-click&nbsp;more.</li>
-    <li>Optional: <strong>Check Pair</strong>. Make one target the active object first. It says whether the topology is the same, how many parts pair up, and where the order first differs. It changes nothing in your file.</li>
+    <li>Optional: <strong>Check Pair</strong>. Make one target the active object first. It says whether the topology is the same, how many parts pair up and where the order first differs, and changes nothing in your file.</li>
     <li>Press <strong>Copy Order to Selected</strong>. The result box lists, per target, the parts matched, the pins needed, the vertices, edges and faces placed, and an "Order matches" line computed again from both meshes. <strong>Ctrl+Z</strong> undoes the whole run.</li>
-    <li>For shape keys, tick <strong>Then join as shape keys</strong> before step 4: each target is added to the source as a shape key named after it. A key of that name is replaced by the new shape. A target more than twice or less than half the size of the source (a centimetre export beside a metre mesh) is matched but not joined: the result says what to do (apply its scale with Ctrl+A, Scale, or scale its mesh to the source's size), then press Copy Order again.</li>
+    <li>For shape keys, tick <strong>Then join as shape keys</strong> before step 4: each target is added to the source as a shape key named after it, and a key of that name is replaced. A target more than twice or less than half the size of the source (a centimetre export beside a metre mesh) is matched but not joined; the result says what to do (usually Ctrl+A, Scale), then press Copy Order again.</li>
   </ol>
   <figure>
-    <img class="ui" src="img/rain-tri-result.png" alt="The Ordergraft panel after Copy Order on Rain's all-triangle face: Parts matched 43 of 43, Pins needed 0, Placed 16,109 vertices, Turned 383 diagonals, and the Order matches lines." width="370" height="855" loading="lazy">
+    <img class="ui" src="img/rain-tri-result.png" alt="The Ordergraft panel after Copy Order on Rain's all-triangle face: Parts matched 43 of 43, Pins needed 0, Placed 16,109 vertices, Turned 383 diagonals." width="370" height="855" loading="lazy">
     <figcaption>The panel after a run on Rain's all-triangle face. Character: Rain Rig (CC) Blender Foundation | studio.blender.org, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</figcaption>
   </figure>
 
   <h2 id="pins">A part is listed</h2>
-  <p>When Ordergraft cannot tell a part apart, for example identical teeth that moved a lot, or a part that is its own mirror image, it leaves that part as it was and lists it with the reason. Click <strong>Target</strong> or <strong>Source</strong> on its row: both meshes open in Edit Mode, the view moves to the part, and its faces are selected. Press <strong>3</strong> for face select. Click one face on the target part, then Shift-click a neighbouring face. Press <strong>Source</strong>: the pair on the target is remembered while you pick on the source. Click one face on the source part that matches the first, then Shift-click the face that matches the second. Press <strong>Pin Selected Faces</strong>: if the two faces on the source cannot lie on the part the way the two on the target do, it says so and sets nothing. Go back to Object Mode and press Copy Order again; the result says "Placed by your pin" and leaves that part out of its Order matches line. A pin that is set and not used is named in the result, with its reason. Pins are kept for the session and are not written into the file; <strong>Clear Pins</strong> forgets them.</p>
+  <p>When Ordergraft cannot tell a part apart (identical teeth that moved a lot, a mirror-image part, a round part that changed shape such as a disc eye), it leaves the part as it was and lists it. Two faces settle it:</p>
+  <ol>
+    <li>Click <strong>Target</strong> or <strong>Source</strong> on its row: both meshes open in Edit Mode, the view moves to the part, and its faces are selected. Press <strong>3</strong> for face select; if another part hides it, press <strong>Alt+Z</strong> to see through.</li>
+    <li>Click one face on the target part, then Shift-click a neighbouring face. Press <strong>Source</strong>: the pair on the target is remembered while you pick on the source.</li>
+    <li>Click the matching face on the source part and Shift-click its neighbour. Press <strong>Pin Selected Faces</strong>. It is greyed until two faces are picked on each mesh, and sets nothing if the two on the source cannot lie on the part the way the two on the target do.</li>
+    <li>Press <strong>Tab</strong> for Object Mode, then Copy Order again: the result says "Placed by your pin".</li>
+  </ol>
+  <p>A pin is kept for the session, not written into the file: Ctrl+Z and Copy Order place the part again, and a second Copy Order uses it again ("Already placed by your pin"). A pin that no longer fits is named in the result. <strong>Clear Pins</strong> forgets them.</p>
   <figure>
     <img src="img/rain-pin.gif" alt="Blender 4.2.23, Rain's face and a copy with one eye turned: Target, two faces picked, Source, two matching faces, Pin Selected Faces, then Placed by your pin." width="960" height="424" loading="lazy">
     <figcaption>Pinning a listed part on Rain (her left cornea is turned in the copy). Zoomed by script; waits sped up.</figcaption>
   </figure>
 
   <h2 id="triangles">Triangulated copies</h2>
-  <p>Triangles and quads need nothing set. When two copies were triangulated after different poses, tick <strong>Match triangulation</strong> to turn the target's flipped diagonals to the source's first, in the same press; vertex positions do not move. This works while no vertex moved farther than about 1.2&nbsp;average edge lengths; for a bigger morph, sculpt it on the triangulated mesh. Beyond that, or for one part of more than 3,000 vertices whose diagonals differ in many places, the result reads "The triangles could not be followed" and nothing changes: triangulate both copies the same way, or after posing, and run again.</p>
+  <p>Triangles and quads need nothing set. When two copies were triangulated after different poses, tick <strong>Match triangulation</strong> to turn the target's flipped diagonals to the source's first, in the same press; vertex positions do not move. This works while no vertex moved farther than about 1.2&nbsp;average edge lengths; for a bigger morph, sculpt it on the triangulated mesh.</p>
+  <p>Beyond that, or for one part of more than 3,000 vertices whose diagonals differ in many places, the result reads "The triangles could not be followed" and nothing changes: triangulate both copies the same way, or after posing, and run again.</p>
 
   <h2 id="different">A different topology</h2>
-  <p>If the copies really differ (a vertex added or merged, a different retopology), Check Pair and Copy Order name the part and the vertices where they stop matching, and the target is left as it was. <strong>Show</strong> selects those vertices on both meshes in Edit Mode, and <strong>Copy Report to Text Editor</strong> writes the same lines to a text block and opens it in a new window; close the window when you are done.</p>
+  <p>If the copies really differ (a vertex added or merged, a different retopology), Check Pair and Copy Order name the part and the vertices where they stop matching, and the target is left as it was.</p>
+  <p><strong>Show</strong> selects those vertices on both meshes in Edit Mode; <strong>Copy Report to Text Editor</strong> writes the same lines to a text block in a new window, which you close when done.</p>
 
   <h2 id="holds">What else holds the target's&nbsp;numbers</h2>
   <p>Copy Order renumbers the target's vertices. Objects parented to one or three of its vertices and its Hook modifiers are moved to the same vertices. Hair or particle systems and modifiers bound to the target (Surface Deform and similar) cannot be re-pointed: the result names them, and Ctrl+Z undoes the copy.</p>
