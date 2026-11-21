@@ -153,7 +153,7 @@
 
   <h2 id="install">Install</h2>
   <p>Sibfold is not on JetBrains Marketplace yet, so there is nothing to install from there today.</p>
-  <p>Installing from a zip file was run in IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3: <strong>Settings | Plugins</strong>, the gear menu, <strong>Install Plugin from Disk...</strong>, pick the zip without unpacking it, <strong>Accept</strong> the Third-Party Plugins Notice, then <strong>Restart IDE</strong>. After a restart the IDE may show its own &ldquo;Cannot update plugins&rdquo; balloon for a plugin installed from a file; it comes from the IDE and does not affect Sibfold.</p>
+  <p>Installing from a zip file was run in IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3: <strong>Settings | Plugins</strong>, the gear menu, <strong>Install Plugin from Disk...</strong>, pick the zip without unpacking it, <strong>Accept</strong> the Third-Party Plugins Notice, then <strong>Restart IDE</strong> and confirm the IDE's second question, &ldquo;Restart IntelliJ IDEA to apply changes in plugins?&rdquo;. After a restart the IDE may show its own &ldquo;Cannot update plugins&rdquo; balloon for a plugin installed from a file; it comes from the IDE and does not affect Sibfold.</p>
   <p>After the restart the IDE shows no sign of Sibfold. It lives in three places: <strong>Settings | Appearance &amp; Behavior | Sibfold</strong>; the Project view's options menu (the three dots in the Project tool window) | Appearance | <strong>Sibfold Nesting Rules...</strong>; and Find Action (Ctrl+Shift+A), typing &ldquo;Sibfold Nesting Rules&rdquo;.</p>
   <figure>
     <img class="ui" src="img/options-menu.png" alt="The Project view's options menu with Appearance open in IntelliJ IDEA 2025.2: Show, Members, Excluded Files, Visibility Icons, Scratches and Consoles, File Details, Flatten Modules, Flatten Packages, Abbreviate Qualified Names, Compact Middle Packages, then File Nesting..., Sibfold Nesting Rules... and a ticked Sibfold Nesting, then Customize Tree Views..." width="236" height="398" loading="lazy">
@@ -178,14 +178,14 @@
   <h2 id="license">With a license</h2>
   <p>Each of these needs a license or the 30-day&nbsp;trial.</p>
   <ul>
-    <li><strong>More rules.</strong> Every enabled rule is in force, in list order. A file that two rules would claim goes to the first rule.</li>
+    <li><strong>More rules.</strong> Every enabled rule is in force, in list order, in all your projects. A file that two rules would claim goes to the first rule.</li>
     <li><strong>Share with the team.</strong> <strong>Save Rules to sibfold.rules</strong> writes your rules to the project root. Commit it; teammates who have Sibfold, and a license or the trial, get the rules, applied after their own. If the file already holds rules that are not among yours, the question names them and says saving removes them.</li>
     <li><strong>Levels.</strong> A child can hold children, up to 5&nbsp;levels below the top file. A set of rules that would make a loop is refused, naming the files in it.</li>
     <li><strong>Ready Rule Sets...</strong> Choose a set; the dialog shows what it would nest in your project; <strong>Add Rules</strong> puts ordinary rules at the end of your list.</li>
   </ul>
 
   <h2 id="trial">License and trial</h2>
-  <p>One rule at a time, the tester, Select Opened File and live updates are free with no time limit. The license is $7&nbsp;once, the same for personal and commercial use, with a 30-day&nbsp;trial of everything; nothing renews. When the trial ends nothing pops up: your first rule keeps working, the others stay saved and marked <em>not in force</em>, and the settings page says in one line what the license adds.</p>
+  <p>One rule at a time, the tester, Select Opened File and live updates are free with no time limit. The one rule is yours in all your projects: your rules are the IDE's settings, not a project's, so a rule you made in one project is the one in force in the next, and a second rule, from any project, stays saved and marked <em>not in force</em> until you untick the first or have a license (the tester names the rule that is in force). The license is $7&nbsp;once per person, the same for personal and commercial use (a team of six is $42), the same for personal and commercial use, with a 30-day&nbsp;trial of everything; nothing renews. When the trial ends nothing pops up: your first rule keeps working, the others stay saved and marked <em>not in force</em>, and the settings page says in one line what the license adds.</p>
   <p>The license is checked through JetBrains Marketplace licensing, which is the IDE's own. The trial and the purchase can start only once Sibfold is on the Marketplace; they have not been run. Android Studio has no JetBrains licensing, so only the free tier would apply there (not run in Android Studio).</p>
 
   <h2 id="examples">More examples</h2>
@@ -193,9 +193,13 @@
   parent  (?&lt;base&gt;.+)\.log
   child   ${base}\.\d+\.log
 
-Function.cp37-win_amd64.pyd under Function.pyx
+Function.cp37-win_amd64.pyd, .so, .c, .pxd and .pyi under Function.pyx
   parent  (?&lt;base&gt;.+)\.pyx
-  child   ${base}(?:\.[A-Za-z0-9_-]+)*\.(?:pyd|so)</code></pre></div></div>
+  child   ${base}(?:\.[A-Za-z0-9_-]+)*\.(?:pyd|so|c|pxd|pyi)
+
+Button.test.tsx, Button.story.tsx, Button.module.css under Button.tsx
+  parent  (?&lt;c&gt;[A-Z]\w*)\.tsx
+  child   ${c}\..+</code></pre></div></div>
 
   <h2 id="syntax">Pattern syntax</h2>
   <ul>

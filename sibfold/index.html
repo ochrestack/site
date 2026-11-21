@@ -79,10 +79,12 @@
   .pair figure { flex: 0 1 auto; }
   /* The IDE captures are 1200 px wide: on wide screens they get up to that width, centred on the column. */
   @media (min-width: 1000px) {
-    .real-size { width: min(1200px, calc(100vw - 48px)); margin-left: calc((712px - min(1200px, calc(100vw - 48px))) / 2); }
-    .real-size figcaption { max-width: 712px; margin-left: auto; margin-right: auto; }
+    .real-size { width: min(1200px, calc(100vw - 48px)); }
+    .real-size figcaption { max-width: 712px; }
   }
-  header { max-width: 1200px; }
+  header, main, footer { max-width: 1200px; }
+  main > * { max-width: 712px; }
+  main > .real-size { max-width: none; }
   .top { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
   .top h1 { margin-top: 12px; }
   header { padding-top: 20px; }
@@ -165,6 +167,8 @@
   code.nw { white-space: nowrap; }
   @media (max-width: 600px) { code.nw { white-space: normal; overflow-wrap: anywhere; } }
   @media (max-width: 600px) { .top h1 { font-size: 21px; } .top .button { padding: 7px 14px; } .top .fine { font-size: 13px; line-height: 1.35; } }
+  /* Phones: the lead, the price line and the trust line say the same words as on a desktop, so they are set a little tighter to keep the buy button in the first screen. */
+  @media (max-width: 600px) { .top .sub { font-size: 14.5px; line-height: 1.3; } .top .benefits { font-size: 14px; line-height: 1.3; margin: 3px 0; } .top .buy p.price { font-size: 14px; line-height: 1.3; margin-bottom: 2px; } .top .buy-row { margin: 2px 0 4px; } .top .fine { font-size: 12.5px; line-height: 1.3; } }
 </style>
 </head>
 <body>
@@ -187,12 +191,12 @@
     <li><strong>My team gets the same rules from version control (license).</strong></li>
   </ul>
   <div class="buy">
-    <p class="price"><strong>Free:</strong> complete for one rule at a time<span class="more">, no time limit, tester included</span>. <strong>$7&nbsp;once</strong> adds more rules, Save Rules to sibfold.rules, nesting levels and Ready Rule Sets...; 30-day trial<span class="more"> of everything</span>.</p>
+    <p class="price"><strong>Free:</strong> complete for one rule at a time, in all your projects, no time limit. <strong>$7&nbsp;once per person</strong> adds more rules, Save Rules to sibfold.rules, nesting levels and Ready Rule Sets...; 30-day trial.</p>
     <div class="buy-row">
-      <a class="button" id="buy" href="#" aria-describedby="buy-note">Get it on JetBrains Marketplace</a>
-      <span class="buy-note" id="buy-note">listing in review</span>
+      <button class="button" id="buy" type="button" disabled aria-describedby="buy-note" title="Not on JetBrains Marketplace yet: there is no listing to open">Get it on JetBrains Marketplace</button>
+      <span class="buy-note" id="buy-note">Not on JetBrains Marketplace yet.</span>
     </div>
-    <p class="fine">Tested in IntelliJ IDEA <span class="more">and PyCharm </span>2025.2&nbsp;and 2026.3 · <span class="more">IDE builds 252&nbsp;and later, not Rider · </span>source code not&nbsp;included&nbsp;·&nbsp;<a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
+    <p class="fine">Tested in IntelliJ IDEA and PyCharm 2025.2&nbsp;and 2026.3 · not Rider · source code not&nbsp;included&nbsp;·&nbsp;<a href="mailto:support@ochrestack.com">support@ochrestack.com</a></p>
   </div>
 </section>
 <main>
@@ -221,6 +225,11 @@
     <img class="ui narrow-only" src="img/rule-tester-phone.png" alt="The rule Go tests with its name, parent pattern (?&lt;base&gt;.+)\.go and child pattern ${base}(_.+)?_test\.go, and under Matches in the open project the line 233 files would hold 266 nested files in 136 folders" width="345" height="181" loading="lazy">
     <figcaption>On gRPC Go: 233&nbsp;files would hold 266&nbsp;nested files; the IDE's one rule nests 225&nbsp;of them (<a href="how-we-tested.html">how we tested</a>).</figcaption>
   </figure>
+  <p class="fine">The same free rule, for other names:</p>
+  <ul class="tight">
+    <li><strong>TypeScript:</strong> <code class="nw">(?&lt;c&gt;[A-Z]\w*)\.tsx</code> with <code class="nw">${c}\..+</code> puts <code>Button.test.tsx</code>, <code>Button.story.tsx</code> and <code>Button.module.css</code> under&nbsp;<code>Button.tsx</code>.</li>
+    <li><strong>Cython:</strong> <code class="nw">(?&lt;base&gt;.+)\.pyx</code> with <code class="nw">${base}(?:\.[A-Za-z0-9_-]+)*\.(?:pyd|so|c|pxd|pyi)</code> puts <code>Function.cp37-win_amd64.pyd</code>, <code>Function.cpython-311-x86_64-linux-gnu.so</code>, <code>Function.c</code>, <code>Function.pxd</code> and <code>Function.pyi</code> under&nbsp;<code>Function.pyx</code>. Run on these names; no public project keeps built files to open.</li>
+  </ul>
 
   <p><span class="step-tag">2. Check it first (free)</span><br>A pattern error is marked where it fails. Try file names shows what would nest, touching nothing.</p>
   <figure>
@@ -256,7 +265,7 @@
     <img class="ui" src="img/levels.png" alt="The dist/css folder of Bootstrap 4.6.2 in IntelliJ IDEA 2025.2: bootstrap.css holds bootstrap.css.map and bootstrap.min.css, and bootstrap.min.css holds bootstrap.min.css.map, which is selected" width="387" height="144" loading="lazy">
     <figcaption>Bootstrap 4.6.2, two rules.</figcaption>
   </figure>
-  <p class="fine">Steps 3&nbsp;to 5&nbsp;pictures used a test stand-in for the license.</p>
+  <p class="fine">The pictures for steps 3&nbsp;to 5&nbsp;were taken with the paid features switched on by a test tool; no license has been bought through the Marketplace yet.</p>
 
   <h2 id="limits">Limits</h2>
   <ul class="tight">
@@ -274,8 +283,8 @@
 
   <div class="buy">
     <div class="buy-row">
-      <a class="button" id="buy-2" href="#" aria-describedby="buy-note-2">Get it on JetBrains Marketplace</a>
-      <span class="buy-note" id="buy-note-2">listing in review</span>
+      <button class="button" id="buy-2" type="button" disabled aria-describedby="buy-note-2" title="Not on JetBrains Marketplace yet: there is no listing to open">Get it on JetBrains Marketplace</button>
+      <span class="buy-note" id="buy-note-2">Not on JetBrains Marketplace yet.</span>
     </div>
   </div>
 </main>
