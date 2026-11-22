@@ -40,7 +40,7 @@
 
   <h2 id="install">Install (Blender 4.2 LTS to 5.3, tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0)</h2>
   <ol>
-    <li>After checkout, download <code>ordergraft-1.0.6.zip</code> from the link in the email. Install the zip itself; do not unzip it first.</li>
+    <li>After checkout, download <code>ordergraft-1.0.7.zip</code> from the link in the email. Install the zip itself; do not unzip it first.</li>
     <li>In Blender, choose <strong>Edit &gt; Preferences...</strong>, then <strong>Get Extensions</strong> in the list on the left. The first time, Blender shows an "Online Extensions" box with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Ordergraft needs neither; leave the box alone.</li>
     <li>Open the drop-down menu at the top right of that tab, choose <strong>Install from Disk...</strong>, pick the zip, and press the <strong>Install from Disk</strong> button. <strong>Enable on Install</strong> is ticked, so Ordergraft is on. Open its row under Installed (click the arrow beside its name): it reads "Copy vertex order. Press N in the 3D Viewport, Ordergraft tab."</li>
     <li>Close Preferences, press <strong>N</strong> in the 3D Viewport and open the <strong>Ordergraft</strong> tab.</li>
@@ -62,17 +62,11 @@
   <ol>
     <li>Click <strong>Target</strong> or <strong>Source</strong> on its row: both meshes open in Edit Mode, the view moves to the part, and its faces are selected. Press <strong>3</strong> for face select; if another part hides it, press <strong>Alt+Z</strong> to see through.</li>
     <li>Click one face on the target part, then Shift-click a neighbouring face. Press <strong>Source</strong>: the pair on the target is remembered while you pick on the source.</li>
-    <li>Click the matching face on the source part and Shift-click its neighbour. Press <strong>Pin Selected Faces</strong>. It is greyed until two faces are picked on each mesh, and sets nothing if the two on the source cannot lie on the part the way the two on the target do.</li>
+    <li>Click the matching face on the source part and Shift-click its neighbour. Press <strong>Pin Selected Faces</strong>. It is greyed until two faces are picked on each mesh, and sets nothing if the two on the source cannot lie on the part the way the two on the target do. The row then says "Pin set: run Copy Order."</li>
     <li>Press <strong>Tab</strong> for Object Mode, then Copy Order again: the result says "Placed by your pin".</li>
   </ol>
-  <p>A pin is kept for the session, not written into the file: Ctrl+Z and Copy Order place the part again, and a second Copy Order uses it again ("Already placed by your pin"). A pin that no longer fits is named in the result. <strong>Clear Pins</strong> forgets them.</p>
-  <figure>
-    <picture>
-        <source media="(max-width: 600px)" srcset="img/rain-pin-phone.gif" width="375" height="838">
-        <img src="img/rain-pin.gif" alt="Blender 4.2.23, Rain's face and a copy with one eye turned: Target, two faces picked, Source, two matching faces, Pin Selected Faces, then Placed by your pin." width="720" height="690" loading="lazy">
-      </picture>
-    <figcaption>Pinning a listed part on Rain (her left cornea is turned in the copy). Zoomed by script; waits sped up.</figcaption>
-  </figure>
+  <p>A pin is kept for the session, not written into the file: Ctrl+Z and Copy Order place the part again, and a second Copy Order uses it again ("Already placed by your pin"). A pin that no longer fits is named in the result. <strong>Clear Pins</strong> forgets the pins of the pair on screen.</p>
+  <p class="fine">The steps, filmed on Rain: <a href="index.html">product page</a>, "Two faces settle a listed part".</p>
 
   <h2 id="triangles">Triangulated copies</h2>
   <p>Triangles and quads need nothing set. When two copies were triangulated after different poses, tick <strong>Match triangulation</strong> to turn the target's flipped diagonals to the source's first, in the same press; vertex positions do not move. This works while no vertex moved farther than about 1.2&nbsp;average edge lengths; for a bigger morph, sculpt it on the triangulated mesh.</p>
@@ -83,7 +77,7 @@
   <p><strong>Show</strong> selects that vertex and its faces on both meshes in Edit Mode and fills the view with the target's patch; press it again for the source's. <strong>Back</strong> returns to your view. <strong>Copy Report to Text Editor</strong> writes the same lines to a text block in a new window.</p>
 
   <h2 id="holds">What else holds the target's&nbsp;numbers</h2>
-  <p>Copy Order renumbers the target's vertices. Objects parented to one or three of its vertices and its Hook modifiers are moved to the same vertices. Hair or particle systems and modifiers bound to the target (Surface Deform and similar) cannot be re-pointed: the result names them, and Ctrl+Z undoes the copy.</p>
+  <p>Vertex-parented objects and Hook modifiers follow; hair and bound modifiers (Surface Deform and similar) are named in the result. <code>MANUAL.md</code> has the rest.</p>
 
   <h2 id="limits">Limits</h2>
   <ul>
