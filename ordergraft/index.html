@@ -107,7 +107,7 @@
     <figure>
       <picture>
         <source media="(max-width: 600px)" srcset="img/rain-hero-phone.gif" width="640" height="490">
-        <img class="hero" src="img/rain-hero.gif" alt="Blender 4.2.23: Rain's all-triangle face with a smile shape key at full strength, made by Join as Shapes from a copy in another order: the face is torn into shards, and the Ordergraft panel beside it has no result yet. The key slider goes to zero and back. Then the other copy is selected, Match triangulation and Then join as shape keys are ticked, Copy Order to Selected is pressed, and the result box fills in: Parts matched: 43 of 43, Pins needed: 0, Turned 383 diagonals. The key now plays on the face without tearing." width="720" height="740">
+        <img class="hero" src="img/rain-hero.gif" alt="Blender 4.2.23: Rain's all-triangle face with a smile shape key at full strength, made by Join as Shapes from a copy in another order: the face is torn into shards, and the Ordergraft panel beside it has no result yet. The key slider goes to zero and back. Then the other copy is selected, Match triangulation and Then join as shape keys are ticked, Copy Order to Selected is pressed, and the result box fills in: Parts matched: 43 of 43, Pins needed: 0, Turned 383 diagonals. The key now plays on the face without tearing." width="720" height="698">
       </picture>
       <figcaption class="fine">A smile key torn by Join as Shapes, then one Ordergraft run. 21&nbsp;s. <a href="#credits">Credits</a></figcaption>
     </figure>
@@ -123,7 +123,7 @@
       <p class="price"><strong>$8&nbsp;once</strong>, source included. Every update included.</p>
       <a class="button" id="buy" href="https://buy.polar.sh/polar_cl_rdqbgeUkMaodrb2rkmYhl7No8ePegijYhDIGT1nyApk">Buy for $8</a>
     </div>
-    <p class="fine" id="studio-line">Studio licence for up to 10 seats, $30: <a class="studio" id="studio" href="mailto:support@ochrestack.com?subject=Ordergraft%20Studio%20licence&amp;body=Please%20send%20me%20the%20checkout%20link%20for%20the%20Ordergraft%20Studio%20licence%20(up%20to%2010%20seats%2C%20%2430).">email us for the link</a>.</p>
+    <p class="fine" id="studio-line">Studio license for up to 10 seats, $30: <a class="studio" id="studio" href="mailto:support@ochrestack.com?subject=Ordergraft%20Studio%20license&amp;body=Please%20send%20me%20the%20checkout%20link%20for%20the%20Ordergraft%20Studio%20license%20(up%20to%2010%20seats%2C%20%2430).">email us for the link</a>.</p>
     <p class="fine">Blender 4.2 LTS to 5.3, tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux) · source code included · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · Polar checkout · <a href="../terms.html">refund within 14&nbsp;days if we can't fix a fault</a> · no license check · <a href="#details">details</a></p>
   </div>
 
@@ -141,41 +141,40 @@
       <img src="video/ordergraft-demo.gif" alt="Blender 4.2.23, Rain's face twice side by side. The left copy has a smile shape key torn by Join as Shapes: its face is shards, which come together as the key goes to zero and fly apart again. Then the Ordergraft panel's Copy Order result reads Parts matched: 43 of 43, Pins needed: 0, Turned 383 diagonals. Then the same key plays on the left copy, now clean, until both faces match." width="640" height="360">
     </picture>
     </video>
-    <figcaption>55&nbsp;s, no sound, the waits cut. <a href="video/ordergraft-demo-1080p60.mp4">Full size</a>.</figcaption>
+    <figcaption>62&nbsp;s, no sound, the waits cut. <a href="video/ordergraft-demo-1080p60.mp4">Full size</a>.</figcaption>
   </figure>
   <details>
     <summary>What the film shows</summary>
-    <p>Captions only, 1080p at 60 frames a second (720p on phones). Rain's face in Blender 4.2.23 with Ordergraft 1.0.5: a smile key torn by Join as Shapes; Check Pair; one Copy Order on the all-triangle copy, 43 of 43 parts; the key playing clean; then the quad copy, with the one part it lists; and a copy whose topology differs, where Check Pair says where the copies stop matching and changes nothing. The waits while Blender works are cut (<a href="how-made.html">how</a>). Character: <a href="#credits">credits</a>.</p>
+    <p>Captions only, 1080p at 60 frames a second (720p on phones). Rain's face in Blender 4.2.23 with Ordergraft 1.0.6: a smile key torn by Join as Shapes; Check Pair; one Copy Order on the all-triangle copy, 43 of 43 parts; the key playing clean; then the quad copy, with the one part it lists; and a copy whose topology differs, where Check Pair says where the copies stop matching and changes nothing. The waits while Blender works are cut. Character: <a href="#credits">credits</a>.</p>
   </details>
 
   <h2>In Blender, for real</h2>
-  <p>Rain's face: 43&nbsp;loose parts, 16,109&nbsp;vertices (<a href="how-made.html">how</a>).</p>
+  <p>Rain's face: 43&nbsp;loose parts, 16,109&nbsp;vertices.</p>
   <figure>
     <img src="img/rain-torn-vs-clean-2x1.png" alt="The same mesh and camera in Blender, the smile shape key at full strength. Left, labelled Join as Shapes alone: Rain's face is torn into shards. Right, labelled After one Ordergraft run: she smiles, with her eyes, eyebrows and teeth in place." width="1600" height="800" loading="lazy">
     <figcaption>Left: Join as Shapes alone, largest vertex error 0.255&nbsp;m. Right: after one Ordergraft run, 0&nbsp;m.</figcaption>
   </figure>
-  <div class="pair wide">
+  <details>
+    <summary>The panel after the all-triangle copy</summary>
+    <div class="pair wide">
     <figure>
-      <a href="img/rain-tri-result-window.png"><img class="ui" src="img/rain-tri-result.png" alt="The Ordergraft panel after Copy Order on the all-triangle pair, Match triangulation and Then join as shape keys ticked. The Copy Order result box reads: Parts matched: 43 of 43; Pins needed: 0; Placed 16,109 vertices; Placed 47,115 edges; Placed 31,050 faces; Turned 383 diagonals to match the source's triangulation; Joined as shape key Rain_face_smile_tri updated, its earlier shape replaced; The key Rain_face_smile_tri is at 1.000 (Properties > Data > Shape Keys); Order matches: 16,109 of 16,109 vertices, 47,115 of 47,115 edges, 31,050 of 31,050 faces." width="370" height="795" loading="lazy"></a>
+      <a href="img/rain-tri-result-window.png"><img class="ui" src="img/rain-tri-result.png" alt="The Ordergraft panel after Copy Order on the all-triangle pair, Match triangulation and Then join as shape keys ticked. The Copy Order result box reads: Parts matched: 43 of 43; Pins needed: 0; Placed 16,109 vertices; Placed 47,115 edges; Placed 31,050 faces; Turned 383 diagonals to match the source's triangulation; Shape key Rain_face_smile_tri updated, its earlier shape replaced; it is at 1.000 (Properties > Data > Shape Keys); Order matches: 16,109 of 16,109 vertices, 47,115 of 47,115 edges, 31,050 of 31,050 faces." width="370" height="785" loading="lazy"></a>
       <figcaption>All-triangle copy: 43&nbsp;of&nbsp;43&nbsp;parts, no pins, 383&nbsp;diagonals turned. <a href="img/rain-tri-result-window.png">Whole window</a>.</figcaption>
     </figure>
-    <figure>
-      <img class="ui" src="img/rain-different-check.png" alt="The Ordergraft panel after Check Pair on a pair where one edge at the tip of the nose has been cut in two. The Check result box reads: Different topology: nothing would change; then the Show button; Source has 43 parts; Target has 43 parts; 43 parts pair up; Part 1 on the source (6,318 faces) and Part 43 on the target (6,318 faces) are not the same topology; they stop matching at source vertex 3,223 and target vertex 14,729. At the bottom, Copy Report to Text Editor." width="370" height="725" loading="lazy">
-      <figcaption>One vertex added at her nose: Check Pair says where the copies stop matching.</figcaption>
-    </figure>
-  </div>
+    </div>
+  </details>
   <figure>
     <picture>
       <source media="(max-width: 600px)" srcset="img/rain-different-phone.gif" width="640" height="490">
-      <img src="img/rain-different.gif" alt="Blender 4.2.23: the second copy is selected, Check Pair is pressed and the Check result box says Different topology: nothing would change. Show is pressed, and both faces open in Edit Mode as wireframe with the reported vertex and the faces around it selected on each, an orange patch near her mouth." width="960" height="424" loading="lazy">
+      <img src="img/rain-different.gif" alt="Blender 4.2.23, the 3D viewport beside the Ordergraft panel. The second copy is selected, Check Pair is pressed and the Check result box says Different topology: nothing would change, with a Show button. Show is pressed: both faces open in Edit Mode and the view fills with the target's patch, the vertex where the copies stop matching and the faces around it selected. A second press of Show turns the view to the source's patch." width="720" height="624" loading="lazy">
     </picture>
-    <figcaption>Check Pair, then Show. <a href="img/rain-different-show-window.png">Whole window</a>.</figcaption>
+    <figcaption>Check Pair, then Show twice: the view fills with the target's patch, then the source's. <a href="img/rain-different-show-window.png">Whole window</a>.</figcaption>
   </figure>
 
   <details open>
     <summary>Two faces settle a listed part: step by step (45&nbsp;s)</summary>
     <figure>
-      <img src="img/rain-pin.gif" alt="Blender 4.2.23, Rain's face twice side by side, the copy with her left cornea, a round part, turned about its own axis. Copy Order lists it (Parts matched: 41 of 43, Pins needed: 2). Target selects the part in Edit Mode and the view moves to her eye; two neighbouring faces are picked. Source does the same on the other face; the matching two faces are picked. Pin Selected Faces, then Copy Order again: Parts matched: 42 of 43, Pins needed: 1, Placed by your pin: Part 8 on the target (672 faces, Part 8 on the source)." width="960" height="424" loading="lazy">
+      <img src="img/rain-pin.gif" alt="Blender 4.2.23, Rain's face twice side by side, the copy with her left cornea, a round part, turned about its own axis. Copy Order lists it (Parts matched: 41 of 43, Pins needed: 2). Target selects the part in Edit Mode and the view moves to her eye; two neighbouring faces are picked. Source does the same on the other face; the matching two faces are picked. Pin Selected Faces, then Copy Order again: Parts matched: 42 of 43, Pins needed: 1, Placed by your pin: Part 8 on the target and Part 8 on the source, 672 faces." width="720" height="690" loading="lazy">
       <figcaption>Pinning a listed part on Rain: her left cornea is turned about its own axis in the copy. The view is zoomed by script; the waits are sped up. <a href="quick-start.html#pins">Steps</a>.</figcaption>
     </figure>
   </details>
@@ -186,7 +185,7 @@
   <h2 id="details">Details</h2>
   <ul>
     <li>Checkout by Polar; the download arrives by email. To update, download the new zip where you bought Ordergraft and install it the same way. If it doesn't work as described and we can't fix it, email us within 14&nbsp;days for a full refund (<a href="../terms.html">terms</a>).</li>
-    <li>$8 for one seat; a Studio licence for up to 10&nbsp;seats is $30 (<a href="mailto:support@ochrestack.com?subject=Ordergraft%20Studio%20licence">email us</a> for the link).</li>
+    <li>$8 for one seat; a Studio license for up to 10&nbsp;seats is $30 (<a href="mailto:support@ochrestack.com?subject=Ordergraft%20Studio%20license">email us</a> for the link).</li>
     <li>Windows and macOS have not been tested. GPL-3.0-or-later; no telemetry, no network calls, no license check.</li>
   </ul>
   <details>
@@ -203,8 +202,8 @@
   <details>
     <summary>A game body, all triangles</summary>
     <figure>
-      <a href="img/rain-game-window.png"><img class="ui" src="img/rain-game-morph.png" alt="The Ordergraft panel after Copy Order on a morph target of Rain's whole body, all triangles. The Copy Order result box reads: Parts matched: 78 of 78; Pins needed: 0; Placed 40,447 vertices; Placed 118,728 edges; Placed 78,351 faces; Order matches: 40,447 of 40,447 vertices, 118,728 of 118,728 edges, 78,351 of 78,351 faces." width="370" height="627" loading="lazy"></a>
-      <figcaption>Rain's body, jeans, top, shoes, scarf and face as one all-triangle mesh. A morph target sculpted up to half an edge and exported with the same triangles: one press, 1.5&nbsp;s without a window. <a href="img/rain-game-window.png">Whole window</a>.</figcaption>
+      <a href="img/rain-game-window.png"><img class="ui" src="img/rain-game-morph.png" alt="The Ordergraft panel after Copy Order on a morph target of Rain's whole body, all triangles. The Copy Order result box reads: Parts matched: 78 of 78; Pins needed: 0; Placed 40,447 vertices; Placed 118,728 edges; Placed 78,351 faces; Order matches: 40,447 of 40,447 vertices, 118,728 of 118,728 edges, 78,351 of 78,351 faces." width="370" height="638" loading="lazy"></a>
+      <figcaption>Rain's body, jeans, top, shoes, scarf and face as one all-triangle mesh. A morph target sculpted up to half an edge and exported with the same triangles: one press, 1.6&nbsp;s without a window. <a href="img/rain-game-window.png">Whole window</a>.</figcaption>
     </figure>
     <p>The same sculpt triangulated again by another tool is reported, not followed ("The triangles could not be followed"): one part has 20,462 faces and many of its diagonals differ. Triangulate both copies the same way first.</p>
   </details>
@@ -225,7 +224,7 @@
   </ul>
   <details>
     <summary>Tests and timings</summary>
-    <p>266&nbsp;tests passed and 1 was skipped on each of the four versions; 51&nbsp;of&nbsp;51 real-window steps pass on each. All on Linux. Copy Order took 1.3&nbsp;s (quads) and 4.3&nbsp;s (all triangles, Match triangulation) on an Intel Xeon at 2.10&nbsp;GHz with 4&nbsp;cores, Blender 4.2.23, Ordergraft 1.0.5.</p>
+    <p>286&nbsp;tests passed and 1 was skipped on each of the four versions; 53&nbsp;of&nbsp;53 real-window steps pass on each. All on Linux. Copy Order took 1.3&nbsp;s (quads) and 4.6&nbsp;s (all triangles, Match triangulation) on an Intel Xeon at 2.10&nbsp;GHz with 4&nbsp;cores, Blender 4.2.23, Ordergraft 1.0.6.</p>
   </details>
 
   <p class="fine" id="made">Real Blender windows, real clicks; the slider moves are stepped by script. <a href="how-made.html">How these were made</a>.</p>

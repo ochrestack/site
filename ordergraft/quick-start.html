@@ -40,22 +40,22 @@
 
   <h2 id="install">Install (Blender 4.2 LTS to 5.3, tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0)</h2>
   <ol>
-    <li>After checkout, download <code>ordergraft-1.0.5.zip</code> from the link in the email. Install the zip itself; do not unzip it first.</li>
+    <li>After checkout, download <code>ordergraft-1.0.6.zip</code> from the link in the email. Install the zip itself; do not unzip it first.</li>
     <li>In Blender, choose <strong>Edit &gt; Preferences...</strong>, then <strong>Get Extensions</strong> in the list on the left. The first time, Blender shows an "Online Extensions" box with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Ordergraft needs neither; leave the box alone.</li>
-    <li>Open the drop-down menu at the top right of that tab, choose <strong>Install from Disk...</strong>, pick the zip, and press the <strong>Install from Disk</strong> button. <strong>Enable on Install</strong> is ticked, so Ordergraft is on. Its row under Installed reads "Copy vertex order. Press N in the 3D Viewport, Ordergraft tab."</li>
+    <li>Open the drop-down menu at the top right of that tab, choose <strong>Install from Disk...</strong>, pick the zip, and press the <strong>Install from Disk</strong> button. <strong>Enable on Install</strong> is ticked, so Ordergraft is on. Open its row under Installed (click the arrow beside its name): it reads "Copy vertex order. Press N in the 3D Viewport, Ordergraft tab."</li>
     <li>Close Preferences, press <strong>N</strong> in the 3D Viewport and open the <strong>Ordergraft</strong> tab.</li>
   </ol>
-  <p>To update, install the newer zip the same way; Blender replaces the old version.</p>
+  <p>To update, install the newer zip the same way.</p>
 
   <h2 id="copy">First copy</h2>
   <ol>
     <li>In the Ordergraft tab pick the <strong>Source</strong>: the mesh whose order you want. The picker lists meshes only.</li>
     <li>In Object Mode select the target meshes, the ones that get the source's order: click one, Shift-click&nbsp;more.</li>
-    <li>Optional: <strong>Check Pair</strong> (make one target the active object first): same topology or not, how many parts pair up, where the order first differs. It changes nothing in your file.</li>
+    <li>Optional: <strong>Check Pair</strong> (make a target active first): same topology or not, how many parts pair up, where the order first differs, and what to press next if a copy would renumber the target. It changes nothing in your file.</li>
     <li>Press <strong>Copy Order to Selected</strong>. The result box lists, per target, the parts matched, the pins needed, the vertices, edges and faces placed, and an "Order matches" line computed again from both meshes. <strong>Ctrl+Z</strong> undoes the whole run.</li>
     <li>For shape keys, tick <strong>Then join as shape keys</strong> before step 4: each target is added to the source as a shape key named after it, at value 0 (raise it in Properties &gt; Data &gt; Shape Keys), and a key of that name is replaced. A target more than twice or less than half the size of the source (a centimetre export beside a metre mesh) is matched but not joined; the result says what to do (usually Ctrl+A, Scale), then press Copy Order again.</li>
   </ol>
-  <p class="fine">The panel after a run on Rain's all-triangle face is pictured on the <a href="index.html">product page</a>. Character: Rain Rig (CC) Blender Foundation | studio.blender.org, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+  <p class="fine">Pictured on the <a href="index.html">product page</a>. Character: Rain Rig (CC) Blender Foundation | studio.blender.org, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
 
   <h2 id="pins">A part is listed</h2>
   <p>When Ordergraft cannot tell a part apart (identical teeth that moved a lot, a mirror-image part, a round part that changed shape), it leaves the part as it was and lists it. Two faces settle it:</p>
@@ -67,7 +67,7 @@
   </ol>
   <p>A pin is kept for the session, not written into the file: Ctrl+Z and Copy Order place the part again, and a second Copy Order uses it again ("Already placed by your pin"). A pin that no longer fits is named in the result. <strong>Clear Pins</strong> forgets them.</p>
   <figure>
-    <img src="img/rain-pin.gif" alt="Blender 4.2.23, Rain's face and a copy with one eye turned: Target, two faces picked, Source, two matching faces, Pin Selected Faces, then Placed by your pin." width="960" height="424" loading="lazy">
+    <img src="img/rain-pin.gif" alt="Blender 4.2.23, Rain's face and a copy with one eye turned: Target, two faces picked, Source, two matching faces, Pin Selected Faces, then Placed by your pin." width="720" height="690" loading="lazy">
     <figcaption>Pinning a listed part on Rain (her left cornea is turned in the copy). Zoomed by script; waits sped up.</figcaption>
   </figure>
 
@@ -77,7 +77,7 @@
 
   <h2 id="different">A different topology</h2>
   <p>If the copies really differ (a vertex added or merged, a different retopology), Check Pair and Copy Order name the part and the vertices where they stop matching, and the target is left as it was.</p>
-  <p><strong>Show</strong> selects that vertex and its faces on both meshes in Edit Mode (<strong>Back</strong> returns to your view); <strong>Copy Report to Text Editor</strong> writes the same lines to a text block in a new window.</p>
+  <p><strong>Show</strong> selects that vertex and its faces on both meshes in Edit Mode and fills the view with the target's patch; press it again for the source's. <strong>Back</strong> returns to your view. <strong>Copy Report to Text Editor</strong> writes the same lines to a text block in a new window.</p>
 
   <h2 id="holds">What else holds the target's&nbsp;numbers</h2>
   <p>Copy Order renumbers the target's vertices. Objects parented to one or three of its vertices and its Hook modifiers are moved to the same vertices. Hair or particle systems and modifiers bound to the target (Surface Deform and similar) cannot be re-pointed: the result names them, and Ctrl+Z undoes the copy.</p>
