@@ -69,7 +69,7 @@
   <h2 id="tested">What was run</h2>
   <table>
     <tr><th>What</th><th>Result (Tressmap 1.0.4)</th></tr>
-    <tr><td>Test suite, headless, in Blender 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux)</td><td>299 passed on each, 0 skipped</td></tr>
+    <tr><td>Test suite, headless, in Blender 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux)</td><td>301 passed on each, 0 skipped</td></tr>
     <tr><td>Real Blender window, 1366&nbsp;x&nbsp;768, the tab's buttons and fields pressed and filled with real mouse and key events, on the four&nbsp;versions</td><td>81 results, all passed, on each</td></tr>
     <tr><td>Install from the zip in a real window, on the four versions</td><td>12 results, all passed, on each</td></tr>
     <tr><td>8192&nbsp;x&nbsp;8192 bakes (<code>pytest -m huge</code>)</td><td>4 passed; Blender Studio's cattle fur, 23,703&nbsp;strands in 8&nbsp;slots: 554&nbsp;s</td></tr>
@@ -82,8 +82,8 @@
     <tr><td>The same locks as strips with an auburn hair material: Strips, 2:1 wide, 4096&nbsp;px, PNG 16&nbsp;bit, DirectX green, channel&nbsp;packing</td><td>nine files of 4096&nbsp;x&nbsp;2048; 84.8&nbsp;s in the run shown</td></tr>
   </table>
   <figure>
-    <a href="img/setup-unreal-style.png"><picture><source media="(max-width: 600px)" srcset="img/setup-unreal-style-phone.png" width="320" height="596"><img class="ui" src="img/setup-unreal-style.png" alt="Blender 4.5.16, one window: Ellie with auburn hair in the 3D Viewport; the Tressmap sidebar scrolled to Maps and Files (Format PNG 16 bit, Normal DirectX, Channel Packing ticked) and the Result panel 'Bake: 4096 x 2048, 84.8 s' with its nine buttons; the Tressmap Report text (Version 1.0.4, Atlas ellie_cards, 4096 x 2048 px, Bake time 84.8 s, nine files of 4096 x 2048 PNG 16 bit); the packed image in the Image Editor, eight strips over a checker" width="1600" height="800" loading="lazy"></picture></a>
-    <figcaption>The setup an Unreal-style job asks for, as strips on Ellie's hair: 2:1 wide, 4096&nbsp;px, PNG 16&nbsp;bit, DirectX green, packed image. Not run in Unreal.</figcaption>
+    <a href="img/setup-unreal-style.png"><picture><source media="(max-width: 600px)" srcset="img/setup-unreal-style-phone.png" width="320" height="596"><img class="ui" src="img/setup-unreal-style-wide.png" alt="Blender 4.5.16 at its own size, a crop of one window after the 4096 x 2048 bake: the Tressmap Report text (Version 1.0.4, Atlas ellie_cards, 4096 x 2048 px, Bake time 84.8 s, nine files of 4096 x 2048 PNG 16 bit) above the packed image in the Image Editor, eight strips over a checker; on a phone the picture is the Result panel instead, Bake: 4096 x 2048, 84.8 s, with its nine buttons" width="712" height="855" loading="lazy"></picture></a>
+    <figcaption>The setup an Unreal-style job asks for, as strips on Ellie's hair: 2:1 wide, 4096&nbsp;px, PNG 16&nbsp;bit, DirectX green, packed image. Not run in Unreal. The window it was cut from opens on a click.</figcaption>
   </figure>
   <figure id="particles" class="wide-only">
     <img class="ui" src="img/panel-particles-4.2.png" alt="The Result panel of the Tressmap tab in Blender 4.2.23 after a bake: Note, Slot 1: the hair is as deep as it is long, so it is not one flat clump and the card shows a view from the front, use one hair object per clump; Note, Base color of Front and Ponytail is grey: they have no material" width="446" height="194" loading="lazy">
@@ -106,7 +106,7 @@
     <li>Every written file is the size you chose, square and 2:1.</li>
   </ul>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/report-text-phone.png" width="345" height="173"><img class="ui" src="img/report-text.png" alt="The Tressmap Report in Blender's Text Editor: Tressmap report, Version 1.0.4, Blender 4.5.16 LTS, Atlas hair, 2048 x 2048 px, Run Bake Maps, Bake time 55.3 s, Files written (9), each with map, size, format and path" width="769" height="290" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/report-text-phone.png" width="345" height="173"><img class="ui" src="img/report-text.png" alt="The Tressmap Report in Blender's Text Editor: Tressmap report, Version 1.0.4, Blender 4.5.16 LTS, Atlas hair, 2048 x 2048 px, Run Bake Maps, Bake time 55.3 s, Files written (9), each with map, size, format and path" width="712" height="290" loading="lazy"></picture>
     <figcaption>The report of the bake on the product page: version, atlas, bake time, every file with its size.</figcaption>
   </figure>
   <div class="pair">
