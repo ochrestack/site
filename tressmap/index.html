@@ -47,6 +47,7 @@
   .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
   figure { margin: 28px 0; }
+  figure.film video { object-fit: contain; }
   figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #2B2118; display: block; }
   figure img { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
@@ -68,6 +69,9 @@
   @media (max-width: 600px) {
     h1 { margin-top: 20px; }
     .wide-only { display: none; }
+    figure.film { margin-left: -24px; margin-right: -24px; }
+    figure.film video { aspect-ratio: 720 / 800; border-radius: 0; border-left: 0; border-right: 0; }
+    figure.film figcaption { margin-left: 24px; margin-right: 24px; }
     .narrow-only { display: block; }
     .top { display: flex; flex-direction: column; }
     .top-buy { order: -2; margin: 0 0 12px; }
@@ -116,12 +120,13 @@
   </div>
 
   <h2 id="watch">Watch it work</h2>
-  <figure>
-    <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080" aria-label="Tressmap demo: 39.7 seconds, captions only, no sound">
+  <figure class="film">
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080" aria-label="Tressmap demo, captions only, no sound: 39.7 seconds, 39.4 seconds in the phone cut">
+      <source src="video/tressmap-demo-phone.mp4" type="video/mp4" media="(max-width: 600px)">
       <source src="video/tressmap-demo-1080p60.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/tressmap-demo-720p60.mp4" type="video/mp4">
     </video>
-    <figcaption>Demo, 39.7&nbsp;s, captions only, no sound (1080p at 60 frames a second, 720p on phones; <a href="video/tressmap-demo-1080p60.mp4">open full size</a>): Tressmap 1.0.4 on Blender Studio's Ellie. The bake wait is shown 10 times faster, under the real clock. <a href="#credits">Credits</a></figcaption>
+    <figcaption>Demo, 39.7&nbsp;s, captions only, no sound (phones get a taller 39.4&nbsp;s cut, captions larger; <a href="video/tressmap-demo-1080p60.mp4">open full size</a>): Tressmap 1.0.4 on Blender Studio's Ellie. The bake wait is shown 10 times faster, under the real clock. <a href="#credits">Credits</a></figcaption>
   </figure>
   <figure class="wide-only">
     <picture><img src="img/tressmap-demo-best-moment.gif" alt="Blender window, screen recording from the demo: the Result panel's Flow and Base Color buttons are pressed one after another and the wide Image Editor shows each map for Ellie's eight locks, then the packed image" width="720" height="405" loading="lazy"></picture>
@@ -200,5 +205,6 @@
   <a href="../support.html">Support</a>
   <span>&copy; 2026 Ochrestack</span>
 </footer>
+<script>(function () { var v = document.querySelector("figure.film video"); if (v && window.matchMedia("(max-width: 600px)").matches) { v.poster = "video/poster-phone.jpg"; } })();</script>
 </body>
 </html>
