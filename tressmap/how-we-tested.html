@@ -18,6 +18,8 @@
   h1 { font-size: 30px; line-height: 1.2; margin: 24px 0 6px; }
   h2 { font-size: 20px; margin-top: 40px; }
   p, li { max-width: 64ch; }
+  p, li { text-wrap: pretty; }
+  figcaption, td, th { text-wrap: balance; }
   .sub { font-size: 18px; line-height: 1.5; color: var(--muted); margin: 0 0 12px; }
   .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
   .box.warn { border-color: var(--ochre); }
@@ -62,49 +64,49 @@
 </header>
 <main>
   <h1>How Tressmap was tested</h1>
-  <p class="sub">Tressmap 1.0.4 for Blender 4.2 LTS to 5.3, tested on Linux in 4.2.23, 4.5.16, 5.2.4 and 5.3.0. Back to the <a href="index.html">Tressmap page</a> or the <a href="quick-start.html">quick start</a>.</p>
+  <p class="sub">Tressmap 1.0.4 for Blender 4.2&nbsp;LTS to 5.3, tested on Linux in 4.2.23, 4.5.16, 5.2.4 and 5.3.0. Back to the <a href="index.html">Tressmap page</a> or the <a href="quick-start.html">quick start</a>.</p>
 
   <h2 id="tested">What was run</h2>
   <table>
     <tr><th>What</th><th>Result (Tressmap 1.0.4)</th></tr>
     <tr><td>Test suite, headless, in Blender 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux)</td><td>299 passed on each, 0 skipped</td></tr>
-    <tr><td>Real Blender window, 1366 x 768, the tab's buttons and fields pressed and filled with real mouse and key events, on the four versions</td><td>81 results, all passed, on each</td></tr>
+    <tr><td>Real Blender window, 1366&nbsp;x&nbsp;768, the tab's buttons and fields pressed and filled with real mouse and key events, on the four&nbsp;versions</td><td>81 results, all passed, on each</td></tr>
     <tr><td>Install from the zip in a real window, on the four versions</td><td>12 results, all passed, on each</td></tr>
-    <tr><td>8192 x 8192 bakes (<code>pytest -m huge</code>)</td><td>4 passed; Blender Studio's cattle fur, 23,703 strands in 8 slots: 516 s</td></tr>
+    <tr><td>8192&nbsp;x&nbsp;8192 bakes (<code>pytest -m huge</code>)</td><td>4 passed; Blender Studio's cattle fur, 23,703&nbsp;strands in 8&nbsp;slots: 554&nbsp;s</td></tr>
     <tr><td>Preview cards imported with Godot 4.7.2's headless importer</td><td>passed (not opened in the editor)</td></tr>
-    <tr><td>Blender Studio's cattle fur, 8 slots, 23,703 strands, all eight maps and the packed image</td><td>36 s at 2048 px, 130 s at 4096 px (PNG 8 bit; 4 cores, Blender 4.5.16)</td></tr>
-    <tr><td>6,000 strands of 40 points each, four slots, all eight maps, 4096 px, PNG 16 bit</td><td>268 s (the cattle fur, 23,703 strands of 9 points each: 133 s with the packed image)</td></tr>
-    <tr><td>An Unreal-style bake on the cattle fur: DirectX normal green, PNG 16 bit, channel packing, 4096 px, compared with an OpenGL bake of the same groom</td><td>nine files of 4096 x 4096, four channels in the packed image; the normal's green is the OpenGL green inverted on every hair pixel, red and blue identical</td></tr>
-    <tr><td>Ellie's eight locks, 1,090 strands, 2048 px: the page's pictures and GIFs</td><td>55.3 s in the run shown (4 cores, Blender 4.5.16)</td></tr>
-    <tr><td>The same locks, the demo film's own run</td><td>53.1 s</td></tr>
-    <tr><td>The same locks as strips with an auburn hair material: Strips, 2:1 wide, 4096 px, PNG 16 bit, DirectX green, channel packing</td><td>nine files of 4096 x 2048; 84.8 s in the run shown</td></tr>
+    <tr><td>Blender Studio's cattle fur, 8&nbsp;slots, 23,703&nbsp;strands, all eight maps and the packed image</td><td>38&nbsp;s at 2048&nbsp;px, 139&nbsp;s at 4096&nbsp;px (PNG 8&nbsp;bit; 4&nbsp;cores, Blender 4.5.16)</td></tr>
+    <tr><td>6,000&nbsp;strands of 40&nbsp;points each, four slots, all eight maps, 4096&nbsp;px, PNG 16&nbsp;bit</td><td>288&nbsp;s (the cattle fur, 23,703&nbsp;strands of 9&nbsp;points each: 141&nbsp;s with the packed image)</td></tr>
+    <tr><td>An Unreal-style bake on the cattle fur: DirectX normal green, PNG 16&nbsp;bit, channel packing, 4096&nbsp;px, compared with an OpenGL bake of the same groom</td><td>nine files of 4096&nbsp;x&nbsp;4096, four channels in the packed image; the normal's green is the OpenGL green inverted on every hair pixel, red and blue&nbsp;identical</td></tr>
+    <tr><td>Ellie's eight locks, 1,090&nbsp;strands, 2048&nbsp;px: the page's pictures and GIFs</td><td>55.3&nbsp;s in the run shown (4&nbsp;cores, Blender 4.5.16)</td></tr>
+    <tr><td>The same locks, the demo film's own run</td><td>53.1&nbsp;s</td></tr>
+    <tr><td>The same locks as strips with an auburn hair material: Strips, 2:1 wide, 4096&nbsp;px, PNG 16&nbsp;bit, DirectX green, channel&nbsp;packing</td><td>nine files of 4096&nbsp;x&nbsp;2048; 84.8&nbsp;s in the run shown</td></tr>
   </table>
   <figure>
     <a href="img/setup-unreal-style.png"><picture><source media="(max-width: 600px)" srcset="img/setup-unreal-style-phone.png" width="320" height="596"><img class="ui" src="img/setup-unreal-style.png" alt="Blender 4.5.16, one window: Ellie with auburn hair in the 3D Viewport; the Tressmap sidebar scrolled to Maps and Files (Format PNG 16 bit, Normal DirectX, Channel Packing ticked) and the Result panel 'Bake: 4096 x 2048, 84.8 s' with its nine buttons; the Tressmap Report text (Version 1.0.4, Atlas ellie_cards, 4096 x 2048 px, Bake time 84.8 s, nine files of 4096 x 2048 PNG 16 bit); the packed image in the Image Editor, eight strips over a checker" width="1600" height="800" loading="lazy"></picture></a>
-    <figcaption>The setup an Unreal-style job asks for, as strips on Ellie's hair: 2:1 wide, 4096 px, PNG 16 bit, DirectX green, packed image. Not run in Unreal.</figcaption>
+    <figcaption>The setup an Unreal-style job asks for, as strips on Ellie's hair: 2:1 wide, 4096&nbsp;px, PNG 16&nbsp;bit, DirectX green, packed image. Not run in Unreal.</figcaption>
   </figure>
-  <figure id="particles">
-    <img class="ui" src="img/panel-particles-4.2.png" alt="The Result panel of the Tressmap tab in Blender 4.2.23 after a bake: Note, Slot 1: the hair is as deep as it is long, so it is not one flat clump and the card shows a view from the front, use one hair object per clump; Note, Base color of Front and Ponytail is grey: they have no material" width="446" height="204" loading="lazy">
-    <figcaption>Blender 4.2 LTS: Ellie's front and ponytail particle hair after Convert to Curves, baked with no material. The notes in the Result panel.</figcaption>
+  <figure id="particles" class="wide-only">
+    <img class="ui" src="img/panel-particles-4.2.png" alt="The Result panel of the Tressmap tab in Blender 4.2.23 after a bake: Note, Slot 1: the hair is as deep as it is long, so it is not one flat clump and the card shows a view from the front, use one hair object per clump; Note, Base color of Front and Ponytail is grey: they have no material" width="446" height="194" loading="lazy">
+    <figcaption>Blender 4.2&nbsp;LTS: Ellie's front and ponytail particle hair after Convert to Curves, baked with no material. The notes in the Result panel.</figcaption>
   </figure>
   <p class="fine">Every figure was measured on Tressmap 1.0.4 on a four-core Intel Xeon 2.10 GHz Linux machine; timings vary by a few seconds from run to run.</p>
 
   <h2 id="by-hand">By hand, with Blender's defaults</h2>
   <p>The by-hand route: point an orthographic camera at the clumps, render in Cycles with the Normal, Depth (or Mist) and Ambient Occlusion passes on, add Shader AOVs (Curves Info's Intercept for root-to-tip and Random for strand ID, the Geometry node's Tangent for flow), save each pass, then pad and pack the images.</p>
   <ul>
-    <li>With Blender's default settings that route gives wrong maps. On our test clumps (Blender 4.5.16) root-to-tip reads 0.53 a quarter of the way along a strand instead of 0.25, depth has 5 grey levels, and flow from Curves Info's Tangent Normal is 135 degrees off on average.</li>
-    <li>With the view transform set to Raw and the Geometry node's Tangent, the by-hand flow is right to a median of 0.68 degrees. Tressmap does the setup for you.</li>
+    <li>With Blender's default settings that route gives wrong maps. On our test clumps (Blender 4.5.16) root-to-tip reads 0.53 a quarter of the way along a strand instead of 0.25, depth has 5 grey levels, and flow from Curves Info's Tangent Normal is 135&nbsp;degrees off on average.</li>
+    <li>With the view transform set to Raw and the Geometry node's Tangent, the by-hand flow is right to a median of 0.68&nbsp;degrees. Tressmap does the setup for you.</li>
     <li>If your hair comes from an add-on that bakes its own maps, that add-on's baker may be all you need.</li>
   </ul>
 
   <h2>What Tressmap measured</h2>
   <ul>
-    <li>Flow: where a strand lies clear of the others the flow map agrees with the strand's direction to 0.13 degrees; over every strand segment of 200 crossing strands the median error is 0.24 degrees and the mean 6.7; on one slot of the cattle fur the median is 7.1 degrees (an upper bound).</li>
+    <li>Flow: where a strand lies clear of the others the flow map agrees with the strand's direction to 0.13&nbsp;degrees; over every strand segment of 200 crossing strands the median error is 0.24&nbsp;degrees and the mean 6.7; on one slot of the cattle fur the median is 7.1&nbsp;degrees (an upper bound).</li>
     <li>Padded base color shows no dark halo when downsampled by 2, 4 and 8 on the test clumps.</li>
     <li>Every written file is the size you chose, square and 2:1.</li>
   </ul>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/report-text-phone.png" width="320" height="150"><img class="ui" src="img/report-text.png" alt="The Tressmap Report in Blender's Text Editor: Tressmap report, Version 1.0.4, Blender 4.5.16 LTS, Atlas hair, 2048 x 2048 px, Run Bake Maps, Bake time 55.3 s, Files written (9), each with map, size, format and path" width="769" height="290" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/report-text-phone.png" width="345" height="173"><img class="ui" src="img/report-text.png" alt="The Tressmap Report in Blender's Text Editor: Tressmap report, Version 1.0.4, Blender 4.5.16 LTS, Atlas hair, 2048 x 2048 px, Run Bake Maps, Bake time 55.3 s, Files written (9), each with map, size, format and path" width="769" height="290" loading="lazy"></picture>
     <figcaption>The report of the bake on the product page: version, atlas, bake time, every file with its size.</figcaption>
   </figure>
   <div class="pair">
@@ -120,26 +122,26 @@
 
   <h2 id="limits">Limits</h2>
   <ul>
-    <li>Hair curves objects only. One slot is one flat clump: a whole groom in one object bakes as a view from above it, and Tressmap says so. Blender 4.5 and later can split a groom with Separate; 4.2 LTS cannot, so groom each clump as its own object.</li>
+    <li>Hair curves objects only. One slot is one flat clump: a whole groom in one object bakes as a view from above it, and Tressmap says so. Blender 4.5 and later can split a groom with Separate; 4.2&nbsp;LTS cannot, so groom each clump as its own object.</li>
     <li>Flow follows the strand on top (figures above).</li>
-    <li>Blender answers Esc between the steps of a bake, not during one. On the cattle fur the longest step is 1.1 s at 2048 px, 1.9 s at 4096 px and 7.3 s at 8192 px; a bake at 8192 px needs about 6 GB.</li>
-    <li>Bake time follows the atlas size, the points in each strand and how much hair overlaps, not only the number of strands: 6,000 strands of 40 points take 268 s at 4096 px, the cattle fur's 23,703 strands of 9 points 133 s.</li>
+    <li>Blender answers Esc between the steps of a bake, not during one. On the cattle fur the longest step is 1.1&nbsp;s at 2048&nbsp;px, 2.7&nbsp;s at 4096&nbsp;px and 11.4&nbsp;s at 8192&nbsp;px; a bake at 8192&nbsp;px needs about 6&nbsp;GB.</li>
+    <li>Bake time follows the atlas size, the points in each strand and how much hair overlaps, not only the number of strands: 6,000&nbsp;strands of 40&nbsp;points take 288&nbsp;s at 4096&nbsp;px, the cattle fur's 23,703&nbsp;strands of 9&nbsp;points 141&nbsp;s.</li>
     <li>Base color is the color of the shader the hair uses (Principled, Principled Hair in Color mode, Hair, Diffuse or Emission, also inside node groups); with none, the material's Viewport Display color is used and the report says so.</li>
     <li>No grooming, no card placement, no specular or roughness maps, no engine shader, no EEVEE bake.</li>
     <li>Windows and macOS were not tested; Unity and Unreal were not tested; the Godot check is a headless import.</li>
   </ul>
 
   <h2 id="made">How the pictures on the product page were made</h2>
-  <p>Everything on the product page except the contact sheet of the eight files (the files themselves, shrunk) is a capture of one pass through a real Blender 4.5.16 window on a virtual display (Xvfb, 1920 x 1080, interface scale 1.1), with Tressmap 1.0.4 installed from its zip.</p>
+  <p>Everything on the product page except the contact sheet of the eight files (the files themselves, shrunk) is a capture of one pass through a real Blender 4.5.16 window on a virtual display (Xvfb, 1920&nbsp;x&nbsp;1080, interface scale 1.1), with Tressmap 1.0.4 installed from its zip.</p>
   <ul>
     <li>The Tressmap buttons, the Result buttons and the scrolling are real mouse events.</li>
     <li>A script sets the layout of the window, the view of Ellie, which object types the viewport draws (no bones or helper shapes), the selection of the lock before each Use Selected Hair click and the 3D cursor before Make Preview Cards.</li>
-    <li>The hair conversion and the locks use Blender's own Convert to Curves (front 2,300, back 3,400, ponytail 2,850 and loose 40 strands) and Separate. Which strands go into a lock (the 150 whose roots are nearest the left-most, the right-most or the highest root of a hair system) is chosen by script; no hair is drawn or edited by hand.</li>
+    <li>The hair conversion and the locks use Blender's own Convert to Curves (front 2,300, back 3,400, ponytail 2,850 and loose 40&nbsp;strands) and Separate. Which strands go into a lock (the 150 whose roots are nearest the left-most, the right-most or the highest root of a hair system) is chosen by script; no hair is drawn or edited by hand.</li>
     <li>Her mesh hair and the groom's helper objects are hidden in the viewport (her rig shows the mesh hair unless it is hidden in the view layer too) so that the hair curves are what is shown.</li>
-    <li>The recordings are cut from one 280.7 s recording of that pass; the bake recording is cut as its caption says, and nothing else is cut or drawn on.</li>
-    <li>The auburn picture and the setup picture come from a second pass of the same window: a script gives Ellie's hair curves one Principled Hair BSDF in Color mode and sets the atlas settings and the slots; Bake Maps and the Result buttons are real mouse events. The picture of Blender 4.2 LTS is a third pass in a Blender 4.2.23 window: two of her particle systems are converted by Blender's own Convert to Curves (run by script on each system); Use Selected Hair, Preview Layout and Bake Maps are real mouse events.</li>
+    <li>The recordings are cut from one 280.7&nbsp;s recording of that pass; the bake recording is cut as its caption says, and nothing else is cut or drawn on.</li>
+    <li>The auburn picture and the setup picture come from a second pass of the same window: a script gives Ellie's hair curves one Principled Hair BSDF in Color mode and sets the atlas settings and the slots; Bake Maps and the Result buttons are real mouse events. The picture of Blender 4.2&nbsp;LTS is a third pass in a Blender 4.2.23 window: two of her particle systems are converted by Blender's own Convert to Curves (run by script on each system); Use Selected Hair, Preview Layout and Bake Maps are real mouse events.</li>
   </ul>
-  <p class="fine">Character: Ellie Rig (CC) Blender Foundation | studio.blender.org, Sprite Fright, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Test groom for the timings: "Fur - Highland Cattle" by Simon Thommes, Blender Studio, CC0. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
+  <p class="fine">Character: Ellie Rig (CC) Blender Foundation <span style="white-space:nowrap">| studio.blender.org,</span> Sprite Fright, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Test groom for the timings: "Fur - Highland Cattle" by Simon Thommes, Blender Studio, CC0. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
 </main>
 <footer>
   <a href="../guides/">Guides</a>
