@@ -37,7 +37,7 @@
 
   <h2 id="install">Install (Blender 4.2 LTS to 5.3; tested on 4.2.23, 4.5.16, 5.2.4 and 5.3.0)</h2>
   <ol>
-    <li>After checkout, download <code>tressmap-1.0.2.zip</code> from the link in Polar's email. Install the zip itself; do not unpack it first.</li>
+    <li>After checkout, download <code>tressmap-1.0.3.zip</code> from the link in Polar's email. Install the zip itself; do not unpack it first.</li>
     <li>In Blender, open <strong>Edit &gt; Preferences</strong> and click <strong>Get Extensions</strong>.
       <ul>
         <li>Blender asks about online access, with <strong>Continue Offline</strong> and <strong>Allow Online Access</strong>. Tressmap needs no internet, so <strong>Continue Offline is fine</strong>.</li>
@@ -64,11 +64,11 @@
     <li><strong>Atlas.</strong> In the Tressmap tab, choose the size (512 to 8192 px on the long side), the shape (square or 2:1) and the layout: <strong>Grid</strong> (rows by columns) or <strong>Strips</strong>.</li>
     <li><strong>Slots.</strong> Select a slot, select a hair curves object in the 3D Viewport and press <strong>Use Selected Hair</strong> (or press <strong>+</strong> and pick the object). Press <strong>Preview Layout</strong> to see every slot, numbered, in an Image Editor.
     </li>
-    <li><strong>Bake Maps.</strong> Under <strong>Maps and Files</strong> choose the maps, the folder, the format, the padding and the normal map's green direction; turn on <strong>Channel Packing</strong> if you want one packed image. Press <strong>Bake Maps</strong>. A progress bar shows while it runs; <strong>Esc</strong> cancels before any file is written. On the eight locks on the product page, at 2048 px, it took 54.2 s.</li>
+    <li><strong>Bake Maps.</strong> Under <strong>Maps and Files</strong> choose the maps, the folder, the format, the padding and the normal map's green direction; turn on <strong>Channel Packing</strong> if you want one packed image. Press <strong>Bake Maps</strong>. A progress bar shows while it runs; <strong>Esc</strong> cancels before any file is written. On the eight locks on the product page, at 2048 px, it took about a minute.</li>
     <li><strong>Result.</strong> The Result panel lists every file, the strand count of every slot and the bake time; each map has a button that opens it in the Image Editor, and <strong>Open Report</strong> shows the Tressmap Report text.
     </li>
-    <li><strong>Make Preview Cards</strong> adds one flat card per slot that holds hair, in a collection called "Tressmap Cards", at the 3D cursor, with the baked maps on it. Switch the viewport to Material Preview to see them.</li>
-    <li><strong>One clump changed?</strong> Select its slot and press <strong>Re-bake Slot</strong>; the other slots' pixels stay as they were.</li>
+    <li><strong>Make Preview Cards</strong> adds one flat card per slot that holds hair, in a collection called "Tressmap Cards", with the baked maps on it. The row starts at the 3D cursor, or beside your hair when the cursor is inside it. Switch the viewport to Material Preview to see them.</li>
+    <li><strong>One clump changed?</strong> Select its slot and press <strong>Re-bake Slot</strong>; the other slots' pixels stay as they were. If you changed Normal green, Padding, Margin, Roots, Depth range or the layout, press <strong>Bake Maps</strong> again: Re-bake Slot stays off then.</li>
   </ol>
 
   <h2 id="maps">The files</h2>

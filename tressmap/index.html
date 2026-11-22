@@ -118,7 +118,7 @@
       <source src="video/tressmap-demo-1080p60.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/tressmap-demo-720p60.mp4" type="video/mp4">
     </video>
-    <figcaption>Demo, 36 s, captions only, no sound (1080p at 60 frames a second, 720p on phones; <a href="video/tressmap-demo-1080p60.mp4">open full size</a>): Tressmap 1.0.2 on Blender Studio's Ellie. The 53.2 s bake is shown 11 times faster. <a href="#credits">Credits</a></figcaption>
+    <figcaption>Demo, 36 s, captions only, no sound (1080p at 60 frames a second, 720p on phones; <a href="video/tressmap-demo-1080p60.mp4">open full size</a>): Tressmap 1.0.3 on Blender Studio's Ellie. The bake wait is shown 11 times faster, under the real clock. <a href="#credits">Credits</a></figcaption>
   </figure>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/tressmap-demo-best-moment-phone.gif" width="480" height="270"><img src="img/tressmap-demo-best-moment.gif" alt="Blender window, screen recording from the demo: the Result panel's buttons are pressed one after another and the wide Image Editor shows alpha, base color, normal, depth, ambient occlusion, flow, strand ID and root to tip for Ellie's eight locks, then the packed image, then the eight preview cards turning in Material Preview" width="960" height="540" loading="lazy"></picture>
@@ -130,8 +130,8 @@
     <figcaption>Slots filled with Use Selected Hair, then Preview Layout: 25.5 s, no sound.</figcaption>
   </figure>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/tressmap-bake-phone.gif" width="320" height="850"><img src="img/tressmap-bake.gif" alt="Blender window, screen recording: the Bake Maps button is clicked, the panel shows a progress bar and 'Baking... Esc cancels'; the recording then jumps to the end, where the message reads 'Baked 9 files in 54.2 s. Report text made.' and the Result panel appears" width="1200" height="640" loading="lazy"></picture>
-    <figcaption>Bake Maps: 12.5 s, cut from the 54.2 s bake (first 7 s, last 4 s).</figcaption>
+    <picture><source media="(max-width: 600px)" srcset="img/tressmap-bake-phone.gif" width="320" height="850"><img src="img/tressmap-bake.gif" alt="Blender window, screen recording: the Bake Maps button is clicked, the panel shows a progress bar and 'Baking... Esc cancels'; the recording then jumps to the end, where the message reads 'Baked 9 files in 51.9 s. Report text made.' and the Result panel appears" width="1200" height="640" loading="lazy"></picture>
+    <figcaption>Bake Maps: 12.4 s, the first 7 s and the last 4 s of the bake.</figcaption>
   </figure>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/tressmap-maps-phone.gif" width="768" height="674"><img src="img/tressmap-maps.gif" alt="Blender window, screen recording: the nine buttons of the Result panel are clicked one after another and the Image Editor shows alpha, base color, normal, depth, ambient occlusion, flow, strand ID, root to tip and the packed image" width="1200" height="640" loading="lazy"></picture>
@@ -139,7 +139,11 @@
   </figure>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/maps-contact-sheet-phone.png" width="800" height="1800"><img src="img/maps-contact-sheet.png" alt="The eight files Bake Maps wrote, each a 2048 x 2048 image shown at a fifth of its size under its file name: hair_alpha.png white strands on black, hair_basecolor.png one flat brown, hair_normal.png blue-violet with colored edges, hair_depth.png, hair_ao.png white with dark centers, hair_flow.png green and yellow, hair_strandid.png, hair_roottip.png" width="1600" height="900" loading="lazy"></picture>
-    <figcaption>The eight files Bake Maps wrote, shrunk to a fifth. Her base color is one flat brown, her shader's Diffuse color.</figcaption>
+    <figcaption>The eight files Bake Maps wrote, shrunk to a fifth. Her base color is one flat brown, her shader's Diffuse color: a base color file is unlit, so a very dark hair reads lighter than it looks in the viewport.</figcaption>
+  </figure>
+  <figure>
+    <picture><source media="(max-width: 600px)" srcset="img/setup-color-match-phone.png" width="525" height="330"><img src="img/setup-color-match.png" alt="Two real pictures side by side: on the left Blender's Material Preview of Ellie's head with auburn hair, the ponytail swept up; on the right the base color file Tressmap baked from that hair, eight strips in the same auburn on black, named ellie_cards_basecolor.png" width="1580" height="590" loading="lazy"></picture>
+    <figcaption>Ellie's hair given a Principled Hair BSDF in Color mode, an auburn: Material Preview on the left, the base color file Bake Maps wrote from it on the right.</figcaption>
   </figure>
   <div class="pair">
     <figure>
@@ -147,7 +151,7 @@
       <figcaption>Atlas and Slots: size, grid, one row per slot.</figcaption>
     </figure>
     <figure>
-      <picture><source media="(max-width: 600px)" srcset="img/panel-bake-result-phone.png" width="320" height="845"><img class="ui" src="img/panel-bake-result.png" alt="The Tressmap tab at real size after the bake: Bake Maps, Re-bake Slot 8, the Result panel 'Bake: 2048 x 2048, 54.2 s' with one button per file (Alpha, Base Color, Normal, Depth, Ambient Occlusion, Flow, Strand ID, Root to Tip, Packed), the strand count of each slot (150 each, 40 for slot 8), Open Report and Make Preview Cards" width="446" height="845" loading="lazy"></picture>
+      <picture><source media="(max-width: 600px)" srcset="img/panel-bake-result-phone.png" width="320" height="845"><img class="ui" src="img/panel-bake-result.png" alt="The Tressmap tab at real size after the bake: Bake Maps, Re-bake Slot 8, the Result panel 'Bake: 2048 x 2048, 51.9 s' with one button per file (Alpha, Base Color, Normal, Depth, Ambient Occlusion, Flow, Strand ID, Root to Tip, Packed), the strand count of each slot (150 each, 40 for slot 8), Open Report and Make Preview Cards" width="446" height="845" loading="lazy"></picture>
       <figcaption>After Bake Maps: one button per file, one line per slot.</figcaption>
     </figure>
   </div>
@@ -165,6 +169,11 @@
     <li>One slot is one flat clump. Blender 4.5 and later can cut a whole groom into clumps with <strong>Separate</strong>; 4.2 LTS cannot, so keep one particle system for each clump.</li>
   </ol>
   <p>Principled Hair in Melanin mode has no color to read: set the material's Viewport Display color to your hair color first.</p>
+  <p>On Blender 4.2 LTS the route ends like this. Two of Ellie's particle systems were converted with Convert to Curves and baked as they are, one slot each; the Result panel lists two notes (<a href="how-we-tested.html#particles">the picture</a>):</p>
+  <ul>
+    <li>Slot 1: the hair is as deep as it is long, so it is not one flat clump and the card shows a view from the front. Use one hair object per clump.</li>
+    <li>Base color of Front and Ponytail is grey: they have no material.</li>
+  </ul>
 
   <h2 id="details">Details</h2>
   <ul>
@@ -172,7 +181,7 @@
     <li>If it doesn't work as described and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>).</li>
     <li>A studio of up to 10 artists pays $57: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
     <li>Windows and macOS were not tested, and neither were Unity or Unreal.</li>
-    <li>Tressmap 1.0.2 reads hair curves objects; particle hair needs Convert to Curves first, and the new object has no material (the three steps are above).</li>
+    <li>Tressmap 1.0.3 reads hair curves objects; particle hair needs Convert to Curves first, and the new object has no material (the three steps are above).</li>
     <li>Tested on Linux in Blender 4.2.23 LTS, 4.5.16 LTS, 5.2.4 LTS and 5.3.0.</li>
     <li>An update is a new zip, installed the same way. The add-on makes no network calls, so it never checks for one; write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> for the latest zip.</li>
     <li>GPL-3.0-or-later. No telemetry, no analytics. <a href="how-we-tested.html#limits">Limits</a> and <a href="how-we-tested.html">how we tested</a>.</li>
