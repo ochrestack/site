@@ -53,7 +53,7 @@
 
   <h2 id="first-bake">First bake</h2>
   <ol>
-    <li><strong>Save your .blend file.</strong> The Folder starts as <code>//textures/</code>, next to the saved file; in a file that was never saved, Tressmap refuses and says so. Or choose a folder with a full path.</li>
+    <li><strong>Save your .blend file.</strong> The Folder starts as <code>//textures/</code>, next to the saved file; in a file that was never saved, Bake Maps stays greyed and the box under it says "Save the .blend first, or choose a folder." Or choose a folder with a full path.</li>
     <li><strong>Hair curves, one clump per slot.</strong> Groom with Curves Sculpt mode or Geometry Nodes, or use hair curves from another add-on.
       <ul>
         <li><em>Particle hair:</em> in Particle properties, open the menu beside the list and choose <strong>Convert to Curves</strong>, once for each system. The new object becomes the active one, so select your head again before the next. <strong>The new object has no material</strong>: give it your hair material (Material properties, <strong>Browse Material</strong>), or its base color bakes grey.</li>
@@ -61,10 +61,10 @@
         <li><em>Blender 4.2 LTS</em> has no Separate for hair curves: groom each clump as its own object, and keep one particle system for each clump.</li>
       </ul>
     </li>
-    <li><strong>Atlas.</strong> In the Tressmap tab, choose the size (512 to 8192 px on the long side), the shape (square or 2:1) and the layout: <strong>Grid</strong> (rows by columns) or <strong>Strips</strong>.</li>
-    <li><strong>Slots.</strong> Select a slot, select a hair curves object in the 3D Viewport and press <strong>Use Selected Hair</strong> (or press <strong>+</strong> and pick the object). Press <strong>Preview Layout</strong> to see every slot, numbered, in an Image Editor.
+    <li><strong>Atlas.</strong> In the Tressmap tab, click the <strong>Atlas</strong> header (it starts folded) and choose the size (512 to 8192 px on the long side), the shape (square or 2:1) and the layout: <strong>Grid</strong> (rows by columns) or <strong>Strips</strong>.</li>
+    <li><strong>Slots.</strong> Select a hair curves object in the 3D Viewport and press <strong>Use Selected Hair</strong>: it goes into the selected slot and the next empty slot is selected for you. Select the next one and press it again. To fill a particular slot, click it first, or press <strong>+</strong> and pick the object. If one object is in two slots, the line under the hair list says so. Press <strong>Preview Layout</strong> to see every slot, numbered, in an Image Editor.
     </li>
-    <li><strong>Bake Maps.</strong> Under <strong>Maps and Files</strong> choose the maps, the folder, the format, the padding and the normal map's green direction; turn on <strong>Channel Packing</strong> if you want one packed image. Press <strong>Bake Maps</strong>. A progress bar shows while it runs; <strong>Esc</strong> cancels before any file is written. On the eight locks on the product page, at 2048 px, it took about a minute.</li>
+    <li><strong>Bake Maps.</strong> Under <strong>Maps and Files</strong> (folded at first; click its header) choose the maps, the folder, the format, the padding and the normal map's green direction; turn on <strong>Channel Packing</strong> if you want one packed image. Press <strong>Bake Maps</strong>. A progress bar shows while it runs; <strong>Esc</strong> cancels before any file is written. On the eight locks on the product page, at 2048 px, it took about a minute.</li>
     <li><strong>Result.</strong> The Result panel lists every file, the strand count of every slot and the bake time; each map has a button that opens it in the Image Editor, and <strong>Open Report</strong> shows the Tressmap Report text.
     </li>
     <li><strong>Make Preview Cards</strong> adds one flat card per slot that holds hair, in a collection called "Tressmap Cards", with the baked maps on it. The row starts at the 3D cursor, or beside your hair when the cursor is inside it. Switch the viewport to Material Preview to see them.</li>

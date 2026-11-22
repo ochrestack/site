@@ -12,14 +12,14 @@
 <meta property="og:description" content="Need the hair-card textures and don't want to leave Blender for them? Tressmap bakes eight maps from the hair curves you groomed into one atlas at the size you choose. $19, source included.">
 <meta property="og:url" content="https://ochrestack.com/tressmap/">
 <meta property="og:image" content="https://ochrestack.com/tressmap/img/ellie-hero-2x1.png">
-<meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="800">
-<meta property="og:image:alt" content="Blender Studio's Ellie in the Blender window with eight locks of her hair outlined in orange, the Tressmap sidebar and the normal map atlas baked from them">
+<meta property="og:image:width" content="1327">
+<meta property="og:image:height" content="672">
+<meta property="og:image:alt" content="Blender Studio's Ellie with eight locks of her hair outlined in orange, beside the normal map atlas Tressmap baked from them">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tressmap for Blender: hair-card textures from your hair curves">
 <meta name="twitter:description" content="Eight hair-card maps from the hair curves you groomed, in one atlas, inside Blender. $19, source included.">
 <meta name="twitter:image" content="https://ochrestack.com/tressmap/img/ellie-hero-2x1.png">
-<meta name="twitter:image:alt" content="Blender Studio's Ellie with eight locks of her hair outlined in orange, the Tressmap sidebar and the baked normal map atlas">
+<meta name="twitter:image:alt" content="Blender Studio's Ellie with eight locks of her hair outlined in orange, beside the normal map atlas Tressmap baked from them">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <style>
   :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
@@ -73,6 +73,7 @@
     .top-side { margin: 12px 0 0; }
     table { font-size: 14px; }
     th, td { padding: 6px; }
+    #free-route { padding: 12px 16px; font-size: 16px; }
   }
   footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
   footer a { margin-right: 18px; }
@@ -90,8 +91,8 @@
   <div class="top">
     <p class="narrow-only top-buy"><strong>$19 once</strong>, source included. <a class="button" id="buy-top" href="https://buy.polar.sh/polar_cl_yk4OWR1pF5mdkYesWlOVy2njhiiX3IPtYMrKG42roBX">Buy for $19</a></p>
     <div class="top-fig">
-      <a href="img/ellie-hero-window.png"><picture><source media="(max-width: 600px)" srcset="img/ellie-hero-phone.png" width="1148" height="960"><img class="hero" src="img/ellie-hero-2x1.png" alt="Blender 4.5.16, one window: Blender Studio's Ellie in the 3D Viewport with the hair converted to hair curves, eight locks of it outlined in orange; the Tressmap sidebar lists the eight slots (Front left, Front right, Back left, Back right, Back top, Ponytail left, Ponytail right, Loose); on the right the normal map atlas Tressmap baked from the eight locks, 2048 x 2048, and the Tressmap Report text above it" width="1600" height="800"></picture></a>
-      <p class="fine">Ellie's hair in eight slots, real Blender 4.5.16 window. <a href="#credits">Credits</a></p>
+      <a href="img/ellie-hero-window.png"><picture><source media="(max-width: 600px)" srcset="img/ellie-hero-phone.png" width="1148" height="581"><img class="hero" src="img/ellie-hero-2x1.png" alt="Two crops of one Blender 4.5.16 window: on the left Blender Studio's Ellie in the 3D Viewport, her particle hair converted to hair curves, eight locks of it outlined in orange; on the right the normal map atlas Tressmap baked from those eight locks, 2048 x 2048, one lock in each of eight slots" width="1327" height="672"></picture></a>
+      <p class="fine">Ellie's eight locks and the normal map they bake to: two crops of one real Blender 4.5.16 window (click for the whole window). <a href="#credits">Credits</a></p>
     </div>
     <div class="top-side">
       <ul class="top-benefits">
@@ -109,33 +110,29 @@
   </div>
 
   <div class="box" id="free-route">
-    <strong>Do you need it?</strong> Blender can do all of this by hand, with an orthographic camera, Cycles passes and shader outputs. A technical artist making one atlas once can do that and does not need Tressmap. With Blender's default settings that route gives wrong maps (<a href="how-we-tested.html#by-hand">the numbers</a>). If your hair is made inside an add-on that bakes its own maps, its baker may be all you need.
+    <strong>Do you need it?</strong> Not for one atlas by hand, though Blender's defaults give wrong maps (<a href="how-we-tested.html#by-hand">the numbers</a>).
   </div>
 
   <h2 id="watch">Watch it work</h2>
   <figure>
-    <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080" aria-label="Tressmap demo: 36 seconds, captions only, no sound">
+    <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080" aria-label="Tressmap demo: 39.7 seconds, captions only, no sound">
       <source src="video/tressmap-demo-1080p60.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/tressmap-demo-720p60.mp4" type="video/mp4">
     </video>
-    <figcaption>Demo, 36 s, captions only, no sound (1080p at 60 frames a second, 720p on phones; <a href="video/tressmap-demo-1080p60.mp4">open full size</a>): Tressmap 1.0.3 on Blender Studio's Ellie. The bake wait is shown 11 times faster, under the real clock. <a href="#credits">Credits</a></figcaption>
+    <figcaption>Demo, 39.7 s, captions only, no sound (1080p at 60 frames a second, 720p on phones; <a href="video/tressmap-demo-1080p60.mp4">open full size</a>): Tressmap 1.0.4 on Blender Studio's Ellie. The bake wait is shown 10 times faster, under the real clock. <a href="#credits">Credits</a></figcaption>
   </figure>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/tressmap-demo-best-moment-phone.gif" width="480" height="270"><img src="img/tressmap-demo-best-moment.gif" alt="Blender window, screen recording from the demo: the Result panel's buttons are pressed one after another and the wide Image Editor shows alpha, base color, normal, depth, ambient occlusion, flow, strand ID and root to tip for Ellie's eight locks, then the packed image, then the eight preview cards turning in Material Preview" width="960" height="540" loading="lazy"></picture>
-    <figcaption>The eight maps, the packed image and the preview cards, one after another: 10.6 s from the demo, no sound.</figcaption>
+    <picture><source media="(max-width: 600px)" srcset="img/tressmap-demo-best-moment-phone.gif" width="480" height="270"><img src="img/tressmap-demo-best-moment.gif" alt="Blender window, screen recording from the demo: the Result panel's Flow and Base Color buttons are pressed one after another and the wide Image Editor shows each map for Ellie's eight locks, then the packed image" width="720" height="405" loading="lazy"></picture>
+    <figcaption>The flow and base color maps and the packed image, one after another: 7.1 s from the demo, no sound.</figcaption>
   </figure>
   <p>Ellie's particle hair, converted with Convert to Curves and cut into eight locks with Separate, one lock per slot.</p>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/tressmap-slots-phone.gif" width="320" height="740"><img src="img/tressmap-slots.gif" alt="Blender window, screen recording: for each of the eight slots a lock of Ellie's hair is outlined in orange in the viewport, the slot's row is clicked, Use Selected Hair is pressed and the row takes the lock's name (Front left, Front right, Back left, Back right, Back top, Ponytail left, Ponytail right, Loose); then Preview Layout opens a numbered coverage picture of the eight slots in the Image Editor" width="1200" height="640" loading="lazy"></picture>
-    <figcaption>Slots filled with Use Selected Hair, then Preview Layout: 25.5 s, no sound.</figcaption>
+    <picture><source media="(max-width: 600px)" srcset="img/tressmap-slots-phone.gif" width="360" height="450"><img src="img/tressmap-slots.gif" alt="Blender window, screen recording: for each of the eight slots a lock of Ellie's hair is outlined in orange in the viewport and Use Selected Hair is pressed; the lock takes the selected slot, the row shows its name (Front left, Front right, Back left, Back right, Back top, Ponytail left, Ponytail right, Loose) and the next empty slot is selected by itself; then Preview Layout opens a numbered coverage picture of the eight slots in the Image Editor" width="1200" height="640" loading="lazy"></picture>
+    <figcaption>Slots filled with Use Selected Hair, then Preview Layout: 18.7 s, no sound.</figcaption>
   </figure>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/tressmap-bake-phone.gif" width="320" height="850"><img src="img/tressmap-bake.gif" alt="Blender window, screen recording: the Bake Maps button is clicked, the panel shows a progress bar and 'Baking... Esc cancels'; the recording then jumps to the end, where the message reads 'Baked 9 files in 51.9 s. Report text made.' and the Result panel appears" width="1200" height="640" loading="lazy"></picture>
-    <figcaption>Bake Maps: 12.4 s, the first 7 s and the last 4 s of the bake.</figcaption>
-  </figure>
-  <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/tressmap-maps-phone.gif" width="768" height="674"><img src="img/tressmap-maps.gif" alt="Blender window, screen recording: the nine buttons of the Result panel are clicked one after another and the Image Editor shows alpha, base color, normal, depth, ambient occlusion, flow, strand ID, root to tip and the packed image" width="1200" height="640" loading="lazy"></picture>
-    <figcaption>Each file opened from the Result panel: 18.1 s.</figcaption>
+    <picture><source media="(max-width: 600px)" srcset="img/tressmap-bake-phone.gif" width="360" height="372"><img src="img/tressmap-bake.gif" alt="Blender window, screen recording: the Bake Maps button is clicked and a progress bar takes its place with 'Baking... Esc cancels'; the recording then jumps to the end, where the message reads 'Baked 9 files in 55.3 s. Report text made.' and the Result panel appears" width="1200" height="640" loading="lazy"></picture>
+    <figcaption>Bake Maps: 12 s, the first 6 s and the last 4 s of the bake.</figcaption>
   </figure>
   <figure>
     <picture><source media="(max-width: 600px)" srcset="img/maps-contact-sheet-phone.png" width="800" height="1800"><img src="img/maps-contact-sheet.png" alt="The eight files Bake Maps wrote, each a 2048 x 2048 image shown at a fifth of its size under its file name: hair_alpha.png white strands on black, hair_basecolor.png one flat brown, hair_normal.png blue-violet with colored edges, hair_depth.png, hair_ao.png white with dark centers, hair_flow.png green and yellow, hair_strandid.png, hair_roottip.png" width="1600" height="900" loading="lazy"></picture>
@@ -147,11 +144,11 @@
   </figure>
   <div class="pair">
     <figure>
-      <picture><source media="(max-width: 600px)" srcset="img/panel-atlas-slots-phone.png" width="320" height="480"><img class="ui" src="img/panel-atlas-slots.png" alt="The Tressmap tab at real size: Atlas with Name hair, Size 2048 px, Shape Square, Layout Grid with 2 rows and 4 columns, Margin 16 px, Roots Bottom; Slots listing 1 Front, left to 8 Loose; Hair in slot 8 with the hair list (Loose) and the line 1 hair object in slot 8; the Use Selected Hair and Preview Layout buttons" width="446" height="750" loading="lazy"></picture>
+      <picture><source media="(max-width: 600px)" srcset="img/panel-atlas-slots-phone.png" width="320" height="480"><img class="ui" src="img/panel-atlas-slots.png" alt="The Tressmap tab at real size: Atlas with Name hair, Size 2048 px, Shape Square, Layout Grid with 2 rows and 4 columns, Margin 16 px, Roots Bottom; Slots listing rows 4 Back, right to 8 Loose; Hair in slot 8 with the hair list (Loose) and the line 1 hair object in slot 8; the Use Selected Hair and Preview Layout buttons" width="446" height="744" loading="lazy"></picture>
       <figcaption>Atlas and Slots: size, grid, one row per slot.</figcaption>
     </figure>
     <figure>
-      <picture><source media="(max-width: 600px)" srcset="img/panel-bake-result-phone.png" width="320" height="845"><img class="ui" src="img/panel-bake-result.png" alt="The Tressmap tab at real size after the bake: Bake Maps, Re-bake Slot 8, the Result panel 'Bake: 2048 x 2048, 51.9 s' with one button per file (Alpha, Base Color, Normal, Depth, Ambient Occlusion, Flow, Strand ID, Root to Tip, Packed), the strand count of each slot (150 each, 40 for slot 8), Open Report and Make Preview Cards" width="446" height="845" loading="lazy"></picture>
+      <picture><source media="(max-width: 600px)" srcset="img/panel-bake-result-phone.png" width="320" height="845"><img class="ui" src="img/panel-bake-result.png" alt="The Tressmap tab at real size after the bake: Bake Maps, Re-bake Slot 8, the Result panel 'Bake: 2048 x 2048, 55.3 s' with one button per file (Alpha, Base Color, Normal, Depth, Ambient Occlusion, Flow, Strand ID, Root to Tip, Packed), the strand count of each slot (150 each, 40 for slot 8), Open Report and Make Preview Cards" width="446" height="845" loading="lazy"></picture>
       <figcaption>After Bake Maps: one button per file, one line per slot.</figcaption>
     </figure>
   </div>
@@ -181,7 +178,7 @@
     <li>If it doesn't work as described and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>).</li>
     <li>A studio of up to 10 artists pays $57: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
     <li>Windows and macOS were not tested, and neither were Unity or Unreal.</li>
-    <li>Tressmap 1.0.3 reads hair curves objects; particle hair needs Convert to Curves first, and the new object has no material (the three steps are above).</li>
+    <li>Tressmap 1.0.4 reads hair curves objects; particle hair needs Convert to Curves first, and the new object has no material (the three steps are above).</li>
     <li>Tested on Linux in Blender 4.2.23 LTS, 4.5.16 LTS, 5.2.4 LTS and 5.3.0.</li>
     <li>An update is a new zip, installed the same way. The add-on makes no network calls, so it never checks for one; write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> for the latest zip.</li>
     <li>GPL-3.0-or-later. No telemetry, no analytics. <a href="how-we-tested.html#limits">Limits</a> and <a href="how-we-tested.html">how we tested</a>.</li>
