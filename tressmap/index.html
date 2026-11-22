@@ -66,6 +66,9 @@
   ul.benefits li { margin: 0 0 10px; }
   details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
   summary { cursor: pointer; }
+  @media (max-width: 767px) {
+    figure.film video { aspect-ratio: 720 / 800; max-width: 720px; margin-left: auto; margin-right: auto; }
+  }
   @media (max-width: 600px) {
     h1 { margin-top: 20px; }
     .wide-only { display: none; }
@@ -122,11 +125,10 @@
   <h2 id="watch">Watch it work</h2>
   <figure class="film">
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080" aria-label="Tressmap demo, captions only, no sound: 39.4 seconds, 39.1 seconds in the phone cut">
-      <source src="video/tressmap-demo-phone.mp4" type="video/mp4" media="(max-width: 600px)">
-      <source src="video/tressmap-demo-1080p60.mp4" type="video/mp4" media="(min-width: 768px)">
-      <source src="video/tressmap-demo-720p60-web.mp4" type="video/mp4">
+      <source src="video/tressmap-demo-phone.mp4" type="video/mp4" media="(max-width: 767px)">
+      <source src="video/tressmap-demo-1080p60.mp4" type="video/mp4">
     </video>
-    <figcaption>Demo, 39.4&nbsp;s, captions only, no sound (phones get a taller 39.1&nbsp;s cut, captions larger; <a href="video/tressmap-demo-1080p60.mp4">open full size</a>): Tressmap 1.0.4 on Blender Studio's Ellie. The bake wait is shown 10 times faster, under the real clock. <a href="#credits">Credits</a></figcaption>
+    <figcaption>Demo, 39.4&nbsp;s, captions only, no sound (narrow windows get a taller 39.1&nbsp;s cut; <a href="video/tressmap-demo-1080p60.mp4">open full size</a>): Tressmap 1.0.4 on Blender Studio's Ellie. The bake wait is shown 10 times faster, under the real clock. <a href="#credits">Credits</a></figcaption>
   </figure>
   <figure class="wide-only">
     <picture><img class="ui" src="img/tressmap-demo-best-moment.gif" alt="Blender's Image Editor, screen recording from the demo: the normal map, the flow map, the base color map and then the packed image of Ellie's eight locks, one after another, each shown over the whole editor" width="440" height="359" loading="lazy"></picture>
@@ -205,6 +207,6 @@
   <a href="../support.html">Support</a>
   <span>&copy; 2026 Ochrestack</span>
 </footer>
-<script>(function () { var v = document.querySelector("figure.film video"); if (v && window.matchMedia("(max-width: 600px)").matches) { v.poster = "video/poster-phone.jpg"; } })();</script>
+<script>(function () { var v = document.querySelector("figure.film video"); if (v && window.matchMedia("(max-width: 767px)").matches) { v.poster = "video/poster-phone.jpg"; } })();</script>
 </body>
 </html>
