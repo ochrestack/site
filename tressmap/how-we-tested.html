@@ -69,20 +69,20 @@
   <h2 id="tested">What was run</h2>
   <table>
     <tr><th>What</th><th>Result (Tressmap 1.0.4)</th></tr>
-    <tr><td>Test suite, headless, in Blender 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux)</td><td>301 passed on each, 0 skipped</td></tr>
-    <tr><td>Real Blender window, 1366&nbsp;x&nbsp;768, the tab's buttons and fields pressed and filled with real mouse and key events, on the four&nbsp;versions</td><td>81 results, all passed, on each</td></tr>
+    <tr><td>Test suite, headless, in Blender 4.2.23, 4.5.16, 5.2.4 and 5.3.0 (Linux)</td><td>312 passed on each, 0 skipped</td></tr>
+    <tr><td>Real Blender window, 1366&nbsp;x&nbsp;768, the tab's buttons and fields pressed and filled with real mouse and key events, on the four&nbsp;versions</td><td>83 results, all passed, on each</td></tr>
     <tr><td>Install from the zip in a real window, on the four versions</td><td>12 results, all passed, on each</td></tr>
     <tr><td>8192&nbsp;x&nbsp;8192 bakes (<code>pytest -m huge</code>)</td><td>4 passed; Blender Studio's cattle fur, 23,703&nbsp;strands in 8&nbsp;slots: 554&nbsp;s</td></tr>
     <tr><td>Preview cards imported with Godot 4.7.2's headless importer</td><td>passed (not opened in the editor)</td></tr>
-    <tr><td>Blender Studio's cattle fur, 8&nbsp;slots, 23,703&nbsp;strands, all eight maps and the packed image</td><td>38&nbsp;s at 2048&nbsp;px, 139&nbsp;s at 4096&nbsp;px (PNG 8&nbsp;bit; 4&nbsp;cores, Blender 4.5.16)</td></tr>
+    <tr><td>Blender Studio's cattle fur, 8&nbsp;slots, 23,703&nbsp;strands, all eight maps and the packed image</td><td>38&nbsp;s at 2048&nbsp;px, 139&nbsp;s at 4096&nbsp;px (PNG 8&nbsp;bit; 4&nbsp;cores, Blender 4.5.16, no window); baked in a Blender window under software drawing, the 2048&nbsp;px bake takes 59.3&nbsp;s</td></tr>
     <tr><td>6,000&nbsp;strands of 40&nbsp;points each, four slots, all eight maps, 4096&nbsp;px, PNG 16&nbsp;bit</td><td>288&nbsp;s (the cattle fur, 23,703&nbsp;strands of 9&nbsp;points each: 141&nbsp;s with the packed image)</td></tr>
     <tr><td>An Unreal-style bake on the cattle fur: DirectX normal green, PNG 16&nbsp;bit, channel packing, 4096&nbsp;px, compared with an OpenGL bake of the same groom</td><td>nine files of 4096&nbsp;x&nbsp;4096, four channels in the packed image; the normal's green is the OpenGL green inverted on every hair pixel, red and blue&nbsp;identical</td></tr>
-    <tr><td>Ellie's eight locks, 1,090&nbsp;strands, 2048&nbsp;px: the page's pictures and GIFs</td><td>55.3&nbsp;s in the run shown (4&nbsp;cores, Blender 4.5.16)</td></tr>
-    <tr><td>The same locks, the demo film's own run</td><td>51.2&nbsp;s</td></tr>
-    <tr><td>The same locks as strips with an auburn hair material: Strips, 2:1 wide, 4096&nbsp;px, PNG 16&nbsp;bit, DirectX green, channel&nbsp;packing</td><td>nine files of 4096&nbsp;x&nbsp;2048; 84.8&nbsp;s in the run shown</td></tr>
+    <tr><td>Ellie's eight locks, 1,090&nbsp;strands of about 47&nbsp;points each, 2048&nbsp;px: the page's pictures and GIFs</td><td>56.5&nbsp;s in this page's own capture run, in a window under software drawing with a screen recorder running (4&nbsp;cores, Blender 4.5.16): about the same as the cattle fur in a window</td></tr>
+    <tr><td>The same locks, the demo film's own recording</td><td>56.5&nbsp;s, in a window with a recorder running</td></tr>
+    <tr><td>The same locks as strips with an auburn hair material: Strips, 2:1 wide, 4096&nbsp;px, PNG 16&nbsp;bit, DirectX green, channel&nbsp;packing</td><td>nine files of 4096&nbsp;x&nbsp;2048; 91.0&nbsp;s in the run shown</td></tr>
   </table>
   <figure>
-    <a href="img/setup-unreal-style.png"><picture><source media="(max-width: 600px)" srcset="img/setup-unreal-style-phone.png" width="320" height="596"><img class="ui" src="img/setup-unreal-style-wide.png" alt="Blender 4.5.16 at its own size, a crop of one window after the 4096 x 2048 bake: the Tressmap Report text (Version 1.0.4, Atlas ellie_cards, 4096 x 2048 px, Bake time 84.8 s, nine files of 4096 x 2048 PNG 16 bit) above the packed image in the Image Editor, eight strips over a checker; on a phone the picture is the Result panel instead, Bake: 4096 x 2048, 84.8 s, with its nine buttons" width="712" height="855" loading="lazy"></picture></a>
+    <a href="img/setup-unreal-style.png"><picture><source media="(max-width: 600px)" srcset="img/setup-unreal-style-phone.png" width="320" height="596"><img class="ui" src="img/setup-unreal-style-wide.png" alt="Blender 4.5.16 at its own size, a crop of one window after the 4096 x 2048 bake: the Tressmap Report text (Version 1.0.4, Atlas ellie_cards, 4096 x 2048 px, Bake time 91.0 s, nine files of 4096 x 2048 PNG 16 bit) above the packed image in the Image Editor, eight strips over a checker; on a phone the picture is the Result panel instead, Bake: 4096 x 2048, 91.0 s, with its nine buttons" width="712" height="855" loading="lazy"></picture></a>
     <figcaption>The setup an Unreal-style job asks for, as strips on Ellie's hair: 2:1 wide, 4096&nbsp;px, PNG 16&nbsp;bit, DirectX green, packed image. Not run in Unreal. The window it was cut from opens on a click.</figcaption>
   </figure>
   <figure id="particles" class="wide-only">
@@ -106,7 +106,7 @@
     <li>Every written file is the size you chose, square and 2:1.</li>
   </ul>
   <figure>
-    <picture><source media="(max-width: 600px)" srcset="img/report-text-phone.png" width="345" height="173"><img class="ui" src="img/report-text.png" alt="The Tressmap Report in Blender's Text Editor: Tressmap report, Version 1.0.4, Blender 4.5.16 LTS, Atlas hair, 2048 x 2048 px, Run Bake Maps, Bake time 55.3 s, Files written (9), each with map, size, format and path" width="712" height="290" loading="lazy"></picture>
+    <picture><source media="(max-width: 600px)" srcset="img/report-text-phone.png" width="345" height="173"><img class="ui" src="img/report-text.png" alt="The Tressmap Report in Blender's Text Editor: Tressmap report, Version 1.0.4, Blender 4.5.16 LTS, Atlas hair, 2048 x 2048 px, Run Bake Maps, Bake time 56.5 s, Files written (9), each with map, size, format and path" width="712" height="290" loading="lazy"></picture>
     <figcaption>The report of the bake on the product page: version, atlas, bake time, every file with its size.</figcaption>
   </figure>
   <div class="pair">
@@ -138,7 +138,7 @@
     <li>A script sets the layout of the window, the view of Ellie, which object types the viewport draws (no bones or helper shapes), the selection of the lock before each Use Selected Hair click and the 3D cursor before Make Preview Cards.</li>
     <li>The hair conversion and the locks use Blender's own Convert to Curves (front 2,300, back 3,400, ponytail 2,850 and loose 40&nbsp;strands) and Separate. Which strands go into a lock (the 150 whose roots are nearest the left-most, the right-most or the highest root of a hair system) is chosen by script; no hair is drawn or edited by hand.</li>
     <li>Her mesh hair and the groom's helper objects are hidden in the viewport (her rig shows the mesh hair unless it is hidden in the view layer too) so that the hair curves are what is shown.</li>
-    <li>The recordings are cut from one 280.7&nbsp;s recording of that pass; the bake recording is cut as its caption says, and nothing else is cut or drawn on.</li>
+    <li>The recordings are cut from one 283.0&nbsp;s recording of that pass; the bake recording is cut as its caption says, and nothing else is cut or drawn on.</li>
     <li>The auburn picture and the setup picture come from a second pass of the same window: a script gives Ellie's hair curves one Principled Hair BSDF in Color mode and sets the atlas settings and the slots; Bake Maps and the Result buttons are real mouse events. The picture of Blender 4.2&nbsp;LTS is a third pass in a Blender 4.2.23 window: two of her particle systems are converted by Blender's own Convert to Curves (run by script on each system); Use Selected Hair, Preview Layout and Bake Maps are real mouse events.</li>
   </ul>
   <p class="fine">Character: Ellie Rig (CC) Blender Foundation <span style="white-space:nowrap">| studio.blender.org,</span> Sprite Fright, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Test groom for the timings: "Fur - Highland Cattle" by Simon Thommes, Blender Studio, CC0. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</p>
