@@ -257,7 +257,7 @@ CMakeLists.txt            changed only with a license and the fmt target chosen<
 
   <h2 id="details">Limits and details</h2>
   <ul class="tight">
-    <li><strong>Works in:</strong> CLion 2025.3 or later (build 253 and later). Tested headless in CLion 2025.3; the Plugin Verifier reports it compatible with CLion 2025.3 and 2026.3.0.1.</li>
+    <li><strong>Works in:</strong> CLion 2025.3 or later (build 253 and later). Tested headless in CLion 2025.3; creating a class also ran inside real CLion 2025.3 and 2026.3.0.1 processes started without a window; the Plugin Verifier reports it compatible with CLion 2025.3 and 2026.3.0.1.</li>
     <li><strong>Untested:</strong> a CLion window, Windows, macOS, and the Marketplace trial and purchase.</li>
     <li>CMake edits only on CMake projects, and right on 2 of the twelve libraries tried (<a href="how-we-tested.html">how we tested</a>). New files only. Not Rider.</li>
     <li>A target whose sources come from <code>file(GLOB)</code> or a variable is left unchanged; placement still works. With a license the dialog says whether the new file matches the glob (a class in a subfolder is not matched by a plain <code>src/*.cpp</code>).</li>
