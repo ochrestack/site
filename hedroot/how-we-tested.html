@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How we tested Hedroot</title>
+<meta name="description" content="What ran for Hedroot 1.0.1: 189 automated tests, the Plugin Verifier on CLion 2025.3 and 2026.3.0.1, real CMake builds, a survey of twelve libraries, and what did not run.">
+<link rel="canonical" href="https://ochrestack.com/hedroot/how-we-tested.html">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 17px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  code { font-size: 15px; }
+  .buttons .button { margin: 0 8px 8px 0; }
+  .note { font-size: 15px; color: var(--muted); }
+  .benefits { padding-left: 20px; margin: 16px 0; }
+  .benefits li { margin: 6px 0; }
+  .pair figure { flex: 0 1 auto; }
+  /* The IDE captures are 1200 px wide: on wide screens they get up to that width, centred on the column. */
+  @media (min-width: 1000px) {
+    .real-size { width: min(1200px, calc(100vw - 48px)); }
+    .real-size figcaption { max-width: 712px; }
+  }
+  header, main, footer { max-width: 1200px; }
+  main > * { max-width: 712px; }
+  main > .real-size { max-width: none; }
+  .top { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .top h1 { margin-top: 12px; }
+  header { padding-top: 20px; }
+  .top .sub { font-size: 18px; line-height: 1.5; margin-bottom: 8px; }
+  .top .benefits { margin: 8px 0; }
+  .top .benefits li { margin: 2px 0; }
+  .top .buy { margin-top: 10px; }
+  .top .note, .top .fine { margin: 0 0 6px; line-height: 1.45; }
+  .top-image { margin: 16px 0; }
+  .top-image .hero { margin: 0 0 6px; }
+  .top-images .top-image { margin: 0 0 16px; }
+  @media (min-width: 1000px) {
+    .top { display: grid; grid-template-columns: minmax(380px, 1fr) minmax(0, 650px); grid-template-rows: auto auto auto auto 1fr; column-gap: 36px; align-items: start; }
+    .top > * { grid-column: 1; }
+    .top > .top-images { grid-column: 2; grid-row: 1 / span 5; margin: 28px 0 0; }
+  }
+  /* Short or narrow laptop windows (1024x600): a narrower picture column and tighter text keep the buy button in the first screen. */
+  @media (min-width: 1000px) and (max-width: 1250px) {
+    .top { grid-template-columns: minmax(380px, 1fr) minmax(0, 380px); column-gap: 28px; }
+  }
+  @media (min-width: 1000px) and (max-height: 800px) {
+    .top .sub { margin-bottom: 4px; }
+    .top .benefits li { margin: 1px 0; }
+    .top .note, .top .fine { margin: 0 0 3px; }
+    header { padding-top: 12px; }
+  }
+  @media (min-width: 1000px) and (max-height: 700px) {
+    .top { grid-template-columns: minmax(380px, 1fr) minmax(0, 380px); column-gap: 28px; }
+    .top .sub { font-size: 16px; line-height: 1.4; margin-bottom: 4px; }
+    .top .benefits { font-size: 15.5px; line-height: 1.4; margin: 6px 0; }
+    .top .buy p.price { font-size: 15.5px; line-height: 1.4; }
+    .top .note, .top .fine { font-size: 14px; line-height: 1.35; }
+    header { padding-top: 10px; }
+    .top h1 { font-size: 26px; margin: 6px 0 4px; }
+  }
+  @media (min-width: 1251px) { .top .note, .top .fine { font-size: 14px; line-height: 1.35; margin: 0 0 4px; } .top .sub { font-size: 17px; margin-bottom: 4px; } }
+  .narrow-only-inline { display: none; }
+  /* Phones (375x667): the lead of each benefit, the price line and the buy button fit the first screen. */
+  @media (max-width: 600px) {
+    .narrow-only-inline { display: inline; }
+    header { padding-top: 10px; }
+    header img { width: 28px; height: 28px; }
+    .top h1 { font-size: 24px; margin: 4px 0 4px; }
+    .top .sub { font-size: 15.5px; line-height: 1.35; margin-bottom: 6px; }
+    .top-images .top-image { margin: 0 0 6px; }
+    .top-image figcaption { display: none; }
+    .top .benefits { font-size: 15px; line-height: 1.35; margin: 4px 0; padding-left: 18px; }
+    .top .benefits .more { display: none; }
+    .top .buy p.price { font-size: 15px; line-height: 1.35; margin-bottom: 8px; }
+    .top .button { padding: 9px 14px; }
+    .top .buy { display: flex; flex-direction: column; }
+    .top .buy .buttons { order: -1; margin: 6px 0 8px; }
+    header { padding-top: 6px; }
+  }
+  p, li, figcaption { text-wrap: pretty; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+
+  /* Additions for the JetBrains pages */
+  .buy-note { font-size: 15px; color: var(--muted); margin: 0 0 8px; }
+  .buy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 6px 0 8px; }
+  .buy-row .buy-note { margin: 0; }
+  @media (max-width: 600px) { .top .fine .more { display: none; } .top .buy-row { margin: 4px 0 6px; gap: 4px 12px; } .top .buy-note { font-size: 14px; } .top .buy p.price { margin-bottom: 4px; } .top .fine { font-size: 14px; } .top .sub { font-size: 15px; line-height: 1.32; } }
+  .step-tag { font-size: 14px; font-weight: 600; color: var(--ochre-text); text-transform: uppercase; letter-spacing: .04em; }
+  figure img.ui { background: #1e1f22; }
+  .strip { margin: 16px 0; }
+  ul.tight li { margin: 4px 0; }
+  code { overflow-wrap: anywhere; }
+  pre.pats { margin: 0; padding: 12px 16px; background: #fff; border: 1px solid #E6DED3; border-radius: 8px; font-size: 14px; line-height: 1.5; overflow-x: auto; }
+  pre.pats code { font-size: 14px; overflow-wrap: normal; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>How we tested Hedroot</h1>
+  <p>Back to the <a href="index.html">product page</a>. Everything here is Hedroot 1.0.1 and ran on Linux.</p>
+  <ul>
+    <li>189 automated tests in 22 classes, none failing, run without a display in CLion 2025.3, and 18 more acceptance tests written separately from them, none failing.</li>
+    <li>Plugin Verifier 1.411: compatible with CLion 2025.3 and CLion 2026.3.0.1, no internal, experimental or deprecated API used. A headless start of each CLion with the plugin installed loads it with no error. CLion 2026.3 is not covered by the test suite.</li>
+    <li>4 builds with real CMake after Hedroot's edits (a PUBLIC section after PRIVATE sources, an INTERFACE section, and a target defined in both branches of <code>if()</code>/<code>else()</code> with the option on and off): the new source was compiled exactly once, for the library, in each. The new source goes into the PRIVATE section, never PUBLIC or INTERFACE.</li>
+    <li>On twelve popular open-source libraries (a rule of <code>include/&lt;name&gt;</code> and <code>src</code>, the dialog started in the library's source folder), the CMake edit was right and unconditional on 2, offered only inside an <code>if()</code> on 1, refused with the reason on 8, and found no target on 1. A list built from a variable or <code>file(GLOB)</code>, or a target made by a function or macro, is left unchanged and the dialog says why.</li>
+    <li>Speed on {fmt} (10 CMakeLists.txt files), CLion 2025.3 headless, a 4-core 2.3 GHz Xeon, median of 10 runs: Create to both files open 39 ms, worst 115 ms.</li>
+    <li id="fmt-run">The {fmt} comparison on the product page was run headless on an unmodified copy of {fmt} at commit 14ac0d5, CLion 2025.3, with New File Extensions set to the .h/.cc pair and a lower-case naming convention. CLion's row is CLion's own class code run in the same test, not a CLion window. With fmt chosen in the target list, Hedroot changed one file, CMakeLists.txt, line 305.</li>
+    <li>Not run: a CLion window (Remove, Undo and the move of CLion's own files were tested by CLion's undo manager and by playing back CLion's own events), Windows, macOS, and the Marketplace trial and purchase.</li>
+    <li id="pictures">The pictures are Hedroot's own screens, drawn by CLion 2025.3's interface toolkit in a test window on unmodified copies of {fmt} (commit 14ac0d5) and rclcpp (commit 9e66d4d), in the dark theme. They are not captures of CLion's own window: CLion's release builds ask for a JetBrains Account login before they can be used, and the test machine has none; the early-access build of CLion 2026.3 that needs no login had expired. The pictures of paid features were taken with the license check switched on by a test tool.</li>
+  </ul>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026&nbsp;Ochrestack</span>
+</footer>
+</body>
+</html>
