@@ -182,7 +182,7 @@
   <p class="sub">CLion's New | C++ Class writes both files into the folder you right-click, so with <code>include/</code> and <code>src/</code> you move the header by hand every time. Hedroot's dialog puts each file in its folder.</p>
   <div class="top-images">
   <figure class="top-image">
-    <a href="img/dialog-fmt.png"><picture><source media="(max-width: 600px)" srcset="img/dialog-fmt-phone.png" width="440" height="217"><img class="hero ui" src="img/dialog-fmt.png" alt="Hedroot's New C++ Class (Header/Source Folders) dialog in CLion 2025.3's own interface, on the fmt library: the line Rule for the project root: headers in include/fmt, sources in src.; Name Formatter; File type .h/.cc; Header file include/fmt/formatter.h; Source file src/formatter.cc; the line The source starts with #include "fmt/formatter.h" (include root: include, worked out from the folder names)" width="588" height="380"></picture></a>
+    <a href="img/dialog-fmt.png"><picture><source media="(max-width: 600px)" srcset="img/dialog-fmt-phone.png" width="440" height="217"><img class="hero ui" src="img/dialog-fmt.png" alt="Hedroot's New C++ Class (Header/Source Folders) dialog in a test window drawn by CLion 2025.3's interface toolkit, on the fmt library: the line Rule for the project root: headers in include/fmt, sources in src.; Name Formatter; File type .h/.cc; Header file include/fmt/formatter.h; Source file src/formatter.cc; the line The source starts with #include "fmt/formatter.h" (include root: include, worked out from the folder names)" width="588" height="380"></picture></a>
     <figcaption>Both paths, before anything is written. <a href="how-we-tested.html#pictures">What this picture is</a>.</figcaption>
   </figure>
   </div>
@@ -209,7 +209,10 @@
   <p>The class <code>Formatter</code>, started in <code>src</code> on {fmt}, with one rule (<a href="how-we-tested.html#fmt-run">headless run</a>):</p>
   <pre class="pats"><code>include/fmt/formatter.h   new header
 src/formatter.cc          new source, first line: #include "fmt/formatter.h"
-CMakeLists.txt            one line added if you choose the fmt target (license)</code></pre>
+CMakeLists.txt            changed only with a license and the fmt target chosen</code></pre>
+  <p>That CMakeLists.txt change is one line (line 305, inside <code>if (FMT_OS)</code>):</p>
+  <pre class="pats"><code>-  target_sources(fmt PRIVATE src/os.cc)
++  target_sources(fmt PRIVATE src/os.cc src/formatter.cc)</code></pre>
 
   <h2 id="watch">Watch</h2>
   <figure>
@@ -253,6 +256,7 @@ CMakeLists.txt            one line added if you choose the fmt target (license)<
     <li><strong>Works in:</strong> CLion 2025.3 or later (build 253 and later). Tested headless in CLion 2025.3; the Plugin Verifier reports it compatible with CLion 2025.3 and 2026.3.0.1.</li>
     <li><strong>Untested:</strong> a CLion window, Windows, macOS, and the Marketplace trial and purchase.</li>
     <li>CMake edits only on CMake projects, and right on 2 of the twelve libraries tried (<a href="how-we-tested.html">how we tested</a>). New files only. Not Rider.</li>
+    <li>A target whose sources come from <code>file(GLOB)</code> or a variable is left unchanged; placement still works. With a license the dialog says whether the new file matches the glob (a class in a subfolder is not matched by a plain <code>src/*.cpp</code>).</li>
     <li>The <code>#include</code> is relative to an include folder that Hedroot reads from your CMakeLists.txt or works out from your folder names (<code>include/ember/core</code> gives <code>include</code>). It reads only include directories that your CMakeLists.txt files spell out as plain folders; for a layout it cannot read, set the Include root on the rule.</li>
     <li>An end user license agreement; the source code is not included. Refunds go through JetBrains Marketplace; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
     <li>No network calls, nothing sent (<a href="../privacy.html">privacy policy</a>). {fmt} and rclcpp are test data, with no affiliation.</li>
