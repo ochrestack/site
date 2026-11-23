@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limbhop quick start: install and your first switch</title>
+<meta name="description" content="Install Limbhop for Blender 4.5 LTS and later, switch your first limb between IK and FK with one key, and map your own rig's limbs once.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { max-width: 66ch; }
+  a { color: var(--ochre-text); }
+  figure { margin: 20px 0; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 6px; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 14px 20px; margin: 20px 0; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Limbhop quick start</h1>
+  <p>Install and first switch. The manual, <code>README.md</code>, is inside the download. Back to the <a href="index.html">Limbhop product page</a>.</p>
+
+  <h2 id="install">Install (Blender 4.5 LTS or later; tested on 4.5.16 LTS, 5.2.4 LTS and 5.3.0)</h2>
+  <ol>
+    <li>After checkout, download <code>limbhop-1.0.1.zip</code> from the link in Polar's email. Install the zip itself; do not unzip it first.</li>
+    <li>In Blender, open <strong>Edit &gt; Preferences &gt; Get Extensions</strong>.
+      <ul>
+        <li>Blender says "Internet access is required to install and update online extensions". Limbhop needs none: choose <strong>Continue Offline</strong>.</li>
+        <li>Blender then shows a <strong>Repository Alert</strong> about extensions.blender.org: Blender could not reach its online site; nothing is wrong with Limbhop.</li>
+      </ul>
+    </li>
+    <li>Open the arrow menu at the top right of the tab and choose <strong>Install from Disk...</strong></li>
+    <li>Pick <code>limbhop-1.0.1.zip</code> ("Enable on Install" is ticked) and press <strong>Install from Disk</strong>.</li>
+    <li>Limbhop is ticked in <strong>Edit &gt; Preferences &gt; Add-ons</strong>. Select a rig in Pose Mode, press <strong>N</strong> in the 3D Viewport and open the <strong>Item</strong> tab.</li>
+  </ol>
+  <p>To upgrade, install the new zip the same way; it replaces the old one. Your mappings are saved in your .blend files and stay.</p>
+
+  <h2 id="first-switch">Your first switch</h2>
+  <ol>
+    <li>Put the rig in <strong>Pose Mode</strong> and select a control of an arm or a leg: its FK control, its IK control or its pole.</li>
+    <li>With the pointer in the 3D Viewport, press <strong>Shift F</strong>.
+      <ul>
+        <li>The status bar names the limb and its new mode, for example "UpperArm.L: FK", and the new mode's controls are selected; controls of two limbs switch both.</li>
+        <li><strong>Ctrl+Z</strong> undoes the whole switch in one step.</li>
+        <li>A bone that is in no known limb is named in the message, with how to add its limb. A switch property that a driver or an NLA strip animates is refused with a message naming it, and so is one between the two modes (0.40): set it to 0 or 1 first.</li>
+      </ul>
+      <figure><img style="width:340px;max-width:100%" src="img/panel.png" alt="The Limbhop panel at real size on Ellie: Switch key: Shift F, Add Limb, Detect from Selection, Mirror, and a row each for UpperArm.L FK, UpperArm.R FK, Thigh.L IK and Thigh.R IK, with Switch and Check buttons" width="268" height="252" loading="lazy"><figcaption>The panel on Ellie; each Switch button does what the key does.</figcaption></figure>
+    </li>
+    <li><strong>Auto Keying.</strong> With it on, a press keys, on the current frame only, the switch property and every control it moved; the switch key is Constant, so the limb does not blend between modes. With it off, nothing is keyed.</li>
+    <li><strong>Change the key:</strong> <strong>Edit &gt; Preferences &gt; Add-ons</strong>, open <strong>Limbhop</strong>, click the key and press the one you want (also in <strong>Keymap &gt; 3D View &gt; Pose</strong>).</li>
+  </ol>
+  <p>Rigify's and CloudRig's arms and legs are known without mapping; a renamed or customized limb falls back to mapping, with a message that names it.</p>
+
+  <h2 id="map">Map a limb of another rig with two-bone IK</h2>
+  <ol>
+    <li>In the <strong>Limbhop</strong> panel press <strong>Add Limb</strong> and fill the fields under the list: a name; the FK chain (upper, lower, end); the IK control; the pole (empty if there is none); the switch property (bone, property name, and whether 1 or 0 means IK); and the IK chain bones if they are not the FK bones.</li>
+    <li><strong>Detect from Selection</strong> fills what it can from the selected bones and the chain's IK constraint and leaves the rest. <strong>Mirror</strong> adds the other side by Blender's .L/.R, _L/_R and Left/Right names.</li>
+    <li>The pencil on a row shows its fields; the X removes it (Ctrl+Z puts it back). The mapping is saved in the .blend. A bone renamed after mapping shows its limb as a red button with Blender's warning icon, and a press on that limb changes nothing. A rig linked with a library override uses its rig file's mapping, which cannot be edited there.</li>
+  </ol>
+
+  <h2 id="check">Check Limb</h2>
+  <p>The <strong>Check</strong> button on a limb's row switches it to the other mode and back on the current frame, restores everything, and shows the largest movement of a deforming bone with its name. Over the tolerance (1.0 mm per metre of limb length and 0.5 degrees) it names the likely cause it can test for and the field to change.</p>
+  <figure><img style="width:340px;max-width:100%" src="img/check-limb.png" alt="The Limbhop panel at real size after Check on UpperArm.R and Thigh.L at frame 1: the right arm moves 0.00 mm, the left knee moves a corrective bone 4.76 mm, over its 0.62 mm tolerance, with the note No cause found" width="268" height="500" loading="lazy"><figcaption>Check Limb on Ellie at frame 1: a clean arm, and a knee whose corrective bone is over the tolerance.</figcaption></figure>
+
+  <h2 id="limits">Limits</h2>
+  <ul>
+    <li>It does not bake a switch over a range of frames; Rigify's Action button and CloudRig's Snap &amp; Bake do, and do it better.</li>
+    <li>Not handled: spines, necks, fingers, tentacles, spline IK, IK chains of three or more bones; parent or follow switching; Auto-Rig Pro rigs and presets for any rig system other than Rigify and CloudRig; a pie menu, a picker, buttons drawn in the viewport; switching on selection or bone movement without a key press.</li>
+    <li>A rig whose corrective bones follow the IK/FK mode can move them when you switch, even though the chain matches; Check Limb shows how far. On Ellie they moved up to 18.1 mm from IK to FK, with Limbhop and with her own Snap &amp; Bake alike.</li>
+    <li>Limbs that share one switch property (one slider for the whole rig) switch together, because the property is one: Limbhop matches the limb you pressed on, names the others as not matched, and when you press controls of two such limbs it switches the first and says so for the second. Give each limb its own property if you want each matched.</li>
+    <li>A limb at full reach with IK stretch on, switched from IK, can move a deforming bone by about 1.9 mm on a rig we built to test it; Check Limb names IK stretch as the cause.</li>
+    <li>It adds no bones, constraints or drivers to a rig. F9 (Adjust Last Operation) shows nothing after a switch: there is nothing to adjust.</li>
+    <li>If the controls of the mode you switch to are in a hidden bone collection, the limb still switches and Limbhop says so; it does not change what you see.</li>
+    <li>Not tested on Windows or macOS.</li>
+  </ul>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>Limbhop makes no network calls. It changes only the bones, the switch property and the keys of the limb you switch, and the mapping you save, all inside the .blend file.</p>
+
+  <h2 id="support">Support</h2>
+  <p>Email <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> with your Blender version, the rig, the message the status bar showed and, if you can, a .blend file that shows the problem.</p>
+  <p style="font-size:14px;color:var(--muted)">Ellie: (c) Blender Foundation | studio.blender.org, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; cropped, most rig controls hidden. Not included with Limbhop.</p>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>

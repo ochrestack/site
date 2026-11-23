@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limbhop for Blender: switch a limb between IK and FK with one key</title>
+<meta name="description" content="Switching a limb between IK and FK is a slider, a snap button, a pop-up and a pose you fix by hand. Limbhop does it with one key press, and the arm or leg stays where it was. Rigify and CloudRig limbs need no setup. Blender 4.5 LTS and later. $12, source included.">
+<link rel="canonical" href="https://ochrestack.com/limbhop/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Limbhop for Blender: switch a limb between IK and FK with one key">
+<meta property="og:description" content="One key press switches an arm or leg between IK and FK, and the pose stays where it was. Rigify and CloudRig limbs need no setup; map your own rig once. Blender 4.5 LTS and later. $12, source included.">
+<meta property="og:url" content="https://ochrestack.com/limbhop/">
+<meta property="og:image" content="https://ochrestack.com/limbhop/img/hero.png">
+<meta property="og:image:width" content="1176">
+<meta property="og:image:height" content="588">
+<meta property="og:image:alt" content="Blender Studio's Ellie in Blender 5.2.4 with the Limbhop panel: UpperArm.L is FK after one Shift F, and her arm has not moved">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Limbhop for Blender: switch a limb between IK and FK with one key">
+<meta name="twitter:description" content="One key press switches an arm or leg between IK and FK, and the pose stays where it was. Blender 4.5 LTS and later. $12, source included.">
+<meta name="twitter:image" content="https://ochrestack.com/limbhop/img/hero.png">
+<meta name="twitter:image:alt" content="Ellie in Blender 5.2.4 with the Limbhop panel reading UpperArm.L FK after one Shift F">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 19px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; width: 764px; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<main>
+  <h1>Limbhop for Blender</h1>
+  <p class="sub">Switching a limb between IK and FK is a slider, a snap button, a pop-up and a pose you fix by hand. Limbhop does it with one key press, and the arm or leg stays where it was.</p>
+
+  <picture>
+    <source media="(max-width: 600px)" srcset="img/hero-phone.gif" width="580" height="650">
+    <img class="hero" src="img/hero.gif" alt="Blender 5.2.4 with Blender Studio's Ellie at frame 130 of her animation, her left hand on her hip. Four frames, looped: the Limbhop panel reads UpperArm.L IK; after one Shift F it reads UpperArm.L FK and the arm has not moved; the FK arm is swung out by hand; one more Shift F puts the limb back in IK with the arm in the same place" width="1176" height="588">
+  </picture>
+  <p class="fine">Ellie, Blender Studio, CC BY 4.0 (<a href="#credits">credit</a>), in a real Blender 5.2.4 window: one Shift F flips her left arm between IK and FK, and the arm stays put.</p>
+
+  <ul>
+    <li><strong>One key, no pop-up.</strong> Select a control of an arm or leg and press Shift F. One press is one undo step.</li>
+    <li><strong>The pose stays where it was.</strong> Check Limb tells you in millimetres when a limb does not switch cleanly.</li>
+    <li><strong>Rigify and CloudRig limbs need no setup.</strong> Your own rig's limbs: map each one once.</li>
+  </ul>
+
+  <div class="buy">
+    <p class="price"><strong>$12 once, source included</strong> (GPL-3.0-or-later). Blender 4.5 LTS and later; tested on 4.5.16 LTS, 5.2.4 LTS and 5.3.0 on Linux.</p>
+    <p><a class="button" id="buy" href="https://buy.polar.sh/polar_cl_B2VIBH3IhvA0EkL4Sm0iVB7jsPk78kswy710E1mGNMD">Buy for $12</a></p>
+    <p class="fine">Polar checkout · download by email · no license key, no account, nothing renews · <a href="../terms.html">14-day refund if it doesn't work as described and we can't fix it</a> · <a href="mailto:support@ochrestack.com">support@ochrestack.com</a> · <a href="#details">details</a></p>
+  </div>
+  <p class="fine">Rigify and CloudRig already have snap buttons. If you are happy with them, you do not need Limbhop: <a href="#who">who needs it, and who does not</a>.</p>
+
+  <div class="box warn" id="who">
+    <strong>Who needs it, and who does not.</strong> You need it if you pose and animate limbs that have both IK and FK, and the switch costs you clicks every time you do it. Blender's rigs already have the pieces:
+    <ul>
+      <li>Rigify has FK-&gt;IK and IK-&gt;FK snap buttons and an IK-FK slider in Rig Main Properties, and its snap buttons run without a pop-up. You can also right-click one snap button and choose Assign Shortcut, which then serves that one limb in that one direction.</li>
+      <li>CloudRig's Snap &amp; Bake switches and snaps in one go, behind a dialog; its maintainer has said he may add an opt-in to skip the dialog, and a one-line edit of CloudRig's own file removes it today.</li>
+      <li>Auto-Rig Pro snaps its own rigs, and Limbhop has no preset for it.</li>
+      <li>Two free extensions, "IK-FK Snapping Tool" and "FK/IK Snapping Tools", snap IK to FK and back on rigs where you type the bones in, one button per direction.</li>
+      <li>Rig UI Pro ($70) sets up one-click IK/FK on many rigs, inside a larger rig-UI suite.</li>
+    </ul>
+    If you already use those and are happy, you do not need Limbhop. With Limbhop you pay for four things:
+    <ol>
+      <li>One key for each arm and leg: it finds the limb from the selected control (the FK control, the IK control or the pole), reads the mode, matches the other chain and flips the rig's own switch, with no direction to choose and no slider to drag.</li>
+      <li>The same key on Rigify limbs, CloudRig limbs and your own rigs, with nothing to set up on Rigify's arms and legs and on CloudRig's limbs. For your own rig, the Limbhop panel takes each limb once: Add Limb, Detect from Selection, Mirror.</li>
+      <li>A switch that keys itself when Auto Keying is on, so the limb does not drift on the frames around the switch.</li>
+      <li>A Check Limb button that shows, in millimetres, whether a mapped limb switches cleanly before you use it in a shot.</li>
+    </ol>
+  </div>
+
+  <h2>Fewer actions per switch</h2>
+  <table>
+    <tr><th>Route</th><th>What you do</th><th>Actions</th></tr>
+    <tr><td>Rigify's own</td><td>select the hand, open the Sidebar, scroll to Rig Main Properties, press the snap button, drag the slider, key it</td><td>6</td></tr>
+    <tr><td>CloudRig's Snap &amp; Bake</td><td>press it, read the dialog, press OK</td><td>3</td></tr>
+    <tr><td>Limbhop</td><td>press Shift F</td><td>1</td></tr>
+  </table>
+  <figure>
+    <img class="ui" style="width:408px;max-width:100%" src="img/cloudrig-dialog.png" alt="Ellie's own CloudRig Snap and Bake dialog in Blender 4.5.16, titled Toggle And Bake IK/FK, with a Bake Keyframes in Range tick box, the list of snapped bones IK-MSTR-Wrist.L to FK-Wrist.L, IK-MSTR-C-Wrist.L to FK-Wrist.L and IK-UpperArm.L to FK-UpperArm.L, and Cancel and OK buttons" width="326" height="201" loading="lazy">
+    <figcaption>CloudRig's route: Ellie's own Snap &amp; Bake dialog, waiting for OK (Blender 4.5.16, where her file's script runs). Limbhop's one key switches the same limb on the current frame with no dialog.</figcaption>
+  </figure>
+
+  <div class="pair">
+    <figure>
+      <img class="ui" style="width:340px;max-width:100%" src="img/panel.png" alt="The Limbhop panel at real size on Ellie: Switch key: Shift F, Add Limb, Detect from Selection, Mirror, and one row each for UpperArm.L FK, UpperArm.R FK, Thigh.L IK and Thigh.R IK, each with Switch and Check buttons" width="268" height="252" loading="lazy">
+      <figcaption>The panel on Ellie, her limbs found with no setup: a row per limb, with its mode.</figcaption>
+    </figure>
+    <figure>
+      <img class="ui" style="width:340px;max-width:100%" src="img/check-limb.png" alt="The Limbhop panel at real size after Check on UpperArm.R and on Thigh.L at frame 1: the right arm, largest move 0.00 mm and 0.00 deg, tolerance 0.37 mm and 0.50 deg; the left knee, largest move 4.76 mm and 0.21 deg at DEF-Knee1.L, tolerance 0.62 mm, with the note No cause found" width="268" height="500" loading="lazy">
+      <figcaption>Check Limb at frame 1: Ellie's right arm switches cleanly; on her left knee a corrective bone moves over the tolerance.</figcaption>
+    </figure>
+  </div>
+  <figure>
+    <picture>
+      <source media="(max-width: 600px)" srcset="img/autokey-phone.png" width="312" height="152">
+      <img class="ui" src="img/autokey.png" alt="Two strips of the Blender timeline at frame 102 with Auto Keying on. Before: no key diamond at the playhead. After one Shift F: a key diamond at frame 102, and the status bar reads UpperArm.L: FK" width="700" height="152" loading="lazy">
+    </picture>
+    <figcaption>Auto Keying on, frame 102: before the press there is no key at the playhead for the selected controls; after one Shift F there is.</figcaption>
+  </figure>
+
+  <h2 id="details">Details</h2>
+  <ul>
+    <li>Buying: secure checkout by Polar. The download arrives by email right after payment; the zip includes the full source (GPL-3.0-or-later). No license key, no account, nothing renews. If it doesn't work as described and we can't fix it, email us within 14 days of purchase for a full refund (<a href="../terms.html">terms</a>).</li>
+    <li>Studio licence: up to 10 seats, $48, the same zip. Email <a href="mailto:support@ochrestack.com?subject=Limbhop%20studio%20licence">support@ochrestack.com</a> with your team's name and we send the studio checkout.</li>
+    <li>Blender 4.5 LTS and later. Tested on Blender 4.5.16 LTS, 5.2.4 LTS and 5.3.0 on Linux, with Rigify 0.6.10 and CloudRig 2.2.32 (CloudRig needs Blender 5.0 or later). Not tested on Windows or macOS.</li>
+    <li>A switch property driven by a driver, animated by an NLA strip or an Action constraint, or sitting between the two modes is refused with the thing named, and nothing is written. The status bar names each limb and its new mode ("UpperArm.L: FK"); Shift F is changeable in the add-on's preferences.</li>
+    <li>Limbhop makes no network calls and sends nothing anywhere. Support: <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>. Install and first use: <a href="quick-start.html">Limbhop quick start</a>.</li>
+  </ul>
+
+  <h2>Known limits</h2>
+  <ul>
+    <li>It does not bake a switch over a range of frames; Rigify's Action button and CloudRig's Snap &amp; Bake do. It does not handle spines, necks, fingers, tentacles, spline IK or IK chains of three or more bones.</li>
+    <li>A rig whose corrective bones follow the IK/FK mode can move them when you switch, even though the chain matches; Check Limb shows how far.</li>
+    <li>Limbs that share one switch property switch together. The full list is in the <a href="quick-start.html#limits">quick start</a>.</li>
+  </ul>
+
+  <h2 id="tested">How we tested</h2>
+  <p>All numbers are Limbhop 1.0.1, on a 4-core Intel Xeon at 2.1 GHz, Linux. Movement is the largest move of any deforming bone during a switch. Check Limb's tolerance is 1.0 mm per metre of limb length and 0.5 degrees.</p>
+  <table>
+    <tr><th>What</th><th>Result</th></tr>
+    <tr><td>Headless tests, Blender 4.5.16 LTS, 5.2.4 LTS, 5.3.0</td><td>96 tests on each: 90, 95 and 95 passed, none failed; 6, 1 and 1 skipped (five CloudRig tests need Blender 5.0; the undo test needs a window).</td></tr>
+    <tr><td>Real window, real key presses and clicks</td><td>126 steps on 5.2.4, 119 on 4.5.16, 118 on 5.3.0; none failed.</td></tr>
+    <tr><td>Rigify human (MPFB base mesh, Rigify 0.6.10), every arm and leg both ways, Blender 5.2.4</td><td>Limbhop 0.009 mm. Rigify's own IK-&gt;FK button plus slider up to 1.03 mm and 0.17 degrees.</td></tr>
+    <tr><td>CloudRig human (CloudRig 2.2.32)</td><td>Limbhop 0.0018 mm. CloudRig's own Snap &amp; Bake up to 0.034 mm.</td></tr>
+    <tr><td>Ellie's arms, FK to IK, five frames of her animation</td><td>Limbhop 0.30 mm. Her own Snap &amp; Bake, which runs on Blender 4.5, up to 5.76 mm and 12.82 degrees.</td></tr>
+    <tr><td>Ellie, IK to FK</td><td>Her corrective bones move up to 18.1 mm with Limbhop and with her own Snap &amp; Bake alike: over the tolerance, and Check Limb reports it.</td></tr>
+  </table>
+
+  <h2 id="credits">Credits</h2>
+  <p class="fine">Ellie, from Blender Studio's Ellie pose library demo: (c) Blender Foundation | studio.blender.org, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The pictures are screenshots of a Blender window with her file open; we hid most of her rig's controls, zoomed the view, cropped and labelled them. Ellie is not included with Limbhop. Human in the Rigify measurements: MPFB base mesh (CC0).</p>
+
+  <div class="buy">
+    <p><a class="button" id="buy-2" href="https://buy.polar.sh/polar_cl_B2VIBH3IhvA0EkL4Sm0iVB7jsPk78kswy710E1mGNMD">Buy for $12</a></p>
+    <p class="fine">$12 once, source included · Polar checkout · <a href="../terms.html">14-day refund if it doesn't work as described and we can't fix it</a> · tested on Blender 4.5.16 LTS, 5.2.4 LTS and 5.3.0 on Linux</p>
+  </div>
+</main>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026 Ochrestack</span>
+</footer>
+</body>
+</html>
