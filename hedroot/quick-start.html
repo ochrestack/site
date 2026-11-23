@@ -201,7 +201,7 @@
     <li>CMake projects only for target updates. Makefile, Meson, Bazel, compilation-database and PlatformIO projects get placement only.</li>
     <li>New files only: Hedroot does not move, rename or reorganise files that already exist.</li>
     <li>Folders must be inside the project.</li>
-    <li>The <code>#include</code> is relative to an include folder that Hedroot works out from your folder names; it does not read your CMake include directories, so set the Include root on the rule if it guesses wrong.</li>
+    <li>The <code>#include</code> is relative to an include folder that Hedroot reads from plain <code>target_include_directories</code> lines or works out from your folder names; set the Include root on the rule if that is wrong.</li>
     <li>Not in version one: C++20 module interface units, Rider and other JetBrains IDEs, Remote Development clients, keeping namespace, folder and file names in sync.</li>
   </ul>
 
