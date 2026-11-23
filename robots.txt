@@ -59,6 +59,7 @@ Allow: /wholegrip/
 Allow: /wholegrip/quick-start.html
 Allow: /limbhop/
 Allow: /limbhop/quick-start.html
+Allow: /limbhop/how-we-tested.html
 Allow: /guides/
 Allow: /guides/bake-constraints-before-export/
 Allow: /guides/control-rig-no-animations/
