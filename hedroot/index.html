@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hedroot: Header/Source Folders for CLion</title>
+<meta name="description" content="New C++ classes land in your include/ and src/ folders with the #include already right. One rule free; $7 once adds module rules and CLion's own New dialogs. For CLion 2025.3 and later.">
+<link rel="canonical" href="https://ochrestack.com/hedroot/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ochrestack">
+<meta property="og:title" content="Hedroot: Header/Source Folders for CLion">
+<meta property="og:description" content="New C++ classes land in your include/ and src/ folders with the #include already right. One rule free; $7 once adds module rules and CLion's own New dialogs.">
+<meta property="og:url" content="https://ochrestack.com/hedroot/">
+<meta property="og:image" content="https://ochrestack.com/hedroot/img/og-hedroot-2x1.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="600">
+<meta property="og:image:alt" content="Hedroot's New C++ Class (Header/Source Folders) dialog for the class Formatter on the fmt library: header file include/fmt/formatter.h, source file src/formatter.cc, both shown before Create">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hedroot: Header/Source Folders for CLion">
+<meta name="twitter:description" content="New C++ classes land in your include/ and src/ folders with the #include already right. One rule free; $7 once adds module rules and CLion's own New dialogs.">
+<meta name="twitter:image" content="https://ochrestack.com/hedroot/img/og-hedroot-2x1.png">
+<meta name="twitter:image:alt" content="Hedroot's New C++ Class (Header/Source Folders) dialog for the class Formatter on the fmt library: header file include/fmt/formatter.h, source file src/formatter.cc, both shown before Create">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --ochre: #C8842B; --ochre-text: #8A5A1A; --ink: #2B2118; --paper: #FAF7F2; --muted: #5A4E43; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; gap: 14px; padding-top: 40px; }
+  header img { width: 36px; height: 36px; }
+  header a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 40px 0 8px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  p, li { max-width: 64ch; }
+  .sub { font-size: 19px; color: var(--muted); margin-top: 0; }
+  .box { background: #fff; border: 1px solid #E6DED3; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .box.warn { border-color: var(--ochre); }
+  table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E6DED3; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--ochre-text); }
+  .buy { margin: 18px 0 8px; }
+  .buy p { margin: 0 0 10px; }
+  .buy .price { font-size: 17px; }
+  .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+  .button:hover, .button:focus { background: var(--ochre-text); }
+  figure { margin: 28px 0; }
+  figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
+  figure video { background: #2B2118; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  figure img.ui { width: auto; max-width: 100%; border-radius: 6px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 28px 0; }
+  .pair figure { flex: 0 1 256px; margin: 0; }
+  .narrow-only { display: none; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x a, .scroll-x picture { display: block; }
+  .hero { display: block; width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; margin: 4px 0 12px; }
+  .fine { font-size: 15px; color: var(--muted); }
+  details { margin: 8px 0 24px; font-size: 15px; color: var(--muted); }
+  summary { cursor: pointer; }
+  @media (max-width: 600px) {
+    h1 { margin-top: 28px; }
+    .wide-only { display: none; }
+    .narrow-only { display: block; }
+    .scroll-x img.ui { max-width: none; }
+    .swipe-wrap { position: relative; }
+    .swipe-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; pointer-events: none; background: linear-gradient(to right, rgba(250,247,242,0), rgba(250,247,242,0.95)); }
+    .swipe-wrap.at-end::after { display: none; }
+    .swipe-hint { font-size: 15px; color: var(--muted); margin: 0 0 6px; }
+    table { font-size: 14px; }
+    th, td { padding: 6px; }
+  }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  code { font-size: 15px; }
+  .buttons .button { margin: 0 8px 8px 0; }
+  .note { font-size: 15px; color: var(--muted); }
+  .benefits { padding-left: 20px; margin: 16px 0; }
+  .benefits li { margin: 6px 0; }
+  .pair figure { flex: 0 1 auto; }
+  /* The IDE captures are 1200 px wide: on wide screens they get up to that width, centred on the column. */
+  @media (min-width: 1000px) {
+    .real-size { width: min(1200px, calc(100vw - 48px)); }
+    .real-size figcaption { max-width: 712px; }
+  }
+  header, main, footer { max-width: 1200px; }
+  main > * { max-width: 712px; }
+  main > .real-size { max-width: none; }
+  .top { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .top h1 { margin-top: 12px; }
+  header { padding-top: 20px; }
+  .top .sub { font-size: 18px; line-height: 1.5; margin-bottom: 8px; }
+  .top .benefits { margin: 8px 0; }
+  .top .benefits li { margin: 2px 0; }
+  .top .buy { margin-top: 10px; }
+  .top .note, .top .fine { margin: 0 0 6px; line-height: 1.45; }
+  .top-image { margin: 16px 0; }
+  .top-image .hero { margin: 0 0 6px; }
+  .top-images .top-image { margin: 0 0 16px; }
+  @media (min-width: 1000px) {
+    .top { display: grid; grid-template-columns: minmax(380px, 1fr) minmax(0, 650px); grid-template-rows: auto auto auto auto 1fr; column-gap: 36px; align-items: start; }
+    .top > * { grid-column: 1; }
+    .top > .top-images { grid-column: 2; grid-row: 1 / span 5; margin: 28px 0 0; }
+  }
+  /* Short or narrow laptop windows (1024x600): a narrower picture column and tighter text keep the buy button in the first screen. */
+  @media (min-width: 1000px) and (max-width: 1250px) {
+    .top { grid-template-columns: minmax(380px, 1fr) minmax(0, 380px); column-gap: 28px; }
+  }
+  @media (min-width: 1000px) and (max-height: 800px) {
+    .top .sub { margin-bottom: 4px; }
+    .top .benefits li { margin: 1px 0; }
+    .top .note, .top .fine { margin: 0 0 3px; }
+    header { padding-top: 12px; }
+  }
+  @media (min-width: 1000px) and (max-height: 700px) {
+    .top { grid-template-columns: minmax(380px, 1fr) minmax(0, 380px); column-gap: 28px; }
+    .top .sub { font-size: 16px; line-height: 1.4; margin-bottom: 4px; }
+    .top .benefits { font-size: 15.5px; line-height: 1.4; margin: 6px 0; }
+    .top .buy p.price { font-size: 15.5px; line-height: 1.4; }
+    .top .note, .top .fine { font-size: 14px; line-height: 1.35; }
+    header { padding-top: 10px; }
+    .top h1 { font-size: 26px; margin: 6px 0 4px; }
+  }
+  @media (min-width: 1251px) { .top .note, .top .fine { font-size: 14px; line-height: 1.35; margin: 0 0 4px; } .top .sub { font-size: 17px; margin-bottom: 4px; } }
+  .narrow-only-inline { display: none; }
+  /* Phones (375x667): the lead of each benefit, the price line and the buy button fit the first screen. */
+  @media (max-width: 600px) {
+    .narrow-only-inline { display: inline; }
+    header { padding-top: 10px; }
+    header img { width: 28px; height: 28px; }
+    .top h1 { font-size: 24px; margin: 4px 0 4px; }
+    .top .sub { font-size: 15.5px; line-height: 1.35; margin-bottom: 6px; }
+    .top-images .top-image { margin: 0 0 6px; }
+    .top-image figcaption { display: none; }
+    .top .benefits { font-size: 15px; line-height: 1.35; margin: 4px 0; padding-left: 18px; }
+    .top .benefits .more { display: none; }
+    .top .buy p.price { font-size: 15px; line-height: 1.35; margin-bottom: 8px; }
+    .top .button { padding: 9px 14px; }
+    .top .buy { display: flex; flex-direction: column; }
+    .top .buy .buttons { order: -1; margin: 6px 0 8px; }
+    header { padding-top: 6px; }
+  }
+  p, li, figcaption { text-wrap: pretty; }
+  footer { margin-top: 72px; padding-bottom: 48px; color: var(--muted); font-size: 15px; }
+  footer a { margin-right: 18px; }
+
+  /* The film's GIF runs the width of a phone, so that its captions are about 11 px tall. */
+  @media (max-width: 600px) {
+    figure.gif { margin-left: -24px; margin-right: -24px; }
+    figure.gif img.ui { width: 100%; max-width: none; border-radius: 0; border-left: 0; border-right: 0; }
+    figure.gif figcaption { margin-left: 24px; margin-right: 24px; }
+  }
+
+  /* Additions for the JetBrains pages */
+  .buy-note { font-size: 15px; color: var(--muted); margin: 0 0 8px; }
+  .buy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 6px 0 8px; }
+  .buy-row .buy-note { margin: 0; }
+  @media (max-width: 600px) { .top .fine .more, .top .price .more { display: none; } .top .buy-row { margin: 4px 0 6px; gap: 4px 12px; } .top .buy-note { font-size: 14px; } .top .buy p.price { margin-bottom: 4px; } .top .fine { font-size: 14px; } .top .sub { font-size: 15px; line-height: 1.32; } }
+  .step-tag { font-size: 14px; font-weight: 600; color: var(--ochre-text); text-transform: uppercase; letter-spacing: .04em; }
+  figure img.ui { background: #1e1f22; }
+  .strip { margin: 16px 0; }
+  ul.tight li { margin: 4px 0; }
+  td code, th code { overflow-wrap: anywhere; }
+  pre.pats { margin: 0; padding: 12px 16px; background: #fff; border: 1px solid #E6DED3; border-radius: 8px; font-size: 14px; line-height: 1.5; overflow-x: auto; }
+  pre.pats code { font-size: 14px; }
+  code.nw { white-space: nowrap; }
+  span.nw { white-space: nowrap; }
+  @media (max-width: 600px) { code.nw { white-space: normal; overflow-wrap: anywhere; } }
+  @media (max-width: 600px) { .top h1 { font-size: 21px; } .top .button { padding: 7px 14px; } .top .fine { font-size: 13px; line-height: 1.35; } }
+  /* Phones: the lead, the price line and the trust line say the same words as on a desktop, so they are set a little tighter to keep the buy button in the first screen. */
+  @media (max-width: 600px) { .top .sub { font-size: 14.5px; line-height: 1.3; } .top .benefits { font-size: 14px; line-height: 1.3; margin: 3px 0; } .top .buy p.price { font-size: 14px; line-height: 1.3; margin-bottom: 2px; } .top .buy-row { margin: 2px 0 4px; } .top .fine { font-size: 12.5px; line-height: 1.3; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon.svg" alt="">
+  <a href="../index.html">Ochrestack</a>
+</header>
+<section class="top">
+  <h1>Hedroot: Header/Source Folders</h1>
+  <p class="sub">CLion's New | C++ Class writes the header and the source into the folder you right-click, so with <code>include/</code> and <code>src/</code> you move the header by hand every time. Hedroot's own dialog puts each file in its folder when you press Create.</p>
+  <div class="top-images">
+  <figure class="top-image">
+    <a href="img/dialog-fmt.png"><picture><source media="(max-width: 600px)" srcset="img/dialog-fmt-phone.png" width="440" height="256"><img class="hero ui" src="img/dialog-fmt.png" alt="Hedroot's New C++ Class (Header/Source Folders) dialog in CLion 2025.3's own interface, on the fmt library: the line Rule for .: headers in include/fmt, sources in src.; Name Formatter; File type .h/.cc; Header file include/fmt/formatter.h; Source file src/formatter.cc" width="588" height="342"></picture></a>
+    <figcaption>Both paths, before anything is written. <a href="#pictures">What this picture is</a>.</figcaption>
+  </figure>
+  </div>
+  <ul class="benefits">
+    <li><strong>My new header goes to <code>include/</code> and its source to <code>src/</code> the first time, with the <code>#include</code> already right.</strong></li>
+    <li><strong>I see both paths before anything is written.</strong></li>
+    <li><strong>Each module gets its own folders, and my team shares the rules (license).</strong></li>
+  </ul>
+  <div class="buy">
+    <p class="price"><strong>Free:</strong> one placement rule and the dialog, no time limit. <strong>$7&nbsp;once</strong>, personal and commercial alike, adds a rule per module, CMake target lines where a target names its files, CLion's own New dialogs and shared rules; 30-day trial, nothing renews.</p>
+    <div class="buy-row">
+      <a class="button" id="buy" href="#" aria-describedby="buy-note">Get it on JetBrains Marketplace</a>
+      <span class="buy-note" id="buy-note">Not on the Marketplace yet: listing in review.</span>
+    </div>
+    <p class="fine">Tested in CLion 2025.3&nbsp;(headless) <span class="nw">·&nbsp;not&nbsp;yet&nbsp;run&nbsp;in&nbsp;a&nbsp;CLion&nbsp;window</span> <span class="nw">·&nbsp;Linux&nbsp;only</span> <span class="nw">·&nbsp;source&nbsp;code&nbsp;not&nbsp;included</span> <span class="nw">·&nbsp;<a href="mailto:support@ochrestack.com">support@ochrestack.com</a></span></p>
+  </div>
+</section>
+<main>
+  <div class="box warn" id="scope">
+    <strong>CLion already creates class files.</strong> New | C++ Class writes the header and the source together, in the folder you right-click. <strong>If your headers and sources share a folder, you do not need Hedroot.</strong> CLion's file templates also accept a relative path in their file name; that is not the New C++ Class dialog, and where the files land depends on the folder you start from.
+  </div>
+
+  <h2 id="how">How it works</h2>
+  <p class="fine"><a href="quick-start.html">Quick start</a></p>
+
+  <p><span class="step-tag">1. Set a rule (free)</span><br>A header folder and a source folder, relative to the folder the rule covers. {fmt} keeps headers in <code>include/fmt</code> and sources in <code>src</code>; the page shows the paths and the <code>#include</code> for a class name you type.</p>
+  <figure class="real-size">
+    <img class="ui wide-only" src="img/settings-fmt.png" alt="Settings | Editor | Hedroot Header/Source Folders on the fmt library: one rule in the table, folder ., headers include/fmt, sources src, #include path, namespaces off, from Personal, status Active; the three fields filled; under Try a class, Socket in namespace net::tcp gives Header include/fmt/socket.h, Source src/socket.cc and #include fmt/socket.h; below, the line that says what a license adds: a rule for every module, namespace subfolders, CMake target lines, moving the files CLion's own New dialogs create and a shared rules file, $7 once, 30-day trial, nothing renews" width="928" height="750" loading="lazy">
+    <img class="ui narrow-only" src="img/settings-fmt-phone.png" alt="The rule fields on the fmt library: folder ., header folder include/fmt, source folder src; under Try a class, Socket gives Header include/fmt/socket.h, Source src/socket.cc and #include fmt/socket.h" width="520" height="310" loading="lazy">
+    <figcaption>The settings page on {fmt} with one rule, the free tier. <a href="#pictures">What this picture is</a>.</figcaption>
+  </figure>
+
+  <p><span class="step-tag">2. Create a class (free)</span><br>Right-click a folder, choose New | C++ Class (Header/Source Folders), and check the two paths in the dialog above; edit either for this class only. An existing file at either path stops it with both paths named and nothing written. A Remove link in the balloon after Create deletes both files until you edit one.</p>
+  <ul class="tight">
+    <li><strong>CLion's own New | C++ Class</strong> on {fmt}'s <code>src</code>, class Formatter: header <code>src/formatter.h</code>, source <code>src/formatter.cc</code>, with <code>#include "formatter.h"</code>.</li>
+    <li><strong>Hedroot, one rule:</strong> header <code>include/fmt/formatter.h</code>, source <code>src/formatter.cc</code>, with <code>#include "fmt/formatter.h"</code>.</li>
+  </ul>
+  <p class="fine">Headless run on an unmodified copy of {fmt} at commit 14ac0d5, CLion 2025.3, Hedroot 1.0.1, New File Extensions set to the .h/.cc pair with a lower-case naming convention. CLion's row is CLion's class code run in the same test, not a CLion window.</p>
+
+  <p><span class="step-tag">3. With a license: CMake target and a rule per module</span><br>The dialog lists the targets whose CMakeLists.txt names their files and says before Create which line it will change, or why it will leave the target alone. On {fmt} the only place a new file can go is inside <code>if (FMT_OS)</code>, so Hedroot does not preselect it; you choose fmt in the list.</p>
+  <figure>
+    <p class="swipe-hint narrow-only">Swipe the dialog sideways to read each line &rarr;</p>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-fmt-target.png" alt="The dialog on the fmt library with fmt chosen in the Add to CMake target list, shown as fmt (CMakeLists.txt), only inside if (FMT_OS): the line below reads Adds src/formatter.cc to target_sources(fmt ...) in CMakeLists.txt:305 (inside if (FMT_OS), so only built when that holds)" width="588" height="341" loading="lazy"></div></div>
+    <figcaption>{fmt}: the target is conditional, and the dialog says so. License on, switched on by a test tool.</figcaption>
+  </figure>
+  <p>On twelve popular open-source libraries the studio tried (a rule of <code>include/&lt;name&gt;</code> and <code>src</code>), the CMake edit was right and unconditional on 2, offered only inside an <code>if()</code> on 1, refused with the reason on 8, and found no target on 1. A list built from a variable or <code>file(GLOB)</code>, or a target made by a function or macro, is left unchanged and the dialog says why.</p>
+  <figure>
+    <p class="swipe-hint narrow-only">Swipe the dialog sideways to read each line &rarr;</p>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-rclcpp-target.png" alt="The dialog on rclcpp_lifecycle/src for the class Gadget: Header file rclcpp_lifecycle/include/rclcpp_lifecycle/Gadget.h, Source file rclcpp_lifecycle/src/Gadget.cpp, the target rclcpp_lifecycle (rclcpp_lifecycle/CMakeLists.txt) preselected, and the line Adds src/Gadget.cpp to add_library(rclcpp_lifecycle ...) in rclcpp_lifecycle/CMakeLists.txt:20" width="588" height="358" loading="lazy"></div></div>
+    <figcaption>rclcpp, where each module has its own rule: the dialog on <code>rclcpp_lifecycle/src</code> preselects the target and names the line it will change. License on, switched on by a test tool.</figcaption>
+  </figure>
+
+  <p><span class="step-tag">Also with a license</span></p>
+  <ul class="tight">
+    <li><strong>Namespace subfolders:</strong> <code>net::tcp</code> gives <code>include/net/tcp</code> and <code>src/tcp</code>.</li>
+    <li><strong>CLion's own dialogs:</strong> switch on the move and files made by CLion's New C++ Class, C/C++ Header File, C/C++ Source File or New | File go to the rule's folders, with a Move back link. Off until you turn it on.</li>
+    <li><strong>Team rules:</strong> Save my rules to the rules file writes <code>.hedroot-rules</code>; commit it. A teammate without a license gets its first rule.</li>
+  </ul>
+  <p class="fine">The license is $7 once, the same for personal and commercial use, every update included, nothing renews; the 30-day trial of everything starts from the Get a license or trial link on the settings page and uses your JetBrains Account. After the trial the first rule keeps working and the others stay saved.</p>
+
+  <h2 id="limits">Limits</h2>
+  <ul class="tight">
+    <li>CLion 2025.3 or later. Not run on Windows or macOS.</li>
+    <li>Not run in a CLion window: Remove, Undo and the move of CLion's own files were tested headless, not by a keypress or a click in CLion.</li>
+    <li>CMake projects only for target updates; Makefile, Meson, Bazel, compilation-database and PlatformIO projects get placement only.</li>
+    <li>New files only: Hedroot does not move, rename or reorganise files that already exist. Folders must be inside the project.</li>
+    <li>Not in version one: C++20 module interface units, Rider and other JetBrains IDEs, Remote Development clients.</li>
+  </ul>
+
+  <h2 id="details">Details</h2>
+  <ul class="tight">
+    <li><strong>Works in:</strong> CLion 2025.3 or later (build 253 and later, no upper limit). Tested headless in CLion 2025.3; the Plugin Verifier reports it compatible with CLion 2025.3 and 2026.3.0.1, and it loads in a headless start of both.</li>
+    <li><strong>Untested:</strong> a CLion window, Windows, macOS, and the Marketplace trial and purchase.</li>
+    <li><strong>Licensing:</strong> through JetBrains Marketplace, under an end user license agreement; the source code is not included.</li>
+    <li><strong>Refunds:</strong> JetBrains Marketplace handles refund requests under its terms; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
+    <li><strong>Updates</strong> come through Marketplace (not run yet); nothing renews.</li>
+    <li><strong>Privacy:</strong> no network calls, nothing sent; Hedroot reads the project's folder names, CMakeLists.txt files and its rules file (<a href="../privacy.html">privacy policy</a>).</li>
+    <li><strong>Support:</strong> <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>, with your CLion version and what the dialog showed.</li>
+    <li>{fmt} (Victor Zverovich and contributors) and rclcpp (ROS 2) are public open-source libraries used as test data; Hedroot is not affiliated with either.</li>
+  </ul>
+
+  <h2 id="tested">How we tested</h2>
+  <p>Hedroot 1.0.1, on Linux.</p>
+  <ul class="tight">
+    <li>189 automated tests in 22 classes, none failing, without a display in CLion 2025.3, and 18 more acceptance tests written separately from them, none failing.</li>
+    <li>Plugin Verifier 1.411: compatible with CLion 2025.3 and CLion 2026.3.0.1, no internal, experimental or deprecated API used.</li>
+    <li>4 builds with real CMake after Hedroot's edits (a PUBLIC section after PRIVATE sources, an INTERFACE section, a target defined in both branches of <code>if()</code>/<code>else()</code> with the option on and off): the new source was compiled exactly once, for the library, in each.</li>
+    <li>Speed on {fmt} (10 CMakeLists.txt files), CLion 2025.3 headless, a 4-core 2.3 GHz Xeon, median of 10 runs: Create to both files open 39 ms, worst 115 ms.</li>
+    <li id="pictures">The pictures are Hedroot's own screens, drawn by CLion 2025.3's interface toolkit in a test window on unmodified copies of {fmt} (commit 14ac0d5) and rclcpp (commit 9e66d4d), in the dark theme. They are not captures of CLion's own window: CLion asks for a JetBrains Account login before it can be used, and the test machine has none. The pictures of paid features were taken with the license check switched on by a test tool.</li>
+  </ul>
+  <div class="buy">
+    <div class="buy-row">
+      <a class="button" id="buy-2" href="#" aria-describedby="buy-note-2">Get it on JetBrains Marketplace</a>
+      <span class="buy-note" id="buy-note-2">Not on the Marketplace yet: listing in review.</span>
+    </div>
+    <p class="fine">Free for one rule · $7 once for the rest · 30-day trial · not yet run in a CLion window</p>
+  </div>
+</main>
+<script>
+// A phone swipe strip fades at its right edge until it is scrolled to the end.
+(function () {
+  document.querySelectorAll(".swipe-wrap .scroll-x").forEach(function (box) {
+    var update = function () { box.parentNode.classList.toggle("at-end", box.scrollLeft + box.clientWidth >= box.scrollWidth - 2); };
+    box.addEventListener("scroll", update, { passive: true });
+    update();
+  });
+})();
+</script>
+<footer>
+  <a href="../guides/">Guides</a>
+  <a href="../privacy.html">Privacy</a>
+  <a href="../terms.html">Terms</a>
+  <a href="../support.html">Support</a>
+  <span>&copy; 2026&nbsp;Ochrestack</span>
+</footer>
+</body>
+</html>

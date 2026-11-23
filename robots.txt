@@ -52,6 +52,8 @@ Allow: /templatrail/quick-start.html
 Allow: /sibfold/
 Allow: /sibfold/quick-start.html
 Allow: /sibfold/how-we-tested.html
+Allow: /hedroot/
+Allow: /hedroot/quick-start.html
 Allow: /wholegrip/
 Allow: /wholegrip/quick-start.html
 Allow: /guides/
