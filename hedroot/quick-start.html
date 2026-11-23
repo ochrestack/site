@@ -164,7 +164,7 @@
   <ol>
     <li>Open the settings page and press <strong>+</strong>.</li>
     <li>Fill in three fields, all relative to the folder the rule covers: <strong>Folder this rule covers</strong> (<code>.</code> is the project root), <strong>Header folder</strong> (for example <code>include/fmt</code>) and <strong>Source folder</strong> (for example <code>src</code>). Leave <strong>Include root (optional)</strong> empty unless the line under the fields names the wrong folder (the one your compiler's include path points at).</li>
-    <li>Type a class name under <strong>Try a class</strong>. The page shows the two paths and the <code>#include</code> line the rule produces, and which folder the <code>#include</code> is relative to. A folder outside the project, or a header folder equal to the source folder, is refused in its field with the reason.</li>
+    <li>Type a class name under <strong>Try a class</strong>. The page shows the two paths and the <code>#include</code> line the rule produces, and which folder the <code>#include</code> is relative to. A folder outside the project, or a header folder equal to the source folder, is refused with the reason.</li>
     <li>Press <strong>OK</strong>.</li>
   </ol>
 
@@ -179,7 +179,7 @@
     <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-fmt.png" alt="The New C++ Class (Header/Source Folders) dialog for the class Formatter on the fmt library: header file include/fmt/formatter.h, source file src/formatter.cc; the line The source starts with #include "fmt/formatter.h"" width="588" height="380" loading="lazy"></div></div>
     <figcaption>The dialog on {fmt}: both paths and the <code>#include</code> line before you press Create.</figcaption>
   </figure>
-  <p><strong>Nothing changed, or both files in one folder?</strong> The entry you used must be Hedroot's, not CLion's own New | C++ Class, and the rule's folder must contain the folder you right-clicked. With no rule covering the folder the dialog says so and writes nothing.</p>
+  <p><strong>Nothing changed, or both files in one folder?</strong> The entry you used must be Hedroot's, not CLion's own New | C++ Class, and the rule's folder must contain the folder you right-clicked. With no rule covering the folder, or only a saved rule that needs a license, the dialog says which and writes nothing.</p>
 
   <h2 id="license">With a license</h2>
   <p>Each of these needs a license or the 30-day trial.</p>
@@ -193,7 +193,7 @@
 
   <h2 id="trial">License and trial</h2>
   <p>The free part works at once and nothing pops up. A license is $7 once, the same for personal and commercial use, every update included, nothing renews, with a 30-day trial of every feature. The <strong>Get a license or trial</strong> link on the settings page and in the dialog opens the IDE's license dialog; choose Hedroot there and start the trial. CLion shows Hedroot there under Paid Plugins as "Activate to enable"; the free rule works anyway. Starting a trial or buying uses your JetBrains Account. When the trial ends, the first rule keeps working and the others stay saved.</p>
-  <p>The license is checked through JetBrains Marketplace licensing. The trial and the purchase can start only once Hedroot is on the Marketplace; they have not been run.</p>
+  <p>The trial and the purchase can start only once Hedroot is on the Marketplace; they have not been run.</p>
 
   <h2 id="limits">Limits</h2>
   <ul>
