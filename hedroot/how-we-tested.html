@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How we tested Hedroot</title>
-<meta name="description" content="What ran for Hedroot 1.0.1: 189 automated tests, the Plugin Verifier on CLion 2025.3 and 2026.3.0.1, real CMake builds, a survey of twelve libraries, and what did not run.">
+<meta name="description" content="What ran for Hedroot 1.0.2: 200 automated tests, the Plugin Verifier on CLion 2025.3 and 2026.3.0.1, real CMake builds, a survey of twelve libraries, and what did not run.">
 <link rel="canonical" href="https://ochrestack.com/hedroot/how-we-tested.html">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <style>
@@ -150,13 +150,13 @@
 </header>
 <main>
   <h1>How we tested Hedroot</h1>
-  <p>Back to the <a href="index.html">product page</a>. Everything here is Hedroot 1.0.1 and ran on Linux.</p>
+  <p>Back to the <a href="index.html">product page</a>. Everything here is Hedroot 1.0.2 and ran on Linux.</p>
   <ul>
-    <li>189 automated tests in 22 classes, none failing, run without a display in CLion 2025.3, and 18 more acceptance tests written separately from them, none failing.</li>
+    <li>200 automated tests in 23 classes, none failing, run without a display in CLion 2025.3, and 18 more acceptance tests written separately from them, none failing.</li>
     <li>Plugin Verifier 1.411: compatible with CLion 2025.3 and CLion 2026.3.0.1, no internal, experimental or deprecated API used. A headless start of each CLion with the plugin installed loads it with no error. CLion 2026.3 is not covered by the test suite.</li>
-    <li>4 builds with real CMake after Hedroot's edits (a PUBLIC section after PRIVATE sources, an INTERFACE section, and a target defined in both branches of <code>if()</code>/<code>else()</code> with the option on and off): the new source was compiled exactly once, for the library, in each. The new source goes into the PRIVATE section, never PUBLIC or INTERFACE.</li>
+    <li>6 checks with real CMake. Four builds after Hedroot's edits (a PUBLIC section after PRIVATE sources, an INTERFACE section, and a target defined in both branches of <code>if()</code>/<code>else()</code> with the option on and off): the new source was compiled exactly once, for the library, in each. The new source goes into the PRIVATE section, never PUBLIC or INTERFACE. A fifth and a sixth check use a two-library project with headers in <code>include/ember/core</code> and <code>include/ember/render</code>: the three classes Hedroot created in it (one in the namespace <code>ember::core::memory</code>) build, and the same project with the old include lines (<code>#include "core/Clock.h"</code>) does not.</li>
     <li>On twelve popular open-source libraries (a rule of <code>include/&lt;name&gt;</code> and <code>src</code>, the dialog started in the library's source folder), the CMake edit was right and unconditional on 2, offered only inside an <code>if()</code> on 1, refused with the reason on 8, and found no target on 1. A list built from a variable or <code>file(GLOB)</code>, or a target made by a function or macro, is left unchanged and the dialog says why.</li>
-    <li>Speed on {fmt} (10 CMakeLists.txt files), CLion 2025.3 headless, a 4-core 2.3 GHz Xeon, median of 10 runs: Create to both files open 39 ms, worst 115 ms.</li>
+    <li>Speed on {fmt} (10 CMakeLists.txt files), CLion 2025.3 headless, a 4-core 2.1 GHz Xeon, median of 10 runs: Create to both files open 40 ms, worst 168 ms.</li>
     <li id="fmt-run">The {fmt} comparison on the product page was run headless on an unmodified copy of {fmt} at commit 14ac0d5, CLion 2025.3, with New File Extensions set to the .h/.cc pair and a lower-case naming convention. CLion's row is CLion's own class code run in the same test, not a CLion window. With fmt chosen in the target list, Hedroot changed one file, CMakeLists.txt, line 305.</li>
     <li>Not run: a CLion window (Remove, Undo and the move of CLion's own files were tested by CLion's undo manager and by playing back CLion's own events), Windows, macOS, and the Marketplace trial and purchase.</li>
     <li id="pictures">The pictures are Hedroot's own screens, drawn by CLion 2025.3's interface toolkit in a test window on unmodified copies of {fmt} (commit 14ac0d5) and rclcpp (commit 9e66d4d), in the dark theme. They are not captures of CLion's own window: CLion's release builds ask for a JetBrains Account login before they can be used, and the test machine has none; the early-access build of CLion 2026.3 that needs no login had expired. The pictures of paid features were taken with the license check switched on by a test tool.</li>

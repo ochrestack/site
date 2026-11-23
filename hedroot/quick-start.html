@@ -153,7 +153,7 @@
   <p>Your first rule and your first class. Back to the <a href="index.html">product page</a>. None of these steps has been followed in a CLion window yet; they are checked against the plugin's code and tests (<a href="index.html#details">limits</a>).</p>
 
   <h2 id="install">Install</h2>
-  <p>Hedroot is not on JetBrains Marketplace yet: the listing is in review, so there is nothing to install from there today. Once it is listed, in CLion 2025.3 or later:</p>
+  <p>Hedroot is not on JetBrains Marketplace yet, so there is nothing to install from there today. Once it is listed, in CLion 2025.3 or later:</p>
   <ol>
     <li>Open <strong>Settings | Plugins</strong>. Install Hedroot from the Marketplace tab, or choose the gear icon and <strong>Install Plugin from Disk...</strong> and pick the zip without unpacking it.</li>
     <li>Restart CLion when it asks.</li>
@@ -163,25 +163,21 @@
   <h2 id="first-rule">Your first rule</h2>
   <ol>
     <li>Open the settings page and press <strong>+</strong>.</li>
-    <li>Fill in three fields, all relative to the folder the rule covers: <strong>Folder this rule covers</strong> (<code>.</code> is the project root), <strong>Header folder</strong> (for example <code>include/fmt</code>) and <strong>Source folder</strong> (for example <code>src</code>).</li>
-    <li>Type a class name under <strong>Try a class</strong>. The page shows the two paths and the <code>#include</code> line the rule produces. A folder outside the project, or a header folder equal to the source folder, is refused in its field with the reason.</li>
+    <li>Fill in three fields, all relative to the folder the rule covers: <strong>Folder this rule covers</strong> (<code>.</code> is the project root), <strong>Header folder</strong> (for example <code>include/fmt</code>) and <strong>Source folder</strong> (for example <code>src</code>). Leave <strong>Include root (optional)</strong> empty unless the line under the fields names the wrong folder (the one your compiler's include path points at).</li>
+    <li>Type a class name under <strong>Try a class</strong>. The page shows the two paths and the <code>#include</code> line the rule produces, and which folder the <code>#include</code> is relative to. A folder outside the project, or a header folder equal to the source folder, is refused in its field with the reason.</li>
     <li>Press <strong>OK</strong>.</li>
   </ol>
-  <figure>
-    <img class="ui" src="img/settings-fmt-phone.png" alt="The rule fields on the fmt library: folder ., header folder include/fmt, source folder src; under Try a class, Socket gives Header include/fmt/socket.h, Source src/socket.cc and #include fmt/socket.h" width="520" height="310" loading="lazy">
-    <figcaption>Folder, header folder and source folder, and the paths they give for Socket, on {fmt}. Hedroot's page drawn by CLion 2025.3 in a test window, not CLion's own window.</figcaption>
-  </figure>
 
   <h2 id="first-class">Your first class</h2>
   <ol>
     <li>Right-click a folder in the Project view, for example <code>src</code>, and choose <strong>New | C++ Class (Header/Source Folders)</strong>.</li>
-    <li>Type a name. The dialog shows both paths, for example <code>include/fmt/formatter.h</code> and <code>src/formatter.cc</code>. Edit either for this class only.</li>
+    <li>Type a name. The dialog shows both paths, for example <code>include/fmt/formatter.h</code> and <code>src/formatter.cc</code>, and the source's <code>#include</code> line. Edit either path for this class only.</li>
     <li>Press <strong>Create</strong>. Both files open in their folders and one balloon appears with a <strong>Remove</strong> link.</li>
   </ol>
   <figure>
     <p class="swipe-hint narrow-only">Swipe the dialog sideways to read each line &rarr;</p>
-    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-fmt.png" alt="The New C++ Class (Header/Source Folders) dialog for the class Formatter on the fmt library: header file include/fmt/formatter.h, source file src/formatter.cc" width="588" height="342" loading="lazy"></div></div>
-    <figcaption>The dialog on {fmt}: both paths before you press Create.</figcaption>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-fmt.png" alt="The New C++ Class (Header/Source Folders) dialog for the class Formatter on the fmt library: header file include/fmt/formatter.h, source file src/formatter.cc; the line The source starts with #include "fmt/formatter.h"" width="588" height="380" loading="lazy"></div></div>
+    <figcaption>The dialog on {fmt}: both paths and the <code>#include</code> line before you press Create.</figcaption>
   </figure>
   <p><strong>Nothing changed, or both files in one folder?</strong> The entry you used must be Hedroot's, not CLion's own New | C++ Class, and the rule's folder must contain the folder you right-clicked. With no rule covering the folder the dialog says so and writes nothing. The file type follows <strong>Settings | Editor | Code Style | C/C++ | New File Extensions</strong>, and the include guard follows the Header guard style on the Naming tab of that page.</p>
 
@@ -189,7 +185,7 @@
   <p>Each of these needs a license or the 30-day trial.</p>
   <ul>
     <li><strong>A rule per module.</strong> Add a rule for each folder; the rule whose folder most closely encloses the folder you right-click applies.</li>
-    <li><strong>Namespace subfolders.</strong> With the option on, a class <code>Socket</code> in <code>net::tcp</code> under headers <code>include/net</code> and sources <code>src</code> goes to <code>include/net/tcp/socket.h</code> and <code>src/tcp/socket.cpp</code>.</li>
+    <li><strong>Namespace subfolders.</strong> With the option on, a class <code>Socket</code> in <code>net::tcp</code> under headers <code>include/net</code> and sources <code>src</code> goes to <code>include/net/tcp/socket.h</code> and <code>src/tcp/socket.cpp</code>. Names the header folder already ends with are not repeated.</li>
     <li><strong>CMake target.</strong> Choose the target in the same dialog; the line under it names the file and line Hedroot will change, or says why it will leave the target alone (a list built from a variable or <code>file(GLOB)</code>, a target made by a function or macro, sources split across <code>if()</code> blocks).</li>
     <li><strong>Move CLion's own files.</strong> Switch on <em>Move files created by CLion's New dialogs into the rule's folders</em> on the settings page. A balloon after CLion's own New C++ Class names where the files went, with <strong>Move back</strong>.</li>
     <li><strong>Team rules.</strong> <strong>Save my rules to the rules file</strong> writes <code>.hedroot-rules</code> at the project root. Commit it; a change that arrives with a Git pull applies without a restart.</li>
@@ -205,6 +201,7 @@
     <li>CMake projects only for target updates. Makefile, Meson, Bazel, compilation-database and PlatformIO projects get placement only.</li>
     <li>New files only: Hedroot does not move, rename or reorganise files that already exist.</li>
     <li>Folders must be inside the project.</li>
+    <li>The <code>#include</code> is relative to an include folder that Hedroot works out from your folder names; it does not read your CMake include directories, so set the Include root on the rule if it guesses wrong.</li>
     <li>Not in version one: C++20 module interface units, Rider and other JetBrains IDEs, Remote Development clients, keeping namespace, folder and file names in sync.</li>
   </ul>
 

@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hedroot: Header/Source Folders for CLion</title>
-<meta name="description" content="New C++ classes land in your include/ and src/ folders with the #include already right. One rule free; $7 once adds module rules and CLion's own New dialogs. For CLion 2025.3 and later.">
+<meta name="description" content="New C++ classes land in your include/ and src/ folders; the #include shows before Create. One rule free; $7 once adds module rules and CLion's own New dialogs. For CLion 2025.3 and later.">
 <link rel="canonical" href="https://ochrestack.com/hedroot/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ochrestack">
 <meta property="og:title" content="Hedroot: Header/Source Folders for CLion">
-<meta property="og:description" content="New C++ classes land in your include/ and src/ folders with the #include already right. One rule free; $7 once adds module rules and CLion's own New dialogs.">
+<meta property="og:description" content="New C++ classes land in your include/ and src/ folders; the #include shows before Create. One rule free; $7 once adds module rules and CLion's own New dialogs.">
 <meta property="og:url" content="https://ochrestack.com/hedroot/">
 <meta property="og:image" content="https://ochrestack.com/hedroot/img/og-hedroot-2x1.png">
 <meta property="og:image:width" content="1200">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Hedroot's New C++ Class (Header/Source Folders) dialog for the class Formatter on the fmt library: header file include/fmt/formatter.h, source file src/formatter.cc, both shown before Create">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hedroot: Header/Source Folders for CLion">
-<meta name="twitter:description" content="New C++ classes land in your include/ and src/ folders with the #include already right. One rule free; $7 once adds module rules and CLion's own New dialogs.">
+<meta name="twitter:description" content="New C++ classes land in your include/ and src/ folders; the #include shows before Create. One rule free; $7 once adds module rules and CLion's own New dialogs.">
 <meta name="twitter:image" content="https://ochrestack.com/hedroot/img/og-hedroot-2x1.png">
 <meta name="twitter:image:alt" content="Hedroot's New C++ Class (Header/Source Folders) dialog for the class Formatter on the fmt library: header file include/fmt/formatter.h, source file src/formatter.cc, both shown before Create">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
@@ -44,6 +44,8 @@
   .buy .price { font-size: 17px; }
   .button { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
   .button:hover, .button:focus { background: var(--ochre-text); }
+  button.button { border: 0; font: inherit; font-weight: 600; }
+  button.button[disabled], button.button[disabled]:hover { background: #6B6158; color: var(--paper); cursor: not-allowed; }
   figure { margin: 28px 0; }
   figure img, figure video { width: 100%; height: auto; border: 1px solid #E6DED3; border-radius: 10px; background: #FAF7F2; display: block; }
   figure video { background: #2B2118; }
@@ -180,20 +182,20 @@
   <p class="sub">CLion's New | C++ Class writes both files into the folder you right-click, so with <code>include/</code> and <code>src/</code> you move the header by hand every time. Hedroot's dialog puts each file in its folder.</p>
   <div class="top-images">
   <figure class="top-image">
-    <a href="img/dialog-fmt.png"><picture><source media="(max-width: 600px)" srcset="img/dialog-fmt-phone.png" width="440" height="256"><img class="hero ui" src="img/dialog-fmt.png" alt="Hedroot's New C++ Class (Header/Source Folders) dialog in CLion 2025.3's own interface, on the fmt library: the line Rule for .: headers in include/fmt, sources in src.; Name Formatter; File type .h/.cc; Header file include/fmt/formatter.h; Source file src/formatter.cc" width="588" height="342"></picture></a>
+    <a href="img/dialog-fmt.png"><picture><source media="(max-width: 600px)" srcset="img/dialog-fmt-phone.png" width="440" height="217"><img class="hero ui" src="img/dialog-fmt.png" alt="Hedroot's New C++ Class (Header/Source Folders) dialog in CLion 2025.3's own interface, on the fmt library: the line Rule for the project root: headers in include/fmt, sources in src.; Name Formatter; File type .h/.cc; Header file include/fmt/formatter.h; Source file src/formatter.cc; the line The source starts with #include "fmt/formatter.h" (include root: include, worked out from the folder names)" width="588" height="380"></picture></a>
     <figcaption>Both paths, before anything is written. <a href="how-we-tested.html#pictures">What this picture is</a>.</figcaption>
   </figure>
   </div>
   <ul class="benefits">
-    <li><strong>The header lands in <code>include/</code>, the source in <code>src/</code>, the <code>#include</code> right.</strong></li>
+    <li><strong>The header lands in <code>include/</code>, the source in <code>src/</code>, and the <code>#include</code> line shows before Create.</strong></li>
     <li><strong>I see both paths before anything is written.</strong></li>
     <li><strong>Each module gets its own folders, and my team shares the rules (license).</strong></li>
   </ul>
   <div class="buy">
     <p class="price"><strong>Free:</strong> one placement rule and the dialog, no time limit. <strong>$7&nbsp;once</strong> adds a rule per module, CMake target lines, CLion's own New dialogs and shared rules; 30-day trial.</p>
     <div class="buy-row">
-      <a class="button" id="buy" href="#" aria-describedby="buy-note">Get it on JetBrains Marketplace</a>
-      <span class="buy-note" id="buy-note">Not on the Marketplace yet: listing in review.</span>
+      <button type="button" class="button" id="buy" disabled aria-describedby="buy-note">Get it on JetBrains Marketplace</button>
+      <span class="buy-note" id="buy-note">Not on JetBrains Marketplace yet.</span>
     </div>
     <p class="fine">Tested in CLion 2025.3&nbsp;(headless) <span class="nw">·&nbsp;Linux&nbsp;only</span> <span class="nw">·&nbsp;source&nbsp;code&nbsp;not&nbsp;included</span> <span class="nw">·&nbsp;<a href="mailto:support@ochrestack.com">support@ochrestack.com</a></span></p>
   </div>
@@ -203,13 +205,19 @@
     <strong>CLion already creates class files.</strong> If your headers and sources share a folder, you do not need Hedroot.
   </div>
 
+  <h2 id="result">What Create writes</h2>
+  <p>The class <code>Formatter</code>, started in <code>src</code> on {fmt}, with one rule (<a href="how-we-tested.html#fmt-run">headless run</a>):</p>
+  <pre class="pats"><code>include/fmt/formatter.h   new header
+src/formatter.cc          new source, first line: #include "fmt/formatter.h"
+CMakeLists.txt            one line added if you choose the fmt target (license)</code></pre>
+
   <h2 id="watch">Watch</h2>
   <figure>
     <video controls preload="none" playsinline poster="video/poster.jpg" width="1920" height="1080">
       <source src="video/hedroot-demo-1080p.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="video/hedroot-demo-720p-phone.mp4" type="video/mp4">
     </video>
-    <figcaption>Full film: 35&nbsp;seconds, captions only. <a href="how-we-tested.html#film">What this is</a>.</figcaption>
+    <figcaption>Full film: 36&nbsp;seconds, captions only. <a href="how-we-tested.html#film">What this is</a>.</figcaption>
   </figure>
   <figure class="gif">
     <picture>
@@ -222,8 +230,8 @@
   <h2 id="how">How it works</h2>
   <p><span class="step-tag">1. Set a rule (free)</span><br>A header folder and a source folder, here <code>include/fmt</code> and <code>src</code> for {fmt}.</p>
   <figure class="real-size">
-    <img class="ui wide-only" src="img/settings-fmt.png" alt="Settings | Editor | Hedroot Header/Source Folders on the fmt library: one rule in the table, folder ., headers include/fmt, sources src, #include path, namespaces off, from Personal, status Active; the three fields filled; under Try a class, Socket in namespace net::tcp gives Header include/fmt/socket.h, Source src/socket.cc and #include fmt/socket.h; below, the line that says what a license adds: a rule for every module, namespace subfolders, CMake target lines, moving the files CLion's own New dialogs create and a shared rules file, $7 once, 30-day trial, nothing renews" width="928" height="750" loading="lazy">
-    <img class="ui narrow-only" src="img/settings-fmt-phone.png" alt="The rule fields on the fmt library: folder ., header folder include/fmt, source folder src; under Try a class, Socket gives Header include/fmt/socket.h, Source src/socket.cc and #include fmt/socket.h" width="520" height="310" loading="lazy">
+    <img class="ui wide-only" src="img/settings-fmt.png" alt="Settings | Editor | Hedroot Header/Source Folders on the fmt library: one rule in the table, folder ., headers include/fmt, sources src, include root automatic, #include path, namespaces off, from Personal, status Active; the three fields filled and Include root empty; the line Files go to include/fmt/<name>.h and src/<name>.cc, with #include lines relative to include; under Try a class, Socket in namespace net::tcp gives Header include/fmt/socket.h, Source src/socket.cc and #include fmt/socket.h; below, the line that says what a license adds: a rule for every module, namespace subfolders, CMake target lines, moving the files CLion's own New dialogs create and a shared rules file, $7 once, 30-day trial, nothing renews" width="928" height="750" loading="lazy">
+    <div class="swipe-wrap narrow-only"><div class="scroll-x"><img class="ui" src="img/settings-fmt-phone.png" alt="The rule fields on the fmt library: folder ., header folder include/fmt, source folder src, Include root empty; the line Files go to include/fmt/&lt;name&gt;.h and src/&lt;name&gt;.cc, with #include lines relative to include; under Try a class, Socket gives Header include/fmt/socket.h, Source src/socket.cc and #include fmt/socket.h" width="928" height="354" loading="lazy"></div></div>
     <figcaption>The settings page on {fmt}: one rule, the free tier. <a href="how-we-tested.html#pictures">What this picture is</a>.</figcaption>
   </figure>
 
@@ -231,11 +239,11 @@
 
   <p><span class="step-tag">3. With a license</span><br>The dialog names the CMake line it will change, or says why it will not. On {fmt} that is inside <code>if (FMT_OS)</code>, so you choose the target.</p>
   <figure>
-    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-fmt-target.png" alt="The dialog on the fmt library with fmt chosen in the Add to CMake target list, shown as fmt (CMakeLists.txt), only inside if (FMT_OS): the line below reads Adds src/formatter.cc to target_sources(fmt ...) in CMakeLists.txt:305 (inside if (FMT_OS), so only built when that holds)" width="588" height="341" loading="lazy"></div></div>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-fmt-target.png" alt="The dialog on the fmt library with fmt chosen in the Add to CMake target list, shown as fmt (CMakeLists.txt), only inside if (FMT_OS): the line under Source file reads The source starts with #include "fmt/formatter.h" (include root: include, worked out from the folder names), and the CMake line below reads Adds src/formatter.cc to target_sources(fmt ...) in CMakeLists.txt:305 (inside if (FMT_OS), so only built when that holds)" width="588" height="379" loading="lazy"></div></div>
     <figcaption>{fmt}: the target is conditional, and the dialog says so. License switched on by a test tool.</figcaption>
   </figure>
   <figure>
-    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-rclcpp-target.png" alt="The dialog on rclcpp_lifecycle/src for the class Gadget: Header file rclcpp_lifecycle/include/rclcpp_lifecycle/Gadget.h, Source file rclcpp_lifecycle/src/Gadget.cpp, the target rclcpp_lifecycle (rclcpp_lifecycle/CMakeLists.txt) preselected, and the line Adds src/Gadget.cpp to add_library(rclcpp_lifecycle ...) in rclcpp_lifecycle/CMakeLists.txt:20" width="588" height="358" loading="lazy"></div></div>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-rclcpp-target.png" alt="The dialog on rclcpp_lifecycle/src for the class Gadget: Header file rclcpp_lifecycle/include/rclcpp_lifecycle/Gadget.h, Source file rclcpp_lifecycle/src/Gadget.cpp, the line The source starts with #include "rclcpp_lifecycle/Gadget.h" (include root: rclcpp_lifecycle/include, worked out from the folder names), the target rclcpp_lifecycle (rclcpp_lifecycle/CMakeLists.txt) preselected, and the line Adds src/Gadget.cpp to add_library(rclcpp_lifecycle ...) in rclcpp_lifecycle/CMakeLists.txt:20" width="588" height="396" loading="lazy"></div></div>
     <figcaption>rclcpp, one rule per module: the target is preselected. License switched on by a test tool.</figcaption>
   </figure>
   <p>The license also adds namespace subfolders, moving the files CLion's own dialogs make (a Move back link, off until you turn it on) and team rules in <code>.hedroot-rules</code>. $7 once, every update included; <a href="quick-start.html#trial">trial and details</a>.</p>
@@ -245,13 +253,14 @@
     <li><strong>Works in:</strong> CLion 2025.3 or later (build 253 and later). Tested headless in CLion 2025.3; the Plugin Verifier reports it compatible with CLion 2025.3 and 2026.3.0.1.</li>
     <li><strong>Untested:</strong> a CLion window, Windows, macOS, and the Marketplace trial and purchase.</li>
     <li>CMake edits only on CMake projects, and right on 2 of the twelve libraries tried (<a href="how-we-tested.html">how we tested</a>). New files only. Not Rider.</li>
+    <li>The <code>#include</code> is relative to an include folder that Hedroot works out from your folder names (<code>include/ember/core</code> gives <code>include</code>); it does not read your CMake include directories, so set the Include root on the rule if it guesses wrong.</li>
     <li>An end user license agreement; the source code is not included. Refunds go through JetBrains Marketplace; if the paid half does not work as described and we cannot fix it, write to <a href="mailto:support@ochrestack.com">support@ochrestack.com</a>.</li>
     <li>No network calls, nothing sent (<a href="../privacy.html">privacy policy</a>). {fmt} and rclcpp are test data, with no affiliation.</li>
   </ul>
   <div class="buy">
     <div class="buy-row">
-      <a class="button" id="buy-2" href="#" aria-describedby="buy-note-2">Get it on JetBrains Marketplace</a>
-      <span class="buy-note" id="buy-note-2">Not on the Marketplace yet: listing in review.</span>
+      <button type="button" class="button" id="buy-2" disabled aria-describedby="buy-note-2">Get it on JetBrains Marketplace</button>
+      <span class="buy-note" id="buy-note-2">Not on JetBrains Marketplace yet.</span>
     </div>
   </div>
 </main>
