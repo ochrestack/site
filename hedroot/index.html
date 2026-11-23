@@ -182,7 +182,7 @@
   <p class="sub">CLion's New | C++ Class writes both files into the folder you right-click, so with <code>include/</code> and <code>src/</code> you move the header by hand every time. Hedroot's dialog puts each file in its folder.</p>
   <div class="top-images">
   <figure class="top-image">
-    <a href="img/dialog-fmt.png"><picture><source media="(max-width: 600px)" srcset="img/dialog-fmt-phone.png" width="440" height="217"><img class="hero ui" src="img/dialog-fmt.png" alt="Hedroot's New C++ Class (Header/Source Folders) dialog in a test window drawn by CLion 2025.3's interface toolkit, on the fmt library: the line Rule for the project root: headers in include/fmt, sources in src.; Name Formatter; File type .h/.cc; Header file include/fmt/formatter.h; Source file src/formatter.cc; the line The source starts with #include "fmt/formatter.h" (include root: include, worked out from the folder names)" width="588" height="380"></picture></a>
+    <a href="img/dialog-fmt.png"><picture><source media="(max-width: 600px)" srcset="img/dialog-fmt-phone.png" width="440" height="217"><img class="hero ui" src="img/dialog-fmt.png" alt="Hedroot's New C++ Class (Header/Source Folders) dialog in a test window drawn by CLion 2025.3's interface toolkit, on the fmt library: the line Rule for the project root: headers in include/fmt, sources in src.; Name Formatter; File type .h/.cc; Header file include/fmt/formatter.h; Source file src/formatter.cc; the line The source starts with #include &quot;fmt/formatter.h&quot; (include root: include, worked out from the folder names)" width="588" height="380"></picture></a>
     <figcaption>Both paths, before anything is written. <a href="how-we-tested.html#pictures">What this picture is</a>.</figcaption>
   </figure>
   </div>
@@ -213,6 +213,9 @@ CMakeLists.txt            changed only with a license and the fmt target chosen<
   <p>That CMakeLists.txt change is one line (line 305, inside <code>if (FMT_OS)</code>):</p>
   <pre class="pats"><code>-  target_sources(fmt PRIVATE src/os.cc)
 +  target_sources(fmt PRIVATE src/os.cc src/formatter.cc)</code></pre>
+  <p>With a license and namespace subfolders on, the class <code>Texture</code> in <code>ember::gfx</code> on a small test project (the rule <code>include/ember</code> and <code>src</code>, sources from <code>file(GLOB_RECURSE)</code>) goes like this:</p>
+  <pre class="pats"><code>include/ember/gfx/Texture.h   new header
+src/gfx/Texture.cpp           new source, picked up by the glob</code></pre>
 
   <h2 id="watch">Watch</h2>
   <figure>
@@ -242,11 +245,11 @@ CMakeLists.txt            changed only with a license and the fmt target chosen<
 
   <p><span class="step-tag">3. With a license</span><br>The dialog names the CMake line it will change, or says why it will not. On {fmt} that is inside <code>if (FMT_OS)</code>, so you choose the target.</p>
   <figure>
-    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-fmt-target.png" alt="The dialog on the fmt library with fmt chosen in the Add to CMake target list, shown as fmt (CMakeLists.txt), only inside if (FMT_OS): the line under Source file reads The source starts with #include "fmt/formatter.h" (include root: include, worked out from the folder names), and the CMake line below reads Adds src/formatter.cc to target_sources(fmt ...) in CMakeLists.txt:305 (inside if (FMT_OS), so only built when that holds)" width="588" height="379" loading="lazy"></div></div>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-fmt-target.png" alt="The dialog on the fmt library with fmt chosen in the Add to CMake target list, shown as fmt (CMakeLists.txt), only inside if (FMT_OS): the line under Source file reads The source starts with #include &quot;fmt/formatter.h&quot; (include root: include, worked out from the folder names), and the CMake line below reads Adds src/formatter.cc to target_sources(fmt ...) in CMakeLists.txt:305 (inside if (FMT_OS), so only built when that holds)" width="588" height="379" loading="lazy"></div></div>
     <figcaption>{fmt}: the target is conditional, and the dialog says so. License switched on by a test tool.</figcaption>
   </figure>
   <figure>
-    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-rclcpp-target.png" alt="The dialog on rclcpp_lifecycle/src for the class Gadget: Header file rclcpp_lifecycle/include/rclcpp_lifecycle/Gadget.h, Source file rclcpp_lifecycle/src/Gadget.cpp, the line The source starts with #include "rclcpp_lifecycle/Gadget.h" (include root: rclcpp_lifecycle/include, read from rclcpp_lifecycle/CMakeLists.txt), the target rclcpp_lifecycle (rclcpp_lifecycle/CMakeLists.txt) preselected, and the line Adds src/Gadget.cpp to add_library(rclcpp_lifecycle ...) in rclcpp_lifecycle/CMakeLists.txt:20" width="588" height="396" loading="lazy"></div></div>
+    <div class="swipe-wrap"><div class="scroll-x"><img class="ui" src="img/dialog-rclcpp-target.png" alt="The dialog on rclcpp_lifecycle/src for the class Gadget: Header file rclcpp_lifecycle/include/rclcpp_lifecycle/Gadget.h, Source file rclcpp_lifecycle/src/Gadget.cpp, the line The source starts with #include &quot;rclcpp_lifecycle/Gadget.h&quot; (include root: rclcpp_lifecycle/include, read from rclcpp_lifecycle/CMakeLists.txt), the target rclcpp_lifecycle (rclcpp_lifecycle/CMakeLists.txt) preselected, and the line Adds src/Gadget.cpp to add_library(rclcpp_lifecycle ...) in rclcpp_lifecycle/CMakeLists.txt:20" width="588" height="396" loading="lazy"></div></div>
     <figcaption>rclcpp, one rule per module: the target is preselected. License switched on by a test tool.</figcaption>
   </figure>
   <figure>
